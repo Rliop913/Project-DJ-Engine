@@ -51,10 +51,3 @@ Namespaces
 
 - :ref:`namespace_PDJE_JUDGE`
 
-
-Variables
----------
-
-
-- :ref:`exhale_variable_PDJE__Judge__Init_8cpp_1a9b860a1a8536887d3b97558bae4d21d9`
-

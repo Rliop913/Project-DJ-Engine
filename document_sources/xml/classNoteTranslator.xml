@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="classNoteTranslator" kind="class" language="C++" prot="public">
     <compoundname>NoteTranslator</compoundname>
     <includes refid="NoteTranslator_8hpp" local="no">NoteTranslator.hpp</includes>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classNoteTranslator_1ace395ceda2f9e280a390cd2535d07dc1" prot="private" static="no" mutable="no">
         <type><ref refid="structBpmStruct" kindref="compound">BpmStruct</ref></type>
         <definition>BpmStruct NoteTranslator::noteBpms</definition>
         <argsstring></argsstring>
         <name>noteBpms</name>
+        <qualifiedname>NoteTranslator::noteBpms</qualifiedname>
         <briefdescription>
 <para>the note object&apos;s bpm datas </para>
         </briefdescription>
@@ -18,13 +19,14 @@
         </inbodydescription>
         <location file="include/core/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp" line="22" column="15" bodyfile="include/core/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp" bodystart="22" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classNoteTranslator_1a660b66512165d3cc53fef9f5a09476ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool NoteTranslator::Read</definition>
         <argsstring>(const CapReader&lt; NoteBinaryCapnpData &gt; &amp;binary, const BpmStruct &amp;mainBpm, OBJ_SETTER_CALLBACK &amp;lambdaCallback)</argsstring>
         <name>Read</name>
+        <qualifiedname>NoteTranslator::Read</qualifiedname>
         <param>
           <type>const <ref refid="classCapReader" kindref="compound">CapReader</ref>&lt; NoteBinaryCapnpData &gt; &amp;</type>
           <declname>binary</declname>
@@ -34,7 +36,7 @@
           <declname>mainBpm</declname>
         </param>
         <param>
-          <type><ref refid="PDJE__OBJ__SETTER_8hpp_1a6ee8dcd494b4095e5f9c95def2bc1ac5" kindref="member">OBJ_SETTER_CALLBACK</ref> &amp;</type>
+          <type><ref refid="PDJE__OBJ__SETTER_8hpp_1a16cf29d9f8af2ffe9f8fc5cab62f723c" kindref="member">OBJ_SETTER_CALLBACK</ref> &amp;</type>
           <declname>lambdaCallback</declname>
         </param>
         <briefdescription>
@@ -81,6 +83,7 @@
         <definition>NoteTranslator::NoteTranslator</definition>
         <argsstring>()=default</argsstring>
         <name>NoteTranslator</name>
+        <qualifiedname>NoteTranslator::NoteTranslator</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -94,6 +97,7 @@
         <definition>NoteTranslator::~NoteTranslator</definition>
         <argsstring>()=default</argsstring>
         <name>~NoteTranslator</name>
+        <qualifiedname>NoteTranslator::~NoteTranslator</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -102,7 +106,7 @@
         </inbodydescription>
         <location file="include/core/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp" line="42" column="5"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>the note translator. this class reads the capnp binary datas and bpm datas, and parse them. </para>
     </briefdescription>
@@ -120,17 +124,17 @@
           <edgelabel>fragments</edgelabel>
         </childnode>
       </node>
-      <node id="3">
-        <label>std::vector&lt; BpmFragment &gt;</label>
-        <childnode refid="4" relation="usage">
-          <edgelabel>elements</edgelabel>
-        </childnode>
-      </node>
       <node id="1">
         <label>NoteTranslator</label>
         <link refid="classNoteTranslator"/>
         <childnode refid="2" relation="usage">
           <edgelabel>noteBpms</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::vector&lt; BpmFragment &gt;</label>
+        <childnode refid="4" relation="usage">
+          <edgelabel>elements</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>

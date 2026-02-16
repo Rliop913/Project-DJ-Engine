@@ -60,13 +60,15 @@ Included By
 -----------
 
 
+- :ref:`file_include_core_MainObjects_tempDBObject_tempDB.hpp`
+
 - :ref:`file_include_core_audioRender_ManualMix_MusicControlPanel.hpp`
+
+- :ref:`file_include_core_audioRender_MixMachine_MUSIC_CTR_MUSIC_CTR.hpp`
 
 - :ref:`file_include_core_audioRender_MixMachine_MiniaudioObjects_Decoder.hpp`
 
 - :ref:`file_include_core_audioRender_MixMachine_MixMachine.hpp`
-
-- :ref:`file_include_core_audioRender_MixMachine_MUSIC_CTR_MUSIC_CTR.hpp`
 
 - :ref:`file_include_core_db_dbRoot.cpp`
 
@@ -75,8 +77,6 @@ Included By
 - :ref:`file_include_core_editor_pdjeLinter_pdjeLinter.hpp`
 
 - :ref:`file_include_core_interface_PDJE_interface.hpp`
-
-- :ref:`file_include_core_MainObjects_tempDBObject_tempDB.hpp`
 
 - :ref:`file_include_tests_audioTest.cpp`
 

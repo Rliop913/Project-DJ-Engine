@@ -16,6 +16,7 @@ Directory audioPlayer
 Files
 -----
 
+- :ref:`file_include_core_MainObjects_audioPlayer_audio_OS_impls.hpp`
 - :ref:`file_include_core_MainObjects_audioPlayer_audioCallbacks.cpp`
 - :ref:`file_include_core_MainObjects_audioPlayer_audioCallbacks.hpp`
 - :ref:`file_include_core_MainObjects_audioPlayer_audioPlayer.cpp`

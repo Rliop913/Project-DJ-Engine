@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="classPDJE__JUDGE_1_1Judge__Init" kind="class" language="C++" prot="public">
     <compoundname>PDJE_JUDGE::Judge_Init</compoundname>
     <includes refid="PDJE__Judge__Init_8hpp" local="no">PDJE_Judge_Init.hpp</includes>
-      <sectiondef kind="public-attrib">
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="classPDJE__JUDGE_1_1Judge__Init_1a8c4648b939291f5e3553707199bb9c64" prot="public" static="no" mutable="no">
         <type><ref refid="structPDJE__JUDGE_1_1Custom__Events" kindref="compound">Custom_Events</ref></type>
         <definition>Custom_Events PDJE_JUDGE::Judge_Init::lambdas</definition>
         <argsstring></argsstring>
         <name>lambdas</name>
+        <qualifiedname>PDJE_JUDGE::Judge_Init::lambdas</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -22,6 +23,7 @@
         <definition>std::optional&lt;PDJE_CORE_DATA_LINE&gt; PDJE_JUDGE::Judge_Init::coreline</definition>
         <argsstring></argsstring>
         <name>coreline</name>
+        <qualifiedname>PDJE_JUDGE::Judge_Init::coreline</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -35,6 +37,7 @@
         <definition>std::optional&lt;PDJE_INPUT_DATA_LINE&gt; PDJE_JUDGE::Judge_Init::inputline</definition>
         <argsstring></argsstring>
         <name>inputline</name>
+        <qualifiedname>PDJE_JUDGE::Judge_Init::inputline</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -48,6 +51,7 @@
         <definition>std::optional&lt;OBJ&gt; PDJE_JUDGE::Judge_Init::note_objects</definition>
         <argsstring></argsstring>
         <name>note_objects</name>
+        <qualifiedname>PDJE_JUDGE::Judge_Init::note_objects</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -61,6 +65,7 @@
         <definition>std::optional&lt;EVENT_RULE&gt; PDJE_JUDGE::Judge_Init::ev_rule</definition>
         <argsstring></argsstring>
         <name>ev_rule</name>
+        <qualifiedname>PDJE_JUDGE::Judge_Init::ev_rule</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -74,6 +79,7 @@
         <definition>RAIL_DB PDJE_JUDGE::Judge_Init::raildb</definition>
         <argsstring></argsstring>
         <name>raildb</name>
+        <qualifiedname>PDJE_JUDGE::Judge_Init::raildb</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -82,13 +88,14 @@
         </inbodydescription>
         <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="36" column="13" bodyfile="include/judge/Init/PDJE_Judge_Init.hpp" bodystart="36" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
+    </sectiondef>
+    <sectiondef kind="private-func">
       <memberdef kind="function" id="classPDJE__JUDGE_1_1Judge__Init_1a1cd961087df9003eecb048233147a744" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void PDJE_JUDGE::Judge_Init::DefaultFill</definition>
         <argsstring>(NOTE &amp;obj, const uint64_t railid, const LOCAL_TIME axis1, const LOCAL_TIME axis2)</argsstring>
         <name>DefaultFill</name>
+        <qualifiedname>PDJE_JUDGE::Judge_Init::DefaultFill</qualifiedname>
         <param>
           <type><ref refid="structPDJE__JUDGE_1_1NOTE" kindref="compound">NOTE</ref> &amp;</type>
           <declname>obj</declname>
@@ -98,11 +105,11 @@
           <declname>railid</declname>
         </param>
         <param>
-          <type>const <ref refid="namespacePDJE__JUDGE_1a4fcd46d2c1a7cd087d4d5e8b265345ea" kindref="member">LOCAL_TIME</ref></type>
+          <type>const <ref refid="namespacePDJE__JUDGE_1a3ee6af366c462d64775daf2f7b0d7e42" kindref="member">LOCAL_TIME</ref></type>
           <declname>axis1</declname>
         </param>
         <param>
-          <type>const <ref refid="namespacePDJE__JUDGE_1a4fcd46d2c1a7cd087d4d5e8b265345ea" kindref="member">LOCAL_TIME</ref></type>
+          <type>const <ref refid="namespacePDJE__JUDGE_1a3ee6af366c462d64775daf2f7b0d7e42" kindref="member">LOCAL_TIME</ref></type>
           <declname>axis2</declname>
         </param>
         <briefdescription>
@@ -114,13 +121,14 @@
         </inbodydescription>
         <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="20" column="5" bodyfile="include/judge/Init/PDJE_Judge_Init.cpp" bodystart="86" bodyend="97"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classPDJE__JUDGE_1_1Judge__Init_1a1ff71318e1a221d4274f299c2a2a2537" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void PDJE_JUDGE::Judge_Init::SetRail</definition>
         <argsstring>(const DeviceData &amp;devData, const BITMASK DeviceKey, const int64_t offset_microsecond, const uint64_t MatchRail)</argsstring>
         <name>SetRail</name>
+        <qualifiedname>PDJE_JUDGE::Judge_Init::SetRail</qualifiedname>
         <param>
           <type>const <ref refid="structDeviceData" kindref="compound">DeviceData</ref> &amp;</type>
           <declname>devData</declname>
@@ -151,6 +159,7 @@
         <definition>void PDJE_JUDGE::Judge_Init::SetRail</definition>
         <argsstring>(const std::string &amp;midi_port_name, const uint64_t MatchRail, const uint8_t type, const uint8_t ch, const uint8_t pos=0, const int64_t offset_microsecond=0)</argsstring>
         <name>SetRail</name>
+        <qualifiedname>PDJE_JUDGE::Judge_Init::SetRail</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>midi_port_name</declname>
@@ -190,6 +199,7 @@
         <definition>void PDJE_JUDGE::Judge_Init::SetRail</definition>
         <argsstring>(const libremidi::input_port &amp;midi_port, const uint64_t MatchRail, const uint8_t type, const uint8_t ch, const uint8_t pos=0, const int64_t offset_microsecond=0)</argsstring>
         <name>SetRail</name>
+        <qualifiedname>PDJE_JUDGE::Judge_Init::SetRail</qualifiedname>
         <param>
           <type>const libremidi::input_port &amp;</type>
           <declname>midi_port</declname>
@@ -229,6 +239,7 @@
         <definition>void PDJE_JUDGE::Judge_Init::SetEventRule</definition>
         <argsstring>(const EVENT_RULE &amp;event_rule)</argsstring>
         <name>SetEventRule</name>
+        <qualifiedname>PDJE_JUDGE::Judge_Init::SetEventRule</qualifiedname>
         <param>
           <type>const <ref refid="structPDJE__JUDGE_1_1EVENT__RULE" kindref="compound">EVENT_RULE</ref> &amp;</type>
           <declname>event_rule</declname>
@@ -247,6 +258,7 @@
         <definition>void PDJE_JUDGE::Judge_Init::SetCustomEvents</definition>
         <argsstring>(const Custom_Events &amp;events)</argsstring>
         <name>SetCustomEvents</name>
+        <qualifiedname>PDJE_JUDGE::Judge_Init::SetCustomEvents</qualifiedname>
         <param>
           <type>const <ref refid="structPDJE__JUDGE_1_1Custom__Events" kindref="compound">Custom_Events</ref> &amp;</type>
           <declname>events</declname>
@@ -265,6 +277,7 @@
         <definition>void PDJE_JUDGE::Judge_Init::NoteObjectCollector</definition>
         <argsstring>(const std::string noteType, const uint16_t noteDetail, const std::string firstArg, const std::string secondArg, const std::string thirdArg, const unsigned long long Y_Axis, const unsigned long long Y_Axis_2, const uint64_t railID)</argsstring>
         <name>NoteObjectCollector</name>
+        <qualifiedname>PDJE_JUDGE::Judge_Init::NoteObjectCollector</qualifiedname>
         <param>
           <type>const std::string</type>
           <declname>noteType</declname>
@@ -311,6 +324,7 @@
         <definition>void PDJE_JUDGE::Judge_Init::SetCoreLine</definition>
         <argsstring>(const PDJE_CORE_DATA_LINE &amp;coreline)</argsstring>
         <name>SetCoreLine</name>
+        <qualifiedname>PDJE_JUDGE::Judge_Init::SetCoreLine</qualifiedname>
         <param>
           <type>const <ref refid="structPDJE__CORE__DATA__LINE" kindref="compound">PDJE_CORE_DATA_LINE</ref> &amp;</type>
           <declname>coreline</declname>
@@ -329,6 +343,7 @@
         <definition>void PDJE_JUDGE::Judge_Init::SetInputLine</definition>
         <argsstring>(const PDJE_INPUT_DATA_LINE &amp;inputline)</argsstring>
         <name>SetInputLine</name>
+        <qualifiedname>PDJE_JUDGE::Judge_Init::SetInputLine</qualifiedname>
         <param>
           <type>const <ref refid="structPDJE__INPUT__DATA__LINE" kindref="compound">PDJE_INPUT_DATA_LINE</ref> &amp;</type>
           <declname>inputline</declname>
@@ -342,29 +357,16 @@
         </inbodydescription>
         <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="83" column="5" bodyfile="include/judge/Init/PDJE_Judge_Init.cpp" bodystart="28" bodyend="33"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Judge module initializer holding data lines, rules, and notes. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="8">
-        <label>PDJE_JUDGE::RAIL_KEY::KB_MOUSE</label>
-        <link refid="structPDJE__JUDGE_1_1RAIL__KEY_1_1KB__MOUSE"/>
-        <childnode refid="9" relation="usage">
-          <edgelabel>Device_Name</edgelabel>
-        </childnode>
-      </node>
-      <node id="4">
-        <label>std::unordered_map&lt; uint64_t, std::vector&lt; PDJE_JUDGE::RAIL_KEY::META &gt; &gt;</label>
-        <childnode refid="5" relation="usage">
-          <edgelabel>elements</edgelabel>
-        </childnode>
-      </node>
-      <node id="6">
-        <label>PDJE_JUDGE::RAIL_KEY::META</label>
-        <link refid="structPDJE__JUDGE_1_1RAIL__KEY_1_1META"/>
+      <node id="2">
+        <label>PDJE_JUDGE::Custom_Events</label>
+        <link refid="structPDJE__JUDGE_1_1Custom__Events"/>
       </node>
       <node id="1">
         <label>PDJE_JUDGE::Judge_Init</label>
@@ -376,63 +378,76 @@
           <edgelabel>raildb</edgelabel>
         </childnode>
       </node>
-      <node id="10">
-        <label>std::basic_string&lt; Char &gt;</label>
-      </node>
-      <node id="13">
-        <label>std::unordered_map&lt; std::string, int64_t &gt;</label>
-        <childnode refid="9" relation="usage">
-          <edgelabel>keys</edgelabel>
-        </childnode>
-      </node>
-      <node id="5">
-        <label>std::vector&lt; PDJE_JUDGE::RAIL_KEY::META &gt;</label>
-        <childnode refid="6" relation="usage">
-          <edgelabel>elements</edgelabel>
-        </childnode>
-      </node>
       <node id="3">
         <label>PDJE_JUDGE::RAIL_DB</label>
         <link refid="structPDJE__JUDGE_1_1RAIL__DB"/>
         <childnode refid="4" relation="usage">
-          <edgelabel>meta</edgelabel>
-        </childnode>
-        <childnode refid="7" relation="usage">
-          <edgelabel>kb_mouse_raildata</edgelabel>
-        </childnode>
-        <childnode refid="11" relation="usage">
-          <edgelabel>midi_raildata</edgelabel>
-        </childnode>
-        <childnode refid="13" relation="usage">
           <edgelabel>offset</edgelabel>
         </childnode>
-      </node>
-      <node id="2">
-        <label>PDJE_JUDGE::Custom_Events</label>
-        <link refid="structPDJE__JUDGE_1_1Custom__Events"/>
-      </node>
-      <node id="7">
-        <label>std::unordered_map&lt; PDJE_JUDGE::RAIL_KEY::KB_MOUSE, uint64_t &gt;</label>
-        <childnode refid="8" relation="usage">
-          <edgelabel>keys</edgelabel>
+        <childnode refid="7" relation="usage">
+          <edgelabel>meta</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>kb_mouse_raildata</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>midi_raildata</edgelabel>
         </childnode>
       </node>
       <node id="11">
-        <label>std::unordered_map&lt; PDJE_JUDGE::RAIL_KEY::MIDI, uint64_t &gt;</label>
-        <childnode refid="12" relation="usage">
+        <label>PDJE_JUDGE::RAIL_KEY::KB_MOUSE</label>
+        <link refid="structPDJE__JUDGE_1_1RAIL__KEY_1_1KB__MOUSE"/>
+        <childnode refid="5" relation="usage">
+          <edgelabel>Device_Name</edgelabel>
+        </childnode>
+      </node>
+      <node id="9">
+        <label>PDJE_JUDGE::RAIL_KEY::META</label>
+        <link refid="structPDJE__JUDGE_1_1RAIL__KEY_1_1META"/>
+      </node>
+      <node id="13">
+        <label>PDJE_JUDGE::RAIL_KEY::MIDI</label>
+        <link refid="structPDJE__JUDGE_1_1RAIL__KEY_1_1MIDI"/>
+        <childnode refid="5" relation="usage">
+          <edgelabel>port_name</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="5">
+        <label>std::string</label>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>std::unordered_map&lt; PDJE_JUDGE::RAIL_KEY::KB_MOUSE, uint64_t &gt;</label>
+        <childnode refid="11" relation="usage">
           <edgelabel>keys</edgelabel>
         </childnode>
       </node>
       <node id="12">
-        <label>PDJE_JUDGE::RAIL_KEY::MIDI</label>
-        <link refid="structPDJE__JUDGE_1_1RAIL__KEY_1_1MIDI"/>
-        <childnode refid="9" relation="usage">
-          <edgelabel>port_name</edgelabel>
+        <label>std::unordered_map&lt; PDJE_JUDGE::RAIL_KEY::MIDI, uint64_t &gt;</label>
+        <childnode refid="13" relation="usage">
+          <edgelabel>keys</edgelabel>
         </childnode>
       </node>
-      <node id="9">
-        <label>std::string</label>
-        <childnode refid="10" relation="public-inheritance">
+      <node id="4">
+        <label>std::unordered_map&lt; std::string, int64_t &gt;</label>
+        <childnode refid="5" relation="usage">
+          <edgelabel>keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="7">
+        <label>std::unordered_map&lt; uint64_t, std::vector&lt; PDJE_JUDGE::RAIL_KEY::META &gt; &gt;</label>
+        <childnode refid="8" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="8">
+        <label>std::vector&lt; PDJE_JUDGE::RAIL_KEY::META &gt;</label>
+        <childnode refid="9" relation="usage">
+          <edgelabel>elements</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>

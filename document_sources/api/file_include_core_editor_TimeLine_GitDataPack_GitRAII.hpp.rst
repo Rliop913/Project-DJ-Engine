@@ -83,5 +83,5 @@ Typedefs
 --------
 
 
-- :ref:`exhale_typedef_namespaceGIT__RAII_1aa4f8445f6b83c3869022967bc8a83e99`
+- :ref:`exhale_typedef_namespaceGIT__RAII_1ae9f5018a36b209676af787d453948570`
 

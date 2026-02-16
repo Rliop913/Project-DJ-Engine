@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="RTSocket_8hpp" kind="file" language="C++">
     <compoundname>RTSocket.hpp</compoundname>
     <includes refid="Common__Features_8hpp" local="yes">Common_Features.hpp</includes>
@@ -20,22 +20,10 @@
     <includes local="no">sys/un.h</includes>
     <includes local="no">unistd.h</includes>
     <includes local="no">nlohmann/json.hpp</includes>
-    <includedby refid="linux__input_8cpp" local="yes">include/input/trashbin/--DEPRECATED-linux/linux_input.cpp</includedby>
     <includedby refid="RTFunctionRegister_8cpp" local="yes">include/input/trashbin/--DEPRECATED-linux/RT/RTFunctionRegister.cpp</includedby>
     <includedby refid="RTSocket_8cpp" local="yes">include/input/trashbin/--DEPRECATED-linux/RT/RTSocket.cpp</includedby>
+    <includedby refid="linux__input_8cpp" local="yes">include/input/trashbin/--DEPRECATED-linux/linux_input.cpp</includedby>
     <incdepgraph>
-      <node id="30">
-        <label>sys/un.h</label>
-      </node>
-      <node id="8">
-        <label>netinet/in.h</label>
-      </node>
-      <node id="3">
-        <label>arpa/inet.h</label>
-      </node>
-      <node id="28">
-        <label>functional</label>
-      </node>
       <node id="13">
         <label>Input_State.hpp</label>
         <link refid="Input__State_8hpp"/>
@@ -49,39 +37,6 @@
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-      </node>
-      <node id="7">
-        <label>limits</label>
-      </node>
-      <node id="27">
-        <label>filesystem</label>
-      </node>
-      <node id="19">
-        <label>numaif.h</label>
-      </node>
-      <node id="6">
-        <label>cstdint</label>
-      </node>
-      <node id="21">
-        <label>sys/mman.h</label>
-      </node>
-      <node id="26">
-        <label>fcntl.h</label>
-      </node>
-      <node id="15">
-        <label>memory_resource</label>
-      </node>
-      <node id="25">
-        <label>nlohmann/json_fwd.hpp</label>
-      </node>
-      <node id="10">
-        <label>string</label>
-      </node>
-      <node id="24">
-        <label>RTEvent.hpp</label>
-      </node>
-      <node id="14">
-        <label>future</label>
       </node>
       <node id="22">
         <label>PDJE_Input_Device_Data.hpp</label>
@@ -99,51 +54,6 @@
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="16">
-        <label>optional</label>
-      </node>
-      <node id="31">
-        <label>unistd.h</label>
-      </node>
-      <node id="12">
-        <label>vector</label>
-      </node>
-      <node id="23">
-        <label>latch</label>
-      </node>
-      <node id="2">
-        <label>Common_Features.hpp</label>
-        <link refid="Common__Features_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>cerrno</label>
-      </node>
-      <node id="5">
-        <label>cstddef</label>
-      </node>
-      <node id="18">
-        <label>numa.h</label>
-      </node>
       <node id="17">
         <label>OneTimeSysSetup.hpp</label>
         <link refid="OneTimeSysSetup_8hpp"/>
@@ -157,9 +67,6 @@
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-      </node>
-      <node id="11">
-        <label>sys/socket.h</label>
       </node>
       <node id="1">
         <label>include/input/trashbin/--DEPRECATED-linux/RT/RTSocket.hpp</label>
@@ -201,26 +108,115 @@
         <childnode refid="9" relation="include">
         </childnode>
       </node>
+      <node id="2">
+        <label>Common_Features.hpp</label>
+        <link refid="Common__Features_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>RTEvent.hpp</label>
+      </node>
+      <node id="3">
+        <label>arpa/inet.h</label>
+      </node>
+      <node id="4">
+        <label>cerrno</label>
+      </node>
+      <node id="5">
+        <label>cstddef</label>
+      </node>
+      <node id="6">
+        <label>cstdint</label>
+      </node>
+      <node id="26">
+        <label>fcntl.h</label>
+      </node>
+      <node id="27">
+        <label>filesystem</label>
+      </node>
+      <node id="28">
+        <label>functional</label>
+      </node>
+      <node id="14">
+        <label>future</label>
+      </node>
+      <node id="23">
+        <label>latch</label>
+      </node>
+      <node id="7">
+        <label>limits</label>
+      </node>
+      <node id="15">
+        <label>memory_resource</label>
+      </node>
+      <node id="8">
+        <label>netinet/in.h</label>
+      </node>
       <node id="9">
         <label>nlohmann/json.hpp</label>
+      </node>
+      <node id="25">
+        <label>nlohmann/json_fwd.hpp</label>
+      </node>
+      <node id="18">
+        <label>numa.h</label>
+      </node>
+      <node id="19">
+        <label>numaif.h</label>
+      </node>
+      <node id="16">
+        <label>optional</label>
       </node>
       <node id="20">
         <label>sched.h</label>
       </node>
+      <node id="10">
+        <label>string</label>
+      </node>
       <node id="29">
         <label>sys/epoll.h</label>
+      </node>
+      <node id="21">
+        <label>sys/mman.h</label>
+      </node>
+      <node id="11">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="30">
+        <label>sys/un.h</label>
+      </node>
+      <node id="31">
+        <label>unistd.h</label>
+      </node>
+      <node id="12">
+        <label>vector</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
       <node id="2">
-        <label>include/input/trashbin/--DEPRECATED-linux/linux_input.cpp</label>
-        <link refid="linux__input_8cpp"/>
-      </node>
-      <node id="3">
         <label>include/input/trashbin/--DEPRECATED-linux/RT/RTFunctionRegister.cpp</label>
         <link refid="RTFunctionRegister_8cpp"/>
       </node>
-      <node id="4">
+      <node id="3">
         <label>include/input/trashbin/--DEPRECATED-linux/RT/RTSocket.cpp</label>
         <link refid="RTSocket_8cpp"/>
       </node>
@@ -234,23 +230,14 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
+      <node id="4">
+        <label>include/input/trashbin/--DEPRECATED-linux/linux_input.cpp</label>
+        <link refid="linux__input_8cpp"/>
+      </node>
     </invincdepgraph>
     <innerclass refid="structRT__ID" prot="public">RT_ID</innerclass>
     <innerclass refid="classRTSocket" prot="public">RTSocket</innerclass>
-      <sectiondef kind="typedef">
-      <memberdef kind="typedef" id="RTSocket_8hpp_1a6c08a6bca89aa954d4bf90371a27dfa9" prot="public" static="no">
-        <type>nlohmann::json</type>
-        <definition>using nj =  nlohmann::json</definition>
-        <argsstring></argsstring>
-        <name>nj</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/input/trashbin/--DEPRECATED-linux/RT/RTSocket.hpp" line="24" column="1" bodyfile="include/input/trashbin/--DEPRECATED-linux/RT/RTSocket.hpp" bodystart="24" bodyend="-1"/>
-      </memberdef>
+    <sectiondef kind="typedef">
       <memberdef kind="typedef" id="RTSocket_8hpp_1a4a5d8fd04da75f13c58e95aea630c308" prot="public" static="no">
         <type>std::vector&lt; std::string &gt;</type>
         <definition>using data_body =  std::vector&lt;std::string&gt;</definition>
@@ -277,7 +264,7 @@
         </inbodydescription>
         <location file="include/input/trashbin/--DEPRECATED-linux/RT/RTSocket.hpp" line="26" column="1" bodyfile="include/input/trashbin/--DEPRECATED-linux/RT/RTSocket.hpp" bodystart="26" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -306,15 +293,15 @@
 <codeline lineno="21"><highlight class="normal"></highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;nlohmann/json.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight></codeline>
-<codeline lineno="24" refid="RTSocket_8hpp_1a6c08a6bca89aa954d4bf90371a27dfa9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="jsonWrapper_8hpp_1a6c08a6bca89aa954d4bf90371a27dfa9" kindref="member">nj</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>nlohmann::json;</highlight></codeline>
-<codeline lineno="25" refid="RTSocket_8hpp_1a4a5d8fd04da75f13c58e95aea630c308" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="RTSocket_8hpp_1a4a5d8fd04da75f13c58e95aea630c308" kindref="member">data_body</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>std::vector&lt;std::string&gt;;</highlight></codeline>
-<codeline lineno="26" refid="RTSocket_8hpp_1a9fe2c28cc016fecdfc4909a9f5c74a0b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="RTSocket_8hpp_1a9fe2c28cc016fecdfc4909a9f5c74a0b" kindref="member">regi_function</ref><sp/>=<sp/>std::function&lt;int(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="RTSocket_8hpp_1a4a5d8fd04da75f13c58e95aea630c308" kindref="member">data_body</ref><sp/>&amp;)&gt;;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="jsonWrapper_8hpp_1a6c08a6bca89aa954d4bf90371a27dfa9" kindref="member">nj</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>nlohmann::json;</highlight></codeline>
+<codeline lineno="25" refid="RTSocket_8hpp_1a4a5d8fd04da75f13c58e95aea630c308" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="RTSocket_8hpp_1a4a5d8fd04da75f13c58e95aea630c308" kindref="member">data_body</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>std::vector&lt;std::string&gt;;</highlight></codeline>
+<codeline lineno="26" refid="RTSocket_8hpp_1a9fe2c28cc016fecdfc4909a9f5c74a0b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="RTSocket_8hpp_1a9fe2c28cc016fecdfc4909a9f5c74a0b" kindref="member">regi_function</ref><sp/>=<sp/>std::function&lt;int(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="RTSocket_8hpp_1a4a5d8fd04da75f13c58e95aea630c308" kindref="member">data_body</ref><sp/>&amp;)&gt;;</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">fs<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>std::filesystem;</highlight></codeline>
 <codeline lineno="28" refid="structRT__ID" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structRT__ID" kindref="compound">RT_ID</ref><sp/>{</highlight></codeline>
 <codeline lineno="29" refid="structRT__ID_1a4622d6fde0b06fb273cd9d170be665c6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structRT__ID_1a4622d6fde0b06fb273cd9d170be665c6" kindref="member">host_socket</ref><sp/>=<sp/>-1;</highlight></codeline>
 <codeline lineno="30"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
-<codeline lineno="32" refid="classRTSocket" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classRTSocket" kindref="compound">RTSocket</ref><sp/>{</highlight></codeline>
+<codeline lineno="32" refid="classRTSocket" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classRTSocket_1a958cda83cd413cf934271ebb45631b3c" kindref="member">RTSocket</ref><sp/>{</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="34" refid="classRTSocket_1ab38c96818fdc24dd3325f2feb4dbf083" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>RTEvent<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="classRTSocket_1ab38c96818fdc24dd3325f2feb4dbf083" kindref="member">rtev</ref>;</highlight></codeline>
 <codeline lineno="35" refid="classRTSocket_1a34fa7968f4c1daddad58f62535b1db87" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_map&lt;std::string,<sp/>regi_function&gt;<sp/><ref refid="classRTSocket_1a34fa7968f4c1daddad58f62535b1db87" kindref="member">functionRegistry</ref>;</highlight></codeline>

@@ -70,13 +70,13 @@ Included By
 -----------
 
 
-- :ref:`file_include_core_audioRender_audioRender.hpp`
+- :ref:`file_include_core_MainObjects_audioPlayer_audioPlayer.hpp`
 
 - :ref:`file_include_core_audioRender_ManualMix_ManualMix.cpp`
 
 - :ref:`file_include_core_audioRender_ManualMix_MusicControlPanel.hpp`
 
-- :ref:`file_include_core_MainObjects_audioPlayer_audioPlayer.hpp`
+- :ref:`file_include_core_audioRender_audioRender.hpp`
 
 - :ref:`file_include_tests_manualAudioTest.cpp`
 

@@ -84,10 +84,3 @@ Classes
 
 - :ref:`exhale_class_classPDJE__IPC_1_1PDJE__Input__Transfer`
 
-
-Typedefs
---------
-
-
-- :ref:`exhale_typedef_windows_2Input__Transfer_8hpp_1a6c08a6bca89aa954d4bf90371a27dfa9`
-

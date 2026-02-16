@@ -25,7 +25,7 @@ Functions
 
 - :ref:`exhale_function_namespaceCommon__Features_1a1dee95f359d7ba86c375b585edab2b4c`
 
-- :ref:`exhale_function_namespaceCommon__Features_1a78ad74b03105ce26d05dd66159bed97b`
+- :ref:`exhale_function_namespaceCommon__Features_1a9819433dbb3c04ccbcf39523f8185eaf`
 
 - :ref:`exhale_function_namespaceCommon__Features_1a9d2554538ffced3a2d625f562d80365e`
 

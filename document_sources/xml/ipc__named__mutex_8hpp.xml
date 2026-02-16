@@ -1,24 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="ipc__named__mutex_8hpp" kind="file" language="C++">
     <compoundname>ipc_named_mutex.hpp</compoundname>
     <includes refid="PDJE__LOG__SETTER_8hpp" local="no">PDJE_LOG_SETTER.hpp</includes>
     <includes local="no">filesystem</includes>
     <includes local="no">string</includes>
-    <includedby refid="linux_2named__mutex_8cpp" local="yes">include/input/IPC/memory/linux/named_mutex.cpp</includedby>
     <includedby refid="Secured__IPC__TX__RX_8hpp" local="yes">include/input/IPC/memory/Secured_IPC_TX_RX.hpp</includedby>
+    <includedby refid="linux_2named__mutex_8cpp" local="yes">include/input/IPC/memory/linux/named_mutex.cpp</includedby>
     <includedby refid="windows_2Input__Transfer_8hpp" local="yes">include/input/IPC/memory/windows/Input_Transfer.hpp</includedby>
     <includedby refid="windows_2named__mutex_8cpp" local="no">include/input/IPC/memory/windows/named_mutex.cpp</includedby>
     <incdepgraph>
-      <node id="3">
-        <label>filesystem</label>
-      </node>
-      <node id="10">
-        <label>string</label>
-      </node>
-      <node id="5">
-        <label>spdlog/sinks/basic_file_sink.h</label>
-      </node>
       <node id="2">
         <label>PDJE_LOG_SETTER.hpp</label>
         <link refid="PDJE__LOG__SETTER_8hpp"/>
@@ -37,21 +28,6 @@
         <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="7">
-        <label>spdlog/spdlog.h</label>
-      </node>
-      <node id="8">
-        <label>string_view</label>
-      </node>
-      <node id="6">
-        <label>spdlog/sinks/stdout_color_sinks.h</label>
-      </node>
-      <node id="4">
-        <label>mutex</label>
-      </node>
-      <node id="9">
-        <label>type_traits</label>
-      </node>
       <node id="1">
         <label>include/input/IPC/memory/ipc_named_mutex.hpp</label>
         <link refid="ipc__named__mutex_8hpp"/>
@@ -62,59 +38,97 @@
         <childnode refid="10" relation="include">
         </childnode>
       </node>
-    </incdepgraph>
-    <invincdepgraph>
-      <node id="20">
-        <label>include/input/IPC/memory/windows/named_mutex.cpp</label>
-        <link refid="windows_2named__mutex_8cpp"/>
+      <node id="3">
+        <label>filesystem</label>
+      </node>
+      <node id="4">
+        <label>mutex</label>
+      </node>
+      <node id="5">
+        <label>spdlog/sinks/basic_file_sink.h</label>
       </node>
       <node id="6">
+        <label>spdlog/sinks/stdout_color_sinks.h</label>
+      </node>
+      <node id="7">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="10">
+        <label>string</label>
+      </node>
+      <node id="8">
+        <label>string_view</label>
+      </node>
+      <node id="9">
+        <label>type_traits</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="4">
+        <label>include/input/DefaultDevs/windows/DefaultDevs.cpp</label>
+        <link refid="windows_2DefaultDevs_8cpp"/>
+      </node>
+      <node id="3">
+        <label>include/input/DefaultDevs/windows/DefaultDevs.hpp</label>
+        <link refid="windows_2DefaultDevs_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>include/input/DefaultDevs/windows/TXRX/MetadataTXRX.cpp</label>
+        <link refid="MetadataTXRX_8cpp"/>
+      </node>
+      <node id="5">
         <label>include/input/DefaultDevs/windows/TXRX/MetadataTXRX.hpp</label>
         <link refid="MetadataTXRX_8hpp"/>
-        <childnode refid="4" relation="include">
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
+      </node>
+      <node id="7">
+        <label>include/input/DefaultDevs/windows/TXRX/SetFeatures.cpp</label>
+        <link refid="SetFeatures_8cpp"/>
+      </node>
+      <node id="8">
+        <label>include/input/IPC/memory/Secured_IPC_TX_RX.cpp</label>
+        <link refid="Secured__IPC__TX__RX_8cpp"/>
+      </node>
+      <node id="2">
+        <label>include/input/IPC/memory/Secured_IPC_TX_RX.hpp</label>
+        <link refid="Secured__IPC__TX__RX_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-      </node>
-      <node id="10">
-        <label>include/input/runner/SubProcess.hpp</label>
-        <link refid="SubProcess_8hpp"/>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="15">
-        <label>include/input/runner/windows/SubMain.cpp</label>
-        <link refid="runner_2windows_2SubMain_8cpp"/>
+      <node id="1">
+        <label>include/input/IPC/memory/ipc_named_mutex.hpp</label>
+        <link refid="ipc__named__mutex_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>include/input/IPC/memory/linux/named_mutex.cpp</label>
+        <link refid="linux_2named__mutex_8cpp"/>
       </node>
       <node id="19">
         <label>include/input/IPC/memory/windows/Input_Transfer.cpp</label>
         <link refid="windows_2Input__Transfer_8cpp"/>
-      </node>
-      <node id="4">
-        <label>include/input/DefaultDevs/windows/DefaultDevs.hpp</label>
-        <link refid="windows_2DefaultDevs_8hpp"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>include/input/IPC/memory/Secured_IPC_TX_RX.cpp</label>
-        <link refid="Secured__IPC__TX__RX_8cpp"/>
-      </node>
-      <node id="16">
-        <label>include/input/trashbin/SubProcess.cpp</label>
-        <link refid="trashbin_2SubProcess_8cpp"/>
       </node>
       <node id="18">
         <label>include/input/IPC/memory/windows/Input_Transfer.hpp</label>
@@ -122,71 +136,57 @@
         <childnode refid="19" relation="include">
         </childnode>
       </node>
-      <node id="12">
-        <label>include/input/runner/windows/InputLoop.cpp</label>
-        <link refid="InputLoop_8cpp"/>
+      <node id="20">
+        <label>include/input/IPC/memory/windows/named_mutex.cpp</label>
+        <link refid="windows_2named__mutex_8cpp"/>
       </node>
-      <node id="17">
-        <label>include/input/trashbin/MainProcess_deprecated.hpp</label>
-        <link refid="MainProcess__deprecated_8hpp"/>
+      <node id="10">
+        <label>include/input/runner/SetTXRXFeatures.cpp</label>
+        <link refid="SetTXRXFeatures_8cpp"/>
       </node>
-      <node id="13">
-        <label>include/input/runner/windows/ListDevice.hpp</label>
-        <link refid="ListDevice_8hpp"/>
+      <node id="9">
+        <label>include/input/runner/SubProcess.hpp</label>
+        <link refid="SubProcess_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>include/input/runner/windows/InputLoop.cpp</label>
+        <link refid="InputLoop_8cpp"/>
+      </node>
+      <node id="12">
+        <label>include/input/runner/windows/ListDevice.hpp</label>
+        <link refid="ListDevice_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
       </node>
       <node id="14">
+        <label>include/input/runner/windows/SubMain.cpp</label>
+        <link refid="runner_2windows_2SubMain_8cpp"/>
+      </node>
+      <node id="13">
         <label>include/input/runner/windows/SubProcess.cpp</label>
         <link refid="runner_2windows_2SubProcess_8cpp"/>
       </node>
-      <node id="2">
-        <label>include/input/IPC/memory/linux/named_mutex.cpp</label>
-        <link refid="linux_2named__mutex_8cpp"/>
+      <node id="16">
+        <label>include/input/trashbin/MainProcess_deprecated.hpp</label>
+        <link refid="MainProcess__deprecated_8hpp"/>
       </node>
-      <node id="8">
-        <label>include/input/DefaultDevs/windows/TXRX/SetFeatures.cpp</label>
-        <link refid="SetFeatures_8cpp"/>
-      </node>
-      <node id="5">
-        <label>include/input/DefaultDevs/windows/DefaultDevs.cpp</label>
-        <link refid="windows_2DefaultDevs_8cpp"/>
-      </node>
-      <node id="11">
-        <label>include/input/runner/SetTXRXFeatures.cpp</label>
-        <link refid="SetTXRXFeatures_8cpp"/>
-      </node>
-      <node id="7">
-        <label>include/input/DefaultDevs/windows/TXRX/MetadataTXRX.cpp</label>
-        <link refid="MetadataTXRX_8cpp"/>
-      </node>
-      <node id="1">
-        <label>include/input/IPC/memory/ipc_named_mutex.hpp</label>
-        <link refid="ipc__named__mutex_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-      </node>
-      <node id="3">
-        <label>include/input/IPC/memory/Secured_IPC_TX_RX.hpp</label>
-        <link refid="Secured__IPC__TX__RX_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
+      <node id="15">
+        <label>include/input/trashbin/SubProcess.cpp</label>
+        <link refid="trashbin_2SubProcess_8cpp"/>
       </node>
     </invincdepgraph>
     <innerclass refid="classPDJE__IPC_1_1MUTEX" prot="public">PDJE_IPC::MUTEX</innerclass>
@@ -202,8 +202,8 @@
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;filesystem&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__IPC" kindref="compound">PDJE_IPC</ref><sp/>{</highlight></codeline>
-<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__IPC_1a9fde1a10ab51831bfa1320d45d91aec5" kindref="member">MNAME</ref><sp/>=<sp/>std::filesystem::path;</highlight></codeline>
-<codeline lineno="7" refid="classPDJE__IPC_1_1MUTEX" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPDJE__IPC_1_1MUTEX" kindref="compound">MUTEX</ref><sp/>{</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__IPC_1a04902c541254b5ef872d47ec219cc36b" kindref="member">MNAME</ref><sp/>=<sp/>std::filesystem::path;</highlight></codeline>
+<codeline lineno="7" refid="classPDJE__IPC_1_1MUTEX" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPDJE__IPC_1_1MUTEX_1a6e6fd1dc996240eb3855c59d8799fa38" kindref="member">MUTEX</ref><sp/>{</highlight></codeline>
 <codeline lineno="8"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="9" refid="classPDJE__IPC_1_1MUTEX_1a5b6b97c1a9f0f653ff9aea751dbbb833" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="classPDJE__IPC_1_1MUTEX_1a5b6b97c1a9f0f653ff9aea751dbbb833" kindref="member">mutex_handle</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="10" refid="classPDJE__IPC_1_1MUTEX_1a74bdbb0044e25bbe8ce9955d2c4945d3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classPDJE__IPC_1_1MUTEX_1a74bdbb0044e25bbe8ce9955d2c4945d3" kindref="member">mutex_name</ref>;</highlight></codeline>
@@ -214,26 +214,26 @@
 <codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1MUTEX_1abc73c0b6980ac3721c6ba98fff915be7" kindref="member">unlock</ref>();</highlight></codeline>
 <codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1MUTEX_1a7ea09999389d87418936b1ae4ac36847" kindref="member">init</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__IPC_1a9fde1a10ab51831bfa1320d45d91aec5" kindref="member">MNAME</ref><sp/>&amp;name);</highlight></codeline>
-<codeline lineno="19" refid="classPDJE__IPC_1_1MUTEX_1a6e6fd1dc996240eb3855c59d8799fa38" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1MUTEX_1a6e6fd1dc996240eb3855c59d8799fa38" kindref="member">MUTEX</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__IPC_1_1MUTEX" kindref="compound">MUTEX</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1MUTEX" kindref="compound">MUTEX</ref><sp/>&amp;</highlight></codeline>
-<codeline lineno="21" refid="classPDJE__IPC_1_1MUTEX_1aac22a74f276a2dc9b682d88af9c4f243" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1MUTEX_1aac22a74f276a2dc9b682d88af9c4f243" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__IPC_1_1MUTEX" kindref="compound">MUTEX</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1MUTEX_1a7ea09999389d87418936b1ae4ac36847" kindref="member">init</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__IPC_1a04902c541254b5ef872d47ec219cc36b" kindref="member">MNAME</ref><sp/>&amp;name);</highlight></codeline>
+<codeline lineno="19" refid="classPDJE__IPC_1_1MUTEX_1a6e6fd1dc996240eb3855c59d8799fa38" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1MUTEX_1a6e6fd1dc996240eb3855c59d8799fa38" kindref="member">MUTEX</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__IPC_1_1MUTEX_1a6e6fd1dc996240eb3855c59d8799fa38" kindref="member">MUTEX</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1MUTEX_1a6e6fd1dc996240eb3855c59d8799fa38" kindref="member">MUTEX</ref><sp/>&amp;</highlight></codeline>
+<codeline lineno="21" refid="classPDJE__IPC_1_1MUTEX_1ae9245d25dcf7e936a5c53541e7bc20c8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1MUTEX_1ae9245d25dcf7e936a5c53541e7bc20c8" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__IPC_1_1MUTEX_1a6e6fd1dc996240eb3855c59d8799fa38" kindref="member">MUTEX</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1MUTEX_1a3bd8c053a041d243ba7ebe617852fdc0" kindref="member">MUTEX</ref>();</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1MUTEX_1a114a87a44234f5af09a58727645100d5" kindref="member">~MUTEX</ref>();</highlight></codeline>
 <codeline lineno="24"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
-<codeline lineno="26" refid="classPDJE__IPC_1_1SCOPE__LOCK" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPDJE__IPC_1_1SCOPE__LOCK" kindref="compound">SCOPE_LOCK</ref><sp/>{</highlight></codeline>
+<codeline lineno="26" refid="classPDJE__IPC_1_1SCOPE__LOCK" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPDJE__IPC_1_1SCOPE__LOCK_1a9a12eae32cc70e945f6fd3549cb60ea3" kindref="member">SCOPE_LOCK</ref><sp/>{</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="28" refid="classPDJE__IPC_1_1SCOPE__LOCK_1a8aa8e51ea911d339183c5b1d618b84e1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classPDJE__IPC_1_1SCOPE__LOCK_1a8aa8e51ea911d339183c5b1d618b84e1" kindref="member">locked</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="31" refid="classPDJE__IPC_1_1SCOPE__LOCK_1a5216e31ed8f56233af3667f320d92ca1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1MUTEX" kindref="compound">MUTEX</ref><sp/>*<ref refid="classPDJE__IPC_1_1SCOPE__LOCK_1a5216e31ed8f56233af3667f320d92ca1" kindref="member">MP</ref>;</highlight></codeline>
-<codeline lineno="32" refid="classPDJE__IPC_1_1SCOPE__LOCK_1a9a12eae32cc70e945f6fd3549cb60ea3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1SCOPE__LOCK_1a9a12eae32cc70e945f6fd3549cb60ea3" kindref="member">SCOPE_LOCK</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__IPC_1_1SCOPE__LOCK" kindref="compound">SCOPE_LOCK</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1SCOPE__LOCK" kindref="compound">SCOPE_LOCK</ref><sp/>&amp;</highlight></codeline>
-<codeline lineno="34" refid="classPDJE__IPC_1_1SCOPE__LOCK_1a98e6dc6755afc093427cdfa496abb8cd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1SCOPE__LOCK_1a98e6dc6755afc093427cdfa496abb8cd" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__IPC_1_1SCOPE__LOCK" kindref="compound">SCOPE_LOCK</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="35" refid="classPDJE__IPC_1_1SCOPE__LOCK_1a0865a14366333655565391cd08006df7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1SCOPE__LOCK_1a0865a14366333655565391cd08006df7" kindref="member">SCOPE_LOCK</ref>(<ref refid="classPDJE__IPC_1_1SCOPE__LOCK" kindref="compound">SCOPE_LOCK</ref><sp/>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1SCOPE__LOCK" kindref="compound">SCOPE_LOCK</ref><sp/>&amp;</highlight></codeline>
-<codeline lineno="37" refid="classPDJE__IPC_1_1SCOPE__LOCK_1a54faf7c5ec907ef94342e5c96675ebfd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1SCOPE__LOCK_1a54faf7c5ec907ef94342e5c96675ebfd" kindref="member">operator=</ref>(<ref refid="classPDJE__IPC_1_1SCOPE__LOCK" kindref="compound">SCOPE_LOCK</ref><sp/>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32" refid="classPDJE__IPC_1_1SCOPE__LOCK_1a9a12eae32cc70e945f6fd3549cb60ea3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1SCOPE__LOCK_1a9a12eae32cc70e945f6fd3549cb60ea3" kindref="member">SCOPE_LOCK</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__IPC_1_1SCOPE__LOCK_1a9a12eae32cc70e945f6fd3549cb60ea3" kindref="member">SCOPE_LOCK</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1SCOPE__LOCK_1a9a12eae32cc70e945f6fd3549cb60ea3" kindref="member">SCOPE_LOCK</ref><sp/>&amp;</highlight></codeline>
+<codeline lineno="34" refid="classPDJE__IPC_1_1SCOPE__LOCK_1a485ac0e8ff9334c37420d85d64e777bd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1SCOPE__LOCK_1a485ac0e8ff9334c37420d85d64e777bd" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__IPC_1_1SCOPE__LOCK_1a9a12eae32cc70e945f6fd3549cb60ea3" kindref="member">SCOPE_LOCK</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35" refid="classPDJE__IPC_1_1SCOPE__LOCK_1a0865a14366333655565391cd08006df7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1SCOPE__LOCK_1a0865a14366333655565391cd08006df7" kindref="member">SCOPE_LOCK</ref>(<ref refid="classPDJE__IPC_1_1SCOPE__LOCK_1a9a12eae32cc70e945f6fd3549cb60ea3" kindref="member">SCOPE_LOCK</ref><sp/>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1SCOPE__LOCK_1a9a12eae32cc70e945f6fd3549cb60ea3" kindref="member">SCOPE_LOCK</ref><sp/>&amp;</highlight></codeline>
+<codeline lineno="37" refid="classPDJE__IPC_1_1SCOPE__LOCK_1af0f271800ac7ac288e642e2065bcc086" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1SCOPE__LOCK_1af0f271800ac7ac288e642e2065bcc086" kindref="member">operator=</ref>(<ref refid="classPDJE__IPC_1_1SCOPE__LOCK_1a9a12eae32cc70e945f6fd3549cb60ea3" kindref="member">SCOPE_LOCK</ref><sp/>&amp;&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="38" refid="classPDJE__IPC_1_1SCOPE__LOCK_1a1d091283c342288243b850c072c0d328" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1SCOPE__LOCK_1a1d091283c342288243b850c072c0d328" kindref="member">SCOPE_LOCK</ref>(<ref refid="classPDJE__IPC_1_1MUTEX" kindref="compound">MUTEX</ref><sp/>&amp;<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca51ca6c63d97347ee58cc7da59ab6994b" kindref="member">M</ref>)</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1SCOPE__LOCK_1a5216e31ed8f56233af3667f320d92ca1" kindref="member">MP</ref><sp/>=<sp/>&amp;<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca51ca6c63d97347ee58cc7da59ab6994b" kindref="member">M</ref>;</highlight></codeline>
@@ -248,7 +248,7 @@
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__IPC_1_1SCOPE__LOCK_1a8aa8e51ea911d339183c5b1d618b84e1" kindref="member">locked</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1SCOPE__LOCK_1a5216e31ed8f56233af3667f320d92ca1" kindref="member">MP</ref>-&gt;<ref refid="classPDJE__IPC_1_1MUTEX_1abc73c0b6980ac3721c6ba98fff915be7" kindref="member">unlock</ref>();</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1SCOPE__LOCK_1a5216e31ed8f56233af3667f320d92ca1" kindref="member">MP</ref>-&gt;unlock();</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception<sp/>&amp;e)<sp/>{</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>unlock.<sp/>What:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(e.what());</highlight></codeline>
@@ -257,7 +257,7 @@
 <codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="59"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="60"><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_IPC</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_IPC</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/input/IPC/memory/ipc_named_mutex.hpp"/>
   </compounddef>

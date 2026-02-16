@@ -65,11 +65,11 @@ Included By
 -----------
 
 
-- :ref:`file_include_core_editor_editor.cpp`
-
 - :ref:`file_include_core_MainObjects_editorObject_editorObject.cpp`
 
 - :ref:`file_include_core_MainObjects_editorObject_editorObject.hpp`
+
+- :ref:`file_include_core_editor_editor.cpp`
 
 
 

@@ -50,9 +50,9 @@ Included By
 
 - :ref:`file_include_input_DefaultDevs_linux_DefaultDevs.hpp`
 
-- :ref:`file_include_input_DefaultDevs_linux_evdev_things_evdev_codemap.hpp`
-
 - :ref:`file_include_input_DefaultDevs_linux_InputCore.cpp`
+
+- :ref:`file_include_input_DefaultDevs_linux_evdev_things_evdev_codemap.hpp`
 
 - :ref:`file_include_input_DefaultDevs_windows_DefaultDevs.hpp`
 
@@ -66,13 +66,13 @@ Included By
 
 - :ref:`file_include_input_runner_SubProcess.hpp`
 
-- :ref:`file_include_input_trashbin_--DEPRECATED-linux_linux_input.cpp`
-
-- :ref:`file_include_input_trashbin_--DEPRECATED-linux_linux_input.hpp`
-
 - :ref:`file_include_input_trashbin_--DEPRECATED-linux_RT_RTFunctionRegister.cpp`
 
 - :ref:`file_include_input_trashbin_--DEPRECATED-linux_RT_RTSocket.hpp`
+
+- :ref:`file_include_input_trashbin_--DEPRECATED-linux_linux_input.cpp`
+
+- :ref:`file_include_input_trashbin_--DEPRECATED-linux_linux_input.hpp`
 
 - :ref:`file_include_judge_Loop_PDJE_Judge_Loop.hpp`
 

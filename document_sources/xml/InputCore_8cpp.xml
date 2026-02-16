@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="InputCore_8cpp" kind="file" language="C++">
     <compoundname>InputCore.cpp</compoundname>
     <includes refid="InputCore_8hpp" local="yes">InputCore.hpp</includes>
@@ -18,27 +18,6 @@
     <includes local="no">sys/eventfd.h</includes>
     <includes local="no">unistd.h</includes>
     <incdepgraph>
-      <node id="14">
-        <label>libevdev/libevdev.h</label>
-      </node>
-      <node id="2">
-        <label>InputCore.hpp</label>
-        <link refid="InputCore_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-      </node>
       <node id="16">
         <label>Input_State.hpp</label>
         <link refid="Input__State_8hpp"/>
@@ -53,26 +32,21 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="13">
-        <label>filesystem</label>
-      </node>
-      <node id="6">
-        <label>cstdint</label>
-      </node>
-      <node id="27">
-        <label>fcntl.h</label>
-      </node>
-      <node id="17">
-        <label>memory_resource</label>
-      </node>
-      <node id="10">
-        <label>string</label>
-      </node>
-      <node id="3">
-        <label>Input_Transfer.hpp</label>
-      </node>
-      <node id="20">
-        <label>spdlog/sinks/basic_file_sink.h</label>
+      <node id="5">
+        <label>PDJE_Input_Device_Data.hpp</label>
+        <link refid="PDJE__Input__Device__Data_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
       </node>
       <node id="18">
         <label>PDJE_LOG_SETTER.hpp</label>
@@ -91,64 +65,6 @@
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-      </node>
-      <node id="22">
-        <label>spdlog/spdlog.h</label>
-      </node>
-      <node id="23">
-        <label>string_view</label>
-      </node>
-      <node id="4">
-        <label>PDJE_Highres_Clock.hpp</label>
-      </node>
-      <node id="12">
-        <label>bitset</label>
-      </node>
-      <node id="7">
-        <label>future</label>
-      </node>
-      <node id="5">
-        <label>PDJE_Input_Device_Data.hpp</label>
-        <link refid="PDJE__Input__Device__Data_8hpp"/>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>optional</label>
-      </node>
-      <node id="31">
-        <label>unistd.h</label>
-      </node>
-      <node id="11">
-        <label>vector</label>
-      </node>
-      <node id="8">
-        <label>latch</label>
-      </node>
-      <node id="21">
-        <label>spdlog/sinks/stdout_color_sinks.h</label>
-      </node>
-      <node id="30">
-        <label>sys/eventfd.h</label>
-      </node>
-      <node id="28">
-        <label>linux/input-event-codes.h</label>
-      </node>
-      <node id="25">
-        <label>cerrno</label>
-      </node>
-      <node id="15">
-        <label>unordered_map</label>
       </node>
       <node id="1">
         <label>include/input/DefaultDevs/linux/InputCore.cpp</label>
@@ -184,17 +100,101 @@
         <childnode refid="31" relation="include">
         </childnode>
       </node>
-      <node id="19">
-        <label>mutex</label>
+      <node id="2">
+        <label>InputCore.hpp</label>
+        <link refid="InputCore_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
       </node>
-      <node id="24">
-        <label>type_traits</label>
+      <node id="3">
+        <label>Input_Transfer.hpp</label>
+      </node>
+      <node id="4">
+        <label>PDJE_Highres_Clock.hpp</label>
+      </node>
+      <node id="12">
+        <label>bitset</label>
+      </node>
+      <node id="25">
+        <label>cerrno</label>
+      </node>
+      <node id="6">
+        <label>cstdint</label>
       </node>
       <node id="26">
         <label>cstring</label>
       </node>
+      <node id="27">
+        <label>fcntl.h</label>
+      </node>
+      <node id="13">
+        <label>filesystem</label>
+      </node>
+      <node id="7">
+        <label>future</label>
+      </node>
+      <node id="8">
+        <label>latch</label>
+      </node>
+      <node id="14">
+        <label>libevdev/libevdev.h</label>
+      </node>
+      <node id="28">
+        <label>linux/input-event-codes.h</label>
+      </node>
+      <node id="17">
+        <label>memory_resource</label>
+      </node>
+      <node id="19">
+        <label>mutex</label>
+      </node>
+      <node id="9">
+        <label>optional</label>
+      </node>
+      <node id="20">
+        <label>spdlog/sinks/basic_file_sink.h</label>
+      </node>
+      <node id="21">
+        <label>spdlog/sinks/stdout_color_sinks.h</label>
+      </node>
+      <node id="22">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="10">
+        <label>string</label>
+      </node>
+      <node id="23">
+        <label>string_view</label>
+      </node>
       <node id="29">
         <label>sys/epoll.h</label>
+      </node>
+      <node id="30">
+        <label>sys/eventfd.h</label>
+      </node>
+      <node id="24">
+        <label>type_traits</label>
+      </node>
+      <node id="31">
+        <label>unistd.h</label>
+      </node>
+      <node id="15">
+        <label>unordered_map</label>
+      </node>
+      <node id="11">
+        <label>vector</label>
       </node>
     </incdepgraph>
     <briefdescription>
@@ -255,9 +255,9 @@
 <codeline lineno="51"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="52" refid="classInputCore_1aedfa3f65f41a958ddd5be27a1a8e9228" refkind="member"><highlight class="normal"><ref refid="classInputCore_1aedfa3f65f41a958ddd5be27a1a8e9228" kindref="member">InputCore::Stop</ref>()</highlight></codeline>
 <codeline lineno="53"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classInputCore_1aa92b3352e908492d1419d6a095ef59c5" kindref="member">switches</ref>.stop_event_fd<sp/>&gt;=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classInputCore_1a8d2ce7ccdf2f8cbe8569ea2aa4d15047" kindref="member">switches</ref>.stop_event_fd<sp/>&gt;=<sp/>0)<sp/>{</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/>one<sp/>=<sp/>1;</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>write(<ref refid="classInputCore_1aa92b3352e908492d1419d6a095ef59c5" kindref="member">switches</ref>.stop_event_fd,<sp/>&amp;one,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(one));</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>write(<ref refid="classInputCore_1a8d2ce7ccdf2f8cbe8569ea2aa4d15047" kindref="member">switches</ref>.stop_event_fd,<sp/>&amp;one,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(one));</highlight></codeline>
 <codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="58"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight></codeline>
@@ -265,8 +265,8 @@
 <codeline lineno="61" refid="classInputCore_1adcd9c42bb0e06d1b9c235003786d3d03" refkind="member"><highlight class="normal"><ref refid="classInputCore_1adcd9c42bb0e06d1b9c235003786d3d03" kindref="member">InputCore::Trig</ref>()</highlight></codeline>
 <codeline lineno="62"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>epfd<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>epoll_create1(EPOLL_CLOEXEC);</highlight></codeline>
-<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classInputCore_1aa92b3352e908492d1419d6a095ef59c5" kindref="member">switches</ref>.stop_event_fd<sp/>=<sp/>eventfd(0,<sp/>EFD_NONBLOCK<sp/>|<sp/>EFD_CLOEXEC);</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classInputCore_1aa92b3352e908492d1419d6a095ef59c5" kindref="member">switches</ref>.stop_event_fd<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classInputCore_1a8d2ce7ccdf2f8cbe8569ea2aa4d15047" kindref="member">switches</ref>.stop_event_fd<sp/>=<sp/>eventfd(0,<sp/>EFD_NONBLOCK<sp/>|<sp/>EFD_CLOEXEC);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classInputCore_1a8d2ce7ccdf2f8cbe8569ea2aa4d15047" kindref="member">switches</ref>.stop_event_fd<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>close(epfd);</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>init<sp/>stop<sp/>event<sp/>fd<sp/>on<sp/>linux.&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
@@ -275,8 +275,8 @@
 <codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="comment">//<sp/>add<sp/>stop<sp/>event<sp/>fd</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>epoll_event<sp/>ev{};</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ev.events<sp/><sp/>=<sp/>EPOLLIN;</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ev.data.fd<sp/>=<sp/><ref refid="classInputCore_1aa92b3352e908492d1419d6a095ef59c5" kindref="member">switches</ref>.stop_event_fd;</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>epoll_ctl(epfd,<sp/>EPOLL_CTL_ADD,<sp/><ref refid="classInputCore_1aa92b3352e908492d1419d6a095ef59c5" kindref="member">switches</ref>.stop_event_fd,<sp/>&amp;ev);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ev.data.fd<sp/>=<sp/><ref refid="classInputCore_1a8d2ce7ccdf2f8cbe8569ea2aa4d15047" kindref="member">switches</ref>.stop_event_fd;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>epoll_ctl(epfd,<sp/>EPOLL_CTL_ADD,<sp/><ref refid="classInputCore_1a8d2ce7ccdf2f8cbe8569ea2aa4d15047" kindref="member">switches</ref>.stop_event_fd,<sp/>&amp;ev);</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"></highlight></codeline>
 <codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;dev<sp/>:<sp/><ref refid="classInputCore_1ac7ce8640579e366739bf6a828ef7f830" kindref="member">events</ref>)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>add<sp/>device<sp/>event<sp/>fd</highlight><highlight class="normal"></highlight></codeline>
@@ -295,7 +295,7 @@
 <codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>}</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>epoll_event<sp/>out_events[64];</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cachedfd<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<ref refid="classInputCore_1aa92b3352e908492d1419d6a095ef59c5" kindref="member">switches</ref>.loop_switch)<sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<ref refid="classInputCore_1a8d2ce7ccdf2f8cbe8569ea2aa4d15047" kindref="member">switches</ref>.loop_switch)<sp/>{</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>epoll_wait(epfd,<sp/>out_events,<sp/>64,<sp/>-1);</highlight></codeline>
 <codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(n<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(errno<sp/>==<sp/>EINTR)<sp/>{<sp/></highlight><highlight class="comment">//<sp/>just<sp/>signal</highlight><highlight class="normal"></highlight></codeline>
@@ -306,12 +306,12 @@
 <codeline lineno="102"><highlight class="normal"></highlight></codeline>
 <codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>n;<sp/>++i)<sp/>{</highlight></codeline>
 <codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cachedfd<sp/>=<sp/>out_events[i].data.fd;</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cachedfd<sp/>==<sp/><ref refid="classInputCore_1aa92b3352e908492d1419d6a095ef59c5" kindref="member">switches</ref>.stop_event_fd)<sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cachedfd<sp/>==<sp/><ref refid="classInputCore_1a8d2ce7ccdf2f8cbe8569ea2aa4d15047" kindref="member">switches</ref>.stop_event_fd)<sp/>{</highlight></codeline>
 <codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint64_t<sp/>v;</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(read(<ref refid="classInputCore_1aa92b3352e908492d1419d6a095ef59c5" kindref="member">switches</ref>.stop_event_fd,<sp/>&amp;v,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(v))<sp/>==</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(read(<ref refid="classInputCore_1a8d2ce7ccdf2f8cbe8569ea2aa4d15047" kindref="member">switches</ref>.stop_event_fd,<sp/>&amp;v,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(v))<sp/>==</highlight></codeline>
 <codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(v))<sp/>{</highlight></codeline>
 <codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classInputCore_1aa92b3352e908492d1419d6a095ef59c5" kindref="member">switches</ref>.loop_switch<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classInputCore_1a8d2ce7ccdf2f8cbe8569ea2aa4d15047" kindref="member">switches</ref>.loop_switch<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/><ref refid="classInputCore_1ac7ce8640579e366739bf6a828ef7f830" kindref="member">events</ref>.find(cachedfd);</highlight></codeline>
@@ -321,8 +321,8 @@
 <codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>close(epfd);</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>close(<ref refid="classInputCore_1aa92b3352e908492d1419d6a095ef59c5" kindref="member">switches</ref>.stop_event_fd);</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classInputCore_1aa92b3352e908492d1419d6a095ef59c5" kindref="member">switches</ref>.stop_event_fd<sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>close(<ref refid="classInputCore_1a8d2ce7ccdf2f8cbe8569ea2aa4d15047" kindref="member">switches</ref>.stop_event_fd);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classInputCore_1a8d2ce7ccdf2f8cbe8569ea2aa4d15047" kindref="member">switches</ref>.stop_event_fd<sp/>=<sp/>-1;</highlight></codeline>
 <codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="123"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="124"><highlight class="normal"></highlight></codeline>

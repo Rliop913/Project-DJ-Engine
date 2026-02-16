@@ -34,25 +34,9 @@ Includes
 
 - ``cstdint``
 
-- ``time.h``
-
 - ``windows.h``
 
 
 
 
-
-
-Namespaces
-----------
-
-
-- :ref:`namespace_PDJE_HIGHRES_CLOCK`
-
-
-Classes
--------
-
-
-- :ref:`exhale_class_classPDJE__HIGHRES__CLOCK_1_1CLOCK`
 

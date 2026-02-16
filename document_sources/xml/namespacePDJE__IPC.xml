@@ -1,25 +1,26 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="namespacePDJE__IPC" kind="namespace" language="C++">
     <compoundname>PDJE_IPC</compoundname>
-    <innerclass refid="classPDJE__IPC_1_1MetadataTXRX" prot="public">PDJE_IPC::MetadataTXRX</innerclass>
     <innerclass refid="classPDJE__IPC_1_1EVENT" prot="public">PDJE_IPC::EVENT</innerclass>
+    <innerclass refid="structPDJE__IPC_1_1Importants" prot="public">PDJE_IPC::Importants</innerclass>
+    <innerclass refid="structPDJE__IPC_1_1Input__Transfer__Metadata" prot="public">PDJE_IPC::Input_Transfer_Metadata</innerclass>
+    <innerclass refid="structPDJE__IPC_1_1IPC__SHM__LINUX" prot="public">PDJE_IPC::IPC_SHM_LINUX</innerclass>
+    <innerclass refid="classPDJE__IPC_1_1MetadataTXRX" prot="public">PDJE_IPC::MetadataTXRX</innerclass>
     <innerclass refid="classPDJE__IPC_1_1MUTEX" prot="public">PDJE_IPC::MUTEX</innerclass>
+    <innerclass refid="classPDJE__IPC_1_1PDJE__Input__Transfer" prot="public">PDJE_IPC::PDJE_Input_Transfer</innerclass>
+    <innerclass refid="structPDJE__IPC_1_1RawDeviceData" prot="public">PDJE_IPC::RawDeviceData</innerclass>
     <innerclass refid="classPDJE__IPC_1_1SCOPE__LOCK" prot="public">PDJE_IPC::SCOPE_LOCK</innerclass>
     <innerclass refid="classPDJE__IPC_1_1SharedMem" prot="public">PDJE_IPC::SharedMem</innerclass>
-    <innerclass refid="classPDJE__IPC_1_1PDJE__Input__Transfer" prot="public">PDJE_IPC::PDJE_Input_Transfer</innerclass>
-    <innerclass refid="structPDJE__IPC_1_1Input__Transfer__Metadata" prot="public">PDJE_IPC::Input_Transfer_Metadata</innerclass>
-    <innerclass refid="structPDJE__IPC_1_1RawDeviceData" prot="public">PDJE_IPC::RawDeviceData</innerclass>
-    <innerclass refid="structPDJE__IPC_1_1IPC__SHM__LINUX" prot="public">PDJE_IPC::IPC_SHM_LINUX</innerclass>
-    <innerclass refid="structPDJE__IPC_1_1Importants" prot="public">PDJE_IPC::Importants</innerclass>
     <innernamespace refid="namespacePDJE__IPC_1_1MAINPROC">PDJE_IPC::MAINPROC</innernamespace>
     <innernamespace refid="namespacePDJE__IPC_1_1SUBPROC">PDJE_IPC::SUBPROC</innernamespace>
-      <sectiondef kind="typedef">
-      <memberdef kind="typedef" id="namespacePDJE__IPC_1a9fde1a10ab51831bfa1320d45d91aec5" prot="public" static="no">
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespacePDJE__IPC_1a04902c541254b5ef872d47ec219cc36b" prot="public" static="no">
         <type>std::filesystem::path</type>
-        <definition>typedef std::filesystem::path PDJE_IPC::MNAME</definition>
+        <definition>using PDJE_IPC::MNAME =  std::filesystem::path</definition>
         <argsstring></argsstring>
         <name>MNAME</name>
+        <qualifiedname>PDJE_IPC::MNAME</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -28,11 +29,12 @@
         </inbodydescription>
         <location file="include/input/IPC/memory/ipc_named_event.hpp" line="4" column="1" bodyfile="include/input/IPC/memory/ipc_named_event.hpp" bodystart="4" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespacePDJE__IPC_1a39751c10dd8e3892dec091c1fcf8d627" prot="public" static="no">
+      <memberdef kind="typedef" id="namespacePDJE__IPC_1aaf89512571dfd440f5c2d0d57df24042" prot="public" static="no">
         <type>std::string</type>
-        <definition>using PDJE_IPC::PDJE_DEV_PATH = typedef std::string</definition>
+        <definition>using PDJE_IPC::PDJE_DEV_PATH =  std::string</definition>
         <argsstring></argsstring>
         <name>PDJE_DEV_PATH</name>
+        <qualifiedname>PDJE_IPC::PDJE_DEV_PATH</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -41,11 +43,12 @@
         </inbodydescription>
         <location file="include/input/runner/SubProcess.hpp" line="19" column="1" bodyfile="include/input/runner/SubProcess.hpp" bodystart="19" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespacePDJE__IPC_1a389aed39b0f10dedcdffbe8944639e0b" prot="public" static="no">
+      <memberdef kind="typedef" id="namespacePDJE__IPC_1afa0a7b47d125684c3f3557e194fc5e56" prot="public" static="no">
         <type>std::string</type>
-        <definition>using PDJE_IPC::PDJE_NAME = typedef std::string</definition>
+        <definition>using PDJE_IPC::PDJE_NAME =  std::string</definition>
         <argsstring></argsstring>
         <name>PDJE_NAME</name>
+        <qualifiedname>PDJE_IPC::PDJE_NAME</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -54,11 +57,12 @@
         </inbodydescription>
         <location file="include/input/runner/SubProcess.hpp" line="20" column="1" bodyfile="include/input/runner/SubProcess.hpp" bodystart="20" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespacePDJE__IPC_1adb4fca084d69a1a3de013b686bfc044c" prot="public" static="no">
+      <memberdef kind="typedef" id="namespacePDJE__IPC_1a9709ed0c8be64e9fe2486e273cb37d58" prot="public" static="no">
         <type>nlohmann::json</type>
-        <definition>using PDJE_IPC::nj = typedef nlohmann::json</definition>
+        <definition>using PDJE_IPC::nj =  nlohmann::json</definition>
         <argsstring></argsstring>
         <name>nj</name>
+        <qualifiedname>PDJE_IPC::nj</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -67,14 +71,30 @@
         </inbodydescription>
         <location file="include/input/trashbin/MainProcess_deprecated.hpp" line="23" column="1" bodyfile="include/input/trashbin/MainProcess_deprecated.hpp" bodystart="23" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="var">
+    </sectiondef>
+    <sectiondef kind="var">
       <memberdef kind="variable" id="namespacePDJE__IPC_1a1b1370cbd4063395a5032cd8e4b8ab34" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr int</type>
-        <definition>constexpr int PDJE_IPC::PDJE_NO_IPC</definition>
+        <type>int</type>
+        <definition>int PDJE_IPC::PDJE_NO_IPC</definition>
         <argsstring></argsstring>
         <name>PDJE_NO_IPC</name>
+        <qualifiedname>PDJE_IPC::PDJE_NO_IPC</qualifiedname>
         <initializer>= 2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/IPC/memory/ipc_shared_memory.hpp" line="28" column="15" bodyfile="include/input/IPC/memory/ipc_shared_memory.hpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacePDJE__IPC_1ab876a67a0fcfde480c8e23bb60e3b32f" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>int</type>
+        <definition>int PDJE_IPC::PDJE_IPC_R</definition>
+        <argsstring></argsstring>
+        <name>PDJE_IPC_R</name>
+        <qualifiedname>PDJE_IPC::PDJE_IPC_R</qualifiedname>
+        <initializer>= 1</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -83,12 +103,13 @@
         </inbodydescription>
         <location file="include/input/IPC/memory/ipc_shared_memory.hpp" line="29" column="15" bodyfile="include/input/IPC/memory/ipc_shared_memory.hpp" bodystart="29" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="namespacePDJE__IPC_1ab876a67a0fcfde480c8e23bb60e3b32f" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr int</type>
-        <definition>constexpr int PDJE_IPC::PDJE_IPC_R</definition>
+      <memberdef kind="variable" id="namespacePDJE__IPC_1a9cca29b7678f16ffedd145985a8fe4b3" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>int</type>
+        <definition>int PDJE_IPC::PDJE_IPC_RW</definition>
         <argsstring></argsstring>
-        <name>PDJE_IPC_R</name>
-        <initializer>= 1</initializer>
+        <name>PDJE_IPC_RW</name>
+        <qualifiedname>PDJE_IPC::PDJE_IPC_RW</qualifiedname>
+        <initializer>= 0</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -97,27 +118,14 @@
         </inbodydescription>
         <location file="include/input/IPC/memory/ipc_shared_memory.hpp" line="30" column="15" bodyfile="include/input/IPC/memory/ipc_shared_memory.hpp" bodystart="30" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="namespacePDJE__IPC_1a9cca29b7678f16ffedd145985a8fe4b3" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr int</type>
-        <definition>constexpr int PDJE_IPC::PDJE_IPC_RW</definition>
-        <argsstring></argsstring>
-        <name>PDJE_IPC_RW</name>
-        <initializer>= 0</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/input/IPC/memory/ipc_shared_memory.hpp" line="31" column="15" bodyfile="include/input/IPC/memory/ipc_shared_memory.hpp" bodystart="31" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="func">
+    </sectiondef>
+    <sectiondef kind="func">
       <memberdef kind="function" id="namespacePDJE__IPC_1a01af1265fc9ad0972525db7352ad736c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>static bool PDJE_IPC::HashCompare</definition>
         <argsstring>(const fs::path &amp;pt)</argsstring>
         <name>HashCompare</name>
+        <qualifiedname>PDJE_IPC::HashCompare</qualifiedname>
         <param>
           <type>const fs::path &amp;</type>
           <declname>pt</declname>
@@ -128,26 +136,28 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/IPC/common/ipc_util.hpp" line="21" column="1" bodyfile="include/input/IPC/common/ipc_util.hpp" bodystart="21" bodyend="53"/>
+        <location file="include/input/IPC/common/ipc_util.hpp" line="22" column="1" bodyfile="include/input/IPC/common/ipc_util.hpp" bodystart="22" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="namespacePDJE__IPC_1a70376465d929e8d1c237f737857d7f06" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>fs::path</type>
         <definition>static fs::path PDJE_IPC::GetValidProcessExecutor</definition>
         <argsstring>()</argsstring>
         <name>GetValidProcessExecutor</name>
+        <qualifiedname>PDJE_IPC::GetValidProcessExecutor</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/IPC/common/ipc_util.hpp" line="56" column="1" bodyfile="include/input/IPC/common/ipc_util.hpp" bodystart="56" bodyend="87"/>
+        <location file="include/input/IPC/common/ipc_util.hpp" line="57" column="1" bodyfile="include/input/IPC/common/ipc_util.hpp" bodystart="57" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="namespacePDJE__IPC_1af1c8033251eda6e19da3543074c26ea5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
         <definition>static std::string PDJE_IPC::posix_shmem_macro</definition>
         <argsstring>(const fs::path &amp;origin)</argsstring>
         <name>posix_shmem_macro</name>
+        <qualifiedname>PDJE_IPC::posix_shmem_macro</qualifiedname>
         <param>
           <type>const fs::path &amp;</type>
           <declname>origin</declname>
@@ -158,13 +168,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/IPC/memory/ipc_shared_memory.hpp" line="24" column="1" bodyfile="include/input/IPC/memory/ipc_shared_memory.hpp" bodystart="24" bodyend="27"/>
+        <location file="include/input/IPC/memory/ipc_shared_memory.hpp" line="23" column="1" bodyfile="include/input/IPC/memory/ipc_shared_memory.hpp" bodystart="23" bodyend="26"/>
       </memberdef>
-      <memberdef kind="function" id="namespacePDJE__IPC_1a4edca9770de1add2c4262a750b743077" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacePDJE__IPC_1a2935dc613202d6f1b6a9d3d071f9b29f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; <ref refid="structPDJE__IPC_1_1RawDeviceData" kindref="compound">RawDeviceData</ref> &gt;</type>
-        <definition>static std::vector&lt;RawDeviceData&gt; PDJE_IPC::getRawDeviceDatas</definition>
+        <definition>static std::vector&lt; RawDeviceData &gt; PDJE_IPC::getRawDeviceDatas</definition>
         <argsstring>()</argsstring>
         <name>getRawDeviceDatas</name>
+        <qualifiedname>PDJE_IPC::getRawDeviceDatas</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -178,6 +189,7 @@
         <definition>static std::string PDJE_IPC::wstring_to_utf8_nt</definition>
         <argsstring>(const std::wstring &amp;w)</argsstring>
         <name>wstring_to_utf8_nt</name>
+        <qualifiedname>PDJE_IPC::wstring_to_utf8_nt</qualifiedname>
         <param>
           <type>const std::wstring &amp;</type>
           <declname>w</declname>
@@ -195,6 +207,7 @@
         <definition>static std::string PDJE_IPC::hid_label_from_path</definition>
         <argsstring>(const std::wstring &amp;path)</argsstring>
         <name>hid_label_from_path</name>
+        <qualifiedname>PDJE_IPC::hid_label_from_path</qualifiedname>
         <param>
           <type>const std::wstring &amp;</type>
           <declname>path</declname>
@@ -212,6 +225,7 @@
         <definition>static std::string PDJE_IPC::GenCommand</definition>
         <argsstring>(const std::string &amp;store_value, const std::string &amp;command, const std::string &amp;arg1, const std::string &amp;arg2)</argsstring>
         <name>GenCommand</name>
+        <qualifiedname>PDJE_IPC::GenCommand</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>store_value</declname>
@@ -241,6 +255,7 @@
         <definition>static std::string PDJE_IPC::GenIF</definition>
         <argsstring>(const std::string &amp;A, const std::string &amp;plain_text, const std::string &amp;THEN)</argsstring>
         <name>GenIF</name>
+        <qualifiedname>PDJE_IPC::GenIF</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>A</declname>
@@ -259,13 +274,62 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/trashbin/--DEPRECATED--transmission/linux/MainProcess.cpp" line="24" column="1" bodyfile="include/input/trashbin/--DEPRECATED--transmission/linux/MainProcess.cpp" bodystart="24" bodyend="-1"/>
+        <location file="include/input/trashbin/--DEPRECATED--transmission/linux/MainProcess.cpp" line="24" column="1" bodyfile="include/input/trashbin/--DEPRECATED--transmission/linux/MainProcess.cpp" bodystart="24" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacePDJE__IPC_1ac9ab46d11565fae56fc32d3476413a38" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>static std::string PDJE_IPC::GenExecuteShell</definition>
+        <argsstring>(const fs::path &amp;exec_path, const int port)</argsstring>
+        <name>GenExecuteShell</name>
+        <qualifiedname>PDJE_IPC::GenExecuteShell</qualifiedname>
+        <param>
+          <type>const fs::path &amp;</type>
+          <declname>exec_path</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/trashbin/--DEPRECATED--transmission/linux/MainProcess.cpp" line="32" column="1" bodyfile="include/input/trashbin/--DEPRECATED--transmission/linux/MainProcess.cpp" bodystart="32" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacePDJE__IPC_1a3d3db94ad4d5421d900f1aa484f21e6f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool PDJE_IPC::OpenProcess</definition>
+        <argsstring>(const fs::path &amp;pt, pid_t *child_pid, const int port)</argsstring>
+        <name>OpenProcess</name>
+        <qualifiedname>PDJE_IPC::OpenProcess</qualifiedname>
+        <param>
+          <type>const fs::path &amp;</type>
+          <declname>pt</declname>
+        </param>
+        <param>
+          <type>pid_t *</type>
+          <declname>child_pid</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/trashbin/--DEPRECATED--transmission/linux/MainProcess.cpp" line="53" column="1" bodyfile="include/input/trashbin/--DEPRECATED--transmission/linux/MainProcess.cpp" bodystart="53" bodyend="88"/>
       </memberdef>
       <memberdef kind="function" id="namespacePDJE__IPC_1a41cf27409d5c0ba0fd067781a06e30b4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>static void PDJE_IPC::SetEvdevGroupSettings</definition>
         <argsstring>()</argsstring>
         <name>SetEvdevGroupSettings</name>
+        <qualifiedname>PDJE_IPC::SetEvdevGroupSettings</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -279,6 +343,7 @@
         <definition>static bool PDJE_IPC::PDJE_OpenProcess</definition>
         <argsstring>(const fs::path &amp;pt, Importants &amp;imps, PDJE_CRYPTO::PSKPipe &amp;pipe)</argsstring>
         <name>PDJE_OpenProcess</name>
+        <qualifiedname>PDJE_IPC::PDJE_OpenProcess</qualifiedname>
         <param>
           <type>const fs::path &amp;</type>
           <declname>pt</declname>
@@ -299,7 +364,7 @@
         </inbodydescription>
         <location file="include/input/trashbin/MainProcess_windows.cpp" line="7" column="1" bodyfile="include/input/trashbin/MainProcess_windows.cpp" bodystart="7" bodyend="62"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

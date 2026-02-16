@@ -44,9 +44,9 @@ Included By
 -----------
 
 
-- :ref:`file_include_core_interface_PDJE_interface.hpp`
-
 - :ref:`file_include_core_MainObjects_audioPlayer_audioPlayer.hpp`
+
+- :ref:`file_include_core_interface_PDJE_interface.hpp`
 
 - :ref:`file_include_judge_Init_PDJE_Judge_Init.hpp`
 

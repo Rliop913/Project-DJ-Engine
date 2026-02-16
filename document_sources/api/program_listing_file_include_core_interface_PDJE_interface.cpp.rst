@@ -95,13 +95,14 @@ Program Listing for File PDJE_interface.cpp
            critlog("failed to init player on PDJE initPlayer.");
            return false;
        } else {
-           if (player->STATUS != "OK") {
-               critlog("PDJE initPlayer failed. STATUS not OK. ErrStatus: ");
-               critlog(player->STATUS);
-               return false;
-           } else {
-               return true;
-           }
+           return true;
+           // if (player->STATUS != "OK") {
+           //     critlog("PDJE initPlayer failed. STATUS not OK. ErrStatus: ");
+           //     critlog(player->STATUS);
+           //     return false;
+           // } else {
+           //     return true;
+           // }
        }
    }
    

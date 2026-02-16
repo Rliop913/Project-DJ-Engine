@@ -32,8 +32,6 @@ Includes
 
 - ``PDJE_Crypto.hpp`` (:ref:`file_include_global_Crypto_PDJE_Crypto.hpp`)
 
-- ``PDJE_INPUT_PROCESS_HASH.hpp`` (:ref:`file_include_input_IPC_common_PDJE_INPUT_PROCESS_HASH.hpp`)
-
 - ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_global_PDJE_LOG_SETTER.hpp`)
 
 - ``algorithm``
@@ -64,11 +62,11 @@ Included By
 
 - :ref:`file_include_input_IPC_common_ipc_util.hpp`
 
+- :ref:`file_include_input_IPC_memory_Secured_IPC_TX_RX.hpp`
+
 - :ref:`file_include_input_IPC_memory_linux_named_event.cpp`
 
 - :ref:`file_include_input_IPC_memory_linux_named_mutex.cpp`
-
-- :ref:`file_include_input_IPC_memory_Secured_IPC_TX_RX.hpp`
 
 - :ref:`file_include_input_IPC_memory_windows_Input_Transfer.hpp`
 

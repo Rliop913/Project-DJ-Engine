@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="classPDJE__Input" kind="class" language="C++" prot="public">
     <compoundname>PDJE_Input</compoundname>
     <includes refid="PDJE__Input_8hpp" local="no">PDJE_Input.hpp</includes>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classPDJE__Input_1ad52b67cfabec09be1b320406514baa4c" prot="private" static="no" mutable="no">
         <type>std::optional&lt; <ref refid="classPDJE__DEFAULT__DEVICES_1_1DefaultDevs" kindref="compound">PDJE_DEFAULT_DEVICES::DefaultDevs</ref> &gt;</type>
         <definition>std::optional&lt;PDJE_DEFAULT_DEVICES::DefaultDevs&gt; PDJE_Input::default_devs</definition>
         <argsstring></argsstring>
         <name>default_devs</name>
+        <qualifiedname>PDJE_Input::default_devs</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -22,6 +23,7 @@
         <definition>bool PDJE_Input::FLAG_INPUT_ON</definition>
         <argsstring></argsstring>
         <name>FLAG_INPUT_ON</name>
+        <qualifiedname>PDJE_Input::FLAG_INPUT_ON</qualifiedname>
         <initializer>= false</initializer>
         <briefdescription>
         </briefdescription>
@@ -36,6 +38,7 @@
         <definition>std::optional&lt;PDJE_MIDI::MIDI&gt; PDJE_Input::midi_engine</definition>
         <argsstring></argsstring>
         <name>midi_engine</name>
+        <qualifiedname>PDJE_Input::midi_engine</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -49,6 +52,7 @@
         <definition>bool PDJE_Input::FLAG_MIDI_ON</definition>
         <argsstring></argsstring>
         <name>FLAG_MIDI_ON</name>
+        <qualifiedname>PDJE_Input::FLAG_MIDI_ON</qualifiedname>
         <initializer>= false</initializer>
         <briefdescription>
         </briefdescription>
@@ -63,6 +67,7 @@
         <definition>PDJE_INPUT_STATE PDJE_Input::state</definition>
         <argsstring></argsstring>
         <name>state</name>
+        <qualifiedname>PDJE_Input::state</qualifiedname>
         <initializer>= <ref refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9a11fd9ca455f92c69c084484d5cd803c2" kindref="member">PDJE_INPUT_STATE::DEAD</ref></initializer>
         <briefdescription>
         </briefdescription>
@@ -72,13 +77,14 @@
         </inbodydescription>
         <location file="include/input/PDJE_Input.hpp" line="31" column="36" bodyfile="include/input/PDJE_Input.hpp" bodystart="31" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classPDJE__Input_1a57ffda3b7e96de7b73deb3557b089e9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; <ref refid="structDeviceData" kindref="compound">DeviceData</ref> &gt;</type>
         <definition>std::vector&lt; DeviceData &gt; PDJE_Input::GetDevs</definition>
         <argsstring>()</argsstring>
         <name>GetDevs</name>
+        <qualifiedname>PDJE_Input::GetDevs</qualifiedname>
         <briefdescription>
 <para>Get All Connected devices. </para>
         </briefdescription>
@@ -93,6 +99,7 @@
         <definition>std::vector&lt; libremidi::input_port &gt; PDJE_Input::GetMIDIDevs</definition>
         <argsstring>()</argsstring>
         <name>GetMIDIDevs</name>
+        <qualifiedname>PDJE_Input::GetMIDIDevs</qualifiedname>
         <briefdescription>
 <para>Get All Connected MIDI devices. </para>
         </briefdescription>
@@ -107,6 +114,7 @@
         <definition>bool PDJE_Input::Init</definition>
         <argsstring>()</argsstring>
         <name>Init</name>
+        <qualifiedname>PDJE_Input::Init</qualifiedname>
         <briefdescription>
 <para>initialize pdje input. </para>
         </briefdescription>
@@ -121,6 +129,7 @@
         <definition>bool PDJE_Input::Config</definition>
         <argsstring>(std::vector&lt; DeviceData &gt; &amp;devs, const std::vector&lt; libremidi::input_port &gt; &amp;midi_dev)</argsstring>
         <name>Config</name>
+        <qualifiedname>PDJE_Input::Config</qualifiedname>
         <param>
           <type>std::vector&lt; <ref refid="structDeviceData" kindref="compound">DeviceData</ref> &gt; &amp;</type>
           <declname>devs</declname>
@@ -143,6 +152,7 @@
         <definition>bool PDJE_Input::Run</definition>
         <argsstring>()</argsstring>
         <name>Run</name>
+        <qualifiedname>PDJE_Input::Run</qualifiedname>
         <briefdescription>
 <para>run input Loop </para>
         </briefdescription>
@@ -157,6 +167,7 @@
         <definition>bool PDJE_Input::Kill</definition>
         <argsstring>()</argsstring>
         <name>Kill</name>
+        <qualifiedname>PDJE_Input::Kill</qualifiedname>
         <briefdescription>
 <para>kill input Loop </para>
         </briefdescription>
@@ -171,6 +182,7 @@
         <definition>PDJE_INPUT_STATE PDJE_Input::GetState</definition>
         <argsstring>()</argsstring>
         <name>GetState</name>
+        <qualifiedname>PDJE_Input::GetState</qualifiedname>
         <briefdescription>
 <para>get pdje input module&apos;s configuration &amp; running state </para>
         </briefdescription>
@@ -185,6 +197,7 @@
         <definition>PDJE_INPUT_DATA_LINE PDJE_Input::PullOutDataLine</definition>
         <argsstring>()</argsstring>
         <name>PullOutDataLine</name>
+        <qualifiedname>PDJE_Input::PullOutDataLine</qualifiedname>
         <briefdescription>
 <para>pull out input data line. The input Loop will pass datas in here. </para>
         </briefdescription>
@@ -199,6 +212,7 @@
         <definition>PDJE_Input::PDJE_Input</definition>
         <argsstring>()</argsstring>
         <name>PDJE_Input</name>
+        <qualifiedname>PDJE_Input::PDJE_Input</qualifiedname>
         <briefdescription>
 <para>Constructor. </para>
         </briefdescription>
@@ -213,6 +227,7 @@
         <definition>PDJE_Input::~PDJE_Input</definition>
         <argsstring>()</argsstring>
         <name>~PDJE_Input</name>
+        <qualifiedname>PDJE_Input::~PDJE_Input</qualifiedname>
         <briefdescription>
 <para>Destructor. </para>
         </briefdescription>
@@ -222,7 +237,7 @@
         </inbodydescription>
         <location file="include/input/PDJE_Input.hpp" line="88" column="5" bodyfile="include/input/PDJE_Input.hpp" bodystart="88" bodyend="91"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Input device manager. </para>
     </briefdescription>

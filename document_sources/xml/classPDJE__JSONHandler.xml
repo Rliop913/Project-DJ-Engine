@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="classPDJE__JSONHandler" kind="class" language="C++" prot="public">
     <compoundname>PDJE_JSONHandler</compoundname>
     <includes refid="jsonWrapper_8hpp" local="no">jsonWrapper.hpp</includes>
@@ -8,12 +8,13 @@
         <type>typename CapnpWriterType</type>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classPDJE__JSONHandler_1a715fb610427c271c0a8e44e798e4d6d1" prot="private" static="no" mutable="no">
         <type><ref refid="jsonWrapper_8hpp_1a6c08a6bca89aa954d4bf90371a27dfa9" kindref="member">nj</ref></type>
         <definition>nj PDJE_JSONHandler&lt; CapnpWriterType &gt;::ROOT</definition>
         <argsstring></argsstring>
         <name>ROOT</name>
+        <qualifiedname>PDJE_JSONHandler::ROOT</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -22,13 +23,14 @@
         </inbodydescription>
         <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="44" column="8" bodyfile="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
-      <memberdef kind="function" id="classPDJE__JSONHandler_1a0482967a05a49b3cc007d12c102ded6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPDJE__JSONHandler_1ac0eae34433759047ad2fa123be2470f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::unique_ptr&lt; CapnpWriterType &gt;</type>
-        <definition>std::unique_ptr&lt;CapnpWriterType&gt; PDJE_JSONHandler&lt; CapnpWriterType &gt;::render</definition>
+        <definition>std::unique_ptr&lt; CapnpWriterType &gt; PDJE_JSONHandler&lt; CapnpWriterType &gt;::render</definition>
         <argsstring>()</argsstring>
         <name>render</name>
+        <qualifiedname>PDJE_JSONHandler::render</qualifiedname>
         <briefdescription>
 <para>Convert the current JSON data to a capnp writer object. </para>
         </briefdescription>
@@ -48,6 +50,7 @@
         <definition>int PDJE_JSONHandler&lt; CapnpWriterType &gt;::deleteLine</definition>
         <argsstring>(const Target &amp;args, bool skipType, bool skipDetail)</argsstring>
         <name>deleteLine</name>
+        <qualifiedname>PDJE_JSONHandler::deleteLine</qualifiedname>
         <param>
           <type>const Target &amp;</type>
           <declname>args</declname>
@@ -78,6 +81,7 @@
         <definition>int PDJE_JSONHandler&lt; CapnpWriterType &gt;::deleteLine</definition>
         <argsstring>(const Target &amp;args)</argsstring>
         <name>deleteLine</name>
+        <qualifiedname>PDJE_JSONHandler::deleteLine</qualifiedname>
         <param>
           <type>const Target &amp;</type>
           <declname>args</declname>
@@ -100,6 +104,7 @@
         <definition>bool PDJE_JSONHandler&lt; CapnpWriterType &gt;::add</definition>
         <argsstring>(const Target &amp;args)</argsstring>
         <name>add</name>
+        <qualifiedname>PDJE_JSONHandler::add</qualifiedname>
         <param>
           <type>const Target &amp;</type>
           <declname>args</declname>
@@ -122,6 +127,7 @@
         <definition>void PDJE_JSONHandler&lt; CapnpWriterType &gt;::getAll</definition>
         <argsstring>(std::function&lt; void(const Target &amp;args)&gt; jsonCallback)</argsstring>
         <name>getAll</name>
+        <qualifiedname>PDJE_JSONHandler::getAll</qualifiedname>
         <param>
           <type>std::function&lt; void(const Target &amp;args)&gt;</type>
           <declname>jsonCallback</declname>
@@ -139,6 +145,7 @@
         <definition>bool PDJE_JSONHandler&lt; CapnpWriterType &gt;::load</definition>
         <argsstring>(const fs::path &amp;filepath)</argsstring>
         <name>load</name>
+        <qualifiedname>PDJE_JSONHandler::load</qualifiedname>
         <param>
           <type>const fs::path &amp;</type>
           <declname>filepath</declname>
@@ -151,11 +158,12 @@
         </inbodydescription>
         <location file="include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp" line="69" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__JSONHandler_1a10d96a93178951168224e5f176f80c37" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__JSONHandler_1a43792f758ad088b160dc160d5627e05e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="jsonWrapper_8hpp_1a6c08a6bca89aa954d4bf90371a27dfa9" kindref="member">nj</ref> &amp;</type>
-        <definition>nj&amp; PDJE_JSONHandler&lt; CapnpWriterType &gt;::operator[]</definition>
+        <definition>nj &amp; PDJE_JSONHandler&lt; CapnpWriterType &gt;::operator[]</definition>
         <argsstring>(const DONT_SANITIZE &amp;key)</argsstring>
         <name>operator[]</name>
+        <qualifiedname>PDJE_JSONHandler::operator[]</qualifiedname>
         <param>
           <type>const <ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
           <declname>key</declname>
@@ -174,6 +182,7 @@
         <definition>bool PDJE_JSONHandler&lt; CapnpWriterType &gt;::save</definition>
         <argsstring>(const fs::path &amp;path)</argsstring>
         <name>save</name>
+        <qualifiedname>PDJE_JSONHandler::save</qualifiedname>
         <param>
           <type>const fs::path &amp;</type>
           <declname>path</declname>
@@ -192,6 +201,7 @@
         <definition>bool PDJE_JSONHandler&lt; CapnpWriterType &gt;::deleteFile</definition>
         <argsstring>(const fs::path &amp;path)</argsstring>
         <name>deleteFile</name>
+        <qualifiedname>PDJE_JSONHandler::deleteFile</qualifiedname>
         <param>
           <type>const fs::path &amp;</type>
           <declname>path</declname>
@@ -210,6 +220,7 @@
         <definition>PDJE_JSONHandler&lt; CapnpWriterType &gt;::PDJE_JSONHandler</definition>
         <argsstring>()=default</argsstring>
         <name>PDJE_JSONHandler</name>
+        <qualifiedname>PDJE_JSONHandler::PDJE_JSONHandler</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -223,6 +234,7 @@
         <definition>PDJE_JSONHandler&lt; CapnpWriterType &gt;::~PDJE_JSONHandler</definition>
         <argsstring>()=default</argsstring>
         <name>~PDJE_JSONHandler</name>
+        <qualifiedname>PDJE_JSONHandler::~PDJE_JSONHandler</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -236,8 +248,9 @@
         <definition>bool PDJE_JSONHandler&lt; KV_W &gt;::add</definition>
         <argsstring>(const KEY_VALUE &amp;args)</argsstring>
         <name>add</name>
+        <qualifiedname>PDJE_JSONHandler::add</qualifiedname>
         <param>
-          <type>const <ref refid="EditorArgs_8hpp_1a67473814637ada120f046e947d522b64" kindref="member">KEY_VALUE</ref> &amp;</type>
+          <type>const <ref refid="jsonWrapper_8hpp_1a67473814637ada120f046e947d522b64" kindref="member">KEY_VALUE</ref> &amp;</type>
           <declname>args</declname>
         </param>
         <briefdescription>
@@ -253,6 +266,7 @@
         <definition>int PDJE_JSONHandler&lt; KV_W &gt;::deleteLine</definition>
         <argsstring>(const KEY &amp;args)</argsstring>
         <name>deleteLine</name>
+        <qualifiedname>PDJE_JSONHandler::deleteLine</qualifiedname>
         <param>
           <type>const <ref refid="EditorArgs_8hpp_1a217a1073c4c083da1400cf99dab75f21" kindref="member">KEY</ref> &amp;</type>
           <declname>args</declname>
@@ -270,8 +284,9 @@
         <definition>void PDJE_JSONHandler&lt; KV_W &gt;::getAll</definition>
         <argsstring>(std::function&lt; void(const KEY_VALUE &amp;args)&gt; jsonCallback)</argsstring>
         <name>getAll</name>
+        <qualifiedname>PDJE_JSONHandler::getAll</qualifiedname>
         <param>
-          <type>std::function&lt; void(const <ref refid="EditorArgs_8hpp_1a67473814637ada120f046e947d522b64" kindref="member">KEY_VALUE</ref> &amp;args)&gt;</type>
+          <type>std::function&lt; void(const <ref refid="jsonWrapper_8hpp_1a67473814637ada120f046e947d522b64" kindref="member">KEY_VALUE</ref> &amp;args)&gt;</type>
           <declname>jsonCallback</declname>
         </param>
         <briefdescription>
@@ -287,6 +302,7 @@
         <definition>bool PDJE_JSONHandler&lt; KV_W &gt;::load</definition>
         <argsstring>(const fs::path &amp;filepath)</argsstring>
         <name>load</name>
+        <qualifiedname>PDJE_JSONHandler::load</qualifiedname>
         <param>
           <type>const fs::path &amp;</type>
           <declname>filepath</declname>
@@ -304,6 +320,7 @@
         <definition>int PDJE_JSONHandler&lt; KV_W &gt;::deleteLine</definition>
         <argsstring>(const DONT_SANITIZE &amp;args, bool skipType, bool skipDetail)=delete</argsstring>
         <name>deleteLine</name>
+        <qualifiedname>PDJE_JSONHandler::deleteLine</qualifiedname>
         <param>
           <type>const <ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
           <declname>args</declname>
@@ -329,6 +346,7 @@
         <definition>int PDJE_JSONHandler&lt; MIX_W &gt;::deleteLine</definition>
         <argsstring>(const MixArgs &amp;args)=delete</argsstring>
         <name>deleteLine</name>
+        <qualifiedname>PDJE_JSONHandler::deleteLine</qualifiedname>
         <param>
           <type>const <ref refid="structMixArgs" kindref="compound">MixArgs</ref> &amp;</type>
           <declname>args</declname>
@@ -346,6 +364,7 @@
         <definition>int PDJE_JSONHandler&lt; MIX_W &gt;::deleteLine</definition>
         <argsstring>(const MixArgs &amp;args, bool skipType, bool skipDetail)</argsstring>
         <name>deleteLine</name>
+        <qualifiedname>PDJE_JSONHandler::deleteLine</qualifiedname>
         <param>
           <type>const <ref refid="structMixArgs" kindref="compound">MixArgs</ref> &amp;</type>
           <declname>args</declname>
@@ -371,6 +390,7 @@
         <definition>bool PDJE_JSONHandler&lt; MIX_W &gt;::add</definition>
         <argsstring>(const MixArgs &amp;args)</argsstring>
         <name>add</name>
+        <qualifiedname>PDJE_JSONHandler::add</qualifiedname>
         <param>
           <type>const <ref refid="structMixArgs" kindref="compound">MixArgs</ref> &amp;</type>
           <declname>args</declname>
@@ -388,6 +408,7 @@
         <definition>void PDJE_JSONHandler&lt; MIX_W &gt;::getAll</definition>
         <argsstring>(std::function&lt; void(const MixArgs &amp;args)&gt; jsonCallback)</argsstring>
         <name>getAll</name>
+        <qualifiedname>PDJE_JSONHandler::getAll</qualifiedname>
         <param>
           <type>std::function&lt; void(const <ref refid="structMixArgs" kindref="compound">MixArgs</ref> &amp;args)&gt;</type>
           <declname>jsonCallback</declname>
@@ -401,10 +422,11 @@
         <location file="include/core/editor/TimeLine/JSONWrap/MixJson.cpp" line="87" column="18" bodyfile="include/core/editor/TimeLine/JSONWrap/MixJson.cpp" bodystart="87" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__JSONHandler_1af6e1715db196f0bcfae25dbc0855389e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::unique_ptr&lt; <ref refid="EditorArgs_8hpp_1a62a8aadaf6e33bd03a591749fca41482" kindref="member">MIX_W</ref> &gt;</type>
+        <type>std::unique_ptr&lt; <ref refid="jsonWrapper_8hpp_1a62a8aadaf6e33bd03a591749fca41482" kindref="member">MIX_W</ref> &gt;</type>
         <definition>std::unique_ptr&lt; MIX_W &gt; PDJE_JSONHandler&lt; MIX_W &gt;::render</definition>
         <argsstring>()</argsstring>
         <name>render</name>
+        <qualifiedname>PDJE_JSONHandler::render</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -418,6 +440,7 @@
         <definition>bool PDJE_JSONHandler&lt; MIX_W &gt;::load</definition>
         <argsstring>(const fs::path &amp;filepath)</argsstring>
         <name>load</name>
+        <qualifiedname>PDJE_JSONHandler::load</qualifiedname>
         <param>
           <type>const fs::path &amp;</type>
           <declname>filepath</declname>
@@ -435,6 +458,7 @@
         <definition>int PDJE_JSONHandler&lt; MUSIC_W &gt;::deleteLine</definition>
         <argsstring>(const NoteArgs &amp;args, bool skipType, bool skipDetail)=delete</argsstring>
         <name>deleteLine</name>
+        <qualifiedname>PDJE_JSONHandler::deleteLine</qualifiedname>
         <param>
           <type>const <ref refid="structNoteArgs" kindref="compound">NoteArgs</ref> &amp;</type>
           <declname>args</declname>
@@ -460,6 +484,7 @@
         <definition>int PDJE_JSONHandler&lt; MUSIC_W &gt;::deleteLine</definition>
         <argsstring>(const MusicArgs &amp;args)</argsstring>
         <name>deleteLine</name>
+        <qualifiedname>PDJE_JSONHandler::deleteLine</qualifiedname>
         <param>
           <type>const <ref refid="structMusicArgs" kindref="compound">MusicArgs</ref> &amp;</type>
           <declname>args</declname>
@@ -477,6 +502,7 @@
         <definition>bool PDJE_JSONHandler&lt; MUSIC_W &gt;::add</definition>
         <argsstring>(const MusicArgs &amp;args)</argsstring>
         <name>add</name>
+        <qualifiedname>PDJE_JSONHandler::add</qualifiedname>
         <param>
           <type>const <ref refid="structMusicArgs" kindref="compound">MusicArgs</ref> &amp;</type>
           <declname>args</declname>
@@ -490,10 +516,11 @@
         <location file="include/core/editor/TimeLine/JSONWrap/MusicJson.cpp" line="47" column="18" bodyfile="include/core/editor/TimeLine/JSONWrap/MusicJson.cpp" bodystart="47" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__JSONHandler_1ad85ac7668e163cd79ea6fb574fe5bc03" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::unique_ptr&lt; <ref refid="EditorArgs_8hpp_1a5ce6d29d6001f496835f6401276a682e" kindref="member">MUSIC_W</ref> &gt;</type>
+        <type>std::unique_ptr&lt; <ref refid="jsonWrapper_8hpp_1a5ce6d29d6001f496835f6401276a682e" kindref="member">MUSIC_W</ref> &gt;</type>
         <definition>std::unique_ptr&lt; MUSIC_W &gt; PDJE_JSONHandler&lt; MUSIC_W &gt;::render</definition>
         <argsstring>()</argsstring>
         <name>render</name>
+        <qualifiedname>PDJE_JSONHandler::render</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -507,6 +534,7 @@
         <definition>void PDJE_JSONHandler&lt; MUSIC_W &gt;::getAll</definition>
         <argsstring>(std::function&lt; void(const EDIT_ARG_MUSIC &amp;args)&gt; jsonCallback)</argsstring>
         <name>getAll</name>
+        <qualifiedname>PDJE_JSONHandler::getAll</qualifiedname>
         <param>
           <type>std::function&lt; void(const <ref refid="structEDIT__ARG__MUSIC" kindref="compound">EDIT_ARG_MUSIC</ref> &amp;args)&gt;</type>
           <declname>jsonCallback</declname>
@@ -524,6 +552,7 @@
         <definition>bool PDJE_JSONHandler&lt; MUSIC_W &gt;::load</definition>
         <argsstring>(const fs::path &amp;filepath)</argsstring>
         <name>load</name>
+        <qualifiedname>PDJE_JSONHandler::load</qualifiedname>
         <param>
           <type>const fs::path &amp;</type>
           <declname>filepath</declname>
@@ -541,6 +570,7 @@
         <definition>bool PDJE_JSONHandler&lt; NOTE_W &gt;::add</definition>
         <argsstring>(const NoteArgs &amp;args)</argsstring>
         <name>add</name>
+        <qualifiedname>PDJE_JSONHandler::add</qualifiedname>
         <param>
           <type>const <ref refid="structNoteArgs" kindref="compound">NoteArgs</ref> &amp;</type>
           <declname>args</declname>
@@ -558,6 +588,7 @@
         <definition>int PDJE_JSONHandler&lt; NOTE_W &gt;::deleteLine</definition>
         <argsstring>(const NoteArgs &amp;args)</argsstring>
         <name>deleteLine</name>
+        <qualifiedname>PDJE_JSONHandler::deleteLine</qualifiedname>
         <param>
           <type>const <ref refid="structNoteArgs" kindref="compound">NoteArgs</ref> &amp;</type>
           <declname>args</declname>
@@ -575,6 +606,7 @@
         <definition>void PDJE_JSONHandler&lt; NOTE_W &gt;::getAll</definition>
         <argsstring>(std::function&lt; void(const NoteArgs &amp;args)&gt; jsonCallback)</argsstring>
         <name>getAll</name>
+        <qualifiedname>PDJE_JSONHandler::getAll</qualifiedname>
         <param>
           <type>std::function&lt; void(const <ref refid="structNoteArgs" kindref="compound">NoteArgs</ref> &amp;args)&gt;</type>
           <declname>jsonCallback</declname>
@@ -588,10 +620,11 @@
         <location file="include/core/editor/TimeLine/JSONWrap/NoteJson.cpp" line="87" column="18" bodyfile="include/core/editor/TimeLine/JSONWrap/NoteJson.cpp" bodystart="87" bodyend="110"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__JSONHandler_1ac9abd82d3716a90c1190d0f924ac4bc3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>std::unique_ptr&lt; <ref refid="EditorArgs_8hpp_1a29a06c37bb7adf0275ebf5975fb7cb89" kindref="member">NOTE_W</ref> &gt;</type>
+        <type>std::unique_ptr&lt; <ref refid="jsonWrapper_8hpp_1a29a06c37bb7adf0275ebf5975fb7cb89" kindref="member">NOTE_W</ref> &gt;</type>
         <definition>std::unique_ptr&lt; NOTE_W &gt; PDJE_JSONHandler&lt; NOTE_W &gt;::render</definition>
         <argsstring>()</argsstring>
         <name>render</name>
+        <qualifiedname>PDJE_JSONHandler::render</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -605,6 +638,7 @@
         <definition>bool PDJE_JSONHandler&lt; NOTE_W &gt;::load</definition>
         <argsstring>(const fs::path &amp;filepath)</argsstring>
         <name>load</name>
+        <qualifiedname>PDJE_JSONHandler::load</qualifiedname>
         <param>
           <type>const fs::path &amp;</type>
           <declname>filepath</declname>
@@ -617,7 +651,7 @@
         </inbodydescription>
         <location file="include/core/editor/TimeLine/JSONWrap/NoteJson.cpp" line="150" column="18" bodyfile="include/core/editor/TimeLine/JSONWrap/NoteJson.cpp" bodystart="150" bodyend="194"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Generic handler for reading/writing editor JSON files. </para>
     </briefdescription>
@@ -650,9 +684,9 @@
       <member refid="classPDJE__JSONHandler_1abab0be83b5d5291be979b47ca8b14649" prot="public" virt="non-virtual"><scope>PDJE_JSONHandler</scope><name>load</name></member>
       <member refid="classPDJE__JSONHandler_1a9af1a44bd01097f0d3e7a3901f638f55" prot="public" virt="non-virtual"><scope>PDJE_JSONHandler</scope><name>load</name></member>
       <member refid="classPDJE__JSONHandler_1aefaf5789899fe9ee6bf78ca157460277" prot="public" virt="non-virtual"><scope>PDJE_JSONHandler</scope><name>load</name></member>
-      <member refid="classPDJE__JSONHandler_1a10d96a93178951168224e5f176f80c37" prot="public" virt="non-virtual"><scope>PDJE_JSONHandler</scope><name>operator[]</name></member>
+      <member refid="classPDJE__JSONHandler_1a43792f758ad088b160dc160d5627e05e" prot="public" virt="non-virtual"><scope>PDJE_JSONHandler</scope><name>operator[]</name></member>
       <member refid="classPDJE__JSONHandler_1a64bf5adedd053da2a351f84bf2f63ecb" prot="public" virt="non-virtual"><scope>PDJE_JSONHandler</scope><name>PDJE_JSONHandler</name></member>
-      <member refid="classPDJE__JSONHandler_1a0482967a05a49b3cc007d12c102ded6a" prot="public" virt="non-virtual"><scope>PDJE_JSONHandler</scope><name>render</name></member>
+      <member refid="classPDJE__JSONHandler_1ac0eae34433759047ad2fa123be2470f7" prot="public" virt="non-virtual"><scope>PDJE_JSONHandler</scope><name>render</name></member>
       <member refid="classPDJE__JSONHandler_1af6e1715db196f0bcfae25dbc0855389e" prot="public" virt="non-virtual"><scope>PDJE_JSONHandler</scope><name>render</name></member>
       <member refid="classPDJE__JSONHandler_1ad85ac7668e163cd79ea6fb574fe5bc03" prot="public" virt="non-virtual"><scope>PDJE_JSONHandler</scope><name>render</name></member>
       <member refid="classPDJE__JSONHandler_1ac9abd82d3716a90c1190d0f924ac4bc3" prot="public" virt="non-virtual"><scope>PDJE_JSONHandler</scope><name>render</name></member>

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="../">
 <head>
@@ -8,20 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Class audioPlayer &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
       <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
 
   
-      <script src="../_static/jquery.js?v=5d32c60e"></script>
-      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-      <script src="../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
-      <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
-      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=9bcbadda"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+        <script src="../_static/design-tabs.js?v=f930bc37"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -92,15 +94,10 @@
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N11audioPlayer9GetStatusEv">
-<span id="_CPPv3N11audioPlayer9GetStatusEv"></span><span id="_CPPv2N11audioPlayer9GetStatusEv"></span><span id="audioPlayer::GetStatus"></span><span class="target" id="classaudioPlayer_1ae15f5f974b0ee629d267e16e8db1c8ea"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetStatus</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
-<dd><p>the status getter for binded languages. </p>
-</dd></dl>
-
-<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N11audioPlayer8ActivateEv">
 <span id="_CPPv3N11audioPlayer8ActivateEv"></span><span id="_CPPv2N11audioPlayer8ActivateEv"></span><span id="audioPlayer::Activate"></span><span class="target" id="classaudioPlayer_1a7e91ca8d0037ef8e2fb50ff7289317aa"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Activate</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
 <dd><p>Plays music. </p>
+<p>the handler status. check when something wrong. do not change this manually. </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -187,15 +184,6 @@
 <dt class="sig sig-object cpp" id="_CPPv4N11audioPlayerD0Ev">
 <span id="_CPPv3N11audioPlayerD0Ev"></span><span id="_CPPv2N11audioPlayerD0Ev"></span><span id="audioPlayer::~audioPlayer"></span><span class="target" id="classaudioPlayer_1afb33af34b0a934cacbd96b61b5c1731b"></span><span class="sig-name descname"><span class="n"><span class="pre">~audioPlayer</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
 <dd></dd></dl>
-
-</div>
-<div class="breathe-sectiondef docutils container">
-<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
-<dl class="cpp var">
-<dt class="sig sig-object cpp" id="_CPPv4N11audioPlayer6STATUSE">
-<span id="_CPPv3N11audioPlayer6STATUSE"></span><span id="_CPPv2N11audioPlayer6STATUSE"></span><span id="audioPlayer::STATUS__ss"></span><span class="target" id="classaudioPlayer_1a167f44a37a6848814cc670d60f750ebb"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">STATUS</span></span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="s"><span class="pre">&quot;OK&quot;</span></span><br /></dt>
-<dd><p>the handler status. check when something wrong. do not change this manually. </p>
-</dd></dl>
 
 </div>
 </dd></dl>

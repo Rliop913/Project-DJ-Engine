@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="Decoder_8cpp" kind="file" language="C++">
     <compoundname>Decoder.cpp</compoundname>
     <includes refid="Decoder_8hpp" local="yes">Decoder.hpp</includes>
@@ -7,24 +7,37 @@
     <includes local="no">filesystem</includes>
     <includes local="no">fstream</includes>
     <incdepgraph>
-      <node id="31">
-        <label>musicDB.hpp</label>
-        <link refid="musicDB_8hpp"/>
-        <childnode refid="26" relation="include">
+      <node id="1">
+        <label>include/core/audioRender/MixMachine/MiniaudioObjects/Decoder.cpp</label>
+        <link refid="Decoder_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Decoder.hpp</label>
+        <link refid="Decoder_8hpp"/>
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="33" relation="include">
         </childnode>
-      </node>
-      <node id="17">
-        <label>filesystem</label>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
       </node>
       <node id="9">
         <label>CapnpBinary.hpp</label>
@@ -48,9 +61,6 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="36">
-        <label>miniaudio.h</label>
-      </node>
       <node id="6">
         <label>FrameCalc.hpp</label>
         <link refid="FrameCalc_8hpp"/>
@@ -64,145 +74,6 @@
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-      </node>
-      <node id="11">
-        <label>capnp/serialize.h</label>
-      </node>
-      <node id="2">
-        <label>Decoder.hpp</label>
-        <link refid="Decoder_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
-        </childnode>
-      </node>
-      <node id="8">
-        <label>cmath</label>
-      </node>
-      <node id="12">
-        <label>MixBinary.capnp.h</label>
-      </node>
-      <node id="4">
-        <label>string</label>
-      </node>
-      <node id="19">
-        <label>spdlog/sinks/basic_file_sink.h</label>
-      </node>
-      <node id="26">
-        <label>sqlite3.h</label>
-      </node>
-      <node id="37">
-        <label>fstream</label>
-      </node>
-      <node id="16">
-        <label>PDJE_LOG_SETTER.hpp</label>
-        <link refid="PDJE__LOG__SETTER_8hpp"/>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-      </node>
-      <node id="35">
-        <label>trackDB.hpp</label>
-        <link refid="trackDB_8hpp"/>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-      </node>
-      <node id="24">
-        <label>hwy/aligned_allocator.h</label>
-      </node>
-      <node id="21">
-        <label>spdlog/spdlog.h</label>
-      </node>
-      <node id="1">
-        <label>include/core/audioRender/MixMachine/MiniaudioObjects/Decoder.cpp</label>
-        <link refid="Decoder_8cpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="37" relation="include">
-        </childnode>
-      </node>
-      <node id="27">
-        <label>rocksdb/db.h</label>
-      </node>
-      <node id="22">
-        <label>string_view</label>
-      </node>
-      <node id="30">
-        <label>rocksdb/table.h</label>
-      </node>
-      <node id="3">
-        <label>optional</label>
-      </node>
-      <node id="29">
-        <label>rocksdb/options.h</label>
-      </node>
-      <node id="5">
-        <label>vector</label>
-      </node>
-      <node id="20">
-        <label>spdlog/sinks/stdout_color_sinks.h</label>
-      </node>
-      <node id="14">
-        <label>NoteBinary.capnp.h</label>
-      </node>
-      <node id="33">
-        <label>fileNameSanitizer.hpp</label>
-        <link refid="fileNameSanitizer_8hpp"/>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="34">
-        <label>cppcodec/base64_default_url.hpp</label>
-      </node>
-      <node id="18">
-        <label>mutex</label>
-      </node>
-      <node id="15">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
       </node>
       <node id="25">
         <label>dbRoot.hpp</label>
@@ -232,15 +103,6 @@
         <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="28">
-        <label>rocksdb/filter_policy.h</label>
-      </node>
-      <node id="23">
-        <label>type_traits</label>
-      </node>
-      <node id="13">
-        <label>MusicBinary.capnp.h</label>
-      </node>
       <node id="32">
         <label>dbState.hpp</label>
         <link refid="dbState_8hpp"/>
@@ -255,11 +117,149 @@
         <childnode refid="26" relation="include">
         </childnode>
       </node>
+      <node id="31">
+        <label>musicDB.hpp</label>
+        <link refid="musicDB_8hpp"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>trackDB.hpp</label>
+        <link refid="trackDB_8hpp"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>fileNameSanitizer.hpp</label>
+        <link refid="fileNameSanitizer_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
+      </node>
+      <node id="16">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="PDJE__LOG__SETTER_8hpp"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>MixBinary.capnp.h</label>
+      </node>
+      <node id="13">
+        <label>MusicBinary.capnp.h</label>
+      </node>
+      <node id="14">
+        <label>NoteBinary.capnp.h</label>
+      </node>
       <node id="7">
         <label>algorithm</label>
       </node>
       <node id="10">
         <label>capnp/message.h</label>
+      </node>
+      <node id="11">
+        <label>capnp/serialize.h</label>
+      </node>
+      <node id="8">
+        <label>cmath</label>
+      </node>
+      <node id="34">
+        <label>cppcodec/base64_default_url.hpp</label>
+      </node>
+      <node id="17">
+        <label>filesystem</label>
+      </node>
+      <node id="37">
+        <label>fstream</label>
+      </node>
+      <node id="24">
+        <label>hwy/aligned_allocator.h</label>
+      </node>
+      <node id="36">
+        <label>miniaudio.h</label>
+      </node>
+      <node id="18">
+        <label>mutex</label>
+      </node>
+      <node id="3">
+        <label>optional</label>
+      </node>
+      <node id="27">
+        <label>rocksdb/db.h</label>
+      </node>
+      <node id="28">
+        <label>rocksdb/filter_policy.h</label>
+      </node>
+      <node id="29">
+        <label>rocksdb/options.h</label>
+      </node>
+      <node id="30">
+        <label>rocksdb/table.h</label>
+      </node>
+      <node id="19">
+        <label>spdlog/sinks/basic_file_sink.h</label>
+      </node>
+      <node id="20">
+        <label>spdlog/sinks/stdout_color_sinks.h</label>
+      </node>
+      <node id="21">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="26">
+        <label>sqlite3.h</label>
+      </node>
+      <node id="4">
+        <label>string</label>
+      </node>
+      <node id="22">
+        <label>string_view</label>
+      </node>
+      <node id="23">
+        <label>type_traits</label>
+      </node>
+      <node id="5">
+        <label>vector</label>
       </node>
     </incdepgraph>
     <briefdescription>
@@ -359,7 +359,7 @@
 <codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="91"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="93" refid="structDecoder_1adaa739a0c93e787a447e52725e352ddc" refkind="member"><highlight class="normal"><ref refid="structDecoder_1af5edf9c75d6929fc76133c87166cee2f" kindref="member">Decoder::getRange</ref>(<ref refid="Decoder_8hpp_1a2c466236162c15bad4bd1e875fd46c0c" kindref="member">FRAME_POS</ref><sp/>numFrames,<sp/><ref refid="FrameCalc_8hpp_1afaba0c56b304d05ee34bd4cc22319217" kindref="member">SIMD_FLOAT</ref><sp/>&amp;buffer)</highlight></codeline>
+<codeline lineno="93" refid="structDecoder_1adaa739a0c93e787a447e52725e352ddc" refkind="member"><highlight class="normal"><ref refid="structDecoder_1af5edf9c75d6929fc76133c87166cee2f" kindref="member">Decoder::getRange</ref>(<ref refid="Decoder_8hpp_1a2c466236162c15bad4bd1e875fd46c0c" kindref="member">FRAME_POS</ref><sp/>numFrames,<sp/><ref refid="FrameCalc_8hpp_1a4ae0f789157647f4609ec87fb5b58e5a" kindref="member">SIMD_FLOAT</ref><sp/>&amp;buffer)</highlight></codeline>
 <codeline lineno="94"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Decoder_8hpp_1a2c466236162c15bad4bd1e875fd46c0c" kindref="member">FRAME_POS</ref><sp/>BufferSize<sp/>=<sp/>numFrames<sp/>*<sp/><ref refid="FrameCalc_8hpp_1ace6a11e892466500d47d1f45f042bc53" kindref="member">CHANNEL</ref>;</highlight></codeline>
 <codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(buffer.size()<sp/>&lt;<sp/>BufferSize)<sp/>{</highlight></codeline>

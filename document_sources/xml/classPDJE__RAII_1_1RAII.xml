@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="classPDJE__RAII_1_1RAII" kind="class" language="C++" prot="public">
     <compoundname>PDJE_RAII::RAII</compoundname>
     <includes refid="PDJE__RAII__WRAP_8hpp" local="no">PDJE_RAII_WRAP.hpp</includes>
@@ -11,12 +11,13 @@
         <type>typename Deleter</type>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classPDJE__RAII_1_1RAII_1ad05cff74574763f8689fbfc29a5d178c" prot="private" static="no" mutable="no">
         <type>Deleter</type>
         <definition>Deleter PDJE_RAII::RAII&lt; T, Deleter &gt;::deleter</definition>
         <argsstring></argsstring>
         <name>deleter</name>
+        <qualifiedname>PDJE_RAII::RAII::deleter</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -25,13 +26,14 @@
         </inbodydescription>
         <location file="include/global/PDJE_RAII_WRAP.hpp" line="10" column="13" bodyfile="include/global/PDJE_RAII_WRAP.hpp" bodystart="10" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-attrib">
+    </sectiondef>
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="classPDJE__RAII_1_1RAII_1af21ab29597c2af046df3d2cd6e98a54a" prot="public" static="no" mutable="no">
         <type>std::optional&lt; <ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref> &gt;</type>
         <definition>std::optional&lt;T&gt; PDJE_RAII::RAII&lt; T, Deleter &gt;::val</definition>
         <argsstring></argsstring>
         <name>val</name>
+        <qualifiedname>PDJE_RAII::RAII::val</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -40,13 +42,14 @@
         </inbodydescription>
         <location file="include/global/PDJE_RAII_WRAP.hpp" line="61" column="19" bodyfile="include/global/PDJE_RAII_WRAP.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classPDJE__RAII_1_1RAII_1a65279e57349afb73835469b7e1cfc5c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>PDJE_RAII::RAII&lt; T, Deleter &gt;::RAII</definition>
         <argsstring>()=default</argsstring>
         <name>RAII</name>
+        <qualifiedname>PDJE_RAII::RAII::RAII</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -60,6 +63,7 @@
         <definition>PDJE_RAII::RAII&lt; T, Deleter &gt;::RAII</definition>
         <argsstring>(const RAII &amp;)=delete</argsstring>
         <name>RAII</name>
+        <qualifiedname>PDJE_RAII::RAII::RAII</qualifiedname>
         <param>
           <type>const <ref refid="classPDJE__RAII_1_1RAII" kindref="compound">RAII</ref> &amp;</type>
         </param>
@@ -71,11 +75,12 @@
         </inbodydescription>
         <location file="include/global/PDJE_RAII_WRAP.hpp" line="15" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__RAII_1_1RAII_1ac15c268a817c94c3dabe2964972408ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__RAII_1_1RAII_1ab79da3cab8e7ecc76280f78ea4b8a6ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classPDJE__RAII_1_1RAII" kindref="compound">RAII</ref> &amp;</type>
-        <definition>RAII&amp; PDJE_RAII::RAII&lt; T, Deleter &gt;::operator=</definition>
+        <definition>RAII &amp; PDJE_RAII::RAII&lt; T, Deleter &gt;::operator=</definition>
         <argsstring>(const RAII &amp;)=delete</argsstring>
         <name>operator=</name>
+        <qualifiedname>PDJE_RAII::RAII::operator=</qualifiedname>
         <param>
           <type>const <ref refid="classPDJE__RAII_1_1RAII" kindref="compound">RAII</ref> &amp;</type>
         </param>
@@ -92,6 +97,7 @@
         <definition>PDJE_RAII::RAII&lt; T, Deleter &gt;::RAII</definition>
         <argsstring>(RAII &amp;&amp;other) noexcept</argsstring>
         <name>RAII</name>
+        <qualifiedname>PDJE_RAII::RAII::RAII</qualifiedname>
         <param>
           <type><ref refid="classPDJE__RAII_1_1RAII" kindref="compound">RAII</ref> &amp;&amp;</type>
           <declname>other</declname>
@@ -104,11 +110,12 @@
         </inbodydescription>
         <location file="include/global/PDJE_RAII_WRAP.hpp" line="19" column="5" bodyfile="include/global/PDJE_RAII_WRAP.hpp" bodystart="19" bodyend="23"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__RAII_1_1RAII_1aa94ad4359bb0ca7ea3aa15381272b230" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__RAII_1_1RAII_1a50ded9e89e5ca1698b7ac2f1f2ffc26f" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classPDJE__RAII_1_1RAII" kindref="compound">RAII</ref> &amp;</type>
-        <definition>RAII&amp; PDJE_RAII::RAII&lt; T, Deleter &gt;::operator=</definition>
+        <definition>RAII &amp; PDJE_RAII::RAII&lt; T, Deleter &gt;::operator=</definition>
         <argsstring>(RAII &amp;&amp;other) noexcept</argsstring>
         <name>operator=</name>
+        <qualifiedname>PDJE_RAII::RAII::operator=</qualifiedname>
         <param>
           <type><ref refid="classPDJE__RAII_1_1RAII" kindref="compound">RAII</ref> &amp;&amp;</type>
           <declname>other</declname>
@@ -126,6 +133,7 @@
         <definition>PDJE_RAII::RAII&lt; T, Deleter &gt;::~RAII</definition>
         <argsstring>() noexcept</argsstring>
         <name>~RAII</name>
+        <qualifiedname>PDJE_RAII::RAII::~RAII</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -139,6 +147,7 @@
         <definition>void PDJE_RAII::RAII&lt; T, Deleter &gt;::reset</definition>
         <argsstring>() noexcept</argsstring>
         <name>reset</name>
+        <qualifiedname>PDJE_RAII::RAII::reset</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -152,6 +161,7 @@
         <definition>T PDJE_RAII::RAII&lt; T, Deleter &gt;::get</definition>
         <argsstring>() const</argsstring>
         <name>get</name>
+        <qualifiedname>PDJE_RAII::RAII::get</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -165,6 +175,7 @@
         <definition>PDJE_RAII::RAII&lt; T, Deleter &gt;::operator bool</definition>
         <argsstring>() const noexcept</argsstring>
         <name>operator bool</name>
+        <qualifiedname>PDJE_RAII::RAII::operator bool</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -173,7 +184,7 @@
         </inbodydescription>
         <location file="include/global/PDJE_RAII_WRAP.hpp" line="57" column="5" bodyfile="include/global/PDJE_RAII_WRAP.hpp" bodystart="57" bodyend="60"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -183,8 +194,8 @@
       <member refid="classPDJE__RAII_1_1RAII_1ad05cff74574763f8689fbfc29a5d178c" prot="private" virt="non-virtual"><scope>PDJE_RAII::RAII</scope><name>deleter</name></member>
       <member refid="classPDJE__RAII_1_1RAII_1ae78bdfcfafa325b457b9dbcf2d50ea2f" prot="public" virt="non-virtual"><scope>PDJE_RAII::RAII</scope><name>get</name></member>
       <member refid="classPDJE__RAII_1_1RAII_1a970a93a39a7e6ba5f6fcf1a79d5dfe5a" prot="public" virt="non-virtual"><scope>PDJE_RAII::RAII</scope><name>operator bool</name></member>
-      <member refid="classPDJE__RAII_1_1RAII_1ac15c268a817c94c3dabe2964972408ae" prot="public" virt="non-virtual"><scope>PDJE_RAII::RAII</scope><name>operator=</name></member>
-      <member refid="classPDJE__RAII_1_1RAII_1aa94ad4359bb0ca7ea3aa15381272b230" prot="public" virt="non-virtual"><scope>PDJE_RAII::RAII</scope><name>operator=</name></member>
+      <member refid="classPDJE__RAII_1_1RAII_1ab79da3cab8e7ecc76280f78ea4b8a6ec" prot="public" virt="non-virtual"><scope>PDJE_RAII::RAII</scope><name>operator=</name></member>
+      <member refid="classPDJE__RAII_1_1RAII_1a50ded9e89e5ca1698b7ac2f1f2ffc26f" prot="public" virt="non-virtual"><scope>PDJE_RAII::RAII</scope><name>operator=</name></member>
       <member refid="classPDJE__RAII_1_1RAII_1a65279e57349afb73835469b7e1cfc5c9" prot="public" virt="non-virtual"><scope>PDJE_RAII::RAII</scope><name>RAII</name></member>
       <member refid="classPDJE__RAII_1_1RAII_1a9c547ea380536f3c6056c4679a92d638" prot="public" virt="non-virtual"><scope>PDJE_RAII::RAII</scope><name>RAII</name></member>
       <member refid="classPDJE__RAII_1_1RAII_1a95cfa0947c83df5c8a3831f29a1dc9c3" prot="public" virt="non-virtual"><scope>PDJE_RAII::RAII</scope><name>RAII</name></member>

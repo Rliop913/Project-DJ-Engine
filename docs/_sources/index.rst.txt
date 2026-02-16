@@ -1,7 +1,7 @@
 Project-DJ-Engine – A Real‑Time Engine for Rhythm Games, DJing, and Audio Production
 ======================================================================================
 
-**Project-DJ-Engine (PDJE)** is an integrated, production‑ready engine combining rhythm game mechanics, DJ performance tools, and digital audio workstation features into a single soft real‑time C++ system. It lets you create, reproduce, and remix DJ mixes, drive rhythm‑game note charts, and build interactive music experiences—all with low‑latency, millisecond‑level timing guarantees.
+**Project-DJ-Engine (PDJE)** is a soft real-time C++ engine that combines rhythm game logic, DJ performance workflows, and DAW-style editing APIs. It lets you create, reproduce, and remix DJ mixes, drive rhythm-game note charts, and build interactive music experiences with low-latency pipelines and synchronized high-resolution timestamps.
 
 PDJE’s modular core provides:
 
@@ -56,7 +56,7 @@ Learn about PDJE's modules and usage in the :doc:`Getting Started` documentation
 System Architecture
 -------------------
 
-PDJE is organized into independent, dynamically loadable modules:
+PDJE is organized into major modules. In the default build these are linked together through the project targets, and selected modules can also be built as separate libraries depending on CMake options.
 
 - **Core Engine** : 
   The Core Engine is the most critical component of the PDJE project.
@@ -81,7 +81,7 @@ PDJE is organized into independent, dynamically loadable modules:
   
   It supports general-purpose inputs such as keyboard and mouse, as well as MIDI input.
   
-  Available on linux, windows
+  Available on Linux and Windows in the current source tree. macOS support is planned.
 - **Judge Engine** :
   
 
@@ -110,11 +110,7 @@ PDJE is organized into independent, dynamically loadable modules:
   * Initial synchronization (with periodic drift checks) aligns the input and audio epochs so the computed time differences reflect true inter-event timing.
 
 - **Utility Engine** :
-  This engine handles non-essential but highly useful functionalities beyond the core features.
-
-  It can be integrated with the various modules mentioned above to provide optional capabilities such as AI inference, FFT processing, and music analysis using advanced algorithms.
-
-  Some of these features may require GPU acceleration or SIMD support, and could demand high computational performance depending on the workload.
+  The Utility Engine page currently represents roadmap-level ideas (for example, AI/analysis helpers). There is no active `PDJE_MODULE_UTILITY` build target in the current CMake configuration.
 
 MileStones
 ------------
@@ -128,10 +124,10 @@ MileStones
       0.6.0 : PDJE_Input module implement-Windows
       0.7.0 : PDJE_Judge module implement
       0.8.0 : PDjE_Input module implement-Linux, MIDI
-      0.9.0 : PDJE_Input module implement-Mac
+      0.9.0 : PDJE_Input module implement-Mac (planned)
       1.0.0 : Stable Release
     section DJ + DAW + HPC + AI Rhythm Engine
-      1.2.0 : Basic Utility Module Implemented
+      1.2.0 : Basic Utility Module (roadmap)
       1.5.0 : OnnxRuntime Integration Utility Module
       2.0.0 : OnnxRuntime Integrated with AdaptiveCPP
             : Cross-Vendor GPGPU Support Enabled
@@ -147,15 +143,15 @@ PDJE is ideal for:
 - **Custom rhythm‑game development** with built‑in mixing
 - **Realtime + Pre-made DJ performance**
 - **In‑game music editors and DAW** for dynamic chart and mixset creation
-- **Low Latency Input** for linux(epoll + RT mode) and windows(rawinput).
+- **Low Latency Input** for Linux (epoll-based path) and Windows (Raw Input).
   
 Additional Resources
 --------------------
 
-- 💻 **GitHub**: https://github.com/Rliop913/Project-DJ-Engine  
-- 📄 **License**: LGPLv2.1 (by SoundTouch License)
-- 🎮 **Godot Plugin**: https://github.com/Rliop913/PDJE-Godot-Plugin
-- 📦 **Plugin Prebuilt**: https://github.com/Rliop913/Project_DJ_Godot
+- **GitHub**: https://github.com/Rliop913/Project-DJ-Engine  
+- **License**: LGPL v2.1
+- **Godot Plugin**: https://github.com/Rliop913/PDJE-Godot-Plugin
+- **Plugin Prebuilt**: https://github.com/Rliop913/Project_DJ_Godot
   
 --------------------
 

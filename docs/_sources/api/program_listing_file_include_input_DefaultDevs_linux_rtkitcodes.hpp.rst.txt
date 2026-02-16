@@ -22,6 +22,19 @@ Program Listing for File rtkitcodes.hpp
    
    namespace rtkit {
    
+   //AI generated -> how to use acl
+   // 1) 네, 글로브로 한 번에 줄 수 있어
+   
+   // 쉘이 event*를 실제 파일 목록으로 확장해줘서 아래처럼 동작해.
+   
+   // sudo setfacl -m u:$USER:r /dev/input/event*
+   
+   
+   // 그리고 해제도 동일하게:
+   
+   // sudo setfacl -x u:$USER /dev/input/event*
+   
+   
    // AI GENERATED... todo - fix & modulize these code
    
    static inline uint64_t

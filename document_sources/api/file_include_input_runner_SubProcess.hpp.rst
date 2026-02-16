@@ -99,7 +99,7 @@ Typedefs
 --------
 
 
-- :ref:`exhale_typedef_namespacePDJE__IPC_1a39751c10dd8e3892dec091c1fcf8d627`
+- :ref:`exhale_typedef_namespacePDJE__IPC_1aaf89512571dfd440f5c2d0d57df24042`
 
-- :ref:`exhale_typedef_namespacePDJE__IPC_1a389aed39b0f10dedcdffbe8944639e0b`
+- :ref:`exhale_typedef_namespacePDJE__IPC_1afa0a7b47d125684c3f3557e194fc5e56`
 

@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="structmusdata" kind="struct" language="C++" prot="public">
     <compoundname>musdata</compoundname>
     <includes refid="musicDB_8hpp" local="no">musicDB.hpp</includes>
-      <sectiondef kind="public-attrib">
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structmusdata_1a9c537dbc78fd984f5316e3d167633f70" prot="public" static="no" mutable="no">
         <type><ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref></type>
         <definition>SANITIZED musdata::title</definition>
         <argsstring></argsstring>
         <name>title</name>
+        <qualifiedname>musdata::title</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -22,6 +23,7 @@
         <definition>SANITIZED musdata::composer</definition>
         <argsstring></argsstring>
         <name>composer</name>
+        <qualifiedname>musdata::composer</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -35,6 +37,7 @@
         <definition>SANITIZED_ORNOT musdata::musicPath</definition>
         <argsstring></argsstring>
         <name>musicPath</name>
+        <qualifiedname>musdata::musicPath</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -48,6 +51,7 @@
         <definition>BIN musdata::bpmBinary</definition>
         <argsstring></argsstring>
         <name>bpmBinary</name>
+        <qualifiedname>musdata::bpmBinary</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -61,6 +65,7 @@
         <definition>double musdata::bpm</definition>
         <argsstring></argsstring>
         <name>bpm</name>
+        <qualifiedname>musdata::bpm</qualifiedname>
         <initializer>= -1.0</initializer>
         <briefdescription>
         </briefdescription>
@@ -75,6 +80,7 @@
         <definition>DONT_SANITIZE musdata::firstBeat</definition>
         <argsstring></argsstring>
         <name>firstBeat</name>
+        <qualifiedname>musdata::firstBeat</qualifiedname>
         <briefdescription>
 <para>this means the first beat&apos;s position. The measurement unit is a PCM frame. For higher precision, double value is stored as strings in Cap’n Proto, so the corresponding variable is also a string. </para>
         </briefdescription>
@@ -84,13 +90,14 @@
         </inbodydescription>
         <location file="include/core/db/musicDB.hpp" line="24" column="19" bodyfile="include/core/db/musicDB.hpp" bodystart="24" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="structmusdata_1a5ac662aaa154dffde0bbf676df945c22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>musdata::musdata</definition>
         <argsstring>(stmt *dbstate)</argsstring>
         <name>musdata</name>
+        <qualifiedname>musdata::musdata</qualifiedname>
         <param>
           <type><ref refid="structstmt" kindref="compound">stmt</ref> *</type>
           <declname>dbstate</declname>
@@ -119,6 +126,7 @@
         <definition>musdata::musdata</definition>
         <argsstring>(const UNSANITIZED &amp;title__=&quot;&quot;, const UNSANITIZED &amp;composer__=&quot;&quot;, const SANITIZED_ORNOT &amp;musicPath__=&quot;&quot;, const double bpm__=-1.0)</argsstring>
         <name>musdata</name>
+        <qualifiedname>musdata::musdata</qualifiedname>
         <param>
           <type>const <ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
           <declname>title__</declname>
@@ -188,6 +196,7 @@
         <definition>bool musdata::GenSearchSTMT</definition>
         <argsstring>(stmt &amp;dbstate, sqlite3 *db)</argsstring>
         <name>GenSearchSTMT</name>
+        <qualifiedname>musdata::GenSearchSTMT</qualifiedname>
         <param>
           <type><ref refid="structstmt" kindref="compound">stmt</ref> &amp;</type>
           <declname>dbstate</declname>
@@ -232,6 +241,7 @@
         <definition>bool musdata::GenInsertSTMT</definition>
         <argsstring>(stmt &amp;dbstate, sqlite3 *db)</argsstring>
         <name>GenInsertSTMT</name>
+        <qualifiedname>musdata::GenInsertSTMT</qualifiedname>
         <param>
           <type><ref refid="structstmt" kindref="compound">stmt</ref> &amp;</type>
           <declname>dbstate</declname>
@@ -276,6 +286,7 @@
         <definition>bool musdata::GenEditSTMT</definition>
         <argsstring>(stmt &amp;dbstate, sqlite3 *db, musdata &amp;toEdit)</argsstring>
         <name>GenEditSTMT</name>
+        <qualifiedname>musdata::GenEditSTMT</qualifiedname>
         <param>
           <type><ref refid="structstmt" kindref="compound">stmt</ref> &amp;</type>
           <declname>dbstate</declname>
@@ -330,6 +341,7 @@
         <definition>bool musdata::GenDeleteSTMT</definition>
         <argsstring>(stmt &amp;dbstate, sqlite3 *db)</argsstring>
         <name>GenDeleteSTMT</name>
+        <qualifiedname>musdata::GenDeleteSTMT</qualifiedname>
         <param>
           <type><ref refid="structstmt" kindref="compound">stmt</ref> &amp;</type>
           <declname>dbstate</declname>
@@ -367,7 +379,7 @@
         </inbodydescription>
         <location file="include/core/db/musicDB.hpp" line="93" column="5" bodyfile="include/core/db/musicDB.cpp" bodystart="129" bodyend="144"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>the music meta data&apos;s struct </para>
     </briefdescription>
@@ -378,25 +390,25 @@
         <label>musdata</label>
         <link refid="structmusdata"/>
         <childnode refid="2" relation="usage">
-          <edgelabel>bpmBinary</edgelabel>
-        </childnode>
-        <childnode refid="3" relation="usage">
           <edgelabel>composer</edgelabel>
           <edgelabel>firstBeat</edgelabel>
           <edgelabel>musicPath</edgelabel>
           <edgelabel>title</edgelabel>
         </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>bpmBinary</edgelabel>
+        </childnode>
       </node>
-      <node id="4">
+      <node id="3">
         <label>std::basic_string&lt; Char &gt;</label>
       </node>
       <node id="2">
-        <label>std::vector&lt; u_int8_t &gt;</label>
-      </node>
-      <node id="3">
         <label>std::string</label>
-        <childnode refid="4" relation="public-inheritance">
+        <childnode refid="3" relation="public-inheritance">
         </childnode>
+      </node>
+      <node id="4">
+        <label>std::vector&lt; u_int8_t &gt;</label>
       </node>
     </collaborationgraph>
     <location file="include/core/db/musicDB.hpp" line="14" column="1" bodyfile="include/core/db/musicDB.hpp" bodystart="14" bodyend="94"/>

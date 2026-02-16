@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
@@ -8,20 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Core_Engine &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
       <link rel="stylesheet" type="text/css" href="_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
 
   
-      <script src="_static/jquery.js?v=5d32c60e"></script>
-      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=5929fcd5"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
-      <script src="_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
-      <script src="_static/design-tabs.js?v=f930bc37"></script>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9bcbadda"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+        <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -139,8 +141,8 @@
 <li><p>use player. this is handler.</p></li>
 </ol>
 </p>
-<p>
-digraph PDJE_Interface_Tree{
+<p><div class="graphviz"><object data="_images/graphviz-8a80928eed9900c4ebd403b1a2c215d73580278f.svg" type="image/svg+xml" class="graphviz">
+<p class="warning">digraph PDJE_Interface_Tree{
      PDJE -&gt; Search_Tools;
      PDJE -&gt; Player;
      Player -&gt; Player_ON_OFF;
@@ -154,7 +156,7 @@ digraph PDJE_Interface_Tree{
      MusicController -&gt; ON_OFF_Music;
      MusicController -&gt; Cue_Music;
      MusicController -&gt; FXController;
-}
+}</p></object></div>
 </p>
 </dd></dl>
 
@@ -206,7 +208,7 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>MUS_VEC </p>
+<dd class="field-even"><p><a class="reference internal" href="api/typedef_db_root_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0.html#dbRoot_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0"><span class="std std-ref">MUS_VEC</span></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -220,7 +222,7 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 <dd class="field-odd"><p><strong>Title</strong> – the title of the track. send “” to skip filter </p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>TRACK_VEC the array of the track_data. find what you want </p>
+<dd class="field-even"><p><a class="reference internal" href="api/typedef_db_root_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470.html#dbRoot_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470"><span class="std std-ref">TRACK_VEC</span></a> the array of the track_data. find what you want </p>
 </dd>
 </dl>
 </dd></dl>
@@ -295,6 +297,7 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 <dt class="sig sig-object cpp" id="_CPPv4N11audioPlayer8ActivateEv">
 <span id="_CPPv3N11audioPlayer8ActivateEv"></span><span id="_CPPv2N11audioPlayer8ActivateEv"></span><span id="audioPlayer::Activate"></span><span class="target" id="classaudioPlayer_1a7e91ca8d0037ef8e2fb50ff7289317aa"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classaudioPlayer.html#_CPPv411audioPlayer" title="audioPlayer"><span class="n"><span class="pre">audioPlayer</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">Activate</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N11audioPlayer8ActivateEv" title="Link to this definition"></a><br /></dt>
 <dd><p>Plays music. </p>
+<p>the handler status. check when something wrong. do not change this manually. </p>
 </dd></dl>
 
 <dl class="cpp function">
@@ -316,14 +319,17 @@ C++</label><div class="sd-tab-content docutils">
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="n">player_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">InitPlayer</span><span class="p">(</span><span class="n">PLAY_MODE</span><span class="o">::</span><span class="n">HYBRID_RENDER</span><span class="p">,</span><span class="w"> </span><span class="n">td</span><span class="p">,</span><span class="w"> </span><span class="mi">48</span><span class="p">);</span>
 <span class="c1">//render mode, trackdata, sample buffer</span>
 
+<span class="kt">bool</span><span class="w"> </span><span class="n">activate_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">deactivate_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">player_OK</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">player</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">activate_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">Activate</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">//start playback</span>
+<span class="w">    </span><span class="n">deactivate_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">Deactivate</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">//stop playback</span>
+<span class="p">}</span>
+
 <span class="n">engine</span><span class="o">-&gt;</span><span class="n">ResetPlayer</span><span class="p">();</span>
-<span class="c1">//reset player</span>
-
-<span class="kt">bool</span><span class="w"> </span><span class="n">activate_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">Activate</span><span class="p">();</span>
-<span class="c1">//start playback</span>
-
-<span class="kt">bool</span><span class="w"> </span><span class="n">deactivate_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">player</span><span class="o">-&gt;</span><span class="n">Deactivate</span><span class="p">();</span>
-<span class="c1">//stop playback</span>
+<span class="c1">//reset player after deactivate</span>
 </pre></div>
 </div>
 </div>
@@ -336,15 +342,15 @@ C#</label><div class="sd-tab-content docutils">
 <span class="kt">var</span><span class="w"> </span><span class="n">AudioP</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="p">.</span><span class="n">GetPlayerObject</span><span class="p">();</span>
 <span class="c1">//get player object</span>
 
-<span class="n">engine</span><span class="p">.</span><span class="n">ResetPlayer</span><span class="p">();</span>
-<span class="c1">//reset player object.</span>
-<span class="c1">//WARNING: after reset, AudioP becomes unavailable.</span>
-
 <span class="kt">bool</span><span class="w"> </span><span class="n">activate_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioP</span><span class="p">.</span><span class="n">Activate</span><span class="p">();</span>
 <span class="c1">//start playback</span>
 
 <span class="kt">bool</span><span class="w"> </span><span class="n">deactivate_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioP</span><span class="p">.</span><span class="n">Deactivate</span><span class="p">();</span>
 <span class="c1">//stop playback</span>
+
+<span class="n">engine</span><span class="p">.</span><span class="n">ResetPlayer</span><span class="p">();</span>
+<span class="c1">//reset player object after deactivate</span>
+<span class="c1">//WARNING: after reset, AudioP becomes unavailable.</span>
 </pre></div>
 </div>
 </div>
@@ -359,15 +365,15 @@ PYTHON</label><div class="sd-tab-content docutils">
 <span class="n">AudioP</span><span class="p">:</span><span class="n">audioPlayer</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">GetPlayerObject</span><span class="p">()</span>
 <span class="c1">#get player object</span>
 
-<span class="n">engine</span><span class="o">.</span><span class="n">ResetPlayer</span><span class="p">()</span>
-<span class="c1">#reset player object.</span>
-<span class="c1">#WARNING: after reset, AudioP becomes unavailable.</span>
-
 <span class="n">activate_OK</span> <span class="o">=</span> <span class="n">AudioP</span><span class="o">.</span><span class="n">Activate</span><span class="p">()</span>
 <span class="c1">#start playback</span>
 
 <span class="n">deactivate_OK</span> <span class="o">=</span> <span class="n">AudioP</span><span class="o">.</span><span class="n">Deactivate</span><span class="p">()</span>
 <span class="c1">#stop playback</span>
+
+<span class="n">engine</span><span class="o">.</span><span class="n">ResetPlayer</span><span class="p">()</span>
+<span class="c1">#reset player object after deactivate</span>
+<span class="c1">#WARNING: after reset, AudioP becomes unavailable.</span>
 </pre></div>
 </div>
 </div>
@@ -380,15 +386,15 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 <span class="k">var</span><span class="w"> </span><span class="n">AudioP</span><span class="p">:</span><span class="n">PlayerWrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">.</span><span class="n">GetPlayer</span><span class="p">()</span>
 <span class="c1">#get player object</span>
 
-<span class="n">engine</span><span class="o">.</span><span class="n">ResetPlayer</span><span class="p">()</span>
-<span class="c1">#reset player object.</span>
-<span class="c1">#WARNING: after reset, AudioP becomes unavailable.</span>
-
 <span class="k">var</span><span class="w"> </span><span class="n">activate_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioP</span><span class="o">.</span><span class="n">Activate</span><span class="p">()</span>
 <span class="c1">#start playback</span>
 
 <span class="k">var</span><span class="w"> </span><span class="n">deactivate_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AudioP</span><span class="o">.</span><span class="n">Deactivate</span><span class="p">()</span>
 <span class="c1">#stop playback</span>
+
+<span class="n">engine</span><span class="o">.</span><span class="n">ResetPlayer</span><span class="p">()</span>
+<span class="c1">#reset player object after deactivate</span>
+<span class="c1">#WARNING: after reset, AudioP becomes unavailable.</span>
 </pre></div>
 </div>
 </div>
@@ -507,7 +513,7 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 <dd class="field-odd"><p><strong>fx</strong> – the fx type </p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>ARGSETTER the FX arg handler </p>
+<dd class="field-even"><p><a class="reference internal" href="api/typedef__deck_data_8hpp_1a678187c26c21fa39643ad237d950bf15.html#DeckData_8hpp_1a678187c26c21fa39643ad237d950bf15"><span class="std std-ref">ARGSETTER</span></a> the FX arg handler </p>
 </dd>
 </dl>
 </dd></dl>
@@ -717,7 +723,7 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 <dd><p>get music list on the deck </p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>LOADED_LIST </p>
+<dd class="field-odd"><p><a class="reference internal" href="api/typedef__music_control_pannel_8hpp_1ade6cd1e55ebee7c7fbbe63cd3590d1d8.html#MusicControlPanel_8hpp_1ade6cd1e55ebee7c7fbbe63cd3590d1d8"><span class="std std-ref">LOADED_LIST</span></a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -917,7 +923,7 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N4PDJE15GetEditorObjectEv">
-<span id="_CPPv3N4PDJE15GetEditorObjectEv"></span><span id="_CPPv2N4PDJE15GetEditorObjectEv"></span><span id="PDJE::GetEditorObject"></span><span class="target" id="classPDJE_1ac8f05faa918942f59f1265a5db0c90bd"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">shared_ptr</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="api/classeditorObject.html#_CPPv412editorObject" title="editorObject"><span class="n"><span class="pre">editorObject</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">GetEditorObject</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE15GetEditorObjectEv" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N4PDJE15GetEditorObjectEv"></span><span id="_CPPv2N4PDJE15GetEditorObjectEv"></span><span id="PDJE::GetEditorObject"></span><span class="target" id="classPDJE_1afc08d1de925ce319492f0e57ed788321"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">shared_ptr</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="api/classeditorObject.html#_CPPv412editorObject" title="editorObject"><span class="n"><span class="pre">editorObject</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">GetEditorObject</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE15GetEditorObjectEv" title="Link to this definition"></a><br /></dt>
 <dd><p>editor handler getter api for binded codes. this function gives you a editor handler. </p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -957,7 +963,7 @@ C++</label><div class="sd-tab-content docutils">
 C#</label><div class="sd-tab-content docutils">
 <div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="n">initRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="p">.</span><span class="n">InitEditor</span><span class="p">(</span><span class="s">&quot;my name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;my@email, no need to fill&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ProjectRoot&quot;</span><span class="p">);</span>
 <span class="kt">var</span><span class="w"> </span><span class="n">editor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="p">.</span><span class="n">GetEditorObject</span><span class="p">();</span>
-<span class="kt">var</span><span class="w"> </span><span class="n">destroyRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="p">.</span><span class="n">DESTROY_PROJECT</span><span class="p">();</span>
+<span class="kt">var</span><span class="w"> </span><span class="n">destroyRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">editor</span><span class="p">.</span><span class="n">DESTROY_PROJECT</span><span class="p">();</span>
 <span class="n">engine</span><span class="p">.</span><span class="n">CloseEditor</span><span class="p">();</span>
 </pre></div>
 </div>
@@ -1111,16 +1117,13 @@ C++</label><div class="sd-tab-content docutils">
 <span class="c1">//parse json. try print them.</span>
 <span class="k">auto</span><span class="w"> </span><span class="n">jj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="o">::</span><span class="n">parse</span><span class="p">(</span><span class="n">logs</span><span class="p">);</span>
 
-<span class="c1">//the &quot;BRANCH&quot; has branch lists. this is json array.</span>
-<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">branchName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jj</span><span class="p">[</span><span class="s">&quot;BRANCH&quot;</span><span class="p">].</span><span class="n">at</span><span class="p">(</span><span class="mi">0</span><span class="p">)[</span><span class="s">&quot;NAME&quot;</span><span class="p">];</span>
-<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">branch_head_oid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jj</span><span class="p">[</span><span class="s">&quot;BRANCH&quot;</span><span class="p">].</span><span class="n">at</span><span class="p">(</span><span class="mi">0</span><span class="p">)[</span><span class="s">&quot;OID&quot;</span><span class="p">];</span>
-<span class="c1">// &quot;BRANCH&quot; is an array of { &quot;NAME&quot;: &quot;...&quot;, &quot;OID&quot;: &quot;...&quot; }</span>
-<span class="c1">//it has two keys. &quot;NAME&quot;, &quot;OID&quot;. the oid means the head commit oid of the branch.</span>
+<span class="c1">// &quot;LINE&quot; contains timeline heads. each item has OID and TIME_STAMP.</span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">commit_oid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jj</span><span class="p">[</span><span class="s">&quot;LINE&quot;</span><span class="p">].</span><span class="n">at</span><span class="p">(</span><span class="mi">0</span><span class="p">)[</span><span class="s">&quot;OID&quot;</span><span class="p">];</span>
 
-<span class="kt">bool</span><span class="w"> </span><span class="n">GoRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">editor</span><span class="o">-&gt;</span><span class="n">Go</span><span class="o">&lt;</span><span class="n">EDIT_ARG_NOTE</span><span class="o">&gt;</span><span class="p">(</span><span class="n">branchName</span><span class="p">,</span><span class="w"> </span><span class="n">branch_head_oid</span><span class="p">);</span>
-<span class="c1">//bool GoRes = editor-&gt;Go&lt;EDIT_ARG_MIX&gt;(branchName, branch_head_oid);</span>
-<span class="c1">//bool GoRes = editor-&gt;Go&lt;EDIT_ARG_KEY_VALUE&gt;(branchName, branch_head_oid);</span>
-<span class="c1">//bool GoRes = editor-&gt;Go&lt;EDIT_ARG_MUSIC&gt;(branchName, branch_head_oid);</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">GoRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">editor</span><span class="o">-&gt;</span><span class="n">Go</span><span class="o">&lt;</span><span class="n">EDIT_ARG_NOTE</span><span class="o">&gt;</span><span class="p">(</span><span class="n">commit_oid</span><span class="p">);</span>
+<span class="c1">//bool GoRes = editor-&gt;Go&lt;EDIT_ARG_MIX&gt;(commit_oid);</span>
+<span class="c1">//bool GoRes = editor-&gt;Go&lt;EDIT_ARG_KEY_VALUE&gt;(commit_oid);</span>
+<span class="c1">//bool GoRes = editor-&gt;Go&lt;EDIT_ARG_MUSIC&gt;(commit_oid);</span>
 </pre></div>
 </div>
 </div>
@@ -1133,7 +1136,7 @@ C#</label><div class="sd-tab-content docutils">
 <span class="c1">//string logs = editor.GetLogMusicJSON(&quot;music name&quot;);</span>
 <span class="c1">//string logs = editor.GetLogKVJSON();</span>
 
-<span class="c1">//get branch name, oid from logs</span>
+<span class="c1">//get commit oid from logs JSON (LINE/LOGS)</span>
 
 <span class="c1">// editor.GoNote(name, oid);</span>
 <span class="n">editor</span><span class="p">.</span><span class="n">GoMix</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">oid</span><span class="p">);</span>
@@ -1155,7 +1158,7 @@ PYTHON</label><div class="sd-tab-content docutils">
 <span class="c1"># logs = editor.GetLogMusicJSON(&quot;music name&quot;)</span>
 <span class="c1"># logs = editor.GetLogNoteJSON()</span>
 
-<span class="c1"># get branch name, oid from logs</span>
+<span class="c1"># get commit oid from logs JSON (LINE/LOGS)</span>
 
 <span class="c1"># editor.GoKV(name, oid)</span>
 <span class="c1"># editor.GoNote(name, oid)</span>
@@ -1172,7 +1175,7 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 <span class="c1"># var logs = editor.GetLogWithJSONGraph(editor.KV, &quot;&quot;)</span>
 <span class="c1"># var logs = editor.GetLogWithJSONGraph(editor.MIX, &quot;&quot;)</span>
 
-<span class="c1">#get branch name, oid from logs</span>
+<span class="c1">#get commit oid from logs JSON (LINE/LOGS)</span>
 
 <span class="n">editor</span><span class="o">.</span><span class="n">Go</span><span class="p">(</span><span class="n">editor</span><span class="o">.</span><span class="n">NOTE</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">oid</span><span class="p">)</span>
 <span class="c1"># editor.Go(editor.MUSIC, name, oid)</span>
@@ -1562,19 +1565,20 @@ C++</label><div class="sd-tab-content docutils">
 <span class="cm">JSON structure produced:</span>
 
 <span class="cm">{</span>
-<span class="cm">&quot;BRANCH&quot;: [                          // branch head list</span>
+<span class="cm">&quot;LINE&quot;: [                            // line head list</span>
 <span class="cm">    {</span>
-<span class="cm">    &quot;NAME&quot;: string,                  // branch name (e.g., &quot;main&quot;)</span>
-<span class="cm">    &quot;OID&quot;:  string                   // head commit oid (40-hex from git_oid_tostr_s)</span>
+<span class="cm">    &quot;OID&quot;: string,                   // line head oid</span>
+<span class="cm">    &quot;TIME_STAMP&quot;: string             // marker timestamp</span>
 <span class="cm">    },</span>
 <span class="cm">    ...</span>
 <span class="cm">],</span>
-<span class="cm">&quot;COMMIT&quot;: [                          // commit metadata list</span>
+<span class="cm">&quot;LOGS&quot;: [                            // commit metadata list</span>
 <span class="cm">    {</span>
-<span class="cm">    &quot;OID&quot;:      string,              // commit oid (40-hex)</span>
-<span class="cm">    &quot;EMAIL&quot;:    string,              // author email</span>
-<span class="cm">    &quot;NAME&quot;:     string,              // author name</span>
-<span class="cm">    &quot;PARENTID&quot;: string               // parent commit oid (may be empty/zero for initial)</span>
+<span class="cm">    &quot;OID&quot;: string,                   // commit oid</span>
+<span class="cm">    &quot;BACK&quot;: string,                  // parent/backward oid</span>
+<span class="cm">    &quot;AUTHOR&quot;: string,                // author name</span>
+<span class="cm">    &quot;EMAIL&quot;: string,                 // author email</span>
+<span class="cm">    &quot;TIME_STAMP&quot;: string             // commit message timestamp field</span>
 <span class="cm">    },</span>
 <span class="cm">    ...</span>
 <span class="cm">]</span>
@@ -1594,19 +1598,20 @@ C#</label><div class="sd-tab-content docutils">
 <span class="cm">JSON structure produced:</span>
 
 <span class="cm">{</span>
-<span class="cm">&quot;BRANCH&quot;: [                          // branch head list</span>
+<span class="cm">&quot;LINE&quot;: [                            // line head list</span>
 <span class="cm">    {</span>
-<span class="cm">    &quot;NAME&quot;: string,                  // branch name (e.g., &quot;main&quot;)</span>
-<span class="cm">    &quot;OID&quot;:  string                   // head commit oid (40-hex from git_oid_tostr_s)</span>
+<span class="cm">    &quot;OID&quot;: string,                   // line head oid</span>
+<span class="cm">    &quot;TIME_STAMP&quot;: string             // marker timestamp</span>
 <span class="cm">    },</span>
 <span class="cm">    ...</span>
 <span class="cm">],</span>
-<span class="cm">&quot;COMMIT&quot;: [                          // commit metadata list</span>
+<span class="cm">&quot;LOGS&quot;: [                            // commit metadata list</span>
 <span class="cm">    {</span>
-<span class="cm">    &quot;OID&quot;:      string,              // commit oid (40-hex)</span>
-<span class="cm">    &quot;EMAIL&quot;:    string,              // author email</span>
-<span class="cm">    &quot;NAME&quot;:     string,              // author name</span>
-<span class="cm">    &quot;PARENTID&quot;: string               // parent commit oid (may be empty/zero for initial)</span>
+<span class="cm">    &quot;OID&quot;: string,                   // commit oid</span>
+<span class="cm">    &quot;BACK&quot;: string,                  // parent/backward oid</span>
+<span class="cm">    &quot;AUTHOR&quot;: string,                // author name</span>
+<span class="cm">    &quot;EMAIL&quot;: string,                 // author email</span>
+<span class="cm">    &quot;TIME_STAMP&quot;: string             // commit message timestamp field</span>
 <span class="cm">    },</span>
 <span class="cm">    ...</span>
 <span class="cm">]</span>
@@ -1626,19 +1631,20 @@ PYTHON</label><div class="sd-tab-content docutils">
 <span class="sd">JSON structure produced:</span>
 
 <span class="sd">{</span>
-<span class="sd">&quot;BRANCH&quot;: [                          // branch head list</span>
+<span class="sd">&quot;LINE&quot;: [                            // line head list</span>
 <span class="sd">    {</span>
-<span class="sd">    &quot;NAME&quot;: string,                  // branch name (e.g., &quot;main&quot;)</span>
-<span class="sd">    &quot;OID&quot;:  string                   // head commit oid (40-hex from git_oid_tostr_s)</span>
+<span class="sd">    &quot;OID&quot;: string,                   // line head oid</span>
+<span class="sd">    &quot;TIME_STAMP&quot;: string             // marker timestamp</span>
 <span class="sd">    },</span>
 <span class="sd">    ...</span>
 <span class="sd">],</span>
-<span class="sd">&quot;COMMIT&quot;: [                          // commit metadata list</span>
+<span class="sd">&quot;LOGS&quot;: [                            // commit metadata list</span>
 <span class="sd">    {</span>
-<span class="sd">    &quot;OID&quot;:      string,              // commit oid (40-hex)</span>
-<span class="sd">    &quot;EMAIL&quot;:    string,              // author email</span>
-<span class="sd">    &quot;NAME&quot;:     string,              // author name</span>
-<span class="sd">    &quot;PARENTID&quot;: string               // parent commit oid (may be empty/zero for initial)</span>
+<span class="sd">    &quot;OID&quot;: string,                   // commit oid</span>
+<span class="sd">    &quot;BACK&quot;: string,                  // parent/backward oid</span>
+<span class="sd">    &quot;AUTHOR&quot;: string,                // author name</span>
+<span class="sd">    &quot;EMAIL&quot;: string,                 // author email</span>
+<span class="sd">    &quot;TIME_STAMP&quot;: string             // commit message timestamp field</span>
 <span class="sd">    },</span>
 <span class="sd">    ...</span>
 <span class="sd">]</span>
@@ -1658,19 +1664,20 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 <span class="sd">JSON structure produced:</span>
 
 <span class="sd">{</span>
-<span class="sd">&quot;BRANCH&quot;: [                          // branch head list</span>
+<span class="sd">&quot;LINE&quot;: [                            // line head list</span>
 <span class="sd">    {</span>
-<span class="sd">    &quot;NAME&quot;: string,                  // branch name (e.g., &quot;main&quot;)</span>
-<span class="sd">    &quot;OID&quot;:  string                   // head commit oid (40-hex from git_oid_tostr_s)</span>
+<span class="sd">    &quot;OID&quot;: string,                   // line head oid</span>
+<span class="sd">    &quot;TIME_STAMP&quot;: string             // marker timestamp</span>
 <span class="sd">    },</span>
 <span class="sd">    ...</span>
 <span class="sd">],</span>
-<span class="sd">&quot;COMMIT&quot;: [                          // commit metadata list</span>
+<span class="sd">&quot;LOGS&quot;: [                            // commit metadata list</span>
 <span class="sd">    {</span>
-<span class="sd">    &quot;OID&quot;:      string,              // commit oid (40-hex)</span>
-<span class="sd">    &quot;EMAIL&quot;:    string,              // author email</span>
-<span class="sd">    &quot;NAME&quot;:     string,              // author name</span>
-<span class="sd">    &quot;PARENTID&quot;: string               // parent commit oid (may be empty/zero for initial)</span>
+<span class="sd">    &quot;OID&quot;: string,                   // commit oid</span>
+<span class="sd">    &quot;BACK&quot;: string,                  // parent/backward oid</span>
+<span class="sd">    &quot;AUTHOR&quot;: string,                // author name</span>
+<span class="sd">    &quot;EMAIL&quot;: string,                 // author email</span>
+<span class="sd">    &quot;TIME_STAMP&quot;: string             // commit message timestamp field</span>
 <span class="sd">    },</span>
 <span class="sd">    ...</span>
 <span class="sd">]</span>

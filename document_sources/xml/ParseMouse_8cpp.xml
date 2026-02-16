@@ -1,11 +1,24 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="ParseMouse_8cpp" kind="file" language="C++">
     <compoundname>ParseMouse.cpp</compoundname>
     <includes refid="InputCore_8hpp" local="yes">InputCore.hpp</includes>
     <incdepgraph>
-      <node id="14">
-        <label>libevdev/libevdev.h</label>
+      <node id="5">
+        <label>PDJE_Input_Device_Data.hpp</label>
+        <link refid="PDJE__Input__Device__Data_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
       </node>
       <node id="2">
         <label>InputCore.hpp</label>
@@ -25,20 +38,11 @@
         <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="13">
-        <label>filesystem</label>
-      </node>
-      <node id="6">
-        <label>cstdint</label>
-      </node>
       <node id="1">
         <label>include/input/DefaultDevs/linux/ParseMouse.cpp</label>
         <link refid="ParseMouse_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-      </node>
-      <node id="10">
-        <label>string</label>
       </node>
       <node id="3">
         <label>Input_Transfer.hpp</label>
@@ -49,36 +53,32 @@
       <node id="12">
         <label>bitset</label>
       </node>
+      <node id="6">
+        <label>cstdint</label>
+      </node>
+      <node id="13">
+        <label>filesystem</label>
+      </node>
       <node id="7">
         <label>future</label>
-      </node>
-      <node id="5">
-        <label>PDJE_Input_Device_Data.hpp</label>
-        <link refid="PDJE__Input__Device__Data_8hpp"/>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>optional</label>
-      </node>
-      <node id="11">
-        <label>vector</label>
       </node>
       <node id="8">
         <label>latch</label>
       </node>
+      <node id="14">
+        <label>libevdev/libevdev.h</label>
+      </node>
+      <node id="9">
+        <label>optional</label>
+      </node>
+      <node id="10">
+        <label>string</label>
+      </node>
       <node id="15">
         <label>unordered_map</label>
+      </node>
+      <node id="11">
+        <label>vector</label>
       </node>
     </incdepgraph>
     <briefdescription>
@@ -96,7 +96,7 @@
 <codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>idstr<sp/><sp/>=<sp/>std::to_string(FD);</highlight></codeline>
 <codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>ilog.<ref refid="structPDJE__Input__Log_1a5ba85807a2787dd387c12318793547e9" kindref="member">id_len</ref><sp/>=<sp/>(idstr.size()<sp/>&gt;<sp/>255<sp/>?<sp/>255<sp/>:<sp/>idstr.size());</highlight></codeline>
 <codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>std::memcpy(ilog.<ref refid="structPDJE__Input__Log_1a45e6f08789d468bed9999afa1edebb6a" kindref="member">id</ref>,<sp/>idstr.data(),<sp/>ilog.<ref refid="structPDJE__Input__Log_1a5ba85807a2787dd387c12318793547e9" kindref="member">id_len</ref>);</highlight></codeline>
-<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>ilog.<ref refid="structPDJE__Input__Log_1acae24662a8ac1cc573951fb69f58ea15" kindref="member">microSecond</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="classInputCore_1a0f750ce65da6670e81a8a67675ef60fe" kindref="member">clock</ref>.<ref refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK_1aa5b803e92c5729165331036b3dd6c9a8" kindref="member">ConvertToMicroSecond</ref>(evtrig.time);</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>ilog.<ref refid="structPDJE__Input__Log_1acae24662a8ac1cc573951fb69f58ea15" kindref="member">microSecond</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="classInputCore_1a0f750ce65da6670e81a8a67675ef60fe" kindref="member">clock</ref>.ConvertToMicroSecond(evtrig.time);</highlight></codeline>
 <codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;name<sp/>=<sp/><ref refid="classInputCore_1a1514a6d9766cecde4e5dd5259e7a55be" kindref="member">id_to_name</ref>[FD];</highlight></codeline>
 <codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>ilog.<ref refid="structPDJE__Input__Log_1a66db400701b3e89e59c17a4f466ae118" kindref="member">name_len</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>(name.size()<sp/>&gt;<sp/>255<sp/>?<sp/>255<sp/>:<sp/>name.size());</highlight></codeline>
 <codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>std::memcpy(ilog.<ref refid="structPDJE__Input__Log_1aa05c1ccf620d4958cc621c2a087508c6" kindref="member">name</ref>,<sp/>name.data(),<sp/>ilog.<ref refid="structPDJE__Input__Log_1a66db400701b3e89e59c17a4f466ae118" kindref="member">name_len</ref>);</highlight></codeline>
@@ -161,7 +161,7 @@
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classInputCore_1ab3740a4cad9b2aa170aa7abfe9a2f937" kindref="member">out</ref>-&gt;<ref refid="classPDJE__IPC_1_1PDJE__Input__Transfer_1a477730547164b6260af4aa9a31e9ff75" kindref="member">Write</ref>(ilog);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classInputCore_1ab3740a4cad9b2aa170aa7abfe9a2f937" kindref="member">out</ref>-&gt;Write(ilog);</highlight></codeline>
 <codeline lineno="77"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="include/input/DefaultDevs/linux/ParseMouse.cpp"/>

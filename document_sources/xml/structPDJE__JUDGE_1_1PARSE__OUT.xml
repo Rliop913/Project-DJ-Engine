@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="structPDJE__JUDGE_1_1PARSE__OUT" kind="struct" language="C++" prot="public">
     <compoundname>PDJE_JUDGE::PARSE_OUT</compoundname>
     <includes refid="InputParser_8hpp" local="no">InputParser.hpp</includes>
-      <sectiondef kind="public-attrib">
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structPDJE__JUDGE_1_1PARSE__OUT_1a1add107ff0d2f181a59042a45f465ec0" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="structPDJE__Input__Log" kindref="compound">PDJE_Input_Log</ref> &gt;</type>
         <definition>std::vector&lt;PDJE_Input_Log&gt; PDJE_JUDGE::PARSE_OUT::logs</definition>
         <argsstring></argsstring>
         <name>logs</name>
+        <qualifiedname>PDJE_JUDGE::PARSE_OUT::logs</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -22,6 +23,7 @@
         <definition>std::vector&lt;PDJE_MIDI::MIDI_EV&gt; PDJE_JUDGE::PARSE_OUT::midi_logs</definition>
         <argsstring></argsstring>
         <name>midi_logs</name>
+        <qualifiedname>PDJE_JUDGE::PARSE_OUT::midi_logs</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -35,6 +37,7 @@
         <definition>uint64_t PDJE_JUDGE::PARSE_OUT::lowest</definition>
         <argsstring></argsstring>
         <name>lowest</name>
+        <qualifiedname>PDJE_JUDGE::PARSE_OUT::lowest</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -48,6 +51,7 @@
         <definition>uint64_t PDJE_JUDGE::PARSE_OUT::highest</definition>
         <argsstring></argsstring>
         <name>highest</name>
+        <qualifiedname>PDJE_JUDGE::PARSE_OUT::highest</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -56,69 +60,27 @@
         </inbodydescription>
         <location file="include/judge/InputParser/InputParser.hpp" line="19" column="37" bodyfile="include/judge/InputParser/InputParser.hpp" bodystart="19" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="2">
-        <label>std::vector&lt; PDJE_Input_Log &gt;</label>
-        <childnode refid="3" relation="usage">
-          <edgelabel>elements</edgelabel>
-        </childnode>
-      </node>
-      <node id="7">
-        <label>PDJE_Mouse_Event</label>
-        <link refid="structPDJE__Mouse__Event"/>
-      </node>
-      <node id="9">
-        <label>PDJE_MIDI::MIDI_EV</label>
-        <link refid="structPDJE__MIDI_1_1MIDI__EV"/>
-      </node>
-      <node id="3">
-        <label>PDJE_Input_Log</label>
-        <link refid="structPDJE__Input__Log"/>
-        <childnode refid="4" relation="usage">
-          <edgelabel>hid_event</edgelabel>
-        </childnode>
-        <childnode refid="5" relation="usage">
-          <edgelabel>event</edgelabel>
-        </childnode>
-      </node>
-      <node id="5">
-        <label>PDJE_Input_Event</label>
-        <link refid="unionPDJE__Input__Event"/>
-        <childnode refid="6" relation="usage">
-          <edgelabel>keyboard</edgelabel>
-        </childnode>
-        <childnode refid="7" relation="usage">
-          <edgelabel>mouse</edgelabel>
-        </childnode>
-      </node>
-      <node id="4">
-        <label>PDJE_HID_Event</label>
-        <link refid="structPDJE__HID__Event"/>
-      </node>
-      <node id="8">
-        <label>std::vector&lt; PDJE_MIDI::MIDI_EV &gt;</label>
-        <childnode refid="9" relation="usage">
-          <edgelabel>elements</edgelabel>
-        </childnode>
-      </node>
       <node id="1">
         <label>PDJE_JUDGE::PARSE_OUT</label>
         <link refid="structPDJE__JUDGE_1_1PARSE__OUT"/>
         <childnode refid="2" relation="usage">
           <edgelabel>logs</edgelabel>
         </childnode>
-        <childnode refid="8" relation="usage">
+        <childnode refid="3" relation="usage">
           <edgelabel>midi_logs</edgelabel>
         </childnode>
       </node>
-      <node id="6">
-        <label>PDJE_Keyboard_Event</label>
-        <link refid="structPDJE__Keyboard__Event"/>
+      <node id="2">
+        <label>std::vector&lt; PDJE_Input_Log &gt;</label>
+      </node>
+      <node id="3">
+        <label>std::vector&lt; PDJE_MIDI::MIDI_EV &gt;</label>
       </node>
     </collaborationgraph>
     <location file="include/judge/InputParser/InputParser.hpp" line="15" column="1" bodyfile="include/judge/InputParser/InputParser.hpp" bodystart="15" bodyend="20"/>

@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="classRTSocket" kind="class" language="C++" prot="public">
     <compoundname>RTSocket</compoundname>
     <includes refid="RTSocket_8hpp" local="no">RTSocket.hpp</includes>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classRTSocket_1ab38c96818fdc24dd3325f2feb4dbf083" prot="private" static="no" mutable="no">
         <type>RTEvent *</type>
         <definition>RTEvent* RTSocket::rtev</definition>
         <argsstring></argsstring>
         <name>rtev</name>
+        <qualifiedname>RTSocket::rtev</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -22,6 +23,7 @@
         <definition>std::unordered_map&lt;std::string, regi_function&gt; RTSocket::functionRegistry</definition>
         <argsstring></argsstring>
         <name>functionRegistry</name>
+        <qualifiedname>RTSocket::functionRegistry</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -35,6 +37,7 @@
         <definition>std::unordered_map&lt;int, std::function&lt;void()&gt; &gt; RTSocket::errorHandler</definition>
         <argsstring></argsstring>
         <name>errorHandler</name>
+        <qualifiedname>RTSocket::errorHandler</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -48,6 +51,7 @@
         <definition>std::optional&lt;OneTimeSysSetup&gt; RTSocket::setups</definition>
         <argsstring></argsstring>
         <name>setups</name>
+        <qualifiedname>RTSocket::setups</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -61,6 +65,7 @@
         <definition>RT_ID RTSocket::importants</definition>
         <argsstring></argsstring>
         <name>importants</name>
+        <qualifiedname>RTSocket::importants</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -69,13 +74,14 @@
         </inbodydescription>
         <location file="include/input/trashbin/--DEPRECATED-linux/RT/RTSocket.hpp" line="38" column="52" bodyfile="include/input/trashbin/--DEPRECATED-linux/RT/RTSocket.hpp" bodystart="38" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-attrib">
+    </sectiondef>
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="classRTSocket_1a1c117631320d839a548fcc3d94e8047b" prot="public" static="no" mutable="no">
         <type>std::unordered_map&lt; std::string, fs::path &gt;</type>
         <definition>std::unordered_map&lt;std::string, fs::path&gt; RTSocket::stored_dev_path</definition>
         <argsstring></argsstring>
         <name>stored_dev_path</name>
+        <qualifiedname>RTSocket::stored_dev_path</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -89,6 +95,7 @@
         <definition>std::string RTSocket::ErrMsg</definition>
         <argsstring></argsstring>
         <name>ErrMsg</name>
+        <qualifiedname>RTSocket::ErrMsg</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -97,13 +104,14 @@
         </inbodydescription>
         <location file="include/input/trashbin/--DEPRECATED-linux/RT/RTSocket.hpp" line="64" column="17" bodyfile="include/input/trashbin/--DEPRECATED-linux/RT/RTSocket.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
+    </sectiondef>
+    <sectiondef kind="private-func">
       <memberdef kind="function" id="classRTSocket_1a8f66337c926a88e954c59d0571a5b79b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
         <definition>int RTSocket::ParseMsg</definition>
         <argsstring>(const std::string &amp;raw_json_msg)</argsstring>
         <name>ParseMsg</name>
+        <qualifiedname>RTSocket::ParseMsg</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>raw_json_msg</declname>
@@ -121,6 +129,7 @@
         <definition>int RTSocket::SocketOpen</definition>
         <argsstring>(const std::string &amp;socket_path)</argsstring>
         <name>SocketOpen</name>
+        <qualifiedname>RTSocket::SocketOpen</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>socket_path</declname>
@@ -138,6 +147,7 @@
         <definition>int RTSocket::SocketClose</definition>
         <argsstring>()</argsstring>
         <name>SocketClose</name>
+        <qualifiedname>RTSocket::SocketClose</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -151,6 +161,7 @@
         <definition>void RTSocket::RegisterFunctions</definition>
         <argsstring>()</argsstring>
         <name>RegisterFunctions</name>
+        <qualifiedname>RTSocket::RegisterFunctions</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -164,6 +175,7 @@
         <definition>DEV_LIST RTSocket::ListDevices</definition>
         <argsstring>()</argsstring>
         <name>ListDevices</name>
+        <qualifiedname>RTSocket::ListDevices</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -172,13 +184,14 @@
         </inbodydescription>
         <location file="include/input/trashbin/--DEPRECATED-linux/RT/RTSocket.hpp" line="53" column="5" bodyfile="include/input/trashbin/--DEPRECATED-linux/RT/RTFunctionRegister.cpp" bodystart="64" bodyend="126"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classRTSocket_1a1863eb9d242254c481a5dfa7ceafd212" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void RTSocket::SendMsg</definition>
         <argsstring>(const std::string &amp;msg)</argsstring>
         <name>SendMsg</name>
+        <qualifiedname>RTSocket::SendMsg</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>msg</declname>
@@ -196,6 +209,7 @@
         <definition>int RTSocket::Communication</definition>
         <argsstring>()</argsstring>
         <name>Communication</name>
+        <qualifiedname>RTSocket::Communication</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -209,6 +223,7 @@
         <definition>RTSocket::RTSocket</definition>
         <argsstring>(const std::string &amp;socket_path, RTEvent *ptr)</argsstring>
         <name>RTSocket</name>
+        <qualifiedname>RTSocket::RTSocket</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>socket_path</declname>
@@ -230,6 +245,7 @@
         <definition>RTSocket::~RTSocket</definition>
         <argsstring>()</argsstring>
         <name>~RTSocket</name>
+        <qualifiedname>RTSocket::~RTSocket</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -238,56 +254,56 @@
         </inbodydescription>
         <location file="include/input/trashbin/--DEPRECATED-linux/RT/RTSocket.hpp" line="63" column="5" bodyfile="include/input/trashbin/--DEPRECATED-linux/RT/RTSocket.cpp" bodystart="60" bodyend="64"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="2">
-        <label>RT_ID</label>
-        <link refid="structRT__ID"/>
-      </node>
-      <node id="5">
-        <label>std::basic_string&lt; Char &gt;</label>
-      </node>
-      <node id="3">
-        <label>std::unordered_map&lt; std::string, regi_function &gt;</label>
-        <childnode refid="4" relation="usage">
-          <edgelabel>keys</edgelabel>
-        </childnode>
-      </node>
-      <node id="7">
-        <label>std::unordered_map&lt; int, std::function&lt; void()&gt; &gt;</label>
-      </node>
       <node id="1">
         <label>RTSocket</label>
         <link refid="classRTSocket"/>
         <childnode refid="2" relation="usage">
-          <edgelabel>importants</edgelabel>
-        </childnode>
-        <childnode refid="3" relation="usage">
           <edgelabel>functionRegistry</edgelabel>
         </childnode>
-        <childnode refid="6" relation="usage">
-          <edgelabel>stored_dev_path</edgelabel>
+        <childnode refid="5" relation="usage">
+          <edgelabel>errorHandler</edgelabel>
         </childnode>
-        <childnode refid="4" relation="usage">
-          <edgelabel>ErrMsg</edgelabel>
+        <childnode refid="6" relation="usage">
+          <edgelabel>importants</edgelabel>
         </childnode>
         <childnode refid="7" relation="usage">
-          <edgelabel>errorHandler</edgelabel>
+          <edgelabel>stored_dev_path</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>ErrMsg</edgelabel>
         </childnode>
       </node>
       <node id="6">
+        <label>RT_ID</label>
+        <link refid="structRT__ID"/>
+      </node>
+      <node id="4">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="3">
+        <label>std::string</label>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>std::unordered_map&lt; int, std::function&lt; void()&gt; &gt;</label>
+      </node>
+      <node id="7">
         <label>std::unordered_map&lt; std::string, fs::path &gt;</label>
-        <childnode refid="4" relation="usage">
+        <childnode refid="3" relation="usage">
           <edgelabel>keys</edgelabel>
         </childnode>
       </node>
-      <node id="4">
-        <label>std::string</label>
-        <childnode refid="5" relation="public-inheritance">
+      <node id="2">
+        <label>std::unordered_map&lt; std::string, regi_function &gt;</label>
+        <childnode refid="3" relation="usage">
+          <edgelabel>keys</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>

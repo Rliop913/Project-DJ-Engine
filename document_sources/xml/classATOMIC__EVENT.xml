@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="classATOMIC__EVENT" kind="class" language="C++" prot="public">
     <compoundname>ATOMIC_EVENT</compoundname>
     <includes refid="PDJE__ATOMIC__EVENT_8hpp" local="no">PDJE_ATOMIC_EVENT.hpp</includes>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classATOMIC__EVENT_1afa0766b127f00b4c35b9152cfb7f6bf8" prot="private" static="no" mutable="no">
         <type>std::atomic&lt; bool &gt;</type>
         <definition>std::atomic&lt;bool&gt; ATOMIC_EVENT::flag</definition>
         <argsstring></argsstring>
         <name>flag</name>
+        <qualifiedname>ATOMIC_EVENT::flag</qualifiedname>
         <initializer>{ false }</initializer>
         <briefdescription>
         </briefdescription>
@@ -16,15 +17,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/PDJE_ATOMIC_EVENT.hpp" line="8" column="17" bodyfile="include/global/PDJE_ATOMIC_EVENT.hpp" bodystart="8" bodyend="-1"/>
+        <location file="include/global/PDJE_ATOMIC_EVENT.hpp" line="8" column="17" bodyfile="include/global/PDJE_ATOMIC_EVENT.hpp" bodystart="8" bodyend="8"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classATOMIC__EVENT_1a8b59c50dd5494e290c3aa6ae7a474ee0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void ATOMIC_EVENT::wait</definition>
         <argsstring>()</argsstring>
         <name>wait</name>
+        <qualifiedname>ATOMIC_EVENT::wait</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -38,6 +40,7 @@
         <definition>void ATOMIC_EVENT::signal</definition>
         <argsstring>()</argsstring>
         <name>signal</name>
+        <qualifiedname>ATOMIC_EVENT::signal</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -46,21 +49,21 @@
         </inbodydescription>
         <location file="include/global/PDJE_ATOMIC_EVENT.hpp" line="20" column="5" bodyfile="include/global/PDJE_ATOMIC_EVENT.hpp" bodystart="20" bodyend="24"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="2">
-        <label>std::atomic&lt; bool &gt;</label>
-      </node>
       <node id="1">
         <label>ATOMIC_EVENT</label>
         <link refid="classATOMIC__EVENT"/>
         <childnode refid="2" relation="usage">
           <edgelabel>flag</edgelabel>
         </childnode>
+      </node>
+      <node id="2">
+        <label>std::atomic&lt; bool &gt;</label>
       </node>
     </collaborationgraph>
     <location file="include/global/PDJE_ATOMIC_EVENT.hpp" line="6" column="1" bodyfile="include/global/PDJE_ATOMIC_EVENT.hpp" bodystart="6" bodyend="25"/>

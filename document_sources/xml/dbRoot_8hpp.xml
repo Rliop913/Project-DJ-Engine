@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="dbRoot_8hpp" kind="file" language="C++">
     <compoundname>dbRoot.hpp</compoundname>
     <includes local="no">optional</includes>
@@ -14,17 +14,59 @@
     <includes refid="musicDB_8hpp" local="yes">musicDB.hpp</includes>
     <includes refid="trackDB_8hpp" local="yes">trackDB.hpp</includes>
     <includes local="no">filesystem</includes>
+    <includedby refid="tempDB_8hpp" local="yes">include/core/MainObjects/tempDBObject/tempDB.hpp</includedby>
     <includedby refid="MusicControlPanel_8hpp" local="yes">include/core/audioRender/ManualMix/MusicControlPanel.hpp</includedby>
+    <includedby refid="MUSIC__CTR_8hpp" local="yes">include/core/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp</includedby>
     <includedby refid="Decoder_8hpp" local="yes">include/core/audioRender/MixMachine/MiniaudioObjects/Decoder.hpp</includedby>
     <includedby refid="MixMachine_8hpp" local="yes">include/core/audioRender/MixMachine/MixMachine.hpp</includedby>
-    <includedby refid="MUSIC__CTR_8hpp" local="yes">include/core/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp</includedby>
     <includedby refid="dbRoot_8cpp" local="yes">include/core/db/dbRoot.cpp</includedby>
     <includedby refid="editor_8hpp" local="yes">include/core/editor/editor.hpp</includedby>
     <includedby refid="pdjeLinter_8hpp" local="yes">include/core/editor/pdjeLinter/pdjeLinter.hpp</includedby>
     <includedby refid="PDJE__interface_8hpp" local="yes">include/core/interface/PDJE_interface.hpp</includedby>
-    <includedby refid="tempDB_8hpp" local="yes">include/core/MainObjects/tempDBObject/tempDB.hpp</includedby>
     <includedby refid="audioTest_8cpp" local="yes">include/tests/audioTest.cpp</includedby>
     <incdepgraph>
+      <node id="1">
+        <label>include/core/db/dbRoot.hpp</label>
+        <link refid="dbRoot_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>dbState.hpp</label>
+        <link refid="dbState_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
       <node id="11">
         <label>musicDB.hpp</label>
         <link refid="musicDB_8hpp"/>
@@ -41,15 +83,6 @@
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="15">
-        <label>filesystem</label>
-      </node>
-      <node id="4">
-        <label>string</label>
-      </node>
-      <node id="3">
-        <label>sqlite3.h</label>
-      </node>
       <node id="16">
         <label>trackDB.hpp</label>
         <link refid="trackDB_8hpp"/>
@@ -63,21 +96,6 @@
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-      </node>
-      <node id="6">
-        <label>rocksdb/db.h</label>
-      </node>
-      <node id="9">
-        <label>rocksdb/table.h</label>
-      </node>
-      <node id="2">
-        <label>optional</label>
-      </node>
-      <node id="8">
-        <label>rocksdb/options.h</label>
-      </node>
-      <node id="5">
-        <label>vector</label>
       </node>
       <node id="13">
         <label>fileNameSanitizer.hpp</label>
@@ -93,401 +111,105 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="14">
-        <label>cppcodec/base64_default_url.hpp</label>
-      </node>
       <node id="10">
         <label>PDJE_EXPORT_SETTER.hpp</label>
         <link refid="PDJE__EXPORT__SETTER_8hpp"/>
       </node>
-      <node id="1">
-        <label>include/core/db/dbRoot.hpp</label>
-        <link refid="dbRoot_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
+      <node id="14">
+        <label>cppcodec/base64_default_url.hpp</label>
+      </node>
+      <node id="15">
+        <label>filesystem</label>
+      </node>
+      <node id="2">
+        <label>optional</label>
+      </node>
+      <node id="6">
+        <label>rocksdb/db.h</label>
       </node>
       <node id="7">
         <label>rocksdb/filter_policy.h</label>
       </node>
-      <node id="12">
-        <label>dbState.hpp</label>
-        <link refid="dbState_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
+      <node id="8">
+        <label>rocksdb/options.h</label>
+      </node>
+      <node id="9">
+        <label>rocksdb/table.h</label>
+      </node>
+      <node id="3">
+        <label>sqlite3.h</label>
+      </node>
+      <node id="4">
+        <label>string</label>
+      </node>
+      <node id="5">
+        <label>vector</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="32">
-        <label>include/core/MainObjects/audioPlayer/audioPlayer.cpp</label>
-        <link refid="audioPlayer_8cpp"/>
-      </node>
-      <node id="19">
-        <label>include/core/MainObjects/editorObject/commonfunction.cpp</label>
-        <link refid="commonfunction_8cpp"/>
-      </node>
-      <node id="14">
-        <label>include/tests/editorTest.cpp</label>
-        <link refid="editorTest_8cpp"/>
-      </node>
-      <node id="47">
-        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_EQ.cpp</label>
-        <link refid="Type__FX__EQ_8cpp"/>
-      </node>
-      <node id="61">
-        <label>include/core/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.cpp</label>
-        <link refid="MUSIC__CTR_8cpp"/>
-      </node>
-      <node id="40">
-        <label>include/core/audioRender/audioRender.hpp</label>
-        <link refid="audioRender_8hpp"/>
-        <childnode refid="41" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-      </node>
-      <node id="36">
-        <label>include/core/audioRender/ManualMix/PreLoadedMusic/PreLoadedMusic.hpp</label>
-        <link refid="PreLoadedMusic_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="37" relation="include">
-        </childnode>
-      </node>
-      <node id="22">
-        <label>include/core/MainObjects/editorObject/getdiff.cpp</label>
-        <link refid="getdiff_8cpp"/>
+      <node id="29">
+        <label>include/core/MainObjects/audioPlayer/audioCallbacks.cpp</label>
+        <link refid="audioCallbacks_8cpp"/>
       </node>
       <node id="28">
-        <label>include/core/MainObjects/editorObject/updatelog.cpp</label>
-        <link refid="updatelog_8cpp"/>
-      </node>
-      <node id="34">
-        <label>include/tests/audioTest.cpp</label>
-        <link refid="audioTest_8cpp"/>
-      </node>
-      <node id="7">
-        <label>include/core/MainObjects/editorObject/editorObject.cpp</label>
-        <link refid="editorObject_8cpp"/>
-      </node>
-      <node id="3">
-        <label>include/core/audioRender/ManualMix/MusicControlPanel-inl.h</label>
-        <link refid="MusicControlPanel-inl_8h"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="67">
-        <label>include/core/MainObjects/tempDBObject/tempDB.hpp</label>
-        <link refid="tempDB_8hpp"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="68" relation="include">
-        </childnode>
-      </node>
-      <node id="54">
-        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_ROLL.cpp</label>
-        <link refid="Type__FX__ROLL_8cpp"/>
-      </node>
-      <node id="17">
-        <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
-        <link refid="judgeTest_8cpp"/>
-      </node>
-      <node id="2">
-        <label>include/core/audioRender/ManualMix/MusicControlPanel.hpp</label>
-        <link refid="MusicControlPanel_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
+        <label>include/core/MainObjects/audioPlayer/audioCallbacks.hpp</label>
+        <link refid="audioCallbacks_8hpp"/>
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
       </node>
-      <node id="51">
-        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_PANNER.cpp</label>
-        <link refid="Type__FX__PANNER_8cpp"/>
+      <node id="30">
+        <label>include/core/MainObjects/audioPlayer/audioPlayer.cpp</label>
+        <link refid="audioPlayer_8cpp"/>
       </node>
-      <node id="59">
-        <label>include/core/audioRender/MixMachine/MUSIC_CTR/BattleDj.hpp</label>
-        <link refid="BattleDj_8hpp"/>
-        <childnode refid="39" relation="include">
-        </childnode>
-        <childnode refid="60" relation="include">
-        </childnode>
-      </node>
-      <node id="35">
-        <label>include/core/audioRender/MixMachine/MiniaudioObjects/Decoder.hpp</label>
-        <link refid="Decoder_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
-        </childnode>
-        <childnode refid="38" relation="include">
-        </childnode>
-        <childnode refid="39" relation="include">
-        </childnode>
-        <childnode refid="58" relation="include">
-        </childnode>
-      </node>
-      <node id="18">
-        <label>include/core/MainObjects/editorObject/addline.cpp</label>
-        <link refid="addline_8cpp"/>
-      </node>
-      <node id="27">
-        <label>include/core/MainObjects/editorObject/undo.cpp</label>
-        <link refid="undo_8cpp"/>
-      </node>
-      <node id="48">
-        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_FILTER.cpp</label>
-        <link refid="Type__FX__FILTER_8cpp"/>
-      </node>
-      <node id="57">
-        <label>include/core/audioRender/MixMachine/MixTypes/Type_VOL.cpp</label>
-        <link refid="Type__VOL_8cpp"/>
-      </node>
-      <node id="33">
+      <node id="31">
         <label>include/core/MainObjects/audioPlayer/audioPlayer.hpp</label>
         <link refid="audioPlayer_8hpp"/>
-        <childnode refid="10" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
-      </node>
-      <node id="41">
-        <label>include/core/audioRender/audioRender.cpp</label>
-        <link refid="audioRender_8cpp"/>
-      </node>
-      <node id="21">
-        <label>include/core/MainObjects/editorObject/getall.cpp</label>
-        <link refid="getall_8cpp"/>
-      </node>
-      <node id="42">
-        <label>include/core/audioRender/MixMachine/MixMachine-inl.h</label>
-        <link refid="MixMachine-inl_8h"/>
-        <childnode refid="43" relation="include">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>include/core/editor/TimeLine/JSONWrap/MusicJson.cpp</label>
-        <link refid="MusicJson_8cpp"/>
-      </node>
-      <node id="65">
-        <label>include/core/editor/pdjeLinter/pdjeLinter.hpp</label>
-        <link refid="pdjeLinter_8hpp"/>
-        <childnode refid="66" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-      </node>
-      <node id="37">
-        <label>include/core/audioRender/ManualMix/PreLoadedMusic/PreLoadedMusic.cpp</label>
-        <link refid="PreLoadedMusic_8cpp"/>
-      </node>
-      <node id="62">
-        <label>include/core/audioRender/MixMachine/MUSIC_CTR/SetCue.cpp</label>
-        <link refid="SetCue_8cpp"/>
-      </node>
-      <node id="8">
-        <label>include/core/MainObjects/editorObject/editorObject.hpp</label>
-        <link refid="editorObject_8hpp"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
-      </node>
-      <node id="45">
-        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_DISTORTION.cpp</label>
-        <link refid="Type__FX__DISTORTION_8cpp"/>
-      </node>
-      <node id="53">
-        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_ROBOT.cpp</label>
-        <link refid="Type__FX__ROBOT_8cpp"/>
       </node>
       <node id="5">
-        <label>include/core/editor/editor.hpp</label>
-        <link refid="editor_8hpp"/>
+        <label>include/core/MainObjects/editorObject/addline.cpp</label>
+        <link refid="addline_8cpp"/>
+      </node>
+      <node id="6">
+        <label>include/core/MainObjects/editorObject/commonfunction.cpp</label>
+        <link refid="commonfunction_8cpp"/>
+      </node>
+      <node id="7">
+        <label>include/core/MainObjects/editorObject/deleteline.cpp</label>
+        <link refid="deleteline_8cpp"/>
+      </node>
+      <node id="3">
+        <label>include/core/MainObjects/editorObject/editorObject.cpp</label>
+        <link refid="editorObject_8cpp"/>
+      </node>
+      <node id="4">
+        <label>include/core/MainObjects/editorObject/editorObject.hpp</label>
+        <link refid="editorObject_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-      </node>
-      <node id="31">
-        <label>include/core/MainObjects/audioPlayer/audioCallbacks.cpp</label>
-        <link refid="audioCallbacks_8cpp"/>
-      </node>
-      <node id="44">
-        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_COMPRESSOR.cpp</label>
-        <link refid="Type__FX__COMPRESSOR_8cpp"/>
-      </node>
-      <node id="15">
-        <label>include/tests/gittest.cpp</label>
-        <link refid="gittest_8cpp"/>
-      </node>
-      <node id="60">
-        <label>include/core/audioRender/MixMachine/MUSIC_CTR/BattleDj.cpp</label>
-        <link refid="BattleDj_8cpp"/>
-      </node>
-      <node id="38">
-        <label>include/core/audioRender/MixMachine/MiniaudioObjects/Decoder.cpp</label>
-        <link refid="Decoder_8cpp"/>
-      </node>
-      <node id="24">
-        <label>include/core/MainObjects/editorObject/go.cpp</label>
-        <link refid="go_8cpp"/>
-      </node>
-      <node id="20">
-        <label>include/core/MainObjects/editorObject/deleteline.cpp</label>
-        <link refid="deleteline_8cpp"/>
-      </node>
-      <node id="63">
-        <label>include/tests/CapnpTest.cpp</label>
-        <link refid="CapnpTest_8cpp"/>
-      </node>
-      <node id="64">
-        <label>include/core/db/dbRoot.cpp</label>
-        <link refid="dbRoot_8cpp"/>
-      </node>
-      <node id="56">
-        <label>include/core/audioRender/MixMachine/MixTypes/Type_MUSCTR.cpp</label>
-        <link refid="Type__MUSCTR_8cpp"/>
-      </node>
-      <node id="11">
-        <label>include/core/interface/PDJE_interface.cpp</label>
-        <link refid="PDJE__interface_8cpp"/>
-      </node>
-      <node id="46">
-        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_ECHO.cpp</label>
-        <link refid="Type__FX__ECHO_8cpp"/>
-      </node>
-      <node id="66">
-        <label>include/core/editor/pdjeLinter/trackLinter.cpp</label>
-        <link refid="trackLinter_8cpp"/>
-      </node>
-      <node id="55">
-        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_TRANCE.cpp</label>
-        <link refid="Type__FX__TRANCE_8cpp"/>
-      </node>
-      <node id="6">
-        <label>include/core/editor/editor.cpp</label>
-        <link refid="editor_8cpp"/>
-      </node>
-      <node id="43">
-        <label>include/core/audioRender/MixMachine/MixMachine.cpp</label>
-        <link refid="MixMachine_8cpp"/>
-      </node>
-      <node id="25">
-        <label>include/core/MainObjects/editorObject/redo.cpp</label>
-        <link refid="redo_8cpp"/>
-      </node>
-      <node id="13">
-        <label>include/tests/dbTest.cpp</label>
-        <link refid="dbTest_8cpp"/>
-      </node>
-      <node id="26">
-        <label>include/core/MainObjects/editorObject/render.cpp</label>
-        <link refid="render_8cpp"/>
-      </node>
-      <node id="30">
-        <label>include/core/MainObjects/audioPlayer/audioCallbacks.hpp</label>
-        <link refid="audioCallbacks_8hpp"/>
-        <childnode refid="31" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-      </node>
-      <node id="58">
-        <label>include/core/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp</label>
-        <link refid="MUSIC__CTR_8hpp"/>
-        <childnode refid="59" relation="include">
-        </childnode>
-        <childnode refid="61" relation="include">
-        </childnode>
-        <childnode refid="62" relation="include">
-        </childnode>
-        <childnode refid="63" relation="include">
-        </childnode>
-      </node>
-      <node id="16">
-        <label>include/tests/interfaceTest.cpp</label>
-        <link refid="interfaceTest_8cpp"/>
-      </node>
-      <node id="23">
-        <label>include/core/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
-        <link refid="getlogwithjsongraph_8cpp"/>
-      </node>
-      <node id="10">
-        <label>include/core/interface/PDJE_interface.hpp</label>
-        <link refid="PDJE__interface_8hpp"/>
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
@@ -502,55 +224,161 @@
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-      </node>
-      <node id="50">
-        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_OCS_FILTER.cpp</label>
-        <link refid="Type__FX__OCS__FILTER_8cpp"/>
-      </node>
-      <node id="1">
-        <label>include/core/db/dbRoot.hpp</label>
-        <link refid="dbRoot_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
-        <childnode refid="39" relation="include">
-        </childnode>
-        <childnode refid="58" relation="include">
-        </childnode>
-        <childnode refid="64" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="65" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="67" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
       </node>
-      <node id="29">
-        <label>include/core/SWIG_editor_visitor.hpp</label>
-        <link refid="SWIG__editor__visitor_8hpp"/>
+      <node id="8">
+        <label>include/core/MainObjects/editorObject/getall.cpp</label>
+        <link refid="getall_8cpp"/>
       </node>
-      <node id="49">
-        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_FLANGER.cpp</label>
-        <link refid="Type__FX__FLANGER_8cpp"/>
+      <node id="9">
+        <label>include/core/MainObjects/editorObject/getdiff.cpp</label>
+        <link refid="getdiff_8cpp"/>
       </node>
-      <node id="4">
-        <label>include/core/audioRender/ManualMix/MusicControlPanel.cpp</label>
-        <link refid="MusicControlPanel_8cpp"/>
+      <node id="10">
+        <label>include/core/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
+        <link refid="getlogwithjsongraph_8cpp"/>
       </node>
-      <node id="68">
+      <node id="11">
+        <label>include/core/MainObjects/editorObject/go.cpp</label>
+        <link refid="go_8cpp"/>
+      </node>
+      <node id="12">
+        <label>include/core/MainObjects/editorObject/redo.cpp</label>
+        <link refid="redo_8cpp"/>
+      </node>
+      <node id="13">
+        <label>include/core/MainObjects/editorObject/render.cpp</label>
+        <link refid="render_8cpp"/>
+      </node>
+      <node id="14">
+        <label>include/core/MainObjects/editorObject/undo.cpp</label>
+        <link refid="undo_8cpp"/>
+      </node>
+      <node id="15">
+        <label>include/core/MainObjects/editorObject/updatelog.cpp</label>
+        <link refid="updatelog_8cpp"/>
+      </node>
+      <node id="26">
         <label>include/core/MainObjects/tempDBObject/tempDB.cpp</label>
         <link refid="tempDB_8cpp"/>
       </node>
+      <node id="2">
+        <label>include/core/MainObjects/tempDBObject/tempDB.hpp</label>
+        <link refid="tempDB_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>include/core/SWIG_editor_visitor.hpp</label>
+        <link refid="SWIG__editor__visitor_8hpp"/>
+      </node>
+      <node id="33">
+        <label>include/core/audioRender/ManualMix/MusicControlPanel-inl.h</label>
+        <link refid="MusicControlPanel-inl_8h"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>include/core/audioRender/ManualMix/MusicControlPanel.cpp</label>
+        <link refid="MusicControlPanel_8cpp"/>
+      </node>
+      <node id="27">
+        <label>include/core/audioRender/ManualMix/MusicControlPanel.hpp</label>
+        <link refid="MusicControlPanel_8hpp"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="64">
+        <label>include/core/audioRender/ManualMix/PreLoadedMusic/PreLoadedMusic.cpp</label>
+        <link refid="PreLoadedMusic_8cpp"/>
+      </node>
+      <node id="63">
+        <label>include/core/audioRender/ManualMix/PreLoadedMusic/PreLoadedMusic.hpp</label>
+        <link refid="PreLoadedMusic_8hpp"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+      </node>
       <node id="39">
+        <label>include/core/audioRender/MixMachine/MUSIC_CTR/BattleDj.cpp</label>
+        <link refid="BattleDj_8cpp"/>
+      </node>
+      <node id="38">
+        <label>include/core/audioRender/MixMachine/MUSIC_CTR/BattleDj.hpp</label>
+        <link refid="BattleDj_8hpp"/>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="59">
+        <label>include/core/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.cpp</label>
+        <link refid="MUSIC__CTR_8cpp"/>
+      </node>
+      <node id="37">
+        <label>include/core/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp</label>
+        <link refid="MUSIC__CTR_8hpp"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+      </node>
+      <node id="60">
+        <label>include/core/audioRender/MixMachine/MUSIC_CTR/SetCue.cpp</label>
+        <link refid="SetCue_8cpp"/>
+      </node>
+      <node id="65">
+        <label>include/core/audioRender/MixMachine/MiniaudioObjects/Decoder.cpp</label>
+        <link refid="Decoder_8cpp"/>
+      </node>
+      <node id="62">
+        <label>include/core/audioRender/MixMachine/MiniaudioObjects/Decoder.hpp</label>
+        <link refid="Decoder_8hpp"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>include/core/audioRender/MixMachine/MixMachine-inl.h</label>
+        <link refid="MixMachine-inl_8h"/>
+        <childnode refid="42" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>include/core/audioRender/MixMachine/MixMachine.cpp</label>
+        <link refid="MixMachine_8cpp"/>
+      </node>
+      <node id="40">
         <label>include/core/audioRender/MixMachine/MixMachine.hpp</label>
         <link refid="MixMachine_8hpp"/>
-        <childnode refid="40" relation="include">
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="42" relation="include">
         </childnode>
@@ -584,22 +412,194 @@
         </childnode>
         <childnode refid="57" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
       </node>
-      <node id="52">
+      <node id="43">
+        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_COMPRESSOR.cpp</label>
+        <link refid="Type__FX__COMPRESSOR_8cpp"/>
+      </node>
+      <node id="44">
+        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_DISTORTION.cpp</label>
+        <link refid="Type__FX__DISTORTION_8cpp"/>
+      </node>
+      <node id="45">
+        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_ECHO.cpp</label>
+        <link refid="Type__FX__ECHO_8cpp"/>
+      </node>
+      <node id="46">
+        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_EQ.cpp</label>
+        <link refid="Type__FX__EQ_8cpp"/>
+      </node>
+      <node id="47">
+        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_FILTER.cpp</label>
+        <link refid="Type__FX__FILTER_8cpp"/>
+      </node>
+      <node id="48">
+        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_FLANGER.cpp</label>
+        <link refid="Type__FX__FLANGER_8cpp"/>
+      </node>
+      <node id="49">
+        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_OCS_FILTER.cpp</label>
+        <link refid="Type__FX__OCS__FILTER_8cpp"/>
+      </node>
+      <node id="50">
+        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_PANNER.cpp</label>
+        <link refid="Type__FX__PANNER_8cpp"/>
+      </node>
+      <node id="51">
         <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_PHASER.cpp</label>
         <link refid="Type__FX__PHASER_8cpp"/>
       </node>
-      <node id="12">
+      <node id="52">
+        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_ROBOT.cpp</label>
+        <link refid="Type__FX__ROBOT_8cpp"/>
+      </node>
+      <node id="53">
+        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_ROLL.cpp</label>
+        <link refid="Type__FX__ROLL_8cpp"/>
+      </node>
+      <node id="54">
+        <label>include/core/audioRender/MixMachine/MixTypes/Type_FX_TRANCE.cpp</label>
+        <link refid="Type__FX__TRANCE_8cpp"/>
+      </node>
+      <node id="55">
+        <label>include/core/audioRender/MixMachine/MixTypes/Type_MUSCTR.cpp</label>
+        <link refid="Type__MUSCTR_8cpp"/>
+      </node>
+      <node id="56">
+        <label>include/core/audioRender/MixMachine/MixTypes/Type_VOL.cpp</label>
+        <link refid="Type__VOL_8cpp"/>
+      </node>
+      <node id="58">
+        <label>include/core/audioRender/audioRender.cpp</label>
+        <link refid="audioRender_8cpp"/>
+      </node>
+      <node id="57">
+        <label>include/core/audioRender/audioRender.hpp</label>
+        <link refid="audioRender_8hpp"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+      </node>
+      <node id="66">
+        <label>include/core/db/dbRoot.cpp</label>
+        <link refid="dbRoot_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/core/db/dbRoot.hpp</label>
+        <link refid="dbRoot_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>include/core/editor/TimeLine/JSONWrap/MusicJson.cpp</label>
+        <link refid="MusicJson_8cpp"/>
+      </node>
+      <node id="36">
+        <label>include/core/editor/editor.cpp</label>
+        <link refid="editor_8cpp"/>
+      </node>
+      <node id="35">
+        <label>include/core/editor/editor.hpp</label>
+        <link refid="editor_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="67">
+        <label>include/core/editor/pdjeLinter/pdjeLinter.hpp</label>
+        <link refid="pdjeLinter_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+      </node>
+      <node id="68">
+        <label>include/core/editor/pdjeLinter/trackLinter.cpp</label>
+        <link refid="trackLinter_8cpp"/>
+      </node>
+      <node id="19">
+        <label>include/core/interface/PDJE_interface.cpp</label>
+        <link refid="PDJE__interface_8cpp"/>
+      </node>
+      <node id="18">
+        <label>include/core/interface/PDJE_interface.hpp</label>
+        <link refid="PDJE__interface_8hpp"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
         <label>include/core/interface/PDJE_polyglot_wraps.cpp</label>
         <link refid="PDJE__polyglot__wraps_8cpp"/>
       </node>
+      <node id="61">
+        <label>include/tests/CapnpTest.cpp</label>
+        <link refid="CapnpTest_8cpp"/>
+      </node>
+      <node id="21">
+        <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
+        <link refid="judgeTest_8cpp"/>
+      </node>
+      <node id="32">
+        <label>include/tests/audioTest.cpp</label>
+        <link refid="audioTest_8cpp"/>
+      </node>
+      <node id="22">
+        <label>include/tests/dbTest.cpp</label>
+        <link refid="dbTest_8cpp"/>
+      </node>
+      <node id="23">
+        <label>include/tests/editorTest.cpp</label>
+        <link refid="editorTest_8cpp"/>
+      </node>
+      <node id="24">
+        <label>include/tests/gittest.cpp</label>
+        <link refid="gittest_8cpp"/>
+      </node>
+      <node id="25">
+        <label>include/tests/interfaceTest.cpp</label>
+        <link refid="interfaceTest_8cpp"/>
+      </node>
     </invincdepgraph>
     <innerclass refid="classlitedb" prot="public">litedb</innerclass>
-      <sectiondef kind="typedef">
+    <sectiondef kind="typedef">
       <memberdef kind="typedef" id="dbRoot_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0" prot="public" static="no">
         <type>std::vector&lt; <ref refid="structmusdata" kindref="compound">musdata</ref> &gt;</type>
         <definition>using MUS_VEC =  std::vector&lt;musdata&gt;</definition>
@@ -656,7 +656,7 @@
         </inbodydescription>
         <location file="include/core/db/dbRoot.hpp" line="27" column="1" bodyfile="include/core/db/dbRoot.hpp" bodystart="27" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -680,68 +680,68 @@
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">fs<sp/>=<sp/>std::filesystem;</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="20" refid="dbRoot_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0" refkind="member"><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="dbRoot_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0" kindref="member">MUS_VEC</ref><sp/>=<sp/>std::vector&lt;musdata&gt;;</highlight></codeline>
-<codeline lineno="22" refid="dbRoot_8hpp_1a1bb451b755a8140750f0c66ddd292a40" refkind="member"><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="dbRoot_8hpp_1a1bb451b755a8140750f0c66ddd292a40" kindref="member">MAYBE_MUS_VEC</ref><sp/>=<sp/>std::optional&lt;MUS_VEC&gt;;</highlight></codeline>
+<codeline lineno="20" refid="dbRoot_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="dbRoot_8hpp_1a3f1b13e99715292c40c6aa3f77c558e0" kindref="member">MUS_VEC</ref><sp/>=<sp/>std::vector&lt;musdata&gt;;</highlight></codeline>
+<codeline lineno="22" refid="dbRoot_8hpp_1a1bb451b755a8140750f0c66ddd292a40" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="dbRoot_8hpp_1a1bb451b755a8140750f0c66ddd292a40" kindref="member">MAYBE_MUS_VEC</ref><sp/>=<sp/>std::optional&lt;MUS_VEC&gt;;</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight></codeline>
-<codeline lineno="25" refid="dbRoot_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470" refkind="member"><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="dbRoot_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470" kindref="member">TRACK_VEC</ref><sp/>=<sp/>std::vector&lt;trackdata&gt;;</highlight></codeline>
-<codeline lineno="27" refid="dbRoot_8hpp_1a6ab0599a5878a648af6017d8ff86b842" refkind="member"><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="dbRoot_8hpp_1a6ab0599a5878a648af6017d8ff86b842" kindref="member">MAYBE_TRACK_VEC</ref><sp/>=<sp/>std::optional&lt;TRACK_VEC&gt;;</highlight></codeline>
+<codeline lineno="25" refid="dbRoot_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="dbRoot_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470" kindref="member">TRACK_VEC</ref><sp/>=<sp/>std::vector&lt;trackdata&gt;;</highlight></codeline>
+<codeline lineno="27" refid="dbRoot_8hpp_1a6ab0599a5878a648af6017d8ff86b842" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="dbRoot_8hpp_1a6ab0599a5878a648af6017d8ff86b842" kindref="member">MAYBE_TRACK_VEC</ref><sp/>=<sp/>std::optional&lt;TRACK_VEC&gt;;</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">RDB<sp/>=<sp/>ROCKSDB_NAMESPACE;</highlight></codeline>
-<codeline lineno="34" refid="classlitedb" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kindref="member">PDJE_API</ref><sp/><ref refid="classlitedb" kindref="compound">litedb</ref><sp/>{</highlight></codeline>
+<codeline lineno="34" refid="classlitedb" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kindref="member">PDJE_API</ref><sp/><ref refid="classlitedb_1a9f3b4346801213c5cb95d7c86921a1c3" kindref="member">litedb</ref><sp/>{</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="37" refid="classlitedb_1a3fa0b6c88df33c15dd495450a6a9023c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>fs::path<sp/><ref refid="classlitedb_1a3fa0b6c88df33c15dd495450a6a9023c" kindref="member">ROOT_PATH</ref>;</highlight></codeline>
 <codeline lineno="38" refid="classlitedb_1a480767651327a324c425de58a999bd13" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>fs::path<sp/><ref refid="classlitedb_1a480767651327a324c425de58a999bd13" kindref="member">sqldbPath</ref>;</highlight></codeline>
 <codeline lineno="39" refid="classlitedb_1a690e69d7f293b7ecbfc2d32be3cbca19" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>fs::path<sp/><ref refid="classlitedb_1a690e69d7f293b7ecbfc2d32be3cbca19" kindref="member">kvdbPath</ref>;</highlight></codeline>
 <codeline lineno="40" refid="classlitedb_1a6e6152c6612760ef978a5d505323519a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>fs::path<sp/><ref refid="classlitedb_1a6e6152c6612760ef978a5d505323519a" kindref="member">vectordbPath</ref>;</highlight></codeline>
-<codeline lineno="42" refid="classlitedb_1a485ddae6aed9c0c213612434b0eb24e4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>sqlite3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*sdb<sp/><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="43" refid="classlitedb_1a5d6de7dee58fadfa03b125be11ac7696" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>RDB::DB<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*kvdb<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="42" refid="classlitedb_1a485ddae6aed9c0c213612434b0eb24e4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>sqlite3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="classlitedb_1a485ddae6aed9c0c213612434b0eb24e4" kindref="member">sdb</ref><sp/><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="43" refid="classlitedb_1a5d6de7dee58fadfa03b125be11ac7696" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>RDB::DB<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="classlitedb_1a5d6de7dee58fadfa03b125be11ac7696" kindref="member">kvdb</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="44" refid="classlitedb_1ab91ee89041471eaa2bc56988bedb7c10" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>RDB::WriteOptions<sp/><ref refid="classlitedb_1ab91ee89041471eaa2bc56988bedb7c10" kindref="member">wops</ref>;</highlight></codeline>
 <codeline lineno="45" refid="classlitedb_1a4d3a774674b1bd24f1269791ae8be880" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>RDB::ReadOptions<sp/><sp/><ref refid="classlitedb_1a4d3a774674b1bd24f1269791ae8be880" kindref="member">rops</ref>;</highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>CheckTables();</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlitedb_1ac516f0ac3215ae1f81a733037ae1cd67" kindref="member">CheckTables</ref>();</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight></codeline>
 <codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>DBType&gt;</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;std::vector&lt;DBType&gt;&gt;</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>operator&lt;&lt;(DBType<sp/>&amp;searchClue);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlitedb_1ad34e34703f0871c6f7ac4eb1c3242a1b" kindref="member">operator&lt;&lt;</ref>(DBType<sp/>&amp;searchClue);</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"></highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>DBType&gt;</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>operator&lt;=(DBType<sp/>&amp;insertObject);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlitedb_1ad2789c301c55befe5e85284f272bb46d" kindref="member">operator&lt;=</ref>(DBType<sp/>&amp;insertObject);</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"></highlight></codeline>
 <codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>DBType&gt;</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>DeleteData(DBType<sp/>&amp;deleteObject);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlitedb_1aa3cd2c54c27a2d3d1a7d87a8607e6495" kindref="member">DeleteData</ref>(DBType<sp/>&amp;deleteObject);</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"></highlight></codeline>
 <codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>DBType&gt;</highlight></codeline>
 <codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>EditData(DBType<sp/>&amp;searchObject,<sp/>DBType<sp/>&amp;editObject);<sp/></highlight><highlight class="comment">//<sp/>to-do<sp/>impl</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlitedb_1a275cceb420462fbf3befb82bde3c3848" kindref="member">EditData</ref>(DBType<sp/>&amp;searchObject,<sp/>DBType<sp/>&amp;editObject);<sp/></highlight><highlight class="comment">//<sp/>to-do<sp/>impl</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="98"><highlight class="normal"></highlight></codeline>
 <codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>KVGet(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref><sp/>&amp;<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca660a38111995acbeb2820648e82f0d8c" kindref="member">K</ref>,<sp/><ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref><sp/>&amp;<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca28f41f1144eee94834387e9a6a088bc1" kindref="member">V</ref>);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlitedb_1a56ada182651e23ea48df4c1f1c951117" kindref="member">KVGet</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref><sp/>&amp;<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca660a38111995acbeb2820648e82f0d8c" kindref="member">K</ref>,<sp/><ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref><sp/>&amp;<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca28f41f1144eee94834387e9a6a088bc1" kindref="member">V</ref>);</highlight></codeline>
 <codeline lineno="108"><highlight class="normal"></highlight></codeline>
 <codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>KVPut(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref><sp/>&amp;<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca660a38111995acbeb2820648e82f0d8c" kindref="member">K</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref><sp/>&amp;<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca28f41f1144eee94834387e9a6a088bc1" kindref="member">V</ref>);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlitedb_1a9a63c34e488edf8f417df3328274f02e" kindref="member">KVPut</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref><sp/>&amp;<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca660a38111995acbeb2820648e82f0d8c" kindref="member">K</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref><sp/>&amp;<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca28f41f1144eee94834387e9a6a088bc1" kindref="member">V</ref>);</highlight></codeline>
 <codeline lineno="118"><highlight class="normal"></highlight></codeline>
 <codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>openDB(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fs::path<sp/>&amp;dbPath);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlitedb_1af5ef2daaba8dcdea92b28576e4d07178" kindref="member">openDB</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fs::path<sp/>&amp;dbPath);</highlight></codeline>
 <codeline lineno="128"><highlight class="normal"></highlight></codeline>
 <codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fs::path</highlight></codeline>
 <codeline lineno="135" refid="classlitedb_1ad20271212217420ecfcd8c1552f87bb9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlitedb_1ad20271212217420ecfcd8c1552f87bb9" kindref="member">getRoot</ref>()</highlight></codeline>
 <codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ROOT_PATH;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classlitedb_1a3fa0b6c88df33c15dd495450a6a9023c" kindref="member">ROOT_PATH</ref>;</highlight></codeline>
 <codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="139"><highlight class="normal"></highlight></codeline>
 <codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlitedb" kindref="compound">litedb</ref>();</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>~<ref refid="classlitedb" kindref="compound">litedb</ref>();</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classlitedb" kindref="compound">~litedb</ref>();</highlight></codeline>
 <codeline lineno="150"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="151"><highlight class="normal"></highlight></codeline>
 <codeline lineno="152"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>DBType&gt;</highlight></codeline>
 <codeline lineno="153"><highlight class="normal">std::optional&lt;std::vector&lt;DBType&gt;&gt;</highlight></codeline>
 <codeline lineno="154"><highlight class="normal"><ref refid="classlitedb_1ad34e34703f0871c6f7ac4eb1c3242a1b" kindref="member">litedb::operator&lt;&lt;</ref>(DBType<sp/>&amp;searchClue)</highlight></codeline>
 <codeline lineno="155"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structstmt" kindref="compound">stmt</ref><sp/>dbstate<sp/>=<sp/><ref refid="structstmt" kindref="compound">stmt</ref>();</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>stmt<sp/>dbstate<sp/>=<sp/>stmt();</highlight></codeline>
 <codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(searchClue.GenSearchSTMT(dbstate,<sp/><ref refid="classlitedb_1a485ddae6aed9c0c213612434b0eb24e4" kindref="member">sdb</ref>))<sp/>{</highlight></codeline>
 <codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;DBType&gt;<sp/>data;</highlight></codeline>
 <codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(sqlite3_step(dbstate.<ref refid="structstmt_1a411c1a2d054375b6bd93e937e4dadae5" kindref="member">S</ref>)<sp/>==<sp/>SQLITE_ROW)<sp/>{</highlight></codeline>

@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="classPDJE__LINUX_1_1PDJE__Socket" kind="class" language="C++" prot="public">
     <compoundname>PDJE_LINUX::PDJE_Socket</compoundname>
     <includes refid="linux__socket_8hpp" local="no">linux_socket.hpp</includes>
-      <sectiondef kind="public-attrib">
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="classPDJE__LINUX_1_1PDJE__Socket_1ae0fdbeaee5bf81b4ce128694feae8e7b" prot="public" static="no" mutable="no">
         <type>int</type>
         <definition>int PDJE_LINUX::PDJE_Socket::socket_fd</definition>
         <argsstring></argsstring>
         <name>socket_fd</name>
+        <qualifiedname>PDJE_LINUX::PDJE_Socket::socket_fd</qualifiedname>
         <initializer>= -1</initializer>
         <briefdescription>
         </briefdescription>
@@ -23,6 +24,7 @@
         <definition>int PDJE_LINUX::PDJE_Socket::client_fd</definition>
         <argsstring></argsstring>
         <name>client_fd</name>
+        <qualifiedname>PDJE_LINUX::PDJE_Socket::client_fd</qualifiedname>
         <initializer>= -1</initializer>
         <briefdescription>
         </briefdescription>
@@ -37,6 +39,7 @@
         <definition>pid_t PDJE_LINUX::PDJE_Socket::rt_pid</definition>
         <argsstring></argsstring>
         <name>rt_pid</name>
+        <qualifiedname>PDJE_LINUX::PDJE_Socket::rt_pid</qualifiedname>
         <initializer>= -1</initializer>
         <briefdescription>
         </briefdescription>
@@ -51,6 +54,7 @@
         <definition>std::string PDJE_LINUX::PDJE_Socket::socket_path</definition>
         <argsstring></argsstring>
         <name>socket_path</name>
+        <qualifiedname>PDJE_LINUX::PDJE_Socket::socket_path</qualifiedname>
         <initializer>=
             &quot;/tmp/pdje_input_module_libevdev_socket_path.sock&quot;</initializer>
         <briefdescription>
@@ -61,13 +65,14 @@
         </inbodydescription>
         <location file="include/input/trashbin/--DEPRECATED-linux/socket/linux_socket.hpp" line="12" column="21" bodyfile="include/input/trashbin/--DEPRECATED-linux/socket/linux_socket.hpp" bodystart="12" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classPDJE__LINUX_1_1PDJE__Socket_1a930de494521050efe7069916ce45599f" prot="private" static="no" mutable="no">
-        <type>struct PDJE_LINUX::PDJE_Socket::@3</type>
-        <definition>struct PDJE_LINUX::PDJE_Socket::@3 PDJE_LINUX::PDJE_Socket::importants</definition>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classPDJE__LINUX_1_1PDJE__Socket_1adc998abf18fc4e397b3a163b15b71e63" prot="private" static="no" mutable="no">
+        <type>struct <ref refid="classPDJE__LINUX_1_1PDJE__Socket" kindref="compound">PDJE_LINUX::PDJE_Socket</ref></type>
+        <definition>struct PDJE_LINUX::PDJE_Socket PDJE_LINUX::PDJE_Socket::importants</definition>
         <argsstring></argsstring>
         <name>importants</name>
+        <qualifiedname>PDJE_LINUX::PDJE_Socket::importants</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -76,13 +81,14 @@
         </inbodydescription>
         <location file="include/input/trashbin/--DEPRECATED-linux/socket/linux_socket.hpp" line="14" column="16"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
+    </sectiondef>
+    <sectiondef kind="private-func">
       <memberdef kind="function" id="classPDJE__LINUX_1_1PDJE__Socket_1a35e535f7557b6733c8b1e82521702043" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
         <definition>int PDJE_LINUX::PDJE_Socket::OpenClientWithSudo</definition>
         <argsstring>(const std::string &amp;exec_path, const std::string &amp;arg)</argsstring>
         <name>OpenClientWithSudo</name>
+        <qualifiedname>PDJE_LINUX::PDJE_Socket::OpenClientWithSudo</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>exec_path</declname>
@@ -104,6 +110,7 @@
         <definition>int PDJE_LINUX::PDJE_Socket::CloseClient</definition>
         <argsstring>()</argsstring>
         <name>CloseClient</name>
+        <qualifiedname>PDJE_LINUX::PDJE_Socket::CloseClient</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -127,6 +134,7 @@
         <definition>int PDJE_LINUX::PDJE_Socket::Send_IPCMEM_ToRT</definition>
         <argsstring>(const IPCSharedMem&lt; T, MEM_PROT_FLAG &gt; &amp;shared_IPC_mem)</argsstring>
         <name>Send_IPCMEM_ToRT</name>
+        <qualifiedname>PDJE_LINUX::PDJE_Socket::Send_IPCMEM_ToRT</qualifiedname>
         <param>
           <type>const <ref refid="classIPCSharedMem" kindref="compound">IPCSharedMem</ref>&lt; <ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref>, MEM_PROT_FLAG &gt; &amp;</type>
           <declname>shared_IPC_mem</declname>
@@ -139,13 +147,14 @@
         </inbodydescription>
         <location file="include/input/trashbin/--DEPRECATED-linux/socket/linux_socket.hpp" line="23" column="5" bodyfile="include/input/trashbin/--DEPRECATED-linux/socket/linux_socket.hpp" bodystart="39" bodyend="62"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classPDJE__LINUX_1_1PDJE__Socket_1a55c910a885875c7adb5732a8c7bd69f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
         <definition>int PDJE_LINUX::PDJE_Socket::SocketOpen</definition>
         <argsstring>(const std::string &amp;exec_path)</argsstring>
         <name>SocketOpen</name>
+        <qualifiedname>PDJE_LINUX::PDJE_Socket::SocketOpen</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>exec_path</declname>
@@ -163,6 +172,7 @@
         <definition>void PDJE_LINUX::PDJE_Socket::SocketClose</definition>
         <argsstring>()</argsstring>
         <name>SocketClose</name>
+        <qualifiedname>PDJE_LINUX::PDJE_Socket::SocketClose</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -176,6 +186,7 @@
         <definition>int PDJE_LINUX::PDJE_Socket::QueryClient</definition>
         <argsstring>(const std::string &amp;query, std::string &amp;result)</argsstring>
         <name>QueryClient</name>
+        <qualifiedname>PDJE_LINUX::PDJE_Socket::QueryClient</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>query</declname>
@@ -197,6 +208,7 @@
         <definition>PDJE_LINUX::PDJE_Socket::PDJE_Socket</definition>
         <argsstring>()=default</argsstring>
         <name>PDJE_Socket</name>
+        <qualifiedname>PDJE_LINUX::PDJE_Socket::PDJE_Socket</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -210,6 +222,7 @@
         <definition>PDJE_LINUX::PDJE_Socket::~PDJE_Socket</definition>
         <argsstring>()=default</argsstring>
         <name>~PDJE_Socket</name>
+        <qualifiedname>PDJE_LINUX::PDJE_Socket::~PDJE_Socket</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -218,7 +231,7 @@
         </inbodydescription>
         <location file="include/input/trashbin/--DEPRECATED-linux/socket/linux_socket.hpp" line="34" column="5"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -244,7 +257,7 @@
     <listofallmembers>
       <member refid="classPDJE__LINUX_1_1PDJE__Socket_1a9e981cb51a4255741f1cbb24312814cc" prot="public" virt="non-virtual"><scope>PDJE_LINUX::PDJE_Socket</scope><name>client_fd</name></member>
       <member refid="classPDJE__LINUX_1_1PDJE__Socket_1ac71db7adb5dea58bc45b09c397100c7e" prot="private" virt="non-virtual"><scope>PDJE_LINUX::PDJE_Socket</scope><name>CloseClient</name></member>
-      <member refid="classPDJE__LINUX_1_1PDJE__Socket_1a930de494521050efe7069916ce45599f" prot="private" virt="non-virtual"><scope>PDJE_LINUX::PDJE_Socket</scope><name>importants</name></member>
+      <member refid="classPDJE__LINUX_1_1PDJE__Socket_1adc998abf18fc4e397b3a163b15b71e63" prot="private" virt="non-virtual"><scope>PDJE_LINUX::PDJE_Socket</scope><name>importants</name></member>
       <member refid="classPDJE__LINUX_1_1PDJE__Socket_1a35e535f7557b6733c8b1e82521702043" prot="private" virt="non-virtual"><scope>PDJE_LINUX::PDJE_Socket</scope><name>OpenClientWithSudo</name></member>
       <member refid="classPDJE__LINUX_1_1PDJE__Socket_1a9fb3eae11661dbe4843b1d794c2b3160" prot="public" virt="non-virtual"><scope>PDJE_LINUX::PDJE_Socket</scope><name>PDJE_Socket</name></member>
       <member refid="classPDJE__LINUX_1_1PDJE__Socket_1ad7b3a4045e530ab44a5927cc468e9cf9" prot="public" virt="non-virtual"><scope>PDJE_LINUX::PDJE_Socket</scope><name>QueryClient</name></member>

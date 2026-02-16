@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="classMIX" kind="class" language="C++" prot="public">
     <compoundname>MIX</compoundname>
     <includes refid="Mix_8hpp" local="no">Mix.hpp</includes>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classMIX_1a06e7de64345ce562df36eaf0eb9de6d0" prot="private" static="no" mutable="no">
         <type>unsigned int</type>
         <definition>unsigned int MIX::usable_threads</definition>
         <argsstring></argsstring>
         <name>usable_threads</name>
+        <qualifiedname>MIX::usable_threads</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -17,13 +18,14 @@
         </inbodydescription>
         <location file="include/core/db/Capnp/Translators/MixTranslator/Mix.hpp" line="18" column="18" bodyfile="include/core/db/Capnp/Translators/MixTranslator/Mix.hpp" bodystart="18" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-attrib">
+    </sectiondef>
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="classMIX_1a8195224b3dde178a14717c9356150538" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="structMixStruct" kindref="compound">MixStruct</ref> &gt;</type>
         <definition>std::vector&lt;MixStruct&gt; MIX::mixVec</definition>
         <argsstring></argsstring>
         <name>mixVec</name>
+        <qualifiedname>MIX::mixVec</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -32,13 +34,14 @@
         </inbodydescription>
         <location file="include/core/db/Capnp/Translators/MixTranslator/Mix.hpp" line="21" column="17" bodyfile="include/core/db/Capnp/Translators/MixTranslator/Mix.hpp" bodystart="21" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classMIX_1a966f3d134dd98369a3baa0894959ea06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool MIX::openMix</definition>
         <argsstring>(const MixBinaryCapnpData::Reader &amp;Rptr)</argsstring>
         <name>openMix</name>
+        <qualifiedname>MIX::openMix</qualifiedname>
         <param>
           <type>const MixBinaryCapnpData::Reader &amp;</type>
           <declname>Rptr</declname>
@@ -71,6 +74,7 @@
         <definition>bool MIX::WriteFrames</definition>
         <argsstring>(BPM &amp;bpmm)</argsstring>
         <name>WriteFrames</name>
+        <qualifiedname>MIX::WriteFrames</qualifiedname>
         <param>
           <type><ref refid="classBPM" kindref="compound">BPM</ref> &amp;</type>
           <declname>bpmm</declname>
@@ -103,6 +107,7 @@
         <definition>MIX::MIX</definition>
         <argsstring>()</argsstring>
         <name>MIX</name>
+        <qualifiedname>MIX::MIX</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -116,6 +121,7 @@
         <definition>MIX::~MIX</definition>
         <argsstring>()</argsstring>
         <name>~MIX</name>
+        <qualifiedname>MIX::~MIX</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -124,23 +130,23 @@
         </inbodydescription>
         <location file="include/core/db/Capnp/Translators/MixTranslator/Mix.hpp" line="44" column="5" bodyfile="include/core/db/Capnp/Translators/MixTranslator/Mix.cpp" bodystart="12" bodyend="14"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>contains mixing datas </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3">
-        <label>MixStruct</label>
-        <link refid="structMixStruct"/>
-      </node>
       <node id="1">
         <label>MIX</label>
         <link refid="classMIX"/>
         <childnode refid="2" relation="usage">
           <edgelabel>mixVec</edgelabel>
         </childnode>
+      </node>
+      <node id="3">
+        <label>MixStruct</label>
+        <link refid="structMixStruct"/>
       </node>
       <node id="2">
         <label>std::vector&lt; MixStruct &gt;</label>

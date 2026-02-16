@@ -89,5 +89,5 @@ Typedefs
 --------
 
 
-- :ref:`exhale_typedef_namespacePDJE__DEFAULT__DEVICES_1aae060e8f876384a80802cd5753643e96`
+- :ref:`exhale_typedef_namespacePDJE__DEFAULT__DEVICES_1a6874e9b2d750bcb78c3ed3ea925ee482`
 

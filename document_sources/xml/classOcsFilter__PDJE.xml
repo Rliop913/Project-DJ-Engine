@@ -1,16 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="classOcsFilter__PDJE" kind="class" language="C++" prot="public">
     <compoundname>OcsFilter_PDJE</compoundname>
     <basecompoundref refid="classFaustInterpolate" prot="public" virt="non-virtual">FaustInterpolate</basecompoundref>
     <derivedcompoundref refid="classFaustDType" prot="public" virt="non-virtual">FaustDType&lt; OcsFilter_PDJE &gt;</derivedcompoundref>
     <includes refid="ocsFilter_8hpp" local="no">ocsFilter.hpp</includes>
-      <sectiondef kind="public-attrib">
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="classOcsFilter__PDJE_1ab070455e949cd3587d8f81aa6350e801" prot="public" static="no" mutable="no">
         <type>int</type>
         <definition>int OcsFilter_PDJE::ocsFilterHighLowSW</definition>
         <argsstring></argsstring>
         <name>ocsFilterHighLowSW</name>
+        <qualifiedname>OcsFilter_PDJE::ocsFilterHighLowSW</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -24,6 +25,7 @@
         <definition>int OcsFilter_PDJE::middleFreq</definition>
         <argsstring></argsstring>
         <name>middleFreq</name>
+        <qualifiedname>OcsFilter_PDJE::middleFreq</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -37,6 +39,7 @@
         <definition>int OcsFilter_PDJE::rangeFreqHalf</definition>
         <argsstring></argsstring>
         <name>rangeFreqHalf</name>
+        <qualifiedname>OcsFilter_PDJE::rangeFreqHalf</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -50,6 +53,7 @@
         <definition>float OcsFilter_PDJE::bps</definition>
         <argsstring></argsstring>
         <name>bps</name>
+        <qualifiedname>OcsFilter_PDJE::bps</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -58,8 +62,8 @@
         </inbodydescription>
         <location file="include/core/audioRender/MixMachine/FAUST_VALS/ocsFilter.hpp" line="9" column="11" bodyfile="include/core/audioRender/MixMachine/FAUST_VALS/ocsFilter.hpp" bodystart="9" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classOcsFilter__PDJE_1a42e070f884011faf912ae9ecb5265391" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
@@ -70,6 +74,7 @@
         <definition>void OcsFilter_PDJE::copyDatas</definition>
         <argsstring>(Duck &amp;dest)</argsstring>
         <name>copyDatas</name>
+        <qualifiedname>OcsFilter_PDJE::copyDatas</qualifiedname>
         <param>
           <type>Duck &amp;</type>
           <declname>dest</declname>
@@ -92,6 +97,7 @@
         <definition>void OcsFilter_PDJE::copySetting</definition>
         <argsstring>(Duck &amp;dest)</argsstring>
         <name>copySetting</name>
+        <qualifiedname>OcsFilter_PDJE::copySetting</qualifiedname>
         <param>
           <type>Duck &amp;</type>
           <declname>dest</declname>
@@ -104,18 +110,12 @@
         </inbodydescription>
         <location file="include/core/audioRender/MixMachine/FAUST_VALS/ocsFilter.hpp" line="23" column="5" bodyfile="include/core/audioRender/MixMachine/FAUST_VALS/ocsFilter.hpp" bodystart="23" bodyend="27"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="1">
-        <label>OcsFilter_PDJE</label>
-        <link refid="classOcsFilter__PDJE"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="3">
         <label>FaustDType&lt; OcsFilter_PDJE &gt;</label>
         <link refid="classFaustDType"/>
@@ -126,17 +126,23 @@
         <label>FaustInterpolate</label>
         <link refid="classFaustInterpolate"/>
       </node>
-    </inheritancegraph>
-    <collaborationgraph>
       <node id="1">
         <label>OcsFilter_PDJE</label>
         <link refid="classOcsFilter__PDJE"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
+    </inheritancegraph>
+    <collaborationgraph>
       <node id="2">
         <label>FaustInterpolate</label>
         <link refid="classFaustInterpolate"/>
+      </node>
+      <node id="1">
+        <label>OcsFilter_PDJE</label>
+        <link refid="classOcsFilter__PDJE"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
       </node>
     </collaborationgraph>
     <location file="include/core/audioRender/MixMachine/FAUST_VALS/ocsFilter.hpp" line="4" column="1" bodyfile="include/core/audioRender/MixMachine/FAUST_VALS/ocsFilter.hpp" bodystart="4" bodyend="28"/>

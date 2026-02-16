@@ -1,22 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="trashbin_2SubMain_8cpp" kind="file" language="C++">
     <compoundname>SubMain.cpp</compoundname>
     <includes refid="PDJE__Crypto_8hpp" local="yes">PDJE_Crypto.hpp</includes>
     <includes refid="PSKPipe_8hpp" local="yes">PSKPipe.hpp</includes>
     <includes local="no">sstream</includes>
     <incdepgraph>
-      <node id="4">
-        <label>filesystem</label>
-      </node>
-      <node id="15">
-        <label>PSKPipe.hpp</label>
-        <link refid="PSKPipe_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-      </node>
       <node id="2">
         <label>PDJE_Crypto.hpp</label>
         <link refid="PDJE__Crypto_8hpp"/>
@@ -33,14 +22,13 @@
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="12">
-        <label>botan/cipher_mode.h</label>
-      </node>
-      <node id="14">
-        <label>string</label>
-      </node>
-      <node id="6">
-        <label>spdlog/sinks/basic_file_sink.h</label>
+      <node id="15">
+        <label>PSKPipe.hpp</label>
+        <link refid="PSKPipe_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
       </node>
       <node id="3">
         <label>PDJE_LOG_SETTER.hpp</label>
@@ -70,32 +58,44 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="8">
-        <label>spdlog/spdlog.h</label>
+      <node id="11">
+        <label>botan/auto_rng.h</label>
       </node>
-      <node id="9">
-        <label>string_view</label>
+      <node id="12">
+        <label>botan/cipher_mode.h</label>
       </node>
       <node id="13">
         <label>botan/hash.h</label>
       </node>
+      <node id="4">
+        <label>filesystem</label>
+      </node>
+      <node id="5">
+        <label>mutex</label>
+      </node>
+      <node id="6">
+        <label>spdlog/sinks/basic_file_sink.h</label>
+      </node>
       <node id="7">
         <label>spdlog/sinks/stdout_color_sinks.h</label>
+      </node>
+      <node id="8">
+        <label>spdlog/spdlog.h</label>
       </node>
       <node id="16">
         <label>sstream</label>
       </node>
-      <node id="11">
-        <label>botan/auto_rng.h</label>
+      <node id="14">
+        <label>string</label>
       </node>
-      <node id="5">
-        <label>mutex</label>
+      <node id="9">
+        <label>string_view</label>
       </node>
       <node id="10">
         <label>type_traits</label>
       </node>
     </incdepgraph>
-      <sectiondef kind="func">
+    <sectiondef kind="func">
       <memberdef kind="function" id="trashbin_2SubMain_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
         <definition>int main</definition>
@@ -109,7 +109,7 @@
         </inbodydescription>
         <location file="include/input/trashbin/SubMain.cpp" line="6" column="1" bodyfile="include/input/trashbin/SubMain.cpp" bodystart="6" bodyend="35"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

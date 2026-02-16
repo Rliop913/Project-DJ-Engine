@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="Input__State_8hpp" kind="file" language="C++">
     <compoundname>Input_State.hpp</compoundname>
     <includes local="no">future</includes>
@@ -9,18 +9,18 @@
     <includes local="no">vector</includes>
     <includedby refid="PDJE__Input__DataLine_8hpp" local="yes">include/global/DataLines/PDJE_Input_DataLine.hpp</includedby>
     <includedby refid="linux_2DefaultDevs_8hpp" local="yes">include/input/DefaultDevs/linux/DefaultDevs.hpp</includedby>
-    <includedby refid="evdev__codemap_8hpp" local="yes">include/input/DefaultDevs/linux/evdev_things/evdev_codemap.hpp</includedby>
     <includedby refid="InputCore_8cpp" local="yes">include/input/DefaultDevs/linux/InputCore.cpp</includedby>
+    <includedby refid="evdev__codemap_8hpp" local="yes">include/input/DefaultDevs/linux/evdev_things/evdev_codemap.hpp</includedby>
     <includedby refid="windows_2DefaultDevs_8hpp" local="yes">include/input/DefaultDevs/windows/DefaultDevs.hpp</includedby>
     <includedby refid="MetadataTXRX_8hpp" local="yes">include/input/DefaultDevs/windows/TXRX/MetadataTXRX.hpp</includedby>
     <includedby refid="windows_2Input__Transfer_8hpp" local="yes">include/input/IPC/memory/windows/Input_Transfer.hpp</includedby>
     <includedby refid="PDJE__Input_8hpp" local="yes">include/input/PDJE_Input.hpp</includedby>
     <includedby refid="PDJE__Input__Log_8hpp" local="yes">include/input/PDJE_Input_Log.hpp</includedby>
     <includedby refid="SubProcess_8hpp" local="yes">include/input/runner/SubProcess.hpp</includedby>
-    <includedby refid="linux__input_8cpp" local="yes">include/input/trashbin/--DEPRECATED-linux/linux_input.cpp</includedby>
-    <includedby refid="linux__input_8hpp" local="yes">include/input/trashbin/--DEPRECATED-linux/linux_input.hpp</includedby>
     <includedby refid="RTFunctionRegister_8cpp" local="yes">include/input/trashbin/--DEPRECATED-linux/RT/RTFunctionRegister.cpp</includedby>
     <includedby refid="RTSocket_8hpp" local="yes">include/input/trashbin/--DEPRECATED-linux/RT/RTSocket.hpp</includedby>
+    <includedby refid="linux__input_8cpp" local="yes">include/input/trashbin/--DEPRECATED-linux/linux_input.cpp</includedby>
+    <includedby refid="linux__input_8hpp" local="yes">include/input/trashbin/--DEPRECATED-linux/linux_input.hpp</includedby>
     <includedby refid="PDJE__Judge__Loop_8hpp" local="yes">include/judge/Loop/PDJE_Judge_Loop.hpp</includedby>
     <includedby refid="PDJE__Note__OBJ_8hpp" local="yes">include/judge/NoteOBJ/PDJE_Note_OBJ.hpp</includedby>
     <includedby refid="PDJE__Judge_8hpp" local="yes">include/judge/PDJE_Judge.hpp</includedby>
@@ -41,31 +41,23 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="3">
-        <label>memory_resource</label>
-      </node>
-      <node id="5">
-        <label>string</label>
-      </node>
       <node id="2">
         <label>future</label>
       </node>
+      <node id="3">
+        <label>memory_resource</label>
+      </node>
       <node id="4">
         <label>optional</label>
+      </node>
+      <node id="5">
+        <label>string</label>
       </node>
       <node id="6">
         <label>vector</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="56">
-        <label>include/judge/PDJE_RAIL.cpp</label>
-        <link refid="PDJE__RAIL_8cpp"/>
-      </node>
-      <node id="11">
-        <label>include/input/PDJE_Input.cpp</label>
-        <link refid="PDJE__Input_8cpp"/>
-      </node>
       <node id="1">
         <label>include/global/DataLines/Input_State.hpp</label>
         <link refid="Input__State_8hpp"/>
@@ -75,7 +67,7 @@
         </childnode>
         <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -89,13 +81,13 @@
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
         <childnode refid="47" relation="include">
         </childnode>
         <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
@@ -107,150 +99,6 @@
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-      </node>
-      <node id="45">
-        <label>include/input/IPC/memory/linux/Input_Transfer.hpp</label>
-        <link refid="linux_2Input__Transfer_8hpp"/>
-        <childnode refid="46" relation="include">
-        </childnode>
-      </node>
-      <node id="52">
-        <label>include/judge/Loop/PDJE_Judge_Loop_Structs.hpp</label>
-        <link refid="PDJE__Judge__Loop__Structs_8hpp"/>
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
-      </node>
-      <node id="27">
-        <label>include/judge/Loop/Match/Keyboard.cpp</label>
-        <link refid="Keyboard_8cpp"/>
-      </node>
-      <node id="13">
-        <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
-        <link refid="judgeTest_8cpp"/>
-      </node>
-      <node id="12">
-        <label>include/tests/INPUT_TESTS/pdjeInputTest.cpp</label>
-        <link refid="pdjeInputTest_8cpp"/>
-      </node>
-      <node id="7">
-        <label>include/input/DefaultDevs/windows/TXRX/MetadataTXRX.hpp</label>
-        <link refid="MetadataTXRX_8hpp"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-      </node>
-      <node id="50">
-        <label>include/judge/NoteOBJ/PDJE_Note_OBJ.hpp</label>
-        <link refid="PDJE__Note__OBJ_8hpp"/>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="51" relation="include">
-        </childnode>
-        <childnode refid="38" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="52" relation="include">
-        </childnode>
-        <childnode refid="53" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
-      </node>
-      <node id="44">
-        <label>include/input/PDJE_Input_Log.hpp</label>
-        <link refid="PDJE__Input__Log_8hpp"/>
-        <childnode refid="45" relation="include">
-        </childnode>
-        <childnode refid="42" relation="include">
-        </childnode>
-      </node>
-      <node id="32">
-        <label>include/judge/Loop/PDJE_Judge_Loop.cpp</label>
-        <link refid="PDJE__Judge__Loop_8cpp"/>
-      </node>
-      <node id="26">
-        <label>include/judge/Loop/Match/PDJE_Match.hpp</label>
-        <link refid="PDJE__Match_8hpp"/>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
-      </node>
-      <node id="31">
-        <label>include/judge/Loop/Match/Mouse.cpp</label>
-        <link refid="Mouse_8cpp"/>
-      </node>
-      <node id="14">
-        <label>include/input/runner/SubProcess.hpp</label>
-        <link refid="SubProcess_8hpp"/>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-      </node>
-      <node id="19">
-        <label>include/input/runner/windows/SubMain.cpp</label>
-        <link refid="runner_2windows_2SubMain_8cpp"/>
-      </node>
-      <node id="46">
-        <label>include/input/IPC/memory/linux/Input_Transfer.cpp</label>
-        <link refid="linux_2Input__Transfer_8cpp"/>
-      </node>
-      <node id="25">
-        <label>include/judge/Init/PDJE_Judge_Init.cpp</label>
-        <link refid="PDJE__Judge__Init_8cpp"/>
-      </node>
-      <node id="33">
-        <label>include/judge/PDJE_Judge.hpp</label>
-        <link refid="PDJE__Judge_8hpp"/>
-        <childnode refid="34" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-      </node>
-      <node id="22">
-        <label>include/input/trashbin/--DEPRECATED-linux/linux_input.cpp</label>
-        <link refid="linux__input_8cpp"/>
-      </node>
-      <node id="47">
-        <label>include/input/trashbin/--DEPRECATED-linux/RT/RTFunctionRegister.cpp</label>
-        <link refid="RTFunctionRegister_8cpp"/>
-      </node>
-      <node id="53">
-        <label>include/judge/NoteOBJ/PDJE_Note_OBJ.cpp</label>
-        <link refid="PDJE__Note__OBJ_8cpp"/>
-      </node>
-      <node id="43">
-        <label>include/input/IPC/memory/windows/Input_Transfer.cpp</label>
-        <link refid="windows_2Input__Transfer_8cpp"/>
-      </node>
-      <node id="36">
-        <label>include/judge/Loop/PreProcess/PDJE_PreProcess.cpp</label>
-        <link refid="PDJE__PreProcess_8cpp"/>
       </node>
       <node id="2">
         <label>include/global/DataLines/PDJE_Input_DataLine.hpp</label>
@@ -278,6 +126,180 @@
         <childnode refid="35" relation="include">
         </childnode>
       </node>
+      <node id="4">
+        <label>include/input/DefaultDevs/linux/DefaultDevs.cpp</label>
+        <link refid="linux_2DefaultDevs_8cpp"/>
+      </node>
+      <node id="3">
+        <label>include/input/DefaultDevs/linux/DefaultDevs.hpp</label>
+        <link refid="linux_2DefaultDevs_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="39">
+        <label>include/input/DefaultDevs/linux/InputCore.cpp</label>
+        <link refid="InputCore_8cpp"/>
+      </node>
+      <node id="41">
+        <label>include/input/DefaultDevs/linux/ParseKeyboard.cpp</label>
+        <link refid="ParseKeyboard_8cpp"/>
+      </node>
+      <node id="40">
+        <label>include/input/DefaultDevs/linux/evdev_things/evdev_codemap.hpp</label>
+        <link refid="evdev__codemap_8hpp"/>
+        <childnode refid="41" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>include/input/DefaultDevs/windows/DefaultDevs.cpp</label>
+        <link refid="windows_2DefaultDevs_8cpp"/>
+      </node>
+      <node id="5">
+        <label>include/input/DefaultDevs/windows/DefaultDevs.hpp</label>
+        <link refid="windows_2DefaultDevs_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>include/input/DefaultDevs/windows/TXRX/MetadataTXRX.cpp</label>
+        <link refid="MetadataTXRX_8cpp"/>
+      </node>
+      <node id="7">
+        <label>include/input/DefaultDevs/windows/TXRX/MetadataTXRX.hpp</label>
+        <link refid="MetadataTXRX_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>include/input/DefaultDevs/windows/TXRX/SetFeatures.cpp</label>
+        <link refid="SetFeatures_8cpp"/>
+      </node>
+      <node id="46">
+        <label>include/input/IPC/memory/linux/Input_Transfer.cpp</label>
+        <link refid="linux_2Input__Transfer_8cpp"/>
+      </node>
+      <node id="45">
+        <label>include/input/IPC/memory/linux/Input_Transfer.hpp</label>
+        <link refid="linux_2Input__Transfer_8hpp"/>
+        <childnode refid="46" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>include/input/IPC/memory/windows/Input_Transfer.cpp</label>
+        <link refid="windows_2Input__Transfer_8cpp"/>
+      </node>
+      <node id="42">
+        <label>include/input/IPC/memory/windows/Input_Transfer.hpp</label>
+        <link refid="windows_2Input__Transfer_8hpp"/>
+        <childnode refid="43" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>include/input/PDJE_Input.cpp</label>
+        <link refid="PDJE__Input_8cpp"/>
+      </node>
+      <node id="10">
+        <label>include/input/PDJE_Input.hpp</label>
+        <link refid="PDJE__Input_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>include/input/PDJE_Input_Log.hpp</label>
+        <link refid="PDJE__Input__Log_8hpp"/>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>include/input/runner/SetTXRXFeatures.cpp</label>
+        <link refid="SetTXRXFeatures_8cpp"/>
+      </node>
+      <node id="14">
+        <label>include/input/runner/SubProcess.hpp</label>
+        <link refid="SubProcess_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>include/input/runner/windows/InputLoop.cpp</label>
+        <link refid="InputLoop_8cpp"/>
+      </node>
+      <node id="17">
+        <label>include/input/runner/windows/ListDevice.hpp</label>
+        <link refid="ListDevice_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>include/input/runner/windows/SubMain.cpp</label>
+        <link refid="runner_2windows_2SubMain_8cpp"/>
+      </node>
+      <node id="18">
+        <label>include/input/runner/windows/SubProcess.cpp</label>
+        <link refid="runner_2windows_2SubProcess_8cpp"/>
+      </node>
+      <node id="47">
+        <label>include/input/trashbin/--DEPRECATED-linux/RT/RTFunctionRegister.cpp</label>
+        <link refid="RTFunctionRegister_8cpp"/>
+      </node>
+      <node id="49">
+        <label>include/input/trashbin/--DEPRECATED-linux/RT/RTSocket.cpp</label>
+        <link refid="RTSocket_8cpp"/>
+      </node>
+      <node id="48">
+        <label>include/input/trashbin/--DEPRECATED-linux/RT/RTSocket.hpp</label>
+        <link refid="RTSocket_8hpp"/>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>include/input/trashbin/--DEPRECATED-linux/linux_input.cpp</label>
+        <link refid="linux__input_8cpp"/>
+      </node>
+      <node id="21">
+        <label>include/input/trashbin/--DEPRECATED-linux/linux_input.hpp</label>
+        <link refid="linux__input_8hpp"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>include/input/trashbin/MainProcess_deprecated.hpp</label>
+        <link refid="MainProcess__deprecated_8hpp"/>
+      </node>
+      <node id="20">
+        <label>include/input/trashbin/SubProcess.cpp</label>
+        <link refid="trashbin_2SubProcess_8cpp"/>
+      </node>
+      <node id="25">
+        <label>include/judge/Init/PDJE_Judge_Init.cpp</label>
+        <link refid="PDJE__Judge__Init_8cpp"/>
+      </node>
       <node id="24">
         <label>include/judge/Init/PDJE_Judge_Init.hpp</label>
         <link refid="PDJE__Judge__Init_8hpp"/>
@@ -292,35 +314,15 @@
         <childnode refid="35" relation="include">
         </childnode>
       </node>
-      <node id="49">
-        <label>include/input/trashbin/--DEPRECATED-linux/RT/RTSocket.cpp</label>
-        <link refid="RTSocket_8cpp"/>
-      </node>
-      <node id="5">
-        <label>include/input/DefaultDevs/windows/DefaultDevs.hpp</label>
-        <link refid="windows_2DefaultDevs_8hpp"/>
-        <childnode refid="6" relation="include">
+      <node id="51">
+        <label>include/judge/Init/PDJE_Judge_Init_Structs.hpp</label>
+        <link refid="PDJE__Judge__Init__Structs_8hpp"/>
+        <childnode refid="24" relation="include">
         </childnode>
-      </node>
-      <node id="21">
-        <label>include/input/trashbin/--DEPRECATED-linux/linux_input.hpp</label>
-        <link refid="linux__input_8hpp"/>
-        <childnode refid="22" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
-      </node>
-      <node id="3">
-        <label>include/input/DefaultDevs/linux/DefaultDevs.hpp</label>
-        <link refid="linux_2DefaultDevs_8hpp"/>
-        <childnode refid="4" relation="include">
+        <childnode refid="52" relation="include">
         </childnode>
-      </node>
-      <node id="34">
-        <label>include/judge/PDJE_Judge.cpp</label>
-        <link refid="PDJE__Judge_8cpp"/>
-      </node>
-      <node id="30">
-        <label>include/judge/Loop/Match/MIDI.cpp</label>
-        <link refid="MIDI_8cpp"/>
       </node>
       <node id="38">
         <label>include/judge/InputParser/InputParser.hpp</label>
@@ -332,6 +334,134 @@
         <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>include/judge/Loop/Match/Keyboard.cpp</label>
+        <link refid="Keyboard_8cpp"/>
+      </node>
+      <node id="30">
+        <label>include/judge/Loop/Match/MIDI.cpp</label>
+        <link refid="MIDI_8cpp"/>
+      </node>
+      <node id="31">
+        <label>include/judge/Loop/Match/Mouse.cpp</label>
+        <link refid="Mouse_8cpp"/>
+      </node>
+      <node id="28">
+        <label>include/judge/Loop/Match/PDJE_Match.cpp</label>
+        <link refid="PDJE__Match_8cpp"/>
+      </node>
+      <node id="26">
+        <label>include/judge/Loop/Match/PDJE_Match.hpp</label>
+        <link refid="PDJE__Match_8hpp"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>include/judge/Loop/PDJE_Judge_Loop.cpp</label>
+        <link refid="PDJE__Judge__Loop_8cpp"/>
+      </node>
+      <node id="29">
+        <label>include/judge/Loop/PDJE_Judge_Loop.hpp</label>
+        <link refid="PDJE__Judge__Loop_8hpp"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>include/judge/Loop/PDJE_Judge_Loop_Structs.hpp</label>
+        <link refid="PDJE__Judge__Loop__Structs_8hpp"/>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>include/judge/Loop/PreProcess/PDJE_PreProcess.cpp</label>
+        <link refid="PDJE__PreProcess_8cpp"/>
+      </node>
+      <node id="35">
+        <label>include/judge/Loop/PreProcess/PDJE_PreProcess.hpp</label>
+        <link refid="PDJE__PreProcess_8hpp"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>include/judge/Loop/PreProcess/PDJE_PreProcess_Work.cpp</label>
+        <link refid="PDJE__PreProcess__Work_8cpp"/>
+      </node>
+      <node id="53">
+        <label>include/judge/NoteOBJ/PDJE_Note_OBJ.cpp</label>
+        <link refid="PDJE__Note__OBJ_8cpp"/>
+      </node>
+      <node id="50">
+        <label>include/judge/NoteOBJ/PDJE_Note_OBJ.hpp</label>
+        <link refid="PDJE__Note__OBJ_8hpp"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>include/judge/PDJE_Judge.cpp</label>
+        <link refid="PDJE__Judge_8cpp"/>
+      </node>
+      <node id="33">
+        <label>include/judge/PDJE_Judge.hpp</label>
+        <link refid="PDJE__Judge_8hpp"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="56">
+        <label>include/judge/PDJE_RAIL.cpp</label>
+        <link refid="PDJE__RAIL_8cpp"/>
+      </node>
+      <node id="55">
+        <label>include/judge/PDJE_RAIL.hpp</label>
+        <link refid="PDJE__RAIL_8hpp"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
         </childnode>
       </node>
       <node id="54">
@@ -354,143 +484,13 @@
         <childnode refid="55" relation="include">
         </childnode>
       </node>
-      <node id="51">
-        <label>include/judge/Init/PDJE_Judge_Init_Structs.hpp</label>
-        <link refid="PDJE__Judge__Init__Structs_8hpp"/>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="52" relation="include">
-        </childnode>
+      <node id="12">
+        <label>include/tests/INPUT_TESTS/pdjeInputTest.cpp</label>
+        <link refid="pdjeInputTest_8cpp"/>
       </node>
-      <node id="20">
-        <label>include/input/trashbin/SubProcess.cpp</label>
-        <link refid="trashbin_2SubProcess_8cpp"/>
-      </node>
-      <node id="42">
-        <label>include/input/IPC/memory/windows/Input_Transfer.hpp</label>
-        <link refid="windows_2Input__Transfer_8hpp"/>
-        <childnode refid="43" relation="include">
-        </childnode>
-      </node>
-      <node id="37">
-        <label>include/judge/Loop/PreProcess/PDJE_PreProcess_Work.cpp</label>
-        <link refid="PDJE__PreProcess__Work_8cpp"/>
-      </node>
-      <node id="55">
-        <label>include/judge/PDJE_RAIL.hpp</label>
-        <link refid="PDJE__RAIL_8hpp"/>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="38" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
-        <childnode refid="56" relation="include">
-        </childnode>
-      </node>
-      <node id="35">
-        <label>include/judge/Loop/PreProcess/PDJE_PreProcess.hpp</label>
-        <link refid="PDJE__PreProcess_8hpp"/>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
-        </childnode>
-        <childnode refid="37" relation="include">
-        </childnode>
-      </node>
-      <node id="16">
-        <label>include/input/runner/windows/InputLoop.cpp</label>
-        <link refid="InputLoop_8cpp"/>
-      </node>
-      <node id="23">
-        <label>include/input/trashbin/MainProcess_deprecated.hpp</label>
-        <link refid="MainProcess__deprecated_8hpp"/>
-      </node>
-      <node id="17">
-        <label>include/input/runner/windows/ListDevice.hpp</label>
-        <link refid="ListDevice_8hpp"/>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-      </node>
-      <node id="41">
-        <label>include/input/DefaultDevs/linux/InputCore.cpp</label>
-        <link refid="InputCore_8cpp"/>
-      </node>
-      <node id="10">
-        <label>include/input/PDJE_Input.hpp</label>
-        <link refid="PDJE__Input_8hpp"/>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-      </node>
-      <node id="18">
-        <label>include/input/runner/windows/SubProcess.cpp</label>
-        <link refid="runner_2windows_2SubProcess_8cpp"/>
-      </node>
-      <node id="9">
-        <label>include/input/DefaultDevs/windows/TXRX/SetFeatures.cpp</label>
-        <link refid="SetFeatures_8cpp"/>
-      </node>
-      <node id="48">
-        <label>include/input/trashbin/--DEPRECATED-linux/RT/RTSocket.hpp</label>
-        <link refid="RTSocket_8hpp"/>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="47" relation="include">
-        </childnode>
-        <childnode refid="49" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>include/input/DefaultDevs/windows/DefaultDevs.cpp</label>
-        <link refid="windows_2DefaultDevs_8cpp"/>
-      </node>
-      <node id="15">
-        <label>include/input/runner/SetTXRXFeatures.cpp</label>
-        <link refid="SetTXRXFeatures_8cpp"/>
-      </node>
-      <node id="4">
-        <label>include/input/DefaultDevs/linux/DefaultDevs.cpp</label>
-        <link refid="linux_2DefaultDevs_8cpp"/>
-      </node>
-      <node id="8">
-        <label>include/input/DefaultDevs/windows/TXRX/MetadataTXRX.cpp</label>
-        <link refid="MetadataTXRX_8cpp"/>
-      </node>
-      <node id="29">
-        <label>include/judge/Loop/PDJE_Judge_Loop.hpp</label>
-        <link refid="PDJE__Judge__Loop_8hpp"/>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-      </node>
-      <node id="39">
-        <label>include/input/DefaultDevs/linux/evdev_things/evdev_codemap.hpp</label>
-        <link refid="evdev__codemap_8hpp"/>
-        <childnode refid="40" relation="include">
-        </childnode>
-      </node>
-      <node id="40">
-        <label>include/input/DefaultDevs/linux/ParseKeyboard.cpp</label>
-        <link refid="ParseKeyboard_8cpp"/>
-      </node>
-      <node id="28">
-        <label>include/judge/Loop/Match/PDJE_Match.cpp</label>
-        <link refid="PDJE__Match_8cpp"/>
+      <node id="13">
+        <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
+        <link refid="judgeTest_8cpp"/>
       </node>
     </invincdepgraph>
     <innerclass refid="structPDJE__Mouse__Event" prot="public">PDJE_Mouse_Event</innerclass>
@@ -498,7 +498,7 @@
     <innerclass refid="structPDJE__HID__Event" prot="public">PDJE_HID_Event</innerclass>
     <innerclass refid="structMidi__Input__Data" prot="public">Midi_Input_Data</innerclass>
     <innerclass refid="unionPDJE__Input__Event" prot="public">PDJE_Input_Event</innerclass>
-      <sectiondef kind="define">
+    <sectiondef kind="define">
       <memberdef kind="define" id="Input__State_8hpp_1af7586f410ce5333bcf76fb8cae134ffd" prot="public" static="no">
         <name>PDJE_MOUSE_L_BTN_DOWN</name>
         <initializer>0x0001</initializer>
@@ -507,9 +507,8 @@
         <detaileddescription>
 <para><hruler/>
  <ref refid="classPDJE" kindref="compound">PDJE</ref> Mouse Button Bitmask Definitions Derived from Microsoft Windows Raw Input API (winuser.h) These constants are redefined for compatibility and interoperability. Original numeric values are part of the public API specification, </para>
-<sect2 id="Input__State_8hpp_1autotoc_md0">
-<title>not protected source code. No Windows SDK code is included.</title>
-</sect2>
+<sect1 id="Input__State_8hpp_1autotoc_md0_1s1"><sect2 id="Input__State_8hpp_1autotoc_md0">
+<title>not protected source code. No Windows SDK code is included.</title></sect2></sect1>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -636,8 +635,8 @@
         </inbodydescription>
         <location file="include/global/DataLines/Input_State.hpp" line="36" column="9" bodyfile="include/global/DataLines/Input_State.hpp" bodystart="36" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="enum">
+    </sectiondef>
+    <sectiondef kind="enum">
       <memberdef kind="enum" id="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9" prot="public" static="no" strong="no">
         <type></type>
         <name>PDJE_INPUT_STATE</name>
@@ -1458,8 +1457,8 @@
         </inbodydescription>
         <location file="include/global/DataLines/Input_State.hpp" line="149" column="1" bodyfile="include/global/DataLines/Input_State.hpp" bodystart="149" bodyend="154"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="typedef">
+    </sectiondef>
+    <sectiondef kind="typedef">
       <memberdef kind="typedef" id="Input__State_8hpp_1a534ec7666fd5ffb7db3e46bfdef52107" prot="public" static="no">
         <type>uint16_t</type>
         <definition>using BITMASK =  uint16_t</definition>
@@ -1473,7 +1472,7 @@
         </inbodydescription>
         <location file="include/global/DataLines/Input_State.hpp" line="156" column="1" bodyfile="include/global/DataLines/Input_State.hpp" bodystart="156" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -1489,14 +1488,14 @@
 <codeline lineno="8" refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9a16ce19414b9020f53f0543a1f623a3ee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9a16ce19414b9020f53f0543a1f623a3ee" kindref="member">DEVICE_CONFIG_STATE</ref><sp/>=<sp/>0,</highlight></codeline>
 <codeline lineno="9" refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9a620f732f3889ae9e7cdd222aeaaa5211" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9a620f732f3889ae9e7cdd222aeaaa5211" kindref="member">INPUT_LOOP_READY</ref>,</highlight></codeline>
 <codeline lineno="10" refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9a78692e16c48c8defdb53b5d7daaa70a2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9a78692e16c48c8defdb53b5d7daaa70a2" kindref="member">INPUT_LOOP_RUNNING</ref>,</highlight></codeline>
-<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9a11fd9ca455f92c69c084484d5cd803c2" kindref="member">DEAD</ref></highlight></codeline>
-<codeline lineno="12" refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9a11fd9ca455f92c69c084484d5cd803c2" refkind="member"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="11" refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9a11fd9ca455f92c69c084484d5cd803c2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9a11fd9ca455f92c69c084484d5cd803c2" kindref="member">DEAD</ref></highlight></codeline>
+<codeline lineno="12"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="13"><highlight class="normal"></highlight></codeline>
 <codeline lineno="14" refid="Input__State_8hpp_1a5ae841a031c4bff77d818c3722b0ec40" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="Input__State_8hpp_1a5ae841a031c4bff77d818c3722b0ec40" kindref="member">PDJE_MIDI_EVENTS</ref><sp/>{</highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight></codeline>
-<codeline lineno="25" refid="Input__State_8hpp_1af7586f410ce5333bcf76fb8cae134ffd" refkind="member"><highlight class="preprocessor">#define<sp/>PDJE_MOUSE_L_BTN_DOWN<sp/>0x0001</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="Input__State_8hpp_1af7586f410ce5333bcf76fb8cae134ffd" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_MOUSE_L_BTN_DOWN<sp/>0x0001</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="26" refid="Input__State_8hpp_1acdb937bd2193bcddde688cae1d926c5f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_MOUSE_L_BTN_UP<sp/>0x0002</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="27" refid="Input__State_8hpp_1a81120971482c7ad20820dbb20d470e11" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_MOUSE_R_BTN_DOWN<sp/>0x0004</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="28" refid="Input__State_8hpp_1a74db0959bac6041d5b6e65e22de4641e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PDJE_MOUSE_R_BTN_UP<sp/>0x0008</highlight><highlight class="normal"></highlight></codeline>
@@ -1617,17 +1616,17 @@
 <codeline lineno="143" refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca9964c6924a12ac3971a4016064762ae9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca9964c6924a12ac3971a4016064762ae9" kindref="member">SP_DELETE</ref>,</highlight></codeline>
 <codeline lineno="144" refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca2fe50b7a7d85fc24d70688caaa8a7fff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca2fe50b7a7d85fc24d70688caaa8a7fff" kindref="member">SP_PAGE_UP</ref>,</highlight></codeline>
 <codeline lineno="145" refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca0aba32cb5aa31f64b182e5a60b5c2e2b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca0aba32cb5aa31f64b182e5a60b5c2e2b" kindref="member">SP_PAGE_DOWN</ref>,</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca6ce26a62afab55d7606ad4e92428b30c" kindref="member">UNKNOWN</ref></highlight></codeline>
-<codeline lineno="147" refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca6ce26a62afab55d7606ad4e92428b30c" refkind="member"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="146" refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca6ce26a62afab55d7606ad4e92428b30c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca6ce26a62afab55d7606ad4e92428b30c" kindref="member">UNKNOWN</ref></highlight></codeline>
+<codeline lineno="147"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="148"><highlight class="normal"></highlight></codeline>
 <codeline lineno="149" refid="Input__State_8hpp_1af938e405f45835e320ef4c91b4fd726f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="Input__State_8hpp_1af938e405f45835e320ef4c91b4fd726f" kindref="member">PDJE_Mouse_Axis_Type</ref><sp/>{</highlight></codeline>
 <codeline lineno="150" refid="Input__State_8hpp_1af938e405f45835e320ef4c91b4fd726fab2082544bca640e70f0bb74d17a98082" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Input__State_8hpp_1af938e405f45835e320ef4c91b4fd726fab2082544bca640e70f0bb74d17a98082" kindref="member">REL</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0,</highlight></codeline>
 <codeline lineno="151" refid="Input__State_8hpp_1af938e405f45835e320ef4c91b4fd726fa62f7ef0a404defa34640e94940792147" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Input__State_8hpp_1af938e405f45835e320ef4c91b4fd726fa62f7ef0a404defa34640e94940792147" kindref="member">ABS</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>1,</highlight></codeline>
 <codeline lineno="152" refid="Input__State_8hpp_1af938e405f45835e320ef4c91b4fd726fa8086cff93400d8fe2e9c1bc571c6a353" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Input__State_8hpp_1af938e405f45835e320ef4c91b4fd726fa8086cff93400d8fe2e9c1bc571c6a353" kindref="member">VIRTUAL_DESKTOP_ABS</ref><sp/>=<sp/>2,<sp/></highlight><highlight class="comment">//<sp/>maybe<sp/>windows<sp/>only</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Input__State_8hpp_1af938e405f45835e320ef4c91b4fd726fa9415648c6516461e968d30c9e4969d72" kindref="member">PDJE_AXIS_IGNORE</ref><sp/><sp/><sp/><sp/>=<sp/>3</highlight></codeline>
-<codeline lineno="154" refid="Input__State_8hpp_1af938e405f45835e320ef4c91b4fd726fa9415648c6516461e968d30c9e4969d72" refkind="member"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="153" refid="Input__State_8hpp_1af938e405f45835e320ef4c91b4fd726fa9415648c6516461e968d30c9e4969d72" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Input__State_8hpp_1af938e405f45835e320ef4c91b4fd726fa9415648c6516461e968d30c9e4969d72" kindref="member">PDJE_AXIS_IGNORE</ref><sp/><sp/><sp/><sp/>=<sp/>3</highlight></codeline>
+<codeline lineno="154"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="155"><highlight class="normal"></highlight></codeline>
-<codeline lineno="156" refid="Input__State_8hpp_1a534ec7666fd5ffb7db3e46bfdef52107" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="Input__State_8hpp_1a534ec7666fd5ffb7db3e46bfdef52107" kindref="member">BITMASK</ref><sp/>=<sp/>uint16_t;</highlight></codeline>
+<codeline lineno="156" refid="Input__State_8hpp_1a534ec7666fd5ffb7db3e46bfdef52107" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="Input__State_8hpp_1a534ec7666fd5ffb7db3e46bfdef52107" kindref="member">BITMASK</ref><sp/>=<sp/>uint16_t;</highlight></codeline>
 <codeline lineno="157" refid="structPDJE__Mouse__Event" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structPDJE__Mouse__Event" kindref="compound">PDJE_Mouse_Event</ref><sp/>{</highlight></codeline>
 <codeline lineno="158" refid="structPDJE__Mouse__Event_1ac4ea4bd8d902c54ff7dc9ba62dbad482" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Input__State_8hpp_1a534ec7666fd5ffb7db3e46bfdef52107" kindref="member">BITMASK</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPDJE__Mouse__Event_1ac4ea4bd8d902c54ff7dc9ba62dbad482" kindref="member">button_type</ref>;</highlight></codeline>
 <codeline lineno="159" refid="structPDJE__Mouse__Event_1a64a5d462f17c9f64cf4944315ce094a0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPDJE__Mouse__Event_1a64a5d462f17c9f64cf4944315ce094a0" kindref="member">wheel_move</ref>;</highlight></codeline>

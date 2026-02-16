@@ -38,11 +38,11 @@ Included By
 -----------
 
 
-- :ref:`file_include_core_editor_pdjeLinter_trackLinter.cpp`
-
 - :ref:`file_include_core_MainObjects_editorObject_editorObject.hpp`
 
 - :ref:`file_include_core_MainObjects_editorObject_render.cpp`
+
+- :ref:`file_include_core_editor_pdjeLinter_trackLinter.cpp`
 
 
 

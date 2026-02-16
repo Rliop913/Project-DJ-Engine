@@ -13,6 +13,7 @@ Program Listing for File ipc_util.hpp
    #pragma once
    
    #include "PDJE_Crypto.hpp"
+   
    #include "PDJE_INPUT_PROCESS_HASH.hpp"
    #include "PDJE_LOG_SETTER.hpp"
    #include "ipc_shared_memory.hpp"

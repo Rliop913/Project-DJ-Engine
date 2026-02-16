@@ -56,8 +56,6 @@ Included By
 -----------
 
 
-- :ref:`file_include_input_trashbin_--DEPRECATED-linux_linux_input.cpp`
-
 - :ref:`file_include_input_trashbin_--DEPRECATED-linux_RT_OneTimeSysSetup.hpp`
 
 - :ref:`file_include_input_trashbin_--DEPRECATED-linux_RT_RTFunctionRegister.cpp`
@@ -65,6 +63,8 @@ Included By
 - :ref:`file_include_input_trashbin_--DEPRECATED-linux_RT_RTSocket.cpp`
 
 - :ref:`file_include_input_trashbin_--DEPRECATED-linux_RT_RTSocket.hpp`
+
+- :ref:`file_include_input_trashbin_--DEPRECATED-linux_linux_input.cpp`
 
 - :ref:`file_include_input_trashbin_--DEPRECATED-linux_socket_linux_socket.cpp`
 
@@ -97,16 +97,9 @@ Functions
 
 - :ref:`exhale_function_namespaceCommon__Features_1a1fa285f8cefd7d04b62d4c0c1d738b24`
 
-- :ref:`exhale_function_namespaceCommon__Features_1a78ad74b03105ce26d05dd66159bed97b`
+- :ref:`exhale_function_namespaceCommon__Features_1a9819433dbb3c04ccbcf39523f8185eaf`
 
 - :ref:`exhale_function_namespaceCommon__Features_1a9d2554538ffced3a2d625f562d80365e`
 
 - :ref:`exhale_function_namespaceCommon__Features_1a85ba412f5bb7fcc163ff85b1a6dedfdf`
-
-
-Typedefs
---------
-
-
-- :ref:`exhale_typedef_Common__Features_8hpp_1a6c08a6bca89aa954d4bf90371a27dfa9`
 

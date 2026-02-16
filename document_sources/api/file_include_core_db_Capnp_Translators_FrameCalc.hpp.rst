@@ -46,13 +46,15 @@ Included By
 -----------
 
 
+- :ref:`file_include_core_MainObjects_audioPlayer_audioCallbacks.cpp`
+
 - :ref:`file_include_core_audioRender_ManualMix_ManualMix.hpp`
 
 - :ref:`file_include_core_audioRender_ManualMix_MusicControlPanel.hpp`
 
-- :ref:`file_include_core_audioRender_ManualMix_PredictMusic.hpp`
-
 - :ref:`file_include_core_audioRender_ManualMix_PreLoadedMusic_PreLoadedMusic.hpp`
+
+- :ref:`file_include_core_audioRender_ManualMix_PredictMusic.hpp`
 
 - :ref:`file_include_core_audioRender_MixMachine_EFFECT_EFFECTS.hpp`
 
@@ -67,8 +69,6 @@ Included By
 - :ref:`file_include_core_db_Capnp_Translators_MusicTranslator_MusicTranslator.hpp`
 
 - :ref:`file_include_core_db_Capnp_Translators_NoteTranslator_NoteTranslator.hpp`
-
-- :ref:`file_include_core_MainObjects_audioPlayer_audioCallbacks.cpp`
 
 
 
@@ -110,5 +110,5 @@ Typedefs
 --------
 
 
-- :ref:`exhale_typedef_FrameCalc_8hpp_1afaba0c56b304d05ee34bd4cc22319217`
+- :ref:`exhale_typedef_FrameCalc_8hpp_1a4ae0f789157647f4609ec87fb5b58e5a`
 

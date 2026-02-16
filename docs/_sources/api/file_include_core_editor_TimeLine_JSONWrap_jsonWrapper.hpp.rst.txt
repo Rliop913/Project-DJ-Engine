@@ -111,6 +111,8 @@ Defines
 
 - :ref:`exhale_define_jsonWrapper_8hpp_1a8c5fdee4952a0b7188e7320daabf21bb`
 
+- :ref:`exhale_define_jsonWrapper_8hpp_1ae60f55f1434467de2d96993df250b3cb`
+
 - :ref:`exhale_define_jsonWrapper_8hpp_1a8913d68c5e9a2c368e53af00bb489ad2`
 
 - :ref:`exhale_define_jsonWrapper_8hpp_1acbc72a7a20687e528295bf90d9043b08`
@@ -143,8 +145,6 @@ Defines
 Typedefs
 --------
 
-
-- :ref:`exhale_typedef_jsonWrapper_8hpp_1a217a1073c4c083da1400cf99dab75f21`
 
 - :ref:`exhale_typedef_jsonWrapper_8hpp_1a67473814637ada120f046e947d522b64`
 

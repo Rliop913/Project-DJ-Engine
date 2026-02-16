@@ -3,7 +3,7 @@
 Typedef PDJE_IPC::nj
 ====================
 
-- Defined in :ref:`file_include_input_IPC_transmission_MainProcess.hpp`
+- Defined in :ref:`file_include_input_trashbin_MainProcess_deprecated.hpp`
 
 
 Typedef Documentation

@@ -105,14 +105,17 @@ Init, Activate & Deactivate Audio Player (previously "Before Playback Step-3")
         bool player_OK = engine->InitPlayer(PLAY_MODE::HYBRID_RENDER, td, 48);
         //render mode, trackdata, sample buffer
 
+        bool activate_OK = false;
+        bool deactivate_OK = false;
+        if (player_OK && engine->player) {
+            activate_OK = engine->player->Activate();
+            //start playback
+            deactivate_OK = engine->player->Deactivate();
+            //stop playback
+        }
+
         engine->ResetPlayer();
-        //reset player
-
-        bool activate_OK = engine->player->Activate();
-        //start playback
-
-        bool deactivate_OK = engine->player->Deactivate();
-        //stop playback
+        //reset player after deactivate
 
     .. code-block:: c#
 
@@ -122,15 +125,15 @@ Init, Activate & Deactivate Audio Player (previously "Before Playback Step-3")
         var AudioP = engine.GetPlayerObject();
         //get player object
 
-        engine.ResetPlayer();
-        //reset player object.
-        //WARNING: after reset, AudioP becomes unavailable.
-
         bool activate_OK = AudioP.Activate();
         //start playback
 
         bool deactivate_OK = AudioP.Deactivate();
         //stop playback
+
+        engine.ResetPlayer();
+        //reset player object after deactivate
+        //WARNING: after reset, AudioP becomes unavailable.
 
     .. code-block:: python
 
@@ -142,15 +145,15 @@ Init, Activate & Deactivate Audio Player (previously "Before Playback Step-3")
         AudioP:audioPlayer = engine.GetPlayerObject()
         #get player object
 
-        engine.ResetPlayer()
-        #reset player object.
-        #WARNING: after reset, AudioP becomes unavailable.
-
         activate_OK = AudioP.Activate()
         #start playback
 
         deactivate_OK = AudioP.Deactivate()
         #stop playback
+
+        engine.ResetPlayer()
+        #reset player object after deactivate
+        #WARNING: after reset, AudioP becomes unavailable.
 
     .. code-block:: gdscript
 
@@ -160,15 +163,15 @@ Init, Activate & Deactivate Audio Player (previously "Before Playback Step-3")
         var AudioP:PlayerWrapper = engine.GetPlayer()
         #get player object
 
-        engine.ResetPlayer()
-        #reset player object.
-        #WARNING: after reset, AudioP becomes unavailable.
-
         var activate_OK = AudioP.Activate()
         #start playback
 
         var deactivate_OK = AudioP.Deactivate()
         #stop playback
+
+        engine.ResetPlayer()
+        #reset player object after deactivate
+        #WARNING: after reset, AudioP becomes unavailable.
 
 
 .. _on-playback:
@@ -503,7 +506,7 @@ Editor Step-1: Create & Manage DB
 
         bool initRes = engine.InitEditor("my name", "my@email, no need to fill", "ProjectRoot");
         var editor = engine.GetEditorObject();
-        var destroyRes = engine.DESTROY_PROJECT();
+        var destroyRes = editor.DESTROY_PROJECT();
         engine.CloseEditor();
 
     .. code-block:: python
@@ -631,16 +634,13 @@ To get necessary args, See :ref:`get-edit-logs`
         //parse json. try print them.
         auto jj = nlohmann::json::parse(logs);
         
-        //the "BRANCH" has branch lists. this is json array.
-        std::string branchName = jj["BRANCH"].at(0)["NAME"];
-        std::string branch_head_oid = jj["BRANCH"].at(0)["OID"];
-        // "BRANCH" is an array of { "NAME": "...", "OID": "..." }
-        //it has two keys. "NAME", "OID". the oid means the head commit oid of the branch.
+        // "LINE" contains timeline heads. each item has OID and TIME_STAMP.
+        std::string commit_oid = jj["LINE"].at(0)["OID"];
 
-        bool GoRes = editor->Go<EDIT_ARG_NOTE>(branchName, branch_head_oid);
-        //bool GoRes = editor->Go<EDIT_ARG_MIX>(branchName, branch_head_oid);
-        //bool GoRes = editor->Go<EDIT_ARG_KEY_VALUE>(branchName, branch_head_oid);
-        //bool GoRes = editor->Go<EDIT_ARG_MUSIC>(branchName, branch_head_oid);
+        bool GoRes = editor->Go<EDIT_ARG_NOTE>(commit_oid);
+        //bool GoRes = editor->Go<EDIT_ARG_MIX>(commit_oid);
+        //bool GoRes = editor->Go<EDIT_ARG_KEY_VALUE>(commit_oid);
+        //bool GoRes = editor->Go<EDIT_ARG_MUSIC>(commit_oid);
 
     .. code-block:: c#
 
@@ -650,7 +650,7 @@ To get necessary args, See :ref:`get-edit-logs`
         //string logs = editor.GetLogMusicJSON("music name");
         //string logs = editor.GetLogKVJSON();
 
-        //get branch name, oid from logs
+        //get commit oid from logs JSON (LINE/LOGS)
 
         // editor.GoNote(name, oid);
         editor.GoMix(name, oid);
@@ -671,7 +671,7 @@ To get necessary args, See :ref:`get-edit-logs`
         # logs = editor.GetLogMusicJSON("music name")
         # logs = editor.GetLogNoteJSON()
 
-        # get branch name, oid from logs
+        # get commit oid from logs JSON (LINE/LOGS)
 
         # editor.GoKV(name, oid)
         # editor.GoNote(name, oid)
@@ -685,7 +685,7 @@ To get necessary args, See :ref:`get-edit-logs`
         # var logs = editor.GetLogWithJSONGraph(editor.KV, "")
         # var logs = editor.GetLogWithJSONGraph(editor.MIX, "")
 
-        #get branch name, oid from logs
+        #get commit oid from logs JSON (LINE/LOGS)
 
         editor.Go(editor.NOTE, name, oid)
         # editor.Go(editor.MUSIC, name, oid)
@@ -1073,19 +1073,20 @@ Get edit logs
         JSON structure produced:
 
         {
-        "BRANCH": [                          // branch head list
+        "LINE": [                            // line head list
             {
-            "NAME": string,                  // branch name (e.g., "main")
-            "OID":  string                   // head commit oid (40-hex from git_oid_tostr_s)
+            "OID": string,                   // line head oid
+            "TIME_STAMP": string             // marker timestamp
             },
             ...
         ],
-        "COMMIT": [                          // commit metadata list
+        "LOGS": [                            // commit metadata list
             {
-            "OID":      string,              // commit oid (40-hex)
-            "EMAIL":    string,              // author email
-            "NAME":     string,              // author name
-            "PARENTID": string               // parent commit oid (may be empty/zero for initial)
+            "OID": string,                   // commit oid
+            "BACK": string,                  // parent/backward oid
+            "AUTHOR": string,                // author name
+            "EMAIL": string,                 // author email
+            "TIME_STAMP": string             // commit message timestamp field
             },
             ...
         ]
@@ -1102,19 +1103,20 @@ Get edit logs
         JSON structure produced:
 
         {
-        "BRANCH": [                          // branch head list
+        "LINE": [                            // line head list
             {
-            "NAME": string,                  // branch name (e.g., "main")
-            "OID":  string                   // head commit oid (40-hex from git_oid_tostr_s)
+            "OID": string,                   // line head oid
+            "TIME_STAMP": string             // marker timestamp
             },
             ...
         ],
-        "COMMIT": [                          // commit metadata list
+        "LOGS": [                            // commit metadata list
             {
-            "OID":      string,              // commit oid (40-hex)
-            "EMAIL":    string,              // author email
-            "NAME":     string,              // author name
-            "PARENTID": string               // parent commit oid (may be empty/zero for initial)
+            "OID": string,                   // commit oid
+            "BACK": string,                  // parent/backward oid
+            "AUTHOR": string,                // author name
+            "EMAIL": string,                 // author email
+            "TIME_STAMP": string             // commit message timestamp field
             },
             ...
         ]
@@ -1131,19 +1133,20 @@ Get edit logs
         JSON structure produced:
 
         {
-        "BRANCH": [                          // branch head list
+        "LINE": [                            // line head list
             {
-            "NAME": string,                  // branch name (e.g., "main")
-            "OID":  string                   // head commit oid (40-hex from git_oid_tostr_s)
+            "OID": string,                   // line head oid
+            "TIME_STAMP": string             // marker timestamp
             },
             ...
         ],
-        "COMMIT": [                          // commit metadata list
+        "LOGS": [                            // commit metadata list
             {
-            "OID":      string,              // commit oid (40-hex)
-            "EMAIL":    string,              // author email
-            "NAME":     string,              // author name
-            "PARENTID": string               // parent commit oid (may be empty/zero for initial)
+            "OID": string,                   // commit oid
+            "BACK": string,                  // parent/backward oid
+            "AUTHOR": string,                // author name
+            "EMAIL": string,                 // author email
+            "TIME_STAMP": string             // commit message timestamp field
             },
             ...
         ]
@@ -1160,19 +1163,20 @@ Get edit logs
         JSON structure produced:
 
         {
-        "BRANCH": [                          // branch head list
+        "LINE": [                            // line head list
             {
-            "NAME": string,                  // branch name (e.g., "main")
-            "OID":  string                   // head commit oid (40-hex from git_oid_tostr_s)
+            "OID": string,                   // line head oid
+            "TIME_STAMP": string             // marker timestamp
             },
             ...
         ],
-        "COMMIT": [                          // commit metadata list
+        "LOGS": [                            // commit metadata list
             {
-            "OID":      string,              // commit oid (40-hex)
-            "EMAIL":    string,              // author email
-            "NAME":     string,              // author name
-            "PARENTID": string               // parent commit oid (may be empty/zero for initial)
+            "OID": string,                   // commit oid
+            "BACK": string,                  // parent/backward oid
+            "AUTHOR": string,                // author name
+            "EMAIL": string,                 // author email
+            "TIME_STAMP": string             // commit message timestamp field
             },
             ...
         ]

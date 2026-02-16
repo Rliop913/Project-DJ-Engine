@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="classPDJE__CRYPTO_1_1Hash" kind="class" language="C++" prot="public">
     <compoundname>PDJE_CRYPTO::Hash</compoundname>
     <includes refid="PDJE__Crypto_8hpp" local="no">PDJE_Crypto.hpp</includes>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classPDJE__CRYPTO_1_1Hash_1a8f8b0dd108831f334a0e3847af79563b" prot="private" static="no" mutable="no">
         <type>std::unique_ptr&lt; Botan::HashFunction &gt;</type>
         <definition>std::unique_ptr&lt;Botan::HashFunction&gt; PDJE_CRYPTO::Hash::hashEngine</definition>
         <argsstring></argsstring>
         <name>hashEngine</name>
+        <qualifiedname>PDJE_CRYPTO::Hash::hashEngine</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -17,13 +18,14 @@
         </inbodydescription>
         <location file="include/global/Crypto/PDJE_Crypto.hpp" line="12" column="21" bodyfile="include/global/Crypto/PDJE_Crypto.hpp" bodystart="12" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classPDJE__CRYPTO_1_1Hash_1aef8aa6ef2c3445a1c7dbf99c062b3173" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>PDJE_CRYPTO::Hash::Hash</definition>
         <argsstring>()</argsstring>
         <name>Hash</name>
+        <qualifiedname>PDJE_CRYPTO::Hash::Hash</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -37,6 +39,7 @@
         <definition>PDJE_CRYPTO::Hash::~Hash</definition>
         <argsstring>()=default</argsstring>
         <name>~Hash</name>
+        <qualifiedname>PDJE_CRYPTO::Hash::~Hash</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -50,6 +53,7 @@
         <definition>std::string PDJE_CRYPTO::Hash::TextHash</definition>
         <argsstring>(const std::string &amp;txt)</argsstring>
         <name>TextHash</name>
+        <qualifiedname>PDJE_CRYPTO::Hash::TextHash</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>txt</declname>
@@ -67,6 +71,7 @@
         <definition>std::string PDJE_CRYPTO::Hash::FileHash</definition>
         <argsstring>(const fs::path &amp;fp)</argsstring>
         <name>FileHash</name>
+        <qualifiedname>PDJE_CRYPTO::Hash::FileHash</qualifiedname>
         <param>
           <type>const fs::path &amp;</type>
           <declname>fp</declname>
@@ -79,7 +84,7 @@
         </inbodydescription>
         <location file="include/global/Crypto/PDJE_Crypto.hpp" line="20" column="5" bodyfile="include/global/Crypto/PDJE_Crypto_Hash.cpp" bodystart="34" bodyend="58"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

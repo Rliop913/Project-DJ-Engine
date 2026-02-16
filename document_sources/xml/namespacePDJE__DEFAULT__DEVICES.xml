@@ -1,16 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="namespacePDJE__DEFAULT__DEVICES" kind="namespace" language="C++">
     <compoundname>PDJE_DEFAULT_DEVICES</compoundname>
     <innerclass refid="classPDJE__DEFAULT__DEVICES_1_1DefaultDevs" prot="public">PDJE_DEFAULT_DEVICES::DefaultDevs</innerclass>
-    <innerclass refid="structPDJE__DEFAULT__DEVICES_1_1HandleCloser" prot="public">PDJE_DEFAULT_DEVICES::HandleCloser</innerclass>
     <innerclass refid="classPDJE__DEFAULT__DEVICES_1_1DefaultDevs__Origin" prot="public">PDJE_DEFAULT_DEVICES::DefaultDevs_Origin</innerclass>
-      <sectiondef kind="typedef">
-      <memberdef kind="typedef" id="namespacePDJE__DEFAULT__DEVICES_1a1676dbcd931e8a4b52a2d1c5b052e128" prot="public" static="no">
+    <innerclass refid="structPDJE__DEFAULT__DEVICES_1_1HandleCloser" prot="public">PDJE_DEFAULT_DEVICES::HandleCloser</innerclass>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespacePDJE__DEFAULT__DEVICES_1aa7e4ca976f3fb919792fb80a98ba5dc6" prot="public" static="no">
         <type>nlohmann::json</type>
-        <definition>typedef nlohmann::json PDJE_DEFAULT_DEVICES::nj</definition>
+        <definition>using PDJE_DEFAULT_DEVICES::nj =  nlohmann::json</definition>
         <argsstring></argsstring>
         <name>nj</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::nj</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -19,11 +20,12 @@
         </inbodydescription>
         <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="17" column="1" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.hpp" bodystart="17" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespacePDJE__DEFAULT__DEVICES_1aae060e8f876384a80802cd5753643e96" prot="public" static="no">
+      <memberdef kind="typedef" id="namespacePDJE__DEFAULT__DEVICES_1a6874e9b2d750bcb78c3ed3ea925ee482" prot="public" static="no">
         <type><ref refid="classPDJE__RAII_1_1RAII" kindref="compound">PDJE_RAII::RAII</ref>&lt; HANDLE, <ref refid="structPDJE__DEFAULT__DEVICES_1_1HandleCloser" kindref="compound">HandleCloser</ref> &gt;</type>
-        <definition>using PDJE_DEFAULT_DEVICES::WINRAII = typedef PDJE_RAII::RAII&lt;HANDLE, HandleCloser&gt;</definition>
+        <definition>using PDJE_DEFAULT_DEVICES::WINRAII =  PDJE_RAII::RAII&lt;HANDLE, HandleCloser&gt;</definition>
         <argsstring></argsstring>
         <name>WINRAII</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::WINRAII</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -32,7 +34,7 @@
         </inbodydescription>
         <location file="include/input/DefaultDevs/windows/DefaultDevs.hpp" line="30" column="1" bodyfile="include/input/DefaultDevs/windows/DefaultDevs.hpp" bodystart="30" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

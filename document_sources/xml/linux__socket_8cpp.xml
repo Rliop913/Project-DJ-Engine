@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="linux__socket_8cpp" kind="file" language="C++">
     <compoundname>linux_socket.cpp</compoundname>
     <includes refid="linux__socket_8hpp" local="yes">linux_socket.hpp</includes>
@@ -9,48 +9,17 @@
     <includes local="no">sys/un.h</includes>
     <includes local="no">unistd.h</includes>
     <incdepgraph>
-      <node id="18">
-        <label>sys/un.h</label>
-      </node>
-      <node id="14">
-        <label>netinet/in.h</label>
-      </node>
-      <node id="10">
-        <label>arpa/inet.h</label>
-      </node>
-      <node id="4">
-        <label>limits</label>
-      </node>
-      <node id="1">
-        <label>include/input/trashbin/--DEPRECATED-linux/socket/linux_socket.cpp</label>
-        <link refid="linux__socket_8cpp"/>
-        <childnode refid="2" relation="include">
+      <node id="3">
+        <label>IPC_SHARE_MEM.hpp</label>
+        <link refid="IPC__SHARE__MEM_8hpp"/>
+        <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-      </node>
-      <node id="13">
-        <label>cstdint</label>
-      </node>
-      <node id="6">
-        <label>sys/mman.h</label>
-      </node>
-      <node id="5">
-        <label>string</label>
-      </node>
-      <node id="7">
-        <label>unistd.h</label>
-      </node>
-      <node id="16">
-        <label>vector</label>
       </node>
       <node id="9">
         <label>Common_Features.hpp</label>
@@ -76,14 +45,21 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="11">
-        <label>cerrno</label>
-      </node>
-      <node id="12">
-        <label>cstddef</label>
-      </node>
-      <node id="17">
-        <label>spawn.h</label>
+      <node id="1">
+        <label>include/input/trashbin/--DEPRECATED-linux/socket/linux_socket.cpp</label>
+        <link refid="linux__socket_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
       </node>
       <node id="2">
         <label>linux_socket.hpp</label>
@@ -95,23 +71,47 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="8">
-        <label>sys/socket.h</label>
+      <node id="10">
+        <label>arpa/inet.h</label>
       </node>
-      <node id="3">
-        <label>IPC_SHARE_MEM.hpp</label>
-        <link refid="IPC__SHARE__MEM_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
+      <node id="11">
+        <label>cerrno</label>
+      </node>
+      <node id="12">
+        <label>cstddef</label>
+      </node>
+      <node id="13">
+        <label>cstdint</label>
+      </node>
+      <node id="4">
+        <label>limits</label>
+      </node>
+      <node id="14">
+        <label>netinet/in.h</label>
       </node>
       <node id="15">
         <label>nlohmann/json.hpp</label>
+      </node>
+      <node id="17">
+        <label>spawn.h</label>
+      </node>
+      <node id="5">
+        <label>string</label>
+      </node>
+      <node id="6">
+        <label>sys/mman.h</label>
+      </node>
+      <node id="8">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="18">
+        <label>sys/un.h</label>
+      </node>
+      <node id="7">
+        <label>unistd.h</label>
+      </node>
+      <node id="16">
+        <label>vector</label>
       </node>
     </incdepgraph>
     <innernamespace refid="namespacePDJE__LINUX">PDJE_LINUX</innernamespace>
@@ -131,28 +131,28 @@
 <codeline lineno="9"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="10" refid="classPDJE__LINUX_1_1PDJE__Socket_1a55c910a885875c7adb5732a8c7bd69f4" refkind="member"><highlight class="normal"><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a55c910a885875c7adb5732a8c7bd69f4" kindref="member">PDJE_Socket::SocketOpen</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;exec_path)</highlight></codeline>
 <codeline lineno="11"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>unlink(<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a930de494521050efe7069916ce45599f" kindref="member">importants</ref>.socket_path.c_str());</highlight></codeline>
-<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a930de494521050efe7069916ce45599f" kindref="member">importants</ref>.socket_fd<sp/>=<sp/>socket(AF_UNIX,<sp/>SOCK_STREAM,<sp/>0);</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>unlink(<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1adc998abf18fc4e397b3a163b15b71e63" kindref="member">importants</ref>.socket_path.c_str());</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1adc998abf18fc4e397b3a163b15b71e63" kindref="member">importants</ref>.socket_fd<sp/>=<sp/>socket(AF_UNIX,<sp/>SOCK_STREAM,<sp/>0);</highlight></codeline>
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>sockaddr_un<sp/>address_temp{};</highlight></codeline>
 <codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>address_temp.sun_family<sp/>=<sp/>AF_UNIX;</highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(bind(<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a930de494521050efe7069916ce45599f" kindref="member">importants</ref>.socket_fd,</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(bind(<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1adc998abf18fc4e397b3a163b15b71e63" kindref="member">importants</ref>.socket_fd,</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">sockaddr<sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(&amp;address_temp),</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(address_temp))<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>errno;</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(listen(<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a930de494521050efe7069916ce45599f" kindref="member">importants</ref>.socket_fd,<sp/>1)<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(listen(<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1adc998abf18fc4e397b3a163b15b71e63" kindref="member">importants</ref>.socket_fd,<sp/>1)<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>errno;</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a35e535f7557b6733c8b1e82521702043" kindref="member">OpenClientWithSudo</ref>(exec_path,<sp/><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a930de494521050efe7069916ce45599f" kindref="member">importants</ref>.socket_path)<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a35e535f7557b6733c8b1e82521702043" kindref="member">OpenClientWithSudo</ref>(exec_path,<sp/><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1adc998abf18fc4e397b3a163b15b71e63" kindref="member">importants</ref>.socket_path)<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>errno;</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a930de494521050efe7069916ce45599f" kindref="member">importants</ref>.client_fd<sp/>=<sp/>accept(<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a930de494521050efe7069916ce45599f" kindref="member">importants</ref>.socket_fd,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a930de494521050efe7069916ce45599f" kindref="member">importants</ref>.client_fd<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1adc998abf18fc4e397b3a163b15b71e63" kindref="member">importants</ref>.client_fd<sp/>=<sp/>accept(<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1adc998abf18fc4e397b3a163b15b71e63" kindref="member">importants</ref>.socket_fd,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1adc998abf18fc4e397b3a163b15b71e63" kindref="member">importants</ref>.client_fd<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>errno;</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
@@ -172,7 +172,7 @@
 <codeline lineno="50"><highlight class="normal"></highlight></codeline>
 <codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((getenv(</highlight><highlight class="stringliteral">&quot;DISPLAY&quot;</highlight><highlight class="normal">)<sp/>||<sp/>getenv(</highlight><highlight class="stringliteral">&quot;WAYLAND_DISPLAY&quot;</highlight><highlight class="normal">))<sp/>&amp;&amp;</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>access(</highlight><highlight class="stringliteral">&quot;/usr/bin/pkexec&quot;</highlight><highlight class="normal">,<sp/>X_OK)<sp/>==<sp/>0)<sp/>{</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>spawn_stat<sp/>=<sp/>posix_spawn(&amp;<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a930de494521050efe7069916ce45599f" kindref="member">importants</ref>.rt_pid,</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>spawn_stat<sp/>=<sp/>posix_spawn(&amp;<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1adc998abf18fc4e397b3a163b15b71e63" kindref="member">importants</ref>.rt_pid,</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;/usr/bin/pkexec&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,</highlight></codeline>
@@ -182,7 +182,7 @@
 <codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>spawn_stat<sp/>=<sp/>posix_spawn(&amp;<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a930de494521050efe7069916ce45599f" kindref="member">importants</ref>.rt_pid,</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>spawn_stat<sp/>=<sp/>posix_spawn(&amp;<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1adc998abf18fc4e397b3a163b15b71e63" kindref="member">importants</ref>.rt_pid,</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;/usr/bin/sudo&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,</highlight></codeline>
@@ -206,23 +206,23 @@
 <codeline lineno="84" refid="classPDJE__LINUX_1_1PDJE__Socket_1a31edc7aeec4b4a36aec7260a38b5a8e8" refkind="member"><highlight class="normal"><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a31edc7aeec4b4a36aec7260a38b5a8e8" kindref="member">PDJE_Socket::SocketClose</ref>()</highlight></codeline>
 <codeline lineno="85"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1ac71db7adb5dea58bc45b09c397100c7e" kindref="member">CloseClient</ref>();</highlight></codeline>
-<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>close(<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a930de494521050efe7069916ce45599f" kindref="member">importants</ref>.client_fd);</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>close(<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a930de494521050efe7069916ce45599f" kindref="member">importants</ref>.socket_fd);</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>unlink(<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a930de494521050efe7069916ce45599f" kindref="member">importants</ref>.socket_path.c_str());</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>close(<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1adc998abf18fc4e397b3a163b15b71e63" kindref="member">importants</ref>.client_fd);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>close(<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1adc998abf18fc4e397b3a163b15b71e63" kindref="member">importants</ref>.socket_fd);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>unlink(<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1adc998abf18fc4e397b3a163b15b71e63" kindref="member">importants</ref>.socket_path.c_str());</highlight></codeline>
 <codeline lineno="90"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"></highlight></codeline>
 <codeline lineno="92"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="93" refid="classPDJE__LINUX_1_1PDJE__Socket_1ad7b3a4045e530ab44a5927cc468e9cf9" refkind="member"><highlight class="normal"><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1ad7b3a4045e530ab44a5927cc468e9cf9" kindref="member">PDJE_Socket::QueryClient</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;query,<sp/>std::string<sp/>&amp;result)</highlight></codeline>
 <codeline lineno="94"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>res<sp/>=<sp/><ref refid="namespaceCommon__Features_1ae7de45f5bf7f824894a45151efe97313" kindref="member">Common_Features::LPSend</ref>(<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a930de494521050efe7069916ce45599f" kindref="member">importants</ref>.client_fd,<sp/>query);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>res<sp/>=<sp/><ref refid="namespaceCommon__Features_1ae7de45f5bf7f824894a45151efe97313" kindref="member">Common_Features::LPSend</ref>(<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1adc998abf18fc4e397b3a163b15b71e63" kindref="member">importants</ref>.client_fd,<sp/>query);</highlight></codeline>
 <codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(res<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>res;</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>res<sp/>=<sp/><ref refid="namespaceCommon__Features_1af19798f328e422f395131cd603101c1a" kindref="member">Common_Features::LPRecv</ref>(<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a930de494521050efe7069916ce45599f" kindref="member">importants</ref>.client_fd,<sp/>result);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>res<sp/>=<sp/><ref refid="namespaceCommon__Features_1af19798f328e422f395131cd603101c1a" kindref="member">Common_Features::LPRecv</ref>(<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1adc998abf18fc4e397b3a163b15b71e63" kindref="member">importants</ref>.client_fd,<sp/>result);</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>res;</highlight></codeline>
 <codeline lineno="101"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="102"><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_LINUX</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_LINUX</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/input/trashbin/--DEPRECATED-linux/socket/linux_socket.cpp"/>
   </compounddef>

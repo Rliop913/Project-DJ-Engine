@@ -10,7 +10,7 @@ The Judge Engine is a specialized module for rhythm games, focusing on precise t
 
 *   **Microsecond Accuracy:** All internal timing and judgment calculations operate at microsecond resolution, synchronized with the audio timeline via `PDJE_HIGHRES_CLOCK` and `audioSyncData`.
 *   **Modular Design:** The engine is composed of several key internal components:
-    *   **`Judge_Init`:** The central initialization class (`include/judge/Init/Judge_Init.hpp`) that collects and validates all necessary configurations:
+    *   **`Judge_Init`:** The central initialization class (`include/judge/Init/PDJE_Judge_Init.hpp`) that collects and validates all necessary configurations:
         *   `PDJE_CORE_DATA_LINE` and `PDJE_INPUT_DATA_LINE` from the Core and Input Engines.
         *   `OBJ` (Note Objects) which store and manage all judagble `NOTE` instances.
         *   `EVENT_RULE` which defines the hit/miss timing windows (e.g., `use_range_microsecond`).

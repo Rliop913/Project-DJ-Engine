@@ -59,10 +59,6 @@ Included By
 -----------
 
 
-- :ref:`file_include_core_editor_TimeLine_JSONWrap_MusicJson.cpp`
-
-- :ref:`file_include_core_interface_PDJE_interface.hpp`
-
 - :ref:`file_include_core_MainObjects_editorObject_addline.cpp`
 
 - :ref:`file_include_core_MainObjects_editorObject_commonfunction.cpp`
@@ -88,6 +84,10 @@ Included By
 - :ref:`file_include_core_MainObjects_editorObject_updatelog.cpp`
 
 - :ref:`file_include_core_SWIG_editor_visitor.hpp`
+
+- :ref:`file_include_core_editor_TimeLine_JSONWrap_MusicJson.cpp`
+
+- :ref:`file_include_core_interface_PDJE_interface.hpp`
 
 
 

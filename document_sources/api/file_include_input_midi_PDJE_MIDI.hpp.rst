@@ -46,9 +46,9 @@ Included By
 
 - :ref:`file_include_global_DataLines_PDJE_Input_DataLine.hpp`
 
-- :ref:`file_include_input_midi_PDJE_MIDI.cpp`
-
 - :ref:`file_include_input_PDJE_Input.hpp`
+
+- :ref:`file_include_input_midi_PDJE_MIDI.cpp`
 
 - :ref:`file_include_tests_INPUT_TESTS_miditest.cpp`
 

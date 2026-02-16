@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="Common__Features_8hpp" kind="file" language="C++">
     <compoundname>Common_Features.hpp</compoundname>
     <includes local="no">arpa/inet.h</includes>
@@ -12,31 +12,13 @@
     <includes local="no">string</includes>
     <includes local="no">sys/socket.h</includes>
     <includes local="no">vector</includes>
-    <includedby refid="linux__input_8cpp" local="yes">include/input/trashbin/--DEPRECATED-linux/linux_input.cpp</includedby>
     <includedby refid="OneTimeSysSetup_8hpp" local="yes">include/input/trashbin/--DEPRECATED-linux/RT/OneTimeSysSetup.hpp</includedby>
     <includedby refid="RTFunctionRegister_8cpp" local="yes">include/input/trashbin/--DEPRECATED-linux/RT/RTFunctionRegister.cpp</includedby>
     <includedby refid="RTSocket_8cpp" local="yes">include/input/trashbin/--DEPRECATED-linux/RT/RTSocket.cpp</includedby>
     <includedby refid="RTSocket_8hpp" local="yes">include/input/trashbin/--DEPRECATED-linux/RT/RTSocket.hpp</includedby>
+    <includedby refid="linux__input_8cpp" local="yes">include/input/trashbin/--DEPRECATED-linux/linux_input.cpp</includedby>
     <includedby refid="linux__socket_8cpp" local="yes">include/input/trashbin/--DEPRECATED-linux/socket/linux_socket.cpp</includedby>
     <incdepgraph>
-      <node id="7">
-        <label>netinet/in.h</label>
-      </node>
-      <node id="2">
-        <label>arpa/inet.h</label>
-      </node>
-      <node id="6">
-        <label>limits</label>
-      </node>
-      <node id="5">
-        <label>cstdint</label>
-      </node>
-      <node id="9">
-        <label>string</label>
-      </node>
-      <node id="11">
-        <label>vector</label>
-      </node>
       <node id="1">
         <label>include/input/trashbin/--DEPRECATED-linux/common/Common_Features.hpp</label>
         <link refid="Common__Features_8hpp"/>
@@ -61,77 +43,95 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
+      <node id="2">
+        <label>arpa/inet.h</label>
+      </node>
       <node id="3">
         <label>cerrno</label>
       </node>
       <node id="4">
         <label>cstddef</label>
       </node>
-      <node id="10">
-        <label>sys/socket.h</label>
+      <node id="5">
+        <label>cstdint</label>
+      </node>
+      <node id="6">
+        <label>limits</label>
+      </node>
+      <node id="7">
+        <label>netinet/in.h</label>
       </node>
       <node id="8">
         <label>nlohmann/json.hpp</label>
       </node>
+      <node id="9">
+        <label>string</label>
+      </node>
+      <node id="10">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="11">
+        <label>vector</label>
+      </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="4">
+      <node id="3">
         <label>include/input/trashbin/--DEPRECATED-linux/RT/OneTimeSysSetup.cpp</label>
         <link refid="OneTimeSysSetup_8cpp"/>
       </node>
-      <node id="8">
-        <label>include/input/trashbin/--DEPRECATED-linux/socket/linux_socket.cpp</label>
-        <link refid="linux__socket_8cpp"/>
-      </node>
       <node id="2">
-        <label>include/input/trashbin/--DEPRECATED-linux/linux_input.cpp</label>
-        <link refid="linux__input_8cpp"/>
+        <label>include/input/trashbin/--DEPRECATED-linux/RT/OneTimeSysSetup.hpp</label>
+        <link refid="OneTimeSysSetup_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
       </node>
-      <node id="6">
+      <node id="5">
         <label>include/input/trashbin/--DEPRECATED-linux/RT/RTFunctionRegister.cpp</label>
         <link refid="RTFunctionRegister_8cpp"/>
       </node>
-      <node id="7">
+      <node id="6">
         <label>include/input/trashbin/--DEPRECATED-linux/RT/RTSocket.cpp</label>
         <link refid="RTSocket_8cpp"/>
+      </node>
+      <node id="4">
+        <label>include/input/trashbin/--DEPRECATED-linux/RT/RTSocket.hpp</label>
+        <link refid="RTSocket_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
       </node>
       <node id="1">
         <label>include/input/trashbin/--DEPRECATED-linux/common/Common_Features.hpp</label>
         <link refid="Common__Features_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="3" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="3">
-        <label>include/input/trashbin/--DEPRECATED-linux/RT/OneTimeSysSetup.hpp</label>
-        <link refid="OneTimeSysSetup_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
+      <node id="7">
+        <label>include/input/trashbin/--DEPRECATED-linux/linux_input.cpp</label>
+        <link refid="linux__input_8cpp"/>
       </node>
-      <node id="5">
-        <label>include/input/trashbin/--DEPRECATED-linux/RT/RTSocket.hpp</label>
-        <link refid="RTSocket_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
+      <node id="8">
+        <label>include/input/trashbin/--DEPRECATED-linux/socket/linux_socket.cpp</label>
+        <link refid="linux__socket_8cpp"/>
       </node>
     </invincdepgraph>
     <innernamespace refid="namespaceCommon__Features">Common_Features</innernamespace>
-      <sectiondef kind="enum">
+    <sectiondef kind="enum">
       <memberdef kind="enum" id="Common__Features_8hpp_1a0ac4dedb5fe2522b90f42438699a53bd" prot="public" static="no" strong="no">
         <type></type>
         <name>PDJE_RT_ERROR</name>
@@ -199,22 +199,7 @@
         </inbodydescription>
         <location file="include/input/trashbin/--DEPRECATED-linux/common/Common_Features.hpp" line="14" column="1" bodyfile="include/input/trashbin/--DEPRECATED-linux/common/Common_Features.hpp" bodystart="14" bodyend="22"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="typedef">
-      <memberdef kind="typedef" id="Common__Features_8hpp_1a6c08a6bca89aa954d4bf90371a27dfa9" prot="public" static="no">
-        <type>nlohmann::json</type>
-        <definition>using nj =  nlohmann::json</definition>
-        <argsstring></argsstring>
-        <name>nj</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/input/trashbin/--DEPRECATED-linux/common/Common_Features.hpp" line="13" column="1" bodyfile="include/input/trashbin/--DEPRECATED-linux/common/Common_Features.hpp" bodystart="13" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -232,7 +217,7 @@
 <codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/socket.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="13" refid="Common__Features_8hpp_1a6c08a6bca89aa954d4bf90371a27dfa9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="jsonWrapper_8hpp_1a6c08a6bca89aa954d4bf90371a27dfa9" kindref="member">nj</ref><sp/>=<sp/>nlohmann::json;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="jsonWrapper_8hpp_1a6c08a6bca89aa954d4bf90371a27dfa9" kindref="member">nj</ref><sp/>=<sp/>nlohmann::json;</highlight></codeline>
 <codeline lineno="14" refid="Common__Features_8hpp_1a0ac4dedb5fe2522b90f42438699a53bd" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="Common__Features_8hpp_1a0ac4dedb5fe2522b90f42438699a53bd" kindref="member">PDJE_RT_ERROR</ref><sp/>{</highlight></codeline>
 <codeline lineno="15" refid="Common__Features_8hpp_1a0ac4dedb5fe2522b90f42438699a53bdaaf239de32489d60f6a3b18626375e581" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Common__Features_8hpp_1a0ac4dedb5fe2522b90f42438699a53bdaaf239de32489d60f6a3b18626375e581" kindref="member">FAILED_TO_PARSE_JSON</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>-1,</highlight></codeline>
 <codeline lineno="16" refid="Common__Features_8hpp_1a0ac4dedb5fe2522b90f42438699a53bda727d7acad26e69422b9ed0acda046bec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Common__Features_8hpp_1a0ac4dedb5fe2522b90f42438699a53bda727d7acad26e69422b9ed0acda046bec" kindref="member">FAILED_TO_PARSE_JSON_HEAD_BODY</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>-2,</highlight></codeline>
@@ -240,8 +225,8 @@
 <codeline lineno="18" refid="Common__Features_8hpp_1a0ac4dedb5fe2522b90f42438699a53bda527917a15b1909e5805f59e3b654401b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Common__Features_8hpp_1a0ac4dedb5fe2522b90f42438699a53bda527917a15b1909e5805f59e3b654401b" kindref="member">FAILED_TO_SCHED_GETAFFINITY</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>-4,</highlight></codeline>
 <codeline lineno="19" refid="Common__Features_8hpp_1a0ac4dedb5fe2522b90f42438699a53bdab926bccb8ac7deb770a6ca918f43b9c6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Common__Features_8hpp_1a0ac4dedb5fe2522b90f42438699a53bdab926bccb8ac7deb770a6ca918f43b9c6" kindref="member">FAILED_TO_SET_CPU_NUMBER</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>-5,</highlight></codeline>
 <codeline lineno="20" refid="Common__Features_8hpp_1a0ac4dedb5fe2522b90f42438699a53bda66de88aaa69356a9fcd43a6e9395ff7e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Common__Features_8hpp_1a0ac4dedb5fe2522b90f42438699a53bda66de88aaa69356a9fcd43a6e9395ff7e" kindref="member">FAILED_TO_SEND_RECV__DATA_LENGTH_IS_ZERO</ref><sp/>=<sp/>-6,</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Common__Features_8hpp_1a0ac4dedb5fe2522b90f42438699a53bda7520ff0aa90ad7219136d08ddf2a9a03" kindref="member">FAILED_TO_SET_DEV__INVALID_DATA</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>-7</highlight></codeline>
-<codeline lineno="22" refid="Common__Features_8hpp_1a0ac4dedb5fe2522b90f42438699a53bda7520ff0aa90ad7219136d08ddf2a9a03" refkind="member"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="21" refid="Common__Features_8hpp_1a0ac4dedb5fe2522b90f42438699a53bda7520ff0aa90ad7219136d08ddf2a9a03" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Common__Features_8hpp_1a0ac4dedb5fe2522b90f42438699a53bda7520ff0aa90ad7219136d08ddf2a9a03" kindref="member">FAILED_TO_SET_DEV__INVALID_DATA</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>-7</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight></codeline>
 <codeline lineno="24" refid="namespaceCommon__Features" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceCommon__Features" kindref="compound">Common_Features</ref><sp/>{</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
@@ -289,7 +274,7 @@
 <codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>len;</highlight></codeline>
 <codeline lineno="68"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"></highlight></codeline>
-<codeline lineno="71"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="72" refid="namespaceCommon__Features_1ae7de45f5bf7f824894a45151efe97313" refkind="member"><highlight class="normal"><ref refid="namespaceCommon__Features_1ae7de45f5bf7f824894a45151efe97313" kindref="member">LPSend</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dest_fd,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;data)</highlight></codeline>
 <codeline lineno="73"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>len<sp/>=<sp/>data.size();</highlight></codeline>
@@ -349,7 +334,7 @@
 <codeline lineno="128"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"></highlight></codeline>
 <codeline lineno="130"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;</highlight></codeline>
-<codeline lineno="131" refid="namespaceCommon__Features_1a78ad74b03105ce26d05dd66159bed97b" refkind="member"><highlight class="normal"><ref refid="namespaceCommon__Features_1a78ad74b03105ce26d05dd66159bed97b" kindref="member">ReadMSG</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;head,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;raw_json_msg)</highlight></codeline>
+<codeline lineno="131" refid="namespaceCommon__Features_1a9819433dbb3c04ccbcf39523f8185eaf" refkind="member"><highlight class="normal"><ref refid="namespaceCommon__Features_1a9819433dbb3c04ccbcf39523f8185eaf" kindref="member">ReadMSG</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;head,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;raw_json_msg)</highlight></codeline>
 <codeline lineno="132"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="jsonWrapper_8hpp_1a6c08a6bca89aa954d4bf90371a27dfa9" kindref="member">nj</ref><sp/>parsed;</highlight></codeline>
 <codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
@@ -374,7 +359,7 @@
 <codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;();</highlight></codeline>
 <codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="155"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="156"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>Common_Features</highlight></codeline>
+<codeline lineno="156"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>Common_Features</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/input/trashbin/--DEPRECATED-linux/common/Common_Features.hpp"/>
   </compounddef>

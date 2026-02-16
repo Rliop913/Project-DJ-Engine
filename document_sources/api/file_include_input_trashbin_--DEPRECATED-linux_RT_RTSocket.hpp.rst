@@ -72,11 +72,11 @@ Included By
 -----------
 
 
-- :ref:`file_include_input_trashbin_--DEPRECATED-linux_linux_input.cpp`
-
 - :ref:`file_include_input_trashbin_--DEPRECATED-linux_RT_RTFunctionRegister.cpp`
 
 - :ref:`file_include_input_trashbin_--DEPRECATED-linux_RT_RTSocket.cpp`
+
+- :ref:`file_include_input_trashbin_--DEPRECATED-linux_linux_input.cpp`
 
 
 
@@ -95,8 +95,6 @@ Typedefs
 
 
 - :ref:`exhale_typedef_RTSocket_8hpp_1a4a5d8fd04da75f13c58e95aea630c308`
-
-- :ref:`exhale_typedef_RTSocket_8hpp_1a6c08a6bca89aa954d4bf90371a27dfa9`
 
 - :ref:`exhale_typedef_RTSocket_8hpp_1a9fe2c28cc016fecdfc4909a9f5c74a0b`
 

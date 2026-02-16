@@ -42,9 +42,9 @@ Included By
 -----------
 
 
-- :ref:`file_include_core_audioRender_audioRender.cpp`
-
 - :ref:`file_include_core_MainObjects_audioPlayer_audioPlayer.hpp`
+
+- :ref:`file_include_core_audioRender_audioRender.cpp`
 
 
 

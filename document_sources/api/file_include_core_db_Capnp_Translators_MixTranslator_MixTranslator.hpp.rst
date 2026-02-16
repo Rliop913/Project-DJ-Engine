@@ -56,11 +56,11 @@ Included By
 -----------
 
 
-- :ref:`file_include_core_audioRender_MixMachine_MixMachine.hpp`
-
 - :ref:`file_include_core_audioRender_MixMachine_MUSIC_CTR_BattleDj.hpp`
 
 - :ref:`file_include_core_audioRender_MixMachine_MUSIC_CTR_MUSIC_CTR.hpp`
+
+- :ref:`file_include_core_audioRender_MixMachine_MixMachine.hpp`
 
 - :ref:`file_include_core_db_Capnp_Translators_MixTranslator_MixTranslator.cpp`
 

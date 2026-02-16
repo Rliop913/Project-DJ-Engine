@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="linux__socket_8hpp" kind="file" language="C++">
     <compoundname>linux_socket.hpp</compoundname>
     <includes refid="IPC__SHARE__MEM_8hpp" local="yes">IPC_SHARE_MEM.hpp</includes>
@@ -8,31 +8,6 @@
     <includedby refid="linux__input_8hpp" local="yes">include/input/trashbin/--DEPRECATED-linux/linux_input.hpp</includedby>
     <includedby refid="linux__socket_8cpp" local="yes">include/input/trashbin/--DEPRECATED-linux/socket/linux_socket.cpp</includedby>
     <incdepgraph>
-      <node id="3">
-        <label>limits</label>
-      </node>
-      <node id="5">
-        <label>sys/mman.h</label>
-      </node>
-      <node id="4">
-        <label>string</label>
-      </node>
-      <node id="6">
-        <label>unistd.h</label>
-      </node>
-      <node id="1">
-        <label>include/input/trashbin/--DEPRECATED-linux/socket/linux_socket.hpp</label>
-        <link refid="linux__socket_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
-      <node id="7">
-        <label>sys/socket.h</label>
-      </node>
       <node id="2">
         <label>IPC_SHARE_MEM.hpp</label>
         <link refid="IPC__SHARE__MEM_8hpp"/>
@@ -45,12 +20,33 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
+      <node id="1">
+        <label>include/input/trashbin/--DEPRECATED-linux/socket/linux_socket.hpp</label>
+        <link refid="linux__socket_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>limits</label>
+      </node>
+      <node id="4">
+        <label>string</label>
+      </node>
+      <node id="5">
+        <label>sys/mman.h</label>
+      </node>
+      <node id="7">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="6">
+        <label>unistd.h</label>
+      </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="4">
-        <label>include/input/trashbin/--DEPRECATED-linux/socket/linux_socket.cpp</label>
-        <link refid="linux__socket_8cpp"/>
-      </node>
       <node id="3">
         <label>include/input/trashbin/--DEPRECATED-linux/linux_input.cpp</label>
         <link refid="linux__input_8cpp"/>
@@ -60,6 +56,10 @@
         <link refid="linux__input_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
+      </node>
+      <node id="4">
+        <label>include/input/trashbin/--DEPRECATED-linux/socket/linux_socket.cpp</label>
+        <link refid="linux__socket_8cpp"/>
       </node>
       <node id="1">
         <label>include/input/trashbin/--DEPRECATED-linux/socket/linux_socket.hpp</label>
@@ -82,7 +82,7 @@
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/socket.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__LINUX" kindref="compound">PDJE_LINUX</ref><sp/>{</highlight></codeline>
-<codeline lineno="6" refid="classPDJE__LINUX_1_1PDJE__Socket" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPDJE__LINUX_1_1PDJE__Socket" kindref="compound">PDJE_Socket</ref><sp/>{</highlight></codeline>
+<codeline lineno="6" refid="classPDJE__LINUX_1_1PDJE__Socket" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a9fb3eae11661dbe4843b1d794c2b3160" kindref="member">PDJE_Socket</ref><sp/>{</highlight></codeline>
 <codeline lineno="7"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="9" refid="classPDJE__LINUX_1_1PDJE__Socket_1ae0fdbeaee5bf81b4ce128694feae8e7b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1ae0fdbeaee5bf81b4ce128694feae8e7b" kindref="member">socket_fd</ref><sp/>=<sp/>-1;</highlight></codeline>
@@ -90,7 +90,7 @@
 <codeline lineno="11" refid="classPDJE__LINUX_1_1PDJE__Socket_1aa05ec895be8a33531927a90b64956fe6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pid_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1aa05ec895be8a33531927a90b64956fe6" kindref="member">rt_pid</ref><sp/><sp/><sp/><sp/>=<sp/>-1;</highlight></codeline>
 <codeline lineno="12" refid="classPDJE__LINUX_1_1PDJE__Socket_1a3a9951070b83ee6b45f6c6ee8e1b7ec8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a3a9951070b83ee6b45f6c6ee8e1b7ec8" kindref="member">socket_path</ref><sp/>=</highlight></codeline>
 <codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;/tmp/pdje_input_module_libevdev_socket_path.sock&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="14" refid="classPDJE__LINUX_1_1PDJE__Socket_1a930de494521050efe7069916ce45599f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a930de494521050efe7069916ce45599f" kindref="member">importants</ref>;</highlight></codeline>
+<codeline lineno="14" refid="classPDJE__LINUX_1_1PDJE__Socket_1adc998abf18fc4e397b3a163b15b71e63" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1adc998abf18fc4e397b3a163b15b71e63" kindref="member">importants</ref>;</highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a35e535f7557b6733c8b1e82521702043" kindref="member">OpenClientWithSudo</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;exec_path,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;arg);</highlight></codeline>
@@ -137,9 +137,9 @@
 <codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>cmsg-&gt;cmsg_len<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>CMSG_LEN(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">));</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight></codeline>
 <codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(CMSG_DATA(cmsg),<sp/>&amp;shared_IPC_mem.<ref refid="classIPCSharedMem_1a4ce0fae47486d1ad09821f8ed652e740" kindref="member">FD</ref>,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">));</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sendmsg(<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1a930de494521050efe7069916ce45599f" kindref="member">importants</ref>.client_fd,<sp/>&amp;msg,<sp/>0);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sendmsg(<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1adc998abf18fc4e397b3a163b15b71e63" kindref="member">importants</ref>.client_fd,<sp/>&amp;msg,<sp/>0);</highlight></codeline>
 <codeline lineno="62"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="63"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_LINUX</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_LINUX</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/input/trashbin/--DEPRECATED-linux/socket/linux_socket.hpp"/>
   </compounddef>

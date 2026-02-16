@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="structPDJE__JUDGE_1_1NOTE__ITR" kind="struct" language="C++" prot="public">
     <compoundname>PDJE_JUDGE::NOTE_ITR</compoundname>
     <includes refid="PDJE__Note__OBJ_8hpp" local="no">PDJE_Note_OBJ.hpp</includes>
-      <sectiondef kind="public-attrib">
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structPDJE__JUDGE_1_1NOTE__ITR_1a1c96883596a986664ea6eb9ad81d75f7" prot="public" static="no" mutable="no">
-        <type><ref refid="namespacePDJE__JUDGE_1abfffd249b5c6ec7c96166be8da7e1b14" kindref="member">NOTE_VEC</ref></type>
+        <type><ref refid="namespacePDJE__JUDGE_1ad8c8d340702b0759a8cecb53091de1e0" kindref="member">NOTE_VEC</ref></type>
         <definition>NOTE_VEC PDJE_JUDGE::NOTE_ITR::vec</definition>
         <argsstring></argsstring>
         <name>vec</name>
+        <qualifiedname>PDJE_JUDGE::NOTE_ITR::vec</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -22,6 +23,7 @@
         <definition>NOTE_VEC::iterator PDJE_JUDGE::NOTE_ITR::itr</definition>
         <argsstring></argsstring>
         <name>itr</name>
+        <qualifiedname>PDJE_JUDGE::NOTE_ITR::itr</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -30,43 +32,28 @@
         </inbodydescription>
         <location file="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" line="36" column="24" bodyfile="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" bodystart="36" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Iterator wrapper keeping note vector and current cursor. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="5">
-        <label>std::basic_string&lt; Char &gt;</label>
-      </node>
-      <node id="2">
-        <label>std::vector&lt; NOTE &gt;</label>
-        <childnode refid="3" relation="usage">
-          <edgelabel>elements</edgelabel>
-        </childnode>
-      </node>
       <node id="1">
         <label>PDJE_JUDGE::NOTE_ITR</label>
         <link refid="structPDJE__JUDGE_1_1NOTE__ITR"/>
         <childnode refid="2" relation="usage">
           <edgelabel>vec</edgelabel>
         </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>itr</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::vector&lt; NOTE &gt;</label>
       </node>
       <node id="3">
-        <label>PDJE_JUDGE::NOTE</label>
-        <link refid="structPDJE__JUDGE_1_1NOTE"/>
-        <childnode refid="4" relation="usage">
-          <edgelabel>first</edgelabel>
-          <edgelabel>second</edgelabel>
-          <edgelabel>third</edgelabel>
-          <edgelabel>type</edgelabel>
-        </childnode>
-      </node>
-      <node id="4">
-        <label>std::string</label>
-        <childnode refid="5" relation="public-inheritance">
-        </childnode>
+        <label>std::vector&lt; NOTE &gt;::iterator</label>
       </node>
     </collaborationgraph>
     <location file="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" line="34" column="1" bodyfile="include/judge/NoteOBJ/PDJE_Note_OBJ.hpp" bodystart="34" bodyend="37"/>

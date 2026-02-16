@@ -42,6 +42,8 @@ Includes
 
 - ``audioRender.hpp`` (:ref:`file_include_core_audioRender_audioRender.hpp`)
 
+- ``audio_OS_impls.hpp`` (:ref:`file_include_core_MainObjects_audioPlayer_audio_OS_impls.hpp`)
+
 - ``miniaudio.h``
 
 
@@ -50,11 +52,11 @@ Included By
 -----------
 
 
-- :ref:`file_include_core_interface_PDJE_interface.hpp`
-
 - :ref:`file_include_core_MainObjects_audioPlayer_audioPlayer.cpp`
 
 - :ref:`file_include_core_MainObjects_editorObject_editorObject.hpp`
+
+- :ref:`file_include_core_interface_PDJE_interface.hpp`
 
 - :ref:`file_include_tests_audioTest.cpp`
 

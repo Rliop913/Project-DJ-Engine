@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="linux__input_8cpp" kind="file" language="C++">
     <compoundname>linux_input.cpp</compoundname>
     <includes refid="linux__input_8hpp" local="yes">linux_input.hpp</includes>
@@ -15,66 +15,6 @@
     <includes local="no">unistd.h</includes>
     <includes local="no">iostream</includes>
     <incdepgraph>
-      <node id="37">
-        <label>atomic</label>
-      </node>
-      <node id="62">
-        <label>sys/un.h</label>
-      </node>
-      <node id="51">
-        <label>netinet/in.h</label>
-      </node>
-      <node id="49">
-        <label>arpa/inet.h</label>
-      </node>
-      <node id="60">
-        <label>functional</label>
-      </node>
-      <node id="3">
-        <label>Input_State.hpp</label>
-        <link refid="Input__State_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-      </node>
-      <node id="36">
-        <label>limits</label>
-      </node>
-      <node id="20">
-        <label>filesystem</label>
-      </node>
-      <node id="55">
-        <label>numaif.h</label>
-      </node>
-      <node id="13">
-        <label>cstdint</label>
-      </node>
-      <node id="30">
-        <label>PDJE_INPUT_PROCESS_HASH.hpp</label>
-        <link refid="PDJE__INPUT__PROCESS__HASH_8hpp"/>
-      </node>
-      <node id="44">
-        <label>sys/mman.h</label>
-      </node>
-      <node id="40">
-        <label>libremidi/libremidi.hpp</label>
-      </node>
-      <node id="59">
-        <label>fcntl.h</label>
-      </node>
-      <node id="5">
-        <label>memory_resource</label>
-      </node>
-      <node id="58">
-        <label>nlohmann/json_fwd.hpp</label>
-      </node>
       <node id="18">
         <label>PDJE_Crypto.hpp</label>
         <link refid="PDJE__Crypto_8hpp"/>
@@ -91,23 +31,71 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="28">
-        <label>botan/cipher_mode.h</label>
+      <node id="3">
+        <label>Input_State.hpp</label>
+        <link refid="Input__State_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
       </node>
-      <node id="7">
-        <label>string</label>
+      <node id="16">
+        <label>PDJE_Buffer.hpp</label>
+        <link refid="PDJE__Buffer_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
       </node>
-      <node id="10">
-        <label>Input_Transfer.hpp</label>
+      <node id="9">
+        <label>PDJE_Input_DataLine.hpp</label>
+        <link refid="PDJE__Input__DataLine_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
       </node>
-      <node id="22">
-        <label>spdlog/sinks/basic_file_sink.h</label>
+      <node id="12">
+        <label>PDJE_Input_Device_Data.hpp</label>
+        <link refid="PDJE__Input__Device__Data_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
       </node>
-      <node id="57">
-        <label>RTEvent.hpp</label>
-      </node>
-      <node id="34">
-        <label>fstream</label>
+      <node id="11">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
       </node>
       <node id="19">
         <label>PDJE_LOG_SETTER.hpp</label>
@@ -127,32 +115,30 @@
         <childnode refid="26" relation="include">
         </childnode>
       </node>
-      <node id="1">
-        <label>include/input/trashbin/--DEPRECATED-linux/linux_input.cpp</label>
-        <link refid="linux__input_8cpp"/>
-        <childnode refid="2" relation="include">
+      <node id="17">
+        <label>ipc_shared_memory.hpp</label>
+        <link refid="ipc__shared__memory_8hpp"/>
+        <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="48" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="3" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="63" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="50" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="62" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="45" relation="include">
-        </childnode>
-        <childnode refid="64" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
       <node id="15">
@@ -160,105 +146,130 @@
         <link refid="PDJE__MIDI_8hpp"/>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
       </node>
-      <node id="24">
-        <label>spdlog/spdlog.h</label>
-      </node>
-      <node id="38">
-        <label>random</label>
-      </node>
-      <node id="25">
-        <label>string_view</label>
-      </node>
-      <node id="35">
-        <label>ios</label>
-      </node>
-      <node id="39">
-        <label>PDJE_Highres_Clock.hpp</label>
-      </node>
-      <node id="4">
-        <label>future</label>
-      </node>
-      <node id="12">
-        <label>PDJE_Input_Device_Data.hpp</label>
-        <link refid="PDJE__Input__Device__Data_8hpp"/>
-        <childnode refid="13" relation="include">
+      <node id="42">
+        <label>IPC_SHARE_MEM.hpp</label>
+        <link refid="IPC__SHARE__MEM_8hpp"/>
+        <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>OneTimeSysSetup.hpp</label>
+        <link refid="OneTimeSysSetup_8hpp"/>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>RTSocket.hpp</label>
+        <link refid="RTSocket_8hpp"/>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
         </childnode>
       </node>
-      <node id="9">
-        <label>PDJE_Input_DataLine.hpp</label>
-        <link refid="PDJE__Input__DataLine_8hpp"/>
-        <childnode refid="3" relation="include">
+      <node id="47">
+        <label>Common_Features.hpp</label>
+        <link refid="Common__Features_8hpp"/>
+        <childnode refid="48" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="41" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>optional</label>
-      </node>
-      <node id="45">
-        <label>unistd.h</label>
-      </node>
-      <node id="17">
-        <label>ipc_shared_memory.hpp</label>
-        <link refid="ipc__shared__memory_8hpp"/>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="49" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="8">
-        <label>vector</label>
-      </node>
-      <node id="29">
-        <label>botan/hash.h</label>
-      </node>
-      <node id="14">
-        <label>latch</label>
+      <node id="1">
+        <label>include/input/trashbin/--DEPRECATED-linux/linux_input.cpp</label>
+        <link refid="linux__input_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
       </node>
       <node id="2">
         <label>linux_input.hpp</label>
@@ -269,178 +280,161 @@
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
-        </childnode>
-        <childnode refid="47" relation="include">
-        </childnode>
-      </node>
-      <node id="23">
-        <label>spdlog/sinks/stdout_color_sinks.h</label>
-      </node>
-      <node id="48">
-        <label>Common_Features.hpp</label>
-        <link refid="Common__Features_8hpp"/>
-        <childnode refid="49" relation="include">
-        </childnode>
-        <childnode refid="50" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
-        </childnode>
-        <childnode refid="51" relation="include">
-        </childnode>
-        <childnode refid="47" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="46" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+      </node>
+      <node id="41">
+        <label>linux_socket.hpp</label>
+        <link refid="linux__socket_8hpp"/>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
         </childnode>
       </node>
-      <node id="50">
-        <label>cerrno</label>
+      <node id="10">
+        <label>Input_Transfer.hpp</label>
       </node>
-      <node id="32">
-        <label>cctype</label>
+      <node id="38">
+        <label>PDJE_Highres_Clock.hpp</label>
       </node>
-      <node id="64">
-        <label>iostream</label>
+      <node id="56">
+        <label>RTEvent.hpp</label>
+      </node>
+      <node id="30">
+        <label>algorithm</label>
+      </node>
+      <node id="48">
+        <label>arpa/inet.h</label>
+      </node>
+      <node id="36">
+        <label>atomic</label>
       </node>
       <node id="27">
         <label>botan/auto_rng.h</label>
       </node>
-      <node id="33">
+      <node id="28">
+        <label>botan/cipher_mode.h</label>
+      </node>
+      <node id="29">
+        <label>botan/hash.h</label>
+      </node>
+      <node id="31">
+        <label>cctype</label>
+      </node>
+      <node id="49">
+        <label>cerrno</label>
+      </node>
+      <node id="32">
         <label>cstddef</label>
       </node>
+      <node id="13">
+        <label>cstdint</label>
+      </node>
+      <node id="58">
+        <label>fcntl.h</label>
+      </node>
+      <node id="20">
+        <label>filesystem</label>
+      </node>
+      <node id="33">
+        <label>fstream</label>
+      </node>
+      <node id="59">
+        <label>functional</label>
+      </node>
+      <node id="4">
+        <label>future</label>
+      </node>
+      <node id="34">
+        <label>ios</label>
+      </node>
       <node id="63">
-        <label>spawn.h</label>
+        <label>iostream</label>
       </node>
-      <node id="54">
-        <label>numa.h</label>
+      <node id="14">
+        <label>latch</label>
       </node>
-      <node id="53">
-        <label>OneTimeSysSetup.hpp</label>
-        <link refid="OneTimeSysSetup_8hpp"/>
-        <childnode refid="48" relation="include">
-        </childnode>
-        <childnode refid="54" relation="include">
-        </childnode>
-        <childnode refid="55" relation="include">
-        </childnode>
-        <childnode refid="56" relation="include">
-        </childnode>
-        <childnode refid="44" relation="include">
-        </childnode>
+      <node id="39">
+        <label>libremidi/libremidi.hpp</label>
       </node>
-      <node id="41">
-        <label>unordered_map</label>
+      <node id="35">
+        <label>limits</label>
       </node>
-      <node id="42">
-        <label>linux_socket.hpp</label>
-        <link refid="linux__socket_8hpp"/>
-        <childnode refid="43" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="46" relation="include">
-        </childnode>
+      <node id="5">
+        <label>memory_resource</label>
       </node>
       <node id="21">
         <label>mutex</label>
       </node>
-      <node id="16">
-        <label>PDJE_Buffer.hpp</label>
-        <link refid="PDJE__Buffer_8hpp"/>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="37" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="38" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
+      <node id="50">
+        <label>netinet/in.h</label>
       </node>
       <node id="46">
-        <label>sys/socket.h</label>
+        <label>nlohmann/json.hpp</label>
+      </node>
+      <node id="57">
+        <label>nlohmann/json_fwd.hpp</label>
+      </node>
+      <node id="53">
+        <label>numa.h</label>
+      </node>
+      <node id="54">
+        <label>numaif.h</label>
+      </node>
+      <node id="6">
+        <label>optional</label>
+      </node>
+      <node id="37">
+        <label>random</label>
+      </node>
+      <node id="55">
+        <label>sched.h</label>
+      </node>
+      <node id="62">
+        <label>spawn.h</label>
+      </node>
+      <node id="22">
+        <label>spdlog/sinks/basic_file_sink.h</label>
+      </node>
+      <node id="23">
+        <label>spdlog/sinks/stdout_color_sinks.h</label>
+      </node>
+      <node id="24">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="7">
+        <label>string</label>
+      </node>
+      <node id="25">
+        <label>string_view</label>
+      </node>
+      <node id="60">
+        <label>sys/epoll.h</label>
       </node>
       <node id="43">
-        <label>IPC_SHARE_MEM.hpp</label>
-        <link refid="IPC__SHARE__MEM_8hpp"/>
-        <childnode refid="36" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="44" relation="include">
-        </childnode>
-        <childnode refid="45" relation="include">
-        </childnode>
+        <label>sys/mman.h</label>
       </node>
-      <node id="11">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
+      <node id="45">
+        <label>sys/socket.h</label>
       </node>
-      <node id="52">
-        <label>RTSocket.hpp</label>
-        <link refid="RTSocket_8hpp"/>
-        <childnode refid="48" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="53" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="57" relation="include">
-        </childnode>
-        <childnode refid="58" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="59" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="60" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="61" relation="include">
-        </childnode>
-        <childnode refid="44" relation="include">
-        </childnode>
-        <childnode refid="46" relation="include">
-        </childnode>
-        <childnode refid="62" relation="include">
-        </childnode>
-        <childnode refid="45" relation="include">
-        </childnode>
-        <childnode refid="47" relation="include">
-        </childnode>
+      <node id="61">
+        <label>sys/un.h</label>
       </node>
       <node id="26">
         <label>type_traits</label>
       </node>
-      <node id="47">
-        <label>nlohmann/json.hpp</label>
+      <node id="44">
+        <label>unistd.h</label>
       </node>
-      <node id="31">
-        <label>algorithm</label>
+      <node id="40">
+        <label>unordered_map</label>
       </node>
-      <node id="56">
-        <label>sched.h</label>
-      </node>
-      <node id="61">
-        <label>sys/epoll.h</label>
+      <node id="8">
+        <label>vector</label>
       </node>
     </incdepgraph>
     <briefdescription>
@@ -471,10 +465,10 @@
 <codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>strlist.push_back(</highlight><highlight class="stringliteral">&quot;temp&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>toSend[</highlight><highlight class="stringliteral">&quot;BODY&quot;</highlight><highlight class="normal">]<sp/>=<sp/>strlist;</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>msggot;</highlight></codeline>
-<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOS__Input_1ac0fb5fb7bfcc38a496f3ef475c3ef543" kindref="member">socket</ref>.<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1ad7b3a4045e530ab44a5927cc468e9cf9" kindref="member">QueryClient</ref>(toSend.dump(),<sp/>msggot);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOS__Input_1ac0fb5fb7bfcc38a496f3ef475c3ef543" kindref="member">socket</ref>.QueryClient(toSend.dump(),<sp/>msggot);</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
 <codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="PDJE__Input__Device__Data_8hpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref><sp/><sp/><sp/>lsDev;</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>got<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="namespaceCommon__Features_1a78ad74b03105ce26d05dd66159bed97b" kindref="member">Common_Features::ReadMSG</ref>(</highlight><highlight class="stringliteral">&quot;GET_DEV&quot;</highlight><highlight class="normal">,<sp/>msggot);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>got<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="namespaceCommon__Features_1a9819433dbb3c04ccbcf39523f8185eaf" kindref="member">Common_Features::ReadMSG</ref>(</highlight><highlight class="stringliteral">&quot;GET_DEV&quot;</highlight><highlight class="normal">,<sp/>msggot);</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>flag_name<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structDeviceData" kindref="compound">DeviceData</ref><sp/>dd;</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;dev<sp/>:<sp/>got)<sp/>{</highlight></codeline>
@@ -500,8 +494,8 @@
 <codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>db.push_back(dev.Name);</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>msggot;</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOS__Input_1ac0fb5fb7bfcc38a496f3ef475c3ef543" kindref="member">socket</ref>.<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1ad7b3a4045e530ab44a5927cc468e9cf9" kindref="member">QueryClient</ref>(<ref refid="namespaceCommon__Features_1a1fa285f8cefd7d04b62d4c0c1d738b24" kindref="member">Common_Features::MakeMSG</ref>(</highlight><highlight class="stringliteral">&quot;SET_DEV&quot;</highlight><highlight class="normal">,<sp/>db),<sp/>msggot);</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>readed<sp/>=<sp/><ref refid="namespaceCommon__Features_1a78ad74b03105ce26d05dd66159bed97b" kindref="member">Common_Features::ReadMSG</ref>(</highlight><highlight class="stringliteral">&quot;SET_DEV&quot;</highlight><highlight class="normal">,<sp/>msggot);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOS__Input_1ac0fb5fb7bfcc38a496f3ef475c3ef543" kindref="member">socket</ref>.QueryClient(<ref refid="namespaceCommon__Features_1a1fa285f8cefd7d04b62d4c0c1d738b24" kindref="member">Common_Features::MakeMSG</ref>(</highlight><highlight class="stringliteral">&quot;SET_DEV&quot;</highlight><highlight class="normal">,<sp/>db),<sp/>msggot);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>readed<sp/>=<sp/><ref refid="namespaceCommon__Features_1a9819433dbb3c04ccbcf39523f8185eaf" kindref="member">Common_Features::ReadMSG</ref>(</highlight><highlight class="stringliteral">&quot;SET_DEV&quot;</highlight><highlight class="normal">,<sp/>msggot);</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(readed.empty())<sp/>{</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -518,7 +512,7 @@
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>strlist.push_back(</highlight><highlight class="stringliteral">&quot;temp&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>toSend[</highlight><highlight class="stringliteral">&quot;BODY&quot;</highlight><highlight class="normal">]<sp/>=<sp/>strlist;</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>msggot;</highlight></codeline>
-<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOS__Input_1ac0fb5fb7bfcc38a496f3ef475c3ef543" kindref="member">socket</ref>.<ref refid="classPDJE__LINUX_1_1PDJE__Socket_1ad7b3a4045e530ab44a5927cc468e9cf9" kindref="member">QueryClient</ref>(toSend.dump(),<sp/>msggot);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOS__Input_1ac0fb5fb7bfcc38a496f3ef475c3ef543" kindref="member">socket</ref>.QueryClient(toSend.dump(),<sp/>msggot);</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"></highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>msggot<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
 <codeline lineno="74"><highlight class="normal">}</highlight></codeline>

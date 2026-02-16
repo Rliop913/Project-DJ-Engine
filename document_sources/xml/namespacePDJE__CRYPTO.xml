@@ -1,18 +1,19 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="namespacePDJE__CRYPTO" kind="namespace" language="C++">
     <compoundname>PDJE_CRYPTO</compoundname>
+    <innerclass refid="classPDJE__CRYPTO_1_1AEAD" prot="public">PDJE_CRYPTO::AEAD</innerclass>
     <innerclass refid="classPDJE__CRYPTO_1_1Hash" prot="public">PDJE_CRYPTO::Hash</innerclass>
     <innerclass refid="classPDJE__CRYPTO_1_1PSK" prot="public">PDJE_CRYPTO::PSK</innerclass>
-    <innerclass refid="classPDJE__CRYPTO_1_1AEAD" prot="public">PDJE_CRYPTO::AEAD</innerclass>
     <innerclass refid="classPDJE__CRYPTO_1_1PSKPipe" prot="public">PDJE_CRYPTO::PSKPipe</innerclass>
     <innerclass refid="classPDJE__CRYPTO_1_1RANDOM__GEN" prot="public">PDJE_CRYPTO::RANDOM_GEN</innerclass>
-    <innerclass refid="classPDJE__CRYPTO_1_1TX__RX" prot="public">PDJE_CRYPTO::TX_RX</innerclass>
     <innerclass refid="structPDJE__CRYPTO_1_1secured__buffer" prot="public">PDJE_CRYPTO::secured_buffer</innerclass>
-      <sectiondef kind="enum">
+    <innerclass refid="classPDJE__CRYPTO_1_1TX__RX" prot="public">PDJE_CRYPTO::TX_RX</innerclass>
+    <sectiondef kind="enum">
       <memberdef kind="enum" id="namespacePDJE__CRYPTO_1ac8adde0115ea73016910171931b83639" prot="public" static="no" strong="no">
         <type></type>
         <name>TXRXHEADER</name>
+        <qualifiedname>PDJE_CRYPTO::TXRXHEADER</qualifiedname>
         <enumvalue id="namespacePDJE__CRYPTO_1ac8adde0115ea73016910171931b83639a9f004a3df67179cd97bba7b699598cb2" prot="public">
           <name>HEALTH_CHECK</name>
           <initializer>= (uint8_t)1</initializer>
@@ -77,13 +78,14 @@
         </inbodydescription>
         <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="15" column="1" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" bodystart="15" bodyend="23"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="typedef">
-      <memberdef kind="typedef" id="namespacePDJE__CRYPTO_1ae142d963fb4d9efc1939bed2b9e2c787" prot="public" static="no">
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespacePDJE__CRYPTO_1aef01f76e694a9057445df10696248d28" prot="public" static="no">
         <type>uint8_t</type>
-        <definition>using PDJE_CRYPTO::HEADER = typedef uint8_t</definition>
+        <definition>using PDJE_CRYPTO::HEADER =  uint8_t</definition>
         <argsstring></argsstring>
         <name>HEADER</name>
+        <qualifiedname>PDJE_CRYPTO::HEADER</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -92,11 +94,12 @@
         </inbodydescription>
         <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="29" column="1" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" bodystart="29" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespacePDJE__CRYPTO_1a97cbe3a97feafac9380301f4c86364cb" prot="public" static="no">
+      <memberdef kind="typedef" id="namespacePDJE__CRYPTO_1a12eb68ce06020afe754e86b337211fb3" prot="public" static="no">
         <type>uint16_t</type>
-        <definition>using PDJE_CRYPTO::ENCRYPT_RES_SIZE = typedef uint16_t</definition>
+        <definition>using PDJE_CRYPTO::ENCRYPT_RES_SIZE =  uint16_t</definition>
         <argsstring></argsstring>
         <name>ENCRYPT_RES_SIZE</name>
+        <qualifiedname>PDJE_CRYPTO::ENCRYPT_RES_SIZE</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -105,11 +108,12 @@
         </inbodydescription>
         <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="30" column="1" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" bodystart="30" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespacePDJE__CRYPTO_1a562eae7d65ad7ff6161a4e4988a41820" prot="public" static="no">
+      <memberdef kind="typedef" id="namespacePDJE__CRYPTO_1a941de02596a9099eb6cbabb85c646153" prot="public" static="no">
         <type>std::function&lt; void(const std::string &amp;)&gt;</type>
-        <definition>using PDJE_CRYPTO::FEATURE = typedef std::function&lt;void(const std::string &amp;)&gt;</definition>
+        <definition>using PDJE_CRYPTO::FEATURE =  std::function&lt;void(const std::string &amp;)&gt;</definition>
         <argsstring></argsstring>
         <name>FEATURE</name>
+        <qualifiedname>PDJE_CRYPTO::FEATURE</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -118,13 +122,14 @@
         </inbodydescription>
         <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="36" column="1" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" bodystart="36" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="var">
+    </sectiondef>
+    <sectiondef kind="var">
       <memberdef kind="variable" id="namespacePDJE__CRYPTO_1ad03d54fa0622af1e44befad88826ff63" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr size_t</type>
-        <definition>constexpr size_t PDJE_CRYPTO::HashChunkSZ</definition>
+        <type>size_t</type>
+        <definition>size_t PDJE_CRYPTO::HashChunkSZ</definition>
         <argsstring></argsstring>
         <name>HashChunkSZ</name>
+        <qualifiedname>PDJE_CRYPTO::HashChunkSZ</qualifiedname>
         <initializer>= 64 * 1024</initializer>
         <briefdescription>
         </briefdescription>
@@ -135,10 +140,11 @@
         <location file="include/global/Crypto/PDJE_Crypto_Hash.cpp" line="31" column="18" bodyfile="include/global/Crypto/PDJE_Crypto_Hash.cpp" bodystart="31" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacePDJE__CRYPTO_1af62a97929d2baf5979d7551f236206be" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr int</type>
-        <definition>constexpr int PDJE_CRYPTO::MSG_MAX_SIZE</definition>
+        <type>int</type>
+        <definition>int PDJE_CRYPTO::MSG_MAX_SIZE</definition>
         <argsstring></argsstring>
         <name>MSG_MAX_SIZE</name>
+        <qualifiedname>PDJE_CRYPTO::MSG_MAX_SIZE</qualifiedname>
         <initializer>= 16384</initializer>
         <briefdescription>
         </briefdescription>
@@ -149,10 +155,11 @@
         <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="25" column="15" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" bodystart="25" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacePDJE__CRYPTO_1abb684cbf0d84371025e44b4db40d4f66" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr int</type>
-        <definition>constexpr int PDJE_CRYPTO::MAYBE_USABLE_MAX_SIZE</definition>
+        <type>int</type>
+        <definition>int PDJE_CRYPTO::MAYBE_USABLE_MAX_SIZE</definition>
         <argsstring></argsstring>
         <name>MAYBE_USABLE_MAX_SIZE</name>
+        <qualifiedname>PDJE_CRYPTO::MAYBE_USABLE_MAX_SIZE</qualifiedname>
         <initializer>=
     (<ref refid="namespacePDJE__CRYPTO_1af62a97929d2baf5979d7551f236206be" kindref="member">MSG_MAX_SIZE</ref> / 2) -
     54</initializer>
@@ -165,12 +172,13 @@
         <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="26" column="15" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" bodystart="26" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacePDJE__CRYPTO_1a9da8080ae8e7721fd1a51f0649604abb" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr int</type>
-        <definition>constexpr int PDJE_CRYPTO::BODY_SIZE</definition>
+        <type>int</type>
+        <definition>int PDJE_CRYPTO::BODY_SIZE</definition>
         <argsstring></argsstring>
         <name>BODY_SIZE</name>
+        <qualifiedname>PDJE_CRYPTO::BODY_SIZE</qualifiedname>
         <initializer>=
-    <ref refid="namespacePDJE__CRYPTO_1abb684cbf0d84371025e44b4db40d4f66" kindref="member">MAYBE_USABLE_MAX_SIZE</ref> - sizeof(<ref refid="namespacePDJE__CRYPTO_1ae142d963fb4d9efc1939bed2b9e2c787" kindref="member">HEADER</ref>) - sizeof(<ref refid="namespacePDJE__CRYPTO_1a97cbe3a97feafac9380301f4c86364cb" kindref="member">ENCRYPT_RES_SIZE</ref>)</initializer>
+    <ref refid="namespacePDJE__CRYPTO_1abb684cbf0d84371025e44b4db40d4f66" kindref="member">MAYBE_USABLE_MAX_SIZE</ref> - sizeof(<ref refid="namespacePDJE__CRYPTO_1aef01f76e694a9057445df10696248d28" kindref="member">HEADER</ref>) - sizeof(<ref refid="namespacePDJE__CRYPTO_1a12eb68ce06020afe754e86b337211fb3" kindref="member">ENCRYPT_RES_SIZE</ref>)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -180,12 +188,13 @@
         <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="31" column="15" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" bodystart="31" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacePDJE__CRYPTO_1af15e760e4f247bc66614f16f4138fc5f" prot="public" static="no" constexpr="yes" mutable="no">
-        <type>constexpr int</type>
-        <definition>constexpr int PDJE_CRYPTO::ENCRYPT_MAX_SIZE</definition>
+        <type>int</type>
+        <definition>int PDJE_CRYPTO::ENCRYPT_MAX_SIZE</definition>
         <argsstring></argsstring>
         <name>ENCRYPT_MAX_SIZE</name>
+        <qualifiedname>PDJE_CRYPTO::ENCRYPT_MAX_SIZE</qualifiedname>
         <initializer>=
-    <ref refid="namespacePDJE__CRYPTO_1af62a97929d2baf5979d7551f236206be" kindref="member">MSG_MAX_SIZE</ref> - sizeof(<ref refid="namespacePDJE__CRYPTO_1ae142d963fb4d9efc1939bed2b9e2c787" kindref="member">HEADER</ref>) - sizeof(<ref refid="namespacePDJE__CRYPTO_1a97cbe3a97feafac9380301f4c86364cb" kindref="member">ENCRYPT_RES_SIZE</ref>)</initializer>
+    <ref refid="namespacePDJE__CRYPTO_1af62a97929d2baf5979d7551f236206be" kindref="member">MSG_MAX_SIZE</ref> - sizeof(<ref refid="namespacePDJE__CRYPTO_1aef01f76e694a9057445df10696248d28" kindref="member">HEADER</ref>) - sizeof(<ref refid="namespacePDJE__CRYPTO_1a12eb68ce06020afe754e86b337211fb3" kindref="member">ENCRYPT_RES_SIZE</ref>)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -194,13 +203,14 @@
         </inbodydescription>
         <location file="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" line="33" column="15" bodyfile="include/input/IPC/memory/Secured_IPC_TX_RX.hpp" bodystart="33" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="func">
+    </sectiondef>
+    <sectiondef kind="func">
       <memberdef kind="function" id="namespacePDJE__CRYPTO_1a5251f485ccb6ad140e2c1ca97a66e30b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
         <definition>static std::string PDJE_CRYPTO::GetTokenFromSTDPipe</definition>
         <argsstring>()</argsstring>
         <name>GetTokenFromSTDPipe</name>
+        <qualifiedname>PDJE_CRYPTO::GetTokenFromSTDPipe</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -214,6 +224,7 @@
         <definition>static std::string PDJE_CRYPTO::GetTokenFromSTDPipe</definition>
         <argsstring>()</argsstring>
         <name>GetTokenFromSTDPipe</name>
+        <qualifiedname>PDJE_CRYPTO::GetTokenFromSTDPipe</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -222,7 +233,7 @@
         </inbodydescription>
         <location file="include/global/Crypto/Mac/PSKPipe.cpp" line="6" column="1" bodyfile="include/global/Crypto/Mac/PSKPipe.cpp" bodystart="6" bodyend="10"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

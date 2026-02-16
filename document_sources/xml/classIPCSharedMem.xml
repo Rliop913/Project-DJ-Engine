@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="classIPCSharedMem" kind="class" language="C++" prot="public">
     <compoundname>IPCSharedMem</compoundname>
     <includes refid="IPC__SHARE__MEM_8hpp" local="no">IPC_SHARE_MEM.hpp</includes>
@@ -13,12 +13,13 @@
         <defname>MEM_PROT_FLAG</defname>
       </param>
     </templateparamlist>
-      <sectiondef kind="public-attrib">
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="classIPCSharedMem_1a2108153a8d72032eba29bd46aeb53d59" prot="public" static="no" mutable="no">
         <type><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref> *</type>
         <definition>T* IPCSharedMem&lt; T, MEM_PROT_FLAG &gt;::ptr</definition>
         <argsstring></argsstring>
         <name>ptr</name>
+        <qualifiedname>IPCSharedMem::ptr</qualifiedname>
         <initializer>= nullptr</initializer>
         <briefdescription>
         </briefdescription>
@@ -33,6 +34,7 @@
         <definition>int IPCSharedMem&lt; T, MEM_PROT_FLAG &gt;::FD</definition>
         <argsstring></argsstring>
         <name>FD</name>
+        <qualifiedname>IPCSharedMem::FD</qualifiedname>
         <initializer>= -1</initializer>
         <briefdescription>
         </briefdescription>
@@ -47,6 +49,7 @@
         <definition>size_t IPCSharedMem&lt; T, MEM_PROT_FLAG &gt;::count</definition>
         <argsstring></argsstring>
         <name>count</name>
+        <qualifiedname>IPCSharedMem::count</qualifiedname>
         <initializer>= 0</initializer>
         <briefdescription>
         </briefdescription>
@@ -61,6 +64,7 @@
         <definition>size_t IPCSharedMem&lt; T, MEM_PROT_FLAG &gt;::bytes</definition>
         <argsstring></argsstring>
         <name>bytes</name>
+        <qualifiedname>IPCSharedMem::bytes</qualifiedname>
         <initializer>= 0</initializer>
         <briefdescription>
         </briefdescription>
@@ -75,6 +79,7 @@
         <definition>std::string* IPCSharedMem&lt; T, MEM_PROT_FLAG &gt;::external_logger</definition>
         <argsstring></argsstring>
         <name>external_logger</name>
+        <qualifiedname>IPCSharedMem::external_logger</qualifiedname>
         <initializer>= nullptr</initializer>
         <briefdescription>
         </briefdescription>
@@ -84,13 +89,14 @@
         </inbodydescription>
         <location file="include/input/trashbin/--DEPRECATED-linux/IPC_SHARE_MEM.hpp" line="22" column="17" bodyfile="include/input/trashbin/--DEPRECATED-linux/IPC_SHARE_MEM.hpp" bodystart="22" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classIPCSharedMem_1ad1283679201f9398abd0bf9c916adc85" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>IPCSharedMem&lt; T, MEM_PROT_FLAG &gt;::IPCSharedMem</definition>
         <argsstring>(std::string *external_logger_string)</argsstring>
         <name>IPCSharedMem</name>
+        <qualifiedname>IPCSharedMem::IPCSharedMem</qualifiedname>
         <param>
           <type>std::string *</type>
           <declname>external_logger_string</declname>
@@ -108,6 +114,7 @@
         <definition>IPCSharedMem&lt; T, MEM_PROT_FLAG &gt;::IPCSharedMem</definition>
         <argsstring>(const IPCSharedMem &amp;)=delete</argsstring>
         <name>IPCSharedMem</name>
+        <qualifiedname>IPCSharedMem::IPCSharedMem</qualifiedname>
         <param>
           <type>const <ref refid="classIPCSharedMem" kindref="compound">IPCSharedMem</ref> &amp;</type>
         </param>
@@ -119,11 +126,12 @@
         </inbodydescription>
         <location file="include/input/trashbin/--DEPRECATED-linux/IPC_SHARE_MEM.hpp" line="14" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classIPCSharedMem_1aedc33d810ef6ef6259788209135acee7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classIPCSharedMem_1a0754ac3cb4fe56f5c71a4921996acacf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classIPCSharedMem" kindref="compound">IPCSharedMem</ref> &amp;</type>
-        <definition>IPCSharedMem&amp; IPCSharedMem&lt; T, MEM_PROT_FLAG &gt;::operator=</definition>
+        <definition>IPCSharedMem &amp; IPCSharedMem&lt; T, MEM_PROT_FLAG &gt;::operator=</definition>
         <argsstring>(const IPCSharedMem &amp;)=delete</argsstring>
         <name>operator=</name>
+        <qualifiedname>IPCSharedMem::operator=</qualifiedname>
         <param>
           <type>const <ref refid="classIPCSharedMem" kindref="compound">IPCSharedMem</ref> &amp;</type>
         </param>
@@ -140,6 +148,7 @@
         <definition>bool IPCSharedMem&lt; T, MEM_PROT_FLAG &gt;::MakeIPCSharedMemory</definition>
         <argsstring>(const std::string &amp;memfd_name, size_t data_length)</argsstring>
         <name>MakeIPCSharedMemory</name>
+        <qualifiedname>IPCSharedMem::MakeIPCSharedMemory</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>memfd_name</declname>
@@ -161,6 +170,7 @@
         <definition>IPCSharedMem&lt; T, MEM_PROT_FLAG &gt;::~IPCSharedMem</definition>
         <argsstring>()</argsstring>
         <name>~IPCSharedMem</name>
+        <qualifiedname>IPCSharedMem::~IPCSharedMem</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -169,7 +179,7 @@
         </inbodydescription>
         <location file="include/input/trashbin/--DEPRECATED-linux/IPC_SHARE_MEM.hpp" line="70" column="5" bodyfile="include/input/trashbin/--DEPRECATED-linux/IPC_SHARE_MEM.hpp" bodystart="70" bodyend="86"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -200,7 +210,7 @@
       <member refid="classIPCSharedMem_1ad1283679201f9398abd0bf9c916adc85" prot="public" virt="non-virtual"><scope>IPCSharedMem</scope><name>IPCSharedMem</name></member>
       <member refid="classIPCSharedMem_1a0344140e3c40c95fd54fb0feeef5a820" prot="public" virt="non-virtual"><scope>IPCSharedMem</scope><name>IPCSharedMem</name></member>
       <member refid="classIPCSharedMem_1ae822beb5f4e9a83fba4dc9f605c3664a" prot="public" virt="non-virtual"><scope>IPCSharedMem</scope><name>MakeIPCSharedMemory</name></member>
-      <member refid="classIPCSharedMem_1aedc33d810ef6ef6259788209135acee7" prot="public" virt="non-virtual"><scope>IPCSharedMem</scope><name>operator=</name></member>
+      <member refid="classIPCSharedMem_1a0754ac3cb4fe56f5c71a4921996acacf" prot="public" virt="non-virtual"><scope>IPCSharedMem</scope><name>operator=</name></member>
       <member refid="classIPCSharedMem_1a2108153a8d72032eba29bd46aeb53d59" prot="public" virt="non-virtual"><scope>IPCSharedMem</scope><name>ptr</name></member>
       <member refid="classIPCSharedMem_1a860f870a9868a38ae077f1c216cefcf7" prot="public" virt="non-virtual"><scope>IPCSharedMem</scope><name>~IPCSharedMem</name></member>
     </listofallmembers>

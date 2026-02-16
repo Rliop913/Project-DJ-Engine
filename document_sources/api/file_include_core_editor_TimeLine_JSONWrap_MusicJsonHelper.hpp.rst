@@ -44,8 +44,6 @@ Included By
 -----------
 
 
-- :ref:`file_include_core_editor_editor.hpp`
-
 - :ref:`file_include_core_MainObjects_editorObject_addline.cpp`
 
 - :ref:`file_include_core_MainObjects_editorObject_deleteline.cpp`
@@ -53,6 +51,8 @@ Included By
 - :ref:`file_include_core_MainObjects_editorObject_render.cpp`
 
 - :ref:`file_include_core_MainObjects_editorObject_undo.cpp`
+
+- :ref:`file_include_core_editor_editor.hpp`
 
 
 

@@ -1,16 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="windows_2named__event_8cpp" kind="file" language="C++">
     <compoundname>named_event.cpp</compoundname>
     <includes refid="ipc__named__event_8hpp" local="yes">ipc_named_event.hpp</includes>
     <includes local="no">Windows.h</includes>
     <incdepgraph>
-      <node id="3">
-        <label>filesystem</label>
-      </node>
-      <node id="4">
-        <label>Windows.h</label>
-      </node>
       <node id="2">
         <label>ipc_named_event.hpp</label>
         <link refid="ipc__named__event_8hpp"/>
@@ -25,6 +19,12 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
+      <node id="4">
+        <label>Windows.h</label>
+      </node>
+      <node id="3">
+        <label>filesystem</label>
+      </node>
     </incdepgraph>
     <innernamespace refid="namespacePDJE__IPC">PDJE_IPC</innernamespace>
     <briefdescription>
@@ -38,7 +38,7 @@
 <codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__IPC" kindref="compound">PDJE_IPC</ref><sp/>{</highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="7"><highlight class="normal"><ref refid="classPDJE__IPC_1_1EVENT_1a58e3fb8670b388d936d02dde8690bc55" kindref="member">EVENT::ClientInit</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__IPC_1a9fde1a10ab51831bfa1320d45d91aec5" kindref="member">MNAME</ref><sp/>&amp;name)</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><ref refid="classPDJE__IPC_1_1EVENT_1a58e3fb8670b388d936d02dde8690bc55" kindref="member">EVENT::ClientInit</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__IPC_1a04902c541254b5ef872d47ec219cc36b" kindref="member">MNAME</ref><sp/>&amp;name)</highlight></codeline>
 <codeline lineno="8"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1EVENT_1acdd1f78601b0adf27ec1dd5aac6884cb" kindref="member">hdlp</ref><sp/>=<sp/>OpenEventW(</highlight></codeline>
 <codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SYNCHRONIZE<sp/>|<sp/>EVENT_MODIFY_STATE,<sp/>FALSE,<sp/>name.wstring().c_str());</highlight></codeline>
@@ -47,7 +47,7 @@
 <codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="14"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="16"><highlight class="normal"><ref refid="classPDJE__IPC_1_1EVENT_1add528ebcc737f3bc13fd259f4c688f6b" kindref="member">EVENT::HostInit</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__IPC_1a9fde1a10ab51831bfa1320d45d91aec5" kindref="member">MNAME</ref><sp/>&amp;name)</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><ref refid="classPDJE__IPC_1_1EVENT_1add528ebcc737f3bc13fd259f4c688f6b" kindref="member">EVENT::HostInit</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__IPC_1a04902c541254b5ef872d47ec219cc36b" kindref="member">MNAME</ref><sp/>&amp;name)</highlight></codeline>
 <codeline lineno="17"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1EVENT_1acdd1f78601b0adf27ec1dd5aac6884cb" kindref="member">hdlp</ref><sp/>=<sp/>CreateEventW(</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>FALSE,<sp/>FALSE,<sp/>name.wstring().c_str());</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classPDJE__IPC_1_1EVENT_1acdd1f78601b0adf27ec1dd5aac6884cb" kindref="member">hdlp</ref>)<sp/>{</highlight></codeline>
@@ -99,7 +99,7 @@
 <codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="66"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_IPC</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_IPC</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/input/IPC/memory/windows/named_event.cpp"/>
   </compounddef>

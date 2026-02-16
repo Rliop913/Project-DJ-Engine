@@ -1,13 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="BattleDj_8cpp" kind="file" language="C++">
     <compoundname>BattleDj.cpp</compoundname>
     <includes refid="BattleDj_8hpp" local="yes">BattleDj.hpp</includes>
     <includes refid="PDJE__LOG__SETTER_8hpp" local="yes">PDJE_LOG_SETTER.hpp</includes>
     <incdepgraph>
-      <node id="9">
-        <label>functional</label>
-      </node>
       <node id="7">
         <label>DeckData.hpp</label>
         <link refid="DeckData_8hpp"/>
@@ -20,24 +17,65 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="36">
-        <label>musicDB.hpp</label>
-        <link refid="musicDB_8hpp"/>
-        <childnode refid="31" relation="include">
+      <node id="1">
+        <label>include/core/audioRender/MixMachine/MUSIC_CTR/BattleDj.cpp</label>
+        <link refid="BattleDj_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>BattleDj.hpp</label>
+        <link refid="BattleDj_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>MUSIC_CTR.hpp</label>
+        <link refid="MUSIC__CTR_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>Decoder.hpp</label>
+        <link refid="Decoder_8hpp"/>
+        <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="37" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="38" relation="include">
         </childnode>
-      </node>
-      <node id="22">
-        <label>filesystem</label>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
       </node>
       <node id="15">
         <label>CapnpBinary.hpp</label>
@@ -61,23 +99,6 @@
         <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="41">
-        <label>miniaudio.h</label>
-      </node>
-      <node id="2">
-        <label>BattleDj.hpp</label>
-        <link refid="BattleDj_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="42" relation="include">
-        </childnode>
-      </node>
       <node id="12">
         <label>FrameCalc.hpp</label>
         <link refid="FrameCalc_8hpp"/>
@@ -92,63 +113,22 @@
         <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="17">
-        <label>capnp/serialize.h</label>
-      </node>
-      <node id="11">
-        <label>Decoder.hpp</label>
-        <link refid="Decoder_8hpp"/>
-        <childnode refid="4" relation="include">
+      <node id="44">
+        <label>Bpm.hpp</label>
+        <link refid="Bpm_8hpp"/>
+        <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="41" relation="include">
-        </childnode>
-      </node>
-      <node id="14">
-        <label>cmath</label>
-      </node>
-      <node id="18">
-        <label>MixBinary.capnp.h</label>
-      </node>
-      <node id="10">
-        <label>string</label>
-      </node>
-      <node id="24">
-        <label>spdlog/sinks/basic_file_sink.h</label>
-      </node>
-      <node id="31">
-        <label>sqlite3.h</label>
-      </node>
-      <node id="3">
-        <label>SoundTouch.h</label>
-      </node>
-      <node id="21">
-        <label>PDJE_LOG_SETTER.hpp</label>
-        <link refid="PDJE__LOG__SETTER_8hpp"/>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
       <node id="45">
@@ -166,46 +146,6 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-      </node>
-      <node id="40">
-        <label>trackDB.hpp</label>
-        <link refid="trackDB_8hpp"/>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="37" relation="include">
-        </childnode>
-        <childnode refid="38" relation="include">
-        </childnode>
-      </node>
-      <node id="1">
-        <label>include/core/audioRender/MixMachine/MUSIC_CTR/BattleDj.cpp</label>
-        <link refid="BattleDj_8cpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-      </node>
-      <node id="29">
-        <label>hwy/aligned_allocator.h</label>
-      </node>
-      <node id="26">
-        <label>spdlog/spdlog.h</label>
-      </node>
-      <node id="32">
-        <label>rocksdb/db.h</label>
-      </node>
-      <node id="27">
-        <label>string_view</label>
-      </node>
-      <node id="35">
-        <label>rocksdb/table.h</label>
-      </node>
-      <node id="4">
-        <label>optional</label>
       </node>
       <node id="42">
         <label>MixTranslator.hpp</label>
@@ -231,74 +171,6 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="34">
-        <label>rocksdb/options.h</label>
-      </node>
-      <node id="5">
-        <label>vector</label>
-      </node>
-      <node id="25">
-        <label>spdlog/sinks/stdout_color_sinks.h</label>
-      </node>
-      <node id="44">
-        <label>Bpm.hpp</label>
-        <link refid="Bpm_8hpp"/>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="43" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="45" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-      </node>
-      <node id="20">
-        <label>NoteBinary.capnp.h</label>
-      </node>
-      <node id="38">
-        <label>fileNameSanitizer.hpp</label>
-        <link refid="fileNameSanitizer_8hpp"/>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="39" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>MUSIC_CTR.hpp</label>
-        <link refid="MUSIC__CTR_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="42" relation="include">
-        </childnode>
-        <childnode refid="46" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-      </node>
-      <node id="39">
-        <label>cppcodec/base64_default_url.hpp</label>
-      </node>
-      <node id="23">
-        <label>mutex</label>
-      </node>
       <node id="46">
         <label>MusicTranslator.hpp</label>
         <link refid="MusicTranslator_8hpp"/>
@@ -314,13 +186,6 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-      </node>
-      <node id="8">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
-      </node>
-      <node id="43">
-        <label>thread</label>
       </node>
       <node id="30">
         <label>dbRoot.hpp</label>
@@ -350,15 +215,6 @@
         <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="33">
-        <label>rocksdb/filter_policy.h</label>
-      </node>
-      <node id="28">
-        <label>type_traits</label>
-      </node>
-      <node id="19">
-        <label>MusicBinary.capnp.h</label>
-      </node>
       <node id="37">
         <label>dbState.hpp</label>
         <link refid="dbState_8hpp"/>
@@ -373,11 +229,155 @@
         <childnode refid="31" relation="include">
         </childnode>
       </node>
+      <node id="36">
+        <label>musicDB.hpp</label>
+        <link refid="musicDB_8hpp"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="40">
+        <label>trackDB.hpp</label>
+        <link refid="trackDB_8hpp"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>fileNameSanitizer.hpp</label>
+        <link refid="fileNameSanitizer_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
+      </node>
+      <node id="21">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="PDJE__LOG__SETTER_8hpp"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>MixBinary.capnp.h</label>
+      </node>
+      <node id="19">
+        <label>MusicBinary.capnp.h</label>
+      </node>
+      <node id="20">
+        <label>NoteBinary.capnp.h</label>
+      </node>
+      <node id="3">
+        <label>SoundTouch.h</label>
+      </node>
       <node id="13">
         <label>algorithm</label>
       </node>
       <node id="16">
         <label>capnp/message.h</label>
+      </node>
+      <node id="17">
+        <label>capnp/serialize.h</label>
+      </node>
+      <node id="14">
+        <label>cmath</label>
+      </node>
+      <node id="39">
+        <label>cppcodec/base64_default_url.hpp</label>
+      </node>
+      <node id="22">
+        <label>filesystem</label>
+      </node>
+      <node id="9">
+        <label>functional</label>
+      </node>
+      <node id="29">
+        <label>hwy/aligned_allocator.h</label>
+      </node>
+      <node id="41">
+        <label>miniaudio.h</label>
+      </node>
+      <node id="23">
+        <label>mutex</label>
+      </node>
+      <node id="4">
+        <label>optional</label>
+      </node>
+      <node id="32">
+        <label>rocksdb/db.h</label>
+      </node>
+      <node id="33">
+        <label>rocksdb/filter_policy.h</label>
+      </node>
+      <node id="34">
+        <label>rocksdb/options.h</label>
+      </node>
+      <node id="35">
+        <label>rocksdb/table.h</label>
+      </node>
+      <node id="24">
+        <label>spdlog/sinks/basic_file_sink.h</label>
+      </node>
+      <node id="25">
+        <label>spdlog/sinks/stdout_color_sinks.h</label>
+      </node>
+      <node id="26">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="31">
+        <label>sqlite3.h</label>
+      </node>
+      <node id="10">
+        <label>string</label>
+      </node>
+      <node id="27">
+        <label>string_view</label>
+      </node>
+      <node id="43">
+        <label>thread</label>
+      </node>
+      <node id="28">
+        <label>type_traits</label>
+      </node>
+      <node id="5">
+        <label>vector</label>
       </node>
     </incdepgraph>
     <briefdescription>
@@ -552,16 +552,16 @@
 <codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;float&gt;<sp/>Buf(SPDRange<sp/>*<sp/><ref refid="FrameCalc_8hpp_1ace6a11e892466500d47d1f45f042bc53" kindref="member">CHANNEL</ref>);</highlight></codeline>
 <codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i.getFromOrigin)<sp/>{</highlight></codeline>
 <codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i.SPEED<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classBattleDj_1ac15f0c70a8fc4e8db50573c657662069" kindref="member">D</ref>-&gt;<ref refid="structDecoder_1adf65b58a8571ed2815b2c170da6a89a6" kindref="member">changePos</ref>(i.sourcePoint<sp/>-<sp/><ref refid="classBattleDj_1ac041cc8c8c71ac8d44ebb6bee1926b10" kindref="member">StartPos</ref>.value_or(0)))<sp/>{</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classBattleDj_1ac15f0c70a8fc4e8db50573c657662069" kindref="member">D</ref>-&gt;changePos(i.sourcePoint<sp/>-<sp/><ref refid="classBattleDj_1ac041cc8c8c71ac8d44ebb6bee1926b10" kindref="member">StartPos</ref>.value_or(0)))<sp/>{</highlight></codeline>
 <codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classBattleDj_1ac15f0c70a8fc4e8db50573c657662069" kindref="member">D</ref>-&gt;<ref refid="structDecoder_1adf65b58a8571ed2815b2c170da6a89a6" kindref="member">changePos</ref>((i.sourcePoint<sp/>-<sp/><ref refid="classBattleDj_1ac041cc8c8c71ac8d44ebb6bee1926b10" kindref="member">StartPos</ref>.value_or(0))<sp/>-</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classBattleDj_1ac15f0c70a8fc4e8db50573c657662069" kindref="member">D</ref>-&gt;changePos((i.sourcePoint<sp/>-<sp/><ref refid="classBattleDj_1ac041cc8c8c71ac8d44ebb6bee1926b10" kindref="member">StartPos</ref>.value_or(0))<sp/>-</highlight></codeline>
 <codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SPDRange))<sp/>{</highlight></codeline>
 <codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classBattleDj_1ac15f0c70a8fc4e8db50573c657662069" kindref="member">D</ref>-&gt;<ref refid="structDecoder_1af5edf9c75d6929fc76133c87166cee2f" kindref="member">getRange</ref>(SPDRange,<sp/>Buf))<sp/>{</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classBattleDj_1ac15f0c70a8fc4e8db50573c657662069" kindref="member">D</ref>-&gt;getRange(SPDRange,<sp/>Buf))<sp/>{</highlight></codeline>
 <codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>

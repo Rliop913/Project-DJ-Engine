@@ -49,11 +49,11 @@ Functions
 
 - :ref:`exhale_function_manualAudioTest_8cpp_1a4450494f995f5d36a0fa8f5774bcb503`
 
-- :ref:`exhale_function_manualAudioTest_8cpp_1a00b246dd98309d73eccac5d85e23a233`
+- :ref:`exhale_function_manualAudioTest_8cpp_1a70640b91c0ba95b3bb510844154c7ae0`
 
 - :ref:`exhale_function_manualAudioTest_8cpp_1a0ddf1224851353fc92bfbff6f499fa97`
 
-- :ref:`exhale_function_manualAudioTest_8cpp_1a48026a2dbe35ec8aa995f7da83464d14`
+- :ref:`exhale_function_manualAudioTest_8cpp_1ae7e64aa5f55fdf29e77fb1569cf77d4f`
 
 
 Variables

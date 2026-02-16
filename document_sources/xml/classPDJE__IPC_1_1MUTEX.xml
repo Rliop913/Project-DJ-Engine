@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="classPDJE__IPC_1_1MUTEX" kind="class" language="C++" prot="public">
     <compoundname>PDJE_IPC::MUTEX</compoundname>
     <includes refid="ipc__named__mutex_8hpp" local="no">ipc_named_mutex.hpp</includes>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classPDJE__IPC_1_1MUTEX_1a5b6b97c1a9f0f653ff9aea751dbbb833" prot="private" static="no" mutable="no">
         <type>void *</type>
         <definition>void* PDJE_IPC::MUTEX::mutex_handle</definition>
         <argsstring></argsstring>
         <name>mutex_handle</name>
+        <qualifiedname>PDJE_IPC::MUTEX::mutex_handle</qualifiedname>
         <initializer>= nullptr</initializer>
         <briefdescription>
         </briefdescription>
@@ -23,6 +24,7 @@
         <definition>std::string PDJE_IPC::MUTEX::mutex_name</definition>
         <argsstring></argsstring>
         <name>mutex_name</name>
+        <qualifiedname>PDJE_IPC::MUTEX::mutex_name</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -31,13 +33,14 @@
         </inbodydescription>
         <location file="include/input/IPC/memory/ipc_named_mutex.hpp" line="10" column="17" bodyfile="include/input/IPC/memory/ipc_named_mutex.hpp" bodystart="10" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classPDJE__IPC_1_1MUTEX_1a1cad3521da103634e8f1db98135855bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool PDJE_IPC::MUTEX::lock</definition>
         <argsstring>()</argsstring>
         <name>lock</name>
+        <qualifiedname>PDJE_IPC::MUTEX::lock</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -51,6 +54,7 @@
         <definition>void PDJE_IPC::MUTEX::unlock</definition>
         <argsstring>()</argsstring>
         <name>unlock</name>
+        <qualifiedname>PDJE_IPC::MUTEX::unlock</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -64,8 +68,9 @@
         <definition>void PDJE_IPC::MUTEX::init</definition>
         <argsstring>(const MNAME &amp;name)</argsstring>
         <name>init</name>
+        <qualifiedname>PDJE_IPC::MUTEX::init</qualifiedname>
         <param>
-          <type>const <ref refid="namespacePDJE__IPC_1a9fde1a10ab51831bfa1320d45d91aec5" kindref="member">MNAME</ref> &amp;</type>
+          <type>const <ref refid="namespacePDJE__IPC_1a04902c541254b5ef872d47ec219cc36b" kindref="member">MNAME</ref> &amp;</type>
           <declname>name</declname>
         </param>
         <briefdescription>
@@ -81,6 +86,7 @@
         <definition>PDJE_IPC::MUTEX::MUTEX</definition>
         <argsstring>(const MUTEX &amp;)=delete</argsstring>
         <name>MUTEX</name>
+        <qualifiedname>PDJE_IPC::MUTEX::MUTEX</qualifiedname>
         <param>
           <type>const <ref refid="classPDJE__IPC_1_1MUTEX" kindref="compound">MUTEX</ref> &amp;</type>
         </param>
@@ -92,11 +98,12 @@
         </inbodydescription>
         <location file="include/input/IPC/memory/ipc_named_mutex.hpp" line="19" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__IPC_1_1MUTEX_1aac22a74f276a2dc9b682d88af9c4f243" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__IPC_1_1MUTEX_1ae9245d25dcf7e936a5c53541e7bc20c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classPDJE__IPC_1_1MUTEX" kindref="compound">MUTEX</ref> &amp;</type>
-        <definition>MUTEX&amp; PDJE_IPC::MUTEX::operator=</definition>
+        <definition>MUTEX &amp; PDJE_IPC::MUTEX::operator=</definition>
         <argsstring>(const MUTEX &amp;)=delete</argsstring>
         <name>operator=</name>
+        <qualifiedname>PDJE_IPC::MUTEX::operator=</qualifiedname>
         <param>
           <type>const <ref refid="classPDJE__IPC_1_1MUTEX" kindref="compound">MUTEX</ref> &amp;</type>
         </param>
@@ -113,6 +120,7 @@
         <definition>PDJE_IPC::MUTEX::MUTEX</definition>
         <argsstring>()</argsstring>
         <name>MUTEX</name>
+        <qualifiedname>PDJE_IPC::MUTEX::MUTEX</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -126,6 +134,7 @@
         <definition>PDJE_IPC::MUTEX::~MUTEX</definition>
         <argsstring>()</argsstring>
         <name>~MUTEX</name>
+        <qualifiedname>PDJE_IPC::MUTEX::~MUTEX</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -134,7 +143,7 @@
         </inbodydescription>
         <location file="include/input/IPC/memory/ipc_named_mutex.hpp" line="23" column="5" bodyfile="include/input/IPC/memory/linux/named_mutex.cpp" bodystart="41" bodyend="47"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -164,7 +173,7 @@
       <member refid="classPDJE__IPC_1_1MUTEX_1a3bd8c053a041d243ba7ebe617852fdc0" prot="public" virt="non-virtual"><scope>PDJE_IPC::MUTEX</scope><name>MUTEX</name></member>
       <member refid="classPDJE__IPC_1_1MUTEX_1a5b6b97c1a9f0f653ff9aea751dbbb833" prot="private" virt="non-virtual"><scope>PDJE_IPC::MUTEX</scope><name>mutex_handle</name></member>
       <member refid="classPDJE__IPC_1_1MUTEX_1a74bdbb0044e25bbe8ce9955d2c4945d3" prot="private" virt="non-virtual"><scope>PDJE_IPC::MUTEX</scope><name>mutex_name</name></member>
-      <member refid="classPDJE__IPC_1_1MUTEX_1aac22a74f276a2dc9b682d88af9c4f243" prot="public" virt="non-virtual"><scope>PDJE_IPC::MUTEX</scope><name>operator=</name></member>
+      <member refid="classPDJE__IPC_1_1MUTEX_1ae9245d25dcf7e936a5c53541e7bc20c8" prot="public" virt="non-virtual"><scope>PDJE_IPC::MUTEX</scope><name>operator=</name></member>
       <member refid="classPDJE__IPC_1_1MUTEX_1abc73c0b6980ac3721c6ba98fff915be7" prot="public" virt="non-virtual"><scope>PDJE_IPC::MUTEX</scope><name>unlock</name></member>
       <member refid="classPDJE__IPC_1_1MUTEX_1a114a87a44234f5af09a58727645100d5" prot="public" virt="non-virtual"><scope>PDJE_IPC::MUTEX</scope><name>~MUTEX</name></member>
     </listofallmembers>

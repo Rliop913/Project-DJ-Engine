@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="classPDJE__JUDGE_1_1JUDGE" kind="class" language="C++" prot="public">
     <compoundname>PDJE_JUDGE::JUDGE</compoundname>
     <includes refid="PDJE__Judge_8hpp" local="no">PDJE_Judge.hpp</includes>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classPDJE__JUDGE_1_1JUDGE_1a7b4906f8734f2968e35971bf5ff06cfc" prot="private" static="no" mutable="no">
         <type>std::optional&lt; <ref refid="classPDJE__JUDGE_1_1Judge__Loop" kindref="compound">Judge_Loop</ref> &gt;</type>
         <definition>std::optional&lt;Judge_Loop&gt; PDJE_JUDGE::JUDGE::loop_obj</definition>
         <argsstring></argsstring>
         <name>loop_obj</name>
+        <qualifiedname>PDJE_JUDGE::JUDGE::loop_obj</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -22,6 +23,7 @@
         <definition>std::optional&lt;std::thread&gt; PDJE_JUDGE::JUDGE::loop</definition>
         <argsstring></argsstring>
         <name>loop</name>
+        <qualifiedname>PDJE_JUDGE::JUDGE::loop</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -30,13 +32,14 @@
         </inbodydescription>
         <location file="include/judge/PDJE_Judge.hpp" line="31" column="19" bodyfile="include/judge/PDJE_Judge.hpp" bodystart="31" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-attrib">
+    </sectiondef>
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="classPDJE__JUDGE_1_1JUDGE_1a6c475f5254a06c021a8a5d5f37e73c24" prot="public" static="no" mutable="no">
         <type><ref refid="classPDJE__JUDGE_1_1Judge__Init" kindref="compound">Judge_Init</ref></type>
         <definition>Judge_Init PDJE_JUDGE::JUDGE::inits</definition>
         <argsstring></argsstring>
         <name>inits</name>
+        <qualifiedname>PDJE_JUDGE::JUDGE::inits</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -45,13 +48,14 @@
         </inbodydescription>
         <location file="include/judge/PDJE_Judge.hpp" line="34" column="16" bodyfile="include/judge/PDJE_Judge.hpp" bodystart="34" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classPDJE__JUDGE_1_1JUDGE_1a30f241ffd38a848fe2f5d9f44a21e81a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespacePDJE__JUDGE_1afa6381f8f229ccd5c5f8dbae248cebb2" kindref="member">JUDGE_STATUS</ref></type>
         <definition>JUDGE_STATUS PDJE_JUDGE::JUDGE::Start</definition>
         <argsstring>()</argsstring>
         <name>Start</name>
+        <qualifiedname>PDJE_JUDGE::JUDGE::Start</qualifiedname>
         <briefdescription>
 <para>Validate init data and start the judge event loop thread. </para>
         </briefdescription>
@@ -66,6 +70,7 @@
         <definition>void PDJE_JUDGE::JUDGE::End</definition>
         <argsstring>()</argsstring>
         <name>End</name>
+        <qualifiedname>PDJE_JUDGE::JUDGE::End</qualifiedname>
         <briefdescription>
 <para>Stop the event loop and release cached init data. </para>
         </briefdescription>
@@ -80,6 +85,7 @@
         <definition>PDJE_JUDGE::JUDGE::JUDGE</definition>
         <argsstring>()</argsstring>
         <name>JUDGE</name>
+        <qualifiedname>PDJE_JUDGE::JUDGE::JUDGE</qualifiedname>
         <briefdescription>
 <para>Create a judge instance and initialize logging. </para>
         </briefdescription>
@@ -94,6 +100,7 @@
         <definition>PDJE_JUDGE::JUDGE::~JUDGE</definition>
         <argsstring>()=default</argsstring>
         <name>~JUDGE</name>
+        <qualifiedname>PDJE_JUDGE::JUDGE::~JUDGE</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -102,29 +109,23 @@
         </inbodydescription>
         <location file="include/judge/PDJE_Judge.hpp" line="44" column="5"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Judge controller that owns initialization data and the event loop. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="9">
-        <label>PDJE_JUDGE::RAIL_KEY::KB_MOUSE</label>
-        <link refid="structPDJE__JUDGE_1_1RAIL__KEY_1_1KB__MOUSE"/>
-        <childnode refid="10" relation="usage">
-          <edgelabel>Device_Name</edgelabel>
-        </childnode>
+      <node id="3">
+        <label>PDJE_JUDGE::Custom_Events</label>
+        <link refid="structPDJE__JUDGE_1_1Custom__Events"/>
       </node>
-      <node id="5">
-        <label>std::unordered_map&lt; uint64_t, std::vector&lt; PDJE_JUDGE::RAIL_KEY::META &gt; &gt;</label>
-        <childnode refid="6" relation="usage">
-          <edgelabel>elements</edgelabel>
+      <node id="1">
+        <label>PDJE_JUDGE::JUDGE</label>
+        <link refid="classPDJE__JUDGE_1_1JUDGE"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>inits</edgelabel>
         </childnode>
-      </node>
-      <node id="7">
-        <label>PDJE_JUDGE::RAIL_KEY::META</label>
-        <link refid="structPDJE__JUDGE_1_1RAIL__KEY_1_1META"/>
       </node>
       <node id="2">
         <label>PDJE_JUDGE::Judge_Init</label>
@@ -136,70 +137,76 @@
           <edgelabel>raildb</edgelabel>
         </childnode>
       </node>
-      <node id="11">
-        <label>std::basic_string&lt; Char &gt;</label>
-      </node>
-      <node id="14">
-        <label>std::unordered_map&lt; std::string, int64_t &gt;</label>
-        <childnode refid="10" relation="usage">
-          <edgelabel>keys</edgelabel>
-        </childnode>
-      </node>
-      <node id="6">
-        <label>std::vector&lt; PDJE_JUDGE::RAIL_KEY::META &gt;</label>
-        <childnode refid="7" relation="usage">
-          <edgelabel>elements</edgelabel>
-        </childnode>
-      </node>
       <node id="4">
         <label>PDJE_JUDGE::RAIL_DB</label>
         <link refid="structPDJE__JUDGE_1_1RAIL__DB"/>
         <childnode refid="5" relation="usage">
-          <edgelabel>meta</edgelabel>
-        </childnode>
-        <childnode refid="8" relation="usage">
-          <edgelabel>kb_mouse_raildata</edgelabel>
-        </childnode>
-        <childnode refid="12" relation="usage">
-          <edgelabel>midi_raildata</edgelabel>
-        </childnode>
-        <childnode refid="14" relation="usage">
           <edgelabel>offset</edgelabel>
         </childnode>
-      </node>
-      <node id="1">
-        <label>PDJE_JUDGE::JUDGE</label>
-        <link refid="classPDJE__JUDGE_1_1JUDGE"/>
-        <childnode refid="2" relation="usage">
-          <edgelabel>inits</edgelabel>
+        <childnode refid="8" relation="usage">
+          <edgelabel>meta</edgelabel>
         </childnode>
-      </node>
-      <node id="3">
-        <label>PDJE_JUDGE::Custom_Events</label>
-        <link refid="structPDJE__JUDGE_1_1Custom__Events"/>
-      </node>
-      <node id="8">
-        <label>std::unordered_map&lt; PDJE_JUDGE::RAIL_KEY::KB_MOUSE, uint64_t &gt;</label>
-        <childnode refid="9" relation="usage">
-          <edgelabel>keys</edgelabel>
+        <childnode refid="11" relation="usage">
+          <edgelabel>kb_mouse_raildata</edgelabel>
+        </childnode>
+        <childnode refid="13" relation="usage">
+          <edgelabel>midi_raildata</edgelabel>
         </childnode>
       </node>
       <node id="12">
-        <label>std::unordered_map&lt; PDJE_JUDGE::RAIL_KEY::MIDI, uint64_t &gt;</label>
-        <childnode refid="13" relation="usage">
+        <label>PDJE_JUDGE::RAIL_KEY::KB_MOUSE</label>
+        <link refid="structPDJE__JUDGE_1_1RAIL__KEY_1_1KB__MOUSE"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>Device_Name</edgelabel>
+        </childnode>
+      </node>
+      <node id="10">
+        <label>PDJE_JUDGE::RAIL_KEY::META</label>
+        <link refid="structPDJE__JUDGE_1_1RAIL__KEY_1_1META"/>
+      </node>
+      <node id="14">
+        <label>PDJE_JUDGE::RAIL_KEY::MIDI</label>
+        <link refid="structPDJE__JUDGE_1_1RAIL__KEY_1_1MIDI"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>port_name</edgelabel>
+        </childnode>
+      </node>
+      <node id="7">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="6">
+        <label>std::string</label>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>std::unordered_map&lt; PDJE_JUDGE::RAIL_KEY::KB_MOUSE, uint64_t &gt;</label>
+        <childnode refid="12" relation="usage">
           <edgelabel>keys</edgelabel>
         </childnode>
       </node>
       <node id="13">
-        <label>PDJE_JUDGE::RAIL_KEY::MIDI</label>
-        <link refid="structPDJE__JUDGE_1_1RAIL__KEY_1_1MIDI"/>
-        <childnode refid="10" relation="usage">
-          <edgelabel>port_name</edgelabel>
+        <label>std::unordered_map&lt; PDJE_JUDGE::RAIL_KEY::MIDI, uint64_t &gt;</label>
+        <childnode refid="14" relation="usage">
+          <edgelabel>keys</edgelabel>
         </childnode>
       </node>
-      <node id="10">
-        <label>std::string</label>
-        <childnode refid="11" relation="public-inheritance">
+      <node id="5">
+        <label>std::unordered_map&lt; std::string, int64_t &gt;</label>
+        <childnode refid="6" relation="usage">
+          <edgelabel>keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="8">
+        <label>std::unordered_map&lt; uint64_t, std::vector&lt; PDJE_JUDGE::RAIL_KEY::META &gt; &gt;</label>
+        <childnode refid="9" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="9">
+        <label>std::vector&lt; PDJE_JUDGE::RAIL_KEY::META &gt;</label>
+        <childnode refid="10" relation="usage">
+          <edgelabel>elements</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>

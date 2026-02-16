@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="classOS__Input" kind="class" language="C++" prot="public">
     <compoundname>OS_Input</compoundname>
     <includes refid="linux__input_8hpp" local="no">linux_input.hpp</includes>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classOS__Input_1ac0fb5fb7bfcc38a496f3ef475c3ef543" prot="private" static="no" mutable="no">
         <type><ref refid="classPDJE__LINUX_1_1PDJE__Socket" kindref="compound">PDJE_LINUX::PDJE_Socket</ref></type>
         <definition>PDJE_LINUX::PDJE_Socket OS_Input::socket</definition>
         <argsstring></argsstring>
         <name>socket</name>
+        <qualifiedname>OS_Input::socket</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -17,13 +18,14 @@
         </inbodydescription>
         <location file="include/input/trashbin/--DEPRECATED-linux/linux_input.hpp" line="11" column="29" bodyfile="include/input/trashbin/--DEPRECATED-linux/linux_input.hpp" bodystart="11" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classOS__Input_1ad9e86505f15f2af9e0e772e99032f5de" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="structPDJE__INPUT__DATA__LINE" kindref="compound">PDJE_INPUT_DATA_LINE</ref></type>
         <definition>PDJE_INPUT_DATA_LINE OS_Input::PullOutDataLine</definition>
         <argsstring>()</argsstring>
         <name>PullOutDataLine</name>
+        <qualifiedname>OS_Input::PullOutDataLine</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -37,6 +39,7 @@
         <definition>bool OS_Input::kill</definition>
         <argsstring>()</argsstring>
         <name>kill</name>
+        <qualifiedname>OS_Input::kill</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -50,6 +53,7 @@
         <definition>std::vector&lt; DeviceData &gt; OS_Input::getDevices</definition>
         <argsstring>()</argsstring>
         <name>getDevices</name>
+        <qualifiedname>OS_Input::getDevices</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -63,6 +67,7 @@
         <definition>std::string OS_Input::setDevices</definition>
         <argsstring>(const DEV_LIST &amp;devs)</argsstring>
         <name>setDevices</name>
+        <qualifiedname>OS_Input::setDevices</qualifiedname>
         <param>
           <type>const <ref refid="PDJE__Input__Device__Data_8hpp_1a071ad4c80a013a30ce51bdc187a8b887" kindref="member">DEV_LIST</ref> &amp;</type>
           <declname>devs</declname>
@@ -80,6 +85,7 @@
         <definition>void OS_Input::TrigLoop</definition>
         <argsstring>()</argsstring>
         <name>TrigLoop</name>
+        <qualifiedname>OS_Input::TrigLoop</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -93,6 +99,7 @@
         <definition>void OS_Input::ResetLoop</definition>
         <argsstring>()</argsstring>
         <name>ResetLoop</name>
+        <qualifiedname>OS_Input::ResetLoop</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -106,6 +113,7 @@
         <definition>void OS_Input::EndSocketTransmission</definition>
         <argsstring>()</argsstring>
         <name>EndSocketTransmission</name>
+        <qualifiedname>OS_Input::EndSocketTransmission</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -119,6 +127,7 @@
         <definition>OS_Input::OS_Input</definition>
         <argsstring>()=default</argsstring>
         <name>OS_Input</name>
+        <qualifiedname>OS_Input::OS_Input</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -132,6 +141,7 @@
         <definition>OS_Input::~OS_Input</definition>
         <argsstring>()=default</argsstring>
         <name>~OS_Input</name>
+        <qualifiedname>OS_Input::~OS_Input</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -140,12 +150,19 @@
         </inbodydescription>
         <location file="include/input/trashbin/--DEPRECATED-linux/linux_input.hpp" line="41" column="5"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
+      <node id="1">
+        <label>OS_Input</label>
+        <link refid="classOS__Input"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>socket</edgelabel>
+        </childnode>
+      </node>
       <node id="2">
         <label>PDJE_LINUX::PDJE_Socket</label>
         <link refid="classPDJE__LINUX_1_1PDJE__Socket"/>
@@ -155,13 +172,6 @@
       </node>
       <node id="4">
         <label>std::basic_string&lt; Char &gt;</label>
-      </node>
-      <node id="1">
-        <label>OS_Input</label>
-        <link refid="classOS__Input"/>
-        <childnode refid="2" relation="usage">
-          <edgelabel>socket</edgelabel>
-        </childnode>
       </node>
       <node id="3">
         <label>std::string</label>

@@ -51,5 +51,5 @@ Typedefs
 --------
 
 
-- :ref:`exhale_typedef_PDJE__OBJ__SETTER_8hpp_1a6ee8dcd494b4095e5f9c95def2bc1ac5`
+- :ref:`exhale_typedef_PDJE__OBJ__SETTER_8hpp_1a16cf29d9f8af2ffe9f8fc5cab62f723c`
 

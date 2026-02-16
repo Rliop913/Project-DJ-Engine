@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="dev__path__to__name_8hpp" kind="file" language="C++">
     <compoundname>dev_path_to_name.hpp</compoundname>
     <includes local="no">setupapi.h</includes>
@@ -8,12 +8,6 @@
     <includes local="no">windows.h</includes>
     <includedby refid="ListDevice_8hpp" local="yes">include/input/runner/windows/ListDevice.hpp</includedby>
     <incdepgraph>
-      <node id="5">
-        <label>windows.h</label>
-      </node>
-      <node id="3">
-        <label>string</label>
-      </node>
       <node id="1">
         <label>include/input/runner/windows/dev_path_to_name.hpp</label>
         <link refid="dev__path__to__name_8hpp"/>
@@ -29,17 +23,17 @@
       <node id="2">
         <label>setupapi.h</label>
       </node>
+      <node id="3">
+        <label>string</label>
+      </node>
       <node id="4">
         <label>vector</label>
       </node>
+      <node id="5">
+        <label>windows.h</label>
+      </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="1">
-        <label>include/input/runner/windows/dev_path_to_name.hpp</label>
-        <link refid="dev__path__to__name_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-      </node>
       <node id="3">
         <label>include/input/runner/windows/InputLoop.cpp</label>
         <link refid="InputLoop_8cpp"/>
@@ -56,8 +50,14 @@
         <label>include/input/runner/windows/SubProcess.cpp</label>
         <link refid="runner_2windows_2SubProcess_8cpp"/>
       </node>
+      <node id="1">
+        <label>include/input/runner/windows/dev_path_to_name.hpp</label>
+        <link refid="dev__path__to__name_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
     </invincdepgraph>
-      <sectiondef kind="func">
+    <sectiondef kind="func">
       <memberdef kind="function" id="dev__path__to__name_8hpp_1a35f557ba79bc284006eaa0ea1135e1a1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::wstring</type>
         <definition>std::wstring NormalizeNt</definition>
@@ -92,7 +92,7 @@
         </inbodydescription>
         <location file="include/input/runner/windows/dev_path_to_name.hpp" line="19" column="1" bodyfile="include/input/runner/windows/dev_path_to_name.hpp" bodystart="19" bodyend="68"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -104,7 +104,7 @@
 <codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;windows.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>comment(lib,<sp/>&quot;setupapi.lib&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>comment(lib,<sp/>&quot;setupapi.lib&quot;)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::wstring</highlight></codeline>
 <codeline lineno="10" refid="dev__path__to__name_8hpp_1a35f557ba79bc284006eaa0ea1135e1a1" refkind="member"><highlight class="normal"><ref refid="dev__path__to__name_8hpp_1a35f557ba79bc284006eaa0ea1135e1a1" kindref="member">NormalizeNt</ref>(std::wstring<sp/>p)</highlight></codeline>

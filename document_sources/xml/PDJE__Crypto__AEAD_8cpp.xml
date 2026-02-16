@@ -1,14 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="PDJE__Crypto__AEAD_8cpp" kind="file" language="C++">
     <compoundname>PDJE_Crypto_AEAD.cpp</compoundname>
     <includes refid="PDJE__Crypto_8hpp" local="yes">PDJE_Crypto.hpp</includes>
     <includes local="yes">botan/hex.h</includes>
     <includes local="no">nlohmann/json.hpp</includes>
     <incdepgraph>
-      <node id="4">
-        <label>filesystem</label>
-      </node>
       <node id="2">
         <label>PDJE_Crypto.hpp</label>
         <link refid="PDJE__Crypto_8hpp"/>
@@ -25,12 +22,6 @@
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="12">
-        <label>botan/cipher_mode.h</label>
-      </node>
-      <node id="14">
-        <label>string</label>
-      </node>
       <node id="1">
         <label>include/global/Crypto/PDJE_Crypto_AEAD.cpp</label>
         <link refid="PDJE__Crypto__AEAD_8cpp"/>
@@ -40,9 +31,6 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-      </node>
-      <node id="6">
-        <label>spdlog/sinks/basic_file_sink.h</label>
       </node>
       <node id="3">
         <label>PDJE_LOG_SETTER.hpp</label>
@@ -62,32 +50,44 @@
         <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="8">
-        <label>spdlog/spdlog.h</label>
+      <node id="11">
+        <label>botan/auto_rng.h</label>
       </node>
-      <node id="9">
-        <label>string_view</label>
+      <node id="12">
+        <label>botan/cipher_mode.h</label>
       </node>
       <node id="13">
         <label>botan/hash.h</label>
       </node>
-      <node id="7">
-        <label>spdlog/sinks/stdout_color_sinks.h</label>
+      <node id="15">
+        <label>botan/hex.h</label>
       </node>
-      <node id="11">
-        <label>botan/auto_rng.h</label>
+      <node id="4">
+        <label>filesystem</label>
       </node>
       <node id="5">
         <label>mutex</label>
       </node>
-      <node id="10">
-        <label>type_traits</label>
-      </node>
       <node id="16">
         <label>nlohmann/json.hpp</label>
       </node>
-      <node id="15">
-        <label>botan/hex.h</label>
+      <node id="6">
+        <label>spdlog/sinks/basic_file_sink.h</label>
+      </node>
+      <node id="7">
+        <label>spdlog/sinks/stdout_color_sinks.h</label>
+      </node>
+      <node id="8">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="14">
+        <label>string</label>
+      </node>
+      <node id="9">
+        <label>string_view</label>
+      </node>
+      <node id="10">
+        <label>type_traits</label>
       </node>
     </incdepgraph>
     <innernamespace refid="namespacePDJE__CRYPTO">PDJE_CRYPTO</innernamespace>
@@ -178,7 +178,7 @@
 <codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>decTXT<sp/><sp/><sp/>=<sp/><ref refid="classPDJE__CRYPTO_1_1AEAD_1a39a00c68471c2369b72243bbbb1578c3" kindref="member">Decrypt</ref>(nonce,<sp/>body);</highlight></codeline>
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>decTXT;</highlight></codeline>
 <codeline lineno="82"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="83"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_CRYPTO</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_CRYPTO</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/global/Crypto/PDJE_Crypto_AEAD.cpp"/>
   </compounddef>

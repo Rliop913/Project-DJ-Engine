@@ -55,9 +55,27 @@ Included By
 -----------
 
 
-- :ref:`file_include_core_audioRender_audioRender.cpp`
+- :ref:`file_include_core_MainObjects_audioPlayer_audioPlayer.cpp`
+
+- :ref:`file_include_core_MainObjects_audioPlayer_audio_OS_impls.hpp`
+
+- :ref:`file_include_core_MainObjects_editorObject_addline.cpp`
+
+- :ref:`file_include_core_MainObjects_editorObject_deleteline.cpp`
+
+- :ref:`file_include_core_MainObjects_editorObject_editorObject.cpp`
+
+- :ref:`file_include_core_MainObjects_editorObject_editorObject.hpp`
+
+- :ref:`file_include_core_MainObjects_tempDBObject_tempDB.cpp`
 
 - :ref:`file_include_core_audioRender_ManualMix_MusicControlPanel.cpp`
+
+- :ref:`file_include_core_audioRender_MixMachine_MUSIC_CTR_BattleDj.cpp`
+
+- :ref:`file_include_core_audioRender_MixMachine_MUSIC_CTR_MUSIC_CTR.cpp`
+
+- :ref:`file_include_core_audioRender_MixMachine_MUSIC_CTR_SetCue.cpp`
 
 - :ref:`file_include_core_audioRender_MixMachine_MiniaudioObjects_Decoder.cpp`
 
@@ -65,11 +83,7 @@ Included By
 
 - :ref:`file_include_core_audioRender_MixMachine_MixMachine.hpp`
 
-- :ref:`file_include_core_audioRender_MixMachine_MUSIC_CTR_BattleDj.cpp`
-
-- :ref:`file_include_core_audioRender_MixMachine_MUSIC_CTR_MUSIC_CTR.cpp`
-
-- :ref:`file_include_core_audioRender_MixMachine_MUSIC_CTR_SetCue.cpp`
+- :ref:`file_include_core_audioRender_audioRender.cpp`
 
 - :ref:`file_include_core_db_Capnp_CapnpBinary_CapnpBinary.hpp`
 
@@ -91,10 +105,6 @@ Included By
 
 - :ref:`file_include_core_db_trackDB.cpp`
 
-- :ref:`file_include_core_editor_editor.cpp`
-
-- :ref:`file_include_core_editor_editor.hpp`
-
 - :ref:`file_include_core_editor_TimeLine_EventMarker_EventMarker.hpp`
 
 - :ref:`file_include_core_editor_TimeLine_GitDataPack_GitDatas.hpp`
@@ -107,23 +117,15 @@ Included By
 
 - :ref:`file_include_core_editor_TimeLine_TimeLine.hpp`
 
+- :ref:`file_include_core_editor_editor.cpp`
+
+- :ref:`file_include_core_editor_editor.hpp`
+
 - :ref:`file_include_core_interface_PDJE_interface.cpp`
 
 - :ref:`file_include_core_interface_PDJE_interface.hpp`
 
 - :ref:`file_include_core_interface_PDJE_polyglot_wraps.cpp`
-
-- :ref:`file_include_core_MainObjects_audioPlayer_audioPlayer.cpp`
-
-- :ref:`file_include_core_MainObjects_editorObject_addline.cpp`
-
-- :ref:`file_include_core_MainObjects_editorObject_deleteline.cpp`
-
-- :ref:`file_include_core_MainObjects_editorObject_editorObject.cpp`
-
-- :ref:`file_include_core_MainObjects_editorObject_editorObject.hpp`
-
-- :ref:`file_include_core_MainObjects_tempDBObject_tempDB.cpp`
 
 - :ref:`file_include_global_Crypto_PDJE_Crypto.hpp`
 
@@ -145,9 +147,9 @@ Included By
 
 - :ref:`file_include_input_IPC_memory_linux_named_mutex.cpp`
 
-- :ref:`file_include_input_midi_PDJE_MIDI.hpp`
-
 - :ref:`file_include_input_PDJE_Input.cpp`
+
+- :ref:`file_include_input_midi_PDJE_MIDI.hpp`
 
 - :ref:`file_include_input_trashbin_MainProcess_deprecated.hpp`
 

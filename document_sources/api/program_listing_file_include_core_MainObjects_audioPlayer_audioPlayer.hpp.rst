@@ -18,6 +18,7 @@ Program Listing for File audioPlayer.hpp
    #include "PDJE_EXPORT_SETTER.hpp"
    #include "audioCallbacks.hpp"
    #include "audioRender.hpp"
+   #include "audio_OS_impls.hpp"
    #include <miniaudio.h>
    class PDJE_API audioPlayer {
      private:
@@ -30,7 +31,7 @@ Program Listing for File audioPlayer.hpp
    
        std::vector<float> RFaust;
    
-       audioEngineDataStruct engineDatas;
+       std::unique_ptr<audioEngineDataStruct> engineDatas;
    
        ma_device_config
        DefaultInit(const unsigned int frameBufferSize);
@@ -39,13 +40,7 @@ Program Listing for File audioPlayer.hpp
        ContextInit();
    
      public:
-       std::string STATUS = "OK";
-   
-       const std::string
-       GetStatus()
-       {
-           return STATUS;
-       }
+       // std::string STATUS = "OK";
    
        bool
        Activate();

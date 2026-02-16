@@ -10,7 +10,7 @@ The Input Engine provides platform-specific backends to achieve the best possibl
 
 *   **Windows:** Uses the **Raw Input API** to capture keyboard and mouse events. To ensure low latency and isolation, input is handled in a separate child process, with data securely transmitted back to the main process using a robust Inter-Process Communication (IPC) system.
 *   **Linux:** Uses the **`evdev`** (event device) interface to directly read events from input devices, bypassing higher-level abstractions for lower latency.
-*   **macOS:** (Implementation details to be documented).
+*   **macOS:** Planned, but not implemented in the current source tree.
 
 Usage Overview
 --------------
@@ -71,7 +71,7 @@ Classes & Functions
     Starts the input processing loops for all configured devices. Once running, input events will be available via the `PDJE_INPUT_DATA_LINE`.
 
 .. doxygenfunction:: PDJE_Input::Kill()
-    :project: Project_Input
+    :project: Project_DJ_Engine
 
     Stops all input processing loops and releases associated resources. It is good practice to call this when input is no longer needed (e.g., at application shutdown).
 

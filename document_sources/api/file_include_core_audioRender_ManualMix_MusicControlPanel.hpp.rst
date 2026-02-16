@@ -60,13 +60,13 @@ Included By
 -----------
 
 
-- :ref:`file_include_core_audioRender_ManualMix_MusicControlPanel.cpp`
-
-- :ref:`file_include_core_editor_editor.hpp`
-
 - :ref:`file_include_core_MainObjects_audioPlayer_audioCallbacks.hpp`
 
 - :ref:`file_include_core_MainObjects_audioPlayer_audioPlayer.cpp`
+
+- :ref:`file_include_core_audioRender_ManualMix_MusicControlPanel.cpp`
+
+- :ref:`file_include_core_editor_editor.hpp`
 
 
 

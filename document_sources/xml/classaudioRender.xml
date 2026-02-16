@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="classaudioRender" kind="class" language="C++" prot="public">
     <compoundname>audioRender</compoundname>
     <includes refid="audioRender_8hpp" local="no">audioRender.hpp</includes>
-      <sectiondef kind="public-attrib">
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="classaudioRender_1ab31a4b0b03c2157f456260e26fddf2a1" prot="public" static="no" mutable="no">
         <type>std::optional&lt; std::vector&lt; float &gt; &gt;</type>
         <definition>std::optional&lt;std::vector&lt;float&gt; &gt; audioRender::rendered_frames</definition>
         <argsstring></argsstring>
         <name>rendered_frames</name>
+        <qualifiedname>audioRender::rendered_frames</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -17,13 +18,14 @@
         </inbodydescription>
         <location file="include/core/audioRender/audioRender.hpp" line="21" column="19" bodyfile="include/core/audioRender/audioRender.hpp" bodystart="21" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classaudioRender_1ab03448738cc602a7c1cd98c926f31a32" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool audioRender::LoadTrack</definition>
         <argsstring>(litedb &amp;db, trackdata &amp;td)</argsstring>
         <name>LoadTrack</name>
+        <qualifiedname>audioRender::LoadTrack</qualifiedname>
         <param>
           <type><ref refid="classlitedb" kindref="compound">litedb</ref> &amp;</type>
           <declname>db</declname>
@@ -68,6 +70,7 @@
         <definition>bool audioRender::LoadTrackFromMixData</definition>
         <argsstring>(litedb &amp;db, BIN &amp;mixData)</argsstring>
         <name>LoadTrackFromMixData</name>
+        <qualifiedname>audioRender::LoadTrackFromMixData</qualifiedname>
         <param>
           <type><ref refid="classlitedb" kindref="compound">litedb</ref> &amp;</type>
           <declname>db</declname>
@@ -110,6 +113,7 @@
         <definition>audioRender::audioRender</definition>
         <argsstring>()=default</argsstring>
         <name>audioRender</name>
+        <qualifiedname>audioRender::audioRender</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -123,6 +127,7 @@
         <definition>audioRender::~audioRender</definition>
         <argsstring>()=default</argsstring>
         <name>~audioRender</name>
+        <qualifiedname>audioRender::~audioRender</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -131,7 +136,7 @@
         </inbodydescription>
         <location file="include/core/audioRender/audioRender.hpp" line="43" column="5"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Top-level class for audio rendering. </para>
     </briefdescription>

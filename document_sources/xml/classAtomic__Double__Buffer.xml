@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="classAtomic__Double__Buffer" kind="class" language="C++" prot="public">
     <compoundname>Atomic_Double_Buffer</compoundname>
     <includes refid="PDJE__Buffer_8hpp" local="no">PDJE_Buffer.hpp</includes>
@@ -8,12 +8,13 @@
         <type>typename <ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref></type>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classAtomic__Double__Buffer_1a518d4d8cba650e85dee88fe31400b17b" prot="private" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref> &gt;</type>
         <definition>std::vector&lt;T&gt; Atomic_Double_Buffer&lt; T &gt;::first</definition>
         <argsstring></argsstring>
         <name>first</name>
+        <qualifiedname>Atomic_Double_Buffer::first</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -27,6 +28,7 @@
         <definition>std::vector&lt;T&gt; Atomic_Double_Buffer&lt; T &gt;::second</definition>
         <argsstring></argsstring>
         <name>second</name>
+        <qualifiedname>Atomic_Double_Buffer::second</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -40,6 +42,7 @@
         <definition>std::atomic_flag Atomic_Double_Buffer&lt; T &gt;::lock</definition>
         <argsstring></argsstring>
         <name>lock</name>
+        <qualifiedname>Atomic_Double_Buffer::lock</qualifiedname>
         <initializer>= ATOMIC_FLAG_INIT</initializer>
         <briefdescription>
         </briefdescription>
@@ -54,6 +57,7 @@
         <definition>bool Atomic_Double_Buffer&lt; T &gt;::acc_first</definition>
         <argsstring></argsstring>
         <name>acc_first</name>
+        <qualifiedname>Atomic_Double_Buffer::acc_first</qualifiedname>
         <initializer>= true</initializer>
         <briefdescription>
         </briefdescription>
@@ -63,13 +67,14 @@
         </inbodydescription>
         <location file="include/global/DataLines/PDJE_Buffer.hpp" line="17" column="22" bodyfile="include/global/DataLines/PDJE_Buffer.hpp" bodystart="17" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classAtomic__Double__Buffer_1ae8602854f395b1afdc5a94570cee629d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Atomic_Double_Buffer&lt; T &gt;::Atomic_Double_Buffer</definition>
         <argsstring>(const size_t reserve_size)</argsstring>
         <name>Atomic_Double_Buffer</name>
+        <qualifiedname>Atomic_Double_Buffer::Atomic_Double_Buffer</qualifiedname>
         <param>
           <type>const size_t</type>
           <declname>reserve_size</declname>
@@ -87,6 +92,7 @@
         <definition>Atomic_Double_Buffer&lt; T &gt;::~Atomic_Double_Buffer</definition>
         <argsstring>()=default</argsstring>
         <name>~Atomic_Double_Buffer</name>
+        <qualifiedname>Atomic_Double_Buffer::~Atomic_Double_Buffer</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -100,6 +106,7 @@
         <definition>void Atomic_Double_Buffer&lt; T &gt;::Write</definition>
         <argsstring>(const T &amp;data)</argsstring>
         <name>Write</name>
+        <qualifiedname>Atomic_Double_Buffer::Write</qualifiedname>
         <param>
           <type>const <ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref> &amp;</type>
           <declname>data</declname>
@@ -112,11 +119,12 @@
         </inbodydescription>
         <location file="include/global/DataLines/PDJE_Buffer.hpp" line="29" column="5" bodyfile="include/global/DataLines/PDJE_Buffer.hpp" bodystart="29" bodyend="42"/>
       </memberdef>
-      <memberdef kind="function" id="classAtomic__Double__Buffer_1a42d8673d9e4ac1bbcf648b75142a3a87" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classAtomic__Double__Buffer_1aba73a993d9f76616044c5671af910390" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; <ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref> &gt; *</type>
-        <definition>std::vector&lt;T&gt;* Atomic_Double_Buffer&lt; T &gt;::Get</definition>
+        <definition>std::vector&lt; T &gt; * Atomic_Double_Buffer&lt; T &gt;::Get</definition>
         <argsstring>()</argsstring>
         <name>Get</name>
+        <qualifiedname>Atomic_Double_Buffer::Get</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -125,7 +133,7 @@
         </inbodydescription>
         <location file="include/global/DataLines/PDJE_Buffer.hpp" line="44" column="5" bodyfile="include/global/DataLines/PDJE_Buffer.hpp" bodystart="44" bodyend="61"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -135,7 +143,7 @@
       <member refid="classAtomic__Double__Buffer_1a8dd712850cbfec33e32f5560252c1371" prot="private" virt="non-virtual"><scope>Atomic_Double_Buffer</scope><name>acc_first</name></member>
       <member refid="classAtomic__Double__Buffer_1ae8602854f395b1afdc5a94570cee629d" prot="public" virt="non-virtual"><scope>Atomic_Double_Buffer</scope><name>Atomic_Double_Buffer</name></member>
       <member refid="classAtomic__Double__Buffer_1a518d4d8cba650e85dee88fe31400b17b" prot="private" virt="non-virtual"><scope>Atomic_Double_Buffer</scope><name>first</name></member>
-      <member refid="classAtomic__Double__Buffer_1a42d8673d9e4ac1bbcf648b75142a3a87" prot="public" virt="non-virtual"><scope>Atomic_Double_Buffer</scope><name>Get</name></member>
+      <member refid="classAtomic__Double__Buffer_1aba73a993d9f76616044c5671af910390" prot="public" virt="non-virtual"><scope>Atomic_Double_Buffer</scope><name>Get</name></member>
       <member refid="classAtomic__Double__Buffer_1a42ce0fa210add7ae3e7d5cd4ce53fe88" prot="private" virt="non-virtual"><scope>Atomic_Double_Buffer</scope><name>lock</name></member>
       <member refid="classAtomic__Double__Buffer_1a996d1bc59616e487b5f501c420d92485" prot="private" virt="non-virtual"><scope>Atomic_Double_Buffer</scope><name>second</name></member>
       <member refid="classAtomic__Double__Buffer_1a5ef6f6a8688dcf8ca8dbd20ef3312c01" prot="public" virt="non-virtual"><scope>Atomic_Double_Buffer</scope><name>Write</name></member>

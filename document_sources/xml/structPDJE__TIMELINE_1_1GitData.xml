@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="structPDJE__TIMELINE_1_1GitData" kind="struct" language="C++" prot="public">
     <compoundname>PDJE_TIMELINE::GitData</compoundname>
     <includes refid="GitDatas_8hpp" local="no">GitDatas.hpp</includes>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="structPDJE__TIMELINE_1_1GitData_1a81fbc5eaa28b0cb9a9e753a3ef83c17c" prot="private" static="no" mutable="no">
         <type>git_repository *</type>
         <definition>git_repository* PDJE_TIMELINE::GitData::repo</definition>
         <argsstring></argsstring>
         <name>repo</name>
+        <qualifiedname>PDJE_TIMELINE::GitData::repo</qualifiedname>
         <initializer>= nullptr</initializer>
         <briefdescription>
         </briefdescription>
@@ -23,6 +24,7 @@
         <definition>git_signature* PDJE_TIMELINE::GitData::sign</definition>
         <argsstring></argsstring>
         <name>sign</name>
+        <qualifiedname>PDJE_TIMELINE::GitData::sign</qualifiedname>
         <initializer>= nullptr</initializer>
         <briefdescription>
         </briefdescription>
@@ -32,13 +34,14 @@
         </inbodydescription>
         <location file="include/core/editor/TimeLine/GitDataPack/GitDatas.hpp" line="41" column="20" bodyfile="include/core/editor/TimeLine/GitDataPack/GitDatas.hpp" bodystart="41" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-attrib">
+    </sectiondef>
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structPDJE__TIMELINE_1_1GitData_1a0774e4dabfcca51e5cdd889faf5e18db" prot="public" static="no" mutable="no">
-        <type>std::unordered_map&lt; <ref refid="namespacePDJE__TIMELINE_1a332091bad520025c963254deb9de8b35" kindref="member">OID</ref>, <ref refid="namespacePDJE__TIMELINE_1aae90fd104f806e14b7fbaf98668e785c" kindref="member">BACK_OID</ref> &gt;</type>
+        <type>std::unordered_map&lt; <ref refid="namespacePDJE__TIMELINE_1a7f3a24ec3f3f8e7cf279712367924ce3" kindref="member">OID</ref>, <ref refid="namespacePDJE__TIMELINE_1a521f55c6b3da8f9af56be0c1eb855e41" kindref="member">BACK_OID</ref> &gt;</type>
         <definition>std::unordered_map&lt;OID, BACK_OID&gt; PDJE_TIMELINE::GitData::log_tree</definition>
         <argsstring></argsstring>
         <name>log_tree</name>
+        <qualifiedname>PDJE_TIMELINE::GitData::log_tree</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -48,10 +51,11 @@
         <location file="include/core/editor/TimeLine/GitDataPack/GitDatas.hpp" line="44" column="24" bodyfile="include/core/editor/TimeLine/GitDataPack/GitDatas.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structPDJE__TIMELINE_1_1GitData_1a481938eb911401d282e74d6b29a749c2" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="namespacePDJE__TIMELINE_1a332091bad520025c963254deb9de8b35" kindref="member">OID</ref> &gt;</type>
+        <type>std::vector&lt; <ref refid="namespacePDJE__TIMELINE_1a7f3a24ec3f3f8e7cf279712367924ce3" kindref="member">OID</ref> &gt;</type>
         <definition>std::vector&lt;OID&gt; PDJE_TIMELINE::GitData::LIFO_log</definition>
         <argsstring></argsstring>
         <name>LIFO_log</name>
+        <qualifiedname>PDJE_TIMELINE::GitData::LIFO_log</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -65,6 +69,7 @@
         <definition>fs::path PDJE_TIMELINE::GitData::root</definition>
         <argsstring></argsstring>
         <name>root</name>
+        <qualifiedname>PDJE_TIMELINE::GitData::root</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -78,6 +83,7 @@
         <definition>std::string PDJE_TIMELINE::GitData::target_file</definition>
         <argsstring></argsstring>
         <name>target_file</name>
+        <qualifiedname>PDJE_TIMELINE::GitData::target_file</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -86,13 +92,14 @@
         </inbodydescription>
         <location file="include/core/editor/TimeLine/GitDataPack/GitDatas.hpp" line="47" column="39" bodyfile="include/core/editor/TimeLine/GitDataPack/GitDatas.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
-      <memberdef kind="function" id="structPDJE__TIMELINE_1_1GitData_1a3236e88b7852f6b1370a1a5336b5cae2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structPDJE__TIMELINE_1_1GitData_1a7b3b7c5b6b1350abcf66c83f72f5dbbd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>git_signature *</type>
-        <definition>git_signature* PDJE_TIMELINE::GitData::GetSign</definition>
+        <definition>git_signature * PDJE_TIMELINE::GitData::GetSign</definition>
         <argsstring>()</argsstring>
         <name>GetSign</name>
+        <qualifiedname>PDJE_TIMELINE::GitData::GetSign</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -101,11 +108,12 @@
         </inbodydescription>
         <location file="include/core/editor/TimeLine/GitDataPack/GitDatas.hpp" line="49" column="5" bodyfile="include/core/editor/TimeLine/GitDataPack/GitDatas.hpp" bodystart="49" bodyend="57"/>
       </memberdef>
-      <memberdef kind="function" id="structPDJE__TIMELINE_1_1GitData_1ae5e68c77debe01d80255869c83007fd3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="structPDJE__TIMELINE_1_1GitData_1ac9cdfdb36085844684236a93f22b0a83" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>git_repository *</type>
-        <definition>git_repository* PDJE_TIMELINE::GitData::GetRepo</definition>
+        <definition>git_repository * PDJE_TIMELINE::GitData::GetRepo</definition>
         <argsstring>()</argsstring>
         <name>GetRepo</name>
+        <qualifiedname>PDJE_TIMELINE::GitData::GetRepo</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -119,6 +127,7 @@
         <definition>PDJE_TIMELINE::GitData::GitData</definition>
         <argsstring>(const fs::path &amp;git_repo_root, const std::string &amp;file_name, const std::string &amp;auth_name, const std::string &amp;auth_email)</argsstring>
         <name>GitData</name>
+        <qualifiedname>PDJE_TIMELINE::GitData::GitData</qualifiedname>
         <param>
           <type>const fs::path &amp;</type>
           <declname>git_repo_root</declname>
@@ -148,6 +157,7 @@
         <definition>PDJE_TIMELINE::GitData::~GitData</definition>
         <argsstring>()</argsstring>
         <name>~GitData</name>
+        <qualifiedname>PDJE_TIMELINE::GitData::~GitData</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -156,51 +166,51 @@
         </inbodydescription>
         <location file="include/core/editor/TimeLine/GitDataPack/GitDatas.hpp" line="90" column="5" bodyfile="include/core/editor/TimeLine/GitDataPack/GitDatas.hpp" bodystart="90" bodyend="99"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4">
-        <label>std::basic_string&lt; Char &gt;</label>
-      </node>
       <node id="1">
         <label>PDJE_TIMELINE::GitData</label>
         <link refid="structPDJE__TIMELINE_1_1GitData"/>
         <childnode refid="2" relation="usage">
-          <edgelabel>LIFO_log</edgelabel>
+          <edgelabel>log_tree</edgelabel>
         </childnode>
         <childnode refid="5" relation="usage">
-          <edgelabel>log_tree</edgelabel>
+          <edgelabel>LIFO_log</edgelabel>
         </childnode>
         <childnode refid="3" relation="usage">
           <edgelabel>target_file</edgelabel>
         </childnode>
       </node>
-      <node id="5">
-        <label>std::unordered_map&lt; OID, BACK_OID &gt;</label>
-        <childnode refid="3" relation="usage">
-          <edgelabel>elements</edgelabel>
-          <edgelabel>keys</edgelabel>
-        </childnode>
-      </node>
-      <node id="2">
-        <label>std::vector&lt; OID &gt;</label>
-        <childnode refid="3" relation="usage">
-          <edgelabel>elements</edgelabel>
-        </childnode>
+      <node id="4">
+        <label>std::basic_string&lt; Char &gt;</label>
       </node>
       <node id="3">
         <label>std::string</label>
         <childnode refid="4" relation="public-inheritance">
         </childnode>
       </node>
+      <node id="2">
+        <label>std::unordered_map&lt; OID, BACK_OID &gt;</label>
+        <childnode refid="3" relation="usage">
+          <edgelabel>elements</edgelabel>
+          <edgelabel>keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>std::vector&lt; OID &gt;</label>
+        <childnode refid="3" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
     </collaborationgraph>
     <location file="include/core/editor/TimeLine/GitDataPack/GitDatas.hpp" line="38" column="1" bodyfile="include/core/editor/TimeLine/GitDataPack/GitDatas.hpp" bodystart="38" bodyend="100"/>
     <listofallmembers>
-      <member refid="structPDJE__TIMELINE_1_1GitData_1ae5e68c77debe01d80255869c83007fd3" prot="public" virt="non-virtual"><scope>PDJE_TIMELINE::GitData</scope><name>GetRepo</name></member>
-      <member refid="structPDJE__TIMELINE_1_1GitData_1a3236e88b7852f6b1370a1a5336b5cae2" prot="public" virt="non-virtual"><scope>PDJE_TIMELINE::GitData</scope><name>GetSign</name></member>
+      <member refid="structPDJE__TIMELINE_1_1GitData_1ac9cdfdb36085844684236a93f22b0a83" prot="public" virt="non-virtual"><scope>PDJE_TIMELINE::GitData</scope><name>GetRepo</name></member>
+      <member refid="structPDJE__TIMELINE_1_1GitData_1a7b3b7c5b6b1350abcf66c83f72f5dbbd" prot="public" virt="non-virtual"><scope>PDJE_TIMELINE::GitData</scope><name>GetSign</name></member>
       <member refid="structPDJE__TIMELINE_1_1GitData_1a1a6fd558b6147e019a2eabedba1a4cdf" prot="public" virt="non-virtual"><scope>PDJE_TIMELINE::GitData</scope><name>GitData</name></member>
       <member refid="structPDJE__TIMELINE_1_1GitData_1a481938eb911401d282e74d6b29a749c2" prot="public" virt="non-virtual"><scope>PDJE_TIMELINE::GitData</scope><name>LIFO_log</name></member>
       <member refid="structPDJE__TIMELINE_1_1GitData_1a0774e4dabfcca51e5cdd889faf5e18db" prot="public" virt="non-virtual"><scope>PDJE_TIMELINE::GitData</scope><name>log_tree</name></member>

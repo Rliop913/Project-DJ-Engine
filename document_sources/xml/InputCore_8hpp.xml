@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="InputCore_8hpp" kind="file" language="C++">
     <compoundname>InputCore.hpp</compoundname>
     <includes local="yes">Input_Transfer.hpp</includes>
@@ -14,8 +14,21 @@
     <includedby refid="ParseKeyboard_8cpp" local="yes">include/input/DefaultDevs/linux/ParseKeyboard.cpp</includedby>
     <includedby refid="ParseMouse_8cpp" local="yes">include/input/DefaultDevs/linux/ParseMouse.cpp</includedby>
     <incdepgraph>
-      <node id="13">
-        <label>libevdev/libevdev.h</label>
+      <node id="4">
+        <label>PDJE_Input_Device_Data.hpp</label>
+        <link refid="PDJE__Input__Device__Data_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
       </node>
       <node id="1">
         <label>include/input/DefaultDevs/linux/InputCore.hpp</label>
@@ -35,15 +48,6 @@
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="12">
-        <label>filesystem</label>
-      </node>
-      <node id="5">
-        <label>cstdint</label>
-      </node>
-      <node id="9">
-        <label>string</label>
-      </node>
       <node id="2">
         <label>Input_Transfer.hpp</label>
       </node>
@@ -53,39 +57,49 @@
       <node id="11">
         <label>bitset</label>
       </node>
+      <node id="5">
+        <label>cstdint</label>
+      </node>
+      <node id="12">
+        <label>filesystem</label>
+      </node>
       <node id="6">
         <label>future</label>
-      </node>
-      <node id="4">
-        <label>PDJE_Input_Device_Data.hpp</label>
-        <link refid="PDJE__Input__Device__Data_8hpp"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-      </node>
-      <node id="8">
-        <label>optional</label>
-      </node>
-      <node id="10">
-        <label>vector</label>
       </node>
       <node id="7">
         <label>latch</label>
       </node>
+      <node id="13">
+        <label>libevdev/libevdev.h</label>
+      </node>
+      <node id="8">
+        <label>optional</label>
+      </node>
+      <node id="9">
+        <label>string</label>
+      </node>
       <node id="14">
         <label>unordered_map</label>
       </node>
+      <node id="10">
+        <label>vector</label>
+      </node>
     </incdepgraph>
     <invincdepgraph>
+      <node id="3">
+        <label>include/input/DefaultDevs/linux/DefaultDevs.cpp</label>
+        <link refid="linux_2DefaultDevs_8cpp"/>
+      </node>
+      <node id="2">
+        <label>include/input/DefaultDevs/linux/DefaultDevs.hpp</label>
+        <link refid="linux_2DefaultDevs_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>include/input/DefaultDevs/linux/InputCore.cpp</label>
+        <link refid="InputCore_8cpp"/>
+      </node>
       <node id="1">
         <label>include/input/DefaultDevs/linux/InputCore.hpp</label>
         <link refid="InputCore_8hpp"/>
@@ -98,27 +112,13 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="6">
-        <label>include/input/DefaultDevs/linux/ParseMouse.cpp</label>
-        <link refid="ParseMouse_8cpp"/>
-      </node>
-      <node id="2">
-        <label>include/input/DefaultDevs/linux/DefaultDevs.hpp</label>
-        <link refid="linux_2DefaultDevs_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>include/input/DefaultDevs/linux/InputCore.cpp</label>
-        <link refid="InputCore_8cpp"/>
-      </node>
-      <node id="3">
-        <label>include/input/DefaultDevs/linux/DefaultDevs.cpp</label>
-        <link refid="linux_2DefaultDevs_8cpp"/>
-      </node>
       <node id="5">
         <label>include/input/DefaultDevs/linux/ParseKeyboard.cpp</label>
         <link refid="ParseKeyboard_8cpp"/>
+      </node>
+      <node id="6">
+        <label>include/input/DefaultDevs/linux/ParseMouse.cpp</label>
+        <link refid="ParseMouse_8cpp"/>
       </node>
     </invincdepgraph>
     <innerclass refid="classInputCore" prot="public">InputCore</innerclass>
@@ -136,7 +136,7 @@
 <codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;libevdev/libevdev.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">fs<sp/>=<sp/>std::filesystem;</highlight></codeline>
-<codeline lineno="10" refid="classInputCore" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classInputCore" kindref="compound">InputCore</ref><sp/>{</highlight></codeline>
+<codeline lineno="10" refid="classInputCore" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classInputCore_1a7cf7d3d4f8919c5da684d26204453c85" kindref="member">InputCore</ref><sp/>{</highlight></codeline>
 <codeline lineno="11"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="12" refid="classInputCore_1ab3740a4cad9b2aa170aa7abfe9a2f937" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1PDJE__Input__Transfer" kindref="compound">PDJE_IPC::PDJE_Input_Transfer</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="classInputCore_1ab3740a4cad9b2aa170aa7abfe9a2f937" kindref="member">out</ref>;</highlight></codeline>
 <codeline lineno="13" refid="classInputCore_1ac7ce8640579e366739bf6a828ef7f830" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_map&lt;int,<sp/>libevdev<sp/>*&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classInputCore_1ac7ce8640579e366739bf6a828ef7f830" kindref="member">events</ref>;</highlight></codeline>
@@ -159,7 +159,7 @@
 <codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="31" refid="classInputCore_1ad83d0c56b60258f32f614f4280dd65b5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::atomic&lt;bool&gt;<sp/><ref refid="classInputCore_1ad83d0c56b60258f32f614f4280dd65b5" kindref="member">loop_switch</ref><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="32" refid="classInputCore_1a9bae9c78821736aa6c3ea577a09551aa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classInputCore_1a9bae9c78821736aa6c3ea577a09551aa" kindref="member">stop_event_fd</ref><sp/>=<sp/>-1;</highlight></codeline>
-<codeline lineno="33" refid="classInputCore_1aa92b3352e908492d1419d6a095ef59c5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><ref refid="classInputCore_1aa92b3352e908492d1419d6a095ef59c5" kindref="member">switches</ref>;</highlight></codeline>
+<codeline lineno="33" refid="classInputCore_1a8d2ce7ccdf2f8cbe8569ea2aa4d15047" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><ref refid="classInputCore_1a8d2ce7ccdf2f8cbe8569ea2aa4d15047" kindref="member">switches</ref>;</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classInputCore_1ab8221304002f4eab9ee66aa87742b116" kindref="member">Reset</ref>();</highlight></codeline>

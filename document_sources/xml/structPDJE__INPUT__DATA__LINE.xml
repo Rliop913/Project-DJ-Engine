@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="structPDJE__INPUT__DATA__LINE" kind="struct" language="C++" prot="public">
     <compoundname>PDJE_INPUT_DATA_LINE</compoundname>
     <includes refid="PDJE__Input__DataLine_8hpp" local="no">PDJE_Input_DataLine.hpp</includes>
-      <sectiondef kind="public-attrib">
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structPDJE__INPUT__DATA__LINE_1a7109d727ea2dd6582a21ab2a66dc3ff0" prot="public" static="no" mutable="no">
         <type><ref refid="classPDJE__IPC_1_1PDJE__Input__Transfer" kindref="compound">PDJE_IPC::PDJE_Input_Transfer</ref> *</type>
         <definition>PDJE_IPC::PDJE_Input_Transfer* PDJE_INPUT_DATA_LINE::input_arena</definition>
         <argsstring></argsstring>
         <name>input_arena</name>
+        <qualifiedname>PDJE_INPUT_DATA_LINE::input_arena</qualifiedname>
         <initializer>= nullptr</initializer>
         <briefdescription>
         </briefdescription>
@@ -23,6 +24,7 @@
         <definition>Atomic_Double_Buffer&lt;PDJE_MIDI::MIDI_EV&gt;* PDJE_INPUT_DATA_LINE::midi_datas</definition>
         <argsstring></argsstring>
         <name>midi_datas</name>
+        <qualifiedname>PDJE_INPUT_DATA_LINE::midi_datas</qualifiedname>
         <initializer>= nullptr</initializer>
         <briefdescription>
         </briefdescription>
@@ -32,124 +34,35 @@
         </inbodydescription>
         <location file="include/global/DataLines/PDJE_Input_DataLine.hpp" line="14" column="26" bodyfile="include/global/DataLines/PDJE_Input_DataLine.hpp" bodystart="14" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="5">
-        <label>std::vector&lt; PDJE_Input_Log &gt;</label>
-        <childnode refid="6" relation="usage">
-          <edgelabel>elements</edgelabel>
+      <node id="4">
+        <label>Atomic_Double_Buffer&lt; PDJE_Input_Log &gt;</label>
+        <link refid="classAtomic__Double__Buffer"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>first</edgelabel>
+          <edgelabel>second</edgelabel>
+        </childnode>
+      </node>
+      <node id="21">
+        <label>Atomic_Double_Buffer&lt; PDJE_MIDI::MIDI_EV &gt;</label>
+        <link refid="classAtomic__Double__Buffer"/>
+        <childnode refid="22" relation="usage">
+          <edgelabel>first</edgelabel>
+          <edgelabel>second</edgelabel>
         </childnode>
       </node>
       <node id="20">
-        <label>PDJE_IPC::SharedMem&lt; PDJE_Input_Log, PDJE_IPC_RW &gt;</label>
-        <link refid="classPDJE__IPC_1_1SharedMem"/>
-      </node>
-      <node id="10">
-        <label>PDJE_Mouse_Event</label>
-        <link refid="structPDJE__Mouse__Event"/>
-      </node>
-      <node id="16">
         <label>PDJE_CRYPTO::PSK</label>
         <link refid="classPDJE__CRYPTO_1_1PSK"/>
       </node>
-      <node id="12">
-        <label>PDJE_IPC::EVENT</label>
-        <link refid="classPDJE__IPC_1_1EVENT"/>
-        <childnode refid="13" relation="usage">
-          <edgelabel>name_cache</edgelabel>
-        </childnode>
-      </node>
-      <node id="4">
-        <label>PDJE_IPC::SharedMem&lt; uint64_t, PDJE_IPC_RW &gt;</label>
-        <link refid="classPDJE__IPC_1_1SharedMem"/>
-      </node>
-      <node id="14">
-        <label>std::basic_string&lt; Char &gt;</label>
-      </node>
-      <node id="15">
-        <label>PDJE_IPC::Input_Transfer_Metadata</label>
-        <link refid="structPDJE__IPC_1_1Input__Transfer__Metadata"/>
-        <childnode refid="16" relation="usage">
-          <edgelabel>psk</edgelabel>
-        </childnode>
-      </node>
-      <node id="18">
-        <label>PDJE_IPC::SharedMem&lt; uint8_t, PDJE_IPC_RW &gt;</label>
-        <link refid="classPDJE__IPC_1_1SharedMem"/>
-      </node>
-      <node id="6">
-        <label>PDJE_Input_Log</label>
-        <link refid="structPDJE__Input__Log"/>
-        <childnode refid="7" relation="usage">
-          <edgelabel>hid_event</edgelabel>
-        </childnode>
-        <childnode refid="8" relation="usage">
-          <edgelabel>event</edgelabel>
-        </childnode>
-      </node>
-      <node id="3">
-        <label>std::atomic&lt; bool &gt;</label>
-      </node>
-      <node id="8">
-        <label>PDJE_Input_Event</label>
-        <link refid="unionPDJE__Input__Event"/>
-        <childnode refid="9" relation="usage">
-          <edgelabel>keyboard</edgelabel>
-        </childnode>
-        <childnode refid="10" relation="usage">
-          <edgelabel>mouse</edgelabel>
-        </childnode>
-      </node>
-      <node id="7">
+      <node id="11">
         <label>PDJE_HID_Event</label>
         <link refid="structPDJE__HID__Event"/>
-      </node>
-      <node id="11">
-        <label>std::mutex</label>
-      </node>
-      <node id="2">
-        <label>PDJE_IPC::PDJE_Input_Transfer</label>
-        <link refid="classPDJE__IPC_1_1PDJE__Input__Transfer"/>
-        <childnode refid="3" relation="usage">
-          <edgelabel>sendworker_switch</edgelabel>
-        </childnode>
-        <childnode refid="4" relation="usage">
-          <edgelabel>length</edgelabel>
-        </childnode>
-        <childnode refid="5" relation="usage">
-          <edgelabel>datas</edgelabel>
-          <edgelabel>subBuffer</edgelabel>
-        </childnode>
-        <childnode refid="11" relation="usage">
-          <edgelabel>local_locker</edgelabel>
-        </childnode>
-        <childnode refid="12" relation="usage">
-          <edgelabel>req_event</edgelabel>
-          <edgelabel>stored_event</edgelabel>
-        </childnode>
-        <childnode refid="15" relation="usage">
-          <edgelabel>metadata</edgelabel>
-        </childnode>
-        <childnode refid="17" relation="usage">
-          <edgelabel>hmacEngine</edgelabel>
-        </childnode>
-        <childnode refid="18" relation="usage">
-          <edgelabel>hmac</edgelabel>
-        </childnode>
-        <childnode refid="19" relation="usage">
-          <edgelabel>adbf</edgelabel>
-        </childnode>
-        <childnode refid="20" relation="usage">
-          <edgelabel>body</edgelabel>
-        </childnode>
-      </node>
-      <node id="9">
-        <label>PDJE_Keyboard_Event</label>
-        <link refid="structPDJE__Keyboard__Event"/>
       </node>
       <node id="1">
         <label>PDJE_INPUT_DATA_LINE</label>
@@ -161,21 +74,121 @@
           <edgelabel>midi_datas</edgelabel>
         </childnode>
       </node>
-      <node id="21">
-        <label>Atomic_Double_Buffer&lt; PDJE_MIDI::MIDI_EV &gt;</label>
-        <link refid="classAtomic__Double__Buffer"/>
+      <node id="13">
+        <label>PDJE_IPC::EVENT</label>
+        <link refid="classPDJE__IPC_1_1EVENT"/>
+        <childnode refid="14" relation="usage">
+          <edgelabel>name_cache</edgelabel>
+        </childnode>
       </node>
       <node id="19">
-        <label>Atomic_Double_Buffer&lt; PDJE_Input_Log &gt;</label>
-        <link refid="classAtomic__Double__Buffer"/>
+        <label>PDJE_IPC::Input_Transfer_Metadata</label>
+        <link refid="structPDJE__IPC_1_1Input__Transfer__Metadata"/>
+        <childnode refid="20" relation="usage">
+          <edgelabel>psk</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>PDJE_IPC::PDJE_Input_Transfer</label>
+        <link refid="classPDJE__IPC_1_1PDJE__Input__Transfer"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>datas</edgelabel>
+          <edgelabel>subBuffer</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>adbf</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>length</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>body</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>hmac</edgelabel>
+        </childnode>
+        <childnode refid="13" relation="usage">
+          <edgelabel>req_event</edgelabel>
+          <edgelabel>stored_event</edgelabel>
+        </childnode>
+        <childnode refid="16" relation="usage">
+          <edgelabel>sendworker_switch</edgelabel>
+        </childnode>
+        <childnode refid="17" relation="usage">
+          <edgelabel>local_locker</edgelabel>
+        </childnode>
+        <childnode refid="18" relation="usage">
+          <edgelabel>hmacEngine</edgelabel>
+        </childnode>
+        <childnode refid="19" relation="usage">
+          <edgelabel>metadata</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>PDJE_IPC::SharedMem&lt; PDJE_Input_Log, PDJE_IPC_RW &gt;</label>
+        <link refid="classPDJE__IPC_1_1SharedMem"/>
+        <childnode refid="7" relation="usage">
+          <edgelabel>ptr</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>PDJE_IPC::SharedMem&lt; uint64_t, PDJE_IPC_RW &gt;</label>
+        <link refid="classPDJE__IPC_1_1SharedMem"/>
+      </node>
+      <node id="12">
+        <label>PDJE_IPC::SharedMem&lt; uint8_t, PDJE_IPC_RW &gt;</label>
+        <link refid="classPDJE__IPC_1_1SharedMem"/>
+      </node>
+      <node id="8">
+        <label>PDJE_Input_Event</label>
+        <link refid="unionPDJE__Input__Event"/>
+        <childnode refid="9" relation="usage">
+          <edgelabel>mouse</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>keyboard</edgelabel>
+        </childnode>
+      </node>
+      <node id="7">
+        <label>PDJE_Input_Log</label>
+        <link refid="structPDJE__Input__Log"/>
+        <childnode refid="8" relation="usage">
+          <edgelabel>event</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>hid_event</edgelabel>
+        </childnode>
+      </node>
+      <node id="10">
+        <label>PDJE_Keyboard_Event</label>
+        <link refid="structPDJE__Keyboard__Event"/>
+      </node>
+      <node id="9">
+        <label>PDJE_Mouse_Event</label>
+        <link refid="structPDJE__Mouse__Event"/>
+      </node>
+      <node id="16">
+        <label>std::atomic&lt; bool &gt;</label>
+      </node>
+      <node id="15">
+        <label>std::basic_string&lt; Char &gt;</label>
       </node>
       <node id="17">
+        <label>std::mutex</label>
+      </node>
+      <node id="14">
+        <label>std::string</label>
+        <childnode refid="15" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="18">
         <label>std::unique_ptr&lt; Botan::MessageAuthenticationCode &gt;</label>
       </node>
-      <node id="13">
-        <label>std::string</label>
-        <childnode refid="14" relation="public-inheritance">
-        </childnode>
+      <node id="3">
+        <label>std::vector&lt; PDJE_Input_Log &gt;</label>
+      </node>
+      <node id="22">
+        <label>std::vector&lt; PDJE_MIDI::MIDI_EV &gt;</label>
       </node>
     </collaborationgraph>
     <location file="include/global/DataLines/PDJE_Input_DataLine.hpp" line="12" column="1" bodyfile="include/global/DataLines/PDJE_Input_DataLine.hpp" bodystart="12" bodyend="15"/>

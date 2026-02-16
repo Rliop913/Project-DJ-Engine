@@ -40,6 +40,8 @@ Includes
 
 - ``audioPlayer.hpp`` (:ref:`file_include_core_MainObjects_audioPlayer_audioPlayer.hpp`)
 
+- ``audio_OS_impls.hpp`` (:ref:`file_include_core_MainObjects_audioPlayer_audio_OS_impls.hpp`)
+
 
 
 

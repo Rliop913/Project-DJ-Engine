@@ -1,13 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="namespaceCommon__Features" kind="namespace" language="C++">
     <compoundname>Common_Features</compoundname>
-      <sectiondef kind="func">
+    <sectiondef kind="func">
       <memberdef kind="function" id="namespaceCommon__Features_1a85ba412f5bb7fcc163ff85b1a6dedfdf" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
         <definition>static int Common_Features::SendByte</definition>
         <argsstring>(int dest_fd, const void *data, size_t len)</argsstring>
         <name>SendByte</name>
+        <qualifiedname>Common_Features::SendByte</qualifiedname>
         <param>
           <type>int</type>
           <declname>dest_fd</declname>
@@ -33,6 +34,7 @@
         <definition>static int Common_Features::RecvByte</definition>
         <argsstring>(int dest_fd, void *data, size_t len)</argsstring>
         <name>RecvByte</name>
+        <qualifiedname>Common_Features::RecvByte</qualifiedname>
         <param>
           <type>int</type>
           <declname>dest_fd</declname>
@@ -58,6 +60,7 @@
         <definition>static int Common_Features::LPSend</definition>
         <argsstring>(int dest_fd, const std::string &amp;data)</argsstring>
         <name>LPSend</name>
+        <qualifiedname>Common_Features::LPSend</qualifiedname>
         <param>
           <type>int</type>
           <declname>dest_fd</declname>
@@ -80,6 +83,7 @@
         <definition>static int Common_Features::LPRecv</definition>
         <argsstring>(int dest_fd, std::string &amp;data)</argsstring>
         <name>LPRecv</name>
+        <qualifiedname>Common_Features::LPRecv</qualifiedname>
         <param>
           <type>int</type>
           <declname>dest_fd</declname>
@@ -101,6 +105,7 @@
         <definition>static std::string Common_Features::MakeMSG</definition>
         <argsstring>(const std::string &amp;head, const std::vector&lt; std::string &gt; &amp;datas)</argsstring>
         <name>MakeMSG</name>
+        <qualifiedname>Common_Features::MakeMSG</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>head</declname>
@@ -122,6 +127,7 @@
         <definition>static std::string Common_Features::MakeMSG</definition>
         <argsstring>(const std::string &amp;head, const std::string &amp;msg)</argsstring>
         <name>MakeMSG</name>
+        <qualifiedname>Common_Features::MakeMSG</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>head</declname>
@@ -138,11 +144,12 @@
         </inbodydescription>
         <location file="include/input/trashbin/--DEPRECATED-linux/common/Common_Features.hpp" line="120" column="1" bodyfile="include/input/trashbin/--DEPRECATED-linux/common/Common_Features.hpp" bodystart="120" bodyend="128"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceCommon__Features_1a78ad74b03105ce26d05dd66159bed97b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceCommon__Features_1a9819433dbb3c04ccbcf39523f8185eaf" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
-        <definition>static std::vector&lt;std::string&gt; Common_Features::ReadMSG</definition>
+        <definition>static std::vector&lt; std::string &gt; Common_Features::ReadMSG</definition>
         <argsstring>(const std::string &amp;head, const std::string &amp;raw_json_msg)</argsstring>
         <name>ReadMSG</name>
+        <qualifiedname>Common_Features::ReadMSG</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>head</declname>
@@ -159,7 +166,7 @@
         </inbodydescription>
         <location file="include/input/trashbin/--DEPRECATED-linux/common/Common_Features.hpp" line="131" column="1" bodyfile="include/input/trashbin/--DEPRECATED-linux/common/Common_Features.hpp" bodystart="131" bodyend="155"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

@@ -60,7 +60,7 @@ Included By
 -----------
 
 
-- :ref:`file_include_core_audioRender_audioRender.hpp`
+- :ref:`file_include_core_MainObjects_audioPlayer_audioPlayer.hpp`
 
 - :ref:`file_include_core_audioRender_MixMachine_MixMachine.cpp`
 
@@ -92,7 +92,7 @@ Included By
 
 - :ref:`file_include_core_audioRender_MixMachine_MixTypes_Type_VOL.cpp`
 
-- :ref:`file_include_core_MainObjects_audioPlayer_audioPlayer.hpp`
+- :ref:`file_include_core_audioRender_audioRender.hpp`
 
 - :ref:`file_include_tests_audioTest.cpp`
 
