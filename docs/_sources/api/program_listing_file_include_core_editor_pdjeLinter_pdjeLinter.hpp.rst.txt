@@ -4,7 +4,7 @@
 Program Listing for File pdjeLinter.hpp
 =======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_editor_pdjeLinter_pdjeLinter.hpp>` (``include\core\editor\pdjeLinter\pdjeLinter.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_editor_pdjeLinter_pdjeLinter.hpp>` (``include/core/editor/pdjeLinter/pdjeLinter.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

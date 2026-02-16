@@ -7,6 +7,7 @@
     <includedby refid="audioCallbacks_8hpp" local="yes">include/core/MainObjects/audioPlayer/audioCallbacks.hpp</includedby>
     <includedby refid="PDJE__Core__DataLine_8hpp" local="yes">include/global/DataLines/PDJE_Core_DataLine.hpp</includedby>
     <includedby refid="PDJE__Judge__Loop__Structs_8hpp" local="yes">include/judge/Loop/PDJE_Judge_Loop_Structs.hpp</includedby>
+    <includedby refid="PDJE__PreProcess_8hpp" local="yes">include/judge/Loop/PreProcess/PDJE_PreProcess.hpp</includedby>
     <incdepgraph>
       <node id="2">
         <label>PDJE_EXPORT_SETTER.hpp</label>
@@ -188,7 +189,9 @@
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
         </childnode>
       </node>
       <node id="32">
@@ -202,59 +205,91 @@
         </childnode>
         <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
         </childnode>
       </node>
-      <node id="35">
-        <label>include/judge/Loop/HID.cpp</label>
-        <link refid="HID_8cpp"/>
-      </node>
-      <node id="36">
-        <label>include/judge/Loop/Keyboard.cpp</label>
+      <node id="34">
+        <label>include/judge/Loop/Match/Keyboard.cpp</label>
         <link refid="Keyboard_8cpp"/>
       </node>
       <node id="37">
-        <label>include/judge/Loop/MIDI.cpp</label>
+        <label>include/judge/Loop/Match/MIDI.cpp</label>
         <link refid="MIDI_8cpp"/>
       </node>
       <node id="38">
-        <label>include/judge/Loop/Mouse.cpp</label>
+        <label>include/judge/Loop/Match/Mouse.cpp</label>
         <link refid="Mouse_8cpp"/>
       </node>
-      <node id="33">
-        <label>include/judge/Loop/PDJE_Judge_Loop.cpp</label>
-        <link refid="PDJE__Judge__Loop_8cpp"/>
+      <node id="35">
+        <label>include/judge/Loop/Match/PDJE_Match.cpp</label>
+        <link refid="PDJE__Match_8cpp"/>
       </node>
-      <node id="34">
-        <label>include/judge/Loop/PDJE_Judge_Loop.hpp</label>
-        <link refid="PDJE__Judge__Loop_8hpp"/>
+      <node id="33">
+        <label>include/judge/Loop/Match/PDJE_Match.hpp</label>
+        <link refid="PDJE__Match_8hpp"/>
+        <childnode refid="34" relation="include">
+        </childnode>
         <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
+      </node>
+      <node id="39">
+        <label>include/judge/Loop/PDJE_Judge_Loop.cpp</label>
+        <link refid="PDJE__Judge__Loop_8cpp"/>
+      </node>
+      <node id="36">
+        <label>include/judge/Loop/PDJE_Judge_Loop.hpp</label>
+        <link refid="PDJE__Judge__Loop_8hpp"/>
         <childnode refid="37" relation="include">
         </childnode>
         <childnode refid="38" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
         <childnode refid="39" relation="include">
         </childnode>
-      </node>
-      <node id="41">
-        <label>include/judge/Loop/PDJE_Judge_Loop_Structs.hpp</label>
-        <link refid="PDJE__Judge__Loop__Structs_8hpp"/>
-        <childnode refid="34" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
       </node>
-      <node id="40">
+      <node id="45">
+        <label>include/judge/Loop/PDJE_Judge_Loop_Structs.hpp</label>
+        <link refid="PDJE__Judge__Loop__Structs_8hpp"/>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>include/judge/Loop/PreProcess/PDJE_PreProcess.cpp</label>
+        <link refid="PDJE__PreProcess_8cpp"/>
+      </node>
+      <node id="42">
+        <label>include/judge/Loop/PreProcess/PDJE_PreProcess.hpp</label>
+        <link refid="PDJE__PreProcess_8hpp"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>include/judge/Loop/PreProcess/PDJE_PreProcess_Work.cpp</label>
+        <link refid="PDJE__PreProcess__Work_8cpp"/>
+      </node>
+      <node id="41">
         <label>include/judge/PDJE_Judge.cpp</label>
         <link refid="PDJE__Judge_8cpp"/>
       </node>
-      <node id="39">
+      <node id="40">
         <label>include/judge/PDJE_Judge.hpp</label>
         <link refid="PDJE__Judge_8hpp"/>
-        <childnode refid="40" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
@@ -295,8 +330,9 @@
 <codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="4" refid="structaudioSyncData" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kindref="member">PDJE_API</ref><sp/><ref refid="structaudioSyncData" kindref="compound">audioSyncData</ref><sp/>{</highlight></codeline>
 <codeline lineno="5" refid="structaudioSyncData_1a57a2f969ca2c40d9fbcf0d7dbdbfc59a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="structaudioSyncData_1a57a2f969ca2c40d9fbcf0d7dbdbfc59a" kindref="member">consumed_frames</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="6" refid="structaudioSyncData_1a89638dc0409e8c24aa2ba7d10b901575" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaudioSyncData_1a89638dc0409e8c24aa2ba7d10b901575" kindref="member">microsecond</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="7"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="6" refid="structaudioSyncData_1ad46f441b897d40b15c82630140282c64" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="structaudioSyncData_1ad46f441b897d40b15c82630140282c64" kindref="member">pre_calculated_unused_frames</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="7" refid="structaudioSyncData_1a89638dc0409e8c24aa2ba7d10b901575" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structaudioSyncData_1a89638dc0409e8c24aa2ba7d10b901575" kindref="member">microsecond</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal">};</highlight></codeline>
     </programlisting>
     <location file="include/global/PDJE_SYNC_CORE.hpp"/>
   </compounddef>

@@ -4,7 +4,7 @@
 Program Listing for File SetTXRXFeatures.cpp
 ============================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_input_runner_SetTXRXFeatures.cpp>` (``include\input\runner\SetTXRXFeatures.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_input_runner_SetTXRXFeatures.cpp>` (``include/input/runner/SetTXRXFeatures.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

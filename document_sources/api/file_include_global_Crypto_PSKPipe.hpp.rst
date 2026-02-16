@@ -4,7 +4,7 @@
 File PSKPipe.hpp
 ================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_global_Crypto>` (``include\global\Crypto``)
+|exhale_lsh| :ref:`Parent directory <dir_include_global_Crypto>` (``include/global/Crypto``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PSKPipe.hpp
    :local:
    :backlinks: none
 
-Definition (``include\global\Crypto\PSKPipe.hpp``)
+Definition (``include/global/Crypto/PSKPipe.hpp``)
 --------------------------------------------------
 
 
@@ -46,13 +46,15 @@ Included By
 
 - :ref:`file_include_global_Crypto_Windows_PSKPipe.cpp`
 
-- :ref:`file_include_input_host_linux_MainProcess.cpp`
-
-- :ref:`file_include_input_host_windows_MainProcess.cpp`
-
-- :ref:`file_include_input_runner_linux_SubMain.cpp`
+- :ref:`file_include_input_DefaultDevs_windows_DefaultDevs.hpp`
 
 - :ref:`file_include_input_runner_windows_SubMain.cpp`
+
+- :ref:`file_include_input_trashbin_MainProcess_windows.cpp`
+
+- :ref:`file_include_input_trashbin_SubMain.cpp`
+
+- :ref:`file_include_input_trashbin_host_linux_MainProcess.cpp`
 
 
 
@@ -68,5 +70,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_p_d_j_e___c_r_y_p_t_o_1_1_p_s_k_pipe`
+- :ref:`exhale_class_classPDJE__CRYPTO_1_1PSKPipe`
 

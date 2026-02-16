@@ -4,7 +4,7 @@
 Program Listing for File pdjeInputTest.cpp
 ==========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_tests_INPUT_TESTS_pdjeInputTest.cpp>` (``include\tests\INPUT_TESTS\pdjeInputTest.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_tests_INPUT_TESTS_pdjeInputTest.cpp>` (``include/tests/INPUT_TESTS/pdjeInputTest.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -18,7 +18,7 @@ Program Listing for File pdjeInputTest.cpp
    // #include "linux/linux_input.hpp"
    #include <iostream>
    // #include <unistd.h>
-   #include "MainProcess.hpp"
+   #include "DefaultDevs.hpp"
    #include <filesystem>
    #include <format>
    namespace fs = std::filesystem;
@@ -45,6 +45,7 @@ Program Listing for File pdjeInputTest.cpp
            switch (i.Type) {
            case PDJE_Dev_Type::MOUSE:
                std::cout << "type: mouse" << std::endl;
+               set_targets.push_back(i);
                break;
            case PDJE_Dev_Type::KEYBOARD:
                std::cout << "type: keyboard" << std::endl;
@@ -72,6 +73,7 @@ Program Listing for File pdjeInputTest.cpp
                try {
    
                    dline.input_arena->Receive();
+   
                    auto got = dline.input_arena->datas;
                    for (const auto &idx : got) {
    
@@ -86,6 +88,12 @@ Program Listing for File pdjeInputTest.cpp
                                      << std::endl;
                            std::cout << "pressed" << idx.event.keyboard.pressed
                                      << std::endl;
+                       } else if (idx.type == PDJE_Dev_Type::MOUSE) {
+                           std::cout << "keyNumber: "
+                                     << static_cast<int>(idx.event.mouse.axis_type)
+                                     << std::endl;
+                           std::cout << "pressed" << idx.event.mouse.x << ", "
+                                     << idx.event.mouse.y << std::endl;
                        }
    
                        times--;

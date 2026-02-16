@@ -38,7 +38,7 @@ ECHO
 OCS_Filter
 ------------
 
-- OcsFilterHighLowSW : 0 = High-pass mode, 1 = Low-pass mode
+- OCSFilterHighLowSW : 0 = High-pass mode, 1 = Low-pass mode
 - MiddleFreq : Center frequency (Hz) around which oscillation is applied
 - RangeFreqHalf : Half of the oscillation range (defines how wide the cutoff frequency swings)
 - Bps : Oscillation speed in beats per second (synchronizes with track tempo)

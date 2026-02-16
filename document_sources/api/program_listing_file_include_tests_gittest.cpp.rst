@@ -4,7 +4,7 @@
 Program Listing for File gittest.cpp
 ====================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_tests_gittest.cpp>` (``include\tests\gittest.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_tests_gittest.cpp>` (``include/tests/gittest.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

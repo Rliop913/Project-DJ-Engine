@@ -85,7 +85,7 @@ TXRXListener::Run()
                         continue;
                     }
                     std::pmr::vector<BYTE> buf(&mono_arena);
-                    buf.reserve(size);
+                    buf.resize(size);
                     if (GetRawInputData(reinterpret_cast<HRAWINPUT>(msg.lParam),
                                         RID_INPUT,
                                         buf.data(),

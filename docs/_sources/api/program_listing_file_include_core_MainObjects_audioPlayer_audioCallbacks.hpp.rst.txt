@@ -4,7 +4,7 @@
 Program Listing for File audioCallbacks.hpp
 ===========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_MainObjects_audioPlayer_audioCallbacks.hpp>` (``include\core\MainObjects\audioPlayer\audioCallbacks.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_MainObjects_audioPlayer_audioCallbacks.hpp>` (``include/core/MainObjects/audioPlayer/audioCallbacks.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -32,6 +32,8 @@ Program Listing for File audioCallbacks.hpp
            audioSyncData{ .consumed_frames = 0, .microsecond = 0 };
        audioSyncData             cacheSync;
        PDJE_HIGHRES_CLOCK::CLOCK highres_clock;
+       ma_ptr backend_ptr;
+       std::function<uint32_t(const ma_ptr&)> get_unused_frames;
        inline std::optional<float *>
        getNowfPointer(const unsigned long frameCount);
    

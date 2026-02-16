@@ -3,7 +3,7 @@
 Variable EMBEDDED_CHILD_SHA256
 ==============================
 
-- Defined in :ref:`file_include_input_linux_common_RT_EXEC_HASH.hpp`
+- Defined in :ref:`file_include_input_trashbin_--DEPRECATED-linux_common_RT_EXEC_HASH.hpp`
 
 
 Variable Documentation

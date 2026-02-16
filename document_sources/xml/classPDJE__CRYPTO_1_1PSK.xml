@@ -4,9 +4,9 @@
     <compoundname>PDJE_CRYPTO::PSK</compoundname>
     <includes refid="PDJE__Crypto_8hpp" local="no">PDJE_Crypto.hpp</includes>
     <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="classPDJE__CRYPTO_1_1PSK_1a83f3a32040a27b2b0cdab4f9d3e83d6f" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; uint8_t &gt;</type>
-        <definition>std::vector&lt;uint8_t&gt; PDJE_CRYPTO::PSK::psk</definition>
+      <memberdef kind="variable" id="classPDJE__CRYPTO_1_1PSK_1a71087d721cc7846f36020f6b42bca8c9" prot="public" static="no" mutable="no">
+        <type>Botan::SecureVector&lt; uint8_t &gt;</type>
+        <definition>Botan::SecureVector&lt;uint8_t&gt; PDJE_CRYPTO::PSK::psk</definition>
         <argsstring></argsstring>
         <name>psk</name>
         <qualifiedname>PDJE_CRYPTO::PSK::psk</qualifiedname>
@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/Crypto/PDJE_Crypto.hpp" line="25" column="17" bodyfile="include/global/Crypto/PDJE_Crypto.hpp" bodystart="25" bodyend="-1"/>
+        <location file="include/global/Crypto/PDJE_Crypto.hpp" line="25" column="25" bodyfile="include/global/Crypto/PDJE_Crypto.hpp" bodystart="25" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -97,32 +97,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/Crypto/PDJE_Crypto.hpp" line="34" column="5" bodyfile="include/global/Crypto/PDJE_Crypto_Token.cpp" bodystart="44" bodyend="54"/>
+        <location file="include/global/Crypto/PDJE_Crypto.hpp" line="34" column="5" bodyfile="include/global/Crypto/PDJE_Crypto_Token.cpp" bodystart="44" bodyend="55"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="1">
-        <label>PDJE_CRYPTO::PSK</label>
-        <link refid="classPDJE__CRYPTO_1_1PSK"/>
-        <childnode refid="2" relation="usage">
-          <edgelabel>psk</edgelabel>
-        </childnode>
-      </node>
-      <node id="2">
-        <label>std::vector&lt; uint8_t &gt;</label>
-      </node>
-    </collaborationgraph>
     <location file="include/global/Crypto/PDJE_Crypto.hpp" line="23" column="1" bodyfile="include/global/Crypto/PDJE_Crypto.hpp" bodystart="23" bodyend="35"/>
     <listofallmembers>
       <member refid="classPDJE__CRYPTO_1_1PSK_1a8fbeb61698d6e83dbb35a3e7f701a7ab" prot="public" virt="non-virtual"><scope>PDJE_CRYPTO::PSK</scope><name>Decode</name></member>
       <member refid="classPDJE__CRYPTO_1_1PSK_1a198d1bb2ab20a52ffbd1fc174fff6db0" prot="public" virt="non-virtual"><scope>PDJE_CRYPTO::PSK</scope><name>Encode</name></member>
       <member refid="classPDJE__CRYPTO_1_1PSK_1afc1284342f0799f9545931207b11c2fd" prot="public" virt="non-virtual"><scope>PDJE_CRYPTO::PSK</scope><name>Gen</name></member>
       <member refid="classPDJE__CRYPTO_1_1PSK_1a5064ddbc44118ea3341cf86269a8c1d5" prot="public" virt="non-virtual"><scope>PDJE_CRYPTO::PSK</scope><name>PSK</name></member>
-      <member refid="classPDJE__CRYPTO_1_1PSK_1a83f3a32040a27b2b0cdab4f9d3e83d6f" prot="public" virt="non-virtual"><scope>PDJE_CRYPTO::PSK</scope><name>psk</name></member>
+      <member refid="classPDJE__CRYPTO_1_1PSK_1a71087d721cc7846f36020f6b42bca8c9" prot="public" virt="non-virtual"><scope>PDJE_CRYPTO::PSK</scope><name>psk</name></member>
       <member refid="classPDJE__CRYPTO_1_1PSK_1a591d976596d4bfa51ce409f33b61e367" prot="public" virt="non-virtual"><scope>PDJE_CRYPTO::PSK</scope><name>~PSK</name></member>
     </listofallmembers>
   </compounddef>

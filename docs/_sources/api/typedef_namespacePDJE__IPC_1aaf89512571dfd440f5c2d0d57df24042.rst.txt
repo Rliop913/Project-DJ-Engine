@@ -3,7 +3,7 @@
 Typedef PDJE_IPC::PDJE_DEV_PATH
 ===============================
 
-- Defined in :ref:`file_include_input_IPC_transmission_ChildProcess.hpp`
+- Defined in :ref:`file_include_input_runner_SubProcess.hpp`
 
 
 Typedef Documentation

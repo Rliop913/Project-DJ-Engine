@@ -1,6 +1,7 @@
 #include "audioCallbacks.hpp"
 #include "FrameCalc.hpp"
 #include "PDJE_Benchmark.hpp"
+#include "audio_OS_impls.hpp"
 #include <atomic>
 #include <cstring>
 
@@ -20,7 +21,8 @@ audioEngineDataStruct::CountUp(const unsigned long frameCount)
     nowCursor += frameCount;
     cacheSync = syncData.load(std::memory_order_acquire);
     cacheSync.consumed_frames += frameCount;
-    cacheSync.microsecond = highres_clock.Get_MicroSecond();
+    cacheSync.microsecond                  = highres_clock.Get_MicroSecond();
+    cacheSync.pre_calculated_unused_frames = get_unused_frames(backend_ptr);
     syncData.store(cacheSync, std::memory_order_release);
 }
 

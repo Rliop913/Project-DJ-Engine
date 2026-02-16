@@ -3,7 +3,7 @@
 Template Class IPCSharedMem
 ===========================
 
-- Defined in :ref:`file_include_input_linux_IPC_SHARE_MEM.hpp`
+- Defined in :ref:`file_include_input_trashbin_--DEPRECATED-linux_IPC_SHARE_MEM.hpp`
 
 
 Class Documentation

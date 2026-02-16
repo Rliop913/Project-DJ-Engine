@@ -4,7 +4,7 @@
 File Input_Transfer.cpp
 =======================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_IPC_memory_windows>` (``include\input\IPC\memory\windows``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_IPC_memory_windows>` (``include/input/IPC/memory/windows``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Input_Transfer.cpp
    :local:
    :backlinks: none
 
-Definition (``include\input\IPC\memory\windows\Input_Transfer.cpp``)
+Definition (``include/input/IPC/memory/windows/Input_Transfer.cpp``)
 --------------------------------------------------------------------
 
 
@@ -30,7 +30,7 @@ Includes
 --------
 
 
-- ``Input_Transfer.hpp`` (:ref:`file_include_input_IPC_memory_Input_Transfer.hpp`)
+- ``Input_Transfer.hpp`` (:ref:`file_include_input_IPC_memory_linux_Input_Transfer.hpp`)
 
 
 

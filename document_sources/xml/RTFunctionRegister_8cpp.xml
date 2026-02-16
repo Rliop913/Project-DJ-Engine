@@ -56,18 +56,8 @@
         <childnode refid="24" relation="include">
         </childnode>
       </node>
-      <node id="25">
-        <label>RTEvent.hpp</label>
-        <link refid="RTEvent_8hpp"/>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-      </node>
       <node id="1">
-        <label>include/input/linux/RT/RTFunctionRegister.cpp</label>
+        <label>include/input/trashbin/--DEPRECATED-linux/RT/RTFunctionRegister.cpp</label>
         <link refid="RTFunctionRegister_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
@@ -77,15 +67,15 @@
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
       </node>
       <node id="19">
@@ -101,29 +91,29 @@
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
@@ -152,6 +142,9 @@
         <childnode refid="12" relation="include">
         </childnode>
       </node>
+      <node id="25">
+        <label>RTEvent.hpp</label>
+      </node>
       <node id="3">
         <label>arpa/inet.h</label>
       </node>
@@ -164,29 +157,26 @@
       <node id="6">
         <label>cstdint</label>
       </node>
-      <node id="30">
+      <node id="27">
         <label>fcntl.h</label>
       </node>
-      <node id="26">
+      <node id="28">
         <label>filesystem</label>
       </node>
-      <node id="31">
+      <node id="29">
         <label>functional</label>
       </node>
       <node id="14">
         <label>future</label>
       </node>
-      <node id="35">
+      <node id="33">
         <label>iconv.h</label>
       </node>
-      <node id="36">
+      <node id="34">
         <label>iostream</label>
       </node>
       <node id="18">
         <label>latch</label>
-      </node>
-      <node id="27">
-        <label>libevdev/libevdev.h</label>
       </node>
       <node id="7">
         <label>limits</label>
@@ -200,7 +190,7 @@
       <node id="9">
         <label>nlohmann/json.hpp</label>
       </node>
-      <node id="29">
+      <node id="26">
         <label>nlohmann/json_fwd.hpp</label>
       </node>
       <node id="21">
@@ -218,7 +208,7 @@
       <node id="10">
         <label>string</label>
       </node>
-      <node id="32">
+      <node id="30">
         <label>sys/epoll.h</label>
       </node>
       <node id="24">
@@ -227,14 +217,11 @@
       <node id="11">
         <label>sys/socket.h</label>
       </node>
-      <node id="33">
+      <node id="31">
         <label>sys/un.h</label>
       </node>
-      <node id="34">
+      <node id="32">
         <label>unistd.h</label>
-      </node>
-      <node id="28">
-        <label>unordered_map</label>
       </node>
       <node id="12">
         <label>vector</label>
@@ -353,12 +340,12 @@
 <codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>info,<sp/>EV_KEY,<sp/>BTN_GAMEPAD)<sp/>||</highlight></codeline>
 <codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>libevdev_has_event_code(</highlight></codeline>
 <codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>info,<sp/>EV_KEY,<sp/>BTN_JOYSTICK)))<sp/>{</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dd.<ref refid="structDeviceData_1a1625318317b776adb58e8528a461f641" kindref="member">Type</ref><sp/>=<sp/><ref refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456a4695654d9a54210407e32e78a14d5cbb" kindref="member">PDJE_Dev_Type::HID</ref>;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dd.<ref refid="structDeviceData_1a1625318317b776adb58e8528a461f641" kindref="member">Type</ref><sp/>=<sp/>PDJE_Dev_Type::HID;</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(libevdev_has_event_type(info,<sp/>EV_ABS)<sp/>&amp;&amp;</highlight></codeline>
 <codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>libevdev_has_event_code(info,<sp/>EV_KEY,<sp/>BTN_TOUCH))<sp/>{</highlight></codeline>
 <codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dd.<ref refid="structDeviceData_1a1625318317b776adb58e8528a461f641" kindref="member">Type</ref><sp/>=<sp/><ref refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456a2ec2be318cc86a1224c0e9dcc71321e4" kindref="member">PDJE_Dev_Type::MOUSE</ref>;</highlight></codeline>
 <codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dd.<ref refid="structDeviceData_1a1625318317b776adb58e8528a461f641" kindref="member">Type</ref><sp/>=<sp/><ref refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456a4695654d9a54210407e32e78a14d5cbb" kindref="member">PDJE_Dev_Type::HID</ref>;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dd.<ref refid="structDeviceData_1a1625318317b776adb58e8528a461f641" kindref="member">Type</ref><sp/>=<sp/>PDJE_Dev_Type::HID;</highlight></codeline>
 <codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lsdev.push_back(dd);</highlight></codeline>
 <codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -372,6 +359,6 @@
 <codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>lsdev;</highlight></codeline>
 <codeline lineno="126"><highlight class="normal">}</highlight></codeline>
     </programlisting>
-    <location file="include/input/linux/RT/RTFunctionRegister.cpp"/>
+    <location file="include/input/trashbin/--DEPRECATED-linux/RT/RTFunctionRegister.cpp"/>
   </compounddef>
 </doxygen>

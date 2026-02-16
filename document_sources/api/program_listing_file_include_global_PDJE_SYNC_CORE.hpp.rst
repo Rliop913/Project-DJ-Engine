@@ -4,7 +4,7 @@
 Program Listing for File PDJE_SYNC_CORE.hpp
 ===========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_global_PDJE_SYNC_CORE.hpp>` (``include\global\PDJE_SYNC_CORE.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_global_PDJE_SYNC_CORE.hpp>` (``include/global/PDJE_SYNC_CORE.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -15,5 +15,6 @@ Program Listing for File PDJE_SYNC_CORE.hpp
    #include <cstdint>
    struct PDJE_API audioSyncData {
        unsigned long long consumed_frames = 0;
+       unsigned long long pre_calculated_unused_frames = 0;
        uint64_t           microsecond     = 0;
    };

@@ -17,17 +17,17 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_g_i_t___r_a_i_i_1_1branch__itr`
+- :ref:`exhale_class_classGIT__RAII_1_1branch__itr`
 
-- :ref:`exhale_class_class_g_i_t___r_a_i_i_1_1commit`
+- :ref:`exhale_class_classGIT__RAII_1_1commit`
 
-- :ref:`exhale_class_class_g_i_t___r_a_i_i_1_1ref`
+- :ref:`exhale_class_classGIT__RAII_1_1ref`
 
-- :ref:`exhale_class_class_g_i_t___r_a_i_i_1_1tree`
+- :ref:`exhale_class_classGIT__RAII_1_1tree`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef_namespace_g_i_t___r_a_i_i_1ae9f5018a36b209676af787d453948570`
+- :ref:`exhale_typedef_namespaceGIT__RAII_1ae9f5018a36b209676af787d453948570`

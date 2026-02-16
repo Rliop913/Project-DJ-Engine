@@ -4,7 +4,7 @@
 File pdjeLinter.hpp
 ===================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_editor_pdjeLinter>` (``include\core\editor\pdjeLinter``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_editor_pdjeLinter>` (``include/core/editor/pdjeLinter``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File pdjeLinter.hpp
    :local:
    :backlinks: none
 
-Definition (``include\core\editor\pdjeLinter\pdjeLinter.hpp``)
+Definition (``include/core/editor/pdjeLinter/pdjeLinter.hpp``)
 --------------------------------------------------------------
 
 
@@ -51,5 +51,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_p_d_j_e___linter`
+- :ref:`exhale_class_classPDJE__Linter`
 

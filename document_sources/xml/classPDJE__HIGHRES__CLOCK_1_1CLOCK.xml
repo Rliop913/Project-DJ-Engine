@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/Highres_Clock/Linux/PDJE_Highres_Clock.hpp" line="8" column="19" bodyfile="include/global/Highres_Clock/Linux/PDJE_Highres_Clock.hpp" bodystart="8" bodyend="-1"/>
+        <location file="include/global/Highres_Clock/Linux/PDJE_Highres_Clock.hpp" line="10" column="19" bodyfile="include/global/Highres_Clock/Linux/PDJE_Highres_Clock.hpp" bodystart="10" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/Highres_Clock/Linux/PDJE_Highres_Clock.hpp" line="11" column="5"/>
+        <location file="include/global/Highres_Clock/Linux/PDJE_Highres_Clock.hpp" line="13" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__HIGHRES__CLOCK_1_1CLOCK_1a3ce5e2cecb9d9fd5c1f4be217213d0cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -46,12 +46,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/Highres_Clock/Linux/PDJE_Highres_Clock.hpp" line="12" column="5"/>
+        <location file="include/global/Highres_Clock/Linux/PDJE_Highres_Clock.hpp" line="14" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__HIGHRES__CLOCK_1_1CLOCK_1ae3ea2350d7de5834d668a0ef3e1502e8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__HIGHRES__CLOCK_1_1CLOCK_1a6133e2b6be206bc10f2efb2323c01a8d" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>uint64_t</type>
         <definition>uint64_t PDJE_HIGHRES_CLOCK::CLOCK::Get_MicroSecond</definition>
-        <argsstring>()</argsstring>
+        <argsstring>() noexcept</argsstring>
         <name>Get_MicroSecond</name>
         <qualifiedname>PDJE_HIGHRES_CLOCK::CLOCK::Get_MicroSecond</qualifiedname>
         <briefdescription>
@@ -60,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/Highres_Clock/Linux/PDJE_Highres_Clock.hpp" line="14" column="5" bodyfile="include/global/Highres_Clock/Linux/PDJE_Highres_Clock.hpp" bodystart="14" bodyend="18"/>
+        <location file="include/global/Highres_Clock/Linux/PDJE_Highres_Clock.hpp" line="16" column="5" bodyfile="include/global/Highres_Clock/Linux/PDJE_Highres_Clock.hpp" bodystart="16" bodyend="21"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__HIGHRES__CLOCK_1_1CLOCK_1ae3ea2350d7de5834d668a0ef3e1502e8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>uint64_t</type>
@@ -77,14 +77,35 @@
         <location file="include/global/Highres_Clock/Mac/PDJE_Highres_Clock.hpp" line="12" column="5" bodyfile="include/global/Highres_Clock/Mac/PDJE_Highres_Clock.hpp" bodystart="12" bodyend="16"/>
       </memberdef>
     </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classPDJE__HIGHRES__CLOCK_1_1CLOCK_1aa5b803e92c5729165331036b3dd6c9a8" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>static uint64_t PDJE_HIGHRES_CLOCK::CLOCK::ConvertToMicroSecond</definition>
+        <argsstring>(const timeval &amp;linux_time) noexcept</argsstring>
+        <name>ConvertToMicroSecond</name>
+        <qualifiedname>PDJE_HIGHRES_CLOCK::CLOCK::ConvertToMicroSecond</qualifiedname>
+        <param>
+          <type>const timeval &amp;</type>
+          <declname>linux_time</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/global/Highres_Clock/Linux/PDJE_Highres_Clock.hpp" line="23" column="5" bodyfile="include/global/Highres_Clock/Linux/PDJE_Highres_Clock.hpp" bodystart="23" bodyend="27"/>
+      </memberdef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/global/Highres_Clock/Linux/PDJE_Highres_Clock.hpp" line="6" column="1" bodyfile="include/global/Highres_Clock/Linux/PDJE_Highres_Clock.hpp" bodystart="6" bodyend="19"/>
+    <location file="include/global/Highres_Clock/Linux/PDJE_Highres_Clock.hpp" line="8" column="1" bodyfile="include/global/Highres_Clock/Linux/PDJE_Highres_Clock.hpp" bodystart="8" bodyend="28"/>
     <listofallmembers>
       <member refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK_1aea1f448a293eddcadccafa16242cb277" prot="public" virt="non-virtual"><scope>PDJE_HIGHRES_CLOCK::CLOCK</scope><name>CLOCK</name></member>
-      <member refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK_1ae3ea2350d7de5834d668a0ef3e1502e8" prot="public" virt="non-virtual"><scope>PDJE_HIGHRES_CLOCK::CLOCK</scope><name>Get_MicroSecond</name></member>
+      <member refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK_1aa5b803e92c5729165331036b3dd6c9a8" prot="public" virt="non-virtual"><scope>PDJE_HIGHRES_CLOCK::CLOCK</scope><name>ConvertToMicroSecond</name></member>
+      <member refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK_1a6133e2b6be206bc10f2efb2323c01a8d" prot="public" virt="non-virtual"><scope>PDJE_HIGHRES_CLOCK::CLOCK</scope><name>Get_MicroSecond</name></member>
       <member refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK_1ae3ea2350d7de5834d668a0ef3e1502e8" prot="public" virt="non-virtual"><scope>PDJE_HIGHRES_CLOCK::CLOCK</scope><name>Get_MicroSecond</name></member>
       <member refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK_1ad2232e60c615b31184a7b549dbf8f70d" prot="private" virt="non-virtual"><scope>PDJE_HIGHRES_CLOCK::CLOCK</scope><name>ts</name></member>
       <member refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK_1a3ce5e2cecb9d9fd5c1f4be217213d0cd" prot="public" virt="non-virtual"><scope>PDJE_HIGHRES_CLOCK::CLOCK</scope><name>~CLOCK</name></member>

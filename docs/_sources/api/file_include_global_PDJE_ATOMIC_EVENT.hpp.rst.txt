@@ -4,7 +4,7 @@
 File PDJE_ATOMIC_EVENT.hpp
 ==========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_global>` (``include\global``)
+|exhale_lsh| :ref:`Parent directory <dir_include_global>` (``include/global``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_ATOMIC_EVENT.hpp
    :local:
    :backlinks: none
 
-Definition (``include\global\PDJE_ATOMIC_EVENT.hpp``)
+Definition (``include/global/PDJE_ATOMIC_EVENT.hpp``)
 -----------------------------------------------------
 
 
@@ -45,5 +45,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_a_t_o_m_i_c___e_v_e_n_t`
+- :ref:`exhale_class_classATOMIC__EVENT`
 

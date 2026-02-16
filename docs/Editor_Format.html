@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
@@ -8,20 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Editor_Format &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
 
   
-      <script src="_static/jquery.js?v=5d32c60e"></script>
-      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=5929fcd5"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script src="_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
-      <script src="_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
-      <script src="_static/design-tabs.js?v=f930bc37"></script>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9bcbadda"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+        <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -263,7 +265,7 @@
 </tr>
 <tr class="row-even"><td><p>VOL(4)</p></td>
 <td><p>ID</p></td>
-<td><p>TRIM(7)/FADER(8)</p></td>
+<td><p>TRIM(5)/FADER(6)</p></td>
 <td><p>ITPL</p></td>
 <td><p>8PointValues</p></td>
 <td><p>NONE</p></td>
@@ -287,7 +289,7 @@
 </tr>
 <tr class="row-odd"><td><p>bpmControl(7)</p></td>
 <td><p>ID</p></td>
-<td><p>timeStretch(6)</p></td>
+<td><p>timeStretch(7)</p></td>
 <td><p>BPM(double)</p></td>
 <td><p>NONE</p></td>
 <td><p>NONE</p></td>
@@ -343,7 +345,7 @@
 </tr>
 <tr class="row-even"><td><p>BATTLE_DJ(14)</p></td>
 <td><p>ID</p></td>
-<td><p>SPIN(12)/PITCH(13)/REV(14)</p></td>
+<td><p>SPIN(8)/PITCH(9)/REV(10)</p></td>
 <td><p>SPEED</p></td>
 <td><p>NONE</p></td>
 <td><p>NONE</p></td>
@@ -351,7 +353,7 @@
 </tr>
 <tr class="row-odd"><td><p>BATTLE_DJ(14)</p></td>
 <td><p>ID</p></td>
-<td><p>SCRATCH(15)</p></td>
+<td><p>SCRATCH(11)</p></td>
 <td><p>StartPosition</p></td>
 <td><p>SPEED</p></td>
 <td><p>NONE</p></td>
@@ -482,7 +484,7 @@ This data serves as the <cite>Interpolated Value</cite>, which transitions smoot
 </section>
 <section id="about-beat-subbeat-separate">
 <h1>About Beat &amp; subBeat &amp; Separate<a class="headerlink" href="#about-beat-subbeat-separate" title="Link to this heading"></a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">Beat</span></code>, <code class="docutils literal notranslate"><span class="pre">subBeat</span></code>, and <code class="docutils literal notranslate"><span class="pre">Separate</span></code> are indexing methods derived from the Beat Grid concept (See: :<a class="reference external" href="https://support.serato.com/hc/en-us/articles/202523390-Introduction-to-Beatgrids">Serato Beat Grid</a> ), which is widely used in DAWs (Digital Audio Workstations), DJ software  and MIDI sequencing.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Beat</span></code>, <code class="docutils literal notranslate"><span class="pre">subBeat</span></code>, and <code class="docutils literal notranslate"><span class="pre">Separate</span></code> are indexing methods derived from the Beat Grid concept (See: <a class="reference external" href="https://support.serato.com/hc/en-us/articles/202523390-Introduction-to-Beatgrids">Serato Beat Grid</a>), which is widely used in DAWs (Digital Audio Workstations), DJ software and MIDI sequencing.</p>
 <p>A Beat Grid divides musical time based on <strong>BPM (tempo)</strong> and <strong>time signature</strong>, providing a precise rhythmic framework for placing musical events along a timeline.</p>
 <p>Within this framework, <code class="docutils literal notranslate"><span class="pre">Beat</span></code> represents the primary rhythmic unit (typically a quarter note in 4/4 time), <code class="docutils literal notranslate"><span class="pre">subBeat</span></code> further subdivides each beat into smaller logical segments (such as 1/4 or 1/8 of a beat), and <code class="docutils literal notranslate"><span class="pre">Separate</span></code> defines custom high-resolution divisions used for fine-grained quantization or event positioning.</p>
 <p>This indexing method is conceptually aligned with timeline systems used in rhythm games and digital audio applications, where accurate synchronization and sub-beat resolution are essential.</p>

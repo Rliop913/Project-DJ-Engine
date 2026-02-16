@@ -89,10 +89,10 @@ struct GitData {
     }
     ~GitData()
     {
-        if (!sign) {
+        if (sign) {
             git_signature_free(sign);
         }
-        if (!repo) {
+        if (repo) {
             git_repository_free(repo);
         }
         git_libgit2_shutdown();

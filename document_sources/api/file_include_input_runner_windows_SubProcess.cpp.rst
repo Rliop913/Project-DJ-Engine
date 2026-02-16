@@ -4,7 +4,7 @@
 File SubProcess.cpp
 ===================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_runner_windows>` (``include\input\runner\windows``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_runner_windows>` (``include/input/runner/windows``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File SubProcess.cpp
    :local:
    :backlinks: none
 
-Definition (``include\input\runner\windows\SubProcess.cpp``)
+Definition (``include/input/runner/windows/SubProcess.cpp``)
 ------------------------------------------------------------
 
 

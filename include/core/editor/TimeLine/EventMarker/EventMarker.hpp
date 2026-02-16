@@ -54,7 +54,7 @@ template <typename CapnpType> class EventMarker {
             critlog("failed to append file.");
             return false;
         }
-        if (!line.IsDetached()) {
+        if (line.IsDetached()) {
             line.Diverge();
         }
         if (!line.AppendToHead(index)) {

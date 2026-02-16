@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
@@ -8,25 +6,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Project-DJ-Engine – A Real‑Time Engine for Rhythm Games, DJing, and Audio Production &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
 
   
-      <script src="_static/jquery.js?v=5d32c60e"></script>
-      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=5929fcd5"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script src="_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
-      <script src="_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
-      <script src="_static/design-tabs.js?v=f930bc37"></script>
-      <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
-      <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
-      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
-      <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
-      <script type="module">
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9bcbadda"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+        <script src="_static/design-tabs.js?v=f930bc37"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+        <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+        <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+        <script type="module">
 import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
 window.addEventListener("load", () => mermaid.run());
 </script>
@@ -89,7 +91,7 @@ window.addEventListener("load", () => mermaid.run());
              
   <section id="project-dj-engine-a-realtime-engine-for-rhythm-games-djing-and-audio-production">
 <h1>Project-DJ-Engine – A Real‑Time Engine for Rhythm Games, DJing, and Audio Production<a class="headerlink" href="#project-dj-engine-a-realtime-engine-for-rhythm-games-djing-and-audio-production" title="Link to this heading"></a></h1>
-<p><strong>Project-DJ-Engine (PDJE)</strong> is an integrated, production‑ready engine combining rhythm game mechanics, DJ performance tools, and digital audio workstation features into a single soft real‑time C++ system. It lets you create, reproduce, and remix DJ mixes, drive rhythm‑game note charts, and build interactive music experiences—all with low‑latency, millisecond‑level timing guarantees.</p>
+<p><strong>Project-DJ-Engine (PDJE)</strong> is a soft real-time C++ engine that combines rhythm game logic, DJ performance workflows, and DAW-style editing APIs. It lets you create, reproduce, and remix DJ mixes, drive rhythm-game note charts, and build interactive music experiences with low-latency pipelines and synchronized high-resolution timestamps.</p>
 <p>PDJE’s modular core provides:</p>
 <ul class="simple">
 <li><p><strong>High‑performance audio processing</strong> and time synchronization</p></li>
@@ -136,7 +138,7 @@ Otherwise, Conan dependencies may not be configured correctly.</p>
 </section>
 <section id="system-architecture">
 <h2>System Architecture<a class="headerlink" href="#system-architecture" title="Link to this heading"></a></h2>
-<p>PDJE is organized into independent, dynamically loadable modules:</p>
+<p>PDJE is organized into major modules. In the default build these are linked together through the project targets, and selected modules can also be built as separate libraries depending on CMake options.</p>
 <ul>
 <li><p><strong>Core Engine</strong> :
 The Core Engine is the most critical component of the PDJE project.</p>
@@ -153,7 +155,7 @@ It allows users to register and index music, create mixsets, and generate note c
 <li><p><strong>Input Engine</strong> :
 It is a cross-platform input engine designed to minimize latency by handling input at the lowest deployable level.</p>
 <p>It supports general-purpose inputs such as keyboard and mouse, as well as MIDI input.</p>
-<p>Available on linux, windows</p>
+<p>Available on Linux and Windows in the current source tree. macOS support is planned.</p>
 </li>
 <li><p><strong>Judge Engine</strong> :</p>
 <p>The Judge Engine handles rhythm-game timing logic and real-time judgments.
@@ -177,10 +179,7 @@ Previously this implied ~1 ms timing steps; now the judge uses synchronized time
 </ul>
 </li>
 <li><p><strong>Utility Engine</strong> :
-This engine handles non-essential but highly useful functionalities beyond the core features.</p>
-<p>It can be integrated with the various modules mentioned above to provide optional capabilities such as AI inference, FFT processing, and music analysis using advanced algorithms.</p>
-<p>Some of these features may require GPU acceleration or SIMD support, and could demand high computational performance depending on the workload.</p>
-</li>
+The Utility Engine page currently represents roadmap-level ideas (for example, AI/analysis helpers). There is no active <cite>PDJE_MODULE_UTILITY</cite> build target in the current CMake configuration.</p></li>
 </ul>
 </section>
 <section id="milestones">
@@ -199,10 +198,10 @@ timeline
     0.6.0 : PDJE_Input module implement-Windows
     0.7.0 : PDJE_Judge module implement
     0.8.0 : PDjE_Input module implement-Linux, MIDI
-    0.9.0 : PDJE_Input module implement-Mac
+    0.9.0 : PDJE_Input module implement-Mac (planned)
     1.0.0 : Stable Release
   section DJ + DAW + HPC + AI Rhythm Engine
-    1.2.0 : Basic Utility Module Implemented
+    1.2.0 : Basic Utility Module (roadmap)
     1.5.0 : OnnxRuntime Integration Utility Module
     2.0.0 : OnnxRuntime Integrated with AdaptiveCPP
           : Cross-Vendor GPGPU Support Enabled
@@ -215,16 +214,16 @@ timeline
 <li><p><strong>Custom rhythm‑game development</strong> with built‑in mixing</p></li>
 <li><p><strong>Realtime + Pre-made DJ performance</strong></p></li>
 <li><p><strong>In‑game music editors and DAW</strong> for dynamic chart and mixset creation</p></li>
-<li><p><strong>Low Latency Input</strong> for linux(epoll + RT mode) and windows(rawinput).</p></li>
+<li><p><strong>Low Latency Input</strong> for Linux (epoll-based path) and Windows (Raw Input).</p></li>
 </ul>
 </section>
 <section id="additional-resources">
 <h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>💻 <strong>GitHub</strong>: <a class="reference external" href="https://github.com/Rliop913/Project-DJ-Engine">https://github.com/Rliop913/Project-DJ-Engine</a></p></li>
-<li><p>📄 <strong>License</strong>: LGPLv2.1 (by SoundTouch License)</p></li>
-<li><p>🎮 <strong>Godot Plugin</strong>: <a class="reference external" href="https://github.com/Rliop913/PDJE-Godot-Plugin">https://github.com/Rliop913/PDJE-Godot-Plugin</a></p></li>
-<li><p>📦 <strong>Plugin Prebuilt</strong>: <a class="reference external" href="https://github.com/Rliop913/Project_DJ_Godot">https://github.com/Rliop913/Project_DJ_Godot</a></p></li>
+<li><p><strong>GitHub</strong>: <a class="reference external" href="https://github.com/Rliop913/Project-DJ-Engine">https://github.com/Rliop913/Project-DJ-Engine</a></p></li>
+<li><p><strong>License</strong>: LGPL v2.1</p></li>
+<li><p><strong>Godot Plugin</strong>: <a class="reference external" href="https://github.com/Rliop913/PDJE-Godot-Plugin">https://github.com/Rliop913/PDJE-Godot-Plugin</a></p></li>
+<li><p><strong>Plugin Prebuilt</strong>: <a class="reference external" href="https://github.com/Rliop913/Project_DJ_Godot">https://github.com/Rliop913/Project_DJ_Godot</a></p></li>
 </ul>
 </section>
 <hr class="docutils" />

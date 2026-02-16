@@ -4,7 +4,7 @@
 File dev_path_to_name.hpp
 =========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_runner_windows>` (``include\input\runner\windows``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_runner_windows>` (``include/input/runner/windows``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File dev_path_to_name.hpp
    :local:
    :backlinks: none
 
-Definition (``include\input\runner\windows\dev_path_to_name.hpp``)
+Definition (``include/input/runner/windows/dev_path_to_name.hpp``)
 ------------------------------------------------------------------
 
 

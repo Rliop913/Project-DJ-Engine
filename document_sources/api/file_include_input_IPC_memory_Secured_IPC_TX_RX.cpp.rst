@@ -4,7 +4,7 @@
 File Secured_IPC_TX_RX.cpp
 ==========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_IPC_memory>` (``include\input\IPC\memory``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_IPC_memory>` (``include/input/IPC/memory``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Secured_IPC_TX_RX.cpp
    :local:
    :backlinks: none
 
-Definition (``include\input\IPC\memory\Secured_IPC_TX_RX.cpp``)
+Definition (``include/input/IPC/memory/Secured_IPC_TX_RX.cpp``)
 ---------------------------------------------------------------
 
 

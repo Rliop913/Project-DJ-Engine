@@ -1,0 +1,267 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classPDJE__MIDI_1_1MIDI" kind="class" language="C++" prot="public">
+    <compoundname>PDJE_MIDI::MIDI</compoundname>
+    <includes refid="PDJE__MIDI_8hpp" local="no">PDJE_MIDI.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classPDJE__MIDI_1_1MIDI_1a4a26089f36b80aa6fba365fc1be2e563" prot="private" static="no" mutable="no">
+        <type>libremidi::observer</type>
+        <definition>libremidi::observer PDJE_MIDI::MIDI::obs</definition>
+        <argsstring></argsstring>
+        <name>obs</name>
+        <qualifiedname>PDJE_MIDI::MIDI::obs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/midi/PDJE_MIDI.hpp" line="25" column="71" bodyfile="include/input/midi/PDJE_MIDI.hpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__MIDI_1_1MIDI_1a5f916f69afece8d8aa492d6ce864ca38" prot="private" static="no" mutable="no">
+        <type><ref refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK" kindref="compound">PDJE_HIGHRES_CLOCK::CLOCK</ref></type>
+        <definition>PDJE_HIGHRES_CLOCK::CLOCK PDJE_MIDI::MIDI::clock</definition>
+        <argsstring></argsstring>
+        <name>clock</name>
+        <qualifiedname>PDJE_MIDI::MIDI::clock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/midi/PDJE_MIDI.hpp" line="26" column="71" bodyfile="include/input/midi/PDJE_MIDI.hpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__MIDI_1_1MIDI_1a22234177e9851fee9295ba53248fa156" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::pair&lt; libremidi::midi_in, libremidi::input_port &gt; &gt;</type>
+        <definition>std::vector&lt;std::pair&lt;libremidi::midi_in, libremidi::input_port&gt; &gt; PDJE_MIDI::MIDI::midiin</definition>
+        <argsstring></argsstring>
+        <name>midiin</name>
+        <qualifiedname>PDJE_MIDI::MIDI::midiin</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/midi/PDJE_MIDI.hpp" line="27" column="17" bodyfile="include/input/midi/PDJE_MIDI.hpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__MIDI_1_1MIDI_1a3b4b1645bbb7ddc0fd40ec0030fa8b0e" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, std::array&lt; std::array&lt; uint16_t, 32 &gt;, 16 &gt; &gt;</type>
+        <definition>std::unordered_map&lt;std::string, std::array&lt;std::array&lt;uint16_t, 32&gt;, 16&gt; &gt; PDJE_MIDI::MIDI::__CC_stat</definition>
+        <argsstring></argsstring>
+        <name>__CC_stat</name>
+        <qualifiedname>PDJE_MIDI::MIDI::__CC_stat</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/midi/PDJE_MIDI.hpp" line="29" column="9" bodyfile="include/input/midi/PDJE_MIDI.hpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classPDJE__MIDI_1_1MIDI_1afa044981d012e8b8bd727e50ee8df046" prot="public" static="no" mutable="no">
+        <type><ref refid="classAtomic__Double__Buffer" kindref="compound">Atomic_Double_Buffer</ref>&lt; <ref refid="structPDJE__MIDI_1_1MIDI__EV" kindref="compound">MIDI_EV</ref> &gt;</type>
+        <definition>Atomic_Double_Buffer&lt;MIDI_EV&gt; PDJE_MIDI::MIDI::evlog</definition>
+        <argsstring></argsstring>
+        <name>evlog</name>
+        <qualifiedname>PDJE_MIDI::MIDI::evlog</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/midi/PDJE_MIDI.hpp" line="32" column="31" bodyfile="include/input/midi/PDJE_MIDI.hpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__MIDI_1_1MIDI_1a213aca075345ab5d3f23d927567ab676" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; libremidi::input_port &gt;</type>
+        <definition>std::vector&lt;libremidi::input_port&gt; PDJE_MIDI::MIDI::configed_devices</definition>
+        <argsstring></argsstring>
+        <name>configed_devices</name>
+        <qualifiedname>PDJE_MIDI::MIDI::configed_devices</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/midi/PDJE_MIDI.hpp" line="33" column="17" bodyfile="include/input/midi/PDJE_MIDI.hpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPDJE__MIDI_1_1MIDI_1a115a2f7bafc140ccfba02c1ab9ba89f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_MIDI::MIDI::Run</definition>
+        <argsstring>(const bool CC_LSB_ON=true)</argsstring>
+        <name>Run</name>
+        <qualifiedname>PDJE_MIDI::MIDI::Run</qualifiedname>
+        <param>
+          <type>const bool</type>
+          <declname>CC_LSB_ON</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/midi/PDJE_MIDI.hpp" line="35" column="5" bodyfile="include/input/midi/PDJE_MIDI.cpp" bodystart="11" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__MIDI_1_1MIDI_1ae7e528b1844c7a2800ef2c532727932b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_MIDI::MIDI::Config</definition>
+        <argsstring>(const libremidi::input_port &amp;midi_dev)</argsstring>
+        <name>Config</name>
+        <qualifiedname>PDJE_MIDI::MIDI::Config</qualifiedname>
+        <param>
+          <type>const libremidi::input_port &amp;</type>
+          <declname>midi_dev</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/midi/PDJE_MIDI.hpp" line="38" column="5" bodyfile="include/input/midi/PDJE_MIDI.hpp" bodystart="38" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__MIDI_1_1MIDI_1a5c4b7be5d7b2d79886c4cacc39b247a0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; libremidi::input_port &gt;</type>
+        <definition>std::vector&lt; libremidi::input_port &gt; PDJE_MIDI::MIDI::GetDevices</definition>
+        <argsstring>()</argsstring>
+        <name>GetDevices</name>
+        <qualifiedname>PDJE_MIDI::MIDI::GetDevices</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/midi/PDJE_MIDI.hpp" line="44" column="5" bodyfile="include/input/midi/PDJE_MIDI.hpp" bodystart="44" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__MIDI_1_1MIDI_1a141db98ff8eaf1f3f4008d1873c44dd1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_MIDI::MIDI::MIDI</definition>
+        <argsstring>(const int buffer_size=64)</argsstring>
+        <name>MIDI</name>
+        <qualifiedname>PDJE_MIDI::MIDI::MIDI</qualifiedname>
+        <param>
+          <type>const int</type>
+          <declname>buffer_size</declname>
+          <defval>64</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/midi/PDJE_MIDI.hpp" line="48" column="5" bodyfile="include/input/midi/PDJE_MIDI.cpp" bodystart="5" bodyend="8"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__MIDI_1_1MIDI_1a507cbe52f98af46ebf3ae0b6d5556ae0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_MIDI::MIDI::~MIDI</definition>
+        <argsstring>()=default</argsstring>
+        <name>~MIDI</name>
+        <qualifiedname>PDJE_MIDI::MIDI::~MIDI</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/midi/PDJE_MIDI.hpp" line="49" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="9">
+        <label>Atomic_Double_Buffer&lt; PDJE_MIDI::MIDI_EV &gt;</label>
+        <link refid="classAtomic__Double__Buffer"/>
+        <childnode refid="10" relation="usage">
+          <edgelabel>first</edgelabel>
+          <edgelabel>second</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>PDJE_HIGHRES_CLOCK::CLOCK</label>
+        <link refid="classPDJE__HIGHRES__CLOCK_1_1CLOCK"/>
+      </node>
+      <node id="1">
+        <label>PDJE_MIDI::MIDI</label>
+        <link refid="classPDJE__MIDI_1_1MIDI"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>clock</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>midiin</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>__CC_stat</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>evlog</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>configed_devices</edgelabel>
+        </childnode>
+      </node>
+      <node id="8">
+        <label>std::array&lt; std::array&lt; uint16_t, 32 &gt;, 16 &gt;</label>
+      </node>
+      <node id="7">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="4">
+        <label>std::pair&lt; libremidi::midi_in, libremidi::input_port &gt;</label>
+      </node>
+      <node id="6">
+        <label>std::string</label>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>std::unordered_map&lt; std::string, std::array&lt; std::array&lt; uint16_t, 32 &gt;, 16 &gt; &gt;</label>
+        <childnode refid="6" relation="usage">
+          <edgelabel>keys</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="10">
+        <label>std::vector&lt; PDJE_MIDI::MIDI_EV &gt;</label>
+      </node>
+      <node id="11">
+        <label>std::vector&lt; libremidi::input_port &gt;</label>
+      </node>
+      <node id="3">
+        <label>std::vector&lt; std::pair&lt; libremidi::midi_in, libremidi::input_port &gt; &gt;</label>
+        <childnode refid="4" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/input/midi/PDJE_MIDI.hpp" line="23" column="1" bodyfile="include/input/midi/PDJE_MIDI.hpp" bodystart="23" bodyend="50"/>
+    <listofallmembers>
+      <member refid="classPDJE__MIDI_1_1MIDI_1a3b4b1645bbb7ddc0fd40ec0030fa8b0e" prot="private" virt="non-virtual"><scope>PDJE_MIDI::MIDI</scope><name>__CC_stat</name></member>
+      <member refid="classPDJE__MIDI_1_1MIDI_1a5f916f69afece8d8aa492d6ce864ca38" prot="private" virt="non-virtual"><scope>PDJE_MIDI::MIDI</scope><name>clock</name></member>
+      <member refid="classPDJE__MIDI_1_1MIDI_1ae7e528b1844c7a2800ef2c532727932b" prot="public" virt="non-virtual"><scope>PDJE_MIDI::MIDI</scope><name>Config</name></member>
+      <member refid="classPDJE__MIDI_1_1MIDI_1a213aca075345ab5d3f23d927567ab676" prot="public" virt="non-virtual"><scope>PDJE_MIDI::MIDI</scope><name>configed_devices</name></member>
+      <member refid="classPDJE__MIDI_1_1MIDI_1afa044981d012e8b8bd727e50ee8df046" prot="public" virt="non-virtual"><scope>PDJE_MIDI::MIDI</scope><name>evlog</name></member>
+      <member refid="classPDJE__MIDI_1_1MIDI_1a5c4b7be5d7b2d79886c4cacc39b247a0" prot="public" virt="non-virtual"><scope>PDJE_MIDI::MIDI</scope><name>GetDevices</name></member>
+      <member refid="classPDJE__MIDI_1_1MIDI_1a141db98ff8eaf1f3f4008d1873c44dd1" prot="public" virt="non-virtual"><scope>PDJE_MIDI::MIDI</scope><name>MIDI</name></member>
+      <member refid="classPDJE__MIDI_1_1MIDI_1a22234177e9851fee9295ba53248fa156" prot="private" virt="non-virtual"><scope>PDJE_MIDI::MIDI</scope><name>midiin</name></member>
+      <member refid="classPDJE__MIDI_1_1MIDI_1a4a26089f36b80aa6fba365fc1be2e563" prot="private" virt="non-virtual"><scope>PDJE_MIDI::MIDI</scope><name>obs</name></member>
+      <member refid="classPDJE__MIDI_1_1MIDI_1a115a2f7bafc140ccfba02c1ab9ba89f8" prot="public" virt="non-virtual"><scope>PDJE_MIDI::MIDI</scope><name>Run</name></member>
+      <member refid="classPDJE__MIDI_1_1MIDI_1a507cbe52f98af46ebf3ae0b6d5556ae0" prot="public" virt="non-virtual"><scope>PDJE_MIDI::MIDI</scope><name>~MIDI</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

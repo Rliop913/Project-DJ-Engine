@@ -4,7 +4,7 @@
 Program Listing for File PDJE_Rule.hpp
 ======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_judge_PDJE_Rule.hpp>` (``include\judge\PDJE_Rule.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_judge_PDJE_Rule.hpp>` (``include/judge/PDJE_Rule.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -23,14 +23,14 @@ Program Listing for File PDJE_Rule.hpp
    namespace PDJE_JUDGE {
    
    enum DEVICE_MOUSE_EVENT {
-       BTN_EX   = 0,
-       BTN_SIDE = 1,
-       BTN_M,
-       BTN_R,
-       BTN_L,
-       WHEEL_X,
-       WHEEL_Y,
-       AXIS_MOVE
+       PDJE_BTN_EX   = 0,
+       PDJE_BTN_SIDE = 1,
+       PDJE_BTN_M,
+       PDJE_BTN_R,
+       PDJE_BTN_L,
+       PDJE_WHEEL_X,
+       PDJE_WHEEL_Y,
+       PDJE_AXIS_MOVE
    };
    
    struct PDJE_API EVENT_RULE {

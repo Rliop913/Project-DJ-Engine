@@ -4,7 +4,7 @@
 File MusicControlPanel.hpp
 ==========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_ManualMix>` (``include\core\audioRender\ManualMix``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_ManualMix>` (``include/core/audioRender/ManualMix``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File MusicControlPanel.hpp
    :local:
    :backlinks: none
 
-Definition (``include\core\audioRender\ManualMix\MusicControlPanel.hpp``)
+Definition (``include/core/audioRender/ManualMix/MusicControlPanel.hpp``)
 -------------------------------------------------------------------------
 
 
@@ -52,7 +52,7 @@ Includes
 
 - ``filesystem``
 
-- ``map``
+- ``map`` (:ref:`file_include_input_DefaultDevs_linux_evdev_things_evdev_codemap.hpp`)
 
 
 
@@ -75,23 +75,23 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_struct_music_on_deck`
+- :ref:`exhale_struct_structMusicOnDeck`
 
-- :ref:`exhale_class_class_music_control_panel`
+- :ref:`exhale_class_classMusicControlPanel`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef__music_control_panel_8hpp_1ade6cd1e55ebee7c7fbbe63cd3590d1d8`
+- :ref:`exhale_typedef_MusicControlPanel_8hpp_1ade6cd1e55ebee7c7fbbe63cd3590d1d8`
 
-- :ref:`exhale_typedef__music_control_panel_8hpp_1ab133b0d81c222324c3cd46e91d30fb7d`
+- :ref:`exhale_typedef_MusicControlPanel_8hpp_1ab133b0d81c222324c3cd46e91d30fb7d`
 
 
 Variables
 ---------
 
 
-- :ref:`exhale_variable__music_control_panel_8hpp_1a6ab83c018ea20059c86eea4da929907d`
+- :ref:`exhale_variable_MusicControlPanel_8hpp_1a6ab83c018ea20059c86eea4da929907d`
 

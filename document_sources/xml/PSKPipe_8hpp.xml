@@ -7,8 +7,11 @@
     <includedby refid="Linux_2PSKPipe_8cpp" local="yes">include/global/Crypto/Linux/PSKPipe.cpp</includedby>
     <includedby refid="Mac_2PSKPipe_8cpp" local="yes">include/global/Crypto/Mac/PSKPipe.cpp</includedby>
     <includedby refid="Windows_2PSKPipe_8cpp" local="yes">include/global/Crypto/Windows/PSKPipe.cpp</includedby>
-    <includedby refid="windows_2MainProcess_8cpp" local="yes">include/input/IPC/transmission/windows/MainProcess.cpp</includedby>
-    <includedby refid="Input__Process__Main_8cpp" local="yes">include/input/windows/process/Input_Process_Main.cpp</includedby>
+    <includedby refid="windows_2DefaultDevs_8hpp" local="yes">include/input/DefaultDevs/windows/DefaultDevs.hpp</includedby>
+    <includedby refid="runner_2windows_2SubMain_8cpp" local="yes">include/input/runner/windows/SubMain.cpp</includedby>
+    <includedby refid="MainProcess__windows_8cpp" local="yes">include/input/trashbin/MainProcess_windows.cpp</includedby>
+    <includedby refid="trashbin_2SubMain_8cpp" local="yes">include/input/trashbin/SubMain.cpp</includedby>
+    <includedby refid="host__linux_2MainProcess_8cpp" local="yes">include/input/trashbin/host_linux/MainProcess.cpp</includedby>
     <incdepgraph>
       <node id="1">
         <label>include/global/Crypto/PSKPipe.hpp</label>
@@ -81,20 +84,44 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
         </childnode>
       </node>
       <node id="4">
         <label>include/global/Crypto/Windows/PSKPipe.cpp</label>
         <link refid="Windows_2PSKPipe_8cpp"/>
       </node>
-      <node id="5">
-        <label>include/input/IPC/transmission/windows/MainProcess.cpp</label>
-        <link refid="windows_2MainProcess_8cpp"/>
-      </node>
       <node id="6">
-        <label>include/input/windows/process/Input_Process_Main.cpp</label>
-        <link refid="Input__Process__Main_8cpp"/>
+        <label>include/input/DefaultDevs/windows/DefaultDevs.cpp</label>
+        <link refid="windows_2DefaultDevs_8cpp"/>
+      </node>
+      <node id="5">
+        <label>include/input/DefaultDevs/windows/DefaultDevs.hpp</label>
+        <link refid="windows_2DefaultDevs_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>include/input/runner/windows/SubMain.cpp</label>
+        <link refid="runner_2windows_2SubMain_8cpp"/>
+      </node>
+      <node id="8">
+        <label>include/input/trashbin/MainProcess_windows.cpp</label>
+        <link refid="MainProcess__windows_8cpp"/>
+      </node>
+      <node id="9">
+        <label>include/input/trashbin/SubMain.cpp</label>
+        <link refid="trashbin_2SubMain_8cpp"/>
+      </node>
+      <node id="10">
+        <label>include/input/trashbin/host_linux/MainProcess.cpp</label>
+        <link refid="host__linux_2MainProcess_8cpp"/>
       </node>
     </invincdepgraph>
     <innerclass refid="classPDJE__CRYPTO_1_1PSKPipe" prot="public">PDJE_CRYPTO::PSKPipe</innerclass>

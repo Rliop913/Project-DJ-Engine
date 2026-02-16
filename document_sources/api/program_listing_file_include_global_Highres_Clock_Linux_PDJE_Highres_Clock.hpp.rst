@@ -4,7 +4,7 @@
 Program Listing for File PDJE_Highres_Clock.hpp
 ===============================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_global_Highres_Clock_Linux_PDJE_Highres_Clock.hpp>` (``include\global\Highres_Clock\Linux\PDJE_Highres_Clock.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_global_Highres_Clock_Linux_PDJE_Highres_Clock.hpp>` (``include/global/Highres_Clock/Linux/PDJE_Highres_Clock.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -12,6 +12,8 @@ Program Listing for File PDJE_Highres_Clock.hpp
 
    #pragma once
    #include <cstdint>
+   #include <ctime>
+   #include <sys/time.h>
    #include <time.h>
    namespace PDJE_HIGHRES_CLOCK {
    
@@ -23,10 +25,17 @@ Program Listing for File PDJE_Highres_Clock.hpp
        CLOCK()  = default;
        ~CLOCK() = default;
        uint64_t
-       Get_MicroSecond()
+       Get_MicroSecond() noexcept
        {
-           clock_gettime(CLOCK_MONOTONIC_RAW, &ts);
-           return (uint64_t)ts.tv_sec * 1000000ull + ts.tv_nsec / 1000;
+           clock_gettime(CLOCK_MONOTONIC, &ts);
+           return (uint64_t)ts.tv_sec * 1000000ull +
+                  (uint64_t)ts.tv_nsec / 1000ull;
+       }
+       static inline uint64_t
+       ConvertToMicroSecond(const timeval &linux_time) noexcept
+       {
+           return (uint64_t)linux_time.tv_sec * 1000000ull +
+                  (uint64_t)linux_time.tv_usec;
        }
    };
    }; // namespace PDJE_HIGHRES_CLOCK

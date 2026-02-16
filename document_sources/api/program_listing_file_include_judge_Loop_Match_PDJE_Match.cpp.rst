@@ -4,7 +4,7 @@
 Program Listing for File PDJE_Match.cpp
 =======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_judge_Loop_Match_PDJE_Match.cpp>` (``include\judge\Loop\Match\PDJE_Match.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_judge_Loop_Match_PDJE_Match.cpp>` (``include/judge/Loop/Match/PDJE_Match.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -21,7 +21,7 @@ Program Listing for File PDJE_Match.cpp
    {
        bool     isLate;
        uint64_t diff;
-       for (const auto &note_local : note_list) {
+       for (const auto &note_local : note_list) {//todo - edit algorithm (make it finds the closest note. not the first one.)
    
            isLate = note_local->microsecond < input_time;
    

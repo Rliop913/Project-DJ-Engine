@@ -4,7 +4,7 @@
 File SWIG_editor_visitor.hpp
 ============================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core>` (``include\core``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core>` (``include/core``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File SWIG_editor_visitor.hpp
    :local:
    :backlinks: none
 
-Definition (``include\core\SWIG_editor_visitor.hpp``)
+Definition (``include/core/SWIG_editor_visitor.hpp``)
 -----------------------------------------------------
 
 
@@ -41,11 +41,11 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_struct_k_v_visitor`
+- :ref:`exhale_struct_structKVVisitor`
 
-- :ref:`exhale_struct_struct_mix_visitor`
+- :ref:`exhale_struct_structMixVisitor`
 
-- :ref:`exhale_struct_struct_music_visitor`
+- :ref:`exhale_struct_structMusicVisitor`
 
-- :ref:`exhale_struct_struct_note_visitor`
+- :ref:`exhale_struct_structNoteVisitor`
 

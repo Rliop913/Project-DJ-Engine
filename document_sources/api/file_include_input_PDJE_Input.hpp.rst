@@ -4,7 +4,7 @@
 File PDJE_Input.hpp
 ===================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input>` (``include\input``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input>` (``include/input``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_Input.hpp
    :local:
    :backlinks: none
 
-Definition (``include\input\PDJE_Input.hpp``)
+Definition (``include/input/PDJE_Input.hpp``)
 ---------------------------------------------
 
 
@@ -30,9 +30,9 @@ Includes
 --------
 
 
-- ``Input_State.hpp`` (:ref:`file_include_global_DataLines_Input_State.hpp`)
+- ``DefaultDevs.hpp`` (:ref:`file_include_input_DefaultDevs_linux_DefaultDevs.hpp`)
 
-- ``MainProcess.hpp`` (:ref:`file_include_input_host_MainProcess.hpp`)
+- ``Input_State.hpp`` (:ref:`file_include_global_DataLines_Input_State.hpp`)
 
 - ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_global_PDJE_EXPORT_SETTER.hpp`)
 
@@ -73,5 +73,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_p_d_j_e___input`
+- :ref:`exhale_class_classPDJE__Input`
 

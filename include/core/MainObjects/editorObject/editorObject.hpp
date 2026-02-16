@@ -392,15 +392,6 @@ template <>
 PDJE_API bool
 editorObject::Redo<EDIT_ARG_MUSIC>(const UNSANITIZED &musicName);
 
-template <>
-PDJE_API bool
-editorObject::Undo<EDIT_ARG_NOTE>();
-template <>
-PDJE_API bool
-editorObject::Undo<EDIT_ARG_MIX>();
-template <>
-PDJE_API bool
-editorObject::Undo<EDIT_ARG_KEY_VALUE>();
 
 template <>
 PDJE_API void

@@ -4,7 +4,7 @@
 Program Listing for File audioCallbacks.cpp
 ===========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_MainObjects_audioPlayer_audioCallbacks.cpp>` (``include\core\MainObjects\audioPlayer\audioCallbacks.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_MainObjects_audioPlayer_audioCallbacks.cpp>` (``include/core/MainObjects/audioPlayer/audioCallbacks.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,6 +13,7 @@ Program Listing for File audioCallbacks.cpp
    #include "audioCallbacks.hpp"
    #include "FrameCalc.hpp"
    #include "PDJE_Benchmark.hpp"
+   #include "audio_OS_impls.hpp"
    #include <atomic>
    #include <cstring>
    
@@ -32,7 +33,8 @@ Program Listing for File audioCallbacks.cpp
        nowCursor += frameCount;
        cacheSync = syncData.load(std::memory_order_acquire);
        cacheSync.consumed_frames += frameCount;
-       cacheSync.microsecond = highres_clock.Get_MicroSecond();
+       cacheSync.microsecond                  = highres_clock.Get_MicroSecond();
+       cacheSync.pre_calculated_unused_frames = get_unused_frames(backend_ptr);
        syncData.store(cacheSync, std::memory_order_release);
    }
    

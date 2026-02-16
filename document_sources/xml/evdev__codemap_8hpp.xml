@@ -1,0 +1,228 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="evdev__codemap_8hpp" kind="file" language="C++">
+    <compoundname>evdev_codemap.hpp</compoundname>
+    <includes refid="Input__State_8hpp" local="yes">Input_State.hpp</includes>
+    <includes local="no">array</includes>
+    <includes local="no">libevdev/libevdev.h</includes>
+    <includedby refid="ParseKeyboard_8cpp" local="yes">include/input/DefaultDevs/linux/ParseKeyboard.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>Input_State.hpp</label>
+        <link refid="Input__State_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/input/DefaultDevs/linux/evdev_things/evdev_codemap.hpp</label>
+        <link refid="evdev__codemap_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>array</label>
+      </node>
+      <node id="3">
+        <label>future</label>
+      </node>
+      <node id="9">
+        <label>libevdev/libevdev.h</label>
+      </node>
+      <node id="4">
+        <label>memory_resource</label>
+      </node>
+      <node id="5">
+        <label>optional</label>
+      </node>
+      <node id="6">
+        <label>string</label>
+      </node>
+      <node id="7">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/input/DefaultDevs/linux/ParseKeyboard.cpp</label>
+        <link refid="ParseKeyboard_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/input/DefaultDevs/linux/evdev_things/evdev_codemap.hpp</label>
+        <link refid="evdev__codemap_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespacePDJE__EVDEV__KEYMAP">PDJE_EVDEV_KEYMAP</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Input__State_8hpp" kindref="compound">Input_State.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;array&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;libevdev/libevdev.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="namespacePDJE__EVDEV__KEYMAP" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__EVDEV__KEYMAP" kindref="compound">PDJE_EVDEV_KEYMAP</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="namespacePDJE__EVDEV__KEYMAP_1a8b981f9d2b0400556cd03ef0c67a95f1" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>std::array&lt;uint16_t,<sp/>102&gt;<sp/><ref refid="namespacePDJE__EVDEV__KEYMAP_1a8b981f9d2b0400556cd03ef0c67a95f1" kindref="member">kPdjeToEvdev</ref><sp/>=<sp/>[]<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>std::array&lt;uint16_t,<sp/>102&gt;<sp/>a{};</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;x<sp/>:<sp/>a)</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>x<sp/>=<sp/>KEY_RESERVED;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca92c96db0eaf1a8c3846cb313fa584939" kindref="member">F_1</ref>]<sp/><sp/>=<sp/>KEY_F1;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf52e4e29ebcc0cf42482ff7d90cff0b7" kindref="member">F_2</ref>]<sp/><sp/>=<sp/>KEY_F2;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca3fab70d5b1b68ca04b09d36cf63aa949" kindref="member">F_3</ref>]<sp/><sp/>=<sp/>KEY_F3;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca5aea1ae6d3d3b5638cb7fcd7c93cae73" kindref="member">F_4</ref>]<sp/><sp/>=<sp/>KEY_F4;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf1ecc2e4c4eaf5fe28f1aeaf4494c3d8" kindref="member">F_5</ref>]<sp/><sp/>=<sp/>KEY_F5;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca334fce92784e49c24cf9eb6b26c32372" kindref="member">F_6</ref>]<sp/><sp/>=<sp/>KEY_F6;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca1ef9542307b9d3b44e7b0ccd988d037b" kindref="member">F_7</ref>]<sp/><sp/>=<sp/>KEY_F7;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca404baa5c90a354eecebecfe7d7759bc1" kindref="member">F_8</ref>]<sp/><sp/>=<sp/>KEY_F8;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf7812ef6b43b755d3eb02016606911a9" kindref="member">F_9</ref>]<sp/><sp/>=<sp/>KEY_F9;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cadcd7c6608794b8594c10e150ceefd193" kindref="member">F_10</ref>]<sp/>=<sp/>KEY_F10;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca1b6c4f76b06981ce384260851c733929" kindref="member">F_11</ref>]<sp/>=<sp/>KEY_F11;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cad68f8e8fe3778ffe7abdc3094f5ac20d" kindref="member">F_12</ref>]<sp/>=<sp/>KEY_F12;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca29b8ecb29049f38cbf752d95f479bff7" kindref="member">D1</ref>]<sp/>=<sp/>KEY_1;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca86c69dc8849d17673b52b9a8d94d8b9f" kindref="member">D2</ref>]<sp/>=<sp/>KEY_2;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cade8ef7573c5fa770f07ac7616cbf5d34" kindref="member">D3</ref>]<sp/>=<sp/>KEY_3;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca12761dd9f3b74590b720d87d6ca9fbcf" kindref="member">D4</ref>]<sp/>=<sp/>KEY_4;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca9bfc9615ce2836fe43fe37e0eda2a68a" kindref="member">D5</ref>]<sp/>=<sp/>KEY_5;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cab6e74cb404ad3a7370b6cbb05f004fcb" kindref="member">D6</ref>]<sp/>=<sp/>KEY_6;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca0701f86c777d8dde5be3a916a510cdfa" kindref="member">D7</ref>]<sp/>=<sp/>KEY_7;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caea0726597b1f1d4e1fbe5bc51978a5e1" kindref="member">D8</ref>]<sp/>=<sp/>KEY_8;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cad8ff471f40b06f8793851f05c87d4fdf" kindref="member">D9</ref>]<sp/>=<sp/>KEY_9;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca5484c6144a8cba103d5d23f4be32afcf" kindref="member">D0</ref>]<sp/>=<sp/>KEY_0;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caa53ab217f1572250a530c8c2b3c820cf" kindref="member">Q</ref>]<sp/>=<sp/>KEY_Q;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cab722ceeb601c72cd78fbd35f3581fdf7" kindref="member">W</ref>]<sp/>=<sp/>KEY_W;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cab199e021998d49b1f09338d8b9b18ecb" kindref="member">E</ref>]<sp/>=<sp/>KEY_E;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca1784b1a3d7cbd43c45ff82c72d05e4ae" kindref="member">R</ref>]<sp/>=<sp/>KEY_R;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref>]<sp/>=<sp/>KEY_T;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca5596231eabd6cf29050967d5ac83ad84" kindref="member">Y</ref>]<sp/>=<sp/>KEY_Y;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cac461e84f27bbb236874e1011cd66031f" kindref="member">U</ref>]<sp/>=<sp/>KEY_U;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cad091b8e376f7cf432dc367e1eda65e85" kindref="member">I</ref>]<sp/>=<sp/>KEY_I;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf4b8b7698dfedf5562a7db2bdb07010a" kindref="member">O</ref>]<sp/>=<sp/>KEY_O;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca82f05f38f6a17b117cdd2b83227912c6" kindref="member">P</ref>]<sp/>=<sp/>KEY_P;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca42a4ade1acd55a49164099104990e09f" kindref="member">A</ref>]<sp/>=<sp/>KEY_A;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf1ce01387d2348f8b858721a7db81670" kindref="member">S</ref>]<sp/>=<sp/>KEY_S;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca77a6b11f9898c052926f1d49765861e8" kindref="member">D</ref>]<sp/>=<sp/>KEY_D;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf382a63cc3d6491bf26b59e66f46826d" kindref="member">F</ref>]<sp/>=<sp/>KEY_F;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca2fe993340f6abb2234e543cd427df70b" kindref="member">G</ref>]<sp/>=<sp/>KEY_G;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca5008b1179f399a2273fd3f6a7fc3b292" kindref="member">H</ref>]<sp/>=<sp/>KEY_H;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca03605500b0c55f3d95874e8edfcf4e30" kindref="member">J</ref>]<sp/>=<sp/>KEY_J;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca660a38111995acbeb2820648e82f0d8c" kindref="member">K</ref>]<sp/>=<sp/>KEY_K;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caef31cc6fe9479955961311ee18ac205f" kindref="member">L</ref>]<sp/>=<sp/>KEY_L;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caa70478ce277ffc322f8e1e3418e07355" kindref="member">Z</ref>]<sp/>=<sp/>KEY_Z;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca58833a3110c570fb05130d40c365d1e4" kindref="member">X</ref>]<sp/>=<sp/>KEY_X;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca739ce3f516592d245d16fd8a3893472c" kindref="member">C</ref>]<sp/>=<sp/>KEY_C;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca28f41f1144eee94834387e9a6a088bc1" kindref="member">V</ref>]<sp/>=<sp/>KEY_V;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca3f2a77ecd272aa6d6b5902faa5e5fc68" kindref="member">B</ref>]<sp/>=<sp/>KEY_B;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca2c63acbe79d9f41ba6bb7766e9c37702" kindref="member">N</ref>]<sp/>=<sp/>KEY_N;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca51ca6c63d97347ee58cc7da59ab6994b" kindref="member">M</ref>]<sp/>=<sp/>KEY_M;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caca44b2ff5b17ad46f145ba6762e9187a" kindref="member">KP_0</ref>]<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>KEY_KP0;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca2f86521bc3f49b411e1c0f8f34f659e3" kindref="member">KP_1</ref>]<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>KEY_KP1;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca736e1673887af269c2920de5bda9c6a0" kindref="member">KP_2</ref>]<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>KEY_KP2;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca9304b76eb683861adfabde75da22696c" kindref="member">KP_3</ref>]<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>KEY_KP3;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca0b64cb8053000950713a91b5f6955e2b" kindref="member">KP_4</ref>]<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>KEY_KP4;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca73dc18a3ce71f87e95d7f5855c06eaba" kindref="member">KP_5</ref>]<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>KEY_KP5;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca165fc763e9badcc109652ae3d808dbcd" kindref="member">KP_6</ref>]<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>KEY_KP6;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca1dc97b60bf4dab75b1635f70dc8b630d" kindref="member">KP_7</ref>]<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>KEY_KP7;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca206390b10f393e451c932810dfe20703" kindref="member">KP_8</ref>]<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>KEY_KP8;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cab963d5d2104bd7dfbd92db9c9f1540aa" kindref="member">KP_9</ref>]<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>KEY_KP9;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cae0aa74c7b89fe4291ee497fd2d5986ca" kindref="member">KP_DOT</ref>]<sp/><sp/><sp/><sp/><sp/>=<sp/>KEY_KPDOT;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca4e79730883424b83fb6e300c8ca93216" kindref="member">KP_ENTER</ref>]<sp/><sp/><sp/>=<sp/>KEY_KPENTER;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca8b2a2dd8c13d2a64dc80bf1b27a44e9f" kindref="member">KP_PLUS</ref>]<sp/><sp/><sp/><sp/>=<sp/>KEY_KPPLUS;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cadc5f5745557e11dfa663a73499fa3920" kindref="member">KP_NUMLOCK</ref>]<sp/>=<sp/>KEY_NUMLOCK;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cacabb7bdd3326aff400d547be68e95500" kindref="member">KP_SLASH</ref>]<sp/><sp/><sp/>=<sp/>KEY_KPSLASH;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca8481db8261508bc7f1d0a3d9a31b032f" kindref="member">KP_STAR</ref>]<sp/><sp/><sp/><sp/>=<sp/>KEY_KPASTERISK;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf2e2f7a2fba41c87f15dc3aa7601c81e" kindref="member">KP_MINUS</ref>]<sp/><sp/><sp/>=<sp/>KEY_KPMINUS;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca951ab68bb8f7daafb78951107080904e" kindref="member">ENTER</ref>]<sp/><sp/><sp/><sp/><sp/>=<sp/>KEY_ENTER;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf5297152557c7da396243000ca240e89" kindref="member">ESC</ref>]<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>KEY_ESC;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cad2534cebcf6f430484b7c931dd657ddc" kindref="member">BACKSPACE</ref>]<sp/>=<sp/>KEY_BACKSPACE;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca920380215591395ea33ee5df8e293e19" kindref="member">TAB</ref>]<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>KEY_TAB;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cac08dae7edcb5c5bb959fee5971fbad95" kindref="member">SPACE</ref>]<sp/><sp/><sp/><sp/><sp/>=<sp/>KEY_SPACE;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca7ecc84d86e54a9b3f0e4a1c3aabc050e" kindref="member">CAPSLK</ref>]<sp/><sp/><sp/><sp/>=<sp/>KEY_CAPSLOCK;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cadb45120aafd37a973140edee24708065" kindref="member">LEFT</ref>]<sp/><sp/>=<sp/>KEY_LEFT;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caec8379af7490bb9eaaf579cf17876f38" kindref="member">RIGHT</ref>]<sp/>=<sp/>KEY_RIGHT;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caba595d8bca8bc5e67c37c0a9d89becfa" kindref="member">UP</ref>]<sp/><sp/><sp/><sp/>=<sp/>KEY_UP;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca9b0b4a95b99523966e0e34ffdadac9da" kindref="member">DOWN</ref>]<sp/><sp/>=<sp/>KEY_DOWN;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf7829657638cac08b350bcc89b019686" kindref="member">LCTRL</ref>]<sp/><sp/>=<sp/>KEY_LEFTCTRL;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cabff57a488a35993c295f4724cc7d681a" kindref="member">RCTRL</ref>]<sp/><sp/>=<sp/>KEY_RIGHTCTRL;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca04016f71a33b0eb0588266c888d97fa2" kindref="member">LALT</ref>]<sp/><sp/><sp/>=<sp/>KEY_LEFTALT;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca0de6b26d338b5491c6911e5b2d951d93" kindref="member">RALT</ref>]<sp/><sp/><sp/>=<sp/>KEY_RIGHTALT;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca39afc29636d1da3daa8d63a694fd326a" kindref="member">LSHIFT</ref>]<sp/>=<sp/>KEY_LEFTSHIFT;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caab6449326eb99b043532c550e60c1502" kindref="member">RSHIFT</ref>]<sp/>=<sp/>KEY_RIGHTSHIFT;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf613d73b4e7b570ffd967df4a13c4225" kindref="member">MINUS</ref>]<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>KEY_MINUS;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca59a84258a4cb9025b567ee5139455029" kindref="member">EQUAL</ref>]<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>KEY_EQUAL;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca0cec39b7d239ce3b136a6a5c8dce4733" kindref="member">LBRACKET</ref>]<sp/><sp/><sp/>=<sp/>KEY_LEFTBRACE;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55cae5a45530be18692845ef7dde05247664" kindref="member">RBRACKET</ref>]<sp/><sp/><sp/>=<sp/>KEY_RIGHTBRACE;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca18eb037ebe08a2b3e9ea4d4f86699be6" kindref="member">BACKSLASH</ref>]<sp/><sp/>=<sp/>KEY_BACKSLASH;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caaabdfe7000ca535236502bb0c87ad944" kindref="member">SLASH</ref>]<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>KEY_SLASH;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca55eebe3c7e08b49cd5969442f4f8c4ce" kindref="member">SEMICOLON</ref>]<sp/><sp/>=<sp/>KEY_SEMICOLON;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca1d294cd452a1bd17423ca8b41857f855" kindref="member">APOSTROPHE</ref>]<sp/>=<sp/>KEY_APOSTROPHE;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca14234884830e79618b4ee96253423963" kindref="member">GRAVE</ref>]<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>KEY_GRAVE;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf81277bcd86412fe04bb68718ea09392" kindref="member">COMMA</ref>]<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>KEY_COMMA;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caf65a8a7e47ca896d414e6c098e100038" kindref="member">PERIOD</ref>]<sp/><sp/><sp/><sp/><sp/>=<sp/>KEY_DOT;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca31c9274e4329f65ba390a35e8eafe13a" kindref="member">NONUS_BACKSLASH</ref>]<sp/>=<sp/>KEY_102ND;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caea0b3c0bf6b9668e7b9609cca1583010" kindref="member">SP_PRINT_SCREEN</ref>]<sp/>=<sp/>KEY_SYSRQ;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca57b6bc9506b1cb1e21e529a44c47d64d" kindref="member">SP_SCROLL_LOCK</ref>]<sp/><sp/>=<sp/>KEY_SCROLLLOCK;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca3434e2897cfb3f581f9bc1748b31b9d6" kindref="member">SP_INSERT</ref>]<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>KEY_INSERT;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca79b821cb60633c0f2be4c59881b6f0a7" kindref="member">SP_HOME</ref>]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>KEY_HOME;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca7f470a1df0d6a4dc075f163ef0630ae1" kindref="member">SP_END</ref>]<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>KEY_END;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca9964c6924a12ac3971a4016064762ae9" kindref="member">SP_DELETE</ref>]<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>KEY_DELETE;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca2fe50b7a7d85fc24d70688caaa8a7fff" kindref="member">SP_PAGE_UP</ref>]<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>KEY_PAGEUP;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca0aba32cb5aa31f64b182e5a60b5c2e2b" kindref="member">SP_PAGE_DOWN</ref>]<sp/><sp/><sp/><sp/>=<sp/>KEY_PAGEDOWN;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>a[<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca6ce26a62afab55d7606ad4e92428b30c" kindref="member">UNKNOWN</ref>]<sp/>=<sp/>KEY_RESERVED;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>a;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal">}();</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130" refid="namespacePDJE__EVDEV__KEYMAP_1a8b508a1944dde6507c39043214adcb77" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>std::array&lt;PDJE_KEY,<sp/>KEY_MAX<sp/>+<sp/>1&gt;<sp/><ref refid="namespacePDJE__EVDEV__KEYMAP_1a8b508a1944dde6507c39043214adcb77" kindref="member">kEvdevToPdje</ref><sp/>=<sp/>[]<sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>std::array&lt;PDJE_KEY,<sp/>KEY_MAX<sp/>+<sp/>1&gt;<sp/>a{};</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;x<sp/>:<sp/>a)</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>x<sp/>=<sp/><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca6ce26a62afab55d7606ad4e92428b30c" kindref="member">UNKNOWN</ref>;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(uint16_t<sp/>pk<sp/>=<sp/>0;<sp/>pk<sp/>&lt;<sp/>102;<sp/>++pk)<sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ev<sp/>=<sp/><ref refid="namespacePDJE__EVDEV__KEYMAP_1a8b981f9d2b0400556cd03ef0c67a95f1" kindref="member">kPdjeToEvdev</ref>[pk];</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ev<sp/>!=<sp/>KEY_RESERVED<sp/>&amp;&amp;<sp/>ev<sp/>&lt;=<sp/>KEY_MAX)</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>a[ev]<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55c" kindref="member">PDJE_KEY</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(pk);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>a;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal">}();</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55c" kindref="member">PDJE_KEY</ref></highlight></codeline>
+<codeline lineno="144" refid="namespacePDJE__EVDEV__KEYMAP_1aadf6f7c0a42a4ff187f6f20fccc1b885" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__EVDEV__KEYMAP_1aadf6f7c0a42a4ff187f6f20fccc1b885" kindref="member">keyboard_map</ref>(__u16<sp/>code)</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(code<sp/>&gt;<sp/>KEY_MAX)</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca6ce26a62afab55d7606ad4e92428b30c" kindref="member">UNKNOWN</ref>;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__EVDEV__KEYMAP_1a8b508a1944dde6507c39043214adcb77" kindref="member">kEvdevToPdje</ref>[code];</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_EVDEV_KEYMAP</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/input/DefaultDevs/linux/evdev_things/evdev_codemap.hpp"/>
+  </compounddef>
+</doxygen>

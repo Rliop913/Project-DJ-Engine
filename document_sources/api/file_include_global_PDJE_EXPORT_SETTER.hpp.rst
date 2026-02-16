@@ -4,7 +4,7 @@
 File PDJE_EXPORT_SETTER.hpp
 ===========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_global>` (``include\global``)
+|exhale_lsh| :ref:`Parent directory <dir_include_global>` (``include/global``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -18,7 +18,7 @@ Defines the PDJE_API macro for DLL import/export.
    :local:
    :backlinks: none
 
-Definition (``include\global\PDJE_EXPORT_SETTER.hpp``)
+Definition (``include/global/PDJE_EXPORT_SETTER.hpp``)
 ------------------------------------------------------
 
 
@@ -101,9 +101,13 @@ Included By
 
 - :ref:`file_include_global_PDJE_SYNC_CORE.hpp`
 
-- :ref:`file_include_input_IPC_memory_Input_Transfer.hpp`
+- :ref:`file_include_input_DefaultDevs_windows_DefaultDevs.hpp`
+
+- :ref:`file_include_input_IPC_memory_windows_Input_Transfer.hpp`
 
 - :ref:`file_include_input_PDJE_Input.hpp`
+
+- :ref:`file_include_input_PDJE_Input_Log.hpp`
 
 - :ref:`file_include_judge_Init_PDJE_Judge_Init.hpp`
 
@@ -120,7 +124,7 @@ Defines
 -------
 
 
-- :ref:`exhale_define__p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp_1a881b531a2da9c72650a79edb575b6c8c`
+- :ref:`exhale_define_PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c`
 
-- :ref:`exhale_define__p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp_1a7741270cebaf37c6127114855d3a00e1`
+- :ref:`exhale_define_PDJE__EXPORT__SETTER_8hpp_1a7741270cebaf37c6127114855d3a00e1`
 

@@ -4,7 +4,7 @@
 Program Listing for File audioPlayer.cpp
 ========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_MainObjects_audioPlayer_audioPlayer.cpp>` (``include\core\MainObjects\audioPlayer\audioPlayer.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_MainObjects_audioPlayer_audioPlayer.cpp>` (``include/core/MainObjects/audioPlayer/audioPlayer.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,6 +13,7 @@ Program Listing for File audioPlayer.cpp
    #include "audioPlayer.hpp"
    #include "PDJE_LOG_SETTER.hpp"
    #include "audioCallbacks.hpp"
+   #include "audio_OS_impls.hpp"
    #include <atomic>
    
    extern void
@@ -37,14 +38,17 @@ Program Listing for File audioPlayer.cpp
    void
    audioPlayer::ContextInit()
    {
-       auto conf = ma_context_config_init();
-       ma_context_init(NULL, 0, &conf, &ctxt);
-       ctxt.threadPriority = ma_thread_priority_high;
+       auto conf           = ma_context_config_init();
+       conf.threadPriority = ma_thread_priority_high;
+       auto backs          = OS_IMPL::get_backends();
+   
+       ma_context_init(backs.data(), backs.size(), &conf, &ctxt);
    }
    
    ma_device_config
    audioPlayer::DefaultInit(const unsigned int frameBufferSize)
    {
+       engineDatas             = std::make_unique<audioEngineDataStruct>();
        ma_device_config conf   = ma_device_config_init(ma_device_type_playback);
        conf.playback.format    = ma_format_f32;
        conf.playback.channels  = 2;
@@ -53,9 +57,9 @@ Program Listing for File audioPlayer.cpp
        conf.performanceProfile = ma_performance_profile_low_latency;
        LFaust.resize(frameBufferSize);
        RFaust.resize(frameBufferSize);
-       engineDatas.faustPcmPP[0] = LFaust.data();
-       engineDatas.faustPcmPP[1] = RFaust.data();
-       conf.pUserData            = reinterpret_cast<void *>(&engineDatas);
+       engineDatas->faustPcmPP[0] = LFaust.data();
+       engineDatas->faustPcmPP[1] = RFaust.data();
+       conf.pUserData             = reinterpret_cast<void *>(engineDatas.get());
        ContextInit();
        return conf;
    }
@@ -68,8 +72,8 @@ Program Listing for File audioPlayer.cpp
        auto conf = DefaultInit(frameBufferSize);
        if (hasManual) {
            conf.dataCallback = HybridRender_callback;
-           engineDatas.FXManualPanel.emplace(SAMPLERATE);
-           engineDatas.MusCtrPanel.emplace(SAMPLERATE, frameBufferSize);
+           engineDatas->FXManualPanel.emplace(SAMPLERATE);
+           engineDatas->MusCtrPanel.emplace(SAMPLERATE, frameBufferSize);
        } else {
            conf.dataCallback = FullPreRender_callback;
        }
@@ -79,14 +83,16 @@ Program Listing for File audioPlayer.cpp
                    ",fbsize, hasmanual)");
            return;
        }
-       engineDatas.pcmDataPoint = &renderer.rendered_frames.value();
-       engineDatas.maxCursor    = renderer.rendered_frames->size() / CHANNEL;
+       engineDatas->pcmDataPoint = &renderer.rendered_frames.value();
+       engineDatas->maxCursor    = renderer.rendered_frames->size() / CHANNEL;
    
        if (ma_device_init(&ctxt, &conf, &player) != MA_SUCCESS) {
            critlog("failed to init device. from audioPlayer::audioPlayer(db, td "
                    ",fbsize, hasmanual)");
            return;
        }
+       engineDatas->backend_ptr       = OS_IMPL::extract_backend(player);
+       engineDatas->get_unused_frames = OS_IMPL::set_unused_frame_function(player);
    }
    
    audioPlayer::audioPlayer(const unsigned int frameBufferSize)
@@ -94,12 +100,14 @@ Program Listing for File audioPlayer.cpp
        ma_device_config conf = DefaultInit(frameBufferSize);
    
        conf.dataCallback = FullManualRender_callback;
-       engineDatas.FXManualPanel.emplace(SAMPLERATE);
-       engineDatas.MusCtrPanel.emplace(SAMPLERATE, frameBufferSize);
+       engineDatas->FXManualPanel.emplace(SAMPLERATE);
+       engineDatas->MusCtrPanel.emplace(SAMPLERATE, frameBufferSize);
    
        if (ma_device_init(&ctxt, &conf, &player) != MA_SUCCESS) {
            critlog("failed to init device. from audioPlayer::audioPlayer(fbsize)");
        }
+       engineDatas->backend_ptr       = OS_IMPL::extract_backend(player);
+       engineDatas->get_unused_frames = OS_IMPL::set_unused_frame_function(player);
    }
    
    bool
@@ -132,26 +140,27 @@ Program Listing for File audioPlayer.cpp
    void
    audioPlayer::ChangeCursorPos(unsigned long long pos)
    {
-       engineDatas.nowCursor = pos;
+       engineDatas->nowCursor = pos;
    }
    
    unsigned long long
    audioPlayer::GetConsumedFrames()
    {
-       return engineDatas.syncData.load(std::memory_order_acquire).consumed_frames;
+       return engineDatas->syncData.load(std::memory_order_acquire)
+           .consumed_frames;
    }
    
    FXControlPanel *
    audioPlayer::GetFXControlPanel(const UNSANITIZED &title)
    {
        if (title == "__PDJE__MAIN__") {
-           if (!engineDatas.FXManualPanel.has_value()) {
-               engineDatas.FXManualPanel.emplace(48000);
+           if (!engineDatas->FXManualPanel.has_value()) {
+               engineDatas->FXManualPanel.emplace(48000);
            }
-           return &engineDatas.FXManualPanel.value();
+           return &engineDatas->FXManualPanel.value();
        } else {
-           if (engineDatas.MusCtrPanel.has_value()) {
-               return engineDatas.MusCtrPanel->getFXHandle(title);
+           if (engineDatas->MusCtrPanel.has_value()) {
+               return engineDatas->MusCtrPanel->getFXHandle(title);
            } else {
                critlog("failed to return fx control panel. from audioPlayer "
                        "GetFXControlPanel");
@@ -163,8 +172,8 @@ Program Listing for File audioPlayer.cpp
    MusicControlPanel *
    audioPlayer::GetMusicControlPanel()
    {
-       if (engineDatas.MusCtrPanel.has_value()) {
-           return &(engineDatas.MusCtrPanel.value());
+       if (engineDatas->MusCtrPanel.has_value()) {
+           return &(engineDatas->MusCtrPanel.value());
        } else {
            critlog("failed to return music control panel. from audioPlayer "
                    "GetMusicControlPanel");
@@ -177,11 +186,11 @@ Program Listing for File audioPlayer.cpp
    {
        PDJE_CORE_DATA_LINE dline;
    
-       dline.nowCursor = &engineDatas.nowCursor;
-       dline.maxCursor = &engineDatas.maxCursor;
-       dline.syncD     = &engineDatas.syncData;
-       if (!engineDatas.pcmDataPoint->empty()) {
-           dline.preRenderedData = engineDatas.pcmDataPoint->data();
+       dline.nowCursor = &engineDatas->nowCursor;
+       dline.maxCursor = &engineDatas->maxCursor;
+       dline.syncD     = &engineDatas->syncData;
+       if (!engineDatas->pcmDataPoint->empty()) {
+           dline.preRenderedData = engineDatas->pcmDataPoint->data();
        }
        return dline;
    }

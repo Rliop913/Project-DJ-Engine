@@ -30,10 +30,17 @@ elseif(APPLE)
     
 else()
     list(APPEND PDJE_INPUT_MAINPROC_SRC
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/linux/MainProcess.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/linux/RTEvent.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/linux/DefaultDevs.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/linux/InputCore.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/linux/ParseMouse.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/linux/ParseKeyboard.cpp
         
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/linux/ipc_Send_Linux.cpp
+        
+        
+        # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/linux/MainProcess.cpp
+        # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/linux/RTEvent.cpp
+        
+        # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/host/linux/ipc_Send_Linux.cpp
     )
     find_package(PkgConfig REQUIRED)
     pkg_check_modules(LIBEVDEV REQUIRED IMPORTED_TARGET libevdev)

@@ -4,7 +4,7 @@
 File judgeTest.cpp
 ==================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_tests_JUDGE_TESTS>` (``include\tests\JUDGE_TESTS``)
+|exhale_lsh| :ref:`Parent directory <dir_include_tests_JUDGE_TESTS>` (``include/tests/JUDGE_TESTS``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File judgeTest.cpp
    :local:
    :backlinks: none
 
-Definition (``include\tests\JUDGE_TESTS\judgeTest.cpp``)
+Definition (``include/tests/JUDGE_TESTS/judgeTest.cpp``)
 --------------------------------------------------------
 
 
@@ -49,7 +49,7 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_judge_test_8cpp_1a71299f15e84912d31dbe17f497605eef`
+- :ref:`exhale_function_judgeTest_8cpp_1a71299f15e84912d31dbe17f497605eef`
 
-- :ref:`exhale_function_judge_test_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4`
+- :ref:`exhale_function_judgeTest_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4`
 

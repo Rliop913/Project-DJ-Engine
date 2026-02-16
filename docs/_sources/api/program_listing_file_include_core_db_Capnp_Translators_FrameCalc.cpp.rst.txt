@@ -4,7 +4,7 @@
 Program Listing for File FrameCalc.cpp
 ======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_db_Capnp_Translators_FrameCalc.cpp>` (``include\core\db\Capnp\Translators\FrameCalc.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_db_Capnp_Translators_FrameCalc.cpp>` (``include/core/db/Capnp/Translators/FrameCalc.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

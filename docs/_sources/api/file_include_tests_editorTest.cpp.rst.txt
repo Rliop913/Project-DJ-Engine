@@ -4,7 +4,7 @@
 File editorTest.cpp
 ===================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_tests>` (``include\tests``)
+|exhale_lsh| :ref:`Parent directory <dir_include_tests>` (``include/tests``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File editorTest.cpp
    :local:
    :backlinks: none
 
-Definition (``include\tests\editorTest.cpp``)
+Definition (``include/tests/editorTest.cpp``)
 ---------------------------------------------
 
 
@@ -47,5 +47,5 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_editor_test_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4`
+- :ref:`exhale_function_editorTest_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4`
 

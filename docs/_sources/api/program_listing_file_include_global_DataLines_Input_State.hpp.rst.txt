@@ -4,7 +4,7 @@
 Program Listing for File Input_State.hpp
 ========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_global_DataLines_Input_State.hpp>` (``include\global\DataLines\Input_State.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_global_DataLines_Input_State.hpp>` (``include/global/DataLines/Input_State.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -154,7 +154,8 @@ Program Listing for File Input_State.hpp
    enum PDJE_Mouse_Axis_Type {
        REL                 = 0,
        ABS                 = 1,
-       VIRTUAL_DESKTOP_ABS = 2 // maybe windows only
+       VIRTUAL_DESKTOP_ABS = 2, // maybe windows only
+       PDJE_AXIS_IGNORE    = 3
    };
    
    using BITMASK = uint16_t;

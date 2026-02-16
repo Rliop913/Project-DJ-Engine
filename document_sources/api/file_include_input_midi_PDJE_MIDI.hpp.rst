@@ -4,7 +4,7 @@
 File PDJE_MIDI.hpp
 ==================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_midi>` (``include\input\midi``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_midi>` (``include/input/midi``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_MIDI.hpp
    :local:
    :backlinks: none
 
-Definition (``include\input\midi\PDJE_MIDI.hpp``)
+Definition (``include/input/midi/PDJE_MIDI.hpp``)
 -------------------------------------------------
 
 
@@ -66,16 +66,16 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_struct_p_d_j_e___m_i_d_i_1_1_m_i_d_i___e_v`
+- :ref:`exhale_struct_structPDJE__MIDI_1_1MIDI__EV`
 
-- :ref:`exhale_class_class_p_d_j_e___m_i_d_i_1_1_m_i_d_i`
+- :ref:`exhale_class_classPDJE__MIDI_1_1MIDI`
 
 
 Defines
 -------
 
 
-- :ref:`exhale_define__p_d_j_e___m_i_d_i_8hpp_1a1884715f6884d3e74813a758c8dfce36`
+- :ref:`exhale_define_PDJE__MIDI_8hpp_1a1884715f6884d3e74813a758c8dfce36`
 
-- :ref:`exhale_define__p_d_j_e___m_i_d_i_8hpp_1a741b653750e90549ae0098919423715d`
+- :ref:`exhale_define_PDJE__MIDI_8hpp_1a741b653750e90549ae0098919423715d`
 

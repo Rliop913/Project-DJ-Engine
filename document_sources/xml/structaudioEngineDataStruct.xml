@@ -134,6 +134,34 @@
         </inbodydescription>
         <location file="include/core/MainObjects/audioPlayer/audioCallbacks.hpp" line="26" column="31" bodyfile="include/core/MainObjects/audioPlayer/audioCallbacks.hpp" bodystart="26" bodyend="-1"/>
       </memberdef>
+      <memberdef kind="variable" id="structaudioEngineDataStruct_1af93ef65131c82aaa444119863f37ab3b" prot="public" static="no" mutable="no">
+        <type>ma_ptr</type>
+        <definition>ma_ptr audioEngineDataStruct::backend_ptr</definition>
+        <argsstring></argsstring>
+        <name>backend_ptr</name>
+        <qualifiedname>audioEngineDataStruct::backend_ptr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/MainObjects/audioPlayer/audioCallbacks.hpp" line="27" column="12" bodyfile="include/core/MainObjects/audioPlayer/audioCallbacks.hpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structaudioEngineDataStruct_1a51f564c58ff14e36320e6167eeaf4196" prot="public" static="no" mutable="no">
+        <type>std::function&lt; uint32_t(const ma_ptr &amp;)&gt;</type>
+        <definition>std::function&lt;uint32_t(const ma_ptr&amp;)&gt; audioEngineDataStruct::get_unused_frames</definition>
+        <argsstring></argsstring>
+        <name>get_unused_frames</name>
+        <qualifiedname>audioEngineDataStruct::get_unused_frames</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/MainObjects/audioPlayer/audioCallbacks.hpp" line="28" column="19" bodyfile="include/core/MainObjects/audioPlayer/audioCallbacks.hpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="structaudioEngineDataStruct_1a5458ea6743868149c4fd47af1c96197b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
@@ -165,7 +193,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/audioPlayer/audioCallbacks.hpp" line="34" column="5" bodyfile="include/core/MainObjects/audioPlayer/audioCallbacks.cpp" bodystart="8" bodyend="15"/>
+        <location file="include/core/MainObjects/audioPlayer/audioCallbacks.hpp" line="36" column="5" bodyfile="include/core/MainObjects/audioPlayer/audioCallbacks.cpp" bodystart="9" bodyend="16"/>
       </memberdef>
       <memberdef kind="function" id="structaudioEngineDataStruct_1acfbc94880ac9ca5289ed34fef118f561" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -194,7 +222,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/audioPlayer/audioCallbacks.hpp" line="42" column="5" bodyfile="include/core/MainObjects/audioPlayer/audioCallbacks.cpp" bodystart="18" bodyend="25"/>
+        <location file="include/core/MainObjects/audioPlayer/audioCallbacks.hpp" line="44" column="5" bodyfile="include/core/MainObjects/audioPlayer/audioCallbacks.cpp" bodystart="19" bodyend="27"/>
       </memberdef>
       <memberdef kind="function" id="structaudioEngineDataStruct_1aa66ef36888faee74e89b103ebfae4b9e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -235,7 +263,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/audioPlayer/audioCallbacks.hpp" line="52" column="5" bodyfile="include/core/MainObjects/audioPlayer/audioCallbacks.cpp" bodystart="28" bodyend="46"/>
+        <location file="include/core/MainObjects/audioPlayer/audioCallbacks.hpp" line="54" column="5" bodyfile="include/core/MainObjects/audioPlayer/audioCallbacks.cpp" bodystart="30" bodyend="48"/>
       </memberdef>
       <memberdef kind="function" id="structaudioEngineDataStruct_1a1b0bca5c75f2851baee4597147f8032e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -276,7 +304,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/audioPlayer/audioCallbacks.hpp" line="62" column="5" bodyfile="include/core/MainObjects/audioPlayer/audioCallbacks.cpp" bodystart="49" bodyend="56"/>
+        <location file="include/core/MainObjects/audioPlayer/audioCallbacks.hpp" line="64" column="5" bodyfile="include/core/MainObjects/audioPlayer/audioCallbacks.cpp" bodystart="51" bodyend="58"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -319,13 +347,15 @@
         <label>std::vector&lt; float &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/core/MainObjects/audioPlayer/audioCallbacks.hpp" line="16" column="1" bodyfile="include/core/MainObjects/audioPlayer/audioCallbacks.hpp" bodystart="16" bodyend="63"/>
+    <location file="include/core/MainObjects/audioPlayer/audioCallbacks.hpp" line="16" column="1" bodyfile="include/core/MainObjects/audioPlayer/audioCallbacks.hpp" bodystart="16" bodyend="65"/>
     <listofallmembers>
+      <member refid="structaudioEngineDataStruct_1af93ef65131c82aaa444119863f37ab3b" prot="public" virt="non-virtual"><scope>audioEngineDataStruct</scope><name>backend_ptr</name></member>
       <member refid="structaudioEngineDataStruct_1a993ef28e30d1588f0518c6d5a209325d" prot="public" virt="non-virtual"><scope>audioEngineDataStruct</scope><name>cacheSync</name></member>
       <member refid="structaudioEngineDataStruct_1acfbc94880ac9ca5289ed34fef118f561" prot="public" virt="non-virtual"><scope>audioEngineDataStruct</scope><name>CountUp</name></member>
       <member refid="structaudioEngineDataStruct_1aab0d65b85bfb5bf76929c7773a239b26" prot="public" virt="non-virtual"><scope>audioEngineDataStruct</scope><name>faustPcmPP</name></member>
       <member refid="structaudioEngineDataStruct_1a43d868f597776d70780535bfa6e6e944" prot="public" virt="non-virtual"><scope>audioEngineDataStruct</scope><name>FXManualPanel</name></member>
       <member refid="structaudioEngineDataStruct_1a1b0bca5c75f2851baee4597147f8032e" prot="public" virt="non-virtual"><scope>audioEngineDataStruct</scope><name>Get</name></member>
+      <member refid="structaudioEngineDataStruct_1a51f564c58ff14e36320e6167eeaf4196" prot="public" virt="non-virtual"><scope>audioEngineDataStruct</scope><name>get_unused_frames</name></member>
       <member refid="structaudioEngineDataStruct_1aa66ef36888faee74e89b103ebfae4b9e" prot="public" virt="non-virtual"><scope>audioEngineDataStruct</scope><name>GetAfterManFX</name></member>
       <member refid="structaudioEngineDataStruct_1a5458ea6743868149c4fd47af1c96197b" prot="public" virt="non-virtual"><scope>audioEngineDataStruct</scope><name>getNowfPointer</name></member>
       <member refid="structaudioEngineDataStruct_1a7f40a0b02a4ff37f86191b9691f968de" prot="public" virt="non-virtual"><scope>audioEngineDataStruct</scope><name>highres_clock</name></member>

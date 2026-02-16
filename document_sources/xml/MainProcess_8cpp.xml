@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="MainProcess_8cpp" kind="file" language="C++">
+    <compoundname>MainProcess.cpp</compoundname>
+    <includes local="yes">MainProcess.hpp</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>include/input/trashbin/MainProcess.cpp</label>
+        <link refid="MainProcess_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>MainProcess.hpp</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacePDJE__IPC">PDJE_IPC</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;MainProcess.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__IPC" kindref="compound">PDJE_IPC</ref><sp/>{</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__IPC_1_1MAINPROC" kindref="compound">MAINPROC</ref>;</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><ref refid="classPDJE__IPC_1_1MAINPROC_1_1TXRXTransport_1a46b0d36ce17c89390938aecd0e54270f" kindref="member">TXRXTransport::CheckHealth</ref>()</highlight></codeline>
+<codeline lineno="7"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1MAINPROC_1_1TXRXTransport_1aaa1eb73b5176439cb7117bebea79bba8" kindref="member">TXRX_RESPONSE</ref>.HEALTH_CHECK.emplace();</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>resp<sp/>=<sp/><ref refid="classPDJE__IPC_1_1MAINPROC_1_1TXRXTransport_1aaa1eb73b5176439cb7117bebea79bba8" kindref="member">TXRX_RESPONSE</ref>.HEALTH_CHECK-&gt;get_future();</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>res<sp/><sp/>=<sp/><ref refid="classPDJE__IPC_1_1MAINPROC_1_1TXRXTransport_1a253af7543a42350f5dd4150ba82b4726" kindref="member">txrx</ref>-&gt;Send(<ref refid="namespacePDJE__CRYPTO_1ac8adde0115ea73016910171931b83639a9f004a3df67179cd97bba7b699598cb2" kindref="member">PDJE_CRYPTO::TXRXHEADER::HEALTH_CHECK</ref>,<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(res)<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res<sp/>=<sp/>resp.get();</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1MAINPROC_1_1TXRXTransport_1aaa1eb73b5176439cb7117bebea79bba8" kindref="member">TXRX_RESPONSE</ref>.HEALTH_CHECK.reset();</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(res)</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;health<sp/>check<sp/>failed.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal">std::vector&lt;DeviceData&gt;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><ref refid="classPDJE__IPC_1_1MAINPROC_1_1TXRXTransport_1a9d8997e02f797ab7bda291e5260397b3" kindref="member">TXRXTransport::GetDevices</ref>()</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1MAINPROC_1_1TXRXTransport_1aaa1eb73b5176439cb7117bebea79bba8" kindref="member">TXRX_RESPONSE</ref>.DEVICE_LIST.emplace();</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>resp<sp/>=<sp/><ref refid="classPDJE__IPC_1_1MAINPROC_1_1TXRXTransport_1aaa1eb73b5176439cb7117bebea79bba8" kindref="member">TXRX_RESPONSE</ref>.DEVICE_LIST-&gt;get_future();</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>res<sp/><sp/>=<sp/><ref refid="classPDJE__IPC_1_1MAINPROC_1_1TXRXTransport_1a253af7543a42350f5dd4150ba82b4726" kindref="member">txrx</ref>-&gt;Send(<ref refid="namespacePDJE__CRYPTO_1ac8adde0115ea73016910171931b83639a3c74830ab10b9ebcc61cae8a33fb9527" kindref="member">PDJE_CRYPTO::TXRXHEADER::DEVICE_LIST</ref>,<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!res)<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1MAINPROC_1_1TXRXTransport_1aaa1eb73b5176439cb7117bebea79bba8" kindref="member">TXRX_RESPONSE</ref>.DEVICE_LIST.reset();</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>request<sp/>device<sp/>list.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{};</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>resp.get();</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><ref refid="classPDJE__IPC_1_1MAINPROC_1_1TXRXTransport_1a680267003f078ea46d07e4e549a53a0b" kindref="member">TXRXTransport::QueryConfig</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;dumped_json)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1MAINPROC_1_1TXRXTransport_1aaa1eb73b5176439cb7117bebea79bba8" kindref="member">TXRX_RESPONSE</ref>.DEVICE_CONFIG.emplace();</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>resp<sp/>=<sp/><ref refid="classPDJE__IPC_1_1MAINPROC_1_1TXRXTransport_1aaa1eb73b5176439cb7117bebea79bba8" kindref="member">TXRX_RESPONSE</ref>.DEVICE_CONFIG-&gt;get_future();</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>res<sp/><sp/>=<sp/><ref refid="classPDJE__IPC_1_1MAINPROC_1_1TXRXTransport_1a253af7543a42350f5dd4150ba82b4726" kindref="member">txrx</ref>-&gt;Send(<ref refid="namespacePDJE__CRYPTO_1ac8adde0115ea73016910171931b83639ad1e25fb1c1ba9ebd44299f2538c6bd27" kindref="member">PDJE_CRYPTO::TXRXHEADER::DEVICE_CONFIG</ref>,<sp/>dumped_json);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(res)<sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res<sp/>=<sp/>resp.get();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1MAINPROC_1_1TXRXTransport_1aaa1eb73b5176439cb7117bebea79bba8" kindref="member">TXRX_RESPONSE</ref>.DEVICE_CONFIG.reset();</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(res)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;query<sp/>configure<sp/>failed.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><ref refid="classPDJE__IPC_1_1MAINPROC_1_1TXRXTransport_1af1128de1360f3f4d5d8628d332f360f5" kindref="member">TXRXTransport::InitEvents</ref>()</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>namegen<sp/><sp/>=<sp/>PDJE_IPC::RANDOM_GEN();</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>loop_run<sp/>=<sp/>namegen.Gen(</highlight><highlight class="stringliteral">&quot;PDJE_IPC_EVENT_LOOP_RUN_&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>term<sp/><sp/><sp/><sp/><sp/>=<sp/>namegen.Gen(</highlight><highlight class="stringliteral">&quot;PDJE_IPC_EVENT_TERMINATE_&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1MAINPROC_1_1TXRXTransport_1af9de2c59d0447b2545f586ccbb76b5d4" kindref="member">events</ref>.input_loop_run_event.HostInit(loop_run);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1MAINPROC_1_1TXRXTransport_1af9de2c59d0447b2545f586ccbb76b5d4" kindref="member">events</ref>.terminate_event.HostInit(term);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1MAINPROC_1_1TXRXTransport_1a6526f91c11ac5138542bc6822233f98a" kindref="member">SendIPCSharedMemory</ref>(1,<sp/>loop_run,<sp/></highlight><highlight class="stringliteral">&quot;EVENT_input_loop_run&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1MAINPROC_1_1TXRXTransport_1a6526f91c11ac5138542bc6822233f98a" kindref="member">SendIPCSharedMemory</ref>(1,<sp/>term,<sp/></highlight><highlight class="stringliteral">&quot;EVENT_terminate&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><ref refid="classPDJE__IPC_1_1MAINPROC_1_1TXRXTransport_1ad290cd97cd988a001ee1382898dc6937" kindref="member">TXRXTransport::Kill</ref>()</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1MAINPROC_1_1TXRXTransport_1aaa1eb73b5176439cb7117bebea79bba8" kindref="member">TXRX_RESPONSE</ref>.KILL.emplace();</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>resp<sp/>=<sp/><ref refid="classPDJE__IPC_1_1MAINPROC_1_1TXRXTransport_1aaa1eb73b5176439cb7117bebea79bba8" kindref="member">TXRX_RESPONSE</ref>.KILL-&gt;get_future();</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>res<sp/><sp/>=<sp/><ref refid="classPDJE__IPC_1_1MAINPROC_1_1TXRXTransport_1a253af7543a42350f5dd4150ba82b4726" kindref="member">txrx</ref>-&gt;Send(<ref refid="namespacePDJE__CRYPTO_1ac8adde0115ea73016910171931b83639a70fe9174cc24f70a2b65848793fae5ef" kindref="member">PDJE_CRYPTO::TXRXHEADER::TXRX_KILL</ref>,<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(res)<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>res<sp/>=<sp/>resp.get();</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1MAINPROC_1_1TXRXTransport_1aaa1eb73b5176439cb7117bebea79bba8" kindref="member">TXRX_RESPONSE</ref>.KILL.reset();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1MAINPROC_1_1TXRXTransport_1a253af7543a42350f5dd4150ba82b4726" kindref="member">txrx</ref>.reset();</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(res)</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>send<sp/>kill<sp/>signal.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_IPC</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/input/trashbin/MainProcess.cpp"/>
+  </compounddef>
+</doxygen>

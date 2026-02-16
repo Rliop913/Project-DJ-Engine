@@ -13,6 +13,7 @@
     <includes local="no">thread</includes>
     <includes local="no">unordered_map</includes>
     <includedby refid="PDJE__Judge__Loop_8hpp" local="yes">include/judge/Loop/PDJE_Judge_Loop.hpp</includedby>
+    <includedby refid="PDJE__PreProcess_8hpp" local="yes">include/judge/Loop/PreProcess/PDJE_PreProcess.hpp</includedby>
     <incdepgraph>
       <node id="5">
         <label>PDJE_Crypto.hpp</label>
@@ -30,18 +31,18 @@
         <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="31">
+      <node id="30">
         <label>Input_State.hpp</label>
         <link refid="Input__State_8hpp"/>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
         <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -51,29 +52,29 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
         <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
-      <node id="34">
+      <node id="33">
         <label>PDJE_Input_Device_Data.hpp</label>
         <link refid="PDJE__Input__Device__Data_8hpp"/>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
         <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -103,49 +104,43 @@
         <link refid="PDJE__SYNC__CORE_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
-      </node>
-      <node id="18">
-        <label>PDJE_INPUT_PROCESS_HASH.hpp</label>
-        <link refid="PDJE__INPUT__PROCESS__HASH_8hpp"/>
       </node>
       <node id="4">
         <label>ipc_shared_memory.hpp</label>
         <link refid="ipc__shared__memory_8hpp"/>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
         <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
         <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
-      <node id="29">
+      <node id="28">
         <label>PDJE_Judge_Init_Structs.hpp</label>
         <link refid="PDJE__Judge__Init__Structs_8hpp"/>
-        <childnode refid="30" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -153,71 +148,73 @@
         <link refid="PDJE__Judge__Loop__Structs_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
         <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="37" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="42" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
       </node>
-      <node id="30">
+      <node id="29">
         <label>PDJE_Note_OBJ.hpp</label>
         <link refid="PDJE__Note__OBJ_8hpp"/>
-        <childnode refid="31" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>PDJE_Rule.hpp</label>
+        <link refid="PDJE__Rule_8hpp"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="37" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
         <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="39" relation="include">
-        </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-      </node>
-      <node id="37">
-        <label>PDJE_Rule.hpp</label>
-        <link refid="PDJE__Rule_8hpp"/>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="38" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
         <childnode refid="39" relation="include">
         </childnode>
       </node>
-      <node id="19">
+      <node id="18">
         <label>algorithm</label>
       </node>
-      <node id="26">
+      <node id="25">
         <label>atomic</label>
       </node>
       <node id="14">
@@ -229,46 +226,46 @@
       <node id="16">
         <label>botan/hash.h</label>
       </node>
-      <node id="20">
+      <node id="19">
         <label>cctype</label>
       </node>
-      <node id="21">
+      <node id="20">
         <label>cstddef</label>
       </node>
-      <node id="35">
+      <node id="34">
         <label>cstdint</label>
       </node>
       <node id="7">
         <label>filesystem</label>
       </node>
-      <node id="22">
+      <node id="21">
         <label>fstream</label>
       </node>
-      <node id="38">
+      <node id="37">
         <label>functional</label>
       </node>
-      <node id="32">
+      <node id="31">
         <label>future</label>
       </node>
-      <node id="23">
+      <node id="22">
         <label>ios</label>
       </node>
-      <node id="36">
+      <node id="35">
         <label>latch</label>
       </node>
-      <node id="24">
+      <node id="23">
         <label>limits</label>
       </node>
-      <node id="27">
+      <node id="26">
         <label>memory_resource</label>
       </node>
       <node id="8">
         <label>mutex</label>
       </node>
-      <node id="33">
+      <node id="32">
         <label>optional</label>
       </node>
-      <node id="28">
+      <node id="27">
         <label>random</label>
       </node>
       <node id="9">
@@ -292,34 +289,47 @@
       <node id="13">
         <label>type_traits</label>
       </node>
-      <node id="39">
+      <node id="38">
         <label>unordered_map</label>
       </node>
       <node id="40">
         <label>utility</label>
       </node>
-      <node id="25">
+      <node id="39">
+        <label>variant</label>
+      </node>
+      <node id="24">
         <label>vector</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="3">
-        <label>include/judge/Loop/HID.cpp</label>
-        <link refid="HID_8cpp"/>
-      </node>
-      <node id="4">
-        <label>include/judge/Loop/Keyboard.cpp</label>
+      <node id="11">
+        <label>include/judge/Loop/Match/Keyboard.cpp</label>
         <link refid="Keyboard_8cpp"/>
       </node>
-      <node id="5">
-        <label>include/judge/Loop/MIDI.cpp</label>
+      <node id="3">
+        <label>include/judge/Loop/Match/MIDI.cpp</label>
         <link refid="MIDI_8cpp"/>
       </node>
-      <node id="6">
-        <label>include/judge/Loop/Mouse.cpp</label>
+      <node id="4">
+        <label>include/judge/Loop/Match/Mouse.cpp</label>
         <link refid="Mouse_8cpp"/>
       </node>
-      <node id="7">
+      <node id="12">
+        <label>include/judge/Loop/Match/PDJE_Match.cpp</label>
+        <link refid="PDJE__Match_8cpp"/>
+      </node>
+      <node id="10">
+        <label>include/judge/Loop/Match/PDJE_Match.hpp</label>
+        <link refid="PDJE__Match_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
         <label>include/judge/Loop/PDJE_Judge_Loop.cpp</label>
         <link refid="PDJE__Judge__Loop_8cpp"/>
       </node>
@@ -334,30 +344,48 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
       </node>
       <node id="1">
         <label>include/judge/Loop/PDJE_Judge_Loop_Structs.hpp</label>
         <link refid="PDJE__Judge__Loop__Structs_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>include/judge/Loop/PreProcess/PDJE_PreProcess.cpp</label>
+        <link refid="PDJE__PreProcess_8cpp"/>
       </node>
       <node id="9">
+        <label>include/judge/Loop/PreProcess/PDJE_PreProcess.hpp</label>
+        <link refid="PDJE__PreProcess_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>include/judge/Loop/PreProcess/PDJE_PreProcess_Work.cpp</label>
+        <link refid="PDJE__PreProcess__Work_8cpp"/>
+      </node>
+      <node id="7">
         <label>include/judge/PDJE_Judge.cpp</label>
         <link refid="PDJE__Judge_8cpp"/>
       </node>
-      <node id="8">
+      <node id="6">
         <label>include/judge/PDJE_Judge.hpp</label>
         <link refid="PDJE__Judge_8hpp"/>
-        <childnode refid="9" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="10">
+      <node id="8">
         <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
         <link refid="judgeTest_8cpp"/>
       </node>
@@ -366,7 +394,6 @@
     <innerclass refid="structPDJE__JUDGE_1_1useDatas" prot="public">PDJE_JUDGE::useDatas</innerclass>
     <innerclass refid="structPDJE__JUDGE_1_1Queues" prot="public">PDJE_JUDGE::Queues</innerclass>
     <innerclass refid="structPDJE__JUDGE_1_1mouse__btn__event" prot="public">PDJE_JUDGE::mouse_btn_event</innerclass>
-    <innerclass refid="structPDJE__JUDGE_1_1LoopCached" prot="public">PDJE_JUDGE::LoopCached</innerclass>
     <innernamespace refid="namespacePDJE__JUDGE">PDJE_JUDGE</innernamespace>
     <briefdescription>
     </briefdescription>
@@ -414,35 +441,7 @@
 <codeline lineno="42" refid="structPDJE__JUDGE_1_1mouse__btn__event_1aa136f609fd0975d0758e16d8da6b0d9c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><ref refid="structPDJE__JUDGE_1_1mouse__btn__event_1aa136f609fd0975d0758e16d8da6b0d9c" kindref="member">rail_id</ref><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="43" refid="structPDJE__JUDGE_1_1mouse__btn__event_1aea042ed77618e9af816b32a3a0926b3a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPDJE__JUDGE_1_1mouse__btn__event_1aea042ed77618e9af816b32a3a0926b3a" kindref="member">status</ref><sp/><sp/>=<sp/>-1;</highlight></codeline>
 <codeline lineno="44"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="46" refid="structPDJE__JUDGE_1_1LoopCached" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structPDJE__JUDGE_1_1LoopCached" kindref="compound">LoopCached</ref><sp/>{</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight></codeline>
-<codeline lineno="48" refid="structPDJE__JUDGE_1_1LoopCached_1a8eab3d278139bdff8c6c9d76274b4946" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::unordered_map&lt;uint64_t,<sp/>NOTE_VEC&gt;<sp/><ref refid="structPDJE__JUDGE_1_1LoopCached_1a8eab3d278139bdff8c6c9d76274b4946" kindref="member">missed_buffers</ref>;</highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight></codeline>
-<codeline lineno="50" refid="structPDJE__JUDGE_1_1LoopCached_1a801a9a6688d5df1877501d46dc03a096" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__JUDGE_1ad73c9d4a59c40cc7c1a9fce27dc1be72" kindref="member">P_NOTE_VEC</ref><sp/><ref refid="structPDJE__JUDGE_1_1LoopCached_1a801a9a6688d5df1877501d46dc03a096" kindref="member">found_list</ref>;</highlight></codeline>
-<codeline lineno="51" refid="structPDJE__JUDGE_1_1LoopCached_1a0b8570b55e6448bd83ff0df0ebb94835" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__JUDGE_1ad73c9d4a59c40cc7c1a9fce27dc1be72" kindref="member">P_NOTE_VEC</ref><sp/><ref refid="structPDJE__JUDGE_1_1LoopCached_1a0b8570b55e6448bd83ff0df0ebb94835" kindref="member">related_list_out</ref>;</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>time<sp/>values</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="54" refid="structPDJE__JUDGE_1_1LoopCached_1ab3ed8079b00d7f8fff5c42a009f55ee7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__JUDGE_1a3ee6af366c462d64775daf2f7b0d7e42" kindref="member">LOCAL_TIME</ref><sp/><ref refid="structPDJE__JUDGE_1_1LoopCached_1ab3ed8079b00d7f8fff5c42a009f55ee7" kindref="member">local_microsecond_position</ref>;</highlight></codeline>
-<codeline lineno="55" refid="structPDJE__JUDGE_1_1LoopCached_1ad3f0f432a0408ac1710d6d3721b3c084" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><sp/><sp/><ref refid="structPDJE__JUDGE_1_1LoopCached_1ad3f0f432a0408ac1710d6d3721b3c084" kindref="member">global_local_diff</ref>;</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>LOCAL_TIME<sp/>log_begin;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>LOCAL_TIME<sp/>log_end;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="60" refid="structPDJE__JUDGE_1_1LoopCached_1a724b22d7d4253dbed82718368d0fe00b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__JUDGE_1a3ee6af366c462d64775daf2f7b0d7e42" kindref="member">LOCAL_TIME</ref><sp/><sp/><ref refid="structPDJE__JUDGE_1_1LoopCached_1a724b22d7d4253dbed82718368d0fe00b" kindref="member">use_range</ref>;</highlight></codeline>
-<codeline lineno="61" refid="structPDJE__JUDGE_1_1LoopCached_1a54936371fc326e1aabfd8234a6e36062" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structPDJE__JUDGE_1_1LoopCached_1a54936371fc326e1aabfd8234a6e36062" kindref="member">strCache</ref>;</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>LOCAL_TIME<sp/>cut_range;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="63"><highlight class="normal"></highlight></codeline>
-<codeline lineno="64" refid="structPDJE__JUDGE_1_1LoopCached_1a173977f6b2f44cf9d07ca0d70e7110ec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structaudioSyncData" kindref="compound">audioSyncData</ref><sp/><ref refid="structPDJE__JUDGE_1_1LoopCached_1a173977f6b2f44cf9d07ca0d70e7110ec" kindref="member">synced_data</ref>;</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight></codeline>
-<codeline lineno="66" refid="structPDJE__JUDGE_1_1LoopCached_1a4087895ccee8da13f58997fecac55846" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structPDJE__JUDGE_1_1RAIL__META" kindref="compound">RAIL_META</ref><sp/><ref refid="structPDJE__JUDGE_1_1LoopCached_1a4087895ccee8da13f58997fecac55846" kindref="member">meta</ref>;</highlight></codeline>
-<codeline lineno="67" refid="structPDJE__JUDGE_1_1LoopCached_1a3a5e7da37f61a24515da53e5430621a5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPDJE__JUDGE_1_1LoopCached_1a3a5e7da37f61a24515da53e5430621a5" kindref="member">isLate</ref>;</highlight></codeline>
-<codeline lineno="68" refid="structPDJE__JUDGE_1_1LoopCached_1a965ee9bd9623096255742c54311d1d15" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><sp/><ref refid="structPDJE__JUDGE_1_1LoopCached_1a965ee9bd9623096255742c54311d1d15" kindref="member">railid</ref>;</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>INPUT_SETTING<sp/>setting;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"></highlight></codeline>
-<codeline lineno="71" refid="structPDJE__JUDGE_1_1LoopCached_1ac6fcbc012f10f554469e259afe2784e6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint64_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPDJE__JUDGE_1_1LoopCached_1ac6fcbc012f10f554469e259afe2784e6" kindref="member">diff</ref>;</highlight></codeline>
-<codeline lineno="72" refid="structPDJE__JUDGE_1_1LoopCached_1a61329727a540faaba9fb863351223b4b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;mouse_btn_event&gt;<sp/><ref refid="structPDJE__JUDGE_1_1LoopCached_1a61329727a540faaba9fb863351223b4b" kindref="member">mouse_btn_event_queue</ref>;</highlight></codeline>
-<codeline lineno="73"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="74"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_JUDGE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_JUDGE</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/judge/Loop/PDJE_Judge_Loop_Structs.hpp"/>
   </compounddef>

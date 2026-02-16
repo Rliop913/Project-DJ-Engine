@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
@@ -8,20 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Util_Engine &mdash; Project_DJ_Engine  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
 
   
-      <script src="_static/jquery.js?v=5d32c60e"></script>
-      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=5929fcd5"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script src="_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
-      <script src="_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
-      <script src="_static/design-tabs.js?v=f930bc37"></script>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9bcbadda"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+        <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -54,7 +56,11 @@
 <li class="toctree-l2"><a class="reference internal" href="Core_Engine.html">Core_Engine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Input_Engine.html">Input_Engine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Judge_Engine.html">Judge_Engine</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Util_Engine</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Util_Engine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#status">Status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-read-this-page">How to read this page</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="Data_Lines.html">Data_Lines</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Editor_Format.html">Editor_Format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
@@ -93,7 +99,24 @@
              
   <section id="util-engine">
 <h1>Util_Engine<a class="headerlink" href="#util-engine" title="Link to this heading"></a></h1>
-<p>Available on PDJE 1.2.0</p>
+<section id="status">
+<h2>Status<a class="headerlink" href="#status" title="Link to this heading"></a></h2>
+<p>The Utility Engine is currently a roadmap area, not an active module target in the current codebase.</p>
+<ul class="simple">
+<li><p>There is no <cite>PDJE_MODULE_UTILITY</cite> target in <cite>CMakeLists.txt</cite>.</p></li>
+<li><p>Existing build targets focus on Core (<cite>PDJE</cite>), Input (<cite>PDJE_MODULE_INPUT</cite>), and Judge (<cite>PDJE_MODULE_JUDGE</cite>) depending on options.</p></li>
+</ul>
+</section>
+<section id="how-to-read-this-page">
+<h2>How to read this page<a class="headerlink" href="#how-to-read-this-page" title="Link to this heading"></a></h2>
+<p>Treat Utility Engine references as design direction for future releases (for example, analysis/AI helper modules), not as immediately available runtime APIs.</p>
+<p>If you need production functionality today, use:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Core_Engine.html"><span class="doc">Core_Engine</span></a> for playback and editor workflows</p></li>
+<li><p><a class="reference internal" href="Input_Engine.html"><span class="doc">Input_Engine</span></a> for keyboard/mouse/MIDI ingestion</p></li>
+<li><p><a class="reference internal" href="Judge_Engine.html"><span class="doc">Judge_Engine</span></a> for timing judgment and note matching</p></li>
+</ul>
+</section>
 </section>
 
 

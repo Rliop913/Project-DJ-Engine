@@ -74,19 +74,19 @@
         </inbodydescription>
         <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="34" column="19" bodyfile="include/judge/Init/PDJE_Judge_Init.hpp" bodystart="34" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classPDJE__JUDGE_1_1Judge__Init_1ac40b836c338758e957a88995d574cb9c" prot="public" static="no" mutable="no">
-        <type><ref refid="classPDJE__JUDGE_1_1InputParser" kindref="compound">InputParser</ref></type>
-        <definition>InputParser PDJE_JUDGE::Judge_Init::devparser</definition>
+      <memberdef kind="variable" id="classPDJE__JUDGE_1_1Judge__Init_1aa8c94b28690792fc7af58fc3b85b4a8b" prot="public" static="no" mutable="no">
+        <type><ref refid="structPDJE__JUDGE_1_1RAIL__DB" kindref="compound">RAIL_DB</ref></type>
+        <definition>RAIL_DB PDJE_JUDGE::Judge_Init::raildb</definition>
         <argsstring></argsstring>
-        <name>devparser</name>
-        <qualifiedname>PDJE_JUDGE::Judge_Init::devparser</qualifiedname>
+        <name>raildb</name>
+        <qualifiedname>PDJE_JUDGE::Judge_Init::raildb</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="36" column="17" bodyfile="include/judge/Init/PDJE_Judge_Init.hpp" bodystart="36" bodyend="-1"/>
+        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="36" column="13" bodyfile="include/judge/Init/PDJE_Judge_Init.hpp" bodystart="36" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -119,7 +119,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="20" column="5" bodyfile="include/judge/Init/PDJE_Judge_Init.cpp" bodystart="66" bodyend="77"/>
+        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="20" column="5" bodyfile="include/judge/Init/PDJE_Judge_Init.cpp" bodystart="86" bodyend="97"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -152,7 +152,87 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="42" column="5" bodyfile="include/judge/Init/PDJE_Judge_Init.cpp" bodystart="33" bodyend="58"/>
+        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="40" column="5" bodyfile="include/judge/Init/PDJE_Judge_Init.cpp" bodystart="63" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__JUDGE_1_1Judge__Init_1aeb3522b5e5b7c4077f0463a8f19be6d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_JUDGE::Judge_Init::SetRail</definition>
+        <argsstring>(const std::string &amp;midi_port_name, const uint64_t MatchRail, const uint8_t type, const uint8_t ch, const uint8_t pos=0, const int64_t offset_microsecond=0)</argsstring>
+        <name>SetRail</name>
+        <qualifiedname>PDJE_JUDGE::Judge_Init::SetRail</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>midi_port_name</declname>
+        </param>
+        <param>
+          <type>const uint64_t</type>
+          <declname>MatchRail</declname>
+        </param>
+        <param>
+          <type>const uint8_t</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>const uint8_t</type>
+          <declname>ch</declname>
+        </param>
+        <param>
+          <type>const uint8_t</type>
+          <declname>pos</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>const int64_t</type>
+          <declname>offset_microsecond</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="46" column="5" bodyfile="include/judge/Init/PDJE_Judge_Init.cpp" bodystart="35" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__JUDGE_1_1Judge__Init_1ac6c056fdfa921e7a47a135da0cd8bd30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_JUDGE::Judge_Init::SetRail</definition>
+        <argsstring>(const libremidi::input_port &amp;midi_port, const uint64_t MatchRail, const uint8_t type, const uint8_t ch, const uint8_t pos=0, const int64_t offset_microsecond=0)</argsstring>
+        <name>SetRail</name>
+        <qualifiedname>PDJE_JUDGE::Judge_Init::SetRail</qualifiedname>
+        <param>
+          <type>const libremidi::input_port &amp;</type>
+          <declname>midi_port</declname>
+        </param>
+        <param>
+          <type>const uint64_t</type>
+          <declname>MatchRail</declname>
+        </param>
+        <param>
+          <type>const uint8_t</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>const uint8_t</type>
+          <declname>ch</declname>
+        </param>
+        <param>
+          <type>const uint8_t</type>
+          <declname>pos</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>const int64_t</type>
+          <declname>offset_microsecond</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="53" column="5" bodyfile="include/judge/Init/PDJE_Judge_Init.cpp" bodystart="53" bodyend="61"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__JUDGE_1_1Judge__Init_1aa9d5d05218f808e518e003a22c1b0f9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -171,7 +251,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="48" column="5" bodyfile="include/judge/Init/PDJE_Judge_Init.cpp" bodystart="61" bodyend="64"/>
+        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="61" column="5" bodyfile="include/judge/Init/PDJE_Judge_Init.cpp" bodystart="81" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__JUDGE_1_1Judge__Init_1aef003f853b0becb3ac7183678cb1a0ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -190,7 +270,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="52" column="5" bodyfile="include/judge/Init/PDJE_Judge_Init.cpp" bodystart="19" bodyend="22"/>
+        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="65" column="5" bodyfile="include/judge/Init/PDJE_Judge_Init.cpp" bodystart="22" bodyend="25"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__JUDGE_1_1Judge__Init_1a048fe1975b1a885ad7b350963735a88d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -237,7 +317,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="56" column="5" bodyfile="include/judge/Init/PDJE_Judge_Init.cpp" bodystart="79" bodyend="140"/>
+        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="69" column="5" bodyfile="include/judge/Init/PDJE_Judge_Init.cpp" bodystart="99" bodyend="139"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__JUDGE_1_1Judge__Init_1a472a1bdec4dd3ba28b9a6a3e74a5bf0e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -256,7 +336,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="67" column="5" bodyfile="include/judge/Init/PDJE_Judge_Init.cpp" bodystart="10" bodyend="16"/>
+        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="80" column="5" bodyfile="include/judge/Init/PDJE_Judge_Init.cpp" bodystart="13" bodyend="19"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__JUDGE_1_1Judge__Init_1a61e19ba068e539f8b3a5c57f56b4a0b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -275,7 +355,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="70" column="5" bodyfile="include/judge/Init/PDJE_Judge_Init.cpp" bodystart="25" bodyend="30"/>
+        <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="83" column="5" bodyfile="include/judge/Init/PDJE_Judge_Init.cpp" bodystart="28" bodyend="33"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -284,57 +364,9 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="10">
-        <label>PDJE_HID_Event</label>
-        <link refid="structPDJE__HID__Event"/>
-      </node>
-      <node id="7">
-        <label>PDJE_Input_Event</label>
-        <link refid="unionPDJE__Input__Event"/>
-        <childnode refid="8" relation="usage">
-          <edgelabel>mouse</edgelabel>
-        </childnode>
-        <childnode refid="9" relation="usage">
-          <edgelabel>keyboard</edgelabel>
-        </childnode>
-      </node>
-      <node id="6">
-        <label>PDJE_Input_Log</label>
-        <link refid="structPDJE__Input__Log"/>
-        <childnode refid="7" relation="usage">
-          <edgelabel>event</edgelabel>
-        </childnode>
-        <childnode refid="10" relation="usage">
-          <edgelabel>hid_event</edgelabel>
-        </childnode>
-      </node>
       <node id="2">
         <label>PDJE_JUDGE::Custom_Events</label>
         <link refid="structPDJE__JUDGE_1_1Custom__Events"/>
-      </node>
-      <node id="13">
-        <label>PDJE_JUDGE::DEV</label>
-        <link refid="structPDJE__JUDGE_1_1DEV"/>
-        <childnode refid="14" relation="usage">
-          <edgelabel>Device_Name</edgelabel>
-        </childnode>
-      </node>
-      <node id="20">
-        <label>PDJE_JUDGE::DEV_TYPE</label>
-        <link refid="structPDJE__JUDGE_1_1DEV__TYPE"/>
-      </node>
-      <node id="3">
-        <label>PDJE_JUDGE::InputParser</label>
-        <link refid="classPDJE__JUDGE_1_1InputParser"/>
-        <childnode refid="4" relation="usage">
-          <edgelabel>outCache</edgelabel>
-        </childnode>
-        <childnode refid="11" relation="usage">
-          <edgelabel>railData</edgelabel>
-        </childnode>
-        <childnode refid="21" relation="usage">
-          <edgelabel>offsetData</edgelabel>
-        </childnode>
       </node>
       <node id="1">
         <label>PDJE_JUDGE::Judge_Init</label>
@@ -343,102 +375,99 @@
           <edgelabel>lambdas</edgelabel>
         </childnode>
         <childnode refid="3" relation="usage">
-          <edgelabel>devparser</edgelabel>
+          <edgelabel>raildb</edgelabel>
         </childnode>
       </node>
-      <node id="16">
-        <label>PDJE_JUDGE::KEY</label>
-        <link refid="structPDJE__JUDGE_1_1KEY"/>
-      </node>
-      <node id="19">
-        <label>PDJE_JUDGE::OFFSET</label>
-        <link refid="structPDJE__JUDGE_1_1OFFSET"/>
-      </node>
-      <node id="4">
-        <label>PDJE_JUDGE::PARSE_OUT</label>
-        <link refid="structPDJE__JUDGE_1_1PARSE__OUT"/>
-        <childnode refid="5" relation="usage">
-          <edgelabel>logs</edgelabel>
+      <node id="3">
+        <label>PDJE_JUDGE::RAIL_DB</label>
+        <link refid="structPDJE__JUDGE_1_1RAIL__DB"/>
+        <childnode refid="4" relation="usage">
+          <edgelabel>offset</edgelabel>
         </childnode>
-      </node>
-      <node id="18">
-        <label>PDJE_JUDGE::RAIL</label>
-        <link refid="structPDJE__JUDGE_1_1RAIL"/>
-      </node>
-      <node id="12">
-        <label>PDJE_JUDGE::RAIL_META</label>
-        <link refid="structPDJE__JUDGE_1_1RAIL__META"/>
-        <childnode refid="13" relation="public-inheritance">
+        <childnode refid="7" relation="usage">
+          <edgelabel>meta</edgelabel>
         </childnode>
-        <childnode refid="16" relation="public-inheritance">
+        <childnode refid="10" relation="usage">
+          <edgelabel>kb_mouse_raildata</edgelabel>
         </childnode>
-      </node>
-      <node id="17">
-        <label>PDJE_JUDGE::RAIL_SETTINGS</label>
-        <link refid="structPDJE__JUDGE_1_1RAIL__SETTINGS"/>
-        <childnode refid="18" relation="public-inheritance">
-        </childnode>
-        <childnode refid="19" relation="public-inheritance">
-        </childnode>
-        <childnode refid="20" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>PDJE_Keyboard_Event</label>
-        <link refid="structPDJE__Keyboard__Event"/>
-      </node>
-      <node id="8">
-        <label>PDJE_Mouse_Event</label>
-        <link refid="structPDJE__Mouse__Event"/>
-      </node>
-      <node id="15">
-        <label>std::basic_string&lt; Char &gt;</label>
-      </node>
-      <node id="14">
-        <label>std::string</label>
-        <childnode refid="15" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="21">
-        <label>std::unordered_map&lt; DEV_ID, PDJE_JUDGE::OFFSET &gt;</label>
-        <childnode refid="14" relation="usage">
-          <edgelabel>keys</edgelabel>
-        </childnode>
-        <childnode refid="19" relation="usage">
-          <edgelabel>elements</edgelabel>
+        <childnode refid="12" relation="usage">
+          <edgelabel>midi_raildata</edgelabel>
         </childnode>
       </node>
       <node id="11">
-        <label>std::unordered_map&lt; PDJE_JUDGE::RAIL_META, PDJE_JUDGE::RAIL_SETTINGS &gt;</label>
-        <childnode refid="12" relation="usage">
+        <label>PDJE_JUDGE::RAIL_KEY::KB_MOUSE</label>
+        <link refid="structPDJE__JUDGE_1_1RAIL__KEY_1_1KB__MOUSE"/>
+        <childnode refid="5" relation="usage">
+          <edgelabel>Device_Name</edgelabel>
+        </childnode>
+      </node>
+      <node id="9">
+        <label>PDJE_JUDGE::RAIL_KEY::META</label>
+        <link refid="structPDJE__JUDGE_1_1RAIL__KEY_1_1META"/>
+      </node>
+      <node id="13">
+        <label>PDJE_JUDGE::RAIL_KEY::MIDI</label>
+        <link refid="structPDJE__JUDGE_1_1RAIL__KEY_1_1MIDI"/>
+        <childnode refid="5" relation="usage">
+          <edgelabel>port_name</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="5">
+        <label>std::string</label>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>std::unordered_map&lt; PDJE_JUDGE::RAIL_KEY::KB_MOUSE, uint64_t &gt;</label>
+        <childnode refid="11" relation="usage">
           <edgelabel>keys</edgelabel>
         </childnode>
-        <childnode refid="17" relation="usage">
+      </node>
+      <node id="12">
+        <label>std::unordered_map&lt; PDJE_JUDGE::RAIL_KEY::MIDI, uint64_t &gt;</label>
+        <childnode refid="13" relation="usage">
+          <edgelabel>keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>std::unordered_map&lt; std::string, int64_t &gt;</label>
+        <childnode refid="5" relation="usage">
+          <edgelabel>keys</edgelabel>
+        </childnode>
+      </node>
+      <node id="7">
+        <label>std::unordered_map&lt; uint64_t, std::vector&lt; PDJE_JUDGE::RAIL_KEY::META &gt; &gt;</label>
+        <childnode refid="8" relation="usage">
           <edgelabel>elements</edgelabel>
         </childnode>
       </node>
-      <node id="5">
-        <label>std::vector&lt; PDJE_Input_Log &gt;</label>
-        <childnode refid="6" relation="usage">
+      <node id="8">
+        <label>std::vector&lt; PDJE_JUDGE::RAIL_KEY::META &gt;</label>
+        <childnode refid="9" relation="usage">
           <edgelabel>elements</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="16" column="1" bodyfile="include/judge/Init/PDJE_Judge_Init.hpp" bodystart="16" bodyend="71"/>
+    <location file="include/judge/Init/PDJE_Judge_Init.hpp" line="16" column="1" bodyfile="include/judge/Init/PDJE_Judge_Init.hpp" bodystart="16" bodyend="84"/>
     <listofallmembers>
       <member refid="classPDJE__JUDGE_1_1Judge__Init_1acc951cfc00f868e9d20bb1b5cde6dc71" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::Judge_Init</scope><name>coreline</name></member>
       <member refid="classPDJE__JUDGE_1_1Judge__Init_1a1cd961087df9003eecb048233147a744" prot="private" virt="non-virtual"><scope>PDJE_JUDGE::Judge_Init</scope><name>DefaultFill</name></member>
-      <member refid="classPDJE__JUDGE_1_1Judge__Init_1ac40b836c338758e957a88995d574cb9c" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::Judge_Init</scope><name>devparser</name></member>
       <member refid="classPDJE__JUDGE_1_1Judge__Init_1a786320148ee67bb0c04585208eb222cc" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::Judge_Init</scope><name>ev_rule</name></member>
       <member refid="classPDJE__JUDGE_1_1Judge__Init_1a4d193f14775e1cd10bf9d726e4edb0be" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::Judge_Init</scope><name>inputline</name></member>
       <member refid="classPDJE__JUDGE_1_1Judge__Init_1a8c4648b939291f5e3553707199bb9c64" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::Judge_Init</scope><name>lambdas</name></member>
       <member refid="classPDJE__JUDGE_1_1Judge__Init_1ae412677047fe5a8ca815c6ec6235a87e" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::Judge_Init</scope><name>note_objects</name></member>
       <member refid="classPDJE__JUDGE_1_1Judge__Init_1a048fe1975b1a885ad7b350963735a88d" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::Judge_Init</scope><name>NoteObjectCollector</name></member>
+      <member refid="classPDJE__JUDGE_1_1Judge__Init_1aa8c94b28690792fc7af58fc3b85b4a8b" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::Judge_Init</scope><name>raildb</name></member>
       <member refid="classPDJE__JUDGE_1_1Judge__Init_1a472a1bdec4dd3ba28b9a6a3e74a5bf0e" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::Judge_Init</scope><name>SetCoreLine</name></member>
       <member refid="classPDJE__JUDGE_1_1Judge__Init_1aef003f853b0becb3ac7183678cb1a0ad" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::Judge_Init</scope><name>SetCustomEvents</name></member>
       <member refid="classPDJE__JUDGE_1_1Judge__Init_1aa9d5d05218f808e518e003a22c1b0f9b" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::Judge_Init</scope><name>SetEventRule</name></member>
       <member refid="classPDJE__JUDGE_1_1Judge__Init_1a61e19ba068e539f8b3a5c57f56b4a0b6" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::Judge_Init</scope><name>SetInputLine</name></member>
       <member refid="classPDJE__JUDGE_1_1Judge__Init_1a1ff71318e1a221d4274f299c2a2a2537" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::Judge_Init</scope><name>SetRail</name></member>
+      <member refid="classPDJE__JUDGE_1_1Judge__Init_1aeb3522b5e5b7c4077f0463a8f19be6d9" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::Judge_Init</scope><name>SetRail</name></member>
+      <member refid="classPDJE__JUDGE_1_1Judge__Init_1ac6c056fdfa921e7a47a135da0cd8bd30" prot="public" virt="non-virtual"><scope>PDJE_JUDGE::Judge_Init</scope><name>SetRail</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

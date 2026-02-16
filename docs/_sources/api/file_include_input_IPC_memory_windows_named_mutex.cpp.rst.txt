@@ -4,7 +4,7 @@
 File named_mutex.cpp
 ====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_IPC_memory_windows>` (``include\input\IPC\memory\windows``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_IPC_memory_windows>` (``include/input/IPC/memory/windows``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File named_mutex.cpp
    :local:
    :backlinks: none
 
-Definition (``include\input\IPC\memory\windows\named_mutex.cpp``)
+Definition (``include/input/IPC/memory/windows/named_mutex.cpp``)
 -----------------------------------------------------------------
 
 

@@ -6,7 +6,7 @@
     <includes local="no">string</includes>
     <includes local="no">vector</includes>
     <includes local="no">windows.h</includes>
-    <includedby refid="_list_device_8hpp" local="yes">include/input/runner/windows/ListDevice.hpp</includedby>
+    <includedby refid="ListDevice_8hpp" local="yes">include/input/runner/windows/ListDevice.hpp</includedby>
     <incdepgraph>
       <node id="1">
         <label>include/input/runner/windows/dev_path_to_name.hpp</label>
@@ -36,11 +36,11 @@
     <invincdepgraph>
       <node id="3">
         <label>include/input/runner/windows/InputLoop.cpp</label>
-        <link refid="_input_loop_8cpp"/>
+        <link refid="InputLoop_8cpp"/>
       </node>
       <node id="2">
         <label>include/input/runner/windows/ListDevice.hpp</label>
-        <link refid="_list_device_8hpp"/>
+        <link refid="ListDevice_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
@@ -48,7 +48,7 @@
       </node>
       <node id="4">
         <label>include/input/runner/windows/SubProcess.cpp</label>
-        <link refid="windows_2_sub_process_8cpp"/>
+        <link refid="runner_2windows_2SubProcess_8cpp"/>
       </node>
       <node id="1">
         <label>include/input/runner/windows/dev_path_to_name.hpp</label>
@@ -109,8 +109,8 @@
 <codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::wstring</highlight></codeline>
 <codeline lineno="10" refid="dev__path__to__name_8hpp_1a35f557ba79bc284006eaa0ea1135e1a1" refkind="member"><highlight class="normal"><ref refid="dev__path__to__name_8hpp_1a35f557ba79bc284006eaa0ea1135e1a1" kindref="member">NormalizeNt</ref>(std::wstring<sp/>p)</highlight></codeline>
 <codeline lineno="11"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(p.rfind(<ref refid="_input___state_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caef31cc6fe9479955961311ee18ac205f" kindref="member">L</ref></highlight><highlight class="stringliteral">&quot;\\??\\&quot;</highlight><highlight class="normal">,<sp/>0)<sp/>==<sp/>0)</highlight></codeline>
-<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.replace(0,<sp/>4,<sp/><ref refid="_input___state_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caef31cc6fe9479955961311ee18ac205f" kindref="member">L</ref></highlight><highlight class="stringliteral">&quot;\\\\?\\&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(p.rfind(<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caef31cc6fe9479955961311ee18ac205f" kindref="member">L</ref></highlight><highlight class="stringliteral">&quot;\\??\\&quot;</highlight><highlight class="normal">,<sp/>0)<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p.replace(0,<sp/>4,<sp/><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caef31cc6fe9479955961311ee18ac205f" kindref="member">L</ref></highlight><highlight class="stringliteral">&quot;\\\\?\\&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>p;</highlight></codeline>
 <codeline lineno="15"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
@@ -122,12 +122,12 @@
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>HDEVINFO<sp/>hset<sp/>=<sp/>SetupDiCreateDeviceInfoList(</highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hset<sp/>==<sp/>INVALID_HANDLE_VALUE)</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="_input___state_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caef31cc6fe9479955961311ee18ac205f" kindref="member">L</ref></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caef31cc6fe9479955961311ee18ac205f" kindref="member">L</ref></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>SP_DEVICE_INTERFACE_DATA<sp/>ifd{<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(ifd)<sp/>};</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!SetupDiOpenDeviceInterfaceW(hset,<sp/>path.c_str(),<sp/>0,<sp/>&amp;ifd))<sp/>{</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SetupDiDestroyDeviceInfoList(hset);</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="_input___state_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caef31cc6fe9479955961311ee18ac205f" kindref="member">L</ref></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caef31cc6fe9479955961311ee18ac205f" kindref="member">L</ref></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight></codeline>
 <codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>get<sp/>SP_DEVINFO_DATA</highlight><highlight class="normal"></highlight></codeline>
@@ -141,7 +141,7 @@
 <codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!SetupDiGetDeviceInterfaceDetailW(</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hset,<sp/>&amp;ifd,<sp/>det,<sp/>need,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/>&amp;dev))<sp/>{</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SetupDiDestroyDeviceInfoList(hset);</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="_input___state_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caef31cc6fe9479955961311ee18ac205f" kindref="member">L</ref></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caef31cc6fe9479955961311ee18ac205f" kindref="member">L</ref></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>get<sp/>friendly<sp/>name<sp/>first</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">wchar_t</highlight><highlight class="normal"><sp/>name[512];</highlight></codeline>
@@ -164,7 +164,7 @@
 <codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"></highlight></codeline>
 <codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>SetupDiDestroyDeviceInfoList(hset);</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="_input___state_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caef31cc6fe9479955961311ee18ac205f" kindref="member">L</ref></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caef31cc6fe9479955961311ee18ac205f" kindref="member">L</ref></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="68"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="include/input/runner/windows/dev_path_to_name.hpp"/>

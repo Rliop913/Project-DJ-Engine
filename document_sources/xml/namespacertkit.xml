@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="namespacertkit" kind="namespace" language="C++">
+    <compoundname>rtkit</compoundname>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespacertkit_1aaf4a1da7704c6ff0151f63cf52206130" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>static uint64_t rtkit::get_tid</definition>
+        <argsstring>()</argsstring>
+        <name>get_tid</name>
+        <qualifiedname>rtkit::get_tid</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/rtkitcodes.hpp" line="29" column="1" bodyfile="include/input/DefaultDevs/linux/rtkitcodes.hpp" bodystart="29" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacertkit_1a02abab2a92e8e81acd3f6802eb72f73b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void rtkit::throw_bus_err</definition>
+        <argsstring>(const char *what, int r, sd_bus_error *err)</argsstring>
+        <name>throw_bus_err</name>
+        <qualifiedname>rtkit::throw_bus_err</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>what</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>sd_bus_error *</type>
+          <declname>err</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/rtkitcodes.hpp" line="35" column="1" bodyfile="include/input/DefaultDevs/linux/rtkitcodes.hpp" bodystart="35" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacertkit_1a96f639d8f07d02bfda2370c1060b61f8" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>static uint32_t rtkit::get_max_realtime_priority</definition>
+        <argsstring>(sd_bus *bus)</argsstring>
+        <name>get_max_realtime_priority</name>
+        <qualifiedname>rtkit::get_max_realtime_priority</qualifiedname>
+        <param>
+          <type>sd_bus *</type>
+          <declname>bus</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/rtkitcodes.hpp" line="50" column="1" bodyfile="include/input/DefaultDevs/linux/rtkitcodes.hpp" bodystart="50" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacertkit_1a8a923563374b9a8f73492504771e92ef" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>static int32_t rtkit::get_min_nice_level</definition>
+        <argsstring>(sd_bus *bus)</argsstring>
+        <name>get_min_nice_level</name>
+        <qualifiedname>rtkit::get_min_nice_level</qualifiedname>
+        <param>
+          <type>sd_bus *</type>
+          <declname>bus</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/rtkitcodes.hpp" line="78" column="1" bodyfile="include/input/DefaultDevs/linux/rtkitcodes.hpp" bodystart="78" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacertkit_1aac1bd5ac253b584d05aeba7c53e3774b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void rtkit::make_current_thread_realtime</definition>
+        <argsstring>(uint32_t priority)</argsstring>
+        <name>make_current_thread_realtime</name>
+        <qualifiedname>rtkit::make_current_thread_realtime</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>priority</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/rtkitcodes.hpp" line="107" column="1" bodyfile="include/input/DefaultDevs/linux/rtkitcodes.hpp" bodystart="107" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacertkit_1a8eed7d7cc6b5eff8a52bf0dd46391b3d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void rtkit::make_current_thread_high_priority</definition>
+        <argsstring>(int32_t nice_level)</argsstring>
+        <name>make_current_thread_high_priority</name>
+        <qualifiedname>rtkit::make_current_thread_high_priority</qualifiedname>
+        <param>
+          <type>int32_t</type>
+          <declname>nice_level</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/rtkitcodes.hpp" line="158" column="1" bodyfile="include/input/DefaultDevs/linux/rtkitcodes.hpp" bodystart="158" bodyend="200"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/input/DefaultDevs/linux/rtkitcodes.hpp" line="11" column="1"/>
+  </compounddef>
+</doxygen>

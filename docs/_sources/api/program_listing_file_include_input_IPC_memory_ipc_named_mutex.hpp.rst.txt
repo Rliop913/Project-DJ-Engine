@@ -4,7 +4,7 @@
 Program Listing for File ipc_named_mutex.hpp
 ============================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_input_IPC_memory_ipc_named_mutex.hpp>` (``include\input\IPC\memory\ipc_named_mutex.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_input_IPC_memory_ipc_named_mutex.hpp>` (``include/input/IPC/memory/ipc_named_mutex.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -18,7 +18,8 @@ Program Listing for File ipc_named_mutex.hpp
    using MNAME = std::filesystem::path;
    class MUTEX {
      private:
-       void *mutex_handle = nullptr;
+       void       *mutex_handle = nullptr;
+       std::string mutex_name;
    
      public:
        bool

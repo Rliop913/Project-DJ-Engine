@@ -4,7 +4,7 @@
 File editorObject.hpp
 =====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_MainObjects_editorObject>` (``include\core\MainObjects\editorObject``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_MainObjects_editorObject>` (``include/core/MainObjects/editorObject``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -18,7 +18,7 @@ Defines the main editor object for managing project data.
    :local:
    :backlinks: none
 
-Definition (``include\core\MainObjects\editorObject\editorObject.hpp``)
+Definition (``include/core/MainObjects/editorObject/editorObject.hpp``)
 -----------------------------------------------------------------------
 
 
@@ -45,7 +45,7 @@ Includes
 
 - ``filesystem``
 
-- ``memory`` (:ref:`file_include_input_IPC_memory_Input_Transfer.cpp`)
+- ``memory`` (:ref:`file_include_input_IPC_memory_linux_Input_Transfer.cpp`)
 
 - ``optional``
 
@@ -96,20 +96,20 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_struct_e_d_i_t___a_r_g___m_u_s_i_c`
+- :ref:`exhale_struct_structEDIT__ARG__MUSIC`
 
-- :ref:`exhale_class_classeditor_object`
+- :ref:`exhale_class_classeditorObject`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef_editor_object_8hpp_1a305098bfe154230cbef2fbe44e5f9220`
+- :ref:`exhale_typedef_editorObject_8hpp_1a305098bfe154230cbef2fbe44e5f9220`
 
-- :ref:`exhale_typedef_editor_object_8hpp_1a8c7c688d1e63ff780f13669e00fc091c`
+- :ref:`exhale_typedef_editorObject_8hpp_1a8c7c688d1e63ff780f13669e00fc091c`
 
-- :ref:`exhale_typedef_editor_object_8hpp_1a2de2e14491806b81a5ba85836b550f18`
+- :ref:`exhale_typedef_editorObject_8hpp_1a2de2e14491806b81a5ba85836b550f18`
 
-- :ref:`exhale_typedef_editor_object_8hpp_1a899c0028ff4e674c7145d4c77087f957`
+- :ref:`exhale_typedef_editorObject_8hpp_1a899c0028ff4e674c7145d4c77087f957`
 

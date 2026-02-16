@@ -4,7 +4,7 @@
 Program Listing for File PDJE_interface.cpp
 ===========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_interface_PDJE_interface.cpp>` (``include\core\interface\PDJE_interface.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_interface_PDJE_interface.cpp>` (``include/core/interface/PDJE_interface.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -95,13 +95,14 @@ Program Listing for File PDJE_interface.cpp
            critlog("failed to init player on PDJE initPlayer.");
            return false;
        } else {
-           if (player->STATUS != "OK") {
-               critlog("PDJE initPlayer failed. STATUS not OK. ErrStatus: ");
-               critlog(player->STATUS);
-               return false;
-           } else {
-               return true;
-           }
+           return true;
+           // if (player->STATUS != "OK") {
+           //     critlog("PDJE initPlayer failed. STATUS not OK. ErrStatus: ");
+           //     critlog(player->STATUS);
+           //     return false;
+           // } else {
+           //     return true;
+           // }
        }
    }
    

@@ -4,7 +4,7 @@
 File ManualMix.hpp
 ==================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_ManualMix>` (``include\core\audioRender\ManualMix``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_ManualMix>` (``include/core/audioRender/ManualMix``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File ManualMix.hpp
    :local:
    :backlinks: none
 
-Definition (``include\core\audioRender\ManualMix\ManualMix.hpp``)
+Definition (``include/core/audioRender/ManualMix/ManualMix.hpp``)
 -----------------------------------------------------------------
 
 
@@ -60,7 +60,7 @@ Includes
 
 - ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_global_PDJE_EXPORT_SETTER.hpp`)
 
-- ``memory`` (:ref:`file_include_input_IPC_memory_Input_Transfer.cpp`)
+- ``memory`` (:ref:`file_include_input_IPC_memory_linux_Input_Transfer.cpp`)
 
 - ``musicDB.hpp`` (:ref:`file_include_core_db_musicDB.hpp`)
 
@@ -87,21 +87,21 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_f_x_control_panel`
+- :ref:`exhale_class_classFXControlPanel`
 
 
 Enums
 -----
 
 
-- :ref:`exhale_enum__manual_mix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3`
+- :ref:`exhale_enum_ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3`
 
 
 Functions
 ---------
 
 
-- :ref:`exhale_function__manual_mix_8hpp_1a79df2887c22c06f21513214917ebbdc4`
+- :ref:`exhale_function_ManualMix_8hpp_1a79df2887c22c06f21513214917ebbdc4`
 
-- :ref:`exhale_function__manual_mix_8hpp_1ab241d30c14975d15f937dd81b05efc80`
+- :ref:`exhale_function_ManualMix_8hpp_1ab241d30c14975d15f937dd81b05efc80`
 

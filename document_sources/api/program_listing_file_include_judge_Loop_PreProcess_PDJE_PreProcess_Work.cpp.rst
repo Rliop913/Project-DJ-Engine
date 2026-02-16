@@ -4,7 +4,7 @@
 Program Listing for File PDJE_PreProcess_Work.cpp
 =================================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_judge_Loop_PreProcess_PDJE_PreProcess_Work.cpp>` (``include\judge\Loop\PreProcess\PDJE_PreProcess_Work.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_judge_Loop_PreProcess_PDJE_PreProcess_Work.cpp>` (``include/judge/Loop/PreProcess/PDJE_PreProcess_Work.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -18,8 +18,12 @@ Program Listing for File PDJE_PreProcess_Work.cpp
    {
        synced_data = init->coreline->syncD->load(std::memory_order_acquire);
    
-       local_micro_pos =
-           Convert_Frame_Into_MicroSecond(synced_data.consumed_frames);
+       auto real_frame =
+           synced_data.consumed_frames < synced_data.pre_calculated_unused_frames
+               ? 0
+               : synced_data.consumed_frames -
+                     synced_data.pre_calculated_unused_frames;
+       local_micro_pos   = Convert_Frame_Into_MicroSecond(real_frame);
        global_local_diff = synced_data.microsecond - local_micro_pos;
    
        if (!GetDatas()) { // no input datas

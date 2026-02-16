@@ -3,7 +3,7 @@
 Template Struct IPC_SHM_LINUX
 =============================
 
-- Defined in :ref:`file_include_input_IPC_transmission_linux_pack_ipc.hpp`
+- Defined in :ref:`file_include_input_trashbin_--DEPRECATED--transmission_linux_pack_ipc.hpp`
 
 
 Struct Documentation

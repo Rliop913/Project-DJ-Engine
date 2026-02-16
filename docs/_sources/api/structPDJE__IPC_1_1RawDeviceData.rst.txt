@@ -3,7 +3,7 @@
 Struct RawDeviceData
 ====================
 
-- Defined in :ref:`file_include_input_IPC_transmission_windows_ListDevice.hpp`
+- Defined in :ref:`file_include_input_runner_windows_ListDevice.hpp`
 
 
 Struct Documentation

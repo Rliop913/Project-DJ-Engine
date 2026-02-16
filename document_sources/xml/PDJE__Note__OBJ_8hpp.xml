@@ -15,7 +15,8 @@
     <includedby refid="PDJE__Judge__Init_8hpp" local="yes">include/judge/Init/PDJE_Judge_Init.hpp</includedby>
     <includedby refid="PDJE__Judge__Init__Structs_8hpp" local="yes">include/judge/Init/PDJE_Judge_Init_Structs.hpp</includedby>
     <includedby refid="InputParser_8hpp" local="yes">include/judge/InputParser/InputParser.hpp</includedby>
-    <includedby refid="Keyboard_8cpp" local="yes">include/judge/Loop/Keyboard.cpp</includedby>
+    <includedby refid="Keyboard_8cpp" local="yes">include/judge/Loop/Match/Keyboard.cpp</includedby>
+    <includedby refid="PDJE__Match_8hpp" local="yes">include/judge/Loop/Match/PDJE_Match.hpp</includedby>
     <includedby refid="PDJE__Judge__Loop_8cpp" local="yes">include/judge/Loop/PDJE_Judge_Loop.cpp</includedby>
     <includedby refid="PDJE__Judge__Loop_8hpp" local="yes">include/judge/Loop/PDJE_Judge_Loop.hpp</includedby>
     <includedby refid="PDJE__Judge__Loop__Structs_8hpp" local="yes">include/judge/Loop/PDJE_Judge_Loop_Structs.hpp</includedby>
@@ -73,7 +74,7 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
@@ -96,6 +97,8 @@
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="13">
@@ -125,8 +128,11 @@
       <node id="15">
         <label>unordered_map</label>
       </node>
-      <node id="16">
+      <node id="17">
         <label>utility</label>
+      </node>
+      <node id="16">
+        <label>variant</label>
       </node>
       <node id="7">
         <label>vector</label>
@@ -144,78 +150,106 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="13">
-        <label>include/judge/Init/PDJE_Judge_Init_Structs.hpp</label>
-        <link refid="PDJE__Judge__Init__Structs_8hpp"/>
-        <childnode refid="3" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="16">
-        <label>include/judge/InputParser/InputParser.cpp</label>
-        <link refid="InputParser_8cpp"/>
+      <node id="17">
+        <label>include/judge/Init/PDJE_Judge_Init_Structs.hpp</label>
+        <link refid="PDJE__Judge__Init__Structs_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
       </node>
-      <node id="15">
+      <node id="19">
         <label>include/judge/InputParser/InputParser.hpp</label>
         <link refid="InputParser_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="6">
-        <label>include/judge/Loop/HID.cpp</label>
-        <link refid="HID_8cpp"/>
-      </node>
-      <node id="7">
-        <label>include/judge/Loop/Keyboard.cpp</label>
+      <node id="5">
+        <label>include/judge/Loop/Match/Keyboard.cpp</label>
         <link refid="Keyboard_8cpp"/>
       </node>
       <node id="8">
-        <label>include/judge/Loop/MIDI.cpp</label>
+        <label>include/judge/Loop/Match/MIDI.cpp</label>
         <link refid="MIDI_8cpp"/>
       </node>
       <node id="9">
-        <label>include/judge/Loop/Mouse.cpp</label>
+        <label>include/judge/Loop/Match/Mouse.cpp</label>
         <link refid="Mouse_8cpp"/>
       </node>
-      <node id="4">
-        <label>include/judge/Loop/PDJE_Judge_Loop.cpp</label>
-        <link refid="PDJE__Judge__Loop_8cpp"/>
+      <node id="6">
+        <label>include/judge/Loop/Match/PDJE_Match.cpp</label>
+        <link refid="PDJE__Match_8cpp"/>
       </node>
-      <node id="5">
-        <label>include/judge/Loop/PDJE_Judge_Loop.hpp</label>
-        <link refid="PDJE__Judge__Loop_8hpp"/>
+      <node id="4">
+        <label>include/judge/Loop/Match/PDJE_Match.hpp</label>
+        <link refid="PDJE__Match_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
+      </node>
+      <node id="10">
+        <label>include/judge/Loop/PDJE_Judge_Loop.cpp</label>
+        <link refid="PDJE__Judge__Loop_8cpp"/>
+      </node>
+      <node id="7">
+        <label>include/judge/Loop/PDJE_Judge_Loop.hpp</label>
+        <link refid="PDJE__Judge__Loop_8hpp"/>
         <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-      </node>
-      <node id="14">
-        <label>include/judge/Loop/PDJE_Judge_Loop_Structs.hpp</label>
-        <link refid="PDJE__Judge__Loop__Structs_8hpp"/>
-        <childnode refid="5" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="17">
+      <node id="18">
+        <label>include/judge/Loop/PDJE_Judge_Loop_Structs.hpp</label>
+        <link refid="PDJE__Judge__Loop__Structs_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>include/judge/Loop/PreProcess/PDJE_PreProcess.cpp</label>
+        <link refid="PDJE__PreProcess_8cpp"/>
+      </node>
+      <node id="14">
+        <label>include/judge/Loop/PreProcess/PDJE_PreProcess.hpp</label>
+        <link refid="PDJE__PreProcess_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>include/judge/Loop/PreProcess/PDJE_PreProcess_Work.cpp</label>
+        <link refid="PDJE__PreProcess__Work_8cpp"/>
+      </node>
+      <node id="20">
         <label>include/judge/NoteOBJ/PDJE_Note_OBJ.cpp</label>
         <link refid="PDJE__Note__OBJ_8cpp"/>
       </node>
@@ -226,36 +260,38 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
-      </node>
-      <node id="11">
-        <label>include/judge/PDJE_Judge.cpp</label>
-        <link refid="PDJE__Judge_8cpp"/>
-      </node>
-      <node id="10">
-        <label>include/judge/PDJE_Judge.hpp</label>
-        <link refid="PDJE__Judge_8hpp"/>
-        <childnode refid="11" relation="include">
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
       </node>
       <node id="12">
+        <label>include/judge/PDJE_Judge.cpp</label>
+        <link refid="PDJE__Judge_8cpp"/>
+      </node>
+      <node id="11">
+        <label>include/judge/PDJE_Judge.hpp</label>
+        <link refid="PDJE__Judge_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
         <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
         <link refid="judgeTest_8cpp"/>
       </node>

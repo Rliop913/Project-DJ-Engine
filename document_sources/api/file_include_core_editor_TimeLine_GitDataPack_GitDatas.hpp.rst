@@ -4,7 +4,7 @@
 File GitDatas.hpp
 =================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_editor_TimeLine_GitDataPack>` (``include\core\editor\TimeLine\GitDataPack``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_editor_TimeLine_GitDataPack>` (``include/core/editor/TimeLine/GitDataPack``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File GitDatas.hpp
    :local:
    :backlinks: none
 
-Definition (``include\core\editor\TimeLine\GitDataPack\GitDatas.hpp``)
+Definition (``include/core/editor/TimeLine/GitDataPack/GitDatas.hpp``)
 ----------------------------------------------------------------------
 
 
@@ -72,21 +72,21 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_git_data`
+- :ref:`exhale_struct_structPDJE__TIMELINE_1_1GitData`
 
 
 Functions
 ---------
 
 
-- :ref:`exhale_function_namespace_p_d_j_e___t_i_m_e_l_i_n_e_1af346ab11735a428e1f07e8adcbe8ef4f`
+- :ref:`exhale_function_namespacePDJE__TIMELINE_1af346ab11735a428e1f07e8adcbe8ef4f`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef_namespace_p_d_j_e___t_i_m_e_l_i_n_e_1a521f55c6b3da8f9af56be0c1eb855e41`
+- :ref:`exhale_typedef_namespacePDJE__TIMELINE_1a521f55c6b3da8f9af56be0c1eb855e41`
 
-- :ref:`exhale_typedef_namespace_p_d_j_e___t_i_m_e_l_i_n_e_1a7f3a24ec3f3f8e7cf279712367924ce3`
+- :ref:`exhale_typedef_namespacePDJE__TIMELINE_1a7f3a24ec3f3f8e7cf279712367924ce3`
 

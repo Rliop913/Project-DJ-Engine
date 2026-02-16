@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="PDJE__RAII__WRAP_8hpp" kind="file" language="C++">
+    <compoundname>PDJE_RAII_WRAP.hpp</compoundname>
+    <includes refid="PDJE__LOG__SETTER_8hpp" local="yes">PDJE_LOG_SETTER.hpp</includes>
+    <includes local="no">optional</includes>
+    <includes local="no">utility</includes>
+    <includedby refid="windows_2DefaultDevs_8cpp" local="yes">include/input/DefaultDevs/windows/DefaultDevs.cpp</includedby>
+    <includedby refid="windows_2DefaultDevs_8hpp" local="yes">include/input/DefaultDevs/windows/DefaultDevs.hpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="PDJE__LOG__SETTER_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/global/PDJE_RAII_WRAP.hpp</label>
+        <link refid="PDJE__RAII__WRAP_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>filesystem</label>
+      </node>
+      <node id="4">
+        <label>mutex</label>
+      </node>
+      <node id="10">
+        <label>optional</label>
+      </node>
+      <node id="5">
+        <label>spdlog/sinks/basic_file_sink.h</label>
+      </node>
+      <node id="6">
+        <label>spdlog/sinks/stdout_color_sinks.h</label>
+      </node>
+      <node id="7">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="8">
+        <label>string_view</label>
+      </node>
+      <node id="9">
+        <label>type_traits</label>
+      </node>
+      <node id="11">
+        <label>utility</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>include/global/PDJE_RAII_WRAP.hpp</label>
+        <link refid="PDJE__RAII__WRAP_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>include/input/DefaultDevs/windows/DefaultDevs.cpp</label>
+        <link refid="windows_2DefaultDevs_8cpp"/>
+      </node>
+      <node id="3">
+        <label>include/input/DefaultDevs/windows/DefaultDevs.hpp</label>
+        <link refid="windows_2DefaultDevs_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classPDJE__RAII_1_1RAII" prot="public">PDJE_RAII::RAII</innerclass>
+    <innernamespace refid="namespacePDJE__RAII">PDJE_RAII</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="PDJE__LOG__SETTER_8hpp" kindref="compound">PDJE_LOG_SETTER.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="namespacePDJE__RAII" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__RAII" kindref="compound">PDJE_RAII</ref><sp/>{</highlight></codeline>
+<codeline lineno="7" refid="classPDJE__RAII_1_1RAII" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Deleter&gt;<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPDJE__RAII_1_1RAII_1a65279e57349afb73835469b7e1cfc5c9" kindref="member">RAII</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="10" refid="classPDJE__RAII_1_1RAII_1ad05cff74574763f8689fbfc29a5d178c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Deleter<sp/><ref refid="classPDJE__RAII_1_1RAII_1ad05cff74574763f8689fbfc29a5d178c" kindref="member">deleter</ref>;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="13" refid="classPDJE__RAII_1_1RAII_1a65279e57349afb73835469b7e1cfc5c9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__RAII_1_1RAII_1a65279e57349afb73835469b7e1cfc5c9" kindref="member">RAII</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="classPDJE__RAII_1_1RAII_1a9c547ea380536f3c6056c4679a92d638" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__RAII_1_1RAII_1a9c547ea380536f3c6056c4679a92d638" kindref="member">RAII</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__RAII_1_1RAII_1a65279e57349afb73835469b7e1cfc5c9" kindref="member">RAII</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__RAII_1_1RAII_1a65279e57349afb73835469b7e1cfc5c9" kindref="member">RAII</ref><sp/>&amp;</highlight></codeline>
+<codeline lineno="17" refid="classPDJE__RAII_1_1RAII_1ab79da3cab8e7ecc76280f78ea4b8a6ec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__RAII_1_1RAII_1ab79da3cab8e7ecc76280f78ea4b8a6ec" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__RAII_1_1RAII_1a65279e57349afb73835469b7e1cfc5c9" kindref="member">RAII</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="classPDJE__RAII_1_1RAII_1a95cfa0947c83df5c8a3831f29a1dc9c3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__RAII_1_1RAII_1a95cfa0947c83df5c8a3831f29a1dc9c3" kindref="member">RAII</ref>(<ref refid="classPDJE__RAII_1_1RAII_1a65279e57349afb73835469b7e1cfc5c9" kindref="member">RAII</ref><sp/>&amp;&amp;other)<sp/>noexcept</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classPDJE__RAII_1_1RAII_1af21ab29597c2af046df3d2cd6e98a54a" kindref="member">val</ref>(std::move(other.val)),<sp/><ref refid="classPDJE__RAII_1_1RAII_1ad05cff74574763f8689fbfc29a5d178c" kindref="member">deleter</ref>(std::move(other.deleter))</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>other.val<sp/>=<sp/>std::nullopt;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__RAII_1_1RAII" kindref="compound">RAII</ref><sp/>&amp;</highlight></codeline>
+<codeline lineno="26" refid="classPDJE__RAII_1_1RAII_1a50ded9e89e5ca1698b7ac2f1f2ffc26f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__RAII_1_1RAII_1a50ded9e89e5ca1698b7ac2f1f2ffc26f" kindref="member">operator=</ref>(<ref refid="classPDJE__RAII_1_1RAII_1a65279e57349afb73835469b7e1cfc5c9" kindref="member">RAII</ref><sp/>&amp;&amp;other)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>!=<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__RAII_1_1RAII_1a0c411d36a5425c698d25e8491bf7a6dc" kindref="member">reset</ref>();</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__RAII_1_1RAII_1af21ab29597c2af046df3d2cd6e98a54a" kindref="member">val</ref><sp/><sp/><sp/><sp/><sp/>=<sp/>std::move(other.val);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__RAII_1_1RAII_1ad05cff74574763f8689fbfc29a5d178c" kindref="member">deleter</ref><sp/>=<sp/>std::move(other.deleter);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>other.val.reset();</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="classPDJE__RAII_1_1RAII_1a029da9e4b7647cf6ab93cbb3156b4c88" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__RAII_1_1RAII_1a029da9e4b7647cf6ab93cbb3156b4c88" kindref="member">~RAII</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__RAII_1_1RAII_1a0c411d36a5425c698d25e8491bf7a6dc" kindref="member">reset</ref>();</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classPDJE__RAII_1_1RAII_1a0c411d36a5425c698d25e8491bf7a6dc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__RAII_1_1RAII_1a0c411d36a5425c698d25e8491bf7a6dc" kindref="member">reset</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__RAII_1_1RAII_1af21ab29597c2af046df3d2cd6e98a54a" kindref="member">val</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__RAII_1_1RAII_1ad05cff74574763f8689fbfc29a5d178c" kindref="member">deleter</ref>(<ref refid="classPDJE__RAII_1_1RAII_1af21ab29597c2af046df3d2cd6e98a54a" kindref="member">val</ref>.value());</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__RAII_1_1RAII_1af21ab29597c2af046df3d2cd6e98a54a" kindref="member">val</ref>.reset();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref></highlight></codeline>
+<codeline lineno="52" refid="classPDJE__RAII_1_1RAII_1ae78bdfcfafa325b457b9dbcf2d50ea2f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__RAII_1_1RAII_1ae78bdfcfafa325b457b9dbcf2d50ea2f" kindref="member">get</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="53"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__RAII_1_1RAII_1af21ab29597c2af046df3d2cd6e98a54a" kindref="member">val</ref>.value();</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="classPDJE__RAII_1_1RAII_1a970a93a39a7e6ba5f6fcf1a79d5dfe5a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">operator</highlight><highlight class="normal"><sp/>bool()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__RAII_1_1RAII_1af21ab29597c2af046df3d2cd6e98a54a" kindref="member">val</ref>.has_value();</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61" refid="classPDJE__RAII_1_1RAII_1af21ab29597c2af046df3d2cd6e98a54a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;T&gt;<sp/><ref refid="classPDJE__RAII_1_1RAII_1af21ab29597c2af046df3d2cd6e98a54a" kindref="member">val</ref>;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_RAII</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/global/PDJE_RAII_WRAP.hpp"/>
+  </compounddef>
+</doxygen>

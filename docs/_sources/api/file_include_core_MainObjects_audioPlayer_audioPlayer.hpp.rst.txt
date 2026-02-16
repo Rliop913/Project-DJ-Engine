@@ -4,7 +4,7 @@
 File audioPlayer.hpp
 ====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_MainObjects_audioPlayer>` (``include\core\MainObjects\audioPlayer``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_MainObjects_audioPlayer>` (``include/core/MainObjects/audioPlayer``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File audioPlayer.hpp
    :local:
    :backlinks: none
 
-Definition (``include\core\MainObjects\audioPlayer\audioPlayer.hpp``)
+Definition (``include/core/MainObjects/audioPlayer/audioPlayer.hpp``)
 ---------------------------------------------------------------------
 
 
@@ -42,6 +42,8 @@ Includes
 
 - ``audioRender.hpp`` (:ref:`file_include_core_audioRender_audioRender.hpp`)
 
+- ``audio_OS_impls.hpp`` (:ref:`file_include_core_MainObjects_audioPlayer_audio_OS_impls.hpp`)
+
 - ``miniaudio.h``
 
 
@@ -65,5 +67,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classaudio_player`
+- :ref:`exhale_class_classaudioPlayer`
 

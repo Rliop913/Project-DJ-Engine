@@ -4,7 +4,7 @@
 Program Listing for File SubMain.cpp
 ====================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_input_runner_windows_SubMain.cpp>` (``include\input\runner\windows\SubMain.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_input_runner_windows_SubMain.cpp>` (``include/input/runner/windows/SubMain.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

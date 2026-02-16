@@ -4,7 +4,7 @@
 File ManualMix.cpp
 ==================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_ManualMix>` (``include\core\audioRender\ManualMix``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_ManualMix>` (``include/core/audioRender/ManualMix``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File ManualMix.cpp
    :local:
    :backlinks: none
 
-Definition (``include\core\audioRender\ManualMix\ManualMix.cpp``)
+Definition (``include/core/audioRender/ManualMix/ManualMix.cpp``)
 -----------------------------------------------------------------
 
 

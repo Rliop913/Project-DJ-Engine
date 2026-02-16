@@ -4,7 +4,7 @@
 Program Listing for File Mouse.cpp
 ==================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_judge_Loop_Match_Mouse.cpp>` (``include\judge\Loop\Match\Mouse.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_judge_Loop_Match_Mouse.cpp>` (``include/judge/Loop/Match/Mouse.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -35,19 +35,24 @@ Program Listing for File Mouse.cpp
    {
        std::optional<uint64_t> restemp;
    
-       PDJE_MOUSE_PARSE(PDJE_MOUSE_L_BTN_DOWN, DEVICE_MOUSE_EVENT::BTN_L, DOWN)
-       PDJE_MOUSE_PARSE(PDJE_MOUSE_L_BTN_UP, DEVICE_MOUSE_EVENT::BTN_L, UP)
-       PDJE_MOUSE_PARSE(PDJE_MOUSE_R_BTN_DOWN, DEVICE_MOUSE_EVENT::BTN_R, DOWN)
-       PDJE_MOUSE_PARSE(PDJE_MOUSE_R_BTN_UP, DEVICE_MOUSE_EVENT::BTN_R, UP)
-       PDJE_MOUSE_PARSE(PDJE_MOUSE_M_BTN_DOWN, DEVICE_MOUSE_EVENT::BTN_M, DOWN)
-       PDJE_MOUSE_PARSE(PDJE_MOUSE_M_BTN_UP, DEVICE_MOUSE_EVENT::BTN_M, UP)
        PDJE_MOUSE_PARSE(
-           PDJE_MOUSE_SIDE_BTN_DOWN, DEVICE_MOUSE_EVENT::BTN_SIDE, DOWN)
-       PDJE_MOUSE_PARSE(PDJE_MOUSE_SIDE_BTN_UP, DEVICE_MOUSE_EVENT::BTN_SIDE, UP)
-       PDJE_MOUSE_PARSE(PDJE_MOUSE_EX_BTN_DOWN, DEVICE_MOUSE_EVENT::BTN_EX, DOWN)
-       PDJE_MOUSE_PARSE(PDJE_MOUSE_EX_BTN_UP, DEVICE_MOUSE_EVENT::BTN_EX, UP)
-       PDJE_MOUSE_PARSE(PDJE_MOUSE_XWHEEL, DEVICE_MOUSE_EVENT::WHEEL_X, X)
-       PDJE_MOUSE_PARSE(PDJE_MOUSE_YWHEEL, DEVICE_MOUSE_EVENT::WHEEL_Y, Y)
+           PDJE_MOUSE_L_BTN_DOWN, DEVICE_MOUSE_EVENT::PDJE_BTN_L, DOWN)
+       PDJE_MOUSE_PARSE(PDJE_MOUSE_L_BTN_UP, DEVICE_MOUSE_EVENT::PDJE_BTN_L, UP)
+       PDJE_MOUSE_PARSE(
+           PDJE_MOUSE_R_BTN_DOWN, DEVICE_MOUSE_EVENT::PDJE_BTN_R, DOWN)
+       PDJE_MOUSE_PARSE(PDJE_MOUSE_R_BTN_UP, DEVICE_MOUSE_EVENT::PDJE_BTN_R, UP)
+       PDJE_MOUSE_PARSE(
+           PDJE_MOUSE_M_BTN_DOWN, DEVICE_MOUSE_EVENT::PDJE_BTN_M, DOWN)
+       PDJE_MOUSE_PARSE(PDJE_MOUSE_M_BTN_UP, DEVICE_MOUSE_EVENT::PDJE_BTN_M, UP)
+       PDJE_MOUSE_PARSE(
+           PDJE_MOUSE_SIDE_BTN_DOWN, DEVICE_MOUSE_EVENT::PDJE_BTN_SIDE, DOWN)
+       PDJE_MOUSE_PARSE(
+           PDJE_MOUSE_SIDE_BTN_UP, DEVICE_MOUSE_EVENT::PDJE_BTN_SIDE, UP)
+       PDJE_MOUSE_PARSE(
+           PDJE_MOUSE_EX_BTN_DOWN, DEVICE_MOUSE_EVENT::PDJE_BTN_EX, DOWN)
+       PDJE_MOUSE_PARSE(PDJE_MOUSE_EX_BTN_UP, DEVICE_MOUSE_EVENT::PDJE_BTN_EX, UP)
+       PDJE_MOUSE_PARSE(PDJE_MOUSE_XWHEEL, DEVICE_MOUSE_EVENT::PDJE_WHEEL_X, X)
+       PDJE_MOUSE_PARSE(PDJE_MOUSE_YWHEEL, DEVICE_MOUSE_EVENT::PDJE_WHEEL_Y, Y)
    }
    
    template <>
@@ -103,8 +108,9 @@ Program Listing for File Mouse.cpp
        if (init->lambdas.custom_mouse_parse &&
            (ilog.event.mouse.x != 0 || ilog.event.mouse.y != 0)) {
            key.DeviceKey =
-               DEVICE_MOUSE_EVENT::AXIS_MOVE; // Mouse Axis Movement logic will be
-                                              // replaced with AxisModel.
+               DEVICE_MOUSE_EVENT::PDJE_AXIS_MOVE; // Mouse Axis Movement logic
+                                                   // will be replaced with
+                                                   // AxisModel.
    
            auto res = init->raildb.GetID(key);
            if (res) {

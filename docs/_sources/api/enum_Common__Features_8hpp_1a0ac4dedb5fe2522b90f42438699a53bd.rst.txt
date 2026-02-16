@@ -3,7 +3,7 @@
 Enum PDJE_RT_ERROR
 ==================
 
-- Defined in :ref:`file_include_input_linux_common_Common_Features.hpp`
+- Defined in :ref:`file_include_input_trashbin_--DEPRECATED-linux_common_Common_Features.hpp`
 
 
 Enum Documentation

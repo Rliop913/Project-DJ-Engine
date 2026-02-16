@@ -1,6 +1,5 @@
 #pragma once
 
-#include "PDJE_INPUT_PROCESS_HASH.hpp"
 #include "PDJE_LOG_SETTER.hpp"
 #include <algorithm>
 #include <cctype>
@@ -117,7 +116,7 @@ template <typename T, int MEM_PROT_FLAG>
     {
         if (MEM_PROT_FLAG == PDJE_NO_IPC) {
             if (ptr) {
-                delete ptr;
+                delete[] ptr;
             }
             return;
         }

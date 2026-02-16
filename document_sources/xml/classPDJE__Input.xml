@@ -4,61 +4,63 @@
     <compoundname>PDJE_Input</compoundname>
     <includes refid="PDJE__Input_8hpp" local="no">PDJE_Input.hpp</includes>
     <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classPDJE__Input_1adf7d91c2dfe16c0622787ff4b2629c6b" prot="private" static="no" mutable="no">
-        <type>std::optional&lt; <ref refid="classPDJE__IPC_1_1MainProcess" kindref="compound">PDJE_IPC::MainProcess</ref> &gt;</type>
-        <definition>std::optional&lt;PDJE_IPC::MainProcess&gt; PDJE_Input::http_bridge</definition>
+      <memberdef kind="variable" id="classPDJE__Input_1ad52b67cfabec09be1b320406514baa4c" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classPDJE__DEFAULT__DEVICES_1_1DefaultDevs" kindref="compound">PDJE_DEFAULT_DEVICES::DefaultDevs</ref> &gt;</type>
+        <definition>std::optional&lt;PDJE_DEFAULT_DEVICES::DefaultDevs&gt; PDJE_Input::default_devs</definition>
         <argsstring></argsstring>
-        <name>http_bridge</name>
-        <qualifiedname>PDJE_Input::http_bridge</qualifiedname>
+        <name>default_devs</name>
+        <qualifiedname>PDJE_Input::default_devs</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/PDJE_Input.hpp" line="31" column="19" bodyfile="include/input/PDJE_Input.hpp" bodystart="31" bodyend="-1"/>
+        <location file="include/input/PDJE_Input.hpp" line="25" column="19" bodyfile="include/input/PDJE_Input.hpp" bodystart="25" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classPDJE__Input_1ab6d39359df5adac6c72566c15322924e" prot="private" static="no" mutable="no">
-        <type><ref refid="classPDJE__IPC_1_1SharedMem" kindref="compound">PDJE_IPC::SharedMem</ref>&lt; std::unordered_map&lt; <ref refid="PDJE__Input__DataLine_8hpp_1a73ea437825558867dcad305e6ab74cd9" kindref="member">PDJE_ID</ref>, <ref refid="PDJE__Input__DataLine_8hpp_1ad2b191944fa7dd4314a1a49b2b243e62" kindref="member">PDJE_NAME</ref> &gt;, <ref refid="namespacePDJE__IPC_1a9cca29b7678f16ffedd145985a8fe4b3" kindref="member">PDJE_IPC::PDJE_IPC_RW</ref> &gt;</type>
-        <definition>PDJE_IPC::SharedMem&lt;std::unordered_map&lt;PDJE_ID, PDJE_NAME&gt;, PDJE_IPC::PDJE_IPC_RW&gt; PDJE_Input::id_name</definition>
+      <memberdef kind="variable" id="classPDJE__Input_1a48613a9644bb509d4508dcd955c6407f" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool PDJE_Input::FLAG_INPUT_ON</definition>
         <argsstring></argsstring>
-        <name>id_name</name>
-        <qualifiedname>PDJE_Input::id_name</qualifiedname>
+        <name>FLAG_INPUT_ON</name>
+        <qualifiedname>PDJE_Input::FLAG_INPUT_ON</qualifiedname>
+        <initializer>= false</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/PDJE_Input.hpp" line="35" column="9" bodyfile="include/input/PDJE_Input.hpp" bodystart="35" bodyend="-1"/>
+        <location file="include/input/PDJE_Input.hpp" line="28" column="36" bodyfile="include/input/PDJE_Input.hpp" bodystart="28" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classPDJE__Input_1a2568d410fb29daf693039ac5d562cff3" prot="private" static="no" mutable="no">
-        <type><ref refid="classPDJE__Buffer__Arena" kindref="compound">PDJE_Buffer_Arena</ref>&lt; <ref refid="structPDJE__Input__Log" kindref="compound">PDJE_Input_Log</ref> &gt;</type>
-        <definition>PDJE_Buffer_Arena&lt;PDJE_Input_Log&gt; PDJE_Input::input_buffer</definition>
+      <memberdef kind="variable" id="classPDJE__Input_1af879d0958866337b0a9d748458038ecf" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classPDJE__MIDI_1_1MIDI" kindref="compound">PDJE_MIDI::MIDI</ref> &gt;</type>
+        <definition>std::optional&lt;PDJE_MIDI::MIDI&gt; PDJE_Input::midi_engine</definition>
         <argsstring></argsstring>
-        <name>input_buffer</name>
-        <qualifiedname>PDJE_Input::input_buffer</qualifiedname>
+        <name>midi_engine</name>
+        <qualifiedname>PDJE_Input::midi_engine</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/PDJE_Input.hpp" line="37" column="23" bodyfile="include/input/PDJE_Input.hpp" bodystart="37" bodyend="-1"/>
+        <location file="include/input/PDJE_Input.hpp" line="29" column="19" bodyfile="include/input/PDJE_Input.hpp" bodystart="29" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classPDJE__Input_1a9935dc82850d3a11dfd6d194b69837ab" prot="private" static="no" mutable="no">
-        <type><ref refid="classPDJE__IPC_1_1SharedMem" kindref="compound">PDJE_IPC::SharedMem</ref>&lt; int, <ref refid="namespacePDJE__IPC_1a9cca29b7678f16ffedd145985a8fe4b3" kindref="member">PDJE_IPC::PDJE_IPC_RW</ref> &gt;</type>
-        <definition>PDJE_IPC::SharedMem&lt;int, PDJE_IPC::PDJE_IPC_RW&gt; PDJE_Input::spinlock_run</definition>
+      <memberdef kind="variable" id="classPDJE__Input_1a6c2bd5f760a7f1b1677af5447909614b" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool PDJE_Input::FLAG_MIDI_ON</definition>
         <argsstring></argsstring>
-        <name>spinlock_run</name>
-        <qualifiedname>PDJE_Input::spinlock_run</qualifiedname>
+        <name>FLAG_MIDI_ON</name>
+        <qualifiedname>PDJE_Input::FLAG_MIDI_ON</qualifiedname>
+        <initializer>= false</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/PDJE_Input.hpp" line="40" column="9" bodyfile="include/input/PDJE_Input.hpp" bodystart="40" bodyend="-1"/>
+        <location file="include/input/PDJE_Input.hpp" line="30" column="36" bodyfile="include/input/PDJE_Input.hpp" bodystart="30" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classPDJE__Input_1a4ab3e975c31414e17cd1542319a30a62" prot="private" static="no" mutable="no">
         <type><ref refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9" kindref="member">PDJE_INPUT_STATE</ref></type>
@@ -73,23 +75,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/PDJE_Input.hpp" line="42" column="22" bodyfile="include/input/PDJE_Input.hpp" bodystart="42" bodyend="-1"/>
-      </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="classPDJE__Input_1abe8f6f2a3c505c91b5c1ad6a4f020b9d" prot="public" static="no" mutable="no">
-        <type>std::string</type>
-        <definition>std::string PDJE_Input::ErrLog</definition>
-        <argsstring></argsstring>
-        <name>ErrLog</name>
-        <qualifiedname>PDJE_Input::ErrLog</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/input/PDJE_Input.hpp" line="45" column="17" bodyfile="include/input/PDJE_Input.hpp" bodystart="45" bodyend="-1"/>
+        <location file="include/input/PDJE_Input.hpp" line="31" column="36" bodyfile="include/input/PDJE_Input.hpp" bodystart="31" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -106,7 +92,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/PDJE_Input.hpp" line="49" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="137" bodyend="140"/>
+        <location file="include/input/PDJE_Input.hpp" line="37" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="149" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__Input_1a1de51439e4e58f538ca08f2488baf481" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; libremidi::input_port &gt;</type>
+        <definition>std::vector&lt; libremidi::input_port &gt; PDJE_Input::GetMIDIDevs</definition>
+        <argsstring>()</argsstring>
+        <name>GetMIDIDevs</name>
+        <qualifiedname>PDJE_Input::GetMIDIDevs</qualifiedname>
+        <briefdescription>
+<para>Get All Connected MIDI devices. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/PDJE_Input.hpp" line="42" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="156" bodyend="159"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__Input_1a5e124b018f37cd0d4ebdb1aa0f4e234e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -121,17 +122,21 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/PDJE_Input.hpp" line="55" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="10" bodyend="40"/>
+        <location file="include/input/PDJE_Input.hpp" line="47" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="10" bodyend="44"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__Input_1a60b8fafb986f4a289ab6fc80b792afd3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__Input_1aa504274ac6dfd37beb248fb5fac470c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool PDJE_Input::Config</definition>
-        <argsstring>(std::vector&lt; DeviceData &gt; &amp;devs)</argsstring>
+        <argsstring>(std::vector&lt; DeviceData &gt; &amp;devs, const std::vector&lt; libremidi::input_port &gt; &amp;midi_dev)</argsstring>
         <name>Config</name>
         <qualifiedname>PDJE_Input::Config</qualifiedname>
         <param>
           <type>std::vector&lt; <ref refid="structDeviceData" kindref="compound">DeviceData</ref> &gt; &amp;</type>
           <declname>devs</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; libremidi::input_port &gt; &amp;</type>
+          <declname>midi_dev</declname>
         </param>
         <briefdescription>
 <para>configure device data. </para>
@@ -140,7 +145,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/PDJE_Input.hpp" line="61" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="43" bodyend="95"/>
+        <location file="include/input/PDJE_Input.hpp" line="53" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="47" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__Input_1a141055482bcb2c52442ad9f596d72cba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -155,7 +160,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/PDJE_Input.hpp" line="67" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="98" bodyend="109"/>
+        <location file="include/input/PDJE_Input.hpp" line="60" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="92" bodyend="111"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__Input_1acd31c013ea5cf83003795bb58c60f9e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -170,7 +175,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/PDJE_Input.hpp" line="73" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="112" bodyend="134"/>
+        <location file="include/input/PDJE_Input.hpp" line="66" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="114" bodyend="146"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__Input_1a618aaec5a5067bf8f729e4e6b31812c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9" kindref="member">PDJE_INPUT_STATE</ref></type>
@@ -185,7 +190,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/PDJE_Input.hpp" line="79" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="143" bodyend="146"/>
+        <location file="include/input/PDJE_Input.hpp" line="72" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="162" bodyend="165"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__Input_1ac4a8a1fc6bce51c498176db187c03e34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structPDJE__INPUT__DATA__LINE" kindref="compound">PDJE_INPUT_DATA_LINE</ref></type>
@@ -200,7 +205,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/PDJE_Input.hpp" line="85" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="149" bodyend="154"/>
+        <location file="include/input/PDJE_Input.hpp" line="78" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="168" bodyend="178"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__Input_1a6a66c5c863c7c489d9a0da4be2de97bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -215,7 +220,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/PDJE_Input.hpp" line="90" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="4" bodyend="7"/>
+        <location file="include/input/PDJE_Input.hpp" line="83" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="4" bodyend="7"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__Input_1a2459c713b4af968b34679f87ca9dcdfd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -230,7 +235,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/PDJE_Input.hpp" line="95" column="5" bodyfile="include/input/PDJE_Input.hpp" bodystart="95" bodyend="98"/>
+        <location file="include/input/PDJE_Input.hpp" line="88" column="5" bodyfile="include/input/PDJE_Input.hpp" bodystart="88" bodyend="91"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -239,138 +244,21 @@
     <detaileddescription>
 <para>Searches for connected devices and pairs them with the engine. </para>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="6">
-        <label>PDJE_Buffer_Arena&lt; PDJE_Input_Log &gt;</label>
-        <link refid="classPDJE__Buffer__Arena"/>
-        <childnode refid="7" relation="usage">
-          <edgelabel>buf1</edgelabel>
-          <edgelabel>buf2</edgelabel>
-        </childnode>
-        <childnode refid="13" relation="usage">
-          <edgelabel>first_count</edgelabel>
-          <edgelabel>second_count</edgelabel>
-        </childnode>
-        <childnode refid="14" relation="usage">
-          <edgelabel>lock</edgelabel>
-        </childnode>
-        <childnode refid="15" relation="usage">
-          <edgelabel>buf_first</edgelabel>
-        </childnode>
-        <childnode refid="8" relation="usage">
-          <edgelabel>buffer_first_pointer_cache</edgelabel>
-          <edgelabel>buffer_second_pointer_cache</edgelabel>
-        </childnode>
-      </node>
-      <node id="12">
-        <label>PDJE_HID_Event</label>
-        <link refid="structPDJE__HID__Event"/>
-      </node>
-      <node id="7">
-        <label>PDJE_IPC::SharedMem&lt; PDJE_Input_Log, PDJE_IPC::PDJE_IPC_RW &gt;</label>
-        <link refid="classPDJE__IPC_1_1SharedMem"/>
-        <childnode refid="8" relation="usage">
-          <edgelabel>ptr</edgelabel>
-        </childnode>
-      </node>
-      <node id="16">
-        <label>PDJE_IPC::SharedMem&lt; int, PDJE_IPC::PDJE_IPC_RW &gt;</label>
-        <link refid="classPDJE__IPC_1_1SharedMem"/>
-      </node>
-      <node id="14">
-        <label>PDJE_IPC::SharedMem&lt; std::atomic_flag, PDJE_IPC::PDJE_IPC_RW &gt;</label>
-        <link refid="classPDJE__IPC_1_1SharedMem"/>
-      </node>
-      <node id="2">
-        <label>PDJE_IPC::SharedMem&lt; std::unordered_map&lt; PDJE_ID, PDJE_NAME &gt;, PDJE_IPC::PDJE_IPC_RW &gt;</label>
-        <link refid="classPDJE__IPC_1_1SharedMem"/>
-        <childnode refid="3" relation="usage">
-          <edgelabel>ptr</edgelabel>
-        </childnode>
-      </node>
-      <node id="13">
-        <label>PDJE_IPC::SharedMem&lt; uint64_t, PDJE_IPC::PDJE_IPC_RW &gt;</label>
-        <link refid="classPDJE__IPC_1_1SharedMem"/>
-      </node>
-      <node id="15">
-        <label>PDJE_IPC::SharedMem&lt; uint8_t, PDJE_IPC::PDJE_IPC_RW &gt;</label>
-        <link refid="classPDJE__IPC_1_1SharedMem"/>
-      </node>
-      <node id="1">
-        <label>PDJE_Input</label>
-        <link refid="classPDJE__Input"/>
-        <childnode refid="2" relation="usage">
-          <edgelabel>id_name</edgelabel>
-        </childnode>
-        <childnode refid="6" relation="usage">
-          <edgelabel>input_buffer</edgelabel>
-        </childnode>
-        <childnode refid="16" relation="usage">
-          <edgelabel>spinlock_run</edgelabel>
-        </childnode>
-        <childnode refid="4" relation="usage">
-          <edgelabel>ErrLog</edgelabel>
-        </childnode>
-      </node>
-      <node id="9">
-        <label>PDJE_Input_Event</label>
-        <link refid="unionPDJE__Input__Event"/>
-        <childnode refid="10" relation="usage">
-          <edgelabel>mouse</edgelabel>
-        </childnode>
-        <childnode refid="11" relation="usage">
-          <edgelabel>keyboard</edgelabel>
-        </childnode>
-      </node>
-      <node id="8">
-        <label>PDJE_Input_Log</label>
-        <link refid="structPDJE__Input__Log"/>
-        <childnode refid="9" relation="usage">
-          <edgelabel>event</edgelabel>
-        </childnode>
-        <childnode refid="12" relation="usage">
-          <edgelabel>hid_event</edgelabel>
-        </childnode>
-      </node>
-      <node id="11">
-        <label>PDJE_Keyboard_Event</label>
-        <link refid="structPDJE__Keyboard__Event"/>
-      </node>
-      <node id="10">
-        <label>PDJE_Mouse_Event</label>
-        <link refid="structPDJE__Mouse__Event"/>
-      </node>
-      <node id="5">
-        <label>std::basic_string&lt; Char &gt;</label>
-      </node>
-      <node id="4">
-        <label>std::string</label>
-        <childnode refid="5" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="3">
-        <label>std::unordered_map&lt; PDJE_ID, PDJE_NAME &gt;</label>
-        <childnode refid="4" relation="usage">
-          <edgelabel>elements</edgelabel>
-          <edgelabel>keys</edgelabel>
-        </childnode>
-      </node>
-    </collaborationgraph>
-    <location file="include/input/PDJE_Input.hpp" line="29" column="1" bodyfile="include/input/PDJE_Input.hpp" bodystart="29" bodyend="99"/>
+    <location file="include/input/PDJE_Input.hpp" line="23" column="1" bodyfile="include/input/PDJE_Input.hpp" bodystart="23" bodyend="92"/>
     <listofallmembers>
-      <member refid="classPDJE__Input_1a60b8fafb986f4a289ab6fc80b792afd3" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>Config</name></member>
-      <member refid="classPDJE__Input_1abe8f6f2a3c505c91b5c1ad6a4f020b9d" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>ErrLog</name></member>
+      <member refid="classPDJE__Input_1aa504274ac6dfd37beb248fb5fac470c5" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>Config</name></member>
+      <member refid="classPDJE__Input_1ad52b67cfabec09be1b320406514baa4c" prot="private" virt="non-virtual"><scope>PDJE_Input</scope><name>default_devs</name></member>
+      <member refid="classPDJE__Input_1a48613a9644bb509d4508dcd955c6407f" prot="private" virt="non-virtual"><scope>PDJE_Input</scope><name>FLAG_INPUT_ON</name></member>
+      <member refid="classPDJE__Input_1a6c2bd5f760a7f1b1677af5447909614b" prot="private" virt="non-virtual"><scope>PDJE_Input</scope><name>FLAG_MIDI_ON</name></member>
       <member refid="classPDJE__Input_1a57ffda3b7e96de7b73deb3557b089e9b" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>GetDevs</name></member>
+      <member refid="classPDJE__Input_1a1de51439e4e58f538ca08f2488baf481" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>GetMIDIDevs</name></member>
       <member refid="classPDJE__Input_1a618aaec5a5067bf8f729e4e6b31812c9" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>GetState</name></member>
-      <member refid="classPDJE__Input_1adf7d91c2dfe16c0622787ff4b2629c6b" prot="private" virt="non-virtual"><scope>PDJE_Input</scope><name>http_bridge</name></member>
-      <member refid="classPDJE__Input_1ab6d39359df5adac6c72566c15322924e" prot="private" virt="non-virtual"><scope>PDJE_Input</scope><name>id_name</name></member>
       <member refid="classPDJE__Input_1a5e124b018f37cd0d4ebdb1aa0f4e234e" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>Init</name></member>
-      <member refid="classPDJE__Input_1a2568d410fb29daf693039ac5d562cff3" prot="private" virt="non-virtual"><scope>PDJE_Input</scope><name>input_buffer</name></member>
       <member refid="classPDJE__Input_1acd31c013ea5cf83003795bb58c60f9e5" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>Kill</name></member>
+      <member refid="classPDJE__Input_1af879d0958866337b0a9d748458038ecf" prot="private" virt="non-virtual"><scope>PDJE_Input</scope><name>midi_engine</name></member>
       <member refid="classPDJE__Input_1a6a66c5c863c7c489d9a0da4be2de97bc" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>PDJE_Input</name></member>
       <member refid="classPDJE__Input_1ac4a8a1fc6bce51c498176db187c03e34" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>PullOutDataLine</name></member>
       <member refid="classPDJE__Input_1a141055482bcb2c52442ad9f596d72cba" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>Run</name></member>
-      <member refid="classPDJE__Input_1a9935dc82850d3a11dfd6d194b69837ab" prot="private" virt="non-virtual"><scope>PDJE_Input</scope><name>spinlock_run</name></member>
       <member refid="classPDJE__Input_1a4ab3e975c31414e17cd1542319a30a62" prot="private" virt="non-virtual"><scope>PDJE_Input</scope><name>state</name></member>
       <member refid="classPDJE__Input_1a2459c713b4af968b34679f87ca9dcdfd" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>~PDJE_Input</name></member>
     </listofallmembers>

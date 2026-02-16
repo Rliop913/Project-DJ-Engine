@@ -5,12 +5,12 @@ Directory NoteOBJ
 =================
 
 
-|exhale_lsh| :ref:`Parent directory <dir_include_judge>` (``include\judge``)
+|exhale_lsh| :ref:`Parent directory <dir_include_judge>` (``include/judge``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include\judge\NoteOBJ``
+*Directory path:* ``include/judge/NoteOBJ``
 
 
 Files

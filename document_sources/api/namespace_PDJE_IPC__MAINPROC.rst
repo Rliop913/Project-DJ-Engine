@@ -17,4 +17,6 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_p_d_j_e___i_p_c_1_1_m_a_i_n_p_r_o_c_1_1_t_x_r_x_transport`
+- :ref:`exhale_class_classPDJE__IPC_1_1MAINPROC_1_1DefaultDevs`
+
+- :ref:`exhale_class_classPDJE__IPC_1_1MAINPROC_1_1TXRXTransport`

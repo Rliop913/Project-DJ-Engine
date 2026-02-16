@@ -4,7 +4,7 @@
 Program Listing for File musicDB.cpp
 ====================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_db_musicDB.cpp>` (``include\core\db\musicDB.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_db_musicDB.cpp>` (``include/core/db/musicDB.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

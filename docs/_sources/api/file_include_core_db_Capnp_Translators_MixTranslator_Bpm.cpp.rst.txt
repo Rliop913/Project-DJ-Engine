@@ -4,7 +4,7 @@
 File Bpm.cpp
 ============
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_db_Capnp_Translators_MixTranslator>` (``include\core\db\Capnp\Translators\MixTranslator``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_db_Capnp_Translators_MixTranslator>` (``include/core/db/Capnp/Translators/MixTranslator``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Bpm.cpp
    :local:
    :backlinks: none
 
-Definition (``include\core\db\Capnp\Translators\MixTranslator\Bpm.cpp``)
+Definition (``include/core/db/Capnp/Translators/MixTranslator/Bpm.cpp``)
 ------------------------------------------------------------------------
 
 
@@ -41,5 +41,5 @@ Functions
 ---------
 
 
-- :ref:`exhale_function__bpm_8cpp_1a88b0de12ebc7f29ffc71e140169681b3`
+- :ref:`exhale_function_Bpm_8cpp_1a88b0de12ebc7f29ffc71e140169681b3`
 

@@ -4,7 +4,7 @@
 File PSKPipe.cpp
 ================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_global_Crypto_Windows>` (``include\global\Crypto\Windows``)
+|exhale_lsh| :ref:`Parent directory <dir_include_global_Crypto_Windows>` (``include/global/Crypto/Windows``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PSKPipe.cpp
    :local:
    :backlinks: none
 
-Definition (``include\global\Crypto\Windows\PSKPipe.cpp``)
+Definition (``include/global/Crypto/Windows/PSKPipe.cpp``)
 ----------------------------------------------------------
 
 

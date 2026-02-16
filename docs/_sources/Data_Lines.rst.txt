@@ -72,9 +72,13 @@ Core Data Line
         // This value can jump if seeking occurs.
         // Multiply by 2 to index into preRenderedData (stereo interleaving).
 
-        core_line.used_frame;
-        // Total number of PCM frames actually played (accumulated).
-        // Does not decrease when seeking; represents playback progress.
+        if (core_line.syncD) {
+            auto sync = core_line.syncD->load(std::memory_order_acquire);
+            auto consumed = sync.consumed_frames;
+            auto pre_calculated_unused = sync.pre_calculated_unused_frames;
+            // consumed: frames consumed by audio callback timeline.
+            // pre_calculated_unused: backend-reported queued-but-not-yet-consumed frames.
+        }
 
     .. code-block:: c#
 
@@ -96,9 +100,8 @@ Core Data Line
         // This value can jump if seeking occurs.
         // Multiply by 2 to index into preRenderedData (stereo interleaving).
 
-        core_line.used_frame;
-        // Total number of PCM frames actually played (accumulated).
-        // Does not decrease when seeking; represents playback progress.
+        // Core sync data is exposed via core_line.syncD.
+        // Read consumed_frames / pre_calculated_unused_frames from syncD.
 
 
     .. code-block:: python
@@ -122,9 +125,8 @@ Core Data Line
         # This value can jump if seeking occurs.
         # Multiply by 2 to index into preRenderedData (stereo interleaving).
 
-        core_line.used_frame
-        # Total number of PCM frames actually played (accumulated).
-        # Does not decrease when seeking; represents playback progress.
+        # Core sync data is exposed via core_line.syncD.
+        # Read consumed_frames / pre_calculated_unused_frames from syncD.
 
 
     .. code-block:: gdscript
@@ -149,9 +151,8 @@ Core Data Line
         # This value can jump if seeking occurs.
         # Multiply by 2 to index into preRenderedData (stereo interleaving).
 
-        core_line.GetUsedFrame()
-        # Total number of PCM frames actually played (accumulated).
-        # Does not decrease when seeking; represents playback progress.
+        # For wrapper bindings, read the sync object exposed by the core line.
+        # Use consumed_frames / pre_calculated_unused_frames from that sync data.
 
 
 Input Data Line
@@ -171,21 +172,18 @@ Input Data Line
         auto dline = pdje_input_object.PullOutDataLine();
         pdje_input_object.Run();
         while (true) {
-            auto got = dline.input_arena->Get();
+            dline.input_arena->Receive();
 
-            for (const auto &i : *got) {
-                auto name = dline.id_name_conv->find(i.id);
-                if (name != dline.id_name_conv->end()) {
-                    std::cout << "name: " << name->second << std::endl;
-                    std::cout << "time: " << i.microSecond << std::endl;
-                    if(i.type == PDJE_Dev_Type::KEYBOARD){
-                        std::cout
+            for (const auto &i : dline.input_arena->datas) {
+                std::string name(i.name, i.name_len);
+                std::cout << "name: " << name << std::endl;
+                std::cout << "time: " << i.microSecond << std::endl;
+                if (i.type == PDJE_Dev_Type::KEYBOARD) {
+                    std::cout
                         << "keyNumber: " << static_cast<int>(i.event.keyboard.k)
-                        << std::endl;//check PDJE_KEY::
-                        std::cout << "pressed" << i.event.keyboard.pressed
-                        << std::endl;
-                    }
-
+                        << std::endl; // check PDJE_KEY::
+                    std::cout << "pressed: " << i.event.keyboard.pressed
+                              << std::endl;
                 }
             }
         }
