@@ -17,10 +17,6 @@
 
 #else
 #include <alsa/asoundlib.h>
-#include <jack/jack.h>
-#include <jack/types.h>
-#include <pulse/pulseaudio.h>
-#include <pulse/stream.h>
 // #include <sound/asound.h>
 #endif
 
