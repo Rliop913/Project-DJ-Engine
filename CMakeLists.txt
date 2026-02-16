@@ -140,7 +140,7 @@ endfunction()
 
 function(LinuxSetAudioLibs targetName)
   if(LINUX)
-    target_link_libraries(${targetName} PUBLIC asound pulse)
+    target_link_libraries(${targetName} PUBLIC asound)
   endif()
 endfunction(LinuxSetAudioLibs )
 
