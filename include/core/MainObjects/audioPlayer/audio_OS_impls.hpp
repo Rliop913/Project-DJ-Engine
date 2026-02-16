@@ -46,7 +46,7 @@ extract_backend(const ma_device &dev)
     return dev.wasapi.pAudioClientPlayback;
 
 #elif defined(__APPLE__)
-    return dev.coreaudio.pAudioUnit; // fix it
+    return nullptr; // fix it
 #else
 
     switch (dev.pContext->backend) {
@@ -73,7 +73,7 @@ set_unused_frame_function(const ma_device &dev)
         return static_cast<uint32_t>(padding_frames);
     };
 #elif defined(__APPLE__)
-    return [](const ma_ptr &ptr) {};
+    return [](const ma_ptr &ptr) -> uint32_t { return 0; };
 #else
     switch (dev.pContext->backend) {
     case ma_backend_alsa:
