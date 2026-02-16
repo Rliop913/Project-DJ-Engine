@@ -26,17 +26,17 @@ FullManualRender_callback(ma_device  *pDevice,
 void
 audioPlayer::ContextInit()
 {
-    auto conf = ma_context_config_init();
+    auto conf           = ma_context_config_init();
     conf.threadPriority = ma_thread_priority_high;
-    auto backs = OS_IMPL::get_backends();
-    
+    auto backs          = OS_IMPL::get_backends();
+
     ma_context_init(backs.data(), backs.size(), &conf, &ctxt);
 }
 
 ma_device_config
 audioPlayer::DefaultInit(const unsigned int frameBufferSize)
 {
-    engineDatas = std::make_unique<audioEngineDataStruct>();
+    engineDatas             = std::make_unique<audioEngineDataStruct>();
     ma_device_config conf   = ma_device_config_init(ma_device_type_playback);
     conf.playback.format    = ma_format_f32;
     conf.playback.channels  = 2;
@@ -47,7 +47,7 @@ audioPlayer::DefaultInit(const unsigned int frameBufferSize)
     RFaust.resize(frameBufferSize);
     engineDatas->faustPcmPP[0] = LFaust.data();
     engineDatas->faustPcmPP[1] = RFaust.data();
-    conf.pUserData            = reinterpret_cast<void *>(engineDatas.get());
+    conf.pUserData             = reinterpret_cast<void *>(engineDatas.get());
     ContextInit();
     return conf;
 }
@@ -76,12 +76,11 @@ audioPlayer::audioPlayer(litedb            &db,
 
     if (ma_device_init(&ctxt, &conf, &player) != MA_SUCCESS) {
         critlog("failed to init device. from audioPlayer::audioPlayer(db, td "
-            ",fbsize, hasmanual)");
-            return;
-        }
-        engineDatas->backend_ptr = OS_IMPL::extract_backend(player);
-        engineDatas->get_unused_frames = OS_IMPL::set_unused_frame_function();
-
+                ",fbsize, hasmanual)");
+        return;
+    }
+    engineDatas->backend_ptr       = OS_IMPL::extract_backend(player);
+    engineDatas->get_unused_frames = OS_IMPL::set_unused_frame_function(player);
 }
 
 audioPlayer::audioPlayer(const unsigned int frameBufferSize)
@@ -95,8 +94,8 @@ audioPlayer::audioPlayer(const unsigned int frameBufferSize)
     if (ma_device_init(&ctxt, &conf, &player) != MA_SUCCESS) {
         critlog("failed to init device. from audioPlayer::audioPlayer(fbsize)");
     }
-    engineDatas->backend_ptr = OS_IMPL::extract_backend(player);
-    engineDatas->get_unused_frames = OS_IMPL::set_unused_frame_function();
+    engineDatas->backend_ptr       = OS_IMPL::extract_backend(player);
+    engineDatas->get_unused_frames = OS_IMPL::set_unused_frame_function(player);
 }
 
 bool
@@ -135,7 +134,8 @@ audioPlayer::ChangeCursorPos(unsigned long long pos)
 unsigned long long
 audioPlayer::GetConsumedFrames()
 {
-    return engineDatas->syncData.load(std::memory_order_acquire).consumed_frames;
+    return engineDatas->syncData.load(std::memory_order_acquire)
+        .consumed_frames;
 }
 
 FXControlPanel *

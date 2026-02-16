@@ -6,6 +6,7 @@
 #include "PDJE_EXPORT_SETTER.hpp"
 #include "audioCallbacks.hpp"
 #include "audioRender.hpp"
+#include "audio_OS_impls.hpp"
 #include <miniaudio.h>
 /**
  * @brief The music handler class
@@ -44,7 +45,6 @@ class PDJE_API audioPlayer {
     /// the handler status. check when something wrong.
     /// do not change this manually.
     // std::string STATUS = "OK";
-
 
     /// Plays music.
     bool
