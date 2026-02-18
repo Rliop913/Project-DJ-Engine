@@ -2,6 +2,7 @@
 #include "Input_Transfer.hpp"
 #include "PDJE_Highres_Clock.hpp"
 #include "PDJE_Input_Device_Data.hpp"
+#include <atomic>
 #include <bitset>
 #include <filesystem>
 #include <libevdev/libevdev.h>
@@ -18,6 +19,8 @@ class InputCore {
     DrainEvents(const int epFD, int FD, libevdev *evdev);
     void
     use_event(const input_event &evtrig, const int FD);
+    void
+    RemoveDeviceFD(int epFD, int FD);
     PDJE_HIGHRES_CLOCK::CLOCK clock;
 
     void

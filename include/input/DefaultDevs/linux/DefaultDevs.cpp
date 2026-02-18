@@ -1,5 +1,7 @@
 #include "DefaultDevs.hpp"
 #include <exception>
+#include <fcntl.h>
+#include <unistd.h>
 namespace PDJE_DEFAULT_DEVICES {
 
 DefaultDevs::DefaultDevs() : input_buffer(1024)
@@ -19,15 +21,28 @@ bool
 DefaultDevs::Config(const std::vector<DeviceData> &devs)
 {
     try {
-        for (auto &i : devs) {
+        if (!IC) {
+            Ready();
+        }
+        std::size_t added_count = 0;
+        for (const auto &i : devs) {
+            if (i.Name.empty()) {
+                continue;
+            }
+
             auto searched = stored_dev.find(i.Name);
             if (searched != stored_dev.end()) {
-                IC->Add(searched->second.dev_path,
-                        searched->second.dev_type,
-                        i.Name);
+                if (IC->Add(searched->second.dev_path,
+                            searched->second.dev_type,
+                            i.Name)) {
+                    ++added_count;
+                } else {
+                    warnlog("failed to add input device on linux:");
+                    warnlog(i.Name);
+                }
             }
         }
-        return true;
+        return added_count > 0;
     } catch (const std::exception &e) {
         critlog("failed on Device Configure on linux. What:");
         critlog(e.what());
@@ -43,6 +58,7 @@ DefaultDevs::GetDevices()
 {
     DEV_LIST lsdev;
     fs::path device_root("/dev/input/");
+    stored_dev.clear();
 
     for (const auto &dev : fs::directory_iterator(device_root)) {
         if (!dev.is_character_file()) {
@@ -67,10 +83,8 @@ DefaultDevs::GetDevices()
             if (dev_name) {
 
                 dd.Name               = std::string(dev_name);
-                dd.device_specific_id = dev.path();
-                if (!stored_dev.contains(dd.Name)) {
-                    stored_dev[dd.Name].dev_path = dev.path();
-                }
+                dd.device_specific_id = dev.path().string();
+                stored_dev[dd.Name].dev_path = dev.path();
 
                 if (libevdev_has_event_type(info, EV_KEY) &&
                     libevdev_has_event_code(info, EV_KEY, KEY_A) &&
