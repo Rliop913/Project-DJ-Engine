@@ -1,8 +1,9 @@
 #pragma once
+#include <cerrno>
 #include <cstdint>
+
 #include <stdexcept>
 #include <string>
-
 #include <sys/syscall.h>
 #include <unistd.h>
 
@@ -10,25 +11,14 @@
 
 namespace rtkit {
 
-//AI generated -> how to use acl
-// 1) 네, 글로브로 한 번에 줄 수 있어
-
-// 쉘이 event*를 실제 파일 목록으로 확장해줘서 아래처럼 동작해.
-
-// sudo setfacl -m u:$USER:r /dev/input/event*
-
-
-// 그리고 해제도 동일하게:
-
-// sudo setfacl -x u:$USER /dev/input/event*
-
-
-// AI GENERATED... todo - fix & modulize these code
-
 static inline uint64_t
 get_tid()
 {
-    return static_cast<uint64_t>(syscall(SYS_gettid));
+    const long tid = syscall(SYS_gettid);
+    if (tid < 0) {
+        throw std::runtime_error("SYS_gettid failed: " + std::to_string(errno));
+    }
+    return static_cast<uint64_t>(tid);
 }
 
 static inline void
@@ -42,12 +32,67 @@ throw_bus_err(const char *what, int r, sd_bus_error *err)
         msg += ": ";
         msg += err->message ? err->message : "(no message)";
     }
+    if (err) {
+        sd_bus_error_free(err);
+    }
     throw std::runtime_error(msg);
 }
 
-// Query helpers (optional)
+static inline int32_t
+get_int32_property(sd_bus *bus, const char *property_name)
+{
+    sd_bus_error    err   = SD_BUS_ERROR_NULL;
+    sd_bus_message *reply = nullptr;
+
+    int r = sd_bus_call_method(bus,
+                               "org.freedesktop.RealtimeKit1",
+                               "/org/freedesktop/RealtimeKit1",
+                               "org.freedesktop.DBus.Properties",
+                               "Get",
+                               &err,
+                               &reply,
+                               "ss",
+                               "org.freedesktop.RealtimeKit1",
+                               property_name);
+    if (r < 0) {
+        if (reply) {
+            sd_bus_message_unref(reply);
+        }
+        throw_bus_err("Properties.Get failed", r, &err);
+    }
+
+    int32_t value = 0;
+    r = sd_bus_message_enter_container(reply, SD_BUS_TYPE_VARIANT, "i");
+    if (r < 0) {
+        sd_bus_error_free(&err);
+        sd_bus_message_unref(reply);
+        throw std::runtime_error(std::string("Failed to enter variant for ") +
+                                 property_name);
+    }
+
+    r = sd_bus_message_read_basic(reply, SD_BUS_TYPE_INT32, &value);
+    if (r < 0) {
+        sd_bus_error_free(&err);
+        sd_bus_message_unref(reply);
+        throw std::runtime_error(
+            std::string("Failed to read property value for ") + property_name);
+    }
+
+    r = sd_bus_message_exit_container(reply);
+    if (r < 0) {
+        sd_bus_error_free(&err);
+        sd_bus_message_unref(reply);
+        throw std::runtime_error(std::string("Failed to exit variant for ") +
+                                 property_name);
+    }
+
+    sd_bus_error_free(&err);
+    sd_bus_message_unref(reply);
+    return value;
+}
+
 static inline uint32_t
-get_max_realtime_priority(sd_bus *bus)
+get_max_realtime_priority_legacy_method(sd_bus *bus)
 {
     sd_bus_error    err   = SD_BUS_ERROR_NULL;
     sd_bus_message *reply = nullptr;
@@ -61,7 +106,9 @@ get_max_realtime_priority(sd_bus *bus)
                                &reply,
                                "");
     if (r < 0) {
-        sd_bus_error_free(&err);
+        if (reply) {
+            sd_bus_message_unref(reply);
+        }
         throw_bus_err("GetMaxRealtimePriority failed", r, &err);
     }
 
@@ -75,7 +122,7 @@ get_max_realtime_priority(sd_bus *bus)
 }
 
 static inline int32_t
-get_min_nice_level(sd_bus *bus)
+get_min_nice_level_legacy_method(sd_bus *bus)
 {
     sd_bus_error    err   = SD_BUS_ERROR_NULL;
     sd_bus_message *reply = nullptr;
@@ -89,7 +136,9 @@ get_min_nice_level(sd_bus *bus)
                                &reply,
                                "");
     if (r < 0) {
-        sd_bus_error_free(&err);
+        if (reply) {
+            sd_bus_message_unref(reply);
+        }
         throw_bus_err("GetMinNiceLevel failed", r, &err);
     }
 
@@ -101,8 +150,54 @@ get_min_nice_level(sd_bus *bus)
     return nicev;
 }
 
+// Query helpers (optional)
+static inline uint32_t
+get_max_realtime_priority(sd_bus *bus)
+{
+    try {
+        const int32_t property_prio =
+            get_int32_property(bus, "MaxRealtimePriority");
+        if (property_prio <= 0) {
+            throw std::runtime_error(
+                "MaxRealtimePriority property returned non-positive value");
+        }
+        return static_cast<uint32_t>(property_prio);
+    } catch (const std::exception &prop_err) {
+        try {
+            const uint32_t method_prio =
+                get_max_realtime_priority_legacy_method(bus);
+            if (method_prio == 0) {
+                throw std::runtime_error(
+                    "GetMaxRealtimePriority returned zero value");
+            }
+            return method_prio;
+        } catch (const std::exception &legacy_err) {
+            throw std::runtime_error(
+                std::string("Failed to query MaxRealtimePriority. property: ") +
+                prop_err.what() + "; legacy method: " + legacy_err.what());
+        }
+    }
+}
+
+static inline int32_t
+get_min_nice_level(sd_bus *bus)
+{
+    try {
+        return get_int32_property(bus, "MinNiceLevel");
+    } catch (const std::exception &prop_err) {
+        try {
+            return get_min_nice_level_legacy_method(bus);
+        } catch (const std::exception &legacy_err) {
+            throw std::runtime_error(
+                std::string("Failed to query MinNiceLevel. property: ") +
+                prop_err.what() + "; legacy method: " + legacy_err.what());
+        }
+    }
+}
+
 // Make current thread SCHED_FIFO realtime with given priority (1..99, but rtkit
 // caps it)
+
 static inline void
 make_current_thread_realtime(uint32_t priority)
 {
@@ -114,41 +209,52 @@ make_current_thread_realtime(uint32_t priority)
     if (r < 0)
         throw std::runtime_error("sd_bus_open_system failed: " +
                                  std::to_string(r));
+    if (priority == 0) {
+        priority = 1;
+    }
 
-    const uint64_t tid = get_tid();
-
-    // (optional) clamp to rtkit max
-    uint32_t max_prio = 0;
     try {
-        max_prio = get_max_realtime_priority(bus);
-        if (priority > max_prio)
-            priority = max_prio;
-        if (priority == 0)
-            priority = 1;
+        const uint64_t tid = get_tid();
+
+        // optional: clamp to rtkit max
+        try {
+            const uint32_t max_prio = get_max_realtime_priority(bus);
+            if (priority > max_prio)
+                priority = max_prio;
+        } catch (const std::exception &) {
+        }
+
+        r = sd_bus_call_method(
+            bus,
+            "org.freedesktop.RealtimeKit1",
+            "/org/freedesktop/RealtimeKit1",
+            "org.freedesktop.RealtimeKit1",
+            "MakeThreadRealtime",
+            &err,
+            &reply,
+            "tu", // t = uint64 (thread id), u = uint32 (priority)
+            tid,
+            priority);
+
+        if (r < 0) {
+            throw_bus_err("MakeThreadRealtime failed", r, &err);
+        }
     } catch (...) {
-        // If query fails, still try the call with provided priority
+        if (reply) {
+            sd_bus_message_unref(reply);
+        }
+        if (bus) {
+            sd_bus_unref(bus);
+        }
+        throw;
     }
 
-    r = sd_bus_call_method(
-        bus,
-        "org.freedesktop.RealtimeKit1",
-        "/org/freedesktop/RealtimeKit1",
-        "org.freedesktop.RealtimeKit1",
-        "MakeThreadRealtime",
-        &err,
-        &reply,
-        "tu", // t = uint64 (thread id), u = uint32 (priority)
-        tid,
-        priority);
-
-    if (r < 0) {
-        sd_bus_error_free(&err);
+    if (reply) {
+        sd_bus_message_unref(reply);
+    }
+    if (bus) {
         sd_bus_unref(bus);
-        throw_bus_err("MakeThreadRealtime failed", r, &err);
     }
-
-    sd_bus_message_unref(reply);
-    sd_bus_unref(bus);
 }
 
 // Make current thread "high priority" by lowering nice (negative is higher
@@ -166,37 +272,49 @@ make_current_thread_high_priority(int32_t nice_level)
         throw std::runtime_error("sd_bus_open_system failed: " +
                                  std::to_string(r));
 
-    const uint64_t tid = get_tid();
-
-    // (optional) clamp to rtkit min nice
     try {
-        int32_t min_nice = get_min_nice_level(bus); // e.g. -11
-        if (nice_level < min_nice)
-            nice_level = min_nice;
+        const uint64_t tid = get_tid();
+
+        // optional: clamp to rtkit min nice
+        try {
+            const int32_t min_nice = get_min_nice_level(bus);
+            if (nice_level < min_nice)
+                nice_level = min_nice;
+        } catch (const std::exception &) {
+            // query failure is non-fatal; try with provided level
+        }
+
+        r = sd_bus_call_method(
+            bus,
+            "org.freedesktop.RealtimeKit1",
+            "/org/freedesktop/RealtimeKit1",
+            "org.freedesktop.RealtimeKit1",
+            "MakeThreadHighPriority",
+            &err,
+            &reply,
+            "ti", // t = uint64 (thread id), i = int32 (nice level)
+            tid,
+            nice_level);
+
+        if (r < 0) {
+            throw_bus_err("MakeThreadHighPriority failed", r, &err);
+        }
     } catch (...) {
-        // ignore
+        if (reply) {
+            sd_bus_message_unref(reply);
+        }
+        if (bus) {
+            sd_bus_unref(bus);
+        }
+        throw;
     }
 
-    r = sd_bus_call_method(
-        bus,
-        "org.freedesktop.RealtimeKit1",
-        "/org/freedesktop/RealtimeKit1",
-        "org.freedesktop.RealtimeKit1",
-        "MakeThreadHighPriority",
-        &err,
-        &reply,
-        "ti", // t = uint64 (thread id), i = int32 (nice level)
-        tid,
-        nice_level);
-
-    if (r < 0) {
-        sd_bus_error_free(&err);
+    if (reply) {
+        sd_bus_message_unref(reply);
+    }
+    if (bus) {
         sd_bus_unref(bus);
-        throw_bus_err("MakeThreadHighPriority failed", r, &err);
     }
-
-    sd_bus_message_unref(reply);
-    sd_bus_unref(bus);
 }
 
 } // namespace rtkit

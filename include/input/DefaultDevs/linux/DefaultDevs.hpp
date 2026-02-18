@@ -10,6 +10,7 @@
 #include <filesystem>
 #include <nlohmann/json.hpp>
 #include <optional>
+#include <thread>
 #include <unordered_map>
 #include <vector>
 namespace PDJE_DEFAULT_DEVICES {
@@ -24,6 +25,7 @@ class DefaultDevs {
         PDJE_Dev_Type dev_type;
     };
 
+    // key: device name (cross-platform compatibility key)
     std::unordered_map<std::string, device_metadata> stored_dev;
 
     std::optional<InputCore>   IC;
@@ -33,7 +35,7 @@ class DefaultDevs {
     bool
     Kill()
     {
-        return true; // dummy function
+        return true; // compatibility no-op (windows parity)
     }
     std::vector<DeviceData>
     GetDevices();

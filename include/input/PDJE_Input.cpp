@@ -70,6 +70,7 @@ PDJE_Input::Config(std::vector<DeviceData>                  &devs,
         if (FLAG_INPUT_ON) {
             if (!default_devs->Config(sanitized_devs)) {
                 critlog("failed to configure devices.");
+                FLAG_INPUT_ON = false;
                 return false;
             }
             state = PDJE_INPUT_STATE::INPUT_LOOP_READY;
@@ -113,27 +114,33 @@ PDJE_Input::Run()
 bool
 PDJE_Input::Kill()
 {
+    bool ok = true;
     switch (state) {
     case PDJE_INPUT_STATE::DEAD:
         return true;
 
     case PDJE_INPUT_STATE::DEVICE_CONFIG_STATE: {
-        return default_devs->Kill();
+        if (default_devs) {
+            // compatibility no-op for windows parity
+            ok = default_devs->Kill();
+        }
+        break;
     }
     case PDJE_INPUT_STATE::INPUT_LOOP_READY:
-
-        default_devs->TerminateLoop();
-        default_devs->RunLoop();
-
+        if (default_devs) {
+            default_devs->TerminateLoop();
+        }
         break;
     case PDJE_INPUT_STATE::INPUT_LOOP_RUNNING: {
-
-        default_devs->TerminateLoop();
+        if (default_devs) {
+            default_devs->TerminateLoop();
+        }
         break;
-    } break;
+    }
     default:
         critlog("the pdje input module state is broken...why?");
-        return false;
+        ok = false;
+        break;
     }
     // reset datas.
     midi_engine.reset();
@@ -142,7 +149,7 @@ PDJE_Input::Kill()
     FLAG_INPUT_ON = false;
     FLAG_MIDI_ON  = false;
     state         = PDJE_INPUT_STATE::DEAD;
-    return true;
+    return ok;
 }
 
 std::vector<DeviceData>

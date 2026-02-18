@@ -104,7 +104,7 @@ jobs:
       if: runner.os == 'Linux'
       run: |
         sudo apt update
-        sudo apt-get install libevdev-dev ccache libnuma-dev libasound2-dev pkg-config
+        sudo apt-get install libevdev-dev libsystemd-dev ccache libnuma-dev libasound2-dev pkg-config
 
     - name: set macos Swig
       id: set_macos_swig

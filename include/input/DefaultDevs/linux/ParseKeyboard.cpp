@@ -1,12 +1,22 @@
 #include "InputCore.hpp"
 #include "evdev_codemap.hpp"
+#include <algorithm>
+#include <cstring>
 
 void
 InputCore::kbRead(const input_event &evtrig, const int FD)
 {
-    PDJE_Input_Log ilog;
+    if (evtrig.type != EV_KEY) {
+        return;
+    }
+
+    PDJE_Input_Log ilog{};
     ilog.type             = PDJE_Dev_Type::KEYBOARD;
     ilog.event.keyboard.k = PDJE_EVDEV_KEYMAP::keyboard_map(evtrig.code);
+    if (ilog.event.keyboard.k == PDJE_KEY::UNKNOWN) {
+        return;
+    }
+
     bool writable         = true;
 
     if (evtrig.value == 0) {
@@ -26,14 +36,23 @@ InputCore::kbRead(const input_event &evtrig, const int FD)
         }
     }
     if (writable) {
-        auto idstr = std::to_string(FD);
-        std::memcpy(ilog.id, idstr.data(), idstr.size());
-        ilog.id_len             = idstr.size();
-        const std::string &name = id_to_name[FD];
+        auto              idstr = std::to_string(FD);
+        const std::size_t id_len =
+            std::min(idstr.size(), sizeof(ilog.id));
+        std::memcpy(ilog.id, idstr.data(), id_len);
+        ilog.id_len = static_cast<uint16_t>(id_len);
+
+        auto name_it = id_to_name.find(FD);
+        if (name_it == id_to_name.end()) {
+            return;
+        }
+        const std::string &name = name_it->second;
+        const std::size_t  name_len =
+            std::min(name.size(), sizeof(ilog.name));
 
         ilog.microSecond = clock.ConvertToMicroSecond(evtrig.time);
-        std::memcpy(ilog.name, name.data(), name.size());
-        ilog.name_len = name.size();
+        std::memcpy(ilog.name, name.data(), name_len);
+        ilog.name_len = static_cast<uint16_t>(name_len);
         out->Write(ilog);
     }
 }
