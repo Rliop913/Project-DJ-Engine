@@ -45,11 +45,10 @@ else()
     find_package(PkgConfig REQUIRED)
     pkg_check_modules(LIBEVDEV REQUIRED IMPORTED_TARGET libevdev)
     pkg_check_modules(LIBNUMA REQUIRED IMPORTED_TARGET numa)
-    pkg_check_modules(LIBSYSTEMD REQUIRED IMPORTED_TARGET libsystemd)
-
+    
 
     function(PDJE_INPUT_LINK_LIB targetName)
-        target_link_libraries(${targetName} PUBLIC PkgConfig::LIBEVDEV PkgConfig::LIBSYSTEMD ${LIBNUMA_LIBRARIES})
+        target_link_libraries(${targetName} PUBLIC PkgConfig::LIBEVDEV ${LIBNUMA_LIBRARIES})
         target_include_directories(${targetName} PUBLIC ${LIBNUMA_INCLUDE_DIRS})
     endfunction(PDJE_INPUT_LINK_LIB)
 
