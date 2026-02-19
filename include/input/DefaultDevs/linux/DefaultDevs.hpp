@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Input_State.hpp"
+#include "WaylandRuntimeLoader.hpp"
 
 #include "InputCore.hpp"
 #include "PDJE_Input_DataLine.hpp"
@@ -30,6 +31,7 @@ class DefaultDevs {
 
     std::optional<InputCore>   IC;
     std::optional<std::thread> input_thread;
+    WaylandRuntimeLoader       wayland_loader;
 
   public:
     bool

@@ -11,6 +11,34 @@ DefaultDevs::DefaultDevs() : input_buffer(1024)
 void
 DefaultDevs::Ready()
 {
+    if (!wayland_loader.EnsureLoaded()) {
+        const auto &status = wayland_loader.Status();
+        if (status.wayland_client == LibLoadState::Missing) {
+            warnlog("Wayland runtime unavailable: missing libwayland-client");
+            if (status.wayland_error[0] != '\0') {
+                warnlog(status.wayland_error);
+            }
+        } else if (status.wayland_client != LibLoadState::Loaded) {
+            warnlog(
+                "Wayland runtime unavailable: failed to load libwayland-client");
+            if (status.wayland_error[0] != '\0') {
+                warnlog(status.wayland_error);
+            }
+        }
+
+        if (status.xkbcommon == LibLoadState::Missing) {
+            warnlog("Wayland runtime unavailable: missing libxkbcommon");
+            if (status.xkb_error[0] != '\0') {
+                warnlog(status.xkb_error);
+            }
+        } else if (status.xkbcommon != LibLoadState::Loaded) {
+            warnlog("Wayland runtime unavailable: failed to load libxkbcommon");
+            if (status.xkb_error[0] != '\0') {
+                warnlog(status.xkb_error);
+            }
+        }
+    }
+
     if (!IC) {
         IC.emplace();
         IC->set_Input_Transfer(&input_buffer);
