@@ -28,6 +28,19 @@ capnp_generate_cpp(CAPNP_SRCS CAPNP_HDRS
   # OUTPUT_DIR ${GEN_DIR}
 )
 
+if(LINUX)
+find_package(SDL3 REQUIRED)
+
+endif()
+
+function(LinuxSetSDL target)
+  if(LINUX)
+    target_link_libraries(${target} PUBLIC sdl::sdl)
+  endif()
+endfunction(LinuxSetSDL)
+
+
+
 
 function(setCapnpReqLib targetName)
   target_link_libraries(${targetName} PUBLIC 

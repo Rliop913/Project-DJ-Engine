@@ -181,6 +181,7 @@ function(setInputReqs targetName)
   setBotanReqLib(${targetName})
   PDJE_INPUT_LINK_LIB(${targetName})
   LinuxSetAtomic(${targetName})
+  LinuxSetSDL(${targetName})
   
   SET_PROPERTIES(${targetName})
   PDJE_COMPILE_OPTION(${targetName})
