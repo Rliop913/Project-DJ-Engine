@@ -38,6 +38,8 @@ class WaylandOwnedWindow {
     int          width_       = 640;
     int          height_      = 360;
     bool         configured_  = false;
+    bool         seat_caps_known_ = false;
+    uint32_t     seat_caps_       = 0;
     std::atomic<bool> closed_{ false };
     std::string  last_error_;
 
@@ -68,6 +70,10 @@ class WaylandOwnedWindow {
     OnToplevelClose(void *data, xdg_toplevel *);
     static void
     OnBufferRelease(void *, wl_buffer *);
+    static void
+    OnSeatCapabilities(void *data, wl_seat *seat, uint32_t capabilities);
+    static void
+    OnSeatName(void *, wl_seat *, const char *);
 
   public:
     WaylandOwnedWindow() = default;
@@ -97,6 +103,16 @@ class WaylandOwnedWindow {
     Seat() const noexcept
     {
         return seat_;
+    }
+    bool
+    SeatCapabilitiesKnown() const noexcept
+    {
+        return seat_caps_known_;
+    }
+    uint32_t
+    SeatCapabilities() const noexcept
+    {
+        return seat_caps_;
     }
     bool
     Closed() const noexcept

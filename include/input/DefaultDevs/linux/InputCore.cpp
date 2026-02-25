@@ -6,6 +6,7 @@
 #include "rtkitcodes.hpp"
 #include <cerrno>
 #include <cstdint>
+#include <cstdlib>
 #include <cstring>
 #include <exception>
 #include <fcntl.h>
@@ -15,10 +16,46 @@
 #include <sys/epoll.h>
 #include <sys/eventfd.h>
 #include <unistd.h>
+
+namespace {
+
+bool
+ForceEvdevOpenFailEnabled() noexcept
+{
+    const char *v = std::getenv("PDJE_FORCE_EVDEV_OPEN_FAIL");
+    if (!v || v[0] == '\0') {
+        return false;
+    }
+    if (std::strcmp(v, "0") == 0 || std::strcmp(v, "false") == 0 ||
+        std::strcmp(v, "FALSE") == 0) {
+        return false;
+    }
+    return true;
+}
+
+void
+WarnForceEvdevOpenFailOnce()
+{
+    static bool warned = false;
+    if (warned) {
+        return;
+    }
+    warned = true;
+    warnlog("forcing evdev open failure via PDJE_FORCE_EVDEV_OPEN_FAIL");
+}
+
+} // namespace
+
 InputCore::AddResult
 InputCore::Add(const fs::path &target, PDJE_Dev_Type type, std::string name)
 {
     AddResult result{};
+    if (ForceEvdevOpenFailEnabled()) {
+        WarnForceEvdevOpenFailOnce();
+        result.open_failed = true;
+        result.error_code  = EACCES;
+        return result;
+    }
     int FD = open(target.c_str(), O_RDONLY | O_NONBLOCK);
     if (FD < 0) {
         result.open_failed = true;

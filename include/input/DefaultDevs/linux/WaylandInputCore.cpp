@@ -632,7 +632,16 @@ WaylandInputCore::ConfigureInternalWindow()
         return false;
     }
 
-    AttachSeatListeners();
+    if (owned_window && owned_window->SeatCapabilitiesKnown()) {
+        // The owned window already holds the seat listener to capture the
+        // initial capability event during window creation. Re-apply the cached
+        // capabilities here instead of attaching a second listener.
+        OnSeatCapabilities(this, seat, owned_window->SeatCapabilities());
+    } else {
+        SetError("internal Wayland seat capabilities were not captured during "
+                 "window creation");
+        return false;
+    }
     if (wl_display_roundtrip(display) < 0) {
         SetError("wl_display_roundtrip failed while initializing internal "
                  "window seat listeners");
@@ -640,11 +649,13 @@ WaylandInputCore::ConfigureInternalWindow()
     }
 
     if (wants_keyboard && keyboard == nullptr) {
-        SetError("internal Wayland seat has no keyboard capability");
+        SetError("internal Wayland seat has no keyboard capability (or "
+                 "capability event was not observed)");
         return false;
     }
     if (wants_pointer && pointer == nullptr) {
-        SetError("internal Wayland seat has no pointer capability");
+        SetError("internal Wayland seat has no pointer capability (or "
+                 "capability event was not observed)");
         return false;
     }
 

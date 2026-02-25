@@ -111,6 +111,13 @@ WaylandOwnedWindow::OnRegistryGlobal(void       *data,
             const uint32_t bind_version = std::min<uint32_t>(version, 5);
             self->seat_ = static_cast<wl_seat *>(
                 wl_registry_bind(registry, name, &wl_seat_interface, bind_version));
+            if (self->seat_ != nullptr) {
+                static constexpr wl_seat_listener kSeatListener = {
+                    .capabilities = &WaylandOwnedWindow::OnSeatCapabilities,
+                    .name         = &WaylandOwnedWindow::OnSeatName,
+                };
+                wl_seat_add_listener(self->seat_, &kSeatListener, self);
+            }
         }
         return;
     }
@@ -170,6 +177,24 @@ WaylandOwnedWindow::OnToplevelClose(void *data, xdg_toplevel *)
 
 void
 WaylandOwnedWindow::OnBufferRelease(void *, wl_buffer *)
+{
+}
+
+void
+WaylandOwnedWindow::OnSeatCapabilities(void     *data,
+                                       wl_seat  *,
+                                       uint32_t  capabilities)
+{
+    auto *self = static_cast<WaylandOwnedWindow *>(data);
+    if (self == nullptr) {
+        return;
+    }
+    self->seat_caps_       = capabilities;
+    self->seat_caps_known_ = true;
+}
+
+void
+WaylandOwnedWindow::OnSeatName(void *, wl_seat *, const char *)
 {
 }
 
@@ -421,6 +446,8 @@ WaylandOwnedWindow::Destroy() noexcept
     }
 
     configured_ = false;
+    seat_caps_known_ = false;
+    seat_caps_       = 0;
     width_      = 640;
     height_     = 360;
 }
