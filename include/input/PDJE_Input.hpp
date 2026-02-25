@@ -29,6 +29,9 @@ class PDJE_API PDJE_Input {
     std::optional<PDJE_MIDI::MIDI> midi_engine;
     bool                           FLAG_MIDI_ON = false;
     PDJE_INPUT_STATE               state        = PDJE_INPUT_STATE::DEAD;
+    void                          *platform_ctx0_ = nullptr;
+    void                          *platform_ctx1_ = nullptr;
+    bool                           use_internal_window_ = false;
 
   public:
     /** @brief Get All Connected devices.
@@ -42,9 +45,20 @@ class PDJE_API PDJE_Input {
     GetMIDIDevs();
     /**
     @brief initialize pdje input.
+
+    Platform contexts (optional):
+    - Linux: `platform_ctx0 = wl_display*`, `platform_ctx1 = wl_surface*`
+    - Windows: currently ignored (reserved)
+
+    `use_internal_window`:
+    - Linux: if true, allows PDJE to create an internal Wayland window when
+      evdev -> wayland fallback is needed and host handles are unavailable.
+    - Windows: currently ignored (reserved)
     */
     bool
-    Init();
+    Init(void *platform_ctx0      = nullptr,
+         void *platform_ctx1      = nullptr,
+         bool  use_internal_window = false);
 
     /**
     @brief configure device data.
@@ -70,6 +84,12 @@ class PDJE_API PDJE_Input {
     */
     PDJE_INPUT_STATE
     GetState();
+
+    /**
+    @brief get current active input backend name.
+    */
+    std::string
+    GetCurrentInputBackend() const;
 
     /**
     @brief pull out input data line. The input Loop will pass datas in here.

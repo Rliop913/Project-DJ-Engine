@@ -32,7 +32,10 @@ else()
     list(APPEND PDJE_INPUT_MAINPROC_SRC
         ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/linux/DefaultDevs.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/linux/InputCore.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/linux/WaylandOwnedWindow.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/linux/WaylandInputCore.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/linux/WaylandRuntimeLoader.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c
         ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/linux/ParseMouse.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/linux/ParseKeyboard.cpp
         
@@ -45,6 +48,7 @@ else()
     )
     find_package(PkgConfig REQUIRED)
     pkg_check_modules(LIBEVDEV REQUIRED IMPORTED_TARGET libevdev)
+    pkg_check_modules(LIBWAYLAND_CLIENT REQUIRED IMPORTED_TARGET wayland-client)
     pkg_check_modules(LIBNUMA REQUIRED IMPORTED_TARGET numa)
     pkg_check_modules(LIBSYSTEMD REQUIRED IMPORTED_TARGET libsystemd)
     
@@ -52,6 +56,7 @@ else()
     function(PDJE_INPUT_LINK_LIB targetName)
         target_link_libraries(${targetName} PUBLIC
             PkgConfig::LIBEVDEV
+            PkgConfig::LIBWAYLAND_CLIENT
             PkgConfig::LIBSYSTEMD
             ${LIBNUMA_LIBRARIES}
             ${CMAKE_DL_LIBS}

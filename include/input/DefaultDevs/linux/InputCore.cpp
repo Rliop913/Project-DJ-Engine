@@ -15,18 +15,22 @@
 #include <sys/epoll.h>
 #include <sys/eventfd.h>
 #include <unistd.h>
-bool
+InputCore::AddResult
 InputCore::Add(const fs::path &target, PDJE_Dev_Type type, std::string name)
 {
+    AddResult result{};
     int FD = open(target.c_str(), O_RDONLY | O_NONBLOCK);
     if (FD < 0) {
-        return false;
+        result.open_failed = true;
+        result.error_code  = errno;
+        return result;
     }
 
     libevdev *dev = nullptr;
     if (libevdev_new_from_fd(FD, &dev) < 0) {
+        result.evdev_init_failed = true;
         close(FD);
-        return false;
+        return result;
     }
 
     if (libevdev_set_clock_id(dev, CLOCK_MONOTONIC) < 0) {
@@ -35,7 +39,8 @@ InputCore::Add(const fs::path &target, PDJE_Dev_Type type, std::string name)
     events[FD]     = dev;
     id_to_type[FD] = type;
     id_to_name[FD] = name;
-    return true;
+    result.ok = true;
+    return result;
 }
 
 InputCore::~InputCore()

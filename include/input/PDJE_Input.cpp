@@ -7,7 +7,7 @@ PDJE_Input::PDJE_Input()
 }
 
 bool
-PDJE_Input::Init()
+PDJE_Input::Init(void *platform_ctx0, void *platform_ctx1, bool use_internal_window)
 {
     try {
         if (state != PDJE_INPUT_STATE::DEAD) {
@@ -16,7 +16,13 @@ PDJE_Input::Init()
                 "maybe input module is running or configuring.");
             return false;
         }
+        platform_ctx0_ = platform_ctx0;
+        platform_ctx1_ = platform_ctx1;
+        use_internal_window_ = use_internal_window;
         default_devs.emplace();
+        default_devs->SetPlatformContexts(platform_ctx0_,
+                                          platform_ctx1_,
+                                          use_internal_window_);
         default_devs->Ready();
 
         // #ifdef WIN32
@@ -148,6 +154,9 @@ PDJE_Input::Kill()
     default_devs.reset();
     FLAG_INPUT_ON = false;
     FLAG_MIDI_ON  = false;
+    platform_ctx0_ = nullptr;
+    platform_ctx1_ = nullptr;
+    use_internal_window_ = false;
     state         = PDJE_INPUT_STATE::DEAD;
     return ok;
 }
@@ -169,6 +178,15 @@ PDJE_INPUT_STATE
 PDJE_Input::GetState()
 {
     return state;
+}
+
+std::string
+PDJE_Input::GetCurrentInputBackend() const
+{
+    if (!default_devs) {
+        return "none";
+    }
+    return default_devs->GetCurrentBackendString();
 }
 
 PDJE_INPUT_DATA_LINE

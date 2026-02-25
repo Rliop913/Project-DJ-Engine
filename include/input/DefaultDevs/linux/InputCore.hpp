@@ -30,6 +30,13 @@ class InputCore {
     mouseRead(const input_event &evtrig, const int FD);
 
   public:
+    struct AddResult {
+        bool ok            = false;
+        bool open_failed   = false;
+        int  error_code    = 0;
+        bool evdev_init_failed = false;
+    };
+
     struct {
         std::atomic<bool> loop_switch   = true;
         int               stop_event_fd = -1;
@@ -45,7 +52,7 @@ class InputCore {
     {
         out = input_trsf;
     }
-    bool
+    AddResult
     Add(const fs::path &target, PDJE_Dev_Type type, std::string name);
     void
     Trig();
