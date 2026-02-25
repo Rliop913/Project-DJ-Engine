@@ -25,10 +25,15 @@ file(MAKE_DIRECTORY ${CAPNPC_OUTPUT_DIR})
 
 capnp_generate_cpp(CAPNP_SRCS CAPNP_HDRS 
   ${SCHEMAS}
-  # OUTPUT_DIR ${GEN_DIR}
+  OUTPUT_DIR ${CAPNPC_OUTPUT_DIR}
 )
 
+# Ensure schema codegen is materialized before targets that only include the
+# generated headers (without directly compiling CAPNP_SRCS).
+add_custom_target(pdje_capnp_codegen DEPENDS ${CAPNP_SRCS} ${CAPNP_HDRS})
+
 function(setCapnpReqLib targetName)
+  add_dependencies(${targetName} pdje_capnp_codegen)
   target_link_libraries(${targetName} PUBLIC 
   CapnProto::kj 
   CapnProto::capnp 
