@@ -4,13 +4,13 @@
 #include "PDJE_LOG_SETTER.hpp"
 PDJE_Input::PDJE_Input()
 {
-    startlog();
 }
 
 bool
 PDJE_Input::Init(void *platform_ctx0, void *platform_ctx1, bool use_internal_window)
 {
     try {
+        startlog();
         if (!PDJE_INPUT_STATE_LOGIC::CanInit(state)) {
             critlog(
                 "pdje input module init failed. pdje input state is not dead. "

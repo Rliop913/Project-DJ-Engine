@@ -4,6 +4,8 @@
  */
 #pragma once
 
+#include "PDJE_EXPORT_SETTER.hpp"
+
 #include <filesystem>
 #include <mutex>
 #include <spdlog/sinks/basic_file_sink.h>
@@ -18,33 +20,12 @@
  * This function sets up a global logger with both a file sink and a console
  * sink. The log level is set to `debug` in debug builds and `err` in release
  * builds.
+ *
+ * Host applications should call this explicitly during startup before creating
+ * exported runtime objects when loading multiple DSOs.
  */
-inline void
-startlog()
-{
-    static std::once_flag SPD_LOG_ONCE_FLAG;
-#ifndef LOG_OFF
-    std::call_once(SPD_LOG_ONCE_FLAG, []() {
-        std::filesystem::create_directories("logs");
-        auto fileSink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(
-            "logs/pdjeLog.txt", false);
-
-        std::vector<spdlog::sink_ptr> sinks{ fileSink };
-
-        auto logger = std::make_shared<spdlog::logger>(
-            "global_logger", sinks.begin(), sinks.end());
-
-#ifndef NDEBUG
-        logger->set_level(spdlog::level::debug);
-#else
-                logger->set_level(spdlog::level::err);
-#endif
-        logger->flush_on(spdlog::level::err);
-        logger->set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%^%l%$] %v");
-        spdlog::set_default_logger(logger);
-    });
-#endif
-}
+PDJE_API void
+startlog();
 
 #ifndef LOG_OFF
 #ifdef ENABLE_INFO_LOG
