@@ -39,7 +39,7 @@ class PDJE_API JUDGE {
     void
     End();
 
-    /** @brief Create a judge instance and initialize logging. */
+    /** @brief Create a judge instance. */
     JUDGE();
     ~JUDGE() = default;
 };

@@ -4,7 +4,6 @@
 namespace PDJE_CRYPTO {
 Hash::Hash()
 {
-    startlog();
     try {
         hashEngine = Botan::HashFunction::create_or_throw("SHA-256");
     } catch (const std::exception &e) {

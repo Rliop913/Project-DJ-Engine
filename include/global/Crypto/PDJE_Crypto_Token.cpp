@@ -6,7 +6,6 @@ namespace PDJE_CRYPTO {
 
 PSK::PSK()
 {
-    startlog();
 }
 
 bool

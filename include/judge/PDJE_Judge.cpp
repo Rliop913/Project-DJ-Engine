@@ -9,12 +9,12 @@ namespace PDJE_JUDGE {
 
 JUDGE::JUDGE()
 {
-    startlog();
 }
 
 JUDGE_STATUS
 JUDGE::Start()
 {
+    startlog();
     if (!inits.coreline.has_value()) {
         warnlog("failed to start pdje judge module. core line is missing. "
                 "please connect core data line.");

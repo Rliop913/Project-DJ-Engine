@@ -5,7 +5,6 @@ namespace PDJE_CRYPTO {
 
 AEAD::AEAD(PSK &key, const std::string &algo)
 {
-    startlog();
     try {
 
         enc = Botan::Cipher_Mode::create_or_throw(

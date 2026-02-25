@@ -33,7 +33,6 @@ template <typename T, int MEM_PROT_FLAG> class SharedMem {
   public:
     SharedMem()
     {
-        startlog();
     }
 
     SharedMem(const SharedMem &) = delete;
