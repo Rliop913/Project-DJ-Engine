@@ -9,6 +9,7 @@
 #include <functional>
 #include <memory>
 #include <ranges>
+#include <sstream>
 #include <string>
 
 #include "fileNameSanitizer.hpp"
@@ -17,6 +18,7 @@
 
 #include "MixTranslator.hpp"
 #include "PDJE_EXPORT_SETTER.hpp"
+#include "JsonDiffFriendlyIO.hpp"
 
 #include "PDJE_LOG_SETTER.hpp"
 
@@ -79,9 +81,7 @@ template <typename CapnpWriterType> class PDJE_JSONHandler {
     bool
     save(const fs::path &path)
     {
-        std::ofstream jfile(path);
-        if (jfile.is_open()) {
-            jfile << std::setw(4) << ROOT;
+        if (PDJE_JSON_IO_DETAIL::WriteDiffFriendlyJsonToFile(path, ROOT)) {
             return true;
         } else {
             critlog("failed to save json file. json file is not opened. "

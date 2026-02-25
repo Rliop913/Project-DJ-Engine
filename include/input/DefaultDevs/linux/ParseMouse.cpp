@@ -1,4 +1,5 @@
 #include "InputCore.hpp"
+#include "LinuxMouseButtonMapping.hpp"
 #include <algorithm>
 #include <cstring>
 
@@ -62,32 +63,12 @@ InputCore::mouseRead(const input_event &evtrig, const int FD)
         ilog.event.mouse.x          = 0;
         ilog.event.mouse.y          = 0;
         const bool down             = (evtrig.value != 0);
-        switch (evtrig.code) {
-        case BTN_LEFT:
-            ilog.event.mouse.button_type =
-                down ? PDJE_MOUSE_L_BTN_DOWN : PDJE_MOUSE_L_BTN_UP;
-            break;
-        case BTN_RIGHT:
-            ilog.event.mouse.button_type =
-                down ? PDJE_MOUSE_R_BTN_DOWN : PDJE_MOUSE_R_BTN_UP;
-            break;
-        case BTN_MIDDLE:
-            ilog.event.mouse.button_type =
-                down ? PDJE_MOUSE_M_BTN_DOWN : PDJE_MOUSE_M_BTN_UP;
-            break;
-        case BTN_SIDE:
-            ilog.event.mouse.button_type =
-                down ? PDJE_MOUSE_SIDE_BTN_DOWN
-                     : PDJE_MOUSE_SIDE_BTN_UP; // XBUTTON1
-            break;
-        case BTN_EXTRA:
-            ilog.event.mouse.button_type =
-                down ? PDJE_MOUSE_EX_BTN_DOWN
-                     : PDJE_MOUSE_EX_BTN_UP; // XBUTTON2
-            break;
-        default:
+        const auto mapped = PDJE_DEFAULT_DEVICES::LINUX_INPUT_MAP::
+            TryMapLinuxMouseButton(evtrig.code, down);
+        if (!mapped.has_value()) {
             return;
         }
+        ilog.event.mouse.button_type = *mapped;
     } break;
     default:
         return;

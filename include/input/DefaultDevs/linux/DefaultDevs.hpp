@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Input_State.hpp"
+#include "WaylandRuntimeLoader.hpp"
+#include "WaylandInputCore.hpp"
 
 #include "InputCore.hpp"
 #include "PDJE_Input_DataLine.hpp"
@@ -19,19 +21,50 @@ using nj     = nlohmann::json;
 namespace fs = std::filesystem;
 class DefaultDevs {
   private:
+    enum class StoredBackendKind { Evdev, Wayland };
+    enum class ActiveBackendKind { None, Evdev, Wayland };
+    enum class WaylandSourceMode { None, HostHandles, InternalWindow };
+
     PDJE_IPC::PDJE_Input_Transfer input_buffer;
     struct device_metadata {
-        fs::path      dev_path;
-        PDJE_Dev_Type dev_type;
+        StoredBackendKind backend_kind = StoredBackendKind::Evdev;
+        fs::path          dev_path{};
+        std::string       source_id;
+        PDJE_Dev_Type     dev_type = PDJE_Dev_Type::UNKNOWN;
     };
 
     // key: device name (cross-platform compatibility key)
     std::unordered_map<std::string, device_metadata> stored_dev;
 
-    std::optional<InputCore>   IC;
+    std::optional<InputCore>       evdev_core;
+    std::optional<WaylandInputCore> wayland_core;
     std::optional<std::thread> input_thread;
+    WaylandRuntimeLoader       wayland_loader;
+    void                      *platform_ctx0_ = nullptr;
+    void                      *platform_ctx1_ = nullptr;
+    bool                       use_internal_window_ = false;
+    ActiveBackendKind          active_backend = ActiveBackendKind::None;
+    WaylandSourceMode          wayland_source_mode = WaylandSourceMode::None;
+
+    static bool
+    IsWaylandSyntheticId(const std::string &id) noexcept;
+    bool
+    HasValidWaylandHostContext() const noexcept;
+    bool
+    ConfigureWayland(const std::vector<DeviceData> &devs);
 
   public:
+    void
+    SetPlatformContexts(void *platform_ctx0,
+                        void *platform_ctx1,
+                        bool  use_internal_window) noexcept
+    {
+        platform_ctx0_ = platform_ctx0;
+        platform_ctx1_ = platform_ctx1;
+        use_internal_window_ = use_internal_window;
+    }
+    std::string
+    GetCurrentBackendString() const;
     bool
     Kill()
     {
@@ -50,32 +83,9 @@ class DefaultDevs {
     Ready();
 
     void
-    RunLoop()
-    {
-        if (!input_thread) {
-            Ready();
-
-            input_thread.emplace([this]() { IC->Trig(); });
-        }
-    }
+    RunLoop();
     void
-    TerminateLoop()
-    {
-        try {
-            if (input_thread) {
-                IC->Stop();
-                if (input_thread->joinable()) {
-                    input_thread->join();
-                }
-                input_thread.reset();
-                IC.reset();
-            }
-        } catch (const std::exception &e) {
-            critlog("input_thread join failed on linux. What: ");
-            critlog(e.what());
-            return;
-        }
-    }
+    TerminateLoop();
 
     bool
     Config(const std::vector<DeviceData> &devs);

@@ -13,8 +13,8 @@ It is intended for agents doing non-trivial work (feature edits, refactors, CI/b
 - Old: "Utility Engine exists as a normal module."
 - Current: No active utility source module exists under `include/`. Treat utility as roadmap/placeholder, not build target.
 
-- Old: "`ctest` executes project tests in CI."
-- Current: CI runs `ctest`, but `enable_testing()` and `add_test()` are commented out in `CMakeLists.txt`. Tests are mostly build-only today.
+- Old: "`ctest` executes nothing useful in CI."
+- Current: `PDJE_TEST` now enables doctest-based unit tests registered with CTest. Legacy/manual `test*` binaries remain build-only unless explicitly run.
 
 - Old: "Engine is only a library; no executables."
 - Current: Main deliverable is library-centric, but repository also builds executables (`test*`, and `PDJE_MODULE_INPUT_PROCESS` on Windows when enabled).
@@ -34,7 +34,8 @@ It is intended for agents doing non-trivial work (feature edits, refactors, CI/b
 - Main always-built target: `PDJE`.
 
 ### Key options and defaults
-- `PDJE_BUILD_TESTS=ON`.
+- `PDJE_TEST=ON`.
+- `PDJE_DEV_TEST=OFF`.
 - `PDJE_DEVELOP_INPUT=ON` on Windows, `OFF` on Linux/macOS.
 - `PDJE_SWIG_BUILD=OFF`.
 - `PDJE_DYNAMIC=OFF`.
@@ -57,10 +58,11 @@ It is intended for agents doing non-trivial work (feature edits, refactors, CI/b
 - Built only when `PDJE_SWIG_BUILD=ON` (`pdje_python`, `pdje_csharp`).
 
 ### Test status reality
-- CMake creates test executables when `PDJE_BUILD_TESTS=ON`:
+- CMake creates unit test executables when `PDJE_TEST=ON`:
+- `pdje_unit_core`, `pdje_unit_input`, `pdje_unit_judge` (CTest registered)
+- CMake creates legacy/manual dev test executables when `PDJE_DEV_TEST=ON`:
 - `testEditor`, `DBTester`, `gitTester`
 - plus `testInput`, `testMIDI`, `testJudge` when `PDJE_DEVELOP_INPUT=ON`
-- But no active `enable_testing/add_test` registration currently.
 
 ## 4) Dependency model (actual)
 

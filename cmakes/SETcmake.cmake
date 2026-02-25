@@ -12,8 +12,23 @@ set(HWY_ENABLE_TARGETS "scalar,sse4,avx,avx2" CACHE STRING "Enabled SIMD targets
 endif()
 set(WITH_WERROR OFF CACHE BOOL "" FORCE)
 set(FAIL_ON_WARNINGS OFF CACHE BOOL "Disable Werror in rocksdb")
-set(CMAKE_C_COMPILER_LAUNCHER ccache)
-set(CMAKE_CXX_COMPILER_LAUNCHER ccache)
+option(PDJE_USE_CCACHE "Use ccache compiler launcher when available" ON)
+if(PDJE_USE_CCACHE)
+  find_program(PDJE_CCACHE_PROGRAM ccache)
+  if(PDJE_CCACHE_PROGRAM)
+    set(PDJE_CCACHE_TMPDIR "${CMAKE_BINARY_DIR}/.ccache-tmp")
+    file(MAKE_DIRECTORY "${PDJE_CCACHE_TMPDIR}")
+    set(
+      PDJE_CCACHE_LAUNCHER
+      ${CMAKE_COMMAND}
+      -E
+      env
+      "CCACHE_TEMPDIR=${PDJE_CCACHE_TMPDIR}"
+      ${PDJE_CCACHE_PROGRAM})
+    set(CMAKE_C_COMPILER_LAUNCHER ${PDJE_CCACHE_LAUNCHER})
+    set(CMAKE_CXX_COMPILER_LAUNCHER ${PDJE_CCACHE_LAUNCHER})
+  endif()
+endif()
 
 function(SET_PROPERTIES targetname)
     
