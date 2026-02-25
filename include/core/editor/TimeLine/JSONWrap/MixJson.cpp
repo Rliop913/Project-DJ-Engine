@@ -171,15 +171,14 @@ PDJE_JSONHandler<MIX_W>::load(const fs::path &filepath)
         }
     } else {
         fs::create_directories(filepath.parent_path());
-        std::ofstream jfile(filepath);
-        if (!jfile.is_open()) {
+        ROOT          = nj::object();
+        ROOT[PDJEARR] = nj::array();
+        if (!PDJE_JSON_IO_DETAIL::WriteDiffFriendlyJsonToFile(filepath, ROOT)) {
             critlog("failed to open or make new mix json file. from "
                     "PDJE_JSONHandler<MIX_W> load. path: ");
             critlog(filepath.generic_string());
             return false;
         }
-        jfile << std::setw(4) << ROOT;
-        jfile.close();
     }
 
     if (!ROOT.contains(PDJEARR)) {

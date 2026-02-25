@@ -19,6 +19,78 @@
 #include <git2/tree.h>
 
 namespace PDJE_TIMELINE {
+namespace {
+
+using Core = TimeLineDiffMachineCore;
+
+struct SemanticNoopBucketKey {
+    Core::ParseMode       parse_mode  = Core::ParseMode::DirectObject;
+    Core::RegionKindGuess region_kind = Core::RegionKindGuess::KvField;
+    std::string           json_dump;
+
+    bool
+    operator<(const SemanticNoopBucketKey &rhs) const
+    {
+        if (parse_mode != rhs.parse_mode) {
+            return static_cast<int>(parse_mode) <
+                   static_cast<int>(rhs.parse_mode);
+        }
+        if (region_kind != rhs.region_kind) {
+            return static_cast<int>(region_kind) <
+                   static_cast<int>(rhs.region_kind);
+        }
+        return json_dump < rhs.json_dump;
+    }
+};
+
+struct SemanticNoopBucketSides {
+    std::vector<std::size_t> origin_indices;
+    std::vector<std::size_t> compare_indices;
+};
+
+std::vector<Core::JsonizedRegion>
+PruneSemanticNoopRegionPairs(std::vector<Core::JsonizedRegion> regions)
+{
+    if (regions.empty()) {
+        return regions;
+    }
+
+    std::map<SemanticNoopBucketKey, SemanticNoopBucketSides> buckets;
+    for (std::size_t i = 0; i < regions.size(); ++i) {
+        SemanticNoopBucketKey key;
+        key.parse_mode  = regions[i].parse_mode;
+        key.region_kind = regions[i].region_kind;
+        key.json_dump   = regions[i].json_value.dump();
+
+        auto &bucket = buckets[key];
+        if (regions[i].side == Core::DiffSide::Origin) {
+            bucket.origin_indices.push_back(i);
+        } else {
+            bucket.compare_indices.push_back(i);
+        }
+    }
+
+    std::vector<bool> cancelled(regions.size(), false);
+    for (const auto &[_, bucket] : buckets) {
+        const auto cancel_count =
+            std::min(bucket.origin_indices.size(), bucket.compare_indices.size());
+        for (std::size_t i = 0; i < cancel_count; ++i) {
+            cancelled[bucket.origin_indices[i]]  = true;
+            cancelled[bucket.compare_indices[i]] = true;
+        }
+    }
+
+    std::vector<Core::JsonizedRegion> pruned;
+    pruned.reserve(regions.size());
+    for (std::size_t i = 0; i < regions.size(); ++i) {
+        if (!cancelled[i]) {
+            pruned.push_back(std::move(regions[i]));
+        }
+    }
+    return pruned;
+}
+
+} // namespace
 
 TimeLineDiffMachineCore::TimeLineDiffMachineCore(git_repository    *repo_,
                                                  const std::string &target_file_,
@@ -86,7 +158,9 @@ TimeLineDiffMachineCore::RunPipelineCore(TimeLineDiffKind kind, const TypeHooks 
     result.kind    = kind;
     result.origin  = origin;
     result.compare = compare;
-    for (const auto &region : *jsonized) {
+    auto pruned_jsonized = PruneSemanticNoopRegionPairs(std::move(*jsonized));
+
+    for (const auto &region : pruned_jsonized) {
         if (!hooks.append_region(region, result)) {
             critlog("timeline diff: struct parse stage failed.");
             critlog(std::to_string(region.start_line));
@@ -330,7 +404,27 @@ TimeLineDiffMachineCore::RecoverObjectOffsetsAtLine(const BlobText &blob,
         return std::nullopt;
     }
     const auto probe_offset = LineStartOffset(blob.index, seed_line);
-    auto       start_opt    = FindEnclosingObjectStart(blob.text, probe_offset);
+    const auto line_end     =
+        LineEndOffsetExclusive(blob.index, blob.text, seed_line);
+
+    std::optional<std::size_t> start_opt;
+    std::size_t                cursor = probe_offset;
+    while (cursor < line_end &&
+           std::isspace(static_cast<unsigned char>(blob.text[cursor])) != 0) {
+        ++cursor;
+    }
+    if (cursor < line_end && blob.text[cursor] == ',') {
+        ++cursor;
+        while (cursor < line_end &&
+               std::isspace(static_cast<unsigned char>(blob.text[cursor])) != 0) {
+            ++cursor;
+        }
+    }
+    if (cursor < line_end && blob.text[cursor] == '{') {
+        start_opt = cursor;
+    } else {
+        start_opt = FindEnclosingObjectStart(blob.text, probe_offset);
+    }
     if (!start_opt) {
         return std::nullopt;
     }
@@ -629,21 +723,26 @@ TimeLineDiffMachineCore::RecoverFragmentsFromChangedLines(
     const std::unordered_map<int, HunkRange> &hunks) const
 {
     std::vector<RecoveredFragment> fragments;
-    std::set<SideHunkKey>          retry_hunks;
+    std::set<SideHunkKey>          hunk_scan_keys;
 
     for (const auto &line_ref : changed_lines) {
+        if (line_ref.hunk_id >= 0) {
+            // Always scan both sides of touched hunks. This recovers semantic
+            // rows hidden behind punctuation-only changes (for example `}` ->
+            // `},`) so no-op pair pruning can cancel them.
+            hunk_scan_keys.insert({ DiffSide::Origin, line_ref.hunk_id });
+            hunk_scan_keys.insert({ DiffSide::Compare, line_ref.hunk_id });
+        }
         const auto &blob =
             (line_ref.side == DiffSide::Origin) ? origin_blob : compare_blob;
         auto recovered =
             TryRecoverFromSeedLine(hooks, line_ref.side, blob, line_ref, line_ref.line_no);
         if (recovered) {
             fragments.push_back(std::move(*recovered));
-        } else {
-            retry_hunks.insert({ line_ref.side, line_ref.hunk_id });
         }
     }
 
-    for (const auto &key : retry_hunks) {
+    for (const auto &key : hunk_scan_keys) {
         auto hit = hunks.find(key.hunk_id);
         if (hit == hunks.end()) {
             continue;

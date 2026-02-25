@@ -3,9 +3,11 @@
 
 #include "PDJE_Benchmark.hpp"
 #include <filesystem>
+#include <fstream>
 #include <iostream>
 #include <nlohmann/json.hpp>
 #include <optional>
+#include <sstream>
 #include <set>
 #include <string>
 // #include <NanoLog.hpp>
@@ -31,14 +33,19 @@ CollectLogOids(const std::string &logs_json)
 }
 
 std::optional<std::string>
-FindNewOid(const std::set<std::string> &before, const std::set<std::string> &after)
+FindExactlyOneNewOid(const std::set<std::string> &before,
+                     const std::set<std::string> &after)
 {
+    std::optional<std::string> found;
     for (const auto &oid : after) {
         if (!before.contains(oid)) {
-            return oid;
+            if (found.has_value()) {
+                return std::nullopt;
+            }
+            found = oid;
         }
     }
-    return std::nullopt;
+    return found;
 }
 
 bool
@@ -48,9 +55,262 @@ RecordNewCommitOID(auto &timeline,
 {
     timeline->UpdateLogs();
     auto next_oids = CollectLogOids(timeline->GetLogs());
-    new_oid        = FindNewOid(oid_cache, next_oids);
+    new_oid        = FindExactlyOneNewOid(oid_cache, next_oids);
     oid_cache      = std::move(next_oids);
     return new_oid.has_value();
+}
+
+std::optional<std::string>
+ReadTextFile(const std::filesystem::path &path)
+{
+    std::ifstream file(path, std::ios::binary);
+    if (!file.is_open()) {
+        return std::nullopt;
+    }
+    std::ostringstream oss;
+    oss << file.rdbuf();
+    return oss.str();
+}
+
+std::optional<test_json>
+ParseJsonNoThrow(const std::string &text)
+{
+    try {
+        return test_json::parse(text);
+    } catch (...) {
+        return std::nullopt;
+    }
+}
+
+std::optional<std::filesystem::path>
+FindFirstFileNamed(const std::filesystem::path &root, const std::string &filename)
+{
+    std::error_code ec;
+    if (!std::filesystem::exists(root, ec)) {
+        return std::nullopt;
+    }
+    for (const auto &entry : std::filesystem::recursive_directory_iterator(root, ec)) {
+        if (ec) {
+            return std::nullopt;
+        }
+        if (!entry.is_regular_file(ec)) {
+            continue;
+        }
+        if (entry.path().filename() == filename) {
+            return entry.path();
+        }
+    }
+    return std::nullopt;
+}
+
+int
+RunTimeLineDiffFailureSmoke()
+{
+    namespace fs = std::filesystem;
+
+    bool           ok = true;
+    std::error_code ec;
+    auto           root = fs::temp_directory_path() / "pdje_timeline_diff_failure_smoke";
+    fs::remove_all(root, ec);
+    ec.clear();
+
+    std::cout << "[diff-failure-smoke] root: " << root.string() << std::endl;
+    PDJE_Editor editor(root, "diff-failure-smoke", "diff-failure-smoke@test");
+    if (!editor.mixHandle || !editor.KVHandle) {
+        std::cout << "[diff-failure-smoke] FAIL: timeline handles not initialized"
+                  << std::endl;
+        return 1;
+    }
+
+    auto print_check = [&ok](bool cond, const std::string &label) {
+        std::cout << "[diff-failure-smoke] " << (cond ? "PASS: " : "FAIL: ")
+                  << label << std::endl;
+        ok = ok && cond;
+    };
+
+    auto bad_mix = editor.mixHandle->Diff("not-an-oid", "still-not-an-oid");
+    print_check(!bad_mix.has_value(), "mix diff invalid oid returns nullopt");
+
+    auto bad_kv = editor.KVHandle->Diff("not-an-oid", "still-not-an-oid");
+    print_check(!bad_kv.has_value(), "kv diff invalid oid returns nullopt");
+
+    fs::remove_all(root, ec);
+    if (!ok) {
+        std::cout << "[diff-failure-smoke] RESULT: FAIL" << std::endl;
+        return 2;
+    }
+    std::cout << "[diff-failure-smoke] RESULT: PASS" << std::endl;
+    return 0;
+}
+
+int
+RunTimeLineJsonFormatSmoke()
+{
+    namespace fs = std::filesystem;
+
+    bool           ok = true;
+    std::error_code ec;
+    auto           root = fs::temp_directory_path() / "pdje_timeline_json_format_smoke";
+    fs::remove_all(root, ec);
+    ec.clear();
+
+    std::cout << "[json-format-smoke] root: " << root.string() << std::endl;
+    PDJE_Editor editor(root, "json-format-smoke", "json-format-smoke@test");
+    if (!editor.mixHandle || !editor.noteHandle || !editor.KVHandle) {
+        std::cout << "[json-format-smoke] FAIL: timeline handles not initialized"
+                  << std::endl;
+        return 1;
+    }
+
+    auto print_check = [&ok](bool cond, const std::string &label) {
+        std::cout << "[json-format-smoke] " << (cond ? "PASS: " : "FAIL: ")
+                  << label << std::endl;
+        ok = ok && cond;
+    };
+
+    auto read_json = [&print_check](const fs::path &path, const std::string &label)
+        -> std::optional<test_json> {
+        auto text = ReadTextFile(path);
+        print_check(text.has_value(), label + " readable");
+        if (!text) {
+            return std::nullopt;
+        }
+        auto parsed = ParseJsonNoThrow(*text);
+        print_check(parsed.has_value(), label + " valid json");
+        return parsed;
+    };
+
+    auto read_text = [&print_check](const fs::path &path, const std::string &label)
+        -> std::optional<std::string> {
+        auto text = ReadTextFile(path);
+        print_check(text.has_value(), label + " readable");
+        return text;
+    };
+
+    const auto mix_path  = root / "Mixes" / "mixmetadata.PDJE";
+    const auto note_path = root / "Notes" / "notemetadata.PDJE";
+    const auto kv_path   = root / "KeyValues" / "keyvaluemetadata.PDJE";
+
+    if (auto mix_json = read_json(mix_path, "mix skeleton file")) {
+        print_check(mix_json->contains(PDJEARR), "mix skeleton has array key");
+        print_check((*mix_json)[PDJEARR].is_array(), "mix skeleton array type");
+        print_check((*mix_json)[PDJEARR].empty(), "mix skeleton array empty");
+    }
+    if (auto note_json = read_json(note_path, "note skeleton file")) {
+        print_check(note_json->contains(PDJENOTE), "note skeleton has array key");
+        print_check((*note_json)[PDJENOTE].is_array(), "note skeleton array type");
+        print_check((*note_json)[PDJENOTE].empty(), "note skeleton array empty");
+    }
+    if (auto kv_json = read_json(kv_path, "kv skeleton file")) {
+        print_check(kv_json->is_object(), "kv skeleton object type");
+        print_check(kv_json->empty(), "kv skeleton object empty");
+    }
+
+    print_check(editor.AddMusicConfig(
+                    "json_smoke_music",
+                    "json_smoke_composer",
+                    "0",
+                    root / "dummy.wav"),
+                "music config create");
+    auto music_path = FindFirstFileNamed(root / "Musics", "musicmetadata.PDJE");
+    print_check(music_path.has_value(), "music metadata file exists");
+    if (music_path) {
+        if (auto music_json = read_json(*music_path, "music skeleton file")) {
+            print_check(music_json->contains(PDJEMUSICBPM),
+                        "music skeleton has bpm array key");
+            print_check((*music_json)[PDJEMUSICBPM].is_array(),
+                        "music skeleton array type");
+            print_check((*music_json)[PDJEMUSICBPM].empty(),
+                        "music skeleton array empty");
+        }
+    }
+
+    MixArgs mix_a;
+    mix_a.type     = TypeEnum::LOAD;
+    mix_a.details  = DetailEnum::HIGH;
+    mix_a.ID       = 100;
+    mix_a.first    = "fmt_a";
+    mix_a.beat     = 1;
+    mix_a.subBeat  = 0;
+    mix_a.separate = 4;
+    MixArgs mix_b  = mix_a;
+    mix_b.ID       = 101;
+    mix_b.first    = "fmt_b";
+    mix_b.beat     = 2;
+
+    NoteArgs note_a;
+    note_a.Note_Type   = "tap";
+    note_a.Note_Detail = 1;
+    note_a.beat        = 1;
+    note_a.subBeat     = 0;
+    note_a.separate    = 4;
+    note_a.railID      = 1;
+
+    MusicArgs mus_a;
+    mus_a.bpm      = "120";
+    mus_a.beat     = 0;
+    mus_a.subBeat  = 0;
+    mus_a.separate = 4;
+    MusicArgs mus_b = mus_a;
+    mus_b.bpm       = "140";
+    mus_b.beat      = 4;
+
+    print_check(editor.mixHandle->WriteData(mix_a), "mix format write #1");
+    print_check(editor.mixHandle->WriteData(mix_b), "mix format write #2");
+    print_check(editor.noteHandle->WriteData(note_a), "note format write #1");
+    print_check(editor.KVHandle->WriteData(KEY_VALUE{ "fmt_key_a", "v1" }),
+                "kv format write #1");
+    print_check(editor.KVHandle->WriteData(KEY_VALUE{ "fmt_key_b", "v2" }),
+                "kv format write #2");
+
+    bool music_write_ok = false;
+    if (!editor.musicHandle.empty() && editor.musicHandle.back().handle) {
+        music_write_ok =
+            editor.musicHandle.back().handle->WriteData(mus_a) &&
+            editor.musicHandle.back().handle->WriteData(mus_b);
+    }
+    print_check(music_write_ok, "music format writes");
+
+    if (auto mix_text = read_text(mix_path, "mix format file")) {
+        print_check(ParseJsonNoThrow(*mix_text).has_value(),
+                    "mix format file valid json");
+        print_check(mix_text->find("\n    , {") != std::string::npos,
+                    "mix array uses leading comma on appended row");
+        print_check(mix_text->find("\n      \"") == std::string::npos,
+                    "mix array object is single-line");
+    }
+    if (auto note_text = read_text(note_path, "note format file")) {
+        print_check(ParseJsonNoThrow(*note_text).has_value(),
+                    "note format file valid json");
+        print_check(note_text->find("\n    {") != std::string::npos,
+                    "note array row is line-based");
+        print_check(note_text->find("\n      \"") == std::string::npos,
+                    "note array object is single-line");
+    }
+    if (auto kv_text = read_text(kv_path, "kv format file")) {
+        print_check(ParseJsonNoThrow(*kv_text).has_value(),
+                    "kv format file valid json");
+        print_check(kv_text->find("\n  , \"") != std::string::npos,
+                    "kv object uses leading comma for later fields");
+    }
+    if (music_path) {
+        if (auto music_text = read_text(*music_path, "music format file")) {
+            print_check(ParseJsonNoThrow(*music_text).has_value(),
+                        "music format file valid json");
+            print_check(music_text->find("\n    , {") != std::string::npos,
+                        "music bpm array uses leading comma on appended row");
+            print_check(music_text->find("\n      \"") == std::string::npos,
+                        "music bpm array object is single-line");
+        }
+    }
+
+    fs::remove_all(root, ec);
+    if (!ok) {
+        std::cout << "[json-format-smoke] RESULT: FAIL" << std::endl;
+        return 2;
+    }
+    std::cout << "[json-format-smoke] RESULT: PASS" << std::endl;
+    return 0;
 }
 
 int
@@ -79,6 +339,7 @@ RunTimeLineDiffSmoke()
     };
 
     // MIX add -> add diff (object recovery path)
+    editor.mixHandle->UpdateLogs();
     auto mix_oids = CollectLogOids(editor.mixHandle->GetLogs());
     MixArgs mix_a;
     mix_a.type     = TypeEnum::LOAD;
@@ -96,6 +357,7 @@ RunTimeLineDiffSmoke()
 
     std::optional<std::string> mix_commit_1;
     std::optional<std::string> mix_commit_2;
+    std::optional<std::string> mix_commit_3;
     print_check(editor.mixHandle->WriteData(mix_a), "mix write #1");
     print_check(RecordNewCommitOID(editor.mixHandle, mix_oids, mix_commit_1),
                 "capture mix commit #1 oid");
@@ -118,7 +380,28 @@ RunTimeLineDiffSmoke()
         }
     }
 
+    print_check(editor.mixHandle->DeleteData(mix_b, false, false) == 1,
+                "mix delete #1 removes 1 row");
+    print_check(RecordNewCommitOID(editor.mixHandle, mix_oids, mix_commit_3),
+                "capture mix commit #3 oid (delete)");
+
+    if (mix_commit_2 && mix_commit_3) {
+        auto mix_delete_diff = editor.mixHandle->Diff(*mix_commit_2, *mix_commit_3);
+        print_check(mix_delete_diff.has_value(), "mix delete diff returns value");
+        if (mix_delete_diff) {
+            print_check(mix_delete_diff->mixRemoved.size() == 1,
+                        "mix delete diff removed count == 1");
+            print_check(mix_delete_diff->mixAdded.empty(),
+                        "mix delete diff added count == 0");
+            if (!mix_delete_diff->mixRemoved.empty()) {
+                print_check(mix_delete_diff->mixRemoved.front().ID == mix_b.ID,
+                            "mix delete diff removed row ID matches");
+            }
+        }
+    }
+
     // KV overwrite -> removed+added diff (field recovery path)
+    editor.KVHandle->UpdateLogs();
     auto kv_oids = CollectLogOids(editor.KVHandle->GetLogs());
     std::optional<std::string> kv_commit_1;
     std::optional<std::string> kv_commit_2;
@@ -165,6 +448,12 @@ main(int argc, char **argv)
 {
     if (argc > 1 && std::string(argv[1]) == "--timeline-diff-smoke") {
         return RunTimeLineDiffSmoke();
+    }
+    if (argc > 1 && std::string(argv[1]) == "--timeline-diff-failure-smoke") {
+        return RunTimeLineDiffFailureSmoke();
+    }
+    if (argc > 1 && std::string(argv[1]) == "--timeline-json-format-smoke") {
+        return RunTimeLineJsonFormatSmoke();
     }
 
     std::cout << "editor tester" << std::endl;

@@ -9,6 +9,7 @@
 #include <functional>
 #include <memory>
 #include <ranges>
+#include <sstream>
 #include <string>
 
 #include "fileNameSanitizer.hpp"
@@ -35,6 +36,94 @@ using MUSIC_W = CapWriter<MusicBinaryCapnpData>;
 using KEY       = DONT_SANITIZE;
 using KEY_VALUE = std::pair<DONT_SANITIZE, DONT_SANITIZE>;
 using KV_W      = std::vector<KEY_VALUE>;
+
+namespace PDJE_JSON_IO_DETAIL {
+
+inline void
+DumpDiffFriendlyArray(std::ostream &os, const nj &arr, int indent);
+
+inline void
+DumpDiffFriendlyObject(std::ostream &os, const nj &obj, int indent)
+{
+    os << "{";
+    if (!obj.is_object() || obj.empty()) {
+        os << "}";
+        return;
+    }
+
+    os << "\n";
+    bool first = true;
+    for (auto it = obj.begin(); it != obj.end(); ++it) {
+        os << std::string(static_cast<std::size_t>(indent + 2), ' ');
+        if (!first) {
+            os << ", ";
+        }
+        os << nj(it.key()).dump() << ": ";
+        if (it.value().is_array()) {
+            DumpDiffFriendlyArray(os, it.value(), indent + 2);
+        } else {
+            os << it.value().dump();
+        }
+        os << "\n";
+        first = false;
+    }
+    os << std::string(static_cast<std::size_t>(indent), ' ') << "}";
+}
+
+inline void
+DumpDiffFriendlyArray(std::ostream &os, const nj &arr, int indent)
+{
+    os << "[";
+    if (!arr.is_array() || arr.empty()) {
+        os << "]";
+        return;
+    }
+
+    os << "\n";
+    bool first = true;
+    for (const auto &elem : arr) {
+        os << std::string(static_cast<std::size_t>(indent + 2), ' ');
+        if (!first) {
+            os << ", ";
+        }
+        os << elem.dump();
+        os << "\n";
+        first = false;
+    }
+    os << std::string(static_cast<std::size_t>(indent), ' ') << "]";
+}
+
+inline std::string
+DumpDiffFriendlyJson(const nj &root)
+{
+    std::ostringstream oss;
+    if (root.is_object()) {
+        DumpDiffFriendlyObject(oss, root, 0);
+    } else if (root.is_array()) {
+        DumpDiffFriendlyArray(oss, root, 0);
+    } else {
+        oss << root.dump();
+    }
+    oss << "\n";
+    return oss.str();
+}
+
+inline bool
+WriteDiffFriendlyJsonToFile(const fs::path &path, const nj &root)
+{
+    try {
+        std::ofstream jfile(path);
+        if (!jfile.is_open()) {
+            return false;
+        }
+        jfile << DumpDiffFriendlyJson(root);
+        return jfile.good();
+    } catch (...) {
+        return false;
+    }
+}
+
+} // namespace PDJE_JSON_IO_DETAIL
 
 /**
  * @brief Generic handler for reading/writing editor JSON files.
@@ -79,9 +168,7 @@ template <typename CapnpWriterType> class PDJE_JSONHandler {
     bool
     save(const fs::path &path)
     {
-        std::ofstream jfile(path);
-        if (jfile.is_open()) {
-            jfile << std::setw(4) << ROOT;
+        if (PDJE_JSON_IO_DETAIL::WriteDiffFriendlyJsonToFile(path, ROOT)) {
             return true;
         } else {
             critlog("failed to save json file. json file is not opened. "

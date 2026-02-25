@@ -179,11 +179,10 @@ PDJE_JSONHandler<NOTE_W>::load(const fs::path &filepath)
         }
     } else {
         fs::create_directories(filepath.parent_path());
-        std::ofstream jfile(filepath);
-        if (!jfile.is_open())
+        ROOT           = nj::object();
+        ROOT[PDJENOTE] = nj::array();
+        if (!PDJE_JSON_IO_DETAIL::WriteDiffFriendlyJsonToFile(filepath, ROOT))
             return false;
-        jfile << std::setw(4) << ROOT;
-        jfile.close();
     }
 
     if (!ROOT.contains(PDJENOTE)) {

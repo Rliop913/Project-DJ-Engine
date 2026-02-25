@@ -132,6 +132,9 @@ template <typename CapnpType> class TimeLine {
             critlog("failed to diff. error occurred. What: ");
             critlog(e.what());
             return std::nullopt;
+        } catch (...) {
+            critlog("failed to diff. unknown exception occurred.");
+            return std::nullopt;
         }
     }
     void
