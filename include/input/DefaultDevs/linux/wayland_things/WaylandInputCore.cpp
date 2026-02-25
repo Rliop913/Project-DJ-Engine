@@ -1,4 +1,5 @@
 #include "WaylandInputCore.hpp"
+#include "LinuxMouseButtonMapping.hpp"
 #include "PDJE_Input_Log.hpp"
 #include "PDJE_LOG_SETTER.hpp"
 #include "evdev_codemap.hpp"
@@ -185,30 +186,13 @@ WaylandInputCore::WritePointerButton(uint32_t time_ms,
     ilog.event.mouse.y          = 0;
     ilog.microSecond            = ToMicroSeconds(time_ms);
 
-    switch (button) {
-    case BTN_LEFT:
-        ilog.event.mouse.button_type =
-            pressed ? PDJE_MOUSE_L_BTN_DOWN : PDJE_MOUSE_L_BTN_UP;
-        break;
-    case BTN_RIGHT:
-        ilog.event.mouse.button_type =
-            pressed ? PDJE_MOUSE_R_BTN_DOWN : PDJE_MOUSE_R_BTN_UP;
-        break;
-    case BTN_MIDDLE:
-        ilog.event.mouse.button_type =
-            pressed ? PDJE_MOUSE_M_BTN_DOWN : PDJE_MOUSE_M_BTN_UP;
-        break;
-    case BTN_SIDE:
-        ilog.event.mouse.button_type =
-            pressed ? PDJE_MOUSE_SIDE_BTN_DOWN : PDJE_MOUSE_SIDE_BTN_UP;
-        break;
-    case BTN_EXTRA:
-        ilog.event.mouse.button_type =
-            pressed ? PDJE_MOUSE_EX_BTN_DOWN : PDJE_MOUSE_EX_BTN_UP;
-        break;
-    default:
+    const auto mapped =
+        PDJE_DEFAULT_DEVICES::LINUX_INPUT_MAP::TryMapLinuxMouseButton(button,
+                                                                      pressed);
+    if (!mapped.has_value()) {
         return;
     }
+    ilog.event.mouse.button_type = *mapped;
 
     const std::string id         = "wayland://pointer";
     const std::string &name_ref  = pointer_name.empty()

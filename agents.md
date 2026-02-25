@@ -19,7 +19,8 @@ It records only facts verified from current code/build files and highlights stal
 - CMake minimum: `3.12`.
 - C++ standard: `20`.
 - Default options:
-- `PDJE_BUILD_TESTS=ON`
+- `PDJE_TEST=ON`
+- `PDJE_DEV_TEST=OFF`
 - `PDJE_DEVELOP_INPUT=ON` on Windows, `OFF` on Linux/macOS
 - `PDJE_SWIG_BUILD=OFF`
 - `PDJE_DYNAMIC=OFF`
@@ -47,13 +48,14 @@ It records only facts verified from current code/build files and highlights stal
 - Built only on Windows when `PDJE_DEVELOP_INPUT=ON`.
 - Runs raw input loop as a child process.
 - Test executables (conditional)
-- Always (if `PDJE_BUILD_TESTS=ON`): `testEditor`, `DBTester`, `gitTester`.
+- Legacy/manual dev tests (if `PDJE_DEV_TEST=ON`): `testEditor`, `DBTester`, `gitTester`.
 - Also when `PDJE_DEVELOP_INPUT=ON`: `testInput`, `testMIDI`, `testJudge`.
+- Unit test executables (if `PDJE_TEST=ON`): `pdje_unit_core`, `pdje_unit_input`, `pdje_unit_judge`.
 
 ## 5) Test reality (important)
 - CI workflow runs `ctest` (`.github/workflows/cmake-multi-platform.yml`).
-- But in `CMakeLists.txt`, `enable_testing()` and `add_test(...)` are commented out.
-- Current state: test binaries are built, but `ctest` registration is effectively missing.
+- `PDJE_TEST` enables doctest-based unit tests and CTest registration.
+- Legacy/manual `test*` binaries are build-only and not auto-registered in CTest.
 
 ## 6) Module architecture (source-backed)
 - Core engine: `include/core/`

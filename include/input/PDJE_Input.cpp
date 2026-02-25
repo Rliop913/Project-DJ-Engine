@@ -1,4 +1,5 @@
 #include "PDJE_Input.hpp"
+#include "PDJE_Input_StateLogic.hpp"
 #include "NameGen.hpp"
 #include "PDJE_LOG_SETTER.hpp"
 PDJE_Input::PDJE_Input()
@@ -10,7 +11,7 @@ bool
 PDJE_Input::Init(void *platform_ctx0, void *platform_ctx1, bool use_internal_window)
 {
     try {
-        if (state != PDJE_INPUT_STATE::DEAD) {
+        if (!PDJE_INPUT_STATE_LOGIC::CanInit(state)) {
             critlog(
                 "pdje input module init failed. pdje input state is not dead. "
                 "maybe input module is running or configuring.");
@@ -59,35 +60,39 @@ PDJE_Input::Config(std::vector<DeviceData>                  &devs,
             FLAG_MIDI_ON                  = true;
         }
 
-        if (state != PDJE_INPUT_STATE::DEVICE_CONFIG_STATE) {
+        if (!PDJE_INPUT_STATE_LOGIC::CanConfig(state)) {
             critlog(
                 "pdje input module config failed. pdje input state is not on "
                 "device config state. Init it first.");
             return false;
         }
-        std::vector<DeviceData> sanitized_devs;
-        for (const auto &d : devs) {
-            if (d.Name != "" && d.device_specific_id != "" &&
-                d.Type != PDJE_Dev_Type::UNKNOWN) {
-                sanitized_devs.push_back(d);
-            }
-        }
-        FLAG_INPUT_ON = (!sanitized_devs.empty());
-        if (FLAG_INPUT_ON) {
-            if (!default_devs->Config(sanitized_devs)) {
-                critlog("failed to configure devices.");
-                FLAG_INPUT_ON = false;
-                return false;
-            }
-            state = PDJE_INPUT_STATE::INPUT_LOOP_READY;
-            return true;
-        } else if (FLAG_MIDI_ON) { // fallback: only midi devices.
-            state = PDJE_INPUT_STATE::INPUT_LOOP_READY;
-            return Kill();
+        std::vector<DeviceData> sanitized_devs =
+            PDJE_INPUT_STATE_LOGIC::SanitizeConfigDevices(devs);
+        const bool has_valid_input = !sanitized_devs.empty();
+        bool       backend_ok      = false;
 
-        } else { // fallback: both invalid.
+        if (has_valid_input) {
+            backend_ok = default_devs->Config(sanitized_devs);
+        }
+
+        const auto decision = PDJE_INPUT_STATE_LOGIC::DecideConfigOutcome(
+            has_valid_input,
+            FLAG_MIDI_ON,
+            backend_ok);
+        FLAG_INPUT_ON = decision.flag_input_on;
+
+        if (!decision.success) {
+            if (decision.backend_fail_path) {
+                critlog("failed to configure devices.");
+            }
             return false;
         }
+
+        state = decision.next_state;
+        if (decision.should_call_kill) { // fallback: only midi devices.
+            return Kill();
+        }
+        return true;
     } catch (const std::exception &e) {
         critlog("failed to config. WHY: ");
         critlog(e.what());
@@ -98,7 +103,7 @@ PDJE_Input::Config(std::vector<DeviceData>                  &devs,
 bool
 PDJE_Input::Run()
 {
-    if (state != PDJE_INPUT_STATE::INPUT_LOOP_READY) {
+    if (!PDJE_INPUT_STATE_LOGIC::CanRun(state)) {
         warnlog("pdje init module run failed. pdje input state is not on loop "
                 "ready state. config it first.");
         return false;
@@ -121,29 +126,24 @@ bool
 PDJE_Input::Kill()
 {
     bool ok = true;
-    switch (state) {
-    case PDJE_INPUT_STATE::DEAD:
+    switch (PDJE_INPUT_STATE_LOGIC::ClassifyKillAction(state)) {
+    case PDJE_INPUT_STATE_LOGIC::KillAction::NoOp:
         return true;
 
-    case PDJE_INPUT_STATE::DEVICE_CONFIG_STATE: {
+    case PDJE_INPUT_STATE_LOGIC::KillAction::BackendKill: {
         if (default_devs) {
             // compatibility no-op for windows parity
             ok = default_devs->Kill();
         }
         break;
     }
-    case PDJE_INPUT_STATE::INPUT_LOOP_READY:
-        if (default_devs) {
-            default_devs->TerminateLoop();
-        }
-        break;
-    case PDJE_INPUT_STATE::INPUT_LOOP_RUNNING: {
+    case PDJE_INPUT_STATE_LOGIC::KillAction::TerminateLoop: {
         if (default_devs) {
             default_devs->TerminateLoop();
         }
         break;
     }
-    default:
+    case PDJE_INPUT_STATE_LOGIC::KillAction::BrokenState:
         critlog("the pdje input module state is broken...why?");
         ok = false;
         break;

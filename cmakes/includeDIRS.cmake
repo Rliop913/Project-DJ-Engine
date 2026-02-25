@@ -140,6 +140,7 @@ else()
     ${PDJE_INCLUDE_ROOT}/include/input/DefaultDevs/linux
     ${PDJE_INCLUDE_ROOT}/include/input/DefaultDevs/linux/evdev_things
     ${PDJE_INCLUDE_ROOT}/include/input/DefaultDevs
+    ${PDJE_INCLUDE_ROOT}/include/input/DefaultDevs/linux/wayland_things
     
     
     )

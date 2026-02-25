@@ -51,6 +51,44 @@ cmake --build . --config Release --parallel #add your maximum number of cores
 > 
 > If you plan to build Swig binding, you should use dynamic build on windows. static build may cause link errors.
 
+## Tests
+
+The project now separates automated unit tests from legacy/manual developer tests.
+
+- `PDJE_TEST=ON` (default): builds doctest-based unit tests and registers them with `CTest`
+- `PDJE_DEV_TEST=OFF` (default): legacy/manual test executables (`testInput`, `testJudge`, etc.)
+
+`PDJE_TEST=ON` now registers doctest cases with CTest at the **test-case level**
+(via post-build discovery). This means `ctest -N` shows the expanded list after
+the unit test binaries are built.
+
+Examples:
+
+```bash
+# Unit tests only (recommended for CI/local verification)
+cmake -B build -S . \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_TOOLCHAIN_FILE=./conan_cmakes/conan_toolchain.cmake \
+  -DPDJE_TEST=ON \
+  -DPDJE_DEV_TEST=OFF
+cmake --build build --parallel
+ctest --test-dir build -L unit --output-on-failure
+# Optional: inspect discovered case-level tests after build
+ctest --test-dir build -N
+# Optional: run only input-related unit cases by name prefix
+ctest --test-dir build -R "unit.input::" --output-on-failure
+```
+
+```bash
+# Legacy/manual developer tests (device/audio/environment dependent)
+cmake -B build -S . \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_TOOLCHAIN_FILE=./conan_cmakes/conan_toolchain.cmake \
+  -DPDJE_TEST=OFF \
+  -DPDJE_DEV_TEST=ON
+cmake --build build --parallel
+```
+
 
 
 ## Dependencies

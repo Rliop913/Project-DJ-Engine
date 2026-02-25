@@ -20,11 +20,19 @@ struct WaylandRuntimeStatus {
     char         xkb_error[256]{};
 };
 
+struct WaylandDynLibOps {
+    void *(*dlopen_fn)(const char *, int)  = nullptr;
+    void *(*dlsym_fn)(void *, const char *) = nullptr;
+    int (*dlclose_fn)(void *)              = nullptr;
+    const char *(*dlerror_fn)()            = nullptr;
+};
+
 class WaylandRuntimeLoader {
   private:
     void                *wayland_client_handle = nullptr;
     void                *xkbcommon_handle      = nullptr;
     WaylandRuntimeStatus status{};
+    WaylandDynLibOps     dynlib_ops{};
     mutable std::mutex   lock;
 
     void
@@ -37,7 +45,10 @@ class WaylandRuntimeLoader {
     ResolveXKBCommonSymbolsUnlocked() noexcept;
 
   public:
-    WaylandRuntimeLoader() = default;
+    WaylandRuntimeLoader() noexcept;
+#ifdef PDJE_UNIT_TESTING
+    explicit WaylandRuntimeLoader(WaylandDynLibOps ops) noexcept;
+#endif
     ~WaylandRuntimeLoader();
 
     WaylandRuntimeLoader(const WaylandRuntimeLoader &)            = delete;

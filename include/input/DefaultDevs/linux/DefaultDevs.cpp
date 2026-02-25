@@ -1,26 +1,11 @@
 #include "DefaultDevs.hpp"
+#include "LinuxInputContracts.hpp"
 #include <exception>
 #include <fcntl.h>
 #include <unistd.h>
 
 namespace PDJE_DEFAULT_DEVICES {
 namespace {
-
-constexpr const char *kWaylandKeyboardId = "wayland://keyboard";
-constexpr const char *kWaylandPointerId  = "wayland://pointer";
-constexpr const char *kWaylandKeyboardName =
-    "Wayland Keyboard (Focused Surface)";
-constexpr const char *kWaylandPointerName = "Wayland Pointer (Focused Surface)";
-constexpr const char *kWaylandInternalKeyboardName =
-    "Wayland Keyboard (PDJE Internal Window)";
-constexpr const char *kWaylandInternalPointerName =
-    "Wayland Pointer (PDJE Internal Window)";
-
-inline bool
-StartsWith(const std::string &value, const char *prefix) noexcept
-{
-    return value.rfind(prefix, 0) == 0;
-}
 } // namespace
 
 DefaultDevs::DefaultDevs() : input_buffer(1024)
@@ -35,7 +20,7 @@ DefaultDevs::~DefaultDevs()
 bool
 DefaultDevs::IsWaylandSyntheticId(const std::string &id) noexcept
 {
-    return StartsWith(id, "wayland://");
+    return LINUX_INPUT_CONTRACTS::IsWaylandSyntheticId(id);
 }
 
 bool
@@ -335,9 +320,9 @@ DefaultDevs::GetDevices()
 
     DeviceData kb;
     kb.Type               = PDJE_Dev_Type::KEYBOARD;
-    kb.Name               = has_host_handles ? kWaylandKeyboardName
-                                             : kWaylandInternalKeyboardName;
-    kb.device_specific_id = kWaylandKeyboardId;
+    kb.Name               = LINUX_INPUT_CONTRACTS::GetWaylandSyntheticName(
+        kb.Type, !has_host_handles);
+    kb.device_specific_id = LINUX_INPUT_CONTRACTS::kWaylandKeyboardId;
     stored_dev[kb.Name].backend_kind = StoredBackendKind::Wayland;
     stored_dev[kb.Name].source_id     = kb.device_specific_id;
     stored_dev[kb.Name].dev_type      = kb.Type;
@@ -345,9 +330,9 @@ DefaultDevs::GetDevices()
 
     DeviceData mouse;
     mouse.Type               = PDJE_Dev_Type::MOUSE;
-    mouse.Name               = has_host_handles ? kWaylandPointerName
-                                                : kWaylandInternalPointerName;
-    mouse.device_specific_id = kWaylandPointerId;
+    mouse.Name               = LINUX_INPUT_CONTRACTS::GetWaylandSyntheticName(
+        mouse.Type, !has_host_handles);
+    mouse.device_specific_id = LINUX_INPUT_CONTRACTS::kWaylandPointerId;
     stored_dev[mouse.Name].backend_kind = StoredBackendKind::Wayland;
     stored_dev[mouse.Name].source_id     = mouse.device_specific_id;
     stored_dev[mouse.Name].dev_type      = mouse.Type;

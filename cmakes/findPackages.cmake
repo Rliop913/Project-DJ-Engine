@@ -75,6 +75,14 @@ FetchContent_Declare(
     GIT_TAG        v5.3.1
 )
 
+if(PDJE_TEST)
+FetchContent_Declare(
+    doctest
+    GIT_REPOSITORY https://github.com/doctest/doctest.git
+    GIT_TAG        v2.4.11
+)
+endif()
+
 function(setLibreMIDIReqLib targetName)
   target_link_libraries(${targetName} PUBLIC libremidi)
 endfunction(setLibreMIDIReqLib)
@@ -85,7 +93,11 @@ find_package(botan CONFIG REQUIRED)
 
 function(setBotanReqLib targetName)
   target_link_libraries(${targetName} PUBLIC botan::botan)
-  target_link_directories(${targetName} PUBLIC ${botan_INCLUDE_DIR})
+  if(DEFINED botan_INCLUDE_DIRS)
+    target_include_directories(${targetName} PUBLIC ${botan_INCLUDE_DIRS})
+  elseif(DEFINED botan_INCLUDE_DIR)
+    target_include_directories(${targetName} PUBLIC ${botan_INCLUDE_DIR})
+  endif()
 endfunction()
 
 
@@ -117,7 +129,11 @@ find_package(RocksDB REQUIRED)
 
 function(setRocksDBReqLib targetName)
   target_link_libraries(${targetName} PUBLIC RocksDB::rocksdb)
-  target_include_directories(${targetName} PUBLIC ${rocksdb_INCLUDE_DIR})
+  if(DEFINED RocksDB_INCLUDE_DIRS)
+    target_include_directories(${targetName} PUBLIC ${RocksDB_INCLUDE_DIRS})
+  elseif(DEFINED RocksDB_INCLUDE_DIR)
+    target_include_directories(${targetName} PUBLIC ${RocksDB_INCLUDE_DIR})
+  endif()
 endfunction(setRocksDBReqLib)
 
 find_package(OpenSSL REQUIRED)
@@ -129,6 +145,9 @@ FetchContent_MakeAvailable(NHJson)
 FetchContent_MakeAvailable(sql_amalgam)
 FetchContent_MakeAvailable(cppCodec)
 FetchContent_MakeAvailable(libremidi)
+if(PDJE_TEST)
+FetchContent_MakeAvailable(doctest)
+endif()
 # FetchContent_MakeAvailable(cppHttp)
 
 

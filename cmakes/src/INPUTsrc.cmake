@@ -32,9 +32,9 @@ else()
     list(APPEND PDJE_INPUT_MAINPROC_SRC
         ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/linux/DefaultDevs.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/linux/InputCore.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/linux/WaylandOwnedWindow.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/linux/WaylandInputCore.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/linux/WaylandRuntimeLoader.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/linux/wayland_things/WaylandOwnedWindow.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/linux/wayland_things/WaylandRuntimeLoader.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c
         ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/linux/ParseMouse.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/include/input/DefaultDevs/linux/ParseKeyboard.cpp
