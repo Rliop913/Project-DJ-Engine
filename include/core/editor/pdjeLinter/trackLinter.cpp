@@ -1,71 +1,10 @@
 #include "CapnpBinary.hpp"
 #include "MixBinary.capnp.h"
+#include "TrackLinterRules.hpp"
 #include "fileNameSanitizer.hpp"
 #include "pdjeLinter.hpp"
 #include <cstdint>
 #include <string>
-#include <unordered_map>
-
-using ID_LOADED = std::unordered_map<int32_t, int>;
-
-void
-FillIdHasLoad(ID_LOADED      &accumulate_data,
-              const TypeEnum &type,
-              const int32_t  &id)
-{
-    if (!accumulate_data.contains(id)) {
-        accumulate_data[id] = 0;
-    }
-
-    if (type == TypeEnum::LOAD) {
-        accumulate_data[id] += 1;
-    }
-}
-
-void
-FillIdHasUnLoad(ID_LOADED      &accumulate_data,
-                const TypeEnum &type,
-                const int32_t  &id)
-{
-    if (!accumulate_data.contains(id)) {
-        accumulate_data[id] = 0;
-    }
-
-    if (type == TypeEnum::UNLOAD) {
-        accumulate_data[id] += 1;
-    }
-}
-bool
-CheckIDHasLoad(const ID_LOADED &acc_data, UNSANITIZED &msg)
-{
-    bool FLAG_OK = true;
-    for (const auto &id : acc_data) {
-        if (id.second != 1) {
-            FLAG_OK = false;
-            msg += " ID " + std::to_string(id.first) + " has " +
-                   (id.second > 1 ? (std::to_string(id.second) +
-                                     " load command. render failed.\n")
-                                  : "no load command. render failed.\n");
-        }
-    }
-    return FLAG_OK;
-}
-
-bool
-CheckIDHasUnLoad(const ID_LOADED &acc_data, UNSANITIZED &msg)
-{
-    bool FLAG_OK = true;
-    for (const auto &id : acc_data) {
-        if (id.second != 1) {
-            FLAG_OK = false;
-            msg += " ID " + std::to_string(id.first) + " has " +
-                   (id.second > 1 ? (std::to_string(id.second) +
-                                     " unload command. render failed.\n")
-                                  : "no unload command. render failed.\n");
-        }
-    }
-    return FLAG_OK;
-}
 
 template <>
 bool
@@ -78,17 +17,24 @@ PDJE_Linter<trackdata>::Lint(const trackdata &target, UNSANITIZED &lint_msg)
     }
     auto td = trackReader.Rp->getDatas();
 
-    ID_LOADED id_has_load;
-    ID_LOADED id_has_unload;
+    PDJE_TRACK_LINTER_RULES::TrackLinterIdCount id_has_load;
+    PDJE_TRACK_LINTER_RULES::TrackLinterIdCount id_has_unload;
     for (size_t i = 0; i < td.size(); ++i) {
-        FillIdHasLoad(id_has_load, td[i].getType(), td[i].getId());
-        FillIdHasUnLoad(id_has_unload, td[i].getType(), td[i].getId());
+        PDJE_TRACK_LINTER_RULES::AccumulateIf(id_has_load,
+                                              td[i].getId(),
+                                              td[i].getType() == TypeEnum::LOAD);
+        PDJE_TRACK_LINTER_RULES::AccumulateIf(
+            id_has_unload,
+            td[i].getId(),
+            td[i].getType() == TypeEnum::UNLOAD);
     }
     bool FLAG_RESULT = true;
-    if (!CheckIDHasLoad(id_has_load, lint_msg)) {
+    if (!PDJE_TRACK_LINTER_RULES::ValidateExactlyOne(
+            id_has_load, "load", lint_msg)) {
         FLAG_RESULT = false;
     }
-    if (!CheckIDHasUnLoad(id_has_unload, lint_msg)) {
+    if (!PDJE_TRACK_LINTER_RULES::ValidateExactlyOne(
+            id_has_unload, "unload", lint_msg)) {
         FLAG_RESULT = false;
     }
 

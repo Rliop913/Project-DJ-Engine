@@ -1,6 +1,10 @@
-#include "FrameCalc.hpp"
+#include "FrameCalcCore.hpp"
 
 #include "PDJE_LOG_SETTER.hpp"
+#include <algorithm>
+#include <cmath>
+#include <iterator>
+#include <string>
 
 namespace FrameCalc {
 uint64_t
