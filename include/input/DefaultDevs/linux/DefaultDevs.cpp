@@ -1,6 +1,4 @@
 #include "DefaultDevs.hpp"
-#include <cstdlib>
-#include <cstring>
 #include <exception>
 #include <fcntl.h>
 #include <unistd.h>
@@ -23,33 +21,6 @@ StartsWith(const std::string &value, const char *prefix) noexcept
 {
     return value.rfind(prefix, 0) == 0;
 }
-
-bool
-ForceEvdevOpenFailEnabled() noexcept
-{
-    const char *v = std::getenv("PDJE_FORCE_EVDEV_OPEN_FAIL");
-    if (!v || v[0] == '\0') {
-        return false;
-    }
-    if (std::strcmp(v, "0") == 0 || std::strcmp(v, "false") == 0 ||
-        std::strcmp(v, "FALSE") == 0) {
-        return false;
-    }
-    return true;
-}
-
-void
-WarnForceEvdevOpenFailProbeOnce()
-{
-    static bool warned = false;
-    if (warned) {
-        return;
-    }
-    warned = true;
-    warnlog("forcing evdev open failure (scan/probe) via "
-            "PDJE_FORCE_EVDEV_OPEN_FAIL");
-}
-
 } // namespace
 
 DefaultDevs::DefaultDevs() : input_buffer(1024)
@@ -283,11 +254,6 @@ DefaultDevs::GetDevices()
 
             const std::string dev_path = dev.path().string();
             if (dev_path.find("event") == std::string::npos) {
-                continue;
-            }
-
-            if (ForceEvdevOpenFailEnabled()) {
-                WarnForceEvdevOpenFailProbeOnce();
                 continue;
             }
 
