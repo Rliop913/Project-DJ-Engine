@@ -191,7 +191,6 @@ template <typename CapnpType> class TimeLine {
               git_repo_root, file_name, auth_name, auth_email)),
           mark(git)
     {
-        startlog();
     }
     ~TimeLine() = default;
 };

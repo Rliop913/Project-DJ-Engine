@@ -51,6 +51,13 @@ endif()
 
 option(PDJE_SWIG_BUILD "Enable build with multiple languages" OFF)
 option(PDJE_DYNAMIC "Make Shared Library" OFF)
+if(PDJE_DYNAMIC)
+  set(PDJE_LOG_RUNTIME_SHARED_DEFAULT ON)
+else()
+  set(PDJE_LOG_RUNTIME_SHARED_DEFAULT OFF)
+endif()
+option(PDJE_LOG_RUNTIME_SHARED "Build PDJE_LOG_RUNTIME as a shared library" ${PDJE_LOG_RUNTIME_SHARED_DEFAULT})
+option(PDJE_LOG_STRICT_EXPLICIT_INIT "Disable lazy logging auto-init and require explicit pdje_logging_init_v1/startlog" OFF)
 
 if(PDJE_DYNAMIC)
   if(WIN32)
@@ -71,13 +78,28 @@ include(cmakes/src/GLOBALsrc.cmake)
 include(cmakes/src/INPUTsrc.cmake)
 include(cmakes/src/CRYPTOsrc.cmake)
 
+if(PDJE_LOG_RUNTIME_SHARED)
+  set(PDJE_LOG_RUNTIME_LIBRARY_TYPE SHARED)
+else()
+  set(PDJE_LOG_RUNTIME_LIBRARY_TYPE STATIC)
+endif()
+
 add_library(
   PDJE_LOG_RUNTIME
-  SHARED
+  ${PDJE_LOG_RUNTIME_LIBRARY_TYPE}
   ${CMAKE_CURRENT_SOURCE_DIR}/include/global/PDJE_LOG_SETTER.cpp)
 target_include_directories(PDJE_LOG_RUNTIME PUBLIC ${PDJE_INCLUDE_GLOBAL})
-if(WIN32)
-  target_compile_definitions(PDJE_LOG_RUNTIME PRIVATE PDJE_WINDOWS_DLL)
+if(PDJE_LOG_STRICT_EXPLICIT_INIT)
+  target_compile_definitions(PDJE_LOG_RUNTIME PRIVATE PDJE_LOG_STRICT_EXPLICIT_INIT)
+endif()
+if(NOT WIN32)
+  set_target_properties(PDJE_LOG_RUNTIME PROPERTIES
+    CXX_VISIBILITY_PRESET hidden
+    VISIBILITY_INLINES_HIDDEN YES
+  )
+endif()
+if(WIN32 AND PDJE_LOG_RUNTIME_SHARED)
+  target_compile_definitions(PDJE_LOG_RUNTIME PUBLIC PDJE_WINDOWS_DLL)
   target_compile_definitions(PDJE_LOG_RUNTIME PRIVATE PDJE_BUILDING)
 endif()
 setSpdlogReqLib(PDJE_LOG_RUNTIME)

@@ -8,7 +8,6 @@ namespace PDJE_IPC {
 
 MUTEX::MUTEX()
 {
-    startlog();
 }
 
 void

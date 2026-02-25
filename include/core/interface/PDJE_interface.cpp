@@ -2,7 +2,6 @@
 #include "PDJE_LOG_SETTER.hpp"
 PDJE::PDJE(const DONT_SANITIZE &rootPath)
 {
-    startlog();
     DBROOT = std::make_shared<litedb>();
     DBROOT->openDB(rootPath);
 }

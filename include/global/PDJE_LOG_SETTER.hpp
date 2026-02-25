@@ -5,35 +5,128 @@
 #pragma once
 
 #include "PDJE_EXPORT_SETTER.hpp"
+#include "PDJE_LOG_RUNTIME_API.h"
 
-#include <filesystem>
-#include <mutex>
-#include <spdlog/sinks/basic_file_sink.h>
-#include <spdlog/sinks/stdout_color_sinks.h>
+#include <spdlog/fmt/fmt.h>
 #include <spdlog/spdlog.h>
+#include <exception>
 #include <string_view>
-#include <type_traits>
+#include <utility>
 
 /**
  * @brief Initializes the logging system.
  *
- * This function sets up a global logger with both a file sink and a console
- * sink. The log level is set to `debug` in debug builds and `err` in release
- * builds.
- *
- * Host applications should call this explicitly during startup before creating
- * exported runtime objects when loading multiple DSOs.
+ * This compatibility shim initializes the default PDJE file logger backend.
+ * Host applications loading multiple DSOs should prefer `pdje_logging_init_v1`
+ * during startup and `pdje_logging_shutdown_v1` during shutdown/unload.
  */
 PDJE_API void
 startlog();
 
+/**
+ * @brief Shuts down the PDJE logging runtime.
+ *
+ * Host applications using reloadable plugin flows should call this explicitly
+ * before unloading the owning module.
+ */
+PDJE_API void
+shutdownlog();
+
 #ifndef LOG_OFF
+namespace PDJE_LOG_DETAIL {
+
+inline void
+log_preformatted(const int level, std::string_view message) noexcept
+{
+    pdje_log_write_v1(level, message.data(), message.size());
+}
+
+template <typename T> inline void
+log_value(const int level, T &&value) noexcept
+{
+    try {
+        auto formatted = spdlog::fmt_lib::format("{}", std::forward<T>(value));
+        pdje_log_write_v1(level, formatted.data(), formatted.size());
+    } catch (const std::exception &e) {
+        log_preformatted(PDJE_LOG_LEVEL_ERROR_V1,
+                         "pdje logging format error in log_value");
+        log_preformatted(PDJE_LOG_LEVEL_ERROR_V1, e.what());
+    } catch (...) {
+        log_preformatted(PDJE_LOG_LEVEL_ERROR_V1,
+                         "pdje logging unknown format error in log_value");
+    }
+}
+
+template <typename... Args>
+inline void
+log_format(const int level,
+           spdlog::format_string_t<Args...> fmt,
+           Args &&...args) noexcept
+    requires(sizeof...(Args) > 0)
+{
+    try {
+        auto formatted = spdlog::fmt_lib::format(fmt, std::forward<Args>(args)...);
+        pdje_log_write_v1(level, formatted.data(), formatted.size());
+    } catch (const std::exception &e) {
+        log_preformatted(PDJE_LOG_LEVEL_ERROR_V1,
+                         "pdje logging format error in log_format");
+        log_preformatted(PDJE_LOG_LEVEL_ERROR_V1, e.what());
+    } catch (...) {
+        log_preformatted(PDJE_LOG_LEVEL_ERROR_V1,
+                         "pdje logging unknown format error in log_format");
+    }
+}
+
+template <typename T> inline void
+info(T &&value) noexcept
+{
+    log_value(PDJE_LOG_LEVEL_INFO_V1, std::forward<T>(value));
+}
+
+template <typename... Args>
+inline void
+info(spdlog::format_string_t<Args...> fmt, Args &&...args) noexcept
+    requires(sizeof...(Args) > 0)
+{
+    log_format(PDJE_LOG_LEVEL_INFO_V1, fmt, std::forward<Args>(args)...);
+}
+
+template <typename T> inline void
+warn(T &&value) noexcept
+{
+    log_value(PDJE_LOG_LEVEL_WARN_V1, std::forward<T>(value));
+}
+
+template <typename... Args>
+inline void
+warn(spdlog::format_string_t<Args...> fmt, Args &&...args) noexcept
+    requires(sizeof...(Args) > 0)
+{
+    log_format(PDJE_LOG_LEVEL_WARN_V1, fmt, std::forward<Args>(args)...);
+}
+
+template <typename T> inline void
+critical(T &&value) noexcept
+{
+    log_value(PDJE_LOG_LEVEL_CRITICAL_V1, std::forward<T>(value));
+}
+
+template <typename... Args>
+inline void
+critical(spdlog::format_string_t<Args...> fmt, Args &&...args) noexcept
+    requires(sizeof...(Args) > 0)
+{
+    log_format(PDJE_LOG_LEVEL_CRITICAL_V1, fmt, std::forward<Args>(args)...);
+}
+
+} // namespace PDJE_LOG_DETAIL
+
 #ifdef ENABLE_INFO_LOG
 /**
  * @def infolog(...)
  * @brief Logs an informational message.
  */
-#define infolog(...) SPDLOG_INFO(__VA_ARGS__)
+#define infolog(...) PDJE_LOG_DETAIL::info(__VA_ARGS__)
 #else
 #define infolog(...)
 #endif
@@ -43,7 +136,7 @@ startlog();
  * @def warnlog(...)
  * @brief Logs a warning message.
  */
-#define warnlog(...) SPDLOG_WARN(__VA_ARGS__)
+#define warnlog(...) PDJE_LOG_DETAIL::warn(__VA_ARGS__)
 #else
 #define warnlog(...)
 #endif
@@ -52,7 +145,7 @@ startlog();
  * @def critlog(...)
  * @brief Logs a critical message.
  */
-#define critlog(...) SPDLOG_CRITICAL(__VA_ARGS__)
+#define critlog(...) PDJE_LOG_DETAIL::critical(__VA_ARGS__)
 #else
 #define infolog(...)
 #define warnlog(...)

@@ -60,7 +60,6 @@ class TX_RX {
         : aead(key)
     {
         try {
-            startlog();
             if (isHost) {
                 TXBuf.MakeIPCSharedMemory(memFirst, MSG_MAX_SIZE);
                 RXBuf.MakeIPCSharedMemory(memSecond, MSG_MAX_SIZE);
