@@ -10,6 +10,11 @@ ${CMAKE_CURRENT_SOURCE_DIR}/include/core/editor/TimeLine/JSONWrap/MusicJson.cpp
 # ${CMAKE_CURRENT_SOURCE_DIR}/include/core/editor/featureWrapper/GitWrap/Log/gitLog.cpp
 
 ${CMAKE_CURRENT_SOURCE_DIR}/include/core/editor/TimeLine/TimeLine.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-KV.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-MIX.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-NOTE.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-MUSIC.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/include/core/editor/TimeLine/LineVersion/LineVersion.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/include/core/editor/TimeLine/EventMarker/EventMarker.cpp
 

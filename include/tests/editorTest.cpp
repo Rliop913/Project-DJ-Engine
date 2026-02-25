@@ -1,13 +1,172 @@
 #include "PDJE_interface.hpp"
+#include "editor.hpp"
 
 #include "PDJE_Benchmark.hpp"
+#include <filesystem>
 #include <iostream>
+#include <nlohmann/json.hpp>
+#include <optional>
+#include <set>
 #include <string>
 // #include <NanoLog.hpp>
 
-int
-main()
+namespace {
+
+using test_json = nlohmann::json;
+
+std::set<std::string>
+CollectLogOids(const std::string &logs_json)
 {
+    std::set<std::string> oids;
+    auto                  root = test_json::parse(logs_json);
+    if (!root.contains("LOGS") || !root["LOGS"].is_array()) {
+        return oids;
+    }
+    for (const auto &entry : root["LOGS"]) {
+        if (entry.contains("OID") && entry["OID"].is_string()) {
+            oids.insert(entry["OID"].get<std::string>());
+        }
+    }
+    return oids;
+}
+
+std::optional<std::string>
+FindNewOid(const std::set<std::string> &before, const std::set<std::string> &after)
+{
+    for (const auto &oid : after) {
+        if (!before.contains(oid)) {
+            return oid;
+        }
+    }
+    return std::nullopt;
+}
+
+bool
+RecordNewCommitOID(auto &timeline,
+                   std::set<std::string> &oid_cache,
+                   std::optional<std::string> &new_oid)
+{
+    timeline->UpdateLogs();
+    auto next_oids = CollectLogOids(timeline->GetLogs());
+    new_oid        = FindNewOid(oid_cache, next_oids);
+    oid_cache      = std::move(next_oids);
+    return new_oid.has_value();
+}
+
+int
+RunTimeLineDiffSmoke()
+{
+    namespace fs = std::filesystem;
+
+    bool           ok = true;
+    std::error_code ec;
+    auto           root = fs::temp_directory_path() / "pdje_timeline_diff_smoke";
+    fs::remove_all(root, ec);
+    ec.clear();
+
+    std::cout << "[diff-smoke] root: " << root.string() << std::endl;
+    PDJE_Editor editor(root, "diff-smoke", "diff-smoke@test");
+    if (!editor.mixHandle || !editor.KVHandle) {
+        std::cout << "[diff-smoke] FAIL: timeline handles not initialized"
+                  << std::endl;
+        return 1;
+    }
+
+    auto print_check = [&ok](bool cond, const std::string &label) {
+        std::cout << "[diff-smoke] " << (cond ? "PASS: " : "FAIL: ") << label
+                  << std::endl;
+        ok = ok && cond;
+    };
+
+    // MIX add -> add diff (object recovery path)
+    auto mix_oids = CollectLogOids(editor.mixHandle->GetLogs());
+    MixArgs mix_a;
+    mix_a.type     = TypeEnum::LOAD;
+    mix_a.details  = DetailEnum::HIGH;
+    mix_a.ID       = 10;
+    mix_a.first    = "smoke_a";
+    mix_a.beat     = 1;
+    mix_a.subBeat  = 0;
+    mix_a.separate = 4;
+
+    MixArgs mix_b = mix_a;
+    mix_b.ID      = 11;
+    mix_b.first   = "smoke_b";
+    mix_b.beat    = 2;
+
+    std::optional<std::string> mix_commit_1;
+    std::optional<std::string> mix_commit_2;
+    print_check(editor.mixHandle->WriteData(mix_a), "mix write #1");
+    print_check(RecordNewCommitOID(editor.mixHandle, mix_oids, mix_commit_1),
+                "capture mix commit #1 oid");
+    print_check(editor.mixHandle->WriteData(mix_b), "mix write #2");
+    print_check(RecordNewCommitOID(editor.mixHandle, mix_oids, mix_commit_2),
+                "capture mix commit #2 oid");
+
+    if (mix_commit_1 && mix_commit_2) {
+        auto mix_diff = editor.mixHandle->Diff(*mix_commit_1, *mix_commit_2);
+        print_check(mix_diff.has_value(), "mix diff returns value");
+        if (mix_diff) {
+            print_check(mix_diff->mixRemoved.empty(),
+                        "mix diff removed count == 0 for append");
+            print_check(mix_diff->mixAdded.size() == 1,
+                        "mix diff added count == 1 for append");
+            if (!mix_diff->mixAdded.empty()) {
+                print_check(mix_diff->mixAdded.front().ID == mix_b.ID,
+                            "mix diff added row ID matches");
+            }
+        }
+    }
+
+    // KV overwrite -> removed+added diff (field recovery path)
+    auto kv_oids = CollectLogOids(editor.KVHandle->GetLogs());
+    std::optional<std::string> kv_commit_1;
+    std::optional<std::string> kv_commit_2;
+
+    print_check(editor.KVHandle->WriteData(KEY_VALUE{ "diff_smoke_key", "v1" }),
+                "kv write #1");
+    print_check(RecordNewCommitOID(editor.KVHandle, kv_oids, kv_commit_1),
+                "capture kv commit #1 oid");
+    print_check(editor.KVHandle->WriteData(KEY_VALUE{ "diff_smoke_key", "v2" }),
+                "kv write #2 (overwrite)");
+    print_check(RecordNewCommitOID(editor.KVHandle, kv_oids, kv_commit_2),
+                "capture kv commit #2 oid");
+
+    if (kv_commit_1 && kv_commit_2) {
+        auto kv_diff = editor.KVHandle->Diff(*kv_commit_1, *kv_commit_2);
+        print_check(kv_diff.has_value(), "kv diff returns value");
+        if (kv_diff) {
+            print_check(kv_diff->kvRemoved.size() == 1,
+                        "kv diff removed count == 1 for overwrite");
+            print_check(kv_diff->kvAdded.size() == 1,
+                        "kv diff added count == 1 for overwrite");
+            if (!kv_diff->kvRemoved.empty() && !kv_diff->kvAdded.empty()) {
+                print_check(kv_diff->kvRemoved.front().first == "diff_smoke_key",
+                            "kv removed key matches");
+                print_check(kv_diff->kvAdded.front().first == "diff_smoke_key",
+                            "kv added key matches");
+            }
+        }
+    }
+
+    fs::remove_all(root, ec);
+    if (!ok) {
+        std::cout << "[diff-smoke] RESULT: FAIL" << std::endl;
+        return 2;
+    }
+    std::cout << "[diff-smoke] RESULT: PASS" << std::endl;
+    return 0;
+}
+
+} // namespace
+
+int
+main(int argc, char **argv)
+{
+    if (argc > 1 && std::string(argv[1]) == "--timeline-diff-smoke") {
+        return RunTimeLineDiffSmoke();
+    }
+
     std::cout << "editor tester" << std::endl;
 
     auto engine = new PDJE(std::string("testRoot.db"));
