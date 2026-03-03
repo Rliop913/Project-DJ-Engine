@@ -53,7 +53,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -96,7 +95,7 @@
 <p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N10PDJE_Input7GetDevsEv">
-<span id="_CPPv3N10PDJE_Input7GetDevsEv"></span><span id="_CPPv2N10PDJE_Input7GetDevsEv"></span><span id="PDJE_Input::GetDevs"></span><span class="target" id="classPDJE__Input_1a57ffda3b7e96de7b73deb3557b089e9b"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="structDeviceData.html#_CPPv410DeviceData" title="DeviceData"><span class="n"><span class="pre">DeviceData</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetDevs</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<span id="_CPPv3N10PDJE_Input7GetDevsEv"></span><span id="_CPPv2N10PDJE_Input7GetDevsEv"></span><span id="PDJE_Input::GetDevs"></span><span class="target" id="classPDJE__Input_1a57ffda3b7e96de7b73deb3557b089e9b"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="../Input_Engine.html#_CPPv410DeviceData" title="DeviceData"><span class="n"><span class="pre">DeviceData</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetDevs</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
 <dd><p>Get All Connected devices. </p>
 </dd></dl>
 
@@ -107,14 +106,24 @@
 </dd></dl>
 
 <dl class="cpp function">
-<dt class="sig sig-object cpp" id="_CPPv4N10PDJE_Input4InitEv">
-<span id="_CPPv3N10PDJE_Input4InitEv"></span><span id="_CPPv2N10PDJE_Input4InitEv"></span><span id="PDJE_Input::Init"></span><span class="target" id="classPDJE__Input_1a5e124b018f37cd0d4ebdb1aa0f4e234e"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Init</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<dt class="sig sig-object cpp" id="_CPPv4N10PDJE_Input4InitEPvPvb">
+<span id="_CPPv3N10PDJE_Input4InitEPvPvb"></span><span id="_CPPv2N10PDJE_Input4InitEPvPvb"></span><span id="PDJE_Input::Init__voidP.voidP.b"></span><span class="target" id="classPDJE__Input_1a4c1c84d82d5f698ac07e32e11072ec12"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Init</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">platform_ctx0</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">nullptr</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">platform_ctx1</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">nullptr</span></span>, <span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">use_internal_window</span></span><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="k"><span class="pre">false</span></span><span class="sig-paren">)</span><br /></dt>
 <dd><p>initialize pdje input. </p>
+<p>Platform contexts (optional):<ul class="simple">
+<li><p>Linux: <code class="docutils literal notranslate"><span class="pre">platform_ctx0</span> <span class="pre">=</span> <span class="pre">wl_display*</span></code>, <code class="docutils literal notranslate"><span class="pre">platform_ctx1</span> <span class="pre">=</span> <span class="pre">wl_surface*</span></code></p></li>
+<li><p>Windows: currently ignored (reserved)</p></li>
+</ul>
+</p>
+<p><code class="docutils literal notranslate"><span class="pre">use_internal_window</span></code>:<ul class="simple">
+<li><p>Linux: if true, allows <a class="reference internal" href="class_p_d_j_e.html#classPDJE"><span class="std std-ref">PDJE</span></a> to create an internal Wayland window when evdev -&gt; wayland fallback is needed and host handles are unavailable.</p></li>
+<li><p>Windows: currently ignored (reserved) </p></li>
+</ul>
+</p>
 </dd></dl>
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N10PDJE_Input6ConfigERNSt6vectorI10DeviceDataEERKNSt6vectorIN9libremidi10input_portEEE">
-<span id="_CPPv3N10PDJE_Input6ConfigERNSt6vectorI10DeviceDataEERKNSt6vectorIN9libremidi10input_portEEE"></span><span id="_CPPv2N10PDJE_Input6ConfigERNSt6vectorI10DeviceDataEERKNSt6vectorIN9libremidi10input_portEEE"></span><span id="PDJE_Input::Config__std::vector:DeviceData:R.std::vector:libremidi::input_port:CR"></span><span class="target" id="classPDJE__Input_1aa504274ac6dfd37beb248fb5fac470c5"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Config</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="structDeviceData.html#_CPPv410DeviceData" title="DeviceData"><span class="n"><span class="pre">DeviceData</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">devs</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">libremidi</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">input_port</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">midi_dev</span></span><span class="sig-paren">)</span><br /></dt>
+<span id="_CPPv3N10PDJE_Input6ConfigERNSt6vectorI10DeviceDataEERKNSt6vectorIN9libremidi10input_portEEE"></span><span id="_CPPv2N10PDJE_Input6ConfigERNSt6vectorI10DeviceDataEERKNSt6vectorIN9libremidi10input_portEEE"></span><span id="PDJE_Input::Config__std::vector:DeviceData:R.std::vector:libremidi::input_port:CR"></span><span class="target" id="classPDJE__Input_1aa504274ac6dfd37beb248fb5fac470c5"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Config</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="../Input_Engine.html#_CPPv410DeviceData" title="DeviceData"><span class="n"><span class="pre">DeviceData</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">devs</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="n"><span class="pre">libremidi</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">input_port</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">midi_dev</span></span><span class="sig-paren">)</span><br /></dt>
 <dd><p>configure device data. </p>
 </dd></dl>
 
@@ -132,8 +141,14 @@
 
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N10PDJE_Input8GetStateEv">
-<span id="_CPPv3N10PDJE_Input8GetStateEv"></span><span id="_CPPv2N10PDJE_Input8GetStateEv"></span><span id="PDJE_Input::GetState"></span><span class="target" id="classPDJE__Input_1a618aaec5a5067bf8f729e4e6b31812c9"></span><a class="reference internal" href="enum_Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9.html#_CPPv416PDJE_INPUT_STATE" title="PDJE_INPUT_STATE"><span class="n"><span class="pre">PDJE_INPUT_STATE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetState</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
+<span id="_CPPv3N10PDJE_Input8GetStateEv"></span><span id="_CPPv2N10PDJE_Input8GetStateEv"></span><span id="PDJE_Input::GetState"></span><span class="target" id="classPDJE__Input_1a618aaec5a5067bf8f729e4e6b31812c9"></span><a class="reference internal" href="../Input_Engine.html#_CPPv416PDJE_INPUT_STATE" title="PDJE_INPUT_STATE"><span class="n"><span class="pre">PDJE_INPUT_STATE</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetState</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
 <dd><p>get pdje input module’s configuration &amp; running state </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4NK10PDJE_Input22GetCurrentInputBackendEv">
+<span id="_CPPv3NK10PDJE_Input22GetCurrentInputBackendEv"></span><span id="_CPPv2NK10PDJE_Input22GetCurrentInputBackendEv"></span><span id="PDJE_Input::GetCurrentInputBackendC"></span><span class="target" id="classPDJE__Input_1a9a1fc326414a2c5c44c3790bed09174a"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">string</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetCurrentInputBackend</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><span class="w"> </span><span class="k"><span class="pre">const</span></span><br /></dt>
+<dd><p>get current active input backend name. </p>
 </dd></dl>
 
 <dl class="cpp function">

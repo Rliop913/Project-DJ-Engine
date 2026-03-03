@@ -1,0 +1,1487 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classWaylandInputCore" kind="class" language="C++" prot="public">
+    <compoundname>WaylandInputCore</compoundname>
+    <includes refid="WaylandInputCore_8hpp" local="no">WaylandInputCore.hpp</includes>
+    <sectiondef kind="private-type">
+      <memberdef kind="enum" id="classWaylandInputCore_1adda32472a12053996baafa391b2c384a" prot="private" static="no" strong="yes">
+        <type></type>
+        <name>SourceMode</name>
+        <qualifiedname>WaylandInputCore::SourceMode</qualifiedname>
+        <enumvalue id="classWaylandInputCore_1adda32472a12053996baafa391b2c384aa6adf97f83acf6453d4a6a4b1070f3754" prot="private">
+          <name>None</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classWaylandInputCore_1adda32472a12053996baafa391b2c384aa08e274ca1d2f18a55425dbdd0948ef4c" prot="private">
+          <name>HostHandles</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classWaylandInputCore_1adda32472a12053996baafa391b2c384aa85a5db5f08fb83e993bd0929700d8166" prot="private">
+          <name>InternalWindow</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="24" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="24" bodyend="24"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classWaylandInputCore_1a87c453f1cc7570292495e98d24355c63" prot="private" static="no" mutable="no">
+        <type><ref refid="classPDJE__IPC_1_1PDJE__Input__Transfer" kindref="compound">PDJE_IPC::PDJE_Input_Transfer</ref> *</type>
+        <definition>PDJE_IPC::PDJE_Input_Transfer* WaylandInputCore::out</definition>
+        <argsstring></argsstring>
+        <name>out</name>
+        <qualifiedname>WaylandInputCore::out</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="26" column="35" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classWaylandInputCore_1a87a70ca133110ac4b29f165a4fa5696d" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="classWaylandOwnedWindow" kindref="compound">WaylandOwnedWindow</ref> &gt;</type>
+        <definition>std::optional&lt;WaylandOwnedWindow&gt; WaylandInputCore::owned_window</definition>
+        <argsstring></argsstring>
+        <name>owned_window</name>
+        <qualifiedname>WaylandInputCore::owned_window</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="28" column="19" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classWaylandInputCore_1a23ff430b21bc86f9861e079ff7c3d679" prot="private" static="no" mutable="no">
+        <type><ref refid="classWaylandInputCore_1adda32472a12053996baafa391b2c384a" kindref="member">SourceMode</ref></type>
+        <definition>SourceMode WaylandInputCore::source_mode</definition>
+        <argsstring></argsstring>
+        <name>source_mode</name>
+        <qualifiedname>WaylandInputCore::source_mode</qualifiedname>
+        <initializer>= <ref refid="classWaylandInputCore_1adda32472a12053996baafa391b2c384aa6adf97f83acf6453d4a6a4b1070f3754" kindref="member">SourceMode::None</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="30" column="16" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classWaylandInputCore_1ab0bca6c57a14f3afe76ace4f82ad70ec" prot="private" static="no" mutable="no">
+        <type>wl_display *</type>
+        <definition>wl_display* WaylandInputCore::display</definition>
+        <argsstring></argsstring>
+        <name>display</name>
+        <qualifiedname>WaylandInputCore::display</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="32" column="17" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classWaylandInputCore_1ade390ad9902a11fdb9a7d8c54f4a61cd" prot="private" static="no" mutable="no">
+        <type>wl_surface *</type>
+        <definition>wl_surface* WaylandInputCore::target_surface</definition>
+        <argsstring></argsstring>
+        <name>target_surface</name>
+        <qualifiedname>WaylandInputCore::target_surface</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="33" column="17" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classWaylandInputCore_1a1dc051943480a79bff7616197a0d6f60" prot="private" static="no" mutable="no">
+        <type>wl_registry *</type>
+        <definition>wl_registry* WaylandInputCore::host_registry</definition>
+        <argsstring></argsstring>
+        <name>host_registry</name>
+        <qualifiedname>WaylandInputCore::host_registry</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="34" column="17" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classWaylandInputCore_1a8cc076da59ef8a11d303104de167f376" prot="private" static="no" mutable="no">
+        <type>wl_seat *</type>
+        <definition>wl_seat* WaylandInputCore::seat</definition>
+        <argsstring></argsstring>
+        <name>seat</name>
+        <qualifiedname>WaylandInputCore::seat</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="35" column="17" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classWaylandInputCore_1a5c11f1d5382b52bf27990c66798800c6" prot="private" static="no" mutable="no">
+        <type>wl_keyboard *</type>
+        <definition>wl_keyboard* WaylandInputCore::keyboard</definition>
+        <argsstring></argsstring>
+        <name>keyboard</name>
+        <qualifiedname>WaylandInputCore::keyboard</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="36" column="17" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classWaylandInputCore_1a8ccfbd78d48411462d327386a096975b" prot="private" static="no" mutable="no">
+        <type>wl_pointer *</type>
+        <definition>wl_pointer* WaylandInputCore::pointer</definition>
+        <argsstring></argsstring>
+        <name>pointer</name>
+        <qualifiedname>WaylandInputCore::pointer</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="37" column="17" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classWaylandInputCore_1aa47e91ce1c7661cf466f1614e0bd71f9" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool WaylandInputCore::wants_keyboard</definition>
+        <argsstring></argsstring>
+        <name>wants_keyboard</name>
+        <qualifiedname>WaylandInputCore::wants_keyboard</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="39" column="10" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classWaylandInputCore_1af4f54562b1076a7ae7fe57e8a0dd1686" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool WaylandInputCore::wants_pointer</definition>
+        <argsstring></argsstring>
+        <name>wants_pointer</name>
+        <qualifiedname>WaylandInputCore::wants_pointer</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="40" column="10" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classWaylandInputCore_1a18cad75a5e774a9349ccbec42d23eee6" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool WaylandInputCore::keyboard_focused</definition>
+        <argsstring></argsstring>
+        <name>keyboard_focused</name>
+        <qualifiedname>WaylandInputCore::keyboard_focused</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="41" column="10" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classWaylandInputCore_1aea6430143164606f2bee7a426f305fc4" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool WaylandInputCore::pointer_focused</definition>
+        <argsstring></argsstring>
+        <name>pointer_focused</name>
+        <qualifiedname>WaylandInputCore::pointer_focused</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="42" column="10" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classWaylandInputCore_1a6cee3b9e9041f7d68264f478903735a4" prot="private" static="no" mutable="no">
+        <type>std::bitset&lt; 102 &gt;</type>
+        <definition>std::bitset&lt;102&gt; WaylandInputCore::key_pressed</definition>
+        <argsstring></argsstring>
+        <name>key_pressed</name>
+        <qualifiedname>WaylandInputCore::key_pressed</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="43" column="17" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="43" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="variable" id="classWaylandInputCore_1a2b24df235d9a14c3c0a1684b7b543990" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string WaylandInputCore::keyboard_name</definition>
+        <argsstring></argsstring>
+        <name>keyboard_name</name>
+        <qualifiedname>WaylandInputCore::keyboard_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="45" column="17" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classWaylandInputCore_1a1645398c56f89e171c8627b06ae11762" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string WaylandInputCore::pointer_name</definition>
+        <argsstring></argsstring>
+        <name>pointer_name</name>
+        <qualifiedname>WaylandInputCore::pointer_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="46" column="17" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classWaylandInputCore_1acc1fb14d9515487917b8fc3ea26a5a37" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string WaylandInputCore::last_error</definition>
+        <argsstring></argsstring>
+        <name>last_error</name>
+        <qualifiedname>WaylandInputCore::last_error</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="47" column="17" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classWaylandInputCore_1ae7b92e92cb61a84d33e1e2fb618e39cb" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; bool &gt;</type>
+        <definition>std::atomic&lt;bool&gt; WaylandInputCore::stop_requested</definition>
+        <argsstring></argsstring>
+        <name>stop_requested</name>
+        <qualifiedname>WaylandInputCore::stop_requested</qualifiedname>
+        <initializer>{ false }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="48" column="17" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="48" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="variable" id="classWaylandInputCore_1aa8932150c1301c6411f34077232cdfcb" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool WaylandInputCore::warned_host_dispatch</definition>
+        <argsstring></argsstring>
+        <name>warned_host_dispatch</name>
+        <qualifiedname>WaylandInputCore::warned_host_dispatch</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="49" column="10" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="49" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classWaylandInputCore_1a7a4a5b1512754fb4c8516367a6f820f9" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::SetError</definition>
+        <argsstring>(std::string msg)</argsstring>
+        <name>SetError</name>
+        <qualifiedname>WaylandInputCore::SetError</qualifiedname>
+        <param>
+          <type>std::string</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="52" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="95" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1a3394283563fc44ac0d7c17faab60f703" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::ClearSelectionState</definition>
+        <argsstring>()</argsstring>
+        <name>ClearSelectionState</name>
+        <qualifiedname>WaylandInputCore::ClearSelectionState</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="54" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="101" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1a3f8ebad0d7ee781104910d914bb626f8" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::WriteKeyboardEvent</definition>
+        <argsstring>(uint32_t time_ms, uint32_t key, bool pressed)</argsstring>
+        <name>WriteKeyboardEvent</name>
+        <qualifiedname>WaylandInputCore::WriteKeyboardEvent</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>time_ms</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>pressed</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="56" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="113" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1ab61200b915d9dcbea53aeb4fa2ba7451" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::WritePointerMotion</definition>
+        <argsstring>(uint32_t time_ms, int x, int y)</argsstring>
+        <name>WritePointerMotion</name>
+        <qualifiedname>WaylandInputCore::WritePointerMotion</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>time_ms</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="58" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="148" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1a8514375a3226974223330f4c434f6aed" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::WritePointerButton</definition>
+        <argsstring>(uint32_t time_ms, uint32_t button, bool pressed)</argsstring>
+        <name>WritePointerButton</name>
+        <qualifiedname>WaylandInputCore::WritePointerButton</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>time_ms</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>button</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>pressed</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="60" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="173" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1a1430922fc0cb33bb13d52a25b8305187" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::WritePointerAxis</definition>
+        <argsstring>(uint32_t time_ms, uint32_t axis, int wheel_delta)</argsstring>
+        <name>WritePointerAxis</name>
+        <qualifiedname>WaylandInputCore::WritePointerAxis</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>time_ms</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>axis</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>wheel_delta</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="62" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="207" bodyend="234"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1a11c7d13d88598a78bcd548af2bf7c8ac" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::AttachSeatListeners</definition>
+        <argsstring>()</argsstring>
+        <name>AttachSeatListeners</name>
+        <qualifiedname>WaylandInputCore::AttachSeatListeners</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="64" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="264" bodyend="275"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1a35c5b82183c4ebdb5e117129e54e0d83" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool WaylandInputCore::ConfigureHostHandles</definition>
+        <argsstring>(void *wl_display_ptr, void *wl_surface_ptr)</argsstring>
+        <name>ConfigureHostHandles</name>
+        <qualifiedname>WaylandInputCore::ConfigureHostHandles</qualifiedname>
+        <param>
+          <type>void *</type>
+          <declname>wl_display_ptr</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>wl_surface_ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="66" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="537" bodyend="592"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1a592afe052cbe4c6c91a04e2f1cc58c28" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool WaylandInputCore::ConfigureInternalWindow</definition>
+        <argsstring>()</argsstring>
+        <name>ConfigureInternalWindow</name>
+        <qualifiedname>WaylandInputCore::ConfigureInternalWindow</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="68" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="595" bodyend="647"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classWaylandInputCore_1ad82c2609a50734b873825bd97f672f6c" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::OnHostRegistryGlobal</definition>
+        <argsstring>(void *data, wl_registry *registry, uint32_t name, const char *interface, uint32_t version)</argsstring>
+        <name>OnHostRegistryGlobal</name>
+        <qualifiedname>WaylandInputCore::OnHostRegistryGlobal</qualifiedname>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>wl_registry *</type>
+          <declname>registry</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>interface</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>version</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="71" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="237" bodyend="256"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1a9edb581a55c4b46f4192142f95dca2e6" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::OnHostRegistryGlobalRemove</definition>
+        <argsstring>(void *, wl_registry *, uint32_t)</argsstring>
+        <name>OnHostRegistryGlobalRemove</name>
+        <qualifiedname>WaylandInputCore::OnHostRegistryGlobalRemove</qualifiedname>
+        <param>
+          <type>void *</type>
+        </param>
+        <param>
+          <type>wl_registry *</type>
+        </param>
+        <param>
+          <type>uint32_t</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="77" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="259" bodyend="261"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1abc7488088555e7f3f84ebe547b415ff4" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::OnSeatCapabilities</definition>
+        <argsstring>(void *data, wl_seat *seat, uint32_t capabilities)</argsstring>
+        <name>OnSeatCapabilities</name>
+        <qualifiedname>WaylandInputCore::OnSeatCapabilities</qualifiedname>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>wl_seat *</type>
+          <declname>seat</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>capabilities</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="80" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="278" bodyend="339"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1ab0632e4ab0e27b73421003c3fbc58e30" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::OnSeatName</definition>
+        <argsstring>(void *, wl_seat *, const char *)</argsstring>
+        <name>OnSeatName</name>
+        <qualifiedname>WaylandInputCore::OnSeatName</qualifiedname>
+        <param>
+          <type>void *</type>
+        </param>
+        <param>
+          <type>wl_seat *</type>
+        </param>
+        <param>
+          <type>const char *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="84" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="342" bodyend="344"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1ad8e8680482a9746513b3d30d726cca85" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::OnKeyboardKeymap</definition>
+        <argsstring>(void *data, wl_keyboard *, uint32_t format, int32_t fd, uint32_t size)</argsstring>
+        <name>OnKeyboardKeymap</name>
+        <qualifiedname>WaylandInputCore::OnKeyboardKeymap</qualifiedname>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>wl_keyboard *</type>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>fd</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="87" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="347" bodyend="356"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1ac887d71c842a0a2b65fac617bfcfeb7c" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::OnKeyboardEnter</definition>
+        <argsstring>(void *data, wl_keyboard *, uint32_t serial, wl_surface *surface, struct wl_array *keys)</argsstring>
+        <name>OnKeyboardEnter</name>
+        <qualifiedname>WaylandInputCore::OnKeyboardEnter</qualifiedname>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>wl_keyboard *</type>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>serial</declname>
+        </param>
+        <param>
+          <type>wl_surface *</type>
+          <declname>surface</declname>
+        </param>
+        <param>
+          <type>struct wl_array *</type>
+          <declname>keys</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="93" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="359" bodyend="371"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1a23f009e69278aa1db98b67c63febd54c" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::OnKeyboardLeave</definition>
+        <argsstring>(void *data, wl_keyboard *, uint32_t serial, wl_surface *surface)</argsstring>
+        <name>OnKeyboardLeave</name>
+        <qualifiedname>WaylandInputCore::OnKeyboardLeave</qualifiedname>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>wl_keyboard *</type>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>serial</declname>
+        </param>
+        <param>
+          <type>wl_surface *</type>
+          <declname>surface</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="99" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="374" bodyend="387"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1a8ff90fd84bdf42aad658d65e2fa364ad" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::OnKeyboardKey</definition>
+        <argsstring>(void *data, wl_keyboard *, uint32_t serial, uint32_t time, uint32_t key, uint32_t state)</argsstring>
+        <name>OnKeyboardKey</name>
+        <qualifiedname>WaylandInputCore::OnKeyboardKey</qualifiedname>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>wl_keyboard *</type>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>serial</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>time</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="104" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="390" bodyend="406"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1ac6417d4ce492f4cef9b8906dc352f231" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::OnKeyboardModifiers</definition>
+        <argsstring>(void *, wl_keyboard *, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)</argsstring>
+        <name>OnKeyboardModifiers</name>
+        <qualifiedname>WaylandInputCore::OnKeyboardModifiers</qualifiedname>
+        <param>
+          <type>void *</type>
+        </param>
+        <param>
+          <type>wl_keyboard *</type>
+        </param>
+        <param>
+          <type>uint32_t</type>
+        </param>
+        <param>
+          <type>uint32_t</type>
+        </param>
+        <param>
+          <type>uint32_t</type>
+        </param>
+        <param>
+          <type>uint32_t</type>
+        </param>
+        <param>
+          <type>uint32_t</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="111" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="409" bodyend="417"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1a43c592df48c448113556dc2b29033b9b" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::OnKeyboardRepeatInfo</definition>
+        <argsstring>(void *, wl_keyboard *, int32_t, int32_t)</argsstring>
+        <name>OnKeyboardRepeatInfo</name>
+        <qualifiedname>WaylandInputCore::OnKeyboardRepeatInfo</qualifiedname>
+        <param>
+          <type>void *</type>
+        </param>
+        <param>
+          <type>wl_keyboard *</type>
+        </param>
+        <param>
+          <type>int32_t</type>
+        </param>
+        <param>
+          <type>int32_t</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="119" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="420" bodyend="422"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1a062d62c762eadf3070083d069a0317ba" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::OnPointerEnter</definition>
+        <argsstring>(void *data, wl_pointer *, uint32_t serial, wl_surface *surface, wl_fixed_t surface_x, wl_fixed_t surface_y)</argsstring>
+        <name>OnPointerEnter</name>
+        <qualifiedname>WaylandInputCore::OnPointerEnter</qualifiedname>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>wl_pointer *</type>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>serial</declname>
+        </param>
+        <param>
+          <type>wl_surface *</type>
+          <declname>surface</declname>
+        </param>
+        <param>
+          <type>wl_fixed_t</type>
+          <declname>surface_x</declname>
+        </param>
+        <param>
+          <type>wl_fixed_t</type>
+          <declname>surface_y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="122" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="425" bodyend="437"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1aba80d4c6610de031cee8430586aad555" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::OnPointerLeave</definition>
+        <argsstring>(void *data, wl_pointer *, uint32_t serial, wl_surface *surface)</argsstring>
+        <name>OnPointerLeave</name>
+        <qualifiedname>WaylandInputCore::OnPointerLeave</qualifiedname>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>wl_pointer *</type>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>serial</declname>
+        </param>
+        <param>
+          <type>wl_surface *</type>
+          <declname>surface</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="129" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="440" bodyend="452"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1ac0dbd169183f8f25f74a10b7ef5ea714" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::OnPointerMotion</definition>
+        <argsstring>(void *data, wl_pointer *, uint32_t time, wl_fixed_t surface_x, wl_fixed_t surface_y)</argsstring>
+        <name>OnPointerMotion</name>
+        <qualifiedname>WaylandInputCore::OnPointerMotion</qualifiedname>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>wl_pointer *</type>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>time</declname>
+        </param>
+        <param>
+          <type>wl_fixed_t</type>
+          <declname>surface_x</declname>
+        </param>
+        <param>
+          <type>wl_fixed_t</type>
+          <declname>surface_y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="134" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="455" bodyend="468"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1afcf9dbbc9844814fc6bbf4cd35a786ae" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::OnPointerButton</definition>
+        <argsstring>(void *data, wl_pointer *, uint32_t serial, uint32_t time, uint32_t button, uint32_t state)</argsstring>
+        <name>OnPointerButton</name>
+        <qualifiedname>WaylandInputCore::OnPointerButton</qualifiedname>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>wl_pointer *</type>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>serial</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>time</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>button</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="140" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="471" bodyend="487"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1af46577a9ef4c39dbdba35e1797c116ab" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::OnPointerAxis</definition>
+        <argsstring>(void *data, wl_pointer *, uint32_t time, uint32_t axis, wl_fixed_t value)</argsstring>
+        <name>OnPointerAxis</name>
+        <qualifiedname>WaylandInputCore::OnPointerAxis</qualifiedname>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>wl_pointer *</type>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>time</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>axis</declname>
+        </param>
+        <param>
+          <type>wl_fixed_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="147" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="490" bodyend="501"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1a2c0d258189d5375c46a2a13b9f7c0025" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::OnPointerFrame</definition>
+        <argsstring>(void *, wl_pointer *)</argsstring>
+        <name>OnPointerFrame</name>
+        <qualifiedname>WaylandInputCore::OnPointerFrame</qualifiedname>
+        <param>
+          <type>void *</type>
+        </param>
+        <param>
+          <type>wl_pointer *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="153" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="504" bodyend="506"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1a4a37ac7795162b3afa7a9e26bc622d0a" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::OnPointerAxisSource</definition>
+        <argsstring>(void *, wl_pointer *, uint32_t)</argsstring>
+        <name>OnPointerAxisSource</name>
+        <qualifiedname>WaylandInputCore::OnPointerAxisSource</qualifiedname>
+        <param>
+          <type>void *</type>
+        </param>
+        <param>
+          <type>wl_pointer *</type>
+        </param>
+        <param>
+          <type>uint32_t</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="155" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="509" bodyend="511"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1a7a5fe8b86ff04c8a94c92be7b2be9fd4" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::OnPointerAxisStop</definition>
+        <argsstring>(void *, wl_pointer *, uint32_t, uint32_t)</argsstring>
+        <name>OnPointerAxisStop</name>
+        <qualifiedname>WaylandInputCore::OnPointerAxisStop</qualifiedname>
+        <param>
+          <type>void *</type>
+        </param>
+        <param>
+          <type>wl_pointer *</type>
+        </param>
+        <param>
+          <type>uint32_t</type>
+        </param>
+        <param>
+          <type>uint32_t</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="157" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="514" bodyend="516"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1a96e34faf461dbb00877ed72444cfd6c4" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::OnPointerAxisDiscrete</definition>
+        <argsstring>(void *data, wl_pointer *, uint32_t axis, int32_t discrete)</argsstring>
+        <name>OnPointerAxisDiscrete</name>
+        <qualifiedname>WaylandInputCore::OnPointerAxisDiscrete</qualifiedname>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>wl_pointer *</type>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>axis</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>discrete</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="159" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="519" bodyend="521"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1a671425fe65841dd3354472ee1b6fe158" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::OnPointerAxisValue120</definition>
+        <argsstring>(void *data, wl_pointer *, uint32_t axis, int32_t value120)</argsstring>
+        <name>OnPointerAxisValue120</name>
+        <qualifiedname>WaylandInputCore::OnPointerAxisValue120</qualifiedname>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>wl_pointer *</type>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>axis</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>value120</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="161" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="524" bodyend="526"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1a553aff6d8372fa96a3af15d37493fc9d" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::OnPointerAxisRelativeDirection</definition>
+        <argsstring>(void *, wl_pointer *, uint32_t, uint32_t)</argsstring>
+        <name>OnPointerAxisRelativeDirection</name>
+        <qualifiedname>WaylandInputCore::OnPointerAxisRelativeDirection</qualifiedname>
+        <param>
+          <type>void *</type>
+        </param>
+        <param>
+          <type>wl_pointer *</type>
+        </param>
+        <param>
+          <type>uint32_t</type>
+        </param>
+        <param>
+          <type>uint32_t</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="163" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="529" bodyend="534"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classWaylandInputCore_1a844f9a76dfe46bc5d83c2c24bdd36dd2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::set_Input_Transfer</definition>
+        <argsstring>(PDJE_IPC::PDJE_Input_Transfer *input_trsf)</argsstring>
+        <name>set_Input_Transfer</name>
+        <qualifiedname>WaylandInputCore::set_Input_Transfer</qualifiedname>
+        <param>
+          <type><ref refid="classPDJE__IPC_1_1PDJE__Input__Transfer" kindref="compound">PDJE_IPC::PDJE_Input_Transfer</ref> *</type>
+          <declname>input_trsf</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="167" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="167" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1a85baa2727b45e19bdfdb7b2e51431cda" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool WaylandInputCore::Configure</definition>
+        <argsstring>(void *wl_display_ptr, void *wl_surface_ptr, const std::vector&lt; DeviceData &gt; &amp;devs, bool allow_internal_window)</argsstring>
+        <name>Configure</name>
+        <qualifiedname>WaylandInputCore::Configure</qualifiedname>
+        <param>
+          <type>void *</type>
+          <declname>wl_display_ptr</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>wl_surface_ptr</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="structDeviceData" kindref="compound">DeviceData</ref> &gt; &amp;</type>
+          <declname>devs</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>allow_internal_window</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="173" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="650" bodyend="700"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1a3b7f10fe969fa51dbb382baa359cf000" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::Trig</definition>
+        <argsstring>()</argsstring>
+        <name>Trig</name>
+        <qualifiedname>WaylandInputCore::Trig</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="179" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="703" bodyend="762"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1a95bb221d841182132099a97f7f3f8520" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::Stop</definition>
+        <argsstring>()</argsstring>
+        <name>Stop</name>
+        <qualifiedname>WaylandInputCore::Stop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="182" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="765" bodyend="768"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1a64a4ac90e2bf8ef9fa156a622a6167e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void WaylandInputCore::Reset</definition>
+        <argsstring>()</argsstring>
+        <name>Reset</name>
+        <qualifiedname>WaylandInputCore::Reset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="185" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="771" bodyend="799"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1a63564f5a451928d938bef2823d145be6" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool WaylandInputCore::UsingInternalWindow</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>UsingInternalWindow</name>
+        <qualifiedname>WaylandInputCore::UsingInternalWindow</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="188" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="188" bodyend="191"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1a32c0c6d5d41ffb810980ab19732f8c59" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool WaylandInputCore::HasConfiguredDevice</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>HasConfiguredDevice</name>
+        <qualifiedname>WaylandInputCore::HasConfiguredDevice</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="193" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="193" bodyend="196"/>
+      </memberdef>
+      <memberdef kind="function" id="classWaylandInputCore_1ae4faf633ddfbb988149f92b04b5f2b16" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; WaylandInputCore::LastError</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>LastError</name>
+        <qualifiedname>WaylandInputCore::LastError</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="198" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="198" bodyend="201"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4">
+        <label>Atomic_Double_Buffer&lt; PDJE_Input_Log &gt;</label>
+        <link refid="classAtomic__Double__Buffer"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>first</edgelabel>
+          <edgelabel>second</edgelabel>
+        </childnode>
+      </node>
+      <node id="20">
+        <label>PDJE_CRYPTO::PSK</label>
+        <link refid="classPDJE__CRYPTO_1_1PSK"/>
+      </node>
+      <node id="11">
+        <label>PDJE_HID_Event</label>
+        <link refid="structPDJE__HID__Event"/>
+      </node>
+      <node id="13">
+        <label>PDJE_IPC::EVENT</label>
+        <link refid="classPDJE__IPC_1_1EVENT"/>
+        <childnode refid="14" relation="usage">
+          <edgelabel>name_cache</edgelabel>
+        </childnode>
+      </node>
+      <node id="19">
+        <label>PDJE_IPC::Input_Transfer_Metadata</label>
+        <link refid="structPDJE__IPC_1_1Input__Transfer__Metadata"/>
+        <childnode refid="20" relation="usage">
+          <edgelabel>psk</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>PDJE_IPC::PDJE_Input_Transfer</label>
+        <link refid="classPDJE__IPC_1_1PDJE__Input__Transfer"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>datas</edgelabel>
+          <edgelabel>subBuffer</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>adbf</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>length</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>body</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>hmac</edgelabel>
+        </childnode>
+        <childnode refid="13" relation="usage">
+          <edgelabel>req_event</edgelabel>
+          <edgelabel>stored_event</edgelabel>
+        </childnode>
+        <childnode refid="16" relation="usage">
+          <edgelabel>sendworker_switch</edgelabel>
+        </childnode>
+        <childnode refid="17" relation="usage">
+          <edgelabel>local_locker</edgelabel>
+        </childnode>
+        <childnode refid="18" relation="usage">
+          <edgelabel>hmacEngine</edgelabel>
+        </childnode>
+        <childnode refid="19" relation="usage">
+          <edgelabel>metadata</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>PDJE_IPC::SharedMem&lt; PDJE_Input_Log, PDJE_IPC_RW &gt;</label>
+        <link refid="classPDJE__IPC_1_1SharedMem"/>
+        <childnode refid="7" relation="usage">
+          <edgelabel>ptr</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>PDJE_IPC::SharedMem&lt; uint64_t, PDJE_IPC_RW &gt;</label>
+        <link refid="classPDJE__IPC_1_1SharedMem"/>
+      </node>
+      <node id="12">
+        <label>PDJE_IPC::SharedMem&lt; uint8_t, PDJE_IPC_RW &gt;</label>
+        <link refid="classPDJE__IPC_1_1SharedMem"/>
+      </node>
+      <node id="8">
+        <label>PDJE_Input_Event</label>
+        <link refid="unionPDJE__Input__Event"/>
+        <childnode refid="9" relation="usage">
+          <edgelabel>mouse</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>keyboard</edgelabel>
+        </childnode>
+      </node>
+      <node id="7">
+        <label>PDJE_Input_Log</label>
+        <link refid="structPDJE__Input__Log"/>
+        <childnode refid="8" relation="usage">
+          <edgelabel>event</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>hid_event</edgelabel>
+        </childnode>
+      </node>
+      <node id="10">
+        <label>PDJE_Keyboard_Event</label>
+        <link refid="structPDJE__Keyboard__Event"/>
+      </node>
+      <node id="9">
+        <label>PDJE_Mouse_Event</label>
+        <link refid="structPDJE__Mouse__Event"/>
+      </node>
+      <node id="1">
+        <label>WaylandInputCore</label>
+        <link refid="classWaylandInputCore"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>out</edgelabel>
+        </childnode>
+        <childnode refid="21" relation="usage">
+          <edgelabel>key_pressed</edgelabel>
+        </childnode>
+        <childnode refid="14" relation="usage">
+          <edgelabel>keyboard_name</edgelabel>
+          <edgelabel>last_error</edgelabel>
+          <edgelabel>pointer_name</edgelabel>
+        </childnode>
+        <childnode refid="16" relation="usage">
+          <edgelabel>stop_requested</edgelabel>
+        </childnode>
+      </node>
+      <node id="16">
+        <label>std::atomic&lt; bool &gt;</label>
+      </node>
+      <node id="15">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="21">
+        <label>std::bitset&lt; 102 &gt;</label>
+      </node>
+      <node id="17">
+        <label>std::mutex</label>
+      </node>
+      <node id="14">
+        <label>std::string</label>
+        <childnode refid="15" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>std::unique_ptr&lt; Botan::MessageAuthenticationCode &gt;</label>
+      </node>
+      <node id="3">
+        <label>std::vector&lt; PDJE_Input_Log &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="22" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="22" bodyend="202"/>
+    <listofallmembers>
+      <member refid="classWaylandInputCore_1a11c7d13d88598a78bcd548af2bf7c8ac" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>AttachSeatListeners</name></member>
+      <member refid="classWaylandInputCore_1a3394283563fc44ac0d7c17faab60f703" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>ClearSelectionState</name></member>
+      <member refid="classWaylandInputCore_1a85baa2727b45e19bdfdb7b2e51431cda" prot="public" virt="non-virtual"><scope>WaylandInputCore</scope><name>Configure</name></member>
+      <member refid="classWaylandInputCore_1a35c5b82183c4ebdb5e117129e54e0d83" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>ConfigureHostHandles</name></member>
+      <member refid="classWaylandInputCore_1a592afe052cbe4c6c91a04e2f1cc58c28" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>ConfigureInternalWindow</name></member>
+      <member refid="classWaylandInputCore_1ab0bca6c57a14f3afe76ace4f82ad70ec" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>display</name></member>
+      <member refid="classWaylandInputCore_1a32c0c6d5d41ffb810980ab19732f8c59" prot="public" virt="non-virtual"><scope>WaylandInputCore</scope><name>HasConfiguredDevice</name></member>
+      <member refid="classWaylandInputCore_1a1dc051943480a79bff7616197a0d6f60" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>host_registry</name></member>
+      <member refid="classWaylandInputCore_1a6cee3b9e9041f7d68264f478903735a4" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>key_pressed</name></member>
+      <member refid="classWaylandInputCore_1a5c11f1d5382b52bf27990c66798800c6" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>keyboard</name></member>
+      <member refid="classWaylandInputCore_1a18cad75a5e774a9349ccbec42d23eee6" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>keyboard_focused</name></member>
+      <member refid="classWaylandInputCore_1a2b24df235d9a14c3c0a1684b7b543990" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>keyboard_name</name></member>
+      <member refid="classWaylandInputCore_1acc1fb14d9515487917b8fc3ea26a5a37" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>last_error</name></member>
+      <member refid="classWaylandInputCore_1ae4faf633ddfbb988149f92b04b5f2b16" prot="public" virt="non-virtual"><scope>WaylandInputCore</scope><name>LastError</name></member>
+      <member refid="classWaylandInputCore_1ad82c2609a50734b873825bd97f672f6c" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>OnHostRegistryGlobal</name></member>
+      <member refid="classWaylandInputCore_1a9edb581a55c4b46f4192142f95dca2e6" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>OnHostRegistryGlobalRemove</name></member>
+      <member refid="classWaylandInputCore_1ac887d71c842a0a2b65fac617bfcfeb7c" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>OnKeyboardEnter</name></member>
+      <member refid="classWaylandInputCore_1a8ff90fd84bdf42aad658d65e2fa364ad" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>OnKeyboardKey</name></member>
+      <member refid="classWaylandInputCore_1ad8e8680482a9746513b3d30d726cca85" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>OnKeyboardKeymap</name></member>
+      <member refid="classWaylandInputCore_1a23f009e69278aa1db98b67c63febd54c" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>OnKeyboardLeave</name></member>
+      <member refid="classWaylandInputCore_1ac6417d4ce492f4cef9b8906dc352f231" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>OnKeyboardModifiers</name></member>
+      <member refid="classWaylandInputCore_1a43c592df48c448113556dc2b29033b9b" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>OnKeyboardRepeatInfo</name></member>
+      <member refid="classWaylandInputCore_1af46577a9ef4c39dbdba35e1797c116ab" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>OnPointerAxis</name></member>
+      <member refid="classWaylandInputCore_1a96e34faf461dbb00877ed72444cfd6c4" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>OnPointerAxisDiscrete</name></member>
+      <member refid="classWaylandInputCore_1a553aff6d8372fa96a3af15d37493fc9d" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>OnPointerAxisRelativeDirection</name></member>
+      <member refid="classWaylandInputCore_1a4a37ac7795162b3afa7a9e26bc622d0a" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>OnPointerAxisSource</name></member>
+      <member refid="classWaylandInputCore_1a7a5fe8b86ff04c8a94c92be7b2be9fd4" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>OnPointerAxisStop</name></member>
+      <member refid="classWaylandInputCore_1a671425fe65841dd3354472ee1b6fe158" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>OnPointerAxisValue120</name></member>
+      <member refid="classWaylandInputCore_1afcf9dbbc9844814fc6bbf4cd35a786ae" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>OnPointerButton</name></member>
+      <member refid="classWaylandInputCore_1a062d62c762eadf3070083d069a0317ba" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>OnPointerEnter</name></member>
+      <member refid="classWaylandInputCore_1a2c0d258189d5375c46a2a13b9f7c0025" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>OnPointerFrame</name></member>
+      <member refid="classWaylandInputCore_1aba80d4c6610de031cee8430586aad555" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>OnPointerLeave</name></member>
+      <member refid="classWaylandInputCore_1ac0dbd169183f8f25f74a10b7ef5ea714" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>OnPointerMotion</name></member>
+      <member refid="classWaylandInputCore_1abc7488088555e7f3f84ebe547b415ff4" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>OnSeatCapabilities</name></member>
+      <member refid="classWaylandInputCore_1ab0632e4ab0e27b73421003c3fbc58e30" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>OnSeatName</name></member>
+      <member refid="classWaylandInputCore_1a87c453f1cc7570292495e98d24355c63" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>out</name></member>
+      <member refid="classWaylandInputCore_1a87a70ca133110ac4b29f165a4fa5696d" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>owned_window</name></member>
+      <member refid="classWaylandInputCore_1a8ccfbd78d48411462d327386a096975b" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>pointer</name></member>
+      <member refid="classWaylandInputCore_1aea6430143164606f2bee7a426f305fc4" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>pointer_focused</name></member>
+      <member refid="classWaylandInputCore_1a1645398c56f89e171c8627b06ae11762" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>pointer_name</name></member>
+      <member refid="classWaylandInputCore_1a64a4ac90e2bf8ef9fa156a622a6167e6" prot="public" virt="non-virtual"><scope>WaylandInputCore</scope><name>Reset</name></member>
+      <member refid="classWaylandInputCore_1a8cc076da59ef8a11d303104de167f376" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>seat</name></member>
+      <member refid="classWaylandInputCore_1a844f9a76dfe46bc5d83c2c24bdd36dd2" prot="public" virt="non-virtual"><scope>WaylandInputCore</scope><name>set_Input_Transfer</name></member>
+      <member refid="classWaylandInputCore_1a7a4a5b1512754fb4c8516367a6f820f9" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>SetError</name></member>
+      <member refid="classWaylandInputCore_1a23ff430b21bc86f9861e079ff7c3d679" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>source_mode</name></member>
+      <member refid="classWaylandInputCore_1adda32472a12053996baafa391b2c384a" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>SourceMode</name></member>
+      <member refid="classWaylandInputCore_1a95bb221d841182132099a97f7f3f8520" prot="public" virt="non-virtual"><scope>WaylandInputCore</scope><name>Stop</name></member>
+      <member refid="classWaylandInputCore_1ae7b92e92cb61a84d33e1e2fb618e39cb" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>stop_requested</name></member>
+      <member refid="classWaylandInputCore_1ade390ad9902a11fdb9a7d8c54f4a61cd" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>target_surface</name></member>
+      <member refid="classWaylandInputCore_1a3b7f10fe969fa51dbb382baa359cf000" prot="public" virt="non-virtual"><scope>WaylandInputCore</scope><name>Trig</name></member>
+      <member refid="classWaylandInputCore_1a63564f5a451928d938bef2823d145be6" prot="public" virt="non-virtual"><scope>WaylandInputCore</scope><name>UsingInternalWindow</name></member>
+      <member refid="classWaylandInputCore_1aa47e91ce1c7661cf466f1614e0bd71f9" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>wants_keyboard</name></member>
+      <member refid="classWaylandInputCore_1af4f54562b1076a7ae7fe57e8a0dd1686" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>wants_pointer</name></member>
+      <member refid="classWaylandInputCore_1aa8932150c1301c6411f34077232cdfcb" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>warned_host_dispatch</name></member>
+      <member refid="classWaylandInputCore_1a3f8ebad0d7ee781104910d914bb626f8" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>WriteKeyboardEvent</name></member>
+      <member refid="classWaylandInputCore_1a1430922fc0cb33bb13d52a25b8305187" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>WritePointerAxis</name></member>
+      <member refid="classWaylandInputCore_1a8514375a3226974223330f4c434f6aed" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>WritePointerButton</name></member>
+      <member refid="classWaylandInputCore_1ab61200b915d9dcbea53aeb4fa2ba7451" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>WritePointerMotion</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -16,6 +16,7 @@ Directory DataLines
 Files
 -----
 
+- :ref:`file_include_global_DataLines_Atomic_Double_Buffer.hpp`
 - :ref:`file_include_global_DataLines_fileNameSanitizer.cpp`
 - :ref:`file_include_global_DataLines_fileNameSanitizer.hpp`
 - :ref:`file_include_global_DataLines_Input_State.hpp`

@@ -29,7 +29,6 @@ Program Listing for File PSKPipe.hpp
    
        PSKPipe()
        {
-           startlog();
        }
        ~PSKPipe();
    };

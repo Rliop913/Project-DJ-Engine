@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="page_iface_xdg_popup" kind="page">
+    <compoundname>page_iface_xdg_popup</compoundname>
+    <title>xdg_popup</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="page_iface_xdg_popup_1page_iface_xdg_popup_desc">
+<title>Description</title><para>A popup surface is a short-lived, temporary surface. It can be used to implement for example menus, popovers, tooltips and other similar user interface concepts.</para>
+<para>A popup can be made to take an explicit grab. See xdg_popup.grab for details.</para>
+<para>When the popup is dismissed, a popup_done event will be sent out, and at the same time the surface will be unmapped. See the xdg_popup.popup_done event for details.</para>
+<para>Explicitly destroying the xdg_popup object will also dismiss the popup and unmap the surface. Clients that want to dismiss the popup when another surface of their own is clicked should dismiss the popup using the destroy request.</para>
+<para>A newly created xdg_popup will be stacked on top of all previously created xdg_popup surfaces associated with the same xdg_toplevel.</para>
+<para>The parent of an xdg_popup must be mapped (see the xdg_surface description) before the xdg_popup itself.</para>
+<para>The client must call wl_surface.commit on the corresponding wl_surface for the xdg_popup state to take effect. </para>
+</sect1>
+<sect1 id="page_iface_xdg_popup_1page_iface_xdg_popup_api">
+<title>API</title><para>See <ref refid="group__iface__xdg__popup" kindref="compound">The xdg_popup interface</ref>. </para>
+</sect1>
+    </detaileddescription>
+    <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h"/>
+  </compounddef>
+</doxygen>

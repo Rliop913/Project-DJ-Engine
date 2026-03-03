@@ -32,7 +32,13 @@ Includes
 
 - ``DefaultDevs.hpp`` (:ref:`file_include_input_DefaultDevs_linux_DefaultDevs.hpp`)
 
+- ``LinuxInputContracts.hpp`` (:ref:`file_include_input_DefaultDevs_linux_LinuxInputContracts.hpp`)
+
 - ``exception``
+
+- ``fcntl.h``
+
+- ``unistd.h``
 
 
 

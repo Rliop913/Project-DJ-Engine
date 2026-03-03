@@ -30,6 +30,8 @@ Includes
 --------
 
 
+- ``cerrno``
+
 - ``cstdint``
 
 - ``stdexcept``
@@ -43,6 +45,12 @@ Includes
 - ``unistd.h``
 
 
+
+Included By
+-----------
+
+
+- :ref:`file_include_input_DefaultDevs_linux_InputCore.cpp`
 
 
 
@@ -58,9 +66,15 @@ Functions
 ---------
 
 
+- :ref:`exhale_function_namespacertkit_1aa70e53a2522c014e51400898c441c627`
+
 - :ref:`exhale_function_namespacertkit_1a96f639d8f07d02bfda2370c1060b61f8`
 
+- :ref:`exhale_function_namespacertkit_1adbc1223351a161d4b54fd2b98c76fb72`
+
 - :ref:`exhale_function_namespacertkit_1a8a923563374b9a8f73492504771e92ef`
+
+- :ref:`exhale_function_namespacertkit_1a7d99eb7cc30616c484bae6e0f610ea24`
 
 - :ref:`exhale_function_namespacertkit_1aaf4a1da7704c6ff0151f63cf52206130`
 

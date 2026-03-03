@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="LinuxMouseButtonMapping_8hpp" kind="file" language="C++">
+    <compoundname>LinuxMouseButtonMapping.hpp</compoundname>
+    <includes refid="Input__State_8hpp" local="yes">Input_State.hpp</includes>
+    <includes local="no">cstdint</includes>
+    <includes local="no">linux/input-event-codes.h</includes>
+    <includes local="no">optional</includes>
+    <includedby refid="ParseMouse_8cpp" local="yes">include/input/DefaultDevs/linux/ParseMouse.cpp</includedby>
+    <includedby refid="WaylandInputCore_8cpp" local="yes">include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>Input_State.hpp</label>
+        <link refid="Input__State_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/input/DefaultDevs/linux/LinuxMouseButtonMapping.hpp</label>
+        <link refid="LinuxMouseButtonMapping_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>cstdint</label>
+      </node>
+      <node id="3">
+        <label>future</label>
+      </node>
+      <node id="9">
+        <label>linux/input-event-codes.h</label>
+      </node>
+      <node id="4">
+        <label>memory_resource</label>
+      </node>
+      <node id="5">
+        <label>optional</label>
+      </node>
+      <node id="6">
+        <label>string</label>
+      </node>
+      <node id="7">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>include/input/DefaultDevs/linux/LinuxMouseButtonMapping.hpp</label>
+        <link refid="LinuxMouseButtonMapping_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>include/input/DefaultDevs/linux/ParseMouse.cpp</label>
+        <link refid="ParseMouse_8cpp"/>
+      </node>
+      <node id="3">
+        <label>include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp</label>
+        <link refid="WaylandInputCore_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespacePDJE__DEFAULT__DEVICES">PDJE_DEFAULT_DEVICES</innernamespace>
+    <innernamespace refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__MAP">PDJE_DEFAULT_DEVICES::LINUX_INPUT_MAP</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Input__State_8hpp" kindref="compound">Input_State.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;linux/input-event-codes.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;optional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__MAP" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__MAP" kindref="compound">PDJE_DEFAULT_DEVICES::LINUX_INPUT_MAP</ref><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::optional&lt;BITMASK&gt;</highlight></codeline>
+<codeline lineno="12" refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__MAP_1a570a6beb4c166d9dc5c9a3fded351987" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__MAP_1a570a6beb4c166d9dc5c9a3fded351987" kindref="member">TryMapLinuxMouseButton</ref>(uint32_t<sp/>button,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>pressed)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(button)<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>BTN_LEFT:</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="Input__State_8hpp_1a534ec7666fd5ffb7db3e46bfdef52107" kindref="member">BITMASK</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(pressed<sp/>?<sp/><ref refid="Input__State_8hpp_1af7586f410ce5333bcf76fb8cae134ffd" kindref="member">PDJE_MOUSE_L_BTN_DOWN</ref></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="Input__State_8hpp_1acdb937bd2193bcddde688cae1d926c5f" kindref="member">PDJE_MOUSE_L_BTN_UP</ref>);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>BTN_RIGHT:</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="Input__State_8hpp_1a534ec7666fd5ffb7db3e46bfdef52107" kindref="member">BITMASK</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(pressed<sp/>?<sp/><ref refid="Input__State_8hpp_1a81120971482c7ad20820dbb20d470e11" kindref="member">PDJE_MOUSE_R_BTN_DOWN</ref></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="Input__State_8hpp_1a74db0959bac6041d5b6e65e22de4641e" kindref="member">PDJE_MOUSE_R_BTN_UP</ref>);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>BTN_MIDDLE:</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="Input__State_8hpp_1a534ec7666fd5ffb7db3e46bfdef52107" kindref="member">BITMASK</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(pressed<sp/>?<sp/><ref refid="Input__State_8hpp_1ab9055847fbd4a2cd39ea69035fa2bd14" kindref="member">PDJE_MOUSE_M_BTN_DOWN</ref></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="Input__State_8hpp_1a29d804cf0835d1a8affcbe6e09cfff7a" kindref="member">PDJE_MOUSE_M_BTN_UP</ref>);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>BTN_SIDE:</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="Input__State_8hpp_1a534ec7666fd5ffb7db3e46bfdef52107" kindref="member">BITMASK</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(pressed<sp/>?<sp/><ref refid="Input__State_8hpp_1afac9556f444d78e35bc6cb186e772abc" kindref="member">PDJE_MOUSE_SIDE_BTN_DOWN</ref></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="Input__State_8hpp_1acd3802791bed4a2414fa2d7b381ac06f" kindref="member">PDJE_MOUSE_SIDE_BTN_UP</ref>);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>BTN_EXTRA:</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="Input__State_8hpp_1a534ec7666fd5ffb7db3e46bfdef52107" kindref="member">BITMASK</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(pressed<sp/>?<sp/><ref refid="Input__State_8hpp_1a9c9ffdfa31c19bc779a484b66e79fcde" kindref="member">PDJE_MOUSE_EX_BTN_DOWN</ref></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="Input__State_8hpp_1a4defe0cbf2218a93a0f5d3c7c302a6cc" kindref="member">PDJE_MOUSE_EX_BTN_UP</ref>);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_DEFAULT_DEVICES::LINUX_INPUT_MAP</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/input/DefaultDevs/linux/LinuxMouseButtonMapping.hpp"/>
+  </compounddef>
+</doxygen>

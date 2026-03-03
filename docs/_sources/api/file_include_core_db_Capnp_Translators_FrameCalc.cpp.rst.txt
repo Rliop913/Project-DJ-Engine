@@ -30,9 +30,17 @@ Includes
 --------
 
 
-- ``FrameCalc.hpp`` (:ref:`file_include_core_db_Capnp_Translators_FrameCalc.hpp`)
+- ``FrameCalcCore.hpp`` (:ref:`file_include_core_db_Capnp_Translators_FrameCalcCore.hpp`)
 
 - ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_global_PDJE_LOG_SETTER.hpp`)
+
+- ``algorithm``
+
+- ``cmath``
+
+- ``iterator``
+
+- ``string``
 
 
 

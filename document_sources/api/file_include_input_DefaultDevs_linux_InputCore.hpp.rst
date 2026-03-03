@@ -36,6 +36,8 @@ Includes
 
 - ``PDJE_Input_Device_Data.hpp`` (:ref:`file_include_global_DataLines_PDJE_Input_Device_Data.hpp`)
 
+- ``atomic``
+
 - ``bitset``
 
 - ``filesystem``
@@ -64,6 +66,8 @@ Included By
 Classes
 -------
 
+
+- :ref:`exhale_struct_structInputCore_1_1AddResult`
 
 - :ref:`exhale_class_classInputCore`
 

@@ -26,6 +26,8 @@ Files
 - :ref:`file_include_global_PDJE_ATOMIC_EVENT.hpp`
 - :ref:`file_include_global_PDJE_Benchmark.hpp`
 - :ref:`file_include_global_PDJE_EXPORT_SETTER.hpp`
+- :ref:`file_include_global_PDJE_LOG_RUNTIME_API.h`
+- :ref:`file_include_global_PDJE_LOG_SETTER.cpp`
 - :ref:`file_include_global_PDJE_LOG_SETTER.hpp`
 - :ref:`file_include_global_PDJE_OBJ_SETTER.hpp`
 - :ref:`file_include_global_PDJE_RAII_WRAP.hpp`

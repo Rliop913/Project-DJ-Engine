@@ -34,6 +34,8 @@ Includes
 
 - ``MixBinary.capnp.h``
 
+- ``TrackLinterRules.hpp`` (:ref:`file_include_core_editor_pdjeLinter_TrackLinterRules.hpp`)
+
 - ``cstdint``
 
 - ``fileNameSanitizer.hpp`` (:ref:`file_include_global_DataLines_fileNameSanitizer.hpp`)
@@ -42,29 +44,7 @@ Includes
 
 - ``string``
 
-- ``unordered_map``
 
 
 
-
-
-
-Functions
----------
-
-
-- :ref:`exhale_function_trackLinter_8cpp_1aac890445b835eeb8cac2351e3150ed80`
-
-- :ref:`exhale_function_trackLinter_8cpp_1a6d80da29b967c3383a8176f7be78a5ac`
-
-- :ref:`exhale_function_trackLinter_8cpp_1a13cfef94ef7a20443052ffa72751e656`
-
-- :ref:`exhale_function_trackLinter_8cpp_1ac550d6b074c622750669e409f9a06c69`
-
-
-Typedefs
---------
-
-
-- :ref:`exhale_typedef_trackLinter_8cpp_1a3d5cd7d6a2752dc413cb5ccb5ce21bc6`
 

@@ -53,7 +53,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -84,6 +83,7 @@
 <span id="program-listing-file-include-judge-loop-match-pdje-match-cpp"></span><h1>Program Listing for File PDJE_Match.cpp<a class="headerlink" href="#program-listing-for-file-pdje-match-cpp" title="Link to this heading"></a></h1>
 <p>↰ <a class="reference internal" href="file_include_judge_Loop_Match_PDJE_Match.cpp.html#file-include-judge-loop-match-pdje-match-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/judge/Loop/Match/PDJE_Match.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Match.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;limits&gt;</span>
 <span class="k">namespace</span><span class="w"> </span><span class="nn">PDJE_JUDGE</span><span class="w"> </span><span class="p">{</span>
 
 <span class="kt">void</span>
@@ -92,23 +92,45 @@
 <span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w">    </span><span class="n">railid</span><span class="p">,</span>
 <span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w">        </span><span class="n">isPressed</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="kt">bool</span><span class="w">     </span><span class="n">isLate</span><span class="p">;</span>
-<span class="w">    </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">diff</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">note_local</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">note_list</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="c1">//todo - edit algorithm (make it finds the closest note. not the first one.)</span>
+<span class="w">    </span><span class="n">NOTE</span><span class="w">    </span><span class="o">*</span><span class="n">best_note</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w">     </span><span class="n">best_is_late</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">best_diff</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">numeric_limits</span><span class="o">&lt;</span><span class="kt">uint64_t</span><span class="o">&gt;::</span><span class="n">max</span><span class="p">();</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">use_range</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">init</span><span class="o">-&gt;</span><span class="n">ev_rule</span><span class="o">-&gt;</span><span class="n">use_range_microsecond</span><span class="p">;</span>
 
-<span class="w">        </span><span class="n">isLate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">note_local</span><span class="o">-&gt;</span><span class="n">microsecond</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">input_time</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">note_local</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">note_list</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isLate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">note_local</span><span class="o">-&gt;</span><span class="n">microsecond</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">input_time</span><span class="p">;</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">diff</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint64_t</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">            </span><span class="n">isLate</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">input_time</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">note_local</span><span class="o">-&gt;</span><span class="n">microsecond</span>
+<span class="w">                   </span><span class="o">:</span><span class="w"> </span><span class="n">note_local</span><span class="o">-&gt;</span><span class="n">microsecond</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">input_time</span><span class="p">);</span>
 
-<span class="w">        </span><span class="n">diff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">isLate</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">input_time</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">note_local</span><span class="o">-&gt;</span><span class="n">microsecond</span>
-<span class="w">                      </span><span class="o">:</span><span class="w"> </span><span class="n">note_local</span><span class="o">-&gt;</span><span class="n">microsecond</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">input_time</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">diff</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">init</span><span class="o">-&gt;</span><span class="n">ev_rule</span><span class="o">-&gt;</span><span class="n">use_range_microsecond</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">note_local</span><span class="o">-&gt;</span><span class="n">used</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">isLate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">diff</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">use_range</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">best_note</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">best_diff</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
 
-<span class="w">            </span><span class="n">pre</span><span class="o">-&gt;</span><span class="n">Event_Datas</span><span class="p">.</span><span class="n">use_queue</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span>
-<span class="w">                </span><span class="p">{</span><span class="w"> </span><span class="n">railid</span><span class="p">,</span><span class="w"> </span><span class="n">isPressed</span><span class="p">,</span><span class="w"> </span><span class="n">isLate</span><span class="p">,</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="p">});</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">diff</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">use_range</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
 
-<span class="w">            </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">best_note</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">diff</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">best_diff</span><span class="w"> </span><span class="o">||</span>
+<span class="w">            </span><span class="p">(</span><span class="n">diff</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">best_diff</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">isLate</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">best_is_late</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">best_note</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">note_local</span><span class="p">;</span>
+<span class="w">            </span><span class="n">best_is_late</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">isLate</span><span class="p">;</span>
+<span class="w">            </span><span class="n">best_diff</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">diff</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">best_note</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">best_note</span><span class="o">-&gt;</span><span class="n">used</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="n">pre</span><span class="o">-&gt;</span><span class="n">Event_Datas</span><span class="p">.</span><span class="n">use_queue</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="n">railid</span><span class="p">,</span><span class="w"> </span><span class="n">isPressed</span><span class="p">,</span><span class="w"> </span><span class="n">best_is_late</span><span class="p">,</span><span class="w"> </span><span class="n">best_diff</span><span class="w"> </span><span class="p">});</span>
 <span class="p">}</span>
 
 <span class="p">};</span><span class="w"> </span><span class="c1">// namespace PDJE_JUDGE</span>

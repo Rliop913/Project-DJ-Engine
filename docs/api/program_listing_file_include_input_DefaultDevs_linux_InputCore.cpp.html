@@ -53,7 +53,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -88,9 +87,10 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Input_Transfer.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Input_Device_Data.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;rtkitcodes.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cerrno&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdint&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstring&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;exception&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fcntl.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;libevdev/libevdev.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;linux/input-event-codes.h&gt;</span>
@@ -98,23 +98,33 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/epoll.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/eventfd.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
-<span class="kt">bool</span>
+
+<span class="n">InputCore</span><span class="o">::</span><span class="n">AddResult</span>
 <span class="nf">InputCore::Add</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="o">&amp;</span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">PDJE_Dev_Type</span><span class="w"> </span><span class="n">type</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">)</span>
 <span class="p">{</span>
+<span class="w">    </span><span class="n">AddResult</span><span class="w"> </span><span class="n">result</span><span class="p">{};</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">FD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="n">target</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="n">O_RDONLY</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">O_NONBLOCK</span><span class="p">);</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">FD</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">        </span><span class="n">result</span><span class="p">.</span><span class="n">open_failed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">        </span><span class="n">result</span><span class="p">.</span><span class="n">error_code</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">errno</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">libevdev_new_from_fd</span><span class="p">(</span><span class="n">FD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">events</span><span class="p">[</span><span class="n">FD</span><span class="p">])</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">libevdev</span><span class="w"> </span><span class="o">*</span><span class="n">dev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">libevdev_new_from_fd</span><span class="p">(</span><span class="n">FD</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">dev</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">result</span><span class="p">.</span><span class="n">evdev_init_failed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="w">        </span><span class="n">close</span><span class="p">(</span><span class="n">FD</span><span class="p">);</span>
-<span class="w">        </span><span class="n">events</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">FD</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="n">libevdev_set_clock_id</span><span class="p">(</span><span class="n">events</span><span class="p">[</span><span class="n">FD</span><span class="p">],</span><span class="w"> </span><span class="n">CLOCK_MONOTONIC</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">libevdev_set_clock_id</span><span class="p">(</span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">CLOCK_MONOTONIC</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">warnlog</span><span class="p">(</span><span class="s">&quot;failed to set CLOCK_MONOTONIC for an input device on linux.&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">events</span><span class="p">[</span><span class="n">FD</span><span class="p">]</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">dev</span><span class="p">;</span>
 <span class="w">    </span><span class="n">id_to_type</span><span class="p">[</span><span class="n">FD</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">type</span><span class="p">;</span>
 <span class="w">    </span><span class="n">id_to_name</span><span class="p">[</span><span class="n">FD</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="n">result</span><span class="p">.</span><span class="n">ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="n">InputCore</span><span class="o">::~</span><span class="n">InputCore</span><span class="p">()</span>
@@ -126,9 +136,12 @@
 <span class="p">{</span>
 <span class="w">    </span><span class="n">Stop</span><span class="p">();</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">target</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">events</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">libevdev_free</span><span class="p">(</span><span class="n">target</span><span class="p">.</span><span class="n">second</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">target</span><span class="p">.</span><span class="n">second</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">libevdev_free</span><span class="p">(</span><span class="n">target</span><span class="p">.</span><span class="n">second</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="n">close</span><span class="p">(</span><span class="n">target</span><span class="p">.</span><span class="n">first</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">events</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
 <span class="w">    </span><span class="n">id_to_name</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
 <span class="w">    </span><span class="n">id_to_type</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
 <span class="w">    </span><span class="n">id_pressed</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
@@ -138,18 +151,37 @@
 <span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">switches</span><span class="p">.</span><span class="n">stop_event_fd</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="n">write</span><span class="p">(</span><span class="n">switches</span><span class="p">.</span><span class="n">stop_event_fd</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">one</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">one</span><span class="p">));</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="kt">ssize_t</span><span class="w"> </span><span class="n">wr</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                </span><span class="n">write</span><span class="p">(</span><span class="n">switches</span><span class="p">.</span><span class="n">stop_event_fd</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">one</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">one</span><span class="p">));</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">wr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">ssize_t</span><span class="o">&gt;</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">one</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">wr</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">errno</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EINTR</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">wr</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">errno</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EAGAIN</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">errno</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EWOULDBLOCK</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to signal input loop stop event on linux.&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
 <span class="kt">void</span>
 <span class="n">InputCore</span><span class="o">::</span><span class="n">Trig</span><span class="p">()</span>
 <span class="p">{</span>
+<span class="w">    </span><span class="n">switches</span><span class="p">.</span><span class="n">loop_switch</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">epfd</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="n">epoll_create1</span><span class="p">(</span><span class="n">EPOLL_CLOEXEC</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">epfd</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to create epoll fd on linux.&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">switches</span><span class="p">.</span><span class="n">stop_event_fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">eventfd</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">EFD_NONBLOCK</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">EFD_CLOEXEC</span><span class="p">);</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">switches</span><span class="p">.</span><span class="n">stop_event_fd</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">close</span><span class="p">(</span><span class="n">epfd</span><span class="p">);</span>
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to init stop event fd on linux.&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">close</span><span class="p">(</span><span class="n">epfd</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -157,23 +189,38 @@
 <span class="w">        </span><span class="n">epoll_event</span><span class="w"> </span><span class="n">ev</span><span class="p">{};</span>
 <span class="w">        </span><span class="n">ev</span><span class="p">.</span><span class="n">events</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">EPOLLIN</span><span class="p">;</span>
 <span class="w">        </span><span class="n">ev</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">switches</span><span class="p">.</span><span class="n">stop_event_fd</span><span class="p">;</span>
-<span class="w">        </span><span class="n">epoll_ctl</span><span class="p">(</span><span class="n">epfd</span><span class="p">,</span><span class="w"> </span><span class="n">EPOLL_CTL_ADD</span><span class="p">,</span><span class="w"> </span><span class="n">switches</span><span class="p">.</span><span class="n">stop_event_fd</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ev</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">epoll_ctl</span><span class="p">(</span><span class="n">epfd</span><span class="p">,</span><span class="w"> </span><span class="n">EPOLL_CTL_ADD</span><span class="p">,</span><span class="w"> </span><span class="n">switches</span><span class="p">.</span><span class="n">stop_event_fd</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ev</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to register stop event fd on linux.&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="n">close</span><span class="p">(</span><span class="n">switches</span><span class="p">.</span><span class="n">stop_event_fd</span><span class="p">);</span>
+<span class="w">            </span><span class="n">switches</span><span class="p">.</span><span class="n">stop_event_fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">            </span><span class="n">close</span><span class="p">(</span><span class="n">epfd</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">dev</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">events</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// add device event fd</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">events</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">events</span><span class="p">.</span><span class="n">end</span><span class="p">();)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// add device event fd</span>
 <span class="w">        </span><span class="n">epoll_event</span><span class="w"> </span><span class="n">ev</span><span class="p">{};</span>
 <span class="w">        </span><span class="n">ev</span><span class="p">.</span><span class="n">events</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">EPOLLIN</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">EPOLLET</span><span class="p">;</span>
-<span class="w">        </span><span class="n">ev</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dev</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
-<span class="w">        </span><span class="n">epoll_ctl</span><span class="p">(</span><span class="n">epfd</span><span class="p">,</span><span class="w"> </span><span class="n">EPOLL_CTL_ADD</span><span class="p">,</span><span class="w"> </span><span class="n">dev</span><span class="p">.</span><span class="n">first</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ev</span><span class="p">);</span>
+<span class="w">        </span><span class="n">ev</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">first</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">epoll_ctl</span><span class="p">(</span><span class="n">epfd</span><span class="p">,</span><span class="w"> </span><span class="n">EPOLL_CTL_ADD</span><span class="p">,</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">first</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ev</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">warnlog</span><span class="p">(</span><span class="s">&quot;failed to register an input device fd to epoll. removing &quot;</span>
+<span class="w">                    </span><span class="s">&quot;this device.&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">failed_fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">first</span><span class="p">;</span>
+<span class="w">            </span><span class="o">++</span><span class="n">it</span><span class="p">;</span>
+<span class="w">            </span><span class="n">RemoveDeviceFD</span><span class="p">(</span><span class="n">epfd</span><span class="p">,</span><span class="w"> </span><span class="n">failed_fd</span><span class="p">);</span>
+<span class="w">            </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="o">++</span><span class="n">it</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1">// use rtkit here.</span>
-<span class="w">    </span><span class="c1">// sched_param sp{};</span>
-<span class="w">    </span><span class="c1">// sp.sched_priority = 70;</span>
-<span class="w">    </span><span class="c1">// if (pthread_setschedparam(pthread_self(), SCHED_FIFO, &amp;sp) != 0) {</span>
-<span class="w">    </span><span class="c1">//     std::cerr &lt;&lt; &quot;pthread_setschedparam failed: &quot; &lt;&lt; stderr &lt;&lt;</span>
-<span class="w">    </span><span class="c1">//     std::endl; return;</span>
-<span class="w">    </span><span class="c1">// }</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">rtkit</span><span class="o">::</span><span class="n">make_current_thread_realtime</span><span class="p">(</span><span class="mi">70</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="w"> </span><span class="o">&amp;</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">warnlog</span><span class="p">(</span><span class="s">&quot;rtkit realtime promotion failed. continuing with normal &quot;</span>
+<span class="w">                </span><span class="s">&quot;scheduler.&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">warnlog</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span>
+
 <span class="w">    </span><span class="n">epoll_event</span><span class="w"> </span><span class="n">out_events</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>
 <span class="w">    </span><span class="kt">int</span><span class="w">         </span><span class="n">cachedfd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">switches</span><span class="p">.</span><span class="n">loop_switch</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -182,6 +229,7 @@
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">errno</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EINTR</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// just signal</span>
 <span class="w">                </span><span class="k">continue</span><span class="p">;</span>
 <span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;epoll_wait failed in linux input loop.&quot;</span><span class="p">);</span>
 <span class="w">            </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="c1">// error</span>
 <span class="w">        </span><span class="p">}</span>
 
@@ -189,8 +237,15 @@
 <span class="w">            </span><span class="n">cachedfd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">out_events</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">data</span><span class="p">.</span><span class="n">fd</span><span class="p">;</span>
 <span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cachedfd</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">switches</span><span class="p">.</span><span class="n">stop_event_fd</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
-<span class="w">                </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">read</span><span class="p">(</span><span class="n">switches</span><span class="p">.</span><span class="n">stop_event_fd</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">v</span><span class="p">))</span><span class="w"> </span><span class="o">==</span>
-<span class="w">                       </span><span class="k">sizeof</span><span class="p">(</span><span class="n">v</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="kt">ssize_t</span><span class="w"> </span><span class="n">rd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read</span><span class="p">(</span><span class="n">switches</span><span class="p">.</span><span class="n">stop_event_fd</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">v</span><span class="p">));</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rd</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">ssize_t</span><span class="o">&gt;</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">v</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rd</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">errno</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EINTR</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="k">break</span><span class="p">;</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">                </span><span class="n">switches</span><span class="p">.</span><span class="n">loop_switch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">                </span><span class="k">break</span><span class="p">;</span>
@@ -202,8 +257,10 @@
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">close</span><span class="p">(</span><span class="n">epfd</span><span class="p">);</span>
-<span class="w">    </span><span class="n">close</span><span class="p">(</span><span class="n">switches</span><span class="p">.</span><span class="n">stop_event_fd</span><span class="p">);</span>
-<span class="w">    </span><span class="n">switches</span><span class="p">.</span><span class="n">stop_event_fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">switches</span><span class="p">.</span><span class="n">stop_event_fd</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">close</span><span class="p">(</span><span class="n">switches</span><span class="p">.</span><span class="n">stop_event_fd</span><span class="p">);</span>
+<span class="w">        </span><span class="n">switches</span><span class="p">.</span><span class="n">stop_event_fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -245,7 +302,7 @@
 <span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="o">-</span><span class="no">ENODEV</span><span class="p">:</span>
 <span class="w">            </span><span class="p">[[</span><span class="n">fallthrough</span><span class="p">]];</span>
 <span class="w">        </span><span class="k">default</span><span class="o">:</span>
-<span class="w">            </span><span class="n">epoll_ctl</span><span class="p">(</span><span class="n">epFD</span><span class="p">,</span><span class="w"> </span><span class="n">EPOLL_CTL_DEL</span><span class="p">,</span><span class="w"> </span><span class="n">FD</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="p">);</span>
+<span class="w">            </span><span class="n">RemoveDeviceFD</span><span class="p">(</span><span class="n">epFD</span><span class="p">,</span><span class="w"> </span><span class="n">FD</span><span class="p">);</span>
 <span class="w">            </span><span class="k">return</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
@@ -254,7 +311,12 @@
 <span class="kt">void</span>
 <span class="n">InputCore</span><span class="o">::</span><span class="n">use_event</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">input_event</span><span class="w"> </span><span class="o">&amp;</span><span class="n">evtrig</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">FD</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">id_to_type</span><span class="p">[</span><span class="n">FD</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">type_it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">id_to_type</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">FD</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">type_it</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">id_to_type</span><span class="p">.</span><span class="n">end</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">type_it</span><span class="o">-&gt;</span><span class="n">second</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_Dev_Type</span><span class="o">::</span><span class="no">KEYBOARD</span><span class="p">:</span>
 <span class="w">        </span><span class="n">kbRead</span><span class="p">(</span><span class="n">evtrig</span><span class="p">,</span><span class="w"> </span><span class="n">FD</span><span class="p">);</span>
 <span class="w">        </span><span class="k">break</span><span class="p">;</span>
@@ -264,6 +326,29 @@
 <span class="w">    </span><span class="k">default</span><span class="o">:</span>
 <span class="w">        </span><span class="k">break</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span>
+<span class="n">InputCore</span><span class="o">::</span><span class="n">RemoveDeviceFD</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">epFD</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">FD</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">epFD</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">epoll_ctl</span><span class="p">(</span><span class="n">epFD</span><span class="p">,</span><span class="w"> </span><span class="n">EPOLL_CTL_DEL</span><span class="p">,</span><span class="w"> </span><span class="n">FD</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">errno</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">ENOENT</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">errno</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">EBADF</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">warnlog</span><span class="p">(</span><span class="s">&quot;failed to remove fd from epoll while cleaning up input &quot;</span>
+<span class="w">                    </span><span class="s">&quot;device.&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">dev_it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">events</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">FD</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dev_it</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">events</span><span class="p">.</span><span class="n">end</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dev_it</span><span class="o">-&gt;</span><span class="n">second</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">libevdev_free</span><span class="p">(</span><span class="n">dev_it</span><span class="o">-&gt;</span><span class="n">second</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">close</span><span class="p">(</span><span class="n">FD</span><span class="p">);</span>
+<span class="w">        </span><span class="n">events</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">dev_it</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">id_to_type</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">FD</span><span class="p">);</span>
+<span class="w">    </span><span class="n">id_to_name</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">FD</span><span class="p">);</span>
+<span class="w">    </span><span class="n">id_pressed</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">FD</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>

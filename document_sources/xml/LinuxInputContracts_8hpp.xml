@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="LinuxInputContracts_8hpp" kind="file" language="C++">
+    <compoundname>LinuxInputContracts.hpp</compoundname>
+    <includes refid="PDJE__Input__Device__Data_8hpp" local="yes">PDJE_Input_Device_Data.hpp</includes>
+    <includes local="no">string_view</includes>
+    <includedby refid="linux_2DefaultDevs_8cpp" local="yes">include/input/DefaultDevs/linux/DefaultDevs.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>PDJE_Input_Device_Data.hpp</label>
+        <link refid="PDJE__Input__Device__Data_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/input/DefaultDevs/linux/LinuxInputContracts.hpp</label>
+        <link refid="LinuxInputContracts_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>cstdint</label>
+      </node>
+      <node id="4">
+        <label>future</label>
+      </node>
+      <node id="5">
+        <label>latch</label>
+      </node>
+      <node id="6">
+        <label>optional</label>
+      </node>
+      <node id="7">
+        <label>string</label>
+      </node>
+      <node id="9">
+        <label>string_view</label>
+      </node>
+      <node id="8">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/input/DefaultDevs/linux/DefaultDevs.cpp</label>
+        <link refid="linux_2DefaultDevs_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/input/DefaultDevs/linux/LinuxInputContracts.hpp</label>
+        <link refid="LinuxInputContracts_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespacePDJE__DEFAULT__DEVICES">PDJE_DEFAULT_DEVICES</innernamespace>
+    <innernamespace refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__CONTRACTS">PDJE_DEFAULT_DEVICES::LINUX_INPUT_CONTRACTS</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="PDJE__Input__Device__Data_8hpp" kindref="compound">PDJE_Input_Device_Data.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string_view&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__CONTRACTS" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__CONTRACTS" kindref="compound">PDJE_DEFAULT_DEVICES::LINUX_INPUT_CONTRACTS</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__CONTRACTS_1ac97a9eb7494085fb51559d169ba95e5c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>std::string_view<sp/><ref refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__CONTRACTS_1ac97a9eb7494085fb51559d169ba95e5c" kindref="member">kWaylandSchemePrefix</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;wayland://&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="10" refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__CONTRACTS_1a577cbc2ddff2b25b6821cbba2be1b883" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__CONTRACTS_1a577cbc2ddff2b25b6821cbba2be1b883" kindref="member">kWaylandKeyboardId</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;wayland://keyboard&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="11" refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__CONTRACTS_1a96aa8303d74dd697467553c377c75106" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__CONTRACTS_1a96aa8303d74dd697467553c377c75106" kindref="member">kWaylandPointerId</ref>[]<sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;wayland://pointer&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__CONTRACTS_1ae5bd8765075b69d82058b75d7633d9bc" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__CONTRACTS_1ae5bd8765075b69d82058b75d7633d9bc" kindref="member">kWaylandKeyboardName</ref>[]<sp/>=</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Wayland<sp/>Keyboard<sp/>(Focused<sp/>Surface)&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="15" refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__CONTRACTS_1a3cca8ef065ba23f8464c19993082a873" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__CONTRACTS_1a3cca8ef065ba23f8464c19993082a873" kindref="member">kWaylandPointerName</ref>[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Wayland<sp/>Pointer<sp/>(Focused<sp/>Surface)&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__CONTRACTS_1afd16dca97ea54eed007a72f53561303f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__CONTRACTS_1afd16dca97ea54eed007a72f53561303f" kindref="member">kWaylandInternalKeyboardName</ref>[]<sp/>=</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Wayland<sp/>Keyboard<sp/>(PDJE<sp/>Internal<sp/>Window)&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="19" refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__CONTRACTS_1abd3e15075c1d04ab807eebea3c3373da" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__CONTRACTS_1abd3e15075c1d04ab807eebea3c3373da" kindref="member">kWaylandInternalPointerName</ref>[]<sp/>=</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Wayland<sp/>Pointer<sp/>(PDJE<sp/>Internal<sp/>Window)&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__CONTRACTS_1a52788820611aecd1e0d71b724a26ec4d" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__CONTRACTS_1a52788820611aecd1e0d71b724a26ec4d" kindref="member">IsWaylandSyntheticId</ref>(std::string_view<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">.rfind(<ref refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__CONTRACTS_1ac97a9eb7494085fb51559d169ba95e5c" kindref="member">kWaylandSchemePrefix</ref>,<sp/>0)<sp/>==<sp/>0;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight></codeline>
+<codeline lineno="29" refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__CONTRACTS_1a296c9a322fa559a6d13d730e1096224a" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__CONTRACTS_1a296c9a322fa559a6d13d730e1096224a" kindref="member">GetWaylandSyntheticName</ref>(<ref refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456" kindref="member">PDJE_Dev_Type</ref><sp/>type,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>internal_window)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(type)<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456aedda266cdb6345b9f6914cc2e7577475" kindref="member">PDJE_Dev_Type::KEYBOARD</ref>:</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>internal_window<sp/>?<sp/><ref refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__CONTRACTS_1afd16dca97ea54eed007a72f53561303f" kindref="member">kWaylandInternalKeyboardName</ref></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__CONTRACTS_1ae5bd8765075b69d82058b75d7633d9bc" kindref="member">kWaylandKeyboardName</ref>;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="PDJE__Input__Device__Data_8hpp_1acf9d9564ffac8413ed6bdde983323456a2ec2be318cc86a1224c0e9dcc71321e4" kindref="member">PDJE_Dev_Type::MOUSE</ref>:</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>internal_window<sp/>?<sp/><ref refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__CONTRACTS_1abd3e15075c1d04ab807eebea3c3373da" kindref="member">kWaylandInternalPointerName</ref></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__CONTRACTS_1a3cca8ef065ba23f8464c19993082a873" kindref="member">kWaylandPointerName</ref>;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_DEFAULT_DEVICES::LINUX_INPUT_CONTRACTS</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/input/DefaultDevs/linux/LinuxInputContracts.hpp"/>
+  </compounddef>
+</doxygen>

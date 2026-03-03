@@ -52,6 +52,8 @@ Included By
 
 - :ref:`file_include_input_DefaultDevs_linux_InputCore.cpp`
 
+- :ref:`file_include_input_DefaultDevs_linux_LinuxMouseButtonMapping.hpp`
+
 - :ref:`file_include_input_DefaultDevs_linux_evdev_things_evdev_codemap.hpp`
 
 - :ref:`file_include_input_DefaultDevs_windows_DefaultDevs.hpp`
@@ -63,6 +65,8 @@ Included By
 - :ref:`file_include_input_PDJE_Input.hpp`
 
 - :ref:`file_include_input_PDJE_Input_Log.hpp`
+
+- :ref:`file_include_input_PDJE_Input_StateLogic.hpp`
 
 - :ref:`file_include_input_runner_SubProcess.hpp`
 

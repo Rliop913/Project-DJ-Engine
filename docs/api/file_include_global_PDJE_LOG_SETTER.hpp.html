@@ -53,7 +53,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -90,8 +89,9 @@
 <li><p><a class="reference internal" href="#definition-include-global-pdje-log-setter-hpp" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">include/global/PDJE_LOG_SETTER.hpp</span></code>)</a></p></li>
 <li><p><a class="reference internal" href="#includes" id="id2">Includes</a></p></li>
 <li><p><a class="reference internal" href="#included-by" id="id3">Included By</a></p></li>
-<li><p><a class="reference internal" href="#functions" id="id4">Functions</a></p></li>
-<li><p><a class="reference internal" href="#defines" id="id5">Defines</a></p></li>
+<li><p><a class="reference internal" href="#namespaces" id="id4">Namespaces</a></p></li>
+<li><p><a class="reference internal" href="#functions" id="id5">Functions</a></p></li>
+<li><p><a class="reference internal" href="#defines" id="id6">Defines</a></p></li>
 </ul>
 </nav>
 <section id="definition-include-global-pdje-log-setter-hpp">
@@ -105,13 +105,13 @@
 <section id="includes">
 <h2>Includes<a class="headerlink" href="#includes" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">filesystem</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">mutex</span></code> (<a class="reference internal" href="file_include_input_IPC_memory_ipc_named_mutex.hpp.html#file-include-input-ipc-memory-ipc-named-mutex-hpp"><span class="std std-ref">File ipc_named_mutex.hpp</span></a>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">spdlog/sinks/basic_file_sink.h</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">spdlog/sinks/stdout_color_sinks.h</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PDJE_EXPORT_SETTER.hpp</span></code> (<a class="reference internal" href="file_include_global_PDJE_EXPORT_SETTER.hpp.html#file-include-global-pdje-export-setter-hpp"><span class="std std-ref">File PDJE_EXPORT_SETTER.hpp</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PDJE_LOG_RUNTIME_API.h</span></code> (<a class="reference internal" href="file_include_global_PDJE_LOG_RUNTIME_API.h.html#file-include-global-pdje-log-runtime-api-h"><span class="std std-ref">File PDJE_LOG_RUNTIME_API.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">exception</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">spdlog/fmt/fmt.h</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">spdlog/spdlog.h</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">string_view</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">type_traits</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">utility</span></code></p></li>
 </ul>
 </section>
 <section id="included-by">
@@ -142,11 +142,13 @@
 <li><p><a class="reference internal" href="file_include_core_db_dbState.cpp.html#file-include-core-db-dbstate-cpp"><span class="std std-ref">File dbState.cpp</span></a></p></li>
 <li><p><a class="reference internal" href="file_include_core_db_musicDB.cpp.html#file-include-core-db-musicdb-cpp"><span class="std std-ref">File musicDB.cpp</span></a></p></li>
 <li><p><a class="reference internal" href="file_include_core_db_trackDB.cpp.html#file-include-core-db-trackdb-cpp"><span class="std std-ref">File trackDB.cpp</span></a></p></li>
+<li><p><a class="reference internal" href="file_include_core_editor_TimeLine_DiffMachine_TimeLineDiffMachine.cpp.html#file-include-core-editor-timeline-diffmachine-timelinediffmachine-cpp"><span class="std std-ref">File TimeLineDiffMachine.cpp</span></a></p></li>
 <li><p><a class="reference internal" href="file_include_core_editor_TimeLine_EventMarker_EventMarker.hpp.html#file-include-core-editor-timeline-eventmarker-eventmarker-hpp"><span class="std std-ref">File EventMarker.hpp</span></a></p></li>
 <li><p><a class="reference internal" href="file_include_core_editor_TimeLine_GitDataPack_GitDatas.hpp.html#file-include-core-editor-timeline-gitdatapack-gitdatas-hpp"><span class="std std-ref">File GitDatas.hpp</span></a></p></li>
 <li><p><a class="reference internal" href="file_include_core_editor_TimeLine_GitDataPack_GitRAII.hpp.html#file-include-core-editor-timeline-gitdatapack-gitraii-hpp"><span class="std std-ref">File GitRAII.hpp</span></a></p></li>
 <li><p><a class="reference internal" href="file_include_core_editor_TimeLine_JSONWrap_jsonWrapper.hpp.html#file-include-core-editor-timeline-jsonwrap-jsonwrapper-hpp"><span class="std std-ref">File jsonWrapper.hpp</span></a></p></li>
 <li><p><a class="reference internal" href="file_include_core_editor_TimeLine_LineVersion_LineVersion.cpp.html#file-include-core-editor-timeline-lineversion-lineversion-cpp"><span class="std std-ref">File LineVersion.cpp</span></a></p></li>
+<li><p><a class="reference internal" href="file_include_core_editor_TimeLine_TimeLine.cpp.html#file-include-core-editor-timeline-timeline-cpp"><span class="std std-ref">File TimeLine.cpp</span></a></p></li>
 <li><p><a class="reference internal" href="file_include_core_editor_TimeLine_TimeLine.hpp.html#file-include-core-editor-timeline-timeline-hpp"><span class="std std-ref">File TimeLine.hpp</span></a></p></li>
 <li><p><a class="reference internal" href="file_include_core_editor_editor.cpp.html#file-include-core-editor-editor-cpp"><span class="std std-ref">File editor.cpp</span></a></p></li>
 <li><p><a class="reference internal" href="file_include_core_editor_editor.hpp.html#file-include-core-editor-editor-hpp"><span class="std std-ref">File editor.hpp</span></a></p></li>
@@ -156,9 +158,11 @@
 <li><p><a class="reference internal" href="file_include_global_Crypto_PDJE_Crypto.hpp.html#file-include-global-crypto-pdje-crypto-hpp"><span class="std std-ref">File PDJE_Crypto.hpp</span></a></p></li>
 <li><p><a class="reference internal" href="file_include_global_Crypto_PSKPipe.hpp.html#file-include-global-crypto-pskpipe-hpp"><span class="std std-ref">File PSKPipe.hpp</span></a></p></li>
 <li><p><a class="reference internal" href="file_include_global_DataLines_fileNameSanitizer.cpp.html#file-include-global-datalines-filenamesanitizer-cpp"><span class="std std-ref">File fileNameSanitizer.cpp</span></a></p></li>
+<li><p><a class="reference internal" href="file_include_global_PDJE_LOG_SETTER.cpp.html#file-include-global-pdje-log-setter-cpp"><span class="std std-ref">File PDJE_LOG_SETTER.cpp</span></a></p></li>
 <li><p><a class="reference internal" href="file_include_global_PDJE_RAII_WRAP.hpp.html#file-include-global-pdje-raii-wrap-hpp"><span class="std std-ref">File PDJE_RAII_WRAP.hpp</span></a></p></li>
 <li><p><a class="reference internal" href="file_include_input_DefaultDevs_linux_DefaultDevs.hpp.html#file-include-input-defaultdevs-linux-defaultdevs-hpp"><span class="std std-ref">File DefaultDevs.hpp</span></a></p></li>
 <li><p><a class="reference internal" href="file_include_input_DefaultDevs_linux_InputCore.cpp.html#file-include-input-defaultdevs-linux-inputcore-cpp"><span class="std std-ref">File InputCore.cpp</span></a></p></li>
+<li><p><a class="reference internal" href="file_include_input_DefaultDevs_linux_wayland_things_WaylandInputCore.cpp.html#file-include-input-defaultdevs-linux-wayland-things-waylandinputcore-cpp"><span class="std std-ref">File WaylandInputCore.cpp</span></a></p></li>
 <li><p><a class="reference internal" href="file_include_input_IPC_common_ipc_util.hpp.html#file-include-input-ipc-common-ipc-util-hpp"><span class="std std-ref">File ipc_util.hpp</span></a></p></li>
 <li><p><a class="reference internal" href="file_include_input_IPC_memory_ipc_named_mutex.hpp.html#file-include-input-ipc-memory-ipc-named-mutex-hpp"><span class="std std-ref">File ipc_named_mutex.hpp</span></a></p></li>
 <li><p><a class="reference internal" href="file_include_input_IPC_memory_ipc_shared_memory.hpp.html#file-include-input-ipc-memory-ipc-shared-memory-hpp"><span class="std std-ref">File ipc_shared_memory.hpp</span></a></p></li>
@@ -170,10 +174,26 @@
 <li><p><a class="reference internal" href="file_include_judge_PDJE_Judge.cpp.html#file-include-judge-pdje-judge-cpp"><span class="std std-ref">File PDJE_Judge.cpp</span></a></p></li>
 </ul>
 </section>
+<section id="namespaces">
+<h2>Namespaces<a class="headerlink" href="#namespaces" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="namespace_PDJE_LOG_DETAIL.html#namespace-pdje-log-detail"><span class="std std-ref">Namespace PDJE_LOG_DETAIL</span></a></p></li>
+</ul>
+</section>
 <section id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="function_PDJE__LOG__SETTER_8hpp_1a27caf5fb9d1eed1f15d54bab91b74f36.html#exhale-function-pdje-log-setter-8hpp-1a27caf5fb9d1eed1f15d54bab91b74f36"><span class="std std-ref">Function startlog</span></a></p></li>
+<li><p><a class="reference internal" href="function_namespacePDJE__LOG__DETAIL_1a1d5e43c742f9573b552e5af26ddb2d75.html#exhale-function-namespacepdje-log-detail-1a1d5e43c742f9573b552e5af26ddb2d75"><span class="std std-ref">Template Function PDJE_LOG_DETAIL::critical(T&amp;&amp;)</span></a></p></li>
+<li><p><a class="reference internal" href="function_namespacePDJE__LOG__DETAIL_1ac993d88cb68b0496900c3aff1707c5be.html#exhale-function-namespacepdje-log-detail-1ac993d88cb68b0496900c3aff1707c5be"><span class="std std-ref">Template Function PDJE_LOG_DETAIL::critical(spdlog::format_string_t&lt;Args…&gt;, Args&amp;&amp;…)</span></a></p></li>
+<li><p><a class="reference internal" href="function_namespacePDJE__LOG__DETAIL_1a0ac70731f5d92b0059a07ed2544ed876.html#exhale-function-namespacepdje-log-detail-1a0ac70731f5d92b0059a07ed2544ed876"><span class="std std-ref">Template Function PDJE_LOG_DETAIL::info(spdlog::format_string_t&lt;Args…&gt;, Args&amp;&amp;…)</span></a></p></li>
+<li><p><a class="reference internal" href="function_namespacePDJE__LOG__DETAIL_1a37d3b462e363785e8639714b1c346bec.html#exhale-function-namespacepdje-log-detail-1a37d3b462e363785e8639714b1c346bec"><span class="std std-ref">Template Function PDJE_LOG_DETAIL::info(T&amp;&amp;)</span></a></p></li>
+<li><p><a class="reference internal" href="function_namespacePDJE__LOG__DETAIL_1a8cf6dc50e37344e1113e4112bd5f9ea3.html#exhale-function-namespacepdje-log-detail-1a8cf6dc50e37344e1113e4112bd5f9ea3"><span class="std std-ref">Template Function PDJE_LOG_DETAIL::log_format</span></a></p></li>
+<li><p><a class="reference internal" href="function_namespacePDJE__LOG__DETAIL_1a5e93659ee07d2be7f03ca641535958f9.html#exhale-function-namespacepdje-log-detail-1a5e93659ee07d2be7f03ca641535958f9"><span class="std std-ref">Function PDJE_LOG_DETAIL::log_preformatted</span></a></p></li>
+<li><p><a class="reference internal" href="function_namespacePDJE__LOG__DETAIL_1ae18d2bcca09be1d547f3697bd4c2c6af.html#exhale-function-namespacepdje-log-detail-1ae18d2bcca09be1d547f3697bd4c2c6af"><span class="std std-ref">Template Function PDJE_LOG_DETAIL::log_value</span></a></p></li>
+<li><p><a class="reference internal" href="function_namespacePDJE__LOG__DETAIL_1a8fbbbb6ecf4d5cf3365296b04d2c7636.html#exhale-function-namespacepdje-log-detail-1a8fbbbb6ecf4d5cf3365296b04d2c7636"><span class="std std-ref">Template Function PDJE_LOG_DETAIL::warn(T&amp;&amp;)</span></a></p></li>
+<li><p><a class="reference internal" href="function_namespacePDJE__LOG__DETAIL_1a7140251b9a3cfff2fa2f61000b80060d.html#exhale-function-namespacepdje-log-detail-1a7140251b9a3cfff2fa2f61000b80060d"><span class="std std-ref">Template Function PDJE_LOG_DETAIL::warn(spdlog::format_string_t&lt;Args…&gt;, Args&amp;&amp;…)</span></a></p></li>
+<li><p><a class="reference internal" href="function_PDJE__LOG__SETTER_8hpp_1aa34453b30c474e0e23518fdfe3e57a3d.html#exhale-function-pdje-log-setter-8hpp-1aa34453b30c474e0e23518fdfe3e57a3d"><span class="std std-ref">Function shutdownlog()</span></a></p></li>
+<li><p><a class="reference internal" href="function_PDJE__LOG__SETTER_8hpp_1a27caf5fb9d1eed1f15d54bab91b74f36.html#exhale-function-pdje-log-setter-8hpp-1a27caf5fb9d1eed1f15d54bab91b74f36"><span class="std std-ref">Function startlog()</span></a></p></li>
 </ul>
 </section>
 <section id="defines">

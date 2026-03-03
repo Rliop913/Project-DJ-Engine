@@ -32,6 +32,12 @@ Includes
 
 - ``InputCore.hpp`` (:ref:`file_include_input_DefaultDevs_linux_InputCore.hpp`)
 
+- ``LinuxMouseButtonMapping.hpp`` (:ref:`file_include_input_DefaultDevs_linux_LinuxMouseButtonMapping.hpp`)
+
+- ``algorithm``
+
+- ``cstring``
+
 
 
 

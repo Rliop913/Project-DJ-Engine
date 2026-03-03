@@ -16,13 +16,21 @@ Program Listing for File PDJE_Judge_Init_Structs.hpp
    #include <functional>
    namespace PDJE_JUDGE {
    
-   constexpr long double TO_MICRO = 1000.0 / 48.0;
-   inline uint64_t
+   // 48 kHz PCM frame -> microsecond conversion is exactly frames * 125 / 6.
+   constexpr uint64_t kPcm48kFrameToMicro_Num = 125;
+   constexpr uint64_t kPcm48kFrameToMicro_Den = 6;
+   constexpr inline uint64_t
    Convert_Frame_Into_MicroSecond(const uint64_t pcm_frame)
    {
-       return static_cast<uint64_t>(static_cast<long double>(pcm_frame) *
-                                    TO_MICRO);
+       const uint64_t q = pcm_frame / kPcm48kFrameToMicro_Den;
+       const uint64_t r = pcm_frame % kPcm48kFrameToMicro_Den;
+       return q * kPcm48kFrameToMicro_Num +
+              (r * kPcm48kFrameToMicro_Num) / kPcm48kFrameToMicro_Den;
    }
+   static_assert(Convert_Frame_Into_MicroSecond(48) == 1000,
+                 "48 frames at 48 kHz must be 1000 us");
+   static_assert(Convert_Frame_Into_MicroSecond(96) == 2000,
+                 "96 frames at 48 kHz must be 2000 us");
    
    using RAIL_ID = uint64_t;
    using MISS_CALLBACK =

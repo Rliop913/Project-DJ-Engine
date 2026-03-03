@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Developer_Onboarding &mdash; Project_DJ_Engine  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=9bcbadda"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+        <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Core_Engine" href="Core_Engine.html" />
+    <link rel="prev" title="Getting Started" href="Getting%20Started.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Project_DJ_Engine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="Getting%20Started.html">Getting Started</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Getting%20Started.html#documentation-map">Documentation Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Getting%20Started.html#recommended-reading-order">Recommended Reading Order</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="Getting%20Started.html#binding-notes">Binding Notes</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Developer_Onboarding</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#what-pdje-is">What PDJE Is</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#choose-your-starting-path">Choose Your Starting Path</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-read-this-project">How To Read This Project</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build-and-configuration-reality">Build And Configuration Reality</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#project-mental-model">Project Mental Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#useful-domain-knowledge">Useful Domain Knowledge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#first-real-workflows">First Real Workflows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#contributor-orientation">Contributor Orientation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#common-mistakes">Common Mistakes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#where-to-go-next">Where To Go Next</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Core_Engine.html">Core_Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Editor_Workflows.html">Editor_Workflows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Input_Engine.html">Input_Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Judge_Engine.html">Judge_Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Util_Engine.html">Util_Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Data_Lines.html">Data_Lines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Editor_Format.html">Editor_Format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FX_ARGS.html">FX_ARGS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PDJE_For_AI_Agents.html">PDJE_For_AI_Agents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/api_root.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Editor_Format.html">Editor_Format</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Project_DJ_Engine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="Getting%20Started.html">Getting Started</a></li>
+      <li class="breadcrumb-item active">Developer_Onboarding</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Developer_Onboarding.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="developer-onboarding">
+<h1>Developer_Onboarding<a class="headerlink" href="#developer-onboarding" title="Link to this heading"></a></h1>
+<p><cite>Project-DJ-Engine</cite> (<cite>PDJE</cite>) is a soft real-time C++ engine for DJ-style audio
+playback, note-chart authoring, low-latency input capture, and rhythm-game
+judgment. This page is the shortest path to a correct mental model before you
+jump into generated API pages or source files.</p>
+<section id="what-pdje-is">
+<h2>What PDJE Is<a class="headerlink" href="#what-pdje-is" title="Link to this heading"></a></h2>
+<p>PDJE is organized around four integration surfaces:</p>
+<ul class="simple">
+<li><p><cite>PDJE</cite>
+the main facade for playback, editor access, and the core data line.</p></li>
+<li><p><cite>PDJE_Input</cite>
+low-latency keyboard, mouse, and MIDI ingestion.</p></li>
+<li><p><cite>PDJE_JUDGE::JUDGE</cite>
+timing-sensitive note matching built on synchronized input and audio clocks.</p></li>
+<li><p><cite>PDJE_UTIL</cite>
+reusable utility code for status handling, storage abstractions, and helper
+functions.</p></li>
+</ul>
+</section>
+<section id="choose-your-starting-path">
+<h2>Choose Your Starting Path<a class="headerlink" href="#choose-your-starting-path" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>If you need playback, player control, or track/music lookup, start with
+<a class="reference internal" href="Core_Engine.html"><span class="doc">Core_Engine</span></a>.</p></li>
+<li><p>If you need to author or edit project content, read <a class="reference internal" href="Core_Engine.html"><span class="doc">Core_Engine</span></a> for
+the entrypoints, then move to <a class="reference internal" href="Editor_Workflows.html"><span class="doc">Editor_Workflows</span></a>.</p></li>
+<li><p>If you need keyboard, mouse, or MIDI input capture, read <a class="reference internal" href="Input_Engine.html"><span class="doc">Input_Engine</span></a>.</p></li>
+<li><p>If you are building rhythm-game style timing and scoring, read
+<a class="reference internal" href="Judge_Engine.html"><span class="doc">Judge_Engine</span></a> after <a class="reference internal" href="Input_Engine.html"><span class="doc">Input_Engine</span></a>.</p></li>
+<li><p>If you need shared live state between modules, read <a class="reference internal" href="Data_Lines.html"><span class="doc">Data_Lines</span></a>.</p></li>
+<li><p>If you need editor data formats or timeline serialization details, read
+<a class="reference internal" href="Editor_Format.html"><span class="doc">Editor_Format</span></a> after <a class="reference internal" href="Editor_Workflows.html"><span class="doc">Editor_Workflows</span></a>.</p></li>
+<li><p>If you need non-C++ bindings, read <a class="reference internal" href="Core_Engine.html"><span class="doc">Core_Engine</span></a> first, then use the
+wrapper notes there to distinguish SWIG bindings from Godot-facing wrappers.</p></li>
+</ul>
+</section>
+<section id="how-to-read-this-project">
+<h2>How To Read This Project<a class="headerlink" href="#how-to-read-this-project" title="Link to this heading"></a></h2>
+<p>Recommended reading order:</p>
+<ol class="arabic simple">
+<li><p>Read <a class="reference internal" href="index.html"><span class="doc">Project-DJ-Engine – A Real‑Time Engine for Rhythm Games, DJing, and Audio Production</span></a> for the high-level module overview.
+It also now carries the broader use-case and project-automation context.</p></li>
+<li><p>Read <a class="reference internal" href="Getting%20Started.html"><span class="doc">Getting Started</span></a> for the guide map.</p></li>
+<li><p>Read <a class="reference internal" href="Core_Engine.html"><span class="doc">Core_Engine</span></a> to understand the main facade and runtime flow.</p></li>
+<li><p>Read <a class="reference internal" href="Editor_Workflows.html"><span class="doc">Editor_Workflows</span></a> if your application creates or mutates project
+content.</p></li>
+<li><p>Read <a class="reference internal" href="Input_Engine.html"><span class="doc">Input_Engine</span></a> if your application touches live input.</p></li>
+<li><p>Read <a class="reference internal" href="Judge_Engine.html"><span class="doc">Judge_Engine</span></a> if your application performs note matching.</p></li>
+<li><p>Read <a class="reference internal" href="Data_Lines.html"><span class="doc">Data_Lines</span></a> before you poll live state from another module or
+thread.</p></li>
+<li><p>Read <a class="reference internal" href="Editor_Format.html"><span class="doc">Editor_Format</span></a> if you generate or inspect editor-side data on
+disk.</p></li>
+<li><p>Use <a class="reference internal" href="api/api_root.html"><span class="doc">API Reference</span></a> only after the workflow docs above.</p></li>
+</ol>
+<p>The hand-written docs explain recommended workflows. The generated API explains
+what symbols exist. Those are not the same thing.</p>
+</section>
+<section id="build-and-configuration-reality">
+<h2>Build And Configuration Reality<a class="headerlink" href="#build-and-configuration-reality" title="Link to this heading"></a></h2>
+<p>Current build facts from the source tree:</p>
+<ul class="simple">
+<li><p>CMake minimum is <cite>3.12</cite>.</p></li>
+<li><p>The project requires <cite>C++20</cite>.</p></li>
+<li><p>Conan is part of the expected dependency flow through
+<cite>conan_cmakes/conan_toolchain.cmake</cite>.</p></li>
+<li><p><cite>PDJE_DYNAMIC</cite>
+controls static vs shared library builds.</p></li>
+<li><p><cite>PDJE_DEVELOP_INPUT</cite>
+controls whether the input and judge module libraries are built.</p></li>
+<li><p><cite>PDJE_SWIG_BUILD</cite>
+enables the SWIG wrapper targets.</p></li>
+<li><p><cite>PDJE_TEST</cite>
+enables doctest-based unit tests and CTest registration.</p></li>
+<li><p><cite>PDJE_DEV_TEST</cite>
+enables legacy/manual developer test executables.</p></li>
+</ul>
+<p>Practical meaning:</p>
+<ul class="simple">
+<li><p><cite>PDJE</cite> itself is the always-built core library.</p></li>
+<li><p><cite>PDJE_MODULE_INPUT</cite> and <cite>PDJE_MODULE_JUDGE</cite> exist only when
+<cite>PDJE_DEVELOP_INPUT=ON</cite>.</p></li>
+<li><p>On Windows, enabling the input path also enables the subprocess executable
+used by the Raw Input transport.</p></li>
+<li><p>The current tree carries production input implementations for Linux and
+Windows.</p></li>
+<li><p>macOS input is not implemented in-tree.</p></li>
+</ul>
+</section>
+<section id="project-mental-model">
+<h2>Project Mental Model<a class="headerlink" href="#project-mental-model" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Core runtime facade</strong>
+lives under <cite>include/core/</cite> and exposes the main public entrypoint
+<cite>include/core/interface/PDJE_interface.hpp</cite>.</p></li>
+<li><p><strong>Editor and authoring subsystem</strong>
+also lives under <cite>include/core/</cite>, but spans both
+<cite>include/core/MainObjects/editorObject/</cite> and <cite>include/core/editor/</cite>.
+It is a major part of the project, not just a helper around <cite>InitEditor()</cite>.</p></li>
+<li><p><strong>Input</strong>
+lives under <cite>include/input/</cite> and exposes <cite>include/input/PDJE_Input.hpp</cite>.</p></li>
+<li><p><strong>Judge</strong>
+lives under <cite>include/judge/</cite> and exposes <cite>include/judge/PDJE_Judge.hpp</cite>.</p></li>
+<li><p><strong>Utility</strong>
+lives under <cite>include/util/</cite> and exposes <cite>include/util/PDJE_Util.hpp</cite>.</p></li>
+<li><p><strong>Global shared infrastructure</strong>
+lives under <cite>include/global/</cite> and provides data lines, clocks, crypto, RAII,
+and logging helpers used across modules.</p></li>
+</ul>
+<p>The tree also contains older or legacy areas such as <cite>trashbin</cite> and
+<cite>DEPRECATE</cite>. Do not assume those are active build paths just because they appear
+in generated API pages.</p>
+</section>
+<section id="useful-domain-knowledge">
+<h2>Useful Domain Knowledge<a class="headerlink" href="#useful-domain-knowledge" title="Link to this heading"></a></h2>
+<p>DJ and playback terms:</p>
+<ul class="simple">
+<li><p><cite>music</cite>
+usually means a concrete audio asset plus metadata.</p></li>
+<li><p><cite>track</cite>
+usually means a higher-level authored object that can reference mix and note
+structures plus music metadata.</p></li>
+<li><p><cite>deck</cite>
+means a playback slot or source lane inside a DJ-style workflow.</p></li>
+<li><p><cite>cue</cite>
+means a specific seek/play start position.</p></li>
+<li><p><cite>BPM</cite>
+is beats per minute and appears in both playback and chart timing contexts.</p></li>
+<li><p><cite>FX</cite>
+means runtime effect processing such as filter, EQ, echo, or roll.</p></li>
+</ul>
+<p>Rhythm-game terms:</p>
+<ul class="simple">
+<li><p><cite>rail</cite>
+is the gameplay lane or logical input destination a note belongs to.</p></li>
+<li><p><cite>note</cite>
+is an authored gameplay event with timing and rail metadata.</p></li>
+<li><p><cite>judgment window</cite>
+means the timing tolerance around the expected note time.</p></li>
+</ul>
+<p>Audio timing terms:</p>
+<ul class="simple">
+<li><p><cite>frame</cite>
+means one sample frame at the current sample rate.</p></li>
+<li><p><cite>sample rate</cite>
+controls how frame positions map to time.</p></li>
+<li><p><cite>callback cadence</cite>
+means how often the audio backend asks for more audio.</p></li>
+<li><p><cite>microsecond</cite>
+is the fine-grained timing unit used for synchronized input/audio judgment.</p></li>
+</ul>
+<p>Input terms:</p>
+<ul class="simple">
+<li><p><cite>backend</cite>
+means the platform-specific input implementation that was selected.</p></li>
+<li><p><cite>MIDI port</cite>
+means a live hardware or virtual MIDI input endpoint.</p></li>
+<li><p><cite>input_arena</cite>
+means the keyboard/mouse transport exposed by <cite>PDJE_INPUT_DATA_LINE</cite>.</p></li>
+</ul>
+<p>Storage and authoring terms:</p>
+<ul class="simple">
+<li><p><cite>root DB</cite>
+means the database root used by the core/editor path.</p></li>
+<li><p><cite>project-local editor state</cite>
+means the working timeline and metadata state managed by <cite>editorObject</cite>
+before content is pushed back into the root DB.</p></li>
+<li><p><cite>SQLite</cite>
+is used in the relational storage layer.</p></li>
+<li><p><cite>RocksDB</cite>
+is used in the key-value storage layer.</p></li>
+<li><p><cite>Cap’n Proto</cite>
+is used for binary translation/serialization in the core DB pipeline.</p></li>
+<li><p><cite>editor JSON</cite>
+means the timeline-oriented JSON representation described in
+<a class="reference internal" href="Editor_Format.html"><span class="doc">Editor_Format</span></a>.</p></li>
+</ul>
+</section>
+<section id="first-real-workflows">
+<h2>First Real Workflows<a class="headerlink" href="#first-real-workflows" title="Link to this heading"></a></h2>
+<p>Playback-first integration flow:</p>
+<ol class="arabic simple">
+<li><p>Build the project with the desired options.</p></li>
+<li><p>Construct <cite>PDJE</cite> with the root database path.</p></li>
+<li><p>Search for music or track objects through <cite>SearchMusic()</cite> or <cite>SearchTrack()</cite>.</p></li>
+<li><p>Create a player with <cite>InitPlayer()</cite>.</p></li>
+<li><p>Pull a <cite>PDJE_CORE_DATA_LINE</cite> if another module needs live playback state.</p></li>
+<li><p>Add <cite>PDJE_Input</cite> only if you need live keyboard, mouse, or MIDI capture.</p></li>
+<li><p>Add <cite>PDJE_JUDGE::JUDGE</cite> only if you need synchronized note matching.</p></li>
+</ol>
+<p>Editor-first authoring flow:</p>
+<ol class="arabic simple">
+<li><p>Build the project with the desired options.</p></li>
+<li><p>Construct <cite>PDJE</cite> with the root database path.</p></li>
+<li><p>Initialize the editor through <cite>InitEditor()</cite>.</p></li>
+<li><p>Acquire the <cite>editorObject</cite> through <cite>GetEditorObject()</cite>.</p></li>
+<li><p>Create or open project content, then mutate it through the editor workflow.</p></li>
+<li><p>Render or push the result back toward the root DB.</p></li>
+<li><p>Optionally use preview playback through the editor/player bridge.</p></li>
+</ol>
+<p>Use these pages for the detailed workflows:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Core_Engine.html"><span class="doc">Core_Engine</span></a></p></li>
+<li><p><a class="reference internal" href="Editor_Workflows.html"><span class="doc">Editor_Workflows</span></a></p></li>
+<li><p><a class="reference internal" href="Input_Engine.html"><span class="doc">Input_Engine</span></a></p></li>
+<li><p><a class="reference internal" href="Judge_Engine.html"><span class="doc">Judge_Engine</span></a></p></li>
+<li><p><a class="reference internal" href="Data_Lines.html"><span class="doc">Data_Lines</span></a></p></li>
+</ul>
+</section>
+<section id="contributor-orientation">
+<h2>Contributor Orientation<a class="headerlink" href="#contributor-orientation" title="Link to this heading"></a></h2>
+<p>If you are modifying the repository rather than only embedding the engine, start
+here:</p>
+<ul class="simple">
+<li><p>Main public facade:
+<cite>include/core/interface/PDJE_interface.hpp</cite></p></li>
+<li><p>Playback implementation:
+<cite>include/core/MainObjects/audioPlayer/</cite></p></li>
+<li><p>Editor facade object:
+<cite>include/core/MainObjects/editorObject/</cite></p></li>
+<li><p>Editor timeline, linter, and serialization core:
+<cite>include/core/editor/</cite></p></li>
+<li><p>Input implementation:
+<cite>include/input/</cite></p></li>
+<li><p>Judge implementation:
+<cite>include/judge/</cite></p></li>
+<li><p>Utility layer:
+<cite>include/util/</cite></p></li>
+<li><p>Shared infrastructure:
+<cite>include/global/</cite></p></li>
+<li><p>Tests:
+<cite>include/tests/</cite></p></li>
+<li><p>Manual docs:
+<cite>document_sources/*.rst</cite></p></li>
+<li><p>Generated API:
+<cite>document_sources/api/</cite></p></li>
+</ul>
+<p>Important project quirks:</p>
+<ul class="simple">
+<li><p>In this repository, <cite>include/</cite> is not headers-only. It also contains a large
+amount of implementation <cite>.cpp</cite> code.</p></li>
+<li><p>Editor history, timeline mutation, and render/push logic are not fully
+described by the top-level <cite>PDJE</cite> header. Read the editor-specific paths and
+manual docs before changing that subsystem.</p></li>
+</ul>
+</section>
+<section id="common-mistakes">
+<h2>Common Mistakes<a class="headerlink" href="#common-mistakes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Do not assume the generated API pages define the recommended integration
+order.</p></li>
+<li><p>Do not assume input and judge are always built. That depends on
+<cite>PDJE_DEVELOP_INPUT</cite>.</p></li>
+<li><p>Do not assume SWIG bindings cover every native C++ subsystem. The current
+SWIG output is strongest on the core/editor path.</p></li>
+<li><p>Do not assume editor support is only <cite>InitEditor()</cite> plus one or two helper
+calls. <cite>editorObject</cite> is a real subsystem with mutation, history, and
+persistence workflows.</p></li>
+<li><p>Do not assume <a class="reference internal" href="Editor_Format.html"><span class="doc">Editor_Format</span></a> explains the full editor operation model.
+It explains data shapes, not the complete editing lifecycle.</p></li>
+<li><p>Do not assume legacy or deprecated paths are part of the active runtime.</p></li>
+<li><p>Do not assume macOS input support exists in the current source tree.</p></li>
+<li><p>Do not mix Godot wrapper names with native C++ names when reading examples.</p></li>
+</ul>
+</section>
+<section id="where-to-go-next">
+<h2>Where To Go Next<a class="headerlink" href="#where-to-go-next" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="Core_Engine.html"><span class="doc">Core_Engine</span></a></p></li>
+<li><p><a class="reference internal" href="Editor_Workflows.html"><span class="doc">Editor_Workflows</span></a></p></li>
+<li><p><a class="reference internal" href="Input_Engine.html"><span class="doc">Input_Engine</span></a></p></li>
+<li><p><a class="reference internal" href="Judge_Engine.html"><span class="doc">Judge_Engine</span></a></p></li>
+<li><p><a class="reference internal" href="Data_Lines.html"><span class="doc">Data_Lines</span></a></p></li>
+<li><p><a class="reference internal" href="Editor_Format.html"><span class="doc">Editor_Format</span></a></p></li>
+<li><p><a class="reference internal" href="FX_ARGS.html"><span class="doc">FX_ARGS</span></a></p></li>
+<li><p><a class="reference internal" href="Util_Engine.html"><span class="doc">Util_Engine</span></a></p></li>
+<li><p><a class="reference internal" href="PDJE_For_AI_Agents.html"><span class="doc">PDJE_For_AI_Agents</span></a></p></li>
+<li><p><a class="reference internal" href="api/api_root.html"><span class="doc">API Reference</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Getting%20Started.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Core_Engine.html" class="btn btn-neutral float-right" title="Core_Engine" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, RLIOP913.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

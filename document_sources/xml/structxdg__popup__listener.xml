@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="structxdg__popup__listener" kind="struct" language="C++" prot="public">
+    <compoundname>xdg_popup_listener</compoundname>
+    <includes refid="xdg-shell-client-protocol_8h" local="no">xdg-shell-client-protocol.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structxdg__popup__listener_1a36e98cf6e6e4137ee2896a43f1c10730" prot="public" static="no" mutable="no">
+        <type>void(*</type>
+        <definition>void(* xdg_popup_listener::configure) (void *data, struct xdg_popup *xdg_popup, int32_t x, int32_t y, int32_t width, int32_t height)</definition>
+        <argsstring>)(void *data, struct xdg_popup *xdg_popup, int32_t x, int32_t y, int32_t width, int32_t height)</argsstring>
+        <name>configure</name>
+        <qualifiedname>xdg_popup_listener::configure</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>configure the popup surface</para>
+<para>This event asks the popup surface to configure itself given the configuration. The configured state should not be applied immediately. See xdg_surface.configure for details.</para>
+<para>The x and y arguments represent the position the popup was placed at given the xdg_positioner rule, relative to the upper left corner of the window geometry of the parent surface.</para>
+<para>For version 2 or older, the configure event for an xdg_popup is only ever sent once for the initial configuration. Starting with version 3, it may be sent again if the popup is setup with an xdg_positioner with set_reactive requested, or in response to xdg_popup.reposition requests. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>x</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>x position relative to parent surface window geometry </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>y</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>y position relative to parent surface window geometry </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>width</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>window geometry width </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>height</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>window geometry height </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="2175" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="2175" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structxdg__popup__listener_1af62aceff9bcec24ac9e5243107db53a2" prot="public" static="no" mutable="no">
+        <type>void(*</type>
+        <definition>void(* xdg_popup_listener::popup_done) (void *data, struct xdg_popup *xdg_popup)</definition>
+        <argsstring>)(void *data, struct xdg_popup *xdg_popup)</argsstring>
+        <name>popup_done</name>
+        <qualifiedname>xdg_popup_listener::popup_done</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>popup interaction is done</para>
+<para>The popup_done event is sent out when a popup is dismissed by the compositor. The client should destroy the xdg_popup object at this point. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="2188" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="2188" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structxdg__popup__listener_1a6e3f7f24ea625d8d11b99f4de878163b" prot="public" static="no" mutable="no">
+        <type>void(*</type>
+        <definition>void(* xdg_popup_listener::repositioned) (void *data, struct xdg_popup *xdg_popup, uint32_t token)</definition>
+        <argsstring>)(void *data, struct xdg_popup *xdg_popup, uint32_t token)</argsstring>
+        <name>repositioned</name>
+        <qualifiedname>xdg_popup_listener::repositioned</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>signal the completion of a repositioned request</para>
+<para>The repositioned event is sent as part of a popup configuration sequence, together with xdg_popup.configure and lastly xdg_surface.configure to notify the completion of a reposition request.</para>
+<para>The repositioned event is to notify about the completion of a xdg_popup.reposition request. The token argument is the token passed in the xdg_popup.reposition request.</para>
+<para>Immediately after this event is emitted, xdg_popup.configure and xdg_surface.configure will be sent with the updated size and position, as well as a new configure serial.</para>
+<para>The client should optionally update the content of the popup, but must acknowledge the new popup configuration for the new position to take effect. See xdg_surface.ack_configure for details. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>token</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>reposition request token </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="since"><para>3 </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="2213" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="2213" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="2153" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="2153" bodyend="2216"/>
+    <listofallmembers>
+      <member refid="structxdg__popup__listener_1a36e98cf6e6e4137ee2896a43f1c10730" prot="public" virt="non-virtual"><scope>xdg_popup_listener</scope><name>configure</name></member>
+      <member refid="structxdg__popup__listener_1af62aceff9bcec24ac9e5243107db53a2" prot="public" virt="non-virtual"><scope>xdg_popup_listener</scope><name>popup_done</name></member>
+      <member refid="structxdg__popup__listener_1a6e3f7f24ea625d8d11b99f4de878163b" prot="public" virt="non-virtual"><scope>xdg_popup_listener</scope><name>repositioned</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

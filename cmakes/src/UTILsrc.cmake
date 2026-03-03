@@ -1,0 +1,30 @@
+if(TARGET PDJE_UTIL_DB)
+  return()
+endif()
+
+if(NOT TARGET PDJE_UTIL)
+  add_library(PDJE_UTIL INTERFACE)
+  target_compile_features(PDJE_UTIL INTERFACE cxx_std_20)
+  target_include_directories(PDJE_UTIL INTERFACE
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  )
+endif()
+
+add_library(PDJE_UTIL_DB_SQLITE INTERFACE)
+target_link_libraries(PDJE_UTIL_DB_SQLITE INTERFACE PDJE_UTIL)
+setSqliteReqLib(PDJE_UTIL_DB_SQLITE)
+
+add_library(PDJE_UTIL_DB_ROCKSDB INTERFACE)
+target_link_libraries(PDJE_UTIL_DB_ROCKSDB INTERFACE PDJE_UTIL)
+setRocksDBReqLib(PDJE_UTIL_DB_ROCKSDB)
+
+add_library(PDJE_UTIL_DB_ANNOY INTERFACE)
+target_link_libraries(PDJE_UTIL_DB_ANNOY INTERFACE PDJE_UTIL)
+setAnnoyReqLib(PDJE_UTIL_DB_ANNOY)
+
+add_library(PDJE_UTIL_DB INTERFACE)
+target_link_libraries(PDJE_UTIL_DB INTERFACE
+  PDJE_UTIL_DB_SQLITE
+  PDJE_UTIL_DB_ROCKSDB
+  PDJE_UTIL_DB_ANNOY
+)

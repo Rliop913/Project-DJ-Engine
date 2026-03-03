@@ -27,7 +27,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Core_Engine" href="Core_Engine.html" />
+    <link rel="next" title="Developer_Onboarding" href="Developer_Onboarding.html" />
     <link rel="prev" title="Project-DJ-Engine – A Real‑Time Engine for Rhythm Games, DJing, and Audio Production" href="index.html" /> 
 </head>
 
@@ -53,19 +53,25 @@
               <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Core_Engine.html">Core_Engine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Input_Engine.html">Input_Engine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Judge_Engine.html">Judge_Engine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Util_Engine.html">Util_Engine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Data_Lines.html">Data_Lines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Editor_Format.html">Editor_Format</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
-<li class="toctree-l2"><a class="reference internal" href="FX_ARGS.html">FX_ARGS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-map">Documentation Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recommended-reading-order">Recommended Reading Order</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#binding-notes">Binding Notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Developer_Onboarding.html">Developer_Onboarding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Core_Engine.html">Core_Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Editor_Workflows.html">Editor_Workflows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Input_Engine.html">Input_Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Judge_Engine.html">Judge_Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Util_Engine.html">Util_Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Data_Lines.html">Data_Lines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Editor_Format.html">Editor_Format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FX_ARGS.html">FX_ARGS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PDJE_For_AI_Agents.html">PDJE_For_AI_Agents</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api/api_root.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Editor_Format.html">Editor_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -94,19 +100,82 @@
              
   <section id="getting-started">
 <h1>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h1>
+<p>This section collects the hand-written guides that sit above the generated API
+reference. Use these pages first when you want the current engine layout,
+expected control flow, and high-level integration notes.</p>
+<p>The landing page <a class="reference internal" href="index.html"><span class="doc">Project-DJ-Engine – A Real‑Time Engine for Rhythm Games, DJing, and Audio Production</span></a> now also carries the broader project overview,
+use-case framing, and repository automation context that sit above these
+workflow guides.</p>
+<section id="documentation-map">
+<h2>Documentation Map<a class="headerlink" href="#documentation-map" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="Developer_Onboarding.html"><span class="doc">Developer_Onboarding</span></a> gives new developers an integration-first map of
+the project, build reality, useful domain terms, and source-tree orientation.</p></li>
+<li><p><a class="reference internal" href="Core_Engine.html"><span class="doc">Core_Engine</span></a> covers the main <cite>PDJE</cite> facade, playback lifecycle, and
+editor entry points.</p></li>
+<li><p><a class="reference internal" href="Editor_Workflows.html"><span class="doc">Editor_Workflows</span></a> covers project authoring, typed mutations, render and
+push behavior, preview playback, and history-oriented editor operations.</p></li>
+<li><p><a class="reference internal" href="Input_Engine.html"><span class="doc">Input_Engine</span></a> covers keyboard, mouse, and MIDI ingestion through
+<cite>PDJE_Input</cite>.</p></li>
+<li><p><a class="reference internal" href="Judge_Engine.html"><span class="doc">Judge_Engine</span></a> covers <cite>PDJE_JUDGE::JUDGE</cite>, <cite>Judge_Init</cite>, and the
+note-matching pipeline.</p></li>
+<li><p><a class="reference internal" href="Util_Engine.html"><span class="doc">Util_Engine</span></a> covers the header-first <cite>PDJE_UTIL</cite> layer and its common,
+database, and function helpers.</p></li>
+<li><p><a class="reference internal" href="Data_Lines.html"><span class="doc">Data_Lines</span></a> explains the zero-copy data-line structs shared between
+modules.</p></li>
+<li><p><a class="reference internal" href="Editor_Format.html"><span class="doc">Editor_Format</span></a> describes the editor-facing JSON and binary data shapes.</p></li>
+<li><p><a class="reference internal" href="FX_ARGS.html"><span class="doc">FX_ARGS</span></a> lists the current runtime FX argument keys exposed by manual
+control panels.</p></li>
+<li><p><a class="reference internal" href="PDJE_For_AI_Agents.html"><span class="doc">PDJE_For_AI_Agents</span></a> grounds AI agents that need to explain PDJE to
+users accurately.</p></li>
+</ul>
+</section>
+<section id="recommended-reading-order">
+<h2>Recommended Reading Order<a class="headerlink" href="#recommended-reading-order" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Read <a class="reference internal" href="Developer_Onboarding.html"><span class="doc">Developer_Onboarding</span></a> if you are new to the project.</p></li>
+<li><p>Read <a class="reference internal" href="Core_Engine.html"><span class="doc">Core_Engine</span></a> if you are embedding the engine from an application.</p></li>
+<li><p>Read <a class="reference internal" href="Editor_Workflows.html"><span class="doc">Editor_Workflows</span></a> if you create or mutate project content.</p></li>
+<li><p>Read <a class="reference internal" href="Input_Engine.html"><span class="doc">Input_Engine</span></a> and <a class="reference internal" href="Judge_Engine.html"><span class="doc">Judge_Engine</span></a> together if you are
+building rhythm-game style gameplay.</p></li>
+<li><p>Read <a class="reference internal" href="Data_Lines.html"><span class="doc">Data_Lines</span></a> before polling playback or input state from another
+thread.</p></li>
+<li><p>Read <a class="reference internal" href="Editor_Format.html"><span class="doc">Editor_Format</span></a> if you are generating or inspecting editor data on
+disk.</p></li>
+<li><p>Read <a class="reference internal" href="PDJE_For_AI_Agents.html"><span class="doc">PDJE_For_AI_Agents</span></a> when the consumer is an AI system that must
+explain PDJE accurately.</p></li>
+<li><p>Use <a class="reference internal" href="api/api_root.html"><span class="doc">API Reference</span></a> for symbol-by-symbol API lookup after the workflow
+docs above.</p></li>
+</ol>
+</section>
+<section id="binding-notes">
+<h2>Binding Notes<a class="headerlink" href="#binding-notes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><cite>Core_Engine</cite> restores the older wrapper-oriented guidance for the C#,
+Python, and Godot-facing playback/editor path.</p></li>
+<li><p><cite>Input_Engine</cite> and <cite>Judge_Engine</cite> keep the Godot wrapper flow documented and
+also call out that the in-tree SWIG outputs do not currently expose those
+modules as first-class bindings.</p></li>
+<li><p><cite>Data_Lines</cite> explains which live structs are directly readable in native C++
+and which wrapper paths only expose opaque handles or higher-level helper
+objects.</p></li>
+</ul>
 <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<p class="caption" role="heading"><span class="caption-text">Guides</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="Developer_Onboarding.html">Developer_Onboarding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Core_Engine.html">Core_Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Editor_Workflows.html">Editor_Workflows</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Input_Engine.html">Input_Engine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Judge_Engine.html">Judge_Engine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Util_Engine.html">Util_Engine</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Data_Lines.html">Data_Lines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Editor_Format.html">Editor_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
 <li class="toctree-l1"><a class="reference internal" href="FX_ARGS.html">FX_ARGS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PDJE_For_AI_Agents.html">PDJE_For_AI_Agents</a></li>
 </ul>
 </div>
+</section>
 </section>
 
 
@@ -114,7 +183,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="Project-DJ-Engine – A Real‑Time Engine for Rhythm Games, DJing, and Audio Production" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Core_Engine.html" class="btn btn-neutral float-right" title="Core_Engine" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Developer_Onboarding.html" class="btn btn-neutral float-right" title="Developer_Onboarding" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -106,6 +106,11 @@ set(PDJE_INCLUDE_GLOBAL
   ${PDJE_INCLUDE_ROOT}/include/global/DataLines
   ${PDJE_INCLUDE_ROOT}/include/global/Crypto
 )
+
+set(PDJE_INCLUDE_UTIL
+  ${PDJE_INCLUDE_ROOT}/include
+)
+
 if(WIN32)
   list(APPEND PDJE_INCLUDE_GLOBAL
     ${PDJE_INCLUDE_ROOT}/include/global/Highres_Clock/Windows

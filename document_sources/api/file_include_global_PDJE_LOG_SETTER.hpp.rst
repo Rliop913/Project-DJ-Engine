@@ -35,19 +35,19 @@ Includes
 --------
 
 
-- ``filesystem``
+- ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_global_PDJE_EXPORT_SETTER.hpp`)
 
-- ``mutex`` (:ref:`file_include_input_IPC_memory_ipc_named_mutex.hpp`)
+- ``PDJE_LOG_RUNTIME_API.h`` (:ref:`file_include_global_PDJE_LOG_RUNTIME_API.h`)
 
-- ``spdlog/sinks/basic_file_sink.h``
+- ``exception``
 
-- ``spdlog/sinks/stdout_color_sinks.h``
+- ``spdlog/fmt/fmt.h``
 
 - ``spdlog/spdlog.h``
 
 - ``string_view``
 
-- ``type_traits``
+- ``utility``
 
 
 
@@ -105,6 +105,8 @@ Included By
 
 - :ref:`file_include_core_db_trackDB.cpp`
 
+- :ref:`file_include_core_editor_TimeLine_DiffMachine_TimeLineDiffMachine.cpp`
+
 - :ref:`file_include_core_editor_TimeLine_EventMarker_EventMarker.hpp`
 
 - :ref:`file_include_core_editor_TimeLine_GitDataPack_GitDatas.hpp`
@@ -114,6 +116,8 @@ Included By
 - :ref:`file_include_core_editor_TimeLine_JSONWrap_jsonWrapper.hpp`
 
 - :ref:`file_include_core_editor_TimeLine_LineVersion_LineVersion.cpp`
+
+- :ref:`file_include_core_editor_TimeLine_TimeLine.cpp`
 
 - :ref:`file_include_core_editor_TimeLine_TimeLine.hpp`
 
@@ -133,11 +137,15 @@ Included By
 
 - :ref:`file_include_global_DataLines_fileNameSanitizer.cpp`
 
+- :ref:`file_include_global_PDJE_LOG_SETTER.cpp`
+
 - :ref:`file_include_global_PDJE_RAII_WRAP.hpp`
 
 - :ref:`file_include_input_DefaultDevs_linux_DefaultDevs.hpp`
 
 - :ref:`file_include_input_DefaultDevs_linux_InputCore.cpp`
+
+- :ref:`file_include_input_DefaultDevs_linux_wayland_things_WaylandInputCore.cpp`
 
 - :ref:`file_include_input_IPC_common_ipc_util.hpp`
 
@@ -160,9 +168,36 @@ Included By
 
 
 
+Namespaces
+----------
+
+
+- :ref:`namespace_PDJE_LOG_DETAIL`
+
+
 Functions
 ---------
 
+
+- :ref:`exhale_function_namespacePDJE__LOG__DETAIL_1a1d5e43c742f9573b552e5af26ddb2d75`
+
+- :ref:`exhale_function_namespacePDJE__LOG__DETAIL_1ac993d88cb68b0496900c3aff1707c5be`
+
+- :ref:`exhale_function_namespacePDJE__LOG__DETAIL_1a0ac70731f5d92b0059a07ed2544ed876`
+
+- :ref:`exhale_function_namespacePDJE__LOG__DETAIL_1a37d3b462e363785e8639714b1c346bec`
+
+- :ref:`exhale_function_namespacePDJE__LOG__DETAIL_1a8cf6dc50e37344e1113e4112bd5f9ea3`
+
+- :ref:`exhale_function_namespacePDJE__LOG__DETAIL_1a5e93659ee07d2be7f03ca641535958f9`
+
+- :ref:`exhale_function_namespacePDJE__LOG__DETAIL_1ae18d2bcca09be1d547f3697bd4c2c6af`
+
+- :ref:`exhale_function_namespacePDJE__LOG__DETAIL_1a8fbbbb6ecf4d5cf3365296b04d2c7636`
+
+- :ref:`exhale_function_namespacePDJE__LOG__DETAIL_1a7140251b9a3cfff2fa2f61000b80060d`
+
+- :ref:`exhale_function_PDJE__LOG__SETTER_8hpp_1aa34453b30c474e0e23518fdfe3e57a3d`
 
 - :ref:`exhale_function_PDJE__LOG__SETTER_8hpp_1a27caf5fb9d1eed1f15d54bab91b74f36`
 

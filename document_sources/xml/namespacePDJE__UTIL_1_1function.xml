@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="namespacePDJE__UTIL_1_1function" kind="namespace" language="C++">
+    <compoundname>PDJE_UTIL::function</compoundname>
+    <innerclass refid="classPDJE__UTIL_1_1function_1_1CacheContext" prot="public">PDJE_UTIL::function::CacheContext</innerclass>
+    <innerclass refid="structPDJE__UTIL_1_1function_1_1ClampArgs" prot="public">PDJE_UTIL::function::ClampArgs</innerclass>
+    <innerclass refid="structPDJE__UTIL_1_1function_1_1EvalOptions" prot="public">PDJE_UTIL::function::EvalOptions</innerclass>
+    <innerclass refid="structPDJE__UTIL_1_1function_1_1SlugifyArgs" prot="public">PDJE_UTIL::function::SlugifyArgs</innerclass>
+    <innernamespace refid="namespacePDJE__UTIL_1_1function_1_1halide">PDJE_UTIL::function::halide</innernamespace>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespacePDJE__UTIL_1_1function_1a9e26d8c8d51b6a6306cfe8e3e197d0e6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; double &gt;</type>
+        <definition>common::Result&lt; double &gt; PDJE_UTIL::function::clamp</definition>
+        <argsstring>(ClampArgs args)</argsstring>
+        <name>clamp</name>
+        <qualifiedname>PDJE_UTIL::function::clamp</qualifiedname>
+        <param>
+          <type><ref refid="structPDJE__UTIL_1_1function_1_1ClampArgs" kindref="compound">ClampArgs</ref></type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/scalar/Clamp.hpp" line="16" column="1" bodyfile="include/util/function/scalar/Clamp.hpp" bodystart="16" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacePDJE__UTIL_1_1function_1a8a09a492f8131bd4439eea47ffc0ccd5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; std::string &gt;</type>
+        <definition>common::Result&lt; std::string &gt; PDJE_UTIL::function::slugify</definition>
+        <argsstring>(const SlugifyArgs &amp;args, EvalOptions options={})</argsstring>
+        <name>slugify</name>
+        <qualifiedname>PDJE_UTIL::function::slugify</qualifiedname>
+        <param>
+          <type>const <ref refid="structPDJE__UTIL_1_1function_1_1SlugifyArgs" kindref="compound">SlugifyArgs</ref> &amp;</type>
+          <declname>args</declname>
+        </param>
+        <param>
+          <type><ref refid="structPDJE__UTIL_1_1function_1_1EvalOptions" kindref="compound">EvalOptions</ref></type>
+          <declname>options</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/text/Slugify.hpp" line="18" column="1" bodyfile="include/util/function/text/Slugify.hpp" bodystart="18" bodyend="48"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/util/function/FunctionContext.hpp" line="3" column="1"/>
+  </compounddef>
+</doxygen>

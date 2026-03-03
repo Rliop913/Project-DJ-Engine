@@ -44,13 +44,15 @@ Includes
 
 - ``cstdint``
 
-- ``cstring``
+- ``exception``
 
 - ``fcntl.h``
 
 - ``libevdev/libevdev.h``
 
 - ``linux/input-event-codes.h``
+
+- ``rtkitcodes.hpp`` (:ref:`file_include_input_DefaultDevs_linux_rtkitcodes.hpp`)
 
 - ``string``
 

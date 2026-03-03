@@ -53,38 +53,35 @@
               <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="Getting%20Started.html">Getting Started</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="Core_Engine.html">Core_Engine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Input_Engine.html">Input_Engine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Judge_Engine.html">Judge_Engine</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Util_Engine.html">Util_Engine</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Data_Lines</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#key-properties">Key properties</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#when-to-use">When to use</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#lifetime-and-threading">Lifetime and threading</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#recommended-usage">Recommended usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Getting%20Started.html#documentation-map">Documentation Map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Getting%20Started.html#recommended-reading-order">Recommended Reading Order</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="Getting%20Started.html#binding-notes">Binding Notes</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Developer_Onboarding.html">Developer_Onboarding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Core_Engine.html">Core_Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Editor_Workflows.html">Editor_Workflows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Input_Engine.html">Input_Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Judge_Engine.html">Judge_Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Util_Engine.html">Util_Engine</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Data_Lines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#why-data-lines-exist">Why Data Lines Exist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#typical-use-cases">Typical Use Cases</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#general-rules">General Rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lifetime-threading-and-abi-notes">Lifetime, Threading, And ABI Notes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#core-data-line">Core Data Line</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#input-data-line">Input Data Line</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#binding-notes">Binding Notes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#threading-notes">Threading Notes</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#core-data-line">Core Data Line</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N4PDJE15PullOutDataLineEv"><code class="docutils literal notranslate"><span class="pre">PullOutDataLine()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv419PDJE_CORE_DATA_LINE"><code class="docutils literal notranslate"><span class="pre">PDJE_CORE_DATA_LINE</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="Editor_Format.html">Editor_Format</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FX_ARGS.html">FX_ARGS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PDJE_For_AI_Agents.html">PDJE_For_AI_Agents</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#input-data-line">Input Data Line</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv4N10PDJE_Input15PullOutDataLineEv"><code class="docutils literal notranslate"><span class="pre">PullOutDataLine()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#_CPPv420PDJE_INPUT_DATA_LINE"><code class="docutils literal notranslate"><span class="pre">PDJE_INPUT_DATA_LINE</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="Editor_Format.html">Editor_Format</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
-<li class="toctree-l2"><a class="reference internal" href="FX_ARGS.html">FX_ARGS</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api/api_root.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Editor_Format.html">Editor_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -114,52 +111,68 @@
              
   <section id="data-lines">
 <h1>Data_Lines<a class="headerlink" href="#data-lines" title="Link to this heading"></a></h1>
-<section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
-<p>A <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Line</span></code> is a lightweight transport lane that exposes the <strong>addresses of the engine’s core state variables</strong> to external modules.
-It lets you read values such as frame/cursor positions and pre-rendered buffers <strong>without copying</strong> (via simple pointer dereference), enabling high-performance synchronization with visualizers, editor UIs, external runtimes, and plugins. The <strong>Core Data Line</strong> is the standard lane that carries the <strong>minimal common set</strong> managed directly by the engine core.</p>
-<section id="key-properties">
-<h3>Key properties<a class="headerlink" href="#key-properties" title="Link to this heading"></a></h3>
+<p>A data line is a lightweight transport lane that exposes addresses of live
+engine state to another module. PDJE uses data lines when another subsystem
+needs the latest playback or input state without copying whole buffers or
+rebuilding a second timing model.</p>
+<section id="why-data-lines-exist">
+<h2>Why Data Lines Exist<a class="headerlink" href="#why-data-lines-exist" title="Link to this heading"></a></h2>
+<p>The main reason to use a data line is zero-copy synchronization:</p>
 <ul class="simple">
-<li><p><strong>Zero-copy access</strong>: Values are provided as <strong>non-owning pointers</strong>.</p></li>
-<li><p><strong>Low latency</strong>: Poll or callback and dereference immediately to read the newest state.</p></li>
+<li><p>the producer keeps ownership of the live state</p></li>
+<li><p>the consumer receives a small struct of non-owning pointers</p></li>
+<li><p>polling remains cheap enough for UI, gameplay, or wrapper-side bridge code</p></li>
+</ul>
+<p>This is the mechanism used between the core, input, and judge modules.</p>
+</section>
+<section id="typical-use-cases">
+<h2>Typical Use Cases<a class="headerlink" href="#typical-use-cases" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>timeline UI that follows <cite>nowCursor</cite> and <cite>maxCursor</cite></p></li>
+<li><p>waveform preview, meters, or spectrogram-style visualizers that read
+<cite>preRenderedData</cite></p></li>
+<li><p>lightweight synchronization between playback and an external gameplay or tool
+loop</p></li>
+<li><p>judge startup, where the judge needs both the core timing line and the input
+event line</p></li>
 </ul>
 </section>
-<section id="when-to-use">
-<h3>When to use<a class="headerlink" href="#when-to-use" title="Link to this heading"></a></h3>
+<section id="general-rules">
+<h2>General Rules<a class="headerlink" href="#general-rules" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>Driving <strong>timeline UIs</strong> from playback/max cursors</p></li>
-<li><p><strong>Waveform preview, level meters, spectrograms</strong>, and other real-time visualizations</p></li>
-<li><p><strong>Lightweight interactions</strong> with FX/Music controllers (for full control, prefer each panel’s API)</p></li>
+<li><p>All members are non-owning pointers.</p></li>
+<li><p>The producing engine owns the storage behind every pointer.</p></li>
+<li><p>Resetting or recreating the producer can invalidate prior addresses.</p></li>
+<li><p>Read quickly and copy out what you need if another thread will use the data
+later.</p></li>
+<li><p>Treat these structs as read-mostly bridges. Use control-panel APIs or module
+methods for mutations instead of writing through raw pointers.</p></li>
 </ul>
 </section>
-<section id="lifetime-and-threading">
-<h3>Lifetime and threading<a class="headerlink" href="#lifetime-and-threading" title="Link to this heading"></a></h3>
+<section id="lifetime-threading-and-abi-notes">
+<h2>Lifetime, Threading, And ABI Notes<a class="headerlink" href="#lifetime-threading-and-abi-notes" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p>All members point to memory <strong>owned by the engine</strong>. Re-initialization/reset may change addresses; after such events, perform a <strong>null check</strong> and call <code class="docutils literal notranslate"><span class="pre">PullOutDataLine()</span></code> again to refresh the handles.</p></li>
-<li><p>Updates may occur on audio/engine threads. If polling from other threads, <strong>read briefly and copy locally</strong>; avoid holding pointers for long periods. If needed, use a <strong>double-buffer/snapshot</strong> pattern on the consumer side.</p></li>
-</ul>
-</section>
-<section id="recommended-usage">
-<h3>Recommended usage<a class="headerlink" href="#recommended-usage" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p><strong>Read-mostly</strong>: Treat cursors/frames/buffers as primarily <em>read-only</em>.
-Even if mutation is technically possible, for stability/portability <strong>use the ``FXControlPanel`` / ``MusicControlPanel`` APIs</strong> to change state.</p></li>
-<li><p><strong>Null/size checks</strong>: If a pointer is <code class="docutils literal notranslate"><span class="pre">nullptr</span></code> or the buffer length is unknown, do not dereference; use the engine/wrapper’s length/query APIs.</p></li>
-<li><p><strong>ABI caution</strong>: The struct layout may evolve. Check the documented versions (<code class="docutils literal notranslate"><span class="pre">PDJE_VERSION</span></code>, <code class="docutils literal notranslate"><span class="pre">PDJE_WRAPPER_VERSION</span></code>).</p></li>
+<li><p>Data lines are only valid while the producing object still owns the pointed
+storage.</p></li>
+<li><p>If you reset or recreate a player or input module, call <cite>PullOutDataLine()</cite>
+again instead of caching old pointers.</p></li>
+<li><p>Updates can happen on audio threads, backend threads, or subprocess bridges.</p></li>
+<li><p>If another thread needs long-lived access, copy the values into your own
+snapshot structure rather than keeping raw pointers.</p></li>
+<li><p>The struct layout can evolve with the project. If you expose these structs
+across another ABI boundary, treat them as version-sensitive.</p></li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>A Data Line is a <strong>set of non-owning pointers</strong>. Do not free memory or perform operations that can introduce write races.
-In concurrent environments, capture short snapshots within a small critical section; route long-lived changes through the appropriate panel APIs.</p>
+<p>A data line is a set of non-owning pointers. Do not free the memory behind
+them, and do not hold them across module teardown or reset boundaries.</p>
 </div>
-</section>
 </section>
 <section id="core-data-line">
 <h2>Core Data Line<a class="headerlink" href="#core-data-line" title="Link to this heading"></a></h2>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N4PDJE15PullOutDataLineEv">
-<span id="_CPPv3N4PDJE15PullOutDataLineEv"></span><span id="_CPPv2N4PDJE15PullOutDataLineEv"></span><span id="PDJE::PullOutDataLine"></span><span class="target" id="classPDJE_1a99c83bfe063652b508a6fd5e63e028da"></span><a class="reference internal" href="#_CPPv419PDJE_CORE_DATA_LINE" title="PDJE_CORE_DATA_LINE"><span class="n"><span class="pre">PDJE_CORE_DATA_LINE</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="Core_Engine.html#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">PullOutDataLine</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE15PullOutDataLineEv" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N4PDJE15PullOutDataLineEv"></span><span id="_CPPv2N4PDJE15PullOutDataLineEv"></span><span id="PDJE::PullOutDataLine"></span><span class="target" id="classPDJE_1a99c83bfe063652b508a6fd5e63e028da"></span><a class="reference internal" href="#_CPPv419PDJE_CORE_DATA_LINE" title="PDJE_CORE_DATA_LINE"><span class="n"><span class="pre">PDJE_CORE_DATA_LINE</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="Core_Engine.html#_CPPv44PDJE" title="PDJE"><span class="n"><span class="pre">PDJE</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">PullOutDataLine</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
 <dd></dd></dl>
 
 <dl class="cpp struct">
@@ -168,126 +181,54 @@ In concurrent environments, capture short snapshots within a small critical sect
 <dd><p>data line for transmission with other mosudles. all datas are pointer. use carefully. </p>
 </dd></dl>
 
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
-<label class="sd-tab-label" data-sync-group="code" data-sync-id="c++" for="sd-tab-item-0">
-C++</label><div class="sd-tab-content docutils">
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PDJE</span><span class="p">(</span><span class="s">&quot;database/path&quot;</span><span class="p">);</span>
-<span class="k">auto</span><span class="w"> </span><span class="n">core_line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">PullOutDataLine</span><span class="p">();</span>
-<span class="n">core_line</span><span class="p">.</span><span class="n">preRenderedData</span><span class="p">;</span>
-<span class="c1">// Pre-rendered PCM audio data (float32 array).</span>
-<span class="c1">// Interleaved stereo format: [L0, R0, L1, R1, L2, R2, ...]</span>
-<span class="c1">// To access a specific frame&#39;s left/right channels:</span>
-<span class="c1">//   Left  = preRenderedData[frameIndex * 2]</span>
-<span class="c1">//   Right = preRenderedData[frameIndex * 2 + 1]</span>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv413audioSyncData">
+<span id="_CPPv313audioSyncData"></span><span id="_CPPv213audioSyncData"></span><span id="audioSyncData"></span><span class="target" id="structaudioSyncData"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">audioSyncData</span></span></span><a class="headerlink" href="#_CPPv413audioSyncData" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
 
-<span class="n">core_line</span><span class="p">.</span><span class="n">maxCursor</span><span class="p">;</span>
-<span class="c1">// Total number of PCM frames per channel.</span>
-<span class="c1">// For stereo, preRenderedData will contain (maxCursor * 2) float samples.</span>
+<p>Field meanings in the current implementation:</p>
+<ul class="simple">
+<li><p><cite>nowCursor</cite>
+current playback position in PCM frames</p></li>
+<li><p><cite>maxCursor</cite>
+total rendered frame count</p></li>
+<li><p><cite>preRenderedData</cite>
+interleaved stereo PCM buffer when pre-rendered content exists</p></li>
+<li><p><cite>syncD</cite>
+points at <cite>audioSyncData</cite>, which carries <cite>consumed_frames</cite>,
+<cite>pre_calculated_unused_frames</cite>, and the latest <cite>microsecond</cite> timestamp</p></li>
+</ul>
+<p>This is the minimal common bridge for playback-side synchronization.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="p">.</span><span class="n">PullOutDataLine</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">line</span><span class="p">.</span><span class="n">nowCursor</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">maxCursor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">current</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">line</span><span class="p">.</span><span class="n">nowCursor</span><span class="p">;</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">line</span><span class="p">.</span><span class="n">maxCursor</span><span class="p">;</span>
+<span class="w">    </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">current</span><span class="p">;</span>
+<span class="w">    </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">total</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="n">core_line</span><span class="p">.</span><span class="n">nowCursor</span><span class="p">;</span>
-<span class="c1">// Current playback position in PCM frames (per channel).</span>
-<span class="c1">// This value can jump if seeking occurs.</span>
-<span class="c1">// Multiply by 2 to index into preRenderedData (stereo interleaving).</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">line</span><span class="p">.</span><span class="n">preRenderedData</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">nowCursor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">frame_index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">line</span><span class="p">.</span><span class="n">nowCursor</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">left</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">preRenderedData</span><span class="p">[</span><span class="n">frame_index</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">];</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">right</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">preRenderedData</span><span class="p">[</span><span class="n">frame_index</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span>
+<span class="w">    </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">left</span><span class="p">;</span>
+<span class="w">    </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">right</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">core_line</span><span class="p">.</span><span class="n">syncD</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">sync</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">core_line</span><span class="p">.</span><span class="n">syncD</span><span class="o">-&gt;</span><span class="n">load</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">memory_order_acquire</span><span class="p">);</span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">consumed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sync</span><span class="p">.</span><span class="n">consumed_frames</span><span class="p">;</span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">pre_calculated_unused</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sync</span><span class="p">.</span><span class="n">pre_calculated_unused_frames</span><span class="p">;</span>
-<span class="w">    </span><span class="c1">// consumed: frames consumed by audio callback timeline.</span>
-<span class="w">    </span><span class="c1">// pre_calculated_unused: backend-reported queued-but-not-yet-consumed frames.</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">line</span><span class="p">.</span><span class="n">syncD</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">sync</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">syncD</span><span class="o">-&gt;</span><span class="n">load</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">memory_order_acquire</span><span class="p">);</span>
+<span class="w">    </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">sync</span><span class="p">.</span><span class="n">consumed_frames</span><span class="p">;</span>
+<span class="w">    </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">sync</span><span class="p">.</span><span class="n">pre_calculated_unused_frames</span><span class="p">;</span>
+<span class="w">    </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">sync</span><span class="p">.</span><span class="n">microsecond</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
-</div>
-</div>
-<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
-<label class="sd-tab-label" data-sync-group="code" data-sync-id="c#" for="sd-tab-item-1">
-C#</label><div class="sd-tab-content docutils">
-<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="n">PDJE</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PDJE</span><span class="p">(</span><span class="s">&quot;database/path&quot;</span><span class="p">);</span>
-<span class="kt">var</span><span class="w"> </span><span class="n">core_line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="p">.</span><span class="n">PullOutDataLine</span><span class="p">();</span>
-<span class="n">core_line</span><span class="p">.</span><span class="n">preRenderedData</span><span class="p">;</span>
-<span class="c1">// Pre-rendered PCM audio data (float32 array).</span>
-<span class="c1">// Interleaved stereo format: [L0, R0, L1, R1, L2, R2, ...]</span>
-<span class="c1">// To access a specific frame&#39;s left/right channels:</span>
-<span class="c1">//   Left  = preRenderedData[frameIndex * 2]</span>
-<span class="c1">//   Right = preRenderedData[frameIndex * 2 + 1]</span>
-
-<span class="n">core_line</span><span class="p">.</span><span class="n">maxCursor</span><span class="p">;</span>
-<span class="c1">// Total number of PCM frames per channel.</span>
-<span class="c1">// For stereo, preRenderedData will contain (maxCursor * 2) float samples.</span>
-
-<span class="n">core_line</span><span class="p">.</span><span class="n">nowCursor</span><span class="p">;</span>
-<span class="c1">// Current playback position in PCM frames (per channel).</span>
-<span class="c1">// This value can jump if seeking occurs.</span>
-<span class="c1">// Multiply by 2 to index into preRenderedData (stereo interleaving).</span>
-
-<span class="c1">// Core sync data is exposed via core_line.syncD.</span>
-<span class="c1">// Read consumed_frames / pre_calculated_unused_frames from syncD.</span>
-</pre></div>
-</div>
-</div>
-<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
-<label class="sd-tab-label" data-sync-group="code" data-sync-id="python" for="sd-tab-item-2">
-PYTHON</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pdje_POLYGLOT</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pypdje</span>
-<span class="n">engine</span> <span class="o">=</span> <span class="n">pypdje</span><span class="o">.</span><span class="n">PDJE</span><span class="p">(</span><span class="s2">&quot;database/path&quot;</span><span class="p">)</span>
-<span class="n">core_line</span> <span class="o">=</span> <span class="n">engine</span><span class="o">.</span><span class="n">PullOutDataLine</span><span class="p">()</span>
-<span class="n">core_line</span><span class="o">.</span><span class="n">preRenderedData</span>
-<span class="c1"># Pre-rendered PCM audio data (float32 array).</span>
-<span class="c1"># Interleaved stereo format: [L0, R0, L1, R1, L2, R2, ...]</span>
-<span class="c1"># To access a specific frame&#39;s left/right channels:</span>
-<span class="c1">#   Left  = preRenderedData[frameIndex * 2]</span>
-<span class="c1">#   Right = preRenderedData[frameIndex * 2 + 1]</span>
-
-<span class="n">core_line</span><span class="o">.</span><span class="n">maxCursor</span>
-<span class="c1"># Total number of PCM frames per channel.</span>
-<span class="c1"># For stereo, preRenderedData will contain (maxCursor * 2) float samples.</span>
-
-<span class="n">core_line</span><span class="o">.</span><span class="n">nowCursor</span>
-<span class="c1"># Current playback position in PCM frames (per channel).</span>
-<span class="c1"># This value can jump if seeking occurs.</span>
-<span class="c1"># Multiply by 2 to index into preRenderedData (stereo interleaving).</span>
-
-<span class="c1"># Core sync data is exposed via core_line.syncD.</span>
-<span class="c1"># Read consumed_frames / pre_calculated_unused_frames from syncD.</span>
-</pre></div>
-</div>
-</div>
-<input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
-<label class="sd-tab-label" data-sync-group="code" data-sync-id="gdscript" for="sd-tab-item-3">
-GDSCRIPT</label><div class="sd-tab-content docutils">
-<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">engine</span><span class="p">:</span><span class="n">PDJE_Wrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Wrapper</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
-<span class="n">engine</span><span class="o">.</span><span class="n">InitEngine</span><span class="p">(</span><span class="s2">&quot;res://database/path&quot;</span><span class="p">)</span>
-<span class="k">var</span><span class="w"> </span><span class="n">core_line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">.</span><span class="n">PullOutCoreLine</span><span class="p">()</span>
-
-<span class="n">core_line</span><span class="o">.</span><span class="n">GetPreRenderedFrames</span><span class="p">()</span>
-<span class="c1"># Pre-rendered PCM audio data (float32 array).</span>
-<span class="c1"># Interleaved stereo format: [L0, R0, L1, R1, L2, R2, ...]</span>
-<span class="c1"># To access a specific frame&#39;s left/right channels:</span>
-<span class="c1">#   Left  = preRenderedData[frameIndex * 2]</span>
-<span class="c1">#   Right = preRenderedData[frameIndex * 2 + 1]</span>
-
-<span class="n">core_line</span><span class="o">.</span><span class="n">GetMaxCursor</span><span class="p">()</span>
-<span class="c1"># Total number of PCM frames per channel.</span>
-<span class="c1"># For stereo, preRenderedData will contain (maxCursor * 2) float samples.</span>
-
-<span class="n">core_line</span><span class="o">.</span><span class="n">GetNowCursor</span><span class="p">()</span>
-<span class="c1"># Current playback position in PCM frames (per channel).</span>
-<span class="c1"># This value can jump if seeking occurs.</span>
-<span class="c1"># Multiply by 2 to index into preRenderedData (stereo interleaving).</span>
-
-<span class="c1"># For wrapper bindings, read the sync object exposed by the core line.</span>
-<span class="c1"># Use consumed_frames / pre_calculated_unused_frames from that sync data.</span>
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="input-data-line">
 <h2>Input Data Line<a class="headerlink" href="#input-data-line" title="Link to this heading"></a></h2>
 <dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N10PDJE_Input15PullOutDataLineEv">
-<span id="_CPPv3N10PDJE_Input15PullOutDataLineEv"></span><span id="_CPPv2N10PDJE_Input15PullOutDataLineEv"></span><span id="PDJE_Input::PullOutDataLine"></span><span class="target" id="classPDJE__Input_1ac4a8a1fc6bce51c498176db187c03e34"></span><a class="reference internal" href="#_CPPv420PDJE_INPUT_DATA_LINE" title="PDJE_INPUT_DATA_LINE"><span class="n"><span class="pre">PDJE_INPUT_DATA_LINE</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="api/classPDJE__Input.html#_CPPv410PDJE_Input" title="PDJE_Input"><span class="n"><span class="pre">PDJE_Input</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">PullOutDataLine</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10PDJE_Input15PullOutDataLineEv" title="Link to this definition"></a><br /></dt>
+<span id="_CPPv3N10PDJE_Input15PullOutDataLineEv"></span><span id="_CPPv2N10PDJE_Input15PullOutDataLineEv"></span><span id="PDJE_Input::PullOutDataLine"></span><span class="target" id="classPDJE__Input_1ac4a8a1fc6bce51c498176db187c03e34"></span><a class="reference internal" href="#_CPPv420PDJE_INPUT_DATA_LINE" title="PDJE_INPUT_DATA_LINE"><span class="n"><span class="pre">PDJE_INPUT_DATA_LINE</span></span></a><span class="w"> </span><span class="sig-prename descclassname"><a class="reference internal" href="Input_Engine.html#_CPPv410PDJE_Input" title="PDJE_Input"><span class="n"><span class="pre">PDJE_Input</span></span></a><span class="p"><span class="pre">::</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">PullOutDataLine</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N10PDJE_Input15PullOutDataLineEv" title="Link to this definition"></a><br /></dt>
 <dd><p>pull out input data line. The input Loop will pass datas in here. </p>
 </dd></dl>
 
@@ -296,53 +237,83 @@ GDSCRIPT</label><div class="sd-tab-content docutils">
 <span id="_CPPv320PDJE_INPUT_DATA_LINE"></span><span id="_CPPv220PDJE_INPUT_DATA_LINE"></span><span id="PDJE_INPUT_DATA_LINE"></span><span class="target" id="structPDJE__INPUT__DATA__LINE"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PDJE_INPUT_DATA_LINE</span></span></span><a class="headerlink" href="#_CPPv420PDJE_INPUT_DATA_LINE" title="Link to this definition"></a><br /></dt>
 <dd></dd></dl>
 
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
-<label class="sd-tab-label" data-sync-group="code" data-sync-id="c++" for="sd-tab-item-4">
-C++</label><div class="sd-tab-content docutils">
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">dline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pdje_input_object</span><span class="p">.</span><span class="n">PullOutDataLine</span><span class="p">();</span>
-<span class="n">pdje_input_object</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span>
-<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">dline</span><span class="p">.</span><span class="n">input_arena</span><span class="o">-&gt;</span><span class="n">Receive</span><span class="p">();</span>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv414PDJE_Input_Log">
+<span id="_CPPv314PDJE_Input_Log"></span><span id="_CPPv214PDJE_Input_Log"></span><span id="PDJE_Input_Log"></span><span class="target" id="structPDJE__Input__Log"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">PDJE_Input_Log</span></span></span><a class="headerlink" href="#_CPPv414PDJE_Input_Log" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
 
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">dline</span><span class="p">.</span><span class="n">input_arena</span><span class="o">-&gt;</span><span class="n">datas</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">name</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">name_len</span><span class="p">);</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;name: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;time: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">microSecond</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">PDJE_Dev_Type</span><span class="o">::</span><span class="n">KEYBOARD</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span>
-<span class="w">                </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;keyNumber: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">event</span><span class="p">.</span><span class="n">keyboard</span><span class="p">.</span><span class="n">k</span><span class="p">)</span>
-<span class="w">                </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="c1">// check PDJE_KEY::</span>
-<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;pressed: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">event</span><span class="p">.</span><span class="n">keyboard</span><span class="p">.</span><span class="n">pressed</span>
-<span class="w">                      </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
+<p><cite>PDJE_INPUT_DATA_LINE</cite> exposes two independent channels:</p>
+<ul class="simple">
+<li><p><cite>input_arena</cite>
+standard keyboard and mouse transport. Call <cite>Receive()</cite> and then inspect the
+<cite>datas</cite> vector of <cite>PDJE_Input_Log</cite>.</p></li>
+<li><p><cite>midi_datas</cite>
+atomic double buffer of <cite>PDJE_MIDI::MIDI_EV</cite>. Call <cite>Get()</cite> to swap the
+active buffer and inspect the returned vector snapshot.</p></li>
+</ul>
+<p>This split matters operationally:</p>
+<ul class="simple">
+<li><p><cite>input_arena</cite> is the current judge-facing standard-input bridge</p></li>
+<li><p><cite>midi_datas</cite> is the MIDI event stream and can be consumed independently</p></li>
+</ul>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">auto</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="p">.</span><span class="n">PullOutDataLine</span><span class="p">();</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">line</span><span class="p">.</span><span class="n">input_arena</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">line</span><span class="p">.</span><span class="n">input_arena</span><span class="o">-&gt;</span><span class="n">Receive</span><span class="p">();</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">event</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">input_arena</span><span class="o">-&gt;</span><span class="n">datas</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">name</span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">event</span><span class="p">.</span><span class="n">name_len</span><span class="p">);</span>
+<span class="w">        </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">name</span><span class="p">;</span>
+<span class="w">        </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">event</span><span class="p">.</span><span class="n">microSecond</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">line</span><span class="p">.</span><span class="n">midi_datas</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="o">*</span><span class="n">midi_events</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">midi_datas</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">();</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">event</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="o">*</span><span class="n">midi_events</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">port_name</span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">port_name</span><span class="p">,</span><span class="w"> </span><span class="n">event</span><span class="p">.</span><span class="n">port_name_len</span><span class="p">);</span>
+<span class="w">        </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">port_name</span><span class="p">;</span>
+<span class="w">        </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">event</span><span class="p">.</span><span class="n">highres_time</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-</div>
-<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
-<label class="sd-tab-label" data-sync-group="code" data-sync-id="c#" for="sd-tab-item-5">
-C#</label><div class="sd-tab-content docutils">
-<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="c1">//no impl</span>
+</section>
+<section id="binding-notes">
+<h2>Binding Notes<a class="headerlink" href="#binding-notes" title="Link to this heading"></a></h2>
+<p>The older docs also described wrapper access patterns. The current state is:</p>
+<ul class="simple">
+<li><p>native C++ can read the struct fields directly</p></li>
+<li><p>the current SWIG C# and Python core bindings return opaque
+<cite>SWIGTYPE_p_PDJE_CORE_DATA_LINE</cite> handles from <cite>PullOutDataLine()</cite> rather than
+field-by-field wrapper objects</p></li>
+<li><p>the Godot-facing wrapper path exposes helper accessors for the core line and
+uses <cite>InputLine</cite> signals for input delivery instead of raw
+<cite>PDJE_INPUT_DATA_LINE</cite> pointers</p></li>
+</ul>
+<p>Example Godot-side core access:</p>
+<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">engine</span><span class="p">:</span><span class="n">PDJE_Wrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Wrapper</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">InitEngine</span><span class="p">(</span><span class="s2">&quot;res://database/path&quot;</span><span class="p">)</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">core_line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">.</span><span class="n">PullOutCoreLine</span><span class="p">()</span>
+<span class="k">var</span><span class="w"> </span><span class="n">frames</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">core_line</span><span class="o">.</span><span class="n">GetPreRenderedFrames</span><span class="p">()</span>
+<span class="k">var</span><span class="w"> </span><span class="n">max_cursor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">core_line</span><span class="o">.</span><span class="n">GetMaxCursor</span><span class="p">()</span>
+<span class="k">var</span><span class="w"> </span><span class="n">now_cursor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">core_line</span><span class="o">.</span><span class="n">GetNowCursor</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">frames</span><span class="o">.</span><span class="n">size</span><span class="p">(),</span><span class="w"> </span><span class="n">max_cursor</span><span class="p">,</span><span class="w"> </span><span class="n">now_cursor</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<input id="sd-tab-item-6" name="sd-tab-set-1" type="radio">
-<label class="sd-tab-label" data-sync-group="code" data-sync-id="python" for="sd-tab-item-6">
-PYTHON</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#no impl</span>
-</pre></div>
-</div>
-</div>
-<input id="sd-tab-item-7" name="sd-tab-set-1" type="radio">
-<label class="sd-tab-label" data-sync-group="code" data-sync-id="gdscript" for="sd-tab-item-7">
-GDSCRIPT</label><div class="sd-tab-content docutils">
-<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="c1">#see Input Engine document.</span>
-</pre></div>
-</div>
-</div>
-</div>
+<p>For the Godot-side input wrapper path, see <a class="reference internal" href="Input_Engine.html"><span class="doc">Input_Engine</span></a>.</p>
+</section>
+<section id="threading-notes">
+<h2>Threading Notes<a class="headerlink" href="#threading-notes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>On the core side, the audio thread updates the cursor and sync data.</p></li>
+<li><p>On the input side, backend threads or subprocess bridges update event
+storage.</p></li>
+<li><p>Consumers should not hold the raw pointers longer than needed.</p></li>
+<li><p>If you rebuild the player or input module, reacquire the line instead of
+caching old pointers.</p></li>
+</ul>
 </section>
 </section>
 

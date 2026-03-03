@@ -1,0 +1,235 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="group__iface__xdg__popup" kind="group">
+    <compoundname>iface_xdg_popup</compoundname>
+    <title>The xdg_popup interface</title>
+    <innerclass refid="structxdg__popup__listener" prot="public">xdg_popup_listener</innerclass>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__iface__xdg__popup_1ga1a9e0b4f79b796230f005af1167904bb" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int xdg_popup_add_listener</definition>
+        <argsstring>(struct xdg_popup *xdg_popup, const struct xdg_popup_listener *listener, void *data)</argsstring>
+        <name>xdg_popup_add_listener</name>
+        <param>
+          <type>struct xdg_popup *</type>
+          <declname>xdg_popup</declname>
+        </param>
+        <param>
+          <type>const struct <ref refid="structxdg__popup__listener" kindref="compound">xdg_popup_listener</ref> *</type>
+          <declname>listener</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="2222" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="2222" bodyend="2227"/>
+      </memberdef>
+      <memberdef kind="function" id="group__iface__xdg__popup_1ga0ec0a6725799bbe2d04dd68107a8f473" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void xdg_popup_set_user_data</definition>
+        <argsstring>(struct xdg_popup *xdg_popup, void *user_data)</argsstring>
+        <name>xdg_popup_set_user_data</name>
+        <param>
+          <type>struct xdg_popup *</type>
+          <declname>xdg_popup</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="2261" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="2261" bodyend="2264"/>
+      </memberdef>
+      <memberdef kind="function" id="group__iface__xdg__popup_1gae38bef1fbc1541a49aafdeddb412e107" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void *</type>
+        <definition>static void * xdg_popup_get_user_data</definition>
+        <argsstring>(struct xdg_popup *xdg_popup)</argsstring>
+        <name>xdg_popup_get_user_data</name>
+        <param>
+          <type>struct xdg_popup *</type>
+          <declname>xdg_popup</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="2268" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="2268" bodyend="2271"/>
+      </memberdef>
+      <memberdef kind="function" id="group__iface__xdg__popup_1gaaa662105930acc53ddce8419f56c7c00" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void xdg_popup_destroy</definition>
+        <argsstring>(struct xdg_popup *xdg_popup)</argsstring>
+        <name>xdg_popup_destroy</name>
+        <param>
+          <type>struct xdg_popup *</type>
+          <declname>xdg_popup</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This destroys the popup. Explicitly destroying the xdg_popup object will also dismiss the popup, and unmap the surface.</para>
+<para>If this xdg_popup is not the &quot;topmost&quot; popup, the xdg_wm_base.not_the_topmost_popup protocol error will be sent. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="2289" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="2289" bodyend="2293"/>
+      </memberdef>
+      <memberdef kind="function" id="group__iface__xdg__popup_1ga66acdd5966687692ca5e8a7e0f259187" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void xdg_popup_grab</definition>
+        <argsstring>(struct xdg_popup *xdg_popup, struct wl_seat *seat, uint32_t serial)</argsstring>
+        <name>xdg_popup_grab</name>
+        <param>
+          <type>struct xdg_popup *</type>
+          <declname>xdg_popup</declname>
+        </param>
+        <param>
+          <type>struct wl_seat *</type>
+          <declname>seat</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>serial</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This request makes the created popup take an explicit grab. An explicit grab will be dismissed when the user dismisses the popup, or when the client destroys the xdg_popup. This can be done by the user clicking outside the surface, using the keyboard, or even locking the screen through closing the lid or a timeout.</para>
+<para>If the compositor denies the grab, the popup will be immediately dismissed.</para>
+<para>This request must be used in response to some sort of user action like a button press, key press, or touch down event. The serial number of the event should be passed as &apos;serial&apos;.</para>
+<para>The parent of a grabbing popup must either be an xdg_toplevel surface or another xdg_popup with an explicit grab. If the parent is another xdg_popup it means that the popups are nested, with this popup now being the topmost popup.</para>
+<para>Nested popups must be destroyed in the reverse order they were created in, e.g. the only popup you are allowed to destroy at all times is the topmost one.</para>
+<para>When compositors choose to dismiss a popup, they may dismiss every nested grabbing popup as well. When a compositor dismisses popups, it will follow the same dismissing order as required from the client.</para>
+<para>If the topmost grabbing popup is destroyed, the grab will be returned to the parent of the popup, if that parent previously had an explicit grab.</para>
+<para>If the parent is a grabbing popup which has already been dismissed, this popup will be immediately dismissed. If the parent is a popup that did not take an explicit grab, an error will be raised.</para>
+<para>During a popup grab, the client owning the grab will receive pointer and touch events for all their surfaces as normal (similar to an &quot;owner-events&quot; grab in X11 parlance), while the top most grabbing popup will always have keyboard focus. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="2337" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="2337" bodyend="2341"/>
+      </memberdef>
+      <memberdef kind="function" id="group__iface__xdg__popup_1gafe1fb0b436a1a2909537d822865ffaa0" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void xdg_popup_reposition</definition>
+        <argsstring>(struct xdg_popup *xdg_popup, struct xdg_positioner *positioner, uint32_t token)</argsstring>
+        <name>xdg_popup_reposition</name>
+        <param>
+          <type>struct xdg_popup *</type>
+          <declname>xdg_popup</declname>
+        </param>
+        <param>
+          <type>struct xdg_positioner *</type>
+          <declname>positioner</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>token</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Reposition an already-mapped popup. The popup will be placed given the details in the passed xdg_positioner object, and a xdg_popup.repositioned followed by xdg_popup.configure and xdg_surface.configure will be emitted in response. Any parameters set by the previous positioner will be discarded.</para>
+<para>The passed token will be sent in the corresponding xdg_popup.repositioned event. The new popup position will not take effect until the corresponding configure event is acknowledged by the client. See xdg_popup.repositioned for details. The token itself is opaque, and has no other special meaning.</para>
+<para>If multiple reposition requests are sent, the compositor may skip all but the last one.</para>
+<para>If the popup is repositioned in response to a configure event for its parent, the client should send an xdg_positioner.set_parent_configure and possibly an xdg_positioner.set_parent_size request to allow the compositor to properly constrain the popup.</para>
+<para>If the popup is repositioned together with a parent that is being resized, but not in response to a configure event, the client should send an xdg_positioner.set_parent_size request. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="2371" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="2371" bodyend="2375"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__iface__xdg__popup_1ga151eed04f49621104c98c93464d442ae" prot="public" static="no">
+        <name>XDG_POPUP_CONFIGURE_SINCE_VERSION</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="2236" column="9" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="2236" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__iface__xdg__popup_1ga78a80519c46f9099cd029ca172705560" prot="public" static="no">
+        <name>XDG_POPUP_POPUP_DONE_SINCE_VERSION</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="2240" column="9" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="2240" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__iface__xdg__popup_1ga6cc7c8701bd4f58a8aced886013c543b" prot="public" static="no">
+        <name>XDG_POPUP_REPOSITIONED_SINCE_VERSION</name>
+        <initializer>3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="2244" column="9" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="2244" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__iface__xdg__popup_1ga13f61af07a0ecea6d3b433e6e8e06879" prot="public" static="no">
+        <name>XDG_POPUP_DESTROY_SINCE_VERSION</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="2249" column="9" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="2249" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__iface__xdg__popup_1gaa676f7d60bed3ef08d1bad3b74a0ae11" prot="public" static="no">
+        <name>XDG_POPUP_GRAB_SINCE_VERSION</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="2253" column="9" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="2253" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__iface__xdg__popup_1ga3e6c85e3b3917e49583704925c1be3d4" prot="public" static="no">
+        <name>XDG_POPUP_REPOSITION_SINCE_VERSION</name>
+        <initializer>3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="2257" column="9" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="2257" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A popup surface is a short-lived, temporary surface. It can be used to implement for example menus, popovers, tooltips and other similar user interface concepts.</para>
+<para>A popup can be made to take an explicit grab. See xdg_popup.grab for details.</para>
+<para>When the popup is dismissed, a popup_done event will be sent out, and at the same time the surface will be unmapped. See the xdg_popup.popup_done event for details.</para>
+<para>Explicitly destroying the xdg_popup object will also dismiss the popup and unmap the surface. Clients that want to dismiss the popup when another surface of their own is clicked should dismiss the popup using the destroy request.</para>
+<para>A newly created xdg_popup will be stacked on top of all previously created xdg_popup surfaces associated with the same xdg_toplevel.</para>
+<para>The parent of an xdg_popup must be mapped (see the xdg_surface description) before the xdg_popup itself.</para>
+<para>The client must call wl_surface.commit on the corresponding wl_surface for the xdg_popup state to take effect. </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

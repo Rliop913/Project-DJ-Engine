@@ -32,13 +32,11 @@ Includes
 
 - ``CapnpBinary.hpp`` (:ref:`file_include_core_db_Capnp_CapnpBinary_CapnpBinary.hpp`)
 
-- ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_global_PDJE_EXPORT_SETTER.hpp`)
-
-- ``algorithm``
-
-- ``cmath``
+- ``FrameCalcCore.hpp`` (:ref:`file_include_core_db_Capnp_Translators_FrameCalcCore.hpp`)
 
 - ``hwy/aligned_allocator.h``
+
+- ``vector``
 
 
 
@@ -60,8 +58,6 @@ Included By
 
 - :ref:`file_include_core_audioRender_MixMachine_MiniaudioObjects_Decoder.hpp`
 
-- :ref:`file_include_core_db_Capnp_Translators_FrameCalc.cpp`
-
 - :ref:`file_include_core_db_Capnp_Translators_MixTranslator_Bpm.hpp`
 
 - :ref:`file_include_core_db_Capnp_Translators_MixTranslator_Mix.hpp`
@@ -73,37 +69,11 @@ Included By
 
 
 
-Namespaces
-----------
-
-
-- :ref:`namespace_FrameCalc`
-
-
 Classes
 -------
 
 
-- :ref:`exhale_struct_structBpmFragment`
-
-- :ref:`exhale_struct_structBpmStruct`
-
 - :ref:`exhale_struct_structMixStruct`
-
-
-Defines
--------
-
-
-- :ref:`exhale_define_FrameCalc_8hpp_1a9fda6fc883a43c8152d04158950473e1`
-
-- :ref:`exhale_define_FrameCalc_8hpp_1ace6a11e892466500d47d1f45f042bc53`
-
-- :ref:`exhale_define_FrameCalc_8hpp_1ae4044ba6c1478138f538dd783e4f15a8`
-
-- :ref:`exhale_define_FrameCalc_8hpp_1a8d49b592a3ad78882f8a1b8988043f51`
-
-- :ref:`exhale_define_FrameCalc_8hpp_1a538e0cad3acb787a49e16b1e53787610`
 
 
 Typedefs

@@ -62,7 +62,6 @@ window.addEventListener("load", () => mermaid.run());
 <li class="toctree-l1"><a class="reference internal" href="Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/api_root.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Editor_Format.html">Editor_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -179,7 +178,11 @@ Previously this implied ~1 ms timing steps; now the judge uses synchronized time
 </ul>
 </li>
 <li><p><strong>Utility Engine</strong> :
-The Utility Engine page currently represents roadmap-level ideas (for example, AI/analysis helpers). There is no active <cite>PDJE_MODULE_UTILITY</cite> build target in the current CMake configuration.</p></li>
+The Utility Engine is active code in the current tree. It is centered around
+<cite>util/PDJE_Util.hpp</cite> and the <cite>PDJE_UTIL</cite> interface targets, providing shared
+status/result types, database abstractions, and function helpers. The current
+utility direction also includes Halide-based function examples for
+GPGPU-oriented processing workflows.</p></li>
 </ul>
 </section>
 <section id="milestones">
@@ -198,14 +201,14 @@ timeline
     0.6.0 : PDJE_Input module implement-Windows
     0.7.0 : PDJE_Judge module implement
     0.8.0 : PDjE_Input module implement-Linux, MIDI
-    0.9.0 : PDJE_Input module implement-Mac (planned)
-    1.0.0 : Stable Release
+    0.9.0 : Utility Module Implementation &amp; Utility Module GPGPU Support via Halide
+    1.0.0 : PDJE_Input module implement-Mac (planned)
+          : Stable Release
   section DJ + DAW + HPC + AI Rhythm Engine
-    1.2.0 : Basic Utility Module (roadmap)
+    1.2.0 : Utility Module Expansion
     1.5.0 : OnnxRuntime Integration Utility Module
-    2.0.0 : OnnxRuntime Integrated with AdaptiveCPP
-          : Cross-Vendor GPGPU Support Enabled
-    </pre><p>See: AdaptiveCPP (<a class="reference external" href="https://github.com/AdaptiveCpp/AdaptiveCpp">https://github.com/AdaptiveCpp/AdaptiveCpp</a>)</p>
+    2.0.0 : OnnxRuntime Integrated with Halide-backed utility workflows
+    </pre><p>See: Halide and the Utility Engine documentation for the current GPGPU-oriented direction.</p>
 </section>
 <section id="use-cases">
 <h2>Use Cases<a class="headerlink" href="#use-cases" title="Link to this heading"></a></h2>
@@ -268,7 +271,6 @@ Project_DJ_Godot --&gt; VALID_CHECK
 <li class="toctree-l1"><a class="reference internal" href="Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/api_root.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Editor_Format.html">Editor_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
 </ul>
 </div>
 </section>

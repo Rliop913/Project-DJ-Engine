@@ -69,7 +69,7 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_namespacePDJE__JUDGE_1aa78869a4b4648bc707f541ee760da05e`
+- :ref:`exhale_function_namespacePDJE__JUDGE_1a574c44c479b58a00664b5f822ee8aae2`
 
 
 Typedefs
@@ -89,5 +89,7 @@ Variables
 ---------
 
 
-- :ref:`exhale_variable_namespacePDJE__JUDGE_1a714bad3267563db99990da3e32a42c5c`
+- :ref:`exhale_variable_namespacePDJE__JUDGE_1a445bd2ed97e90f1e4bde64c6c9525f9e`
+
+- :ref:`exhale_variable_namespacePDJE__JUDGE_1af240458754baff6cd37c60a6eacc4c88`
 

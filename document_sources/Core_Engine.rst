@@ -1,1368 +1,326 @@
 Core_Engine
-=====================
-This page now splits the PDJE API surface into two workflows so you can jump straight to what you need:
+===========
 
-- :ref:`playback-api` — initialize playback, locate music, manage the player, and control FX/music panels.
-- :ref:`editor-api` — configure the database, edit content, inspect visitors, and review/restore edit histories.
+The Core Engine page documents the current public workflow exposed by `PDJE`.
+The engine facade owns the root database handle, constructs `audioPlayer`
+instances, exposes the editor subsystem, and forwards the core data line used
+by other modules.
 
-.. _playback-api:
+Older versions of this manual kept most editor operation details here. The
+current docs split responsibilities differently:
 
-Playback API
--------------
+- `Core_Engine` covers facade entrypoints and playback control.
+- :doc:`Editor_Workflows` covers project setup, mutation, history, render/push,
+  and preview playback.
+- :doc:`/api/classeditorObject` remains the exact member lookup page.
 
-.. _before-playback-step-1:
-
-Initialization (previously "Before Playback Step-1")
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. doxygenclass:: PDJE
-    :project: Project_DJ_Engine
-
-.. tab-set-code:: 
-
-    .. code-block:: c++
-
-        auto engine = new PDJE("database/path");
-
-    .. code-block:: c#
-
-        PDJE engine = new PDJE("database/path");
-
-    .. code-block:: python
-
-        import pdje_POLYGLOT as pypdje
-        engine = pypdje.PDJE("database/path")
-
-    .. code-block:: gdscript
-
-        var engine:PDJE_Wrapper = PDJE_Wrapper.new()
-        engine.InitEngine("res://database/path")
-
-.. _before-playback-step-2:
-
-Search Music & Track (previously "Before Playback Step-2")
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. doxygenfunction:: PDJE::SearchMusic
-    :project: Project_DJ_Engine
-
-
-.. doxygenfunction:: PDJE::SearchTrack
-    :project: Project_DJ_Engine
-
-.. tab-set-code:: 
-
-    .. code-block:: c++
-
-        trackdata td = engine->SearchTrack("Track name").front();
-        musdata md = engine->SearchMusic("music title", "composer name", -1.0).front();
-        //-1.0 means ignore bpm
-
-    .. code-block:: c#
-
-        TRACK_VEC tdvec = engine.SearchTrack("Track name");
-        MUS_VEC mdvec = engine.SearchMusic("music title", "composer name", -1.0);
-        //-1.0 means ignore bpm
-
-    .. code-block:: python
-
-        import pdje_POLYGLOT as pypdje
-        from pdje_POLYGLOT import TRACK_VEC
-        from pdje_POLYGLOT import MUS_VEC
-
-        tdvec:TRACK_VEC = engine.SearchTrack("track name")
-        mdvec:MUS_VEC = engine.SearchMusic("music title", "composer name", -1.0)
-        #-1.0 means ignore bpm
-
-    .. code-block:: gdscript
-
-        var tdlist = engine.SearchTrack("track name")
-        var mdlist = engine.SearchMusic("music name", "composer name", -1.0)
-        #-1.0 means ignore bpm
-
-.. _before-playback-step-3:
-
-Init, Activate & Deactivate Audio Player (previously "Before Playback Step-3")
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. doxygenfunction:: PDJE::InitPlayer
-    :project: Project_DJ_Engine
-
-.. doxygenfunction:: audioPlayer::Activate
-    :project: Project_DJ_Engine
-
-.. doxygenfunction:: PDJE::ResetPlayer
-    :project: Project_DJ_Engine
-
-.. doxygenfunction:: audioPlayer::Deactivate
-    :project: Project_DJ_Engine
-
-
-.. tab-set-code:: 
-
-    .. code-block:: c++
-
-        bool player_OK = engine->InitPlayer(PLAY_MODE::HYBRID_RENDER, td, 48);
-        //render mode, trackdata, sample buffer
-
-        bool activate_OK = false;
-        bool deactivate_OK = false;
-        if (player_OK && engine->player) {
-            activate_OK = engine->player->Activate();
-            //start playback
-            deactivate_OK = engine->player->Deactivate();
-            //stop playback
-        }
-
-        engine->ResetPlayer();
-        //reset player after deactivate
-
-    .. code-block:: c#
-
-        bool player_OK = engine.InitPlayer(PLAY_MODE.HYBRID_RENDER, tdvec[0], 48);
-        //render mode, trackdata, sample buffer
-
-        var AudioP = engine.GetPlayerObject();
-        //get player object
-
-        bool activate_OK = AudioP.Activate();
-        //start playback
-
-        bool deactivate_OK = AudioP.Deactivate();
-        //stop playback
-
-        engine.ResetPlayer();
-        //reset player object after deactivate
-        //WARNING: after reset, AudioP becomes unavailable.
-
-    .. code-block:: python
-
-        from pdje_POLYGLOT import audioPlayer
-
-        player_OK = engine.InitPlayer(pyPDJE.HYBRID_RENDER, tdvec[0], 48)
-        #render mode, trackdata, sample buffer
-
-        AudioP:audioPlayer = engine.GetPlayerObject()
-        #get player object
-
-        activate_OK = AudioP.Activate()
-        #start playback
-
-        deactivate_OK = AudioP.Deactivate()
-        #stop playback
-
-        engine.ResetPlayer()
-        #reset player object after deactivate
-        #WARNING: after reset, AudioP becomes unavailable.
-
-    .. code-block:: gdscript
-
-        var player_OK = engine.InitPlayer(PDJE_Wrapper.HYBRID_RENDER, tdlist[0], 48)
-        #render mode, trackdata, sample buffer
-
-        var AudioP:PlayerWrapper = engine.GetPlayer()
-        #get player object
-
-        var activate_OK = AudioP.Activate()
-        #start playback
-
-        var deactivate_OK = AudioP.Deactivate()
-        #stop playback
-
-        engine.ResetPlayer()
-        #reset player object after deactivate
-        #WARNING: after reset, AudioP becomes unavailable.
-
-
-.. _on-playback:
-
-Player FX & Music Control (previously "On Playback")
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-.. _on-playback-step-1:
-
-Get & Use FX Controller Panel (previously "On Playback Step-1")
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. doxygenfunction:: audioPlayer::GetFXControlPanel
-    :project: Project_DJ_Engine
-
-.. doxygenfunction:: FXControlPanel::FX_ON_OFF
-    :project: Project_DJ_Engine
-
-.. doxygenenum:: FXList
-    :project: Project_DJ_Engine
-
-.. doxygenfunction:: FXControlPanel::GetArgSetter
-    :project: Project_DJ_Engine
-
-.. doxygenfunction:: FXControlPanel::checkSomethingOn
-    :project: Project_DJ_Engine
-
-
-
-to see Available args, See: :doc:`/FX_ARGS`
-
-.. tab-set-code:: 
-
-    .. code-block:: c++
-
-        FXControlPanel* fx_panel = engine->player->GetFXControlPanel("title");
-        //get music's fx controller.
-
-        fx_panel = engine->player->GetFXControlPanel();
-        //or get mixed track's fx controller like this.
-
-        bool TurnON = true;
-        fx_panel->FX_ON_OFF(FXList::EQ, TurnON);
-        //turn on EQ effect
-
-        auto argsetter = fx_panel->GetArgSetter(FXList::EQ);
-        for(auto& i : argsetter){
-            std::cout << "fx key: " << i.first << std::endl;
-        }
-        // get argument setter for EQ
-        // you can check configurable (settable) arg keys like this
-
-        argsetter["EQSelect"](1);
-        argsetter["EQPower"](-32);
-        // change FX args by key
-        //for details, see FXArgs document
-
-    .. code-block:: c#
-
-        FXControlPanel fx_panel = AudioP.GetFXControlPanel("title");
-        //get music's fx controller
-
-        fx_panel = AudioP.GetFXControlPanel();
-        //or get mixed track's fx controller like this.
-        
-        bool TurnON = true;
-        fx_panel.FX_ON_OFF(FXList.EQ, TurnON);
-        //turn on EQ effect
-
-        ARGSETTER_WRAPPER argsetter = new ARGSETTER_WRAPPER(fx_panel);
-        KEY_VEC keylist = argsetter.GetFXArgKeys(FXList.EQ);
-        foreach(var keys in keylist){
-            Console.WriteLine(keys);
-        }
-        //get argument setter wrapper and get configurable arg keys like this.
-
-        argsetter.SetFXArg(FXList.EQ, "EQSelect", 1);
-        argsetter.SetFXArg(FXList.EQ, "EQPower", -32);
-
-        //change FX args by key
-        //for details, see FXArgs document
-
-    .. code-block:: python
-
-        import pdje_POLYGLOT as pypdje
-        from pdje_POLYGLOT import FXControlPanel
-        from pdje_POLYGLOT import ARGSETTER_WRAPPER
-        from pdje_POLYGLOT import KEY_VEC
-
-        #...
-
-        fx_panel:FXControlPanel = AudioP.GetFXControlPanel("title")
-        #get music's fx controller
-        fx_panel = AudioP.GetFXControlPanel()
-        #or get mixed track's fx controller like this.
-        TurnON:bool = True
-        fx_panel.FX_ON_OFF(pypdje.EQ, TurnON)
-        #turn on EQ effect
-        argsetter = ARGSETTER_WRAPPER(fx_panel)
-        keylist:KEY_VEC = argsetter.GetFXArgKeys(pypdje.EQ)
-
-        for i in keylist:
-            print("key: ", i)
-        #get argument setter wrapper and get configurable arg keys like this.
-
-        argsetter.SetFXArg(pypdje.EQ, "EQSelect", 1)
-        argsetter.SetFXArg(pypdje.EQ, "EQPower", -32)
-        #change FX args by key
-        #for details, see FXArgs document
-
-
-    .. code-block:: gdscript
-
-        var fx_panel:FXControlPanel = AudioP.GetFXControlPanel()
-        #get mixed track's fx controller
-        
-        var TurnON = true
-        fx_panel.FX_ON_OFF(EnumWrapper.EQ, TurnON)
-        #turn on EQ effect
-
-        var argsetter:FXArgWrapper = fx_panel.GetArgSetter()
-        print(argsetter.GetFXArgKeys(EnumWrapper.EQ))
-
-        #get argument setter wrapper and get configurable arg keys like this.
-
-        argsetter.SetFXArg(EnumWrapper.EQ, "EQSelect", 1)
-        argsetter.SetFXArg(EnumWrapper.EQ, "EQPower", -32)
-        #change FX args by key
-        #for details, see FXArgs document
-
-
-.. _on-playback-step-2:
-
-Get & Use Music Controller Panel (previously "On Playback Step-2")
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. doxygenclass:: MusicControlPanel
-    :project: Project_DJ_Engine
-
-.. doxygenfunction:: audioPlayer::GetMusicControlPanel
-    :project: Project_DJ_Engine
-
-.. doxygenfunction:: MusicControlPanel::LoadMusic
-    :project: Project_DJ_Engine
-
-.. doxygenfunction:: MusicControlPanel::SetMusic
-    :project: Project_DJ_Engine
-
-.. doxygenfunction:: MusicControlPanel::CueMusic
-    :project: Project_DJ_Engine
-
-.. doxygenfunction:: MusicControlPanel::GetLoadedMusicList
-    :project: Project_DJ_Engine
-
-.. doxygenfunction:: MusicControlPanel::getFXHandle
-    :project: Project_DJ_Engine
-
-.. tab-set-code:: 
-
-    .. code-block:: c++
-
-        auto musPanel = engine->player->GetMusicControlPanel();
-        
-        auto musicFound = engine->SearchMusic("title", "composer");
-        //find music to playback manually
-
-        bool load_OK = musPanel->LoadMusic(*(engine->DBROOT), musicFound.front());
-        // load found music to deck. music won't playback in here
-
-        bool unload_OK = musPanel->UnloadMusic("title");
-        // unload music from deck. don't forget for the memory space.
-        // the deck always contains loaded music before calling musPanel.UnloadMusic or engine.ResetPlayer
-
-        bool onoff_OK = musPanel->SetMusic("title", true);
-        // turn on the music. now music playbacks
-
-        unsigned long long second = 15;
-        unsigned long long PCMFrame_position = 15 * 48000;
-        //PCMFrame_position = second X SampleRate
-
-        bool cue_OK = musPanel->CueMusic("title", PCMFrame_position);
-        //set playback position of the music.
-
-        std::vector<std::string> loaded_list = musPanel->GetLoadedMusicList();
-        //get loaded music list.
-
-        FXControlPanel* Fxhandle = musPanel->getFXHandle("title");
-        //get music's fx handle
-
-    .. code-block:: c#
-
-        
-        MusicControlPanel musPanel = AudioP.GetMusicControlPanel();
-        
-        var musicFound = engine.SearchMusic("title", "composer");
-        //find music to playback manually
-
-        bool load_OK = musPanel.LoadMusic(engine.DBROOT, musicFound[0]);
-        // load found music to deck. music won't playback in here
-
-        bool unload_OK = musPanel.UnloadMusic("title");
-        // unload music from deck. don't forget for the memory space.
-        // the deck always contains loaded music before calling musPanel.UnloadMusic or engine.ResetPlayer
-
-        bool onoff_OK = musPanel.SetMusic("title", true);
-        // turn on the music. now music playbacks
-
-        ulong second = 15;
-        ulong PCMFrame_position = 15 * 48000;
-        //PCMFrame_position = second X SampleRate
-
-        bool cue_OK = musPanel.CueMusic("title", PCMFrame_position);
-        //set playback position of the music.
-
-        KEY_VEC loaded_list = musPanel.GetLoadedMusicList();
-        //get loaded music list.
-
-        FXControlPanel Fxhandle = musPanel.getFXHandle("title");
-        //get music's fx handle
-
-    .. code-block:: python
-
-        import pdje_POLYGLOT as pyPDJE
-        from pdje_POLYGLOT import MusicControlPanel
-        from pdje_POLYGLOT import FXControlPanel
-        from pdje_POLYGLOT import audioPlayer
-        from pdje_POLYGLOT import MUS_VEC
-        
-        musPanel:MusicControlPanel = engine.player.GetMusicControlPanel()
-        
-        musicFound:MUS_VEC = engine.SearchMusic("title", "composer")
-        #find music to playback manually
-
-        load_OK = musPanel.LoadMusic(engine.DBROOT, musicFound[0])
-        # load found music to deck. music won't playback in here
-
-        unload_OK = musPanel.UnloadMusic("title")
-        # unload music from deck. don't forget for the memory space.
-        # the deck always contains loaded music before calling musPanel.UnloadMusic or engine.ResetPlayer
-
-        onoff_OK = musPanel.SetMusic("title", True)
-        # turn on the music. now music playbacks
-
-        second:int = 15
-        PCMFrame_position:int = 15 * 48000
-        #PCMFrame_position = second X SampleRate
-
-        cue_OK = musPanel.CueMusic("title", PCMFrame_position)
-        #set playback position of the music.
-
-        loaded_list = musPanel.GetLoadedMusicList()
-        #get loaded music list.
-
-        Fxhandle:FXControlPanel = musPanel.getFXHandle("title")
-        #get music's fx handle
-
-    .. code-block:: gdscript
-
-        var musPanel:MusPanelWrapper = AudioP.GetMusicControlPanel()
-        
-        var musicFound = engine.SearchMusic("title", "composer", -1.0)
-        #find music to playback manually
-
-        var load_OK = musPanel.LoadMusic("title", "composer", -1.0)
-        # load found music to deck. music won't playback in here
-
-        var unload_OK = musPanel.UnloadMusic("title")
-        # unload music from deck. don't forget for the memory space.
-        # the deck always contains loaded music before calling musPanel.UnloadMusic or engine.ResetPlayer
-
-        var onoff_OK = musPanel.SetMusic("title", true)
-        # turn on the music. now music playbacks
-
-        var second = 15
-        var PCMFrame_position = 15 * 48000
-        #PCMFrame_position = second X SampleRate
-
-        var cue_OK = musPanel.CueMusic("title", PCMFrame_position)
-        #set playback position of the music.
-
-        var loaded_list = musPanel.GetLoadedMusicList()
-        #get loaded music list.
-
-        var Fxhandle:FXWrapper = musPanel.getFXHandle("title")
-        #get music's fx handle
-
-.. _editor-api:
-
-Editor API
-------------
-
-Use these calls to prepare projects, apply edits, and audit history without the playback stack.
-
-The PDJE editor provides only an API and does not include a built-in graphical user interface (GUI).
-
-With the editor API, you can:
-
-- Add audio files to the PDJE database (DB) and generate metadata
-- Create and edit mix sets (combinations of multiple tracks) using the registered music in the DB
-- Create and edit note data that can be used in rhythm games
-
-.. _editor-step-1:
-
-Editor Step-1: Create & Manage DB
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-.. doxygenfunction:: PDJE::InitEditor
-    :project: Project_DJ_Engine
-
-.. doxygenfunction:: PDJE::CloseEditor
-    :project: Project_DJ_Engine
-
-.. doxygenfunction:: PDJE::GetEditorObject
-    :project: Project_DJ_Engine
-
-.. doxygenfunction:: editorObject::DESTROY_PROJECT
-    :project: Project_DJ_Engine
-
-
-.. tab-set-code:: 
-
-    .. code-block:: c++
-
-        bool initRes = engine->InitEditor("my name", "my@email, no need to fill", "ProjectRoot");
-        auto editor = engine->GetEditorObject();
-        std::string destroyRes = editor->DESTROY_PROJECT();
-        engine->CloseEditor();
-
-    .. code-block:: c#
-
-        bool initRes = engine.InitEditor("my name", "my@email, no need to fill", "ProjectRoot");
-        var editor = engine.GetEditorObject();
-        var destroyRes = editor.DESTROY_PROJECT();
-        engine.CloseEditor();
-
-    .. code-block:: python
-
-        init_res = engine.InitEditor("my name", "my@email, no need to fill", "ProjectRoot")
-        editor:editorObject = engine.GetEditorObject()
-        destroy_res = editor.DESTROY_PROJECT()
-        engine.CloseEditor()
-
-    .. code-block:: gdscript
-
-        var init_res = engine.InitEditor("my name", "my@email, no need to fill", "ProjectRoot")
-        var editor = engine.GetEditor()
-        editor.DESTROY_PROJECT()
-        engine.CloseEditor()
-
-
-.. _editor-step-2:
-
-Editor Step-2: Editing Control & History view
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To see all functions, check :doc:`/api/classeditorObject`
-
-Undo
-^^^^
-
-.. tab-set-code:: 
-
-    .. code-block:: c++
-
-        // Undo Mix
-        bool undoRes = editor->Undo<EDIT_ARG_MIX>();
-        
-        // Undo Note
-        undoRes = editor->Undo<EDIT_ARG_NOTE>();
-
-        // Undo KV
-        undoRes = editor->Undo<EDIT_ARG_KEY_VALUE>();
-        
-        // Undo Music
-        undoRes = editor->Undo<EDIT_ARG_MUSIC>();
-        
-    .. code-block:: c#
-
-        bool undoRes = editor->UndoNote();
-        undoRes = editor->UndoMix();
-        undoRes = editor->UndoKV();
-        undoRes = editor->UndoMusic();
-
-    .. code-block:: python
-
-        import pdje_POLYGLOT as pypdje
-        from pdje_POLYGLOT import editorObject
-        undoRes = editor.UndoNote()
-        undoRes = editor.UndoKV()
-        undoRes = editor.UndoMix()
-        undoRes = editor.UndoMusic()
-        
-    .. code-block:: gdscript
-
-        var undoRes = editor.Undo(editor.NOTE, "")
-        undoRes = editor.Undo(editor.MUSIC, "music name")
-        undoRes = editor.Undo(editor.MIX, "")
-        undoRes = editor.Undo(editor.KV, "")
-
-Redo
-^^^^
-
-.. tab-set-code:: 
-
-    .. code-block:: c++
-
-        // Redo Mix
-        bool RedoRes = editor->Redo<EDIT_ARG_MIX>();
-        
-        // Redo Note
-        RedoRes = editor->Redo<EDIT_ARG_NOTE>();
-
-        // Redo KV
-        RedoRes = editor->Redo<EDIT_ARG_KEY_VALUE>();
-        
-        // Redo Music
-        RedoRes = editor->Redo<EDIT_ARG_MUSIC>();
-        
-    .. code-block:: c#
-
-        bool RedoRes = editor->RedoNote();
-        RedoRes = editor->RedoMix();
-        RedoRes = editor->RedoKV();
-        RedoRes = editor->RedoMusic();
-
-    .. code-block:: python
-
-        import pdje_POLYGLOT as pypdje
-        from pdje_POLYGLOT import editorObject
-        RedoRes = editor.RedoNote()
-        RedoRes = editor.RedoKV()
-        RedoRes = editor.RedoMix()
-        RedoRes = editor.RedoMusic()
-        
-    .. code-block:: gdscript
-
-        var RedoRes = editor.Redo(editor.NOTE, "")
-        RedoRes = editor.Redo(editor.MUSIC, "music name")
-        RedoRes = editor.Redo(editor.MIX, "")
-        RedoRes = editor.Redo(editor.KV, "")
-
-
-Time travel
-^^^^^^^^^^^
-
-To get necessary args, See :ref:`get-edit-logs`
-
-.. tab-set-code:: 
-
-    .. code-block:: c++
-        
-        //get note edit logs
-        std::string logs = editor->GetLogWithJSONGraph<EDIT_ARG_NOTE>();
-        // std::string logs = editor->GetLogWithJSONGraph<EDIT_ARG_MIX>();
-        // std::string logs = editor->GetLogWithJSONGraph<EDIT_ARG_KEY_VALUE>();
-        // std::string logs = editor->GetLogWithJSONGraph<EDIT_ARG_MUSIC>("music name"); // this is the only difference
-        
-        //parse json. try print them.
-        auto jj = nlohmann::json::parse(logs);
-        
-        // "LINE" contains timeline heads. each item has OID and TIME_STAMP.
-        std::string commit_oid = jj["LINE"].at(0)["OID"];
-
-        bool GoRes = editor->Go<EDIT_ARG_NOTE>(commit_oid);
-        //bool GoRes = editor->Go<EDIT_ARG_MIX>(commit_oid);
-        //bool GoRes = editor->Go<EDIT_ARG_KEY_VALUE>(commit_oid);
-        //bool GoRes = editor->Go<EDIT_ARG_MUSIC>(commit_oid);
-
-    .. code-block:: c#
-
-        //get logs
-        string logs = editor.GetLogMixJSON();
-        //string logs = editor.GetLogNoteJSON();
-        //string logs = editor.GetLogMusicJSON("music name");
-        //string logs = editor.GetLogKVJSON();
-
-        //get commit oid from logs JSON (LINE/LOGS)
-
-        // editor.GoNote(name, oid);
-        editor.GoMix(name, oid);
-        // editor.GoKV(name, oid);
-        // editor.GoMusic(name, oid);
-        
-        
-
-    .. code-block:: python
-        
-        import pdje_POLYGLOT as pypdje
-        from pdje_POLYGLOT import editorObject
-
-        #...
-
-        logs = editor.GetLogMixJSON()
-        # logs = editor.GetLogKVJSON()
-        # logs = editor.GetLogMusicJSON("music name")
-        # logs = editor.GetLogNoteJSON()
-
-        # get commit oid from logs JSON (LINE/LOGS)
-
-        # editor.GoKV(name, oid)
-        # editor.GoNote(name, oid)
-        # editor.GoMusic(name, oid)
-        editor.GoMix(name, oid)
-
-    .. code-block:: gdscript
-
-        var logs = editor.GetLogWithJSONGraph(editor.NOTE, "")
-        # var logs = editor.GetLogWithJSONGraph(editor.MUSIC, "music name")
-        # var logs = editor.GetLogWithJSONGraph(editor.KV, "")
-        # var logs = editor.GetLogWithJSONGraph(editor.MIX, "")
-
-        #get commit oid from logs JSON (LINE/LOGS)
-
-        editor.Go(editor.NOTE, name, oid)
-        # editor.Go(editor.MUSIC, name, oid)
-        # editor.Go(editor.MIX, name, oid)
-        # editor.Go(editor.KV, name, oid)
-        
-
-
-
-Add line
-^^^^^^^^
-
-See :ref:`about-mix-data` first.
-
-.. tab-set-code:: 
-
-    .. code-block:: c++
-
-        EDIT_ARG_MIX mixs;
-        
-        mixs.type = TypeEnum::FILTER; //Filter
-        mixs.details = DetailEnum::LOW; //Low pass
-
-        mixs.ID = 1; //Deck number. access music with this.
-
-        mixs.first = ITPL_ENUM::ITPL_COSINE; // first arg
-        mixs.second = "5000,1000,2000,3000,4000,5000,5500,6000"; // second arg, eight point values
-        // mixs.first = ITPL_ENUM::ITPL_FLAT; // if no need interpolation
-        // mixs.second = "5000"; // just one value
-        
-        mixs.third = "NONE"; // third arg
-
-        mixs.beat = 0;
-        mixs.subBeat = 0;
-        mixs.separate = 0;
-        //"start_position" = beat + (subBeat / separate)
-
-        mixs.Ebeat = 16;//end beat
-        mixs.EsubBeat = 2;//end subBeat
-        mixs.Eseparate = 4;//end separate
-        //"end_position" = ebeat + (esubBeat / eseparate)
-
-        //summation: add low pass filter from "start_position" to "end_position" with interpolation
-
-        editor->AddLine(mixs);//add mix data
-
-        // EDIT_ARG_NOTE data;
-        // EDIT_ARG_KEY_VALUE data;
-        // EDIT_ARG_MUSIC data;
-
-        // editor->AddLine(data);
-
-        // editor->AddLine("music name", "48000") // this changes the music's first beat position
-
-
-    .. code-block:: c#
-
-        EDIT_ARG_MIX mixs = new EDIT_ARG_MIX();
-
-        mixs.type = TypeEnum.FILTER; //Filter
-        mixs.details = DetailEnum.LOW; //Low pass
-
-        mixs.ID = 1; //Deck number. access music with this.
-
-        mixs.first = ITPL_ENUM.ITPL_COSINE.ToString(); // first arg
-        mixs.second = "5000,1000,2000,3000,4000,5000,5500,6000"; // second arg, eight point values
-        // mixs.first = ITPL_ENUM.ITPL_FLAT.ToString(); // if no need interpolation
-        // mixs.second = "5000"; // just one value
-
-        mixs.third = "NONE"; // third arg
-
-        mixs.beat = 0;
-        mixs.subBeat = 0;
-        mixs.separate = 0;
-        //"start_position" = beat + (subBeat / separate)
-
-        mixs.Ebeat = 16;//end beat
-        mixs.EsubBeat = 2;//end subBeat
-        mixs.Eseparate = 4;//end separate
-        //"end_position" = ebeat + (esubBeat / eseparate)
-
-        //summation: add low pass filter from "start_position" to "end_position" with interpolation
-
-        engine.editor.AddLineMix(mixs);//add mix data
-        // EDIT_ARG_NOTE data;
-        // editor.AddLineNote(data);
-
-        // EDIT_ARG_KEY_VALUE data;
-        // editor.AddLineKV(data);
-
-        // EDIT_ARG_MUSIC data;
-        // editor.AddLineMusic(data);
-
-        // editor.AddLine("music name", "48000"); // this changes the music's first beat position.
-
-    .. code-block:: python
-
-        import pdje_POLYGLOT as pypdje
-
-        from pdje_POLYGLOT import EDIT_ARG_MIX
-        from pdje_POLYGLOT import EDIT_ARG_MUSIC
-        from pdje_POLYGLOT import EDIT_ARG_KEY_VALUE
-
-        from pdje_POLYGLOT import EDIT_ARG_NOTE
-        from pdje_POLYGLOT import editorObject
-
-        mixs = EDIT_ARG_MIX()
-
-        mixs.type = pypdje.TypeEnum_FILTER #Filter
-        mixs.details = pypdje.DetailEnum_LOW #Low pass
-
-        mixs.ID = 1 #Deck number. access music with this.
-
-        mixs.first = pypdje.ITPL_COSINE.ToString() # first arg
-        mixs.second = "5000,1000,2000,3000,4000,5000,5500,6000" # second arg, eight point values
-        # mixs.first = pypdje.ITPL_FLAT.ToString() # if no need interpolation
-        # mixs.second = "5000" # just one value
-
-        mixs.third = "NONE" # third arg
-
-        mixs.beat = 0
-        mixs.subBeat = 0
-        mixs.separate = 0
-        #"start_position" = beat + (subBeat / separate)
-
-        mixs.Ebeat = 16#end beat
-        mixs.EsubBeat = 2#end subBeat
-        mixs.Eseparate = 4#end separate
-        #"end_position" = ebeat + (esubBeat / eseparate)
-
-        #summation: add low pass filter from "start_position" to "end_position" with interpolation
-
-        editor.AddLineMix(mixs)#add mix data
-        # data = EDIT_ARG_NOTE()
-        # editor.AddLineNote(data)
-
-        # data = EDIT_ARG_KEY_VALUE()
-        # editor.AddLineKV(data)
-
-        # data = EDIT_ARG_MUSIC()
-        # editor.AddLineMusic(data)
-
-        # editor.AddLine("music name", "48000") # this changes the music's first beat position.
-
-    .. code-block:: gdscript
-        
-        var mixs = PDJE_EDITOR_ARG.new()
-        mixs.InitMixArg(
-            PDJE_EDITOR_ARG.EDITOR_TYPE_LIST.FILTER,
-            PDJE_EDITOR_ARG.EDITOR_DETAIL_LIST.LOW,
-            1,
-            "1",
-            "5000,1000,2000,3000,4000,5000,5500,6000",
-            "NONE",
-            16,
-            0,
-            0,
-            32,
-            0,
-            0)
-        #"start_position" = beat + (subBeat / separate)
-        #"end_position" = ebeat + (esubBeat / eseparate)
-        #summation: add low pass filter from "start_position" to "end_position" with interpolation
-        editor.AddLine(mixs)#add mix data
-        
-        var data = PDJE_EDITOR_ARG.new()
-        data.InitKeyValueArg("", "")
-        editor.AddLine(data) #add key-value args
-        
-        data = PDJE_EDITOR_ARG.new()
-        data.InitNoteArg(
-            "something. ex- tap note", 
-            "something. ex- color red", 
-            "something. ex- line number", 
-            "something. ex- tap sound",
-            "something. ex- ??",
-            4,0,0,
-            4,0,0)
-        editor.AddLine(data)#add custom simple red tap note data on music's 4th beat
-        
-        data = PDJE_EDITOR_ARG.new()
-        data.InitMusicArg("temp music title", "120", 0, 0, 0)
-        editor.AddLine(data)#music starts with 120 bpm
-        var data2 = PDJE_EDITOR_ARG.new()
-        data2.InitMusicArg("temp music title", "240", 64, 0, 0)
-        editor.AddLine(data2)#music starts with 120 bpm and it changes into 240 bpm in 64th beat
-        
-
-
-Get all lines
-^^^^^^^^^^^^^
-
-.. tab-set-code:: 
-
-    .. code-block:: c++
-
-        std::vector<EDIT_ARG_MIX> mixFound;
-        editor->getAll([&mixFound](const EDIT_ARG_MIX& mix_arg){//single threaded. will add multithreaded , faster getter soon.
-            if(mix_arg.beat < 50){
-                mixFound.push_back();
-            }
-        });
-
-        // std::vector<EDIT_ARG_NOTE> Found;
-        // editor->getAll([&Found](const EDIT_ARG_NOTE& arg);
-
-        // std::vector<EDIT_ARG_KEY_VALUE> Found;
-        // editor->getAll([&Found](const EDIT_ARG_KEY_VALUE& arg);
-
-        // std::vector<EDIT_ARG_MUSIC> Found;
-        // editor->getAll([&Found](const EDIT_ARG_MUSIC& arg);
-        
-
-    .. code-block:: c#
-
-        MixCall caller = new MixCall();
-
-        editor.GetAllMixes(caller);
-
-        // editor.GetAllKeyValues(caller);
-        // editor.GetAllMusics(caller);
-        // editor.GetAllNotes(caller);
-
-        public class MixCall : MixVisitor { // MusicVisitor, NoteVisitor, KVVisitor
-            public List<EDIT_ARG_MIX> mixs = new List<EDIT_ARG_MIX>();
-            public override void on_item(EDIT_ARG_MIX o)// override this function
-            {
-                if (o.beat > 50)
-                {
-                    mixs.Add(o);
-                }
-            }
-        };// Just change MIX into NOTE, KEY_VALUE, MUSIC
-
-
-    .. code-block:: python
-
-        import pdje_POLYGLOT as pypdje
-        
-        class MixCall(pypdje.MixVisitor):# MusicVisitor, NoteVisitor, KVVisitor
-            def __init__(self):
-                super().__init__()
-                self.mixs = []
-
-            def on_item(self, o:EDIT_ARG_MIX):# def this function
-                if o.beat > 50:
-                    self.mixs.append(o)
-
-        caller = MixCall()
-
-        editor.GetAllMixes(caller)
-
-        # editor.GetAllKeyValues(caller)
-        # editor.GetAllMusics(caller)
-        # editor.GetAllNotes(caller)
-
-        for i in caller.mixs:
-            print(i)
-            
-
-    .. code-block:: gdscript
-
-        var edited_data:Dictionary = editor.getAll()
-
-Delete line
-^^^^^^^^^^^^
-
-.. tab-set-code:: 
-
-    .. code-block:: c++
-
-        std::vector<EDIT_ARG_NOTE> noteFound;
-
-        //find delete targets with getAll function.
-
-        for(const auto& delete_target : noteFound){
-            editor->deleteLine(delete_target);
-        }
-
-        std::vector<EDIT_ARG_MIX> mixFound;
-
-        //find delete targets with getAll function.
-
-        bool skipType = true;
-        bool skipDetail = false;
-        for(const auto& delete_target : mixFound){
-            editor->deleteLine(delete_target, skipType, skipDetail); //mix arg is special.
-        }
-
-    .. code-block:: c#
-
-        MixCall caller = new MixCall();
-
-        editor.GetAllMixes(caller);
-        bool skipType = true;
-        bool skipDetail = false;
-        foreach (var target in caller.mixs)
-        {
-            editor.deleteLine(target, skipType, skipDetail);
-            // editor.deleteLineKV(target);
-            // editor.deleteLineMusic(target);
-            // editor.deleteLineNote(target);
-        }
-
-    .. code-block:: python
-
-        class MixCall(pypdje.MixVisitor):
-            def __init__(self):
-                super().__init__()
-                self.mixs = []
-
-            def on_item(self, o:EDIT_ARG_MIX):
-                if o.beat > 50:
-                    self.mixs.append(o)
-
-        caller = MixCall()
-
-        editor.GetAllMixes(caller)
-
-        skip_type = False
-        skip_detail = True
-
-        for i in caller.mixs:
-            editor.deleteLine(i, skip_type, skip_detail)
-            # editor.deleteLineKV(i)
-            # editor.deleteLineMusic(i)
-            # editor.deleteLineNote(i)
-
-    .. code-block:: gdscript
-
-        var edited_data:Dictionary = editor.getAll()
-        for delete_target in edited_data["noteDatas"]:
-            var target = PDJE_EDITOR_ARG.new()
-            target.InitNoteArg(
-                delete_target["note_type"],
-                delete_target["note_detail"],
-                delete_target["first"],
-                delete_target["second"],
-                delete_target["third"],
-                delete_target["beat"],
-                delete_target["subBeat"],
-                delete_target["separate"],
-                delete_target["e_beat"],
-                delete_target["e_subBeat"],
-                delete_target["e_separate"],
-                delete_target["rail_id"],
-                )
-            editor.deleteLine(target, false, false)
-
-
-.. Get diff
-.. ------------
-
-.. .. tab-set-code:: 
-
-..     .. code-block:: c++
-
-..         auto engine = new PDJE("database/path");
-
-..     .. code-block:: c#
-
-..         PDJE engine = new PDJE("database/path");
-
-..     .. code-block:: python
-
-..         import pdje_POLYGLOT as pypdje
-..         engine = pypdje.PDJE("database/path")
-
-..     .. code-block:: gdscript
-
-..         var engine:PDJE_Wrapper = PDJE_Wrapper.new()
-..         engine.InitEngine("res://database/path")
-
-.. _get-edit-logs:
-
-Get edit logs
-^^^^^^^^^^^^^
-
-
-.. tab-set-code:: 
-
-    .. code-block:: c++
-
-        /*
-        JSON structure produced:
-
-        {
-        "LINE": [                            // line head list
-            {
-            "OID": string,                   // line head oid
-            "TIME_STAMP": string             // marker timestamp
-            },
-            ...
-        ],
-        "LOGS": [                            // commit metadata list
-            {
-            "OID": string,                   // commit oid
-            "BACK": string,                  // parent/backward oid
-            "AUTHOR": string,                // author name
-            "EMAIL": string,                 // author email
-            "TIME_STAMP": string             // commit message timestamp field
-            },
-            ...
-        ]
-        }
-        */
-        std::string mix_json_graph = editor->GetLogWithJSONGraph<EDIT_ARG_MIX>();
-        std::string key_value_json_graph = editor->GetLogWithJSONGraph<EDIT_ARG_KEY_VALUE>();
-        std::string note_json_graph = editor->GetLogWithJSONGraph<EDIT_ARG_NOTE>();
-        std::string music_json_graph = editor->GetLogWithJSONGraph<EDIT_ARG_MUSIC>("music name");
-
-    .. code-block:: c#
-
-        /*
-        JSON structure produced:
-
-        {
-        "LINE": [                            // line head list
-            {
-            "OID": string,                   // line head oid
-            "TIME_STAMP": string             // marker timestamp
-            },
-            ...
-        ],
-        "LOGS": [                            // commit metadata list
-            {
-            "OID": string,                   // commit oid
-            "BACK": string,                  // parent/backward oid
-            "AUTHOR": string,                // author name
-            "EMAIL": string,                 // author email
-            "TIME_STAMP": string             // commit message timestamp field
-            },
-            ...
-        ]
-        }
-        */
-        string KV_json_graph = editor.GetLogKVJSON();
-        string Mix_json_graph = editor.GetLogMixJSON();
-        string Music_json_graph = editor.GetLogMusicJSON("music name");
-        string Note_json_graph = editor.GetLogNoteJSON();
-
-    .. code-block:: python
-
-        """
-        JSON structure produced:
-
-        {
-        "LINE": [                            // line head list
-            {
-            "OID": string,                   // line head oid
-            "TIME_STAMP": string             // marker timestamp
-            },
-            ...
-        ],
-        "LOGS": [                            // commit metadata list
-            {
-            "OID": string,                   // commit oid
-            "BACK": string,                  // parent/backward oid
-            "AUTHOR": string,                // author name
-            "EMAIL": string,                 // author email
-            "TIME_STAMP": string             // commit message timestamp field
-            },
-            ...
-        ]
-        }
-        """
-        KV_json_graph = editor.GetLogKVJSON()
-        Mix_json_graph = editor.GetLogMixJSON()
-        Music_json_graph = editor.GetLogMusicJSON("music name")
-        Note_json_graph = editor.GetLogNoteJSON()
-
-    .. code-block:: gdscript
-
-        """
-        JSON structure produced:
-
-        {
-        "LINE": [                            // line head list
-            {
-            "OID": string,                   // line head oid
-            "TIME_STAMP": string             // marker timestamp
-            },
-            ...
-        ],
-        "LOGS": [                            // commit metadata list
-            {
-            "OID": string,                   // commit oid
-            "BACK": string,                  // parent/backward oid
-            "AUTHOR": string,                // author name
-            "EMAIL": string,                 // author email
-            "TIME_STAMP": string             // commit message timestamp field
-            },
-            ...
-        ]
-        }
-        """
-        editor.GetLogWithJSONGraph(EditorWrapper.MIX, "")
-
-Update edit logs
+Public Entry Points
 -------------------
 
-.. tab-set-code:: 
+.. doxygenenum:: PLAY_MODE
+   :project: Project_DJ_Engine
 
-    .. code-block:: c++
+.. doxygenclass:: PDJE
+   :project: Project_DJ_Engine
 
-        bool updateRes = false;
-        updateRes = editor->UpdateLog<EDIT_ARG_MIX>();
-        updateRes = editor->UpdateLog<EDIT_ARG_MIX>("branch name");
-        // updateRes = editor->UpdateLog<EDIT_ARG_KEY_VALUE>();
-        // updateRes = editor->UpdateLog<EDIT_ARG_KEY_VALUE>("branch name");
-        // updateRes = editor->UpdateLog<EDIT_ARG_MUSIC>();
-        // updateRes = editor->UpdateLog<EDIT_ARG_MUSIC>("music name");
-        // updateRes = editor->UpdateLog<EDIT_ARG_NOTE>();
-        // updateRes = editor->UpdateLog<EDIT_ARG_NOTE>("branch name");
-        
+`PLAY_MODE` determines how `InitPlayer()` configures the player:
 
-    .. code-block:: c#
+- `FULL_PRE_RENDER` builds a pre-rendered playback path.
+- `HYBRID_RENDER` builds a pre-rendered path and enables manual music / FX
+  control panels.
+- `FULL_MANUAL_RENDER` constructs the manual player path without loading a
+  track into the player constructor.
 
-        bool updateRes = false;
-        updateRes = editor.UpdateLogMix();
-        updateRes = editor.UpdateLogMixOn("branch name");
-        // updateRes = editor.UpdateLogKV();
-        // updateRes = editor.UpdateLogKVOn("branch name");
-        // updateRes = editor.UpdateLogMusic();
-        // updateRes = editor.UpdateLogMusicOn("music name");
-        // updateRes = editor.UpdateLogNote();
-        // updateRes = editor.UpdateLogNoteOn("branch name");
+Typical Playback Flow
+---------------------
 
-    .. code-block:: python
+1. Construct `PDJE` with the root database path.
+2. Search for music or tracks through `SearchMusic()` and `SearchTrack()`.
+3. Create a player with `InitPlayer()`.
+4. Call `Activate()` / `Deactivate()` on the returned `audioPlayer`.
+5. Pull the core data line when you need playback state from another module.
 
-        import pdje_POLYGLOT as pypdje
-        
-        updateRes = editor.UpdateLogMix();
-        updateRes = editor.UpdateLogMixOn("branch name");
-        # updateRes = editor.UpdateLogKV();
-        # updateRes = editor.UpdateLogKVOn("branch name");
-        # updateRes = editor.UpdateLogMusic();
-        # updateRes = editor.UpdateLogMusicOn("music name");
-        # updateRes = editor.UpdateLogNote();
-        # updateRes = editor.UpdateLogNoteOn("branch name");
+Selected facade methods:
 
-    .. code-block:: gdscript
+.. doxygenfunction:: PDJE::SearchMusic
+   :project: Project_DJ_Engine
 
-        editor.UpdateLog(EditorWrapper.MIX,"")
-        editor.UpdateLog(EditorWrapper.MUSIC,"music title")
-        editor.UpdateLog(EditorWrapper.NOTE,"")
-        editor.UpdateLog(EditorWrapper.KV,"")
+.. doxygenfunction:: PDJE::SearchTrack
+   :project: Project_DJ_Engine
 
+.. doxygenfunction:: PDJE::InitPlayer
+   :project: Project_DJ_Engine
 
-Editor Step-3: Config new Music & Render & apply to root db
--------------------------------------------------------------
+.. doxygenfunction:: PDJE::GetPlayerObject
+   :project: Project_DJ_Engine
+
+.. doxygenfunction:: PDJE::PullOutDataLine
+   :project: Project_DJ_Engine
+
+.. code-block:: c++
+
+   PDJE engine("database/path");
+
+   auto tracks = engine.SearchTrack("example-track");
+   if (tracks.empty()) {
+       return;
+   }
+
+   if (!engine.InitPlayer(PLAY_MODE::HYBRID_RENDER, tracks.front(), 480)) {
+       return;
+   }
+
+   auto player = engine.GetPlayerObject();
+   if (!player) {
+       return;
+   }
+
+   (void)player->Activate();
+   auto line = engine.PullOutDataLine();
+   (void)player->Deactivate();
+   engine.ResetPlayer();
+
+`PDJE::PullOutDataLine()` returns an empty `PDJE_CORE_DATA_LINE` until a player
+exists. Reacquire the line after recreating or resetting the player because the
+owned storage can move.
+
+Wrapper Bindings
+----------------
+
+The older manual pages also described the wrapper-facing entry points. That
+material still matters in the current tree:
+
+- C# and Python bindings are generated only when `PDJE_SWIG_BUILD=ON`.
+- The SWIG output mirrors the core/editor facade with names such as `PDJE`,
+  `audioPlayer`, `editorObject`, and `PLAY_MODE`.
+- The Godot wrapper uses `PDJE_Wrapper` and `PlayerWrapper` instead of the raw
+  C++ class names.
+- The current SWIG output keeps the legacy `Pannel` spelling for manual-control
+  methods such as `GetFXControlPannel()` and `GetMusicControlPannel()`.
+
+Quick start by binding:
+
+.. tab-set-code::
+
+   .. code-block:: c++
+
+      PDJE engine("database/path");
+      auto tracks = engine.SearchTrack("example-track");
+      if (tracks.empty()) {
+          return;
+      }
+
+      if (!engine.InitPlayer(PLAY_MODE::HYBRID_RENDER, tracks.front(), 480)) {
+          return;
+      }
+
+      auto player = engine.GetPlayerObject();
+      if (!player) {
+          return;
+      }
+
+      (void)player->Activate();
+      (void)player->Deactivate();
+      engine.ResetPlayer();
+
+   .. code-block:: c#
+
+      PDJE engine = new PDJE("database/path");
+      TRACK_VEC tracks = engine.SearchTrack("example-track");
+      if (tracks.Count == 0) {
+          return;
+      }
+
+      if (!engine.InitPlayer(PLAY_MODE.HYBRID_RENDER, tracks[0], 480)) {
+          return;
+      }
+
+      audioPlayer player = engine.GetPlayerObject();
+      if (player == null) {
+          return;
+      }
+
+      player.Activate();
+      player.Deactivate();
+      engine.ResetPlayer();
+
+   .. code-block:: python
+
+      import pdje_POLYGLOT as pypdje
+
+      engine = pypdje.PDJE("database/path")
+      tracks = engine.SearchTrack("example-track")
+      if len(tracks) == 0:
+          raise RuntimeError("track not found")
+
+      if not engine.InitPlayer(pypdje.HYBRID_RENDER, tracks[0], 480):
+          raise RuntimeError("player init failed")
+
+      player = engine.GetPlayerObject()
+      if player is None:
+          raise RuntimeError("player handle unavailable")
+
+      player.Activate()
+      player.Deactivate()
+      engine.ResetPlayer()
+
+   .. code-block:: gdscript
+
+      var engine:PDJE_Wrapper = PDJE_Wrapper.new()
+      engine.InitEngine("res://database/path")
+
+      var tracks = engine.SearchTrack("example-track")
+      if tracks.is_empty():
+          return
+
+      if not engine.InitPlayer(PDJE_Wrapper.HYBRID_RENDER, tracks[0], 480):
+          return
+
+      var player:PlayerWrapper = engine.GetPlayer()
+      if player == null:
+          return
+
+      player.Activate()
+      player.Deactivate()
+      engine.ResetPlayer()
+
+Player Control
+--------------
+
+`audioPlayer` is the runtime playback object returned by `InitPlayer()`.
+
+.. doxygenfunction:: audioPlayer::Activate
+   :project: Project_DJ_Engine
+
+.. doxygenfunction:: audioPlayer::Deactivate
+   :project: Project_DJ_Engine
+
+.. doxygenfunction:: audioPlayer::GetConsumedFrames
+   :project: Project_DJ_Engine
+
+.. doxygenfunction:: audioPlayer::GetFXControlPanel
+   :project: Project_DJ_Engine
+
+.. doxygenfunction:: audioPlayer::GetMusicControlPanel
+   :project: Project_DJ_Engine
+
+Manual control panels are available only when the player was created with manual
+features enabled, which in the current code path means `HYBRID_RENDER` or
+`FULL_MANUAL_RENDER`.
+
+.. note::
+
+   Native C++ uses `GetFXControlPanel()` / `GetMusicControlPanel()`. The current
+   SWIG wrapper output still exposes the same panel handles with the legacy
+   method names `GetFXControlPannel()` / `GetMusicControlPannel()`.
+
+FX Control
+~~~~~~~~~~
+
+.. doxygenenum:: FXList
+   :project: Project_DJ_Engine
+
+.. doxygenfunction:: FXControlPanel::FX_ON_OFF
+   :project: Project_DJ_Engine
+
+.. doxygenfunction:: FXControlPanel::GetArgSetter
+   :project: Project_DJ_Engine
+
+.. doxygenfunction:: FXControlPanel::checkSomethingOn
+   :project: Project_DJ_Engine
+
+.. code-block:: c++
+
+   auto fx = player->GetFXControlPanel();
+   if (fx) {
+       fx->FX_ON_OFF(FXList::FILTER, true);
+       auto args = fx->GetArgSetter(FXList::FILTER);
+       args["HLswitch"](0.0);
+       args["Filterfreq"](1200.0);
+   }
+
+Music Control
+~~~~~~~~~~~~~
+
+.. doxygenclass:: MusicControlPanel
+   :project: Project_DJ_Engine
+
+.. doxygenfunction:: MusicControlPanel::LoadMusic
+   :project: Project_DJ_Engine
+
+.. doxygenfunction:: MusicControlPanel::SetMusic
+   :project: Project_DJ_Engine
+
+.. doxygenfunction:: MusicControlPanel::CueMusic
+   :project: Project_DJ_Engine
+
+.. doxygenfunction:: MusicControlPanel::UnloadMusic
+   :project: Project_DJ_Engine
+
+.. doxygenfunction:: MusicControlPanel::GetLoadedMusicList
+   :project: Project_DJ_Engine
+
+.. doxygenfunction:: MusicControlPanel::ChangeBpm
+   :project: Project_DJ_Engine
+
+.. code-block:: c++
+
+   auto music_panel = player->GetMusicControlPanel();
+   if (music_panel) {
+       auto found = engine.SearchMusic("song-title", "composer-name", -1.0);
+       if (!found.empty()) {
+           (void)music_panel->LoadMusic(*engine.DBROOT, found.front());
+           (void)music_panel->SetMusic(found.front().title, true);
+       }
+   }
+
+Editor Entry Points
+-------------------
+
+The editor is a major authoring subsystem behind the same `PDJE` facade. This
+page covers the entry sequence only. For the operational workflow around
+project-local editing, typed mutations, render/push behavior, and history APIs,
+read :doc:`Editor_Workflows`.
+
+If you were using the older "Editor Step-1/2/3/4" manual, the material moved
+there is now grouped by operation family:
+
+- project setup and open/reopen flow
+- line mutation and typed readback
+- history and time-travel operations
+- render and push-to-root-db flow
+- preview playback through `demoPlayInit()`
+
+.. doxygenfunction:: PDJE::InitEditor
+   :project: Project_DJ_Engine
+
+.. doxygenfunction:: PDJE::GetEditorObject
+   :project: Project_DJ_Engine
+
+.. doxygenfunction:: PDJE::CloseEditor
+   :project: Project_DJ_Engine
+
+.. doxygenfunction:: editorObject::Open
+   :project: Project_DJ_Engine
 
 .. doxygenfunction:: editorObject::ConfigNewMusic
-    :project: Project_DJ_Engine
+   :project: Project_DJ_Engine
 
+.. code-block:: c++
 
-.. doxygenfunction:: editorObject::render
-    :project: Project_DJ_Engine
+   if (!engine.InitEditor("Author Name", "author@example.com", "project-root")) {
+       return;
+   }
 
-.. doxygenfunction:: editorObject::pushToRootDB(litedb &ROOTDB, const UNSANITIZED &trackTitleToPush)
-    :project: Project_DJ_Engine
+   auto editor = engine.GetEditorObject();
+   if (!editor) {
+       return;
+   }
 
+   (void)editor->ConfigNewMusic("Song", "Composer", "audio/song.wav", "0");
+   engine.CloseEditor();
 
-.. doxygenfunction:: editorObject::pushToRootDB(litedb &ROOTDB, const UNSANITIZED &musicTitle, const UNSANITIZED &musicComposer)
-    :project: Project_DJ_Engine
-
-
-.. tab-set-code:: 
-
-    .. code-block:: c++
-
-        editor->ConfigNewMusic("music name", "composer name", "C://path.wav", "4800");
-        //configure new music meta data. the 4800 means the music's first beat is on (4800 / 48000)second after begin of the music.
-        std::string linter_message;
-        editor->render("track name", *(engine->DBROOT), linter_message);
-        //renders track. builds track and music binary data from editor data.
-        //if you want to add just musics, you don't need to edit or add track data. doesn't need to care about track name
-        //track or music data must contain bpm data on 0beat, 0subBeat position.
-
-        editor->pushToRootDB(*engine->DBROOT, "track title");
-        //push rendered binary track data to Root DB.
-        //all related musics will be pushed too.
-        
-        editor->pushToRootDB(*engine->DBROOT, "music name", "composer name");
-        //just push rendered binary music data to Root DB.
-        
-        //you should render before pushing music or track data.
-
-    .. code-block:: c#
-
-        editor.ConfigNewMusic("music name", "composer name", "C://path.wav", "4800");
-        //configure new music meta data. the 4800 means the music's first beat is on (4800 / 48000)second after begin of the music.
-        var linter_msg = "";
-        editor.render("track name", (engine.DBROOT), linter_msg);
-        //renders track. builds track and music binary data from editor data.
-        //if you want to add just musics, you don't need to edit or add track data. doesn't need to care about track name
-        //track or music data must contain bpm data on 0beat, 0subBeat position.
-
-        editor.pushToRootDB(engine.DBROOT, "track title");
-        //push rendered binary track data to Root DB.
-        //all related musics will be pushed too.
-        
-        editor.pushToRootDB(engine.DBROOT, "music name", "composer name");
-        //just push rendered binary music data to Root DB.
-        
-        //you should render before pushing music or track data.
-
-    .. code-block:: python
-
-        import pdje_POLYGLOT as pypdje
-        editor.ConfigNewMusic("music name", "composer name", "C://path.wav", "4800")
-        #configure new music meta data. the 4800 means the music's first beat is on (4800 / 48000)second after begin of the music.
-        
-        linter_msg = ""
-        editor.render("track name", (engine.DBROOT), linter_msg)
-        #renders track. builds track and music binary data from editor data.
-        #if you want to add just musics, you don't need to edit or add track data. doesn't need to care about track name
-        #track or music data must contain bpm data on 0beat, 0subBeat position.
-
-        editor.pushToRootDB(engine.DBROOT, "track title")
-        #push rendered binary track data to Root DB.
-        #all related musics will be pushed too.
-        
-        editor.pushToRootDB(engine.DBROOT, "music name", "composer name")
-        #just push rendered binary music data to Root DB.
-        
-        #you should render before pushing music or track data.
-
-    .. code-block:: gdscript
-
-        editor.ConfigNewMusic("music name", "composer name", "C://path.wav", "4800");
-        #configure new music meta data. the 4800 means the music's first beat is on (4800 / 48000)second after begin of the music.
-        var linter_msg = editor.render("track name");
-        #renders track. builds track and music binary data from editor data.
-        #if you want to add just musics, you don't need to edit or add track data. doesn't need to care about track name
-        #track or music data must contain bpm data on 0beat, 0subBeat position.
-
-        editor.pushTrackToRootDB("track title")
-        #push rendered binary track data to Root DB.
-        #all related musics will be pushed too.
-        
-        editor.pushToRootDB("music name","composer name")
-        #just push rendered binary music data to Root DB.
-        
-        #you should render before pushing music or track data.
-
-Editor Step-4: playback editing project
--------------------------------------------------------------
-
-.. doxygenfunction:: editorObject::demoPlayInit
-    :project: Project_DJ_Engine
-
-
-.. tab-set-code:: 
-
-    .. code-block:: c++
-
-        std::shared_ptr<audioPlayer> demoplayer;
-        editor->demoPlayInit(demoplayer, 48, "track title");
-        demoplayer->Activate();
-
-    .. code-block:: c#
-
-        audioPlayer demoplayer = new audioPlayer(48);
-        editor.demoPlayInit(demoplayer, 48, "track title");
-        demoplayer.Activate();
-
-    .. code-block:: python
-
-        import pdje_POLYGLOT as pypdje
-        from pdje_POLYGLOT import audioPlayer
-        demoplayer:audioPlayer = audioPlayer(48)
-        editor.demoPlayInit(demoplayer, 48, "track title")
-        demoplayer.Activate()
-
-    .. code-block:: gdscript
-
-        editor.demoPlayInit(48, "track title")
-        var demoplayer = engine.GetPlayerdd()
-        demoplayer.Activate()
+From this point on, use :doc:`Editor_Workflows` for the authoring flow. Use
+:doc:`/api/classeditorObject` when you need exact overloads for `AddLine()`,
+`Undo()`, `GetLogWithJSONGraph()`, `render()`, `pushToRootDB()`, or
+`demoPlayInit()`.

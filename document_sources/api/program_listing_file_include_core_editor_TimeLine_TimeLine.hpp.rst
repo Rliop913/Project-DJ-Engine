@@ -16,11 +16,14 @@ Program Listing for File TimeLine.hpp
    #include "GitRAII.hpp"
    #include "LineVersion.hpp"
    #include "PDJE_LOG_SETTER.hpp"
+   #include "TimeLineDiffTypes.hpp"
    #include "jsonWrapper.hpp"
    #include <exception>
    #include <filesystem>
    #include <git2/commit.h>
+   #include <optional>
    #include <string>
+   #include <type_traits>
    namespace PDJE_TIMELINE {
    namespace fs = std::filesystem;
    template <typename CapnpType> class TimeLine {
@@ -118,9 +121,33 @@ Program Listing for File TimeLine.hpp
                return false;
            }
        }
-       void
-       Diff(const OID &origin, const OID &compare) // todo-impl
+       std::optional<TimeLineSemanticDiffResult>
+       Diff(const OID &origin, const OID &compare) const
        {
+           try {
+               TimeLineDiffKind kind = TimeLineDiffKind::KV;
+               if constexpr (std::is_same_v<CapnpType, MIX_W>) {
+                   kind = TimeLineDiffKind::MIX;
+               } else if constexpr (std::is_same_v<CapnpType, NOTE_W>) {
+                   kind = TimeLineDiffKind::NOTE;
+               } else if constexpr (std::is_same_v<CapnpType, MUSIC_W>) {
+                   kind = TimeLineDiffKind::MUSIC;
+               } else if constexpr (std::is_same_v<CapnpType, KV_W>) {
+                   kind = TimeLineDiffKind::KV;
+               } else {
+                   critlog("unsupported timeline diff capnp type");
+                   return std::nullopt;
+               }
+               return BuildTimeLineSemanticDiff(
+                   git->GetRepo(), git->target_file, origin, compare, kind);
+           } catch (const std::exception &e) {
+               critlog("failed to diff. error occurred. What: ");
+               critlog(e.what());
+               return std::nullopt;
+           } catch (...) {
+               critlog("failed to diff. unknown exception occurred.");
+               return std::nullopt;
+           }
        }
        void
        UpdateLogs()
@@ -176,7 +203,6 @@ Program Listing for File TimeLine.hpp
                  git_repo_root, file_name, auth_name, auth_email)),
              mark(git)
        {
-           startlog();
        }
        ~TimeLine() = default;
    };

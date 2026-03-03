@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="structxdg__wm__base__listener" kind="struct" language="C++" prot="public">
+    <compoundname>xdg_wm_base_listener</compoundname>
+    <includes refid="xdg-shell-client-protocol_8h" local="no">xdg-shell-client-protocol.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structxdg__wm__base__listener_1a4c735d844e84443304b37d917ec847d0" prot="public" static="no" mutable="no">
+        <type>void(*</type>
+        <definition>void(* xdg_wm_base_listener::ping) (void *data, struct xdg_wm_base *xdg_wm_base, uint32_t serial)</definition>
+        <argsstring>)(void *data, struct xdg_wm_base *xdg_wm_base, uint32_t serial)</argsstring>
+        <name>ping</name>
+        <qualifiedname>xdg_wm_base_listener::ping</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>check if the client is alive</para>
+<para>The ping event asks the client if it&apos;s still alive. Pass the serial specified in the event back to the compositor by sending a &quot;pong&quot; request back with the specified serial. See xdg_wm_base.pong.</para>
+<para>Compositors can use this to determine if the client is still alive. It&apos;s unspecified what will happen if the client doesn&apos;t respond to the ping request, or in what timeframe. Clients should try to respond in a reasonable amount of time. The “unresponsive” error is provided for compositors that wish to disconnect unresponsive clients.</para>
+<para>A compositor is free to ping in any way it wants, but a client must always respond to any xdg_wm_base object it created. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>serial</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>pass this to the pong request </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="429" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="429" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="409" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="409" bodyend="432"/>
+    <listofallmembers>
+      <member refid="structxdg__wm__base__listener_1a4c735d844e84443304b37d917ec847d0" prot="public" virt="non-virtual"><scope>xdg_wm_base_listener</scope><name>ping</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

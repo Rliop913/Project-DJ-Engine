@@ -32,6 +32,10 @@ Includes
 
 - ``InputCore.hpp`` (:ref:`file_include_input_DefaultDevs_linux_InputCore.hpp`)
 
+- ``algorithm``
+
+- ``cstring``
+
 - ``evdev_codemap.hpp`` (:ref:`file_include_input_DefaultDevs_linux_evdev_things_evdev_codemap.hpp`)
 
 

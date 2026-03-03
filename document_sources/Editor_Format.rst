@@ -1,251 +1,299 @@
 Editor_Format
-==============
+=============
 
-Track Data
+This page explains the editor's on-disk and translation-layer data structures.
+It does not describe the full operational editing workflow. For lifecycle,
+mutation, persistence, and history behavior, read :doc:`Editor_Workflows`.
+
+The editor stack uses two storage layers:
+
+- human-editable JSON working files used by the timeline/editor code
+- binary and root-database payloads used by `trackdata` and `musdata`
+
+The current source of truth for JSON key names is
+`include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp`.
+
+Semantic Model
 --------------
-Track is the core data structure in the PDJE engine that represents a single music mixset unit. 
 
-Each track includes the song’s metadata, actual audio mixing information, rhythm game note data, and a cached mix list.
+PDJE editor data is easier to understand if you split it into four semantic
+layers:
 
+- `trackdata`
+  the root-database unit that represents an authored track. It stores a track
+  title plus serialized mix and note payloads, along with a cached list of
+  referenced music titles.
+- `musdata`
+  the root-database unit for a concrete music asset. It stores title, composer,
+  path, BPM information, and `firstBeat`.
+- `MixArgs`
+  timeline data that changes playback or processing behavior over musical time.
+  Current mix categories include `FILTER`, `EQ`, `DISTORTION`, `CONTROL`,
+  `VOL`, `LOAD`, `UNLOAD`, `BPM_CONTROL`, `ECHO`, `OSC_FILTER`, `FLANGER`,
+  `PHASER`, `TRANCE`, `PANNER`, `BATTLE_DJ`, `ROLL`, `COMPRESSOR`, and
+  `ROBOT`.
+- `NoteArgs`
+  chart and judgment data. These rows describe note timing, note metadata, and
+  the target `railID`.
 
-.. list-table:: Track Data Format
-    :header-rows: 1
-    :widths: 25 25 25 25
+`MusicArgs` is the bridge between the music metadata side and the BPM timeline
+side of the editor. It records a BPM value plus a beat-position tuple.
 
-    * - TrackTitle
-      - MixBinary
-      - NoteBinary
-      - CachedMixList
-    * - Text
-      - Binary(CapNProto)
-      - Binary(CapNProto)
-      - Text(CSV)
+Root Database Payloads
+----------------------
 
+.. doxygenstruct:: trackdata
+   :project: Project_DJ_Engine
 
-Music Meta Data
------------------
+.. doxygenstruct:: musdata
+   :project: Project_DJ_Engine
 
-Music Meta Data in the PDJE engine is a data structure that contains the attributes and fundamental information of a song itself. 
+`trackdata` stores:
 
-It defines the key data required for playback and analysis, such as the audio file path, composer, and BPM.
+- `trackTitle`
+- `mixBinary`
+- `noteBinary`
+- `cachedMixList`
 
+`musdata` stores:
 
-.. list-table:: Music Meta Data Format
-    :header-rows: 1
-    :widths: 25 25 25 25 25 25
+- `title`
+- `composer`
+- `musicPath`
+- `bpmBinary`
+- `bpm`
+- `firstBeat`
 
-    * - Title
-      - Composer
-      - MusicPath
-      - Bpm
-      - BpmBinary
-      - firstBeat
-    * - Text
-      - Text
-      - Text
-      - Double
-      - Binary(CapNProto)
-      - TEXT
+The binary fields are produced by the editor translation layer and then written
+into the root database. They are not intended to be edited by hand.
 
-.. _about-mix-data:
+`firstBeat` is important operationally: in the current source it is used as the
+PCM-frame offset where the first musical beat begins for that audio asset.
 
-Mix Data
------------
+Editor Argument Shapes
+----------------------
 
-Mix Data in the PDJE engine is a data structure that defines mixing events, effect parameter changes, and load/unload controls that occur during track playback. 
+.. doxygenstruct:: MixArgs
+   :project: Project_DJ_Engine
 
-Each entry specifies what action takes place at a particular time (based on Beat/subBeat), covering various audio control elements such as filters, EQ, volume, distortion, delay, and DJ scratching.
+.. doxygenstruct:: NoteArgs
+   :project: Project_DJ_Engine
 
-Unlike rhythm game note events, this data records changes in audio processing parameters themselves, which are applied in real time during playback.
+.. doxygenstruct:: MusicArgs
+   :project: Project_DJ_Engine
 
-.. list-table:: Mix Data Format
-    :header-rows: 1
-    :widths: 25 25 25 25 25 25 25 25 25 25 25 25
+These three structs describe the semantic payload handled by the editor code
+before rendering to binary:
 
-    * - type
-      - details
-      - ID
-      - first
-      - second
-      - third
-      - beat
-      - subBeat
-      - separate
-      - Ebeat
-      - EsubBeat
-      - Eseparate
-    * - TYPE_ENUM
-      - DETAIL_ENUM
-      - int
-      - TEXT
-      - TEXT
-      - TEXT
-      - long
-      - long
-      - long
-      - long
-      - long
-      - long
+- `MixArgs`
+  one mix/event row with type, detail enum, free-form string arguments, and a
+  start/end musical position
+- `NoteArgs`
+  one note row with note type/detail, arguments, start/end position, and
+  `railID`
+- `MusicArgs`
+  music timing metadata used by the music BPM editor flow
 
+Time And Position Model
+-----------------------
 
-.. csv-table:: Mix Data Table
-   :header: "type", "ID", "details", "first", "second", "third", "Interpolated Value"
-   :widths: 15, 10, 35, 20, 20, 30, 20
+The timeline fields follow the beat-grid style layout used across the editor
+and translators:
 
-   "FILTER(0)", "ID", "HIGH(0)/LOW(2)", "ITPL", "8PointValues", "NONE", "filter Frequency"
-   "EQ(1)", "ID", "HIGH(0)/MID(1)/LOW(2)", "ITPL", "8PointValues", "NONE", "eq value"
-   "DISTORTION(2)", "ID", "0", "ITPL", "8PointValues", "NONE", "drive value"
-   "CONTROL(3)", "ID", "PAUSE(3)/CUE(4)", "approx_loc", "X", "NONE", "NONE"
-   "VOL(4)", "ID", "TRIM(5)/FADER(6)", "ITPL", "8PointValues", "NONE", "volume"
-   "LOAD(5)", "ID", "0", "title", "composer", "bpm", "NONE"
-   "UNLOAD(6)", "ID", "0", "X", "X", "NONE", "NONE"
-   "bpmControl(7)", "ID", "timeStretch(7)", "BPM(double)", "NONE", "NONE", "NONE"
-   "ECHO(8)", "ID", "0", "ITPL", "8PointValues", "BPM, feedback", "Wet amount"
-   "OCS_Filter(9)", "ID", "HIGH(0)/LOW(2)", "ITPL", "8PointValues", "BPM, MiddleFreq, RangeHalfFreq", "Wet amount"
-   "FLANGER(10)", "ID", "0", "ITPL", "8PointValues", "BPM", "Wet amount"
-   "PHASER(11)", "ID", "0", "ITPL", "8PointValues", "BPM", "Wet amount"
-   "TRANCE(12)", "ID", "0", "ITPL", "8PointValues", "BPM, GAIN", "Wet amount"
-   "PANNER(13)", "ID", "0", "ITPL", "8PointValues", "BPM, GAIN", "Wet amount"
-   "BATTLE_DJ(14)", "ID", "SPIN(8)/PITCH(9)/REV(10)", "SPEED", "NONE", "NONE", "NONE"
-   "BATTLE_DJ(14)", "ID", "SCRATCH(11)", "StartPosition", "SPEED", "NONE", "NONE"
-   "ROLL(15)", "ID", "0", "ITPL", "8PointValues", "BPM", "Wet amount"
-   "COMPRESSOR(16)", "ID", "0", "Strength", "Thresh, Knee", "ATT, REL", "NONE"
-   "ROBOT(17)", "ID", "0", "ITPL", "8PointValues", "ocsFreq", "Wet amount"
+- `beat`
+  whole-beat index
+- `subBeat`
+  subdivision index inside the current beat
+- `separate`
+  subdivision denominator
+- `e_beat`, `e_subBeat`, `e_separate`
+  end-position tuple for duration-based events
 
-KEYWORDS
+In the current frame calculation helpers, the approximate position is handled
+as:
 
-======================================================        ============================================================
-ITPL                                                            8PointValues
-======================================================        ============================================================
-Choose Interpolator type(linear, cosine, cubic, flat)           8 data points that define a waveform for the interpolator
-======================================================        ============================================================
+`beat + (subBeat / separate)`
 
+with zero `separate` values treated as `1` by the translation path when needed.
+
+This means:
+
+- a simple point event only needs the start position
+- sustained notes or automation spans use the `e_*` fields too
+- mix automation and long-note style data both reuse the same timing model
+
+Interpolation And `EightPointValues`
+------------------------------------
+
+The runtime mix path still contains an explicit `EightPointValues` parser in
+`MixMachine.hpp`. Older docs referred to these comma-separated control values as
+`8PointValues`, and that term is still useful for understanding the editor
+format.
+
+Operationally:
+
+- `MixArgs.first` often carries an interpolation selector
+- `MixArgs.second` often carries the comma-separated control values
+- the runtime renderer converts those values into time-varying control curves
+  between the start and end positions
+
+The interpolation-related runtime enums in the tree are:
+
+- `ITPL_LINEAR`
+- `ITPL_COSINE`
+- `ITPL_CUBIC`
+- `ITPL_FLAT`
+
+Example control string:
 
 .. code-block:: c++
 
-  std::string EightPoint = "5000,1000,2000,3000,4000,5000,5500,6000";
-
-this means
+   std::string points = "5000,1000,2000,3000,4000,5000,5500,6000";
 
 .. image:: _static/eightPoint_example.png
 
-We interpolate this data using various interpolation methods.
+Read that example as eight control points stretched across the event span from
+the start beat tuple to the end beat tuple. This is the model older docs used
+to explain automated filter, EQ, volume, and other FX changes, and it still
+matches the current runtime parser.
 
-Point Index 1 corresponds to the **Start Position**, defined as:  
-`beat + (beat / separate) * subBeat`
+With `ITPL_FLAT`, older examples used a single value because the control is not
+meant to interpolate across a curve. That guidance still matches the flat
+interpolator concept in the current tree.
 
-Point Index 8 corresponds to the **End Position**, defined as:  
-`Ebeat + (Ebeat / Eseparate) * EsubBeat`
+JSON Working Sets
+-----------------
 
-As you may have noticed, the data provided through `8PointValues` is transformed into a graph consisting of 8 key points.  
-This data serves as the `Interpolated Value`, which transitions smoothly from the **Start Position** to the **End Position** using the specified `ITPL` interpolation method—such as linear, cosine, cubic, or flat.
+`jsonWrapper.hpp` defines the current root object names:
 
-This mechanism allows for precise control of parameters (e.g., filter frequency, volume, drive) that vary over time, enabling **smooth and continuous modulation** within audio effect modules.
+- `PDJE_MIX`
+- `PDJE_NOTE`
+- `PDJE_MUSIC_BPM`
 
-In other words, rather than relying on static values, the system supports **curve-based, time-dependent control**, allowing for more **dynamic and expressive musical behavior**.
+It also defines the field keys below.
 
-.. attention:: 
-  - On Flat interpolator type, you need to write just one value
+Mix JSON Keys
+~~~~~~~~~~~~~
 
-  - SPEED: -N ~ N (float) 1 Equals 100%, -1.0 Equals -100%(reverse play), 10.0 Equals 1000%. Based on BPM before time stretching.
-
-Note Data
-------------
-
-Note Data in the PDJE engine is a data structure that defines rhythm game note events. 
-
-Each note specifies what kind of input is required at a particular point in time (Beat, subBeat, Separate), and the player must respond accurately at that timing in order to score.
-
-Note data is the core element representing player interaction. Unlike Mix Data, which records changes to audio parameters, Note Data strictly handles “input events.”
-
-In particular, both Note_Type and Note_Detail are declared as TEXT fields, not as predefined ENUM values. 
-
-Aside from reserved keywords such as the BPM prefix, users are expected to define and extend their own types and details. This design allows for flexible customization to support specific game modes, input devices, or user-defined rules.
-
-Additionally, any Note_Type beginning with BPM carries special meaning, as it represents an event that applies a tempo (BPM) change during playback. 
-
-In this case, the first field is treated as the new BPM value, ensuring synchronization between note judgment timing and the actual playback speed of the track.
-
-.. list-table:: Note Table
+.. list-table::
    :header-rows: 1
-   :widths: 15 20 15 15 15 15 15 15 15 15 20 15
 
-   * - Note_Type
-     - Note_Detail
-     - first
-     - second
-     - third
-     - beat
-     - subBeat
-     - separate
-     - Ebeat
-     - EsubBeat
-     - Eseparate
-     - RailID
-   * - TEXT
-     - uint16
-     - TEXT
-     - TEXT
-     - TEXT
-     - long
-     - long
-     - long
-     - long
-     - long
-     - long
-     - uint64
+   * - Key
+     - Meaning
+   * - `type`
+     - integer `TypeEnum` value
+   * - `details`
+     - integer `DetailEnum` value
+   * - `id`
+     - logical target ID
+   * - `first`
+     - first free-form argument
+   * - `second`
+     - second free-form argument
+   * - `third`
+     - third free-form argument
+   * - `beat`
+     - start beat
+   * - `sub_beat`
+     - start subdivision index
+   * - `separate`
+     - start subdivision denominator
+   * - `e_beat`
+     - end beat
+   * - `e_subBeat`
+     - end subdivision index
+   * - `e_separate`
+     - end subdivision denominator
 
+Note JSON Keys
+~~~~~~~~~~~~~~
 
-- The "BPM" Note_Type name is prefixed for the default bpm change implementation.
-- The "AXIS" Note_Type name is prefixed for the mouse movements. Warn: you need to implement your own judge logic
+Note rows reuse the same timeline position keys as mix rows and add:
 
+- `note_type`
+- `note_detail`
+- `rail_id`
 
-About Beat & subBeat & Separate
-=================================
+`note_type` is intentionally open text in the current editor model. One special
+reserved value is visible in the current translator path:
 
-``Beat``, ``subBeat``, and ``Separate`` are indexing methods derived from the Beat Grid concept (See: `Serato Beat Grid <https://support.serato.com/hc/en-us/articles/202523390-Introduction-to-Beatgrids>`_), which is widely used in DAWs (Digital Audio Workstations), DJ software and MIDI sequencing.
+- note type exactly equal to `BPM`
 
+`NoteTranslator` treats `BPM` rows as tempo fragments rather than normal
+judged notes. This is the current source-backed behavior and is narrower than
+the older "BPM-prefixed note" phrasing.
 
-A Beat Grid divides musical time based on **BPM (tempo)** and **time signature**, providing a precise rhythmic framework for placing musical events along a timeline.
+Music JSON Keys
+~~~~~~~~~~~~~~~
 
+Music metadata and BPM editor flows use:
 
-Within this framework, ``Beat`` represents the primary rhythmic unit (typically a quarter note in 4/4 time), ``subBeat`` further subdivides each beat into smaller logical segments (such as 1/4 or 1/8 of a beat), and ``Separate`` defines custom high-resolution divisions used for fine-grained quantization or event positioning.
+- `title`
+- `composer`
+- `path`
+- `bpm`
+- `first_beat`
 
+The `MusicArgs` helper itself carries `bpm`, `beat`, `subBeat`, and `separate`
+for the BPM-timeline side of the editor.
 
-This indexing method is conceptually aligned with timeline systems used in rhythm games and digital audio applications, where accurate synchronization and sub-beat resolution are essential.
+Example JSON Fragments
+----------------------
 
+Mix row:
 
-Key Terms
----------
+.. code-block:: json
 
-- **firstBeat**  
-  The PCM frame (sample-level position) where the first Beat begins.  
-  Used as the reference point for synchronization of the music.
+   {
+     "type": 1,
+     "details": 0,
+     "id": 0,
+     "first": "0",
+     "second": "0,0,0,0,0,0,0,0",
+     "third": "",
+     "beat": 32,
+     "sub_beat": 0,
+     "separate": 1,
+     "e_beat": 40,
+     "e_subBeat": 0,
+     "e_separate": 1
+   }
 
-- **beat**  
-  The position of the **beat** (not the measure) calculated based on BPM and time signature.
-  It represents the primary rhythmic unit (e.g., a quarter note in 4/4 time).
+Note row:
 
-- **subBeat**  
-  The position within a beat that divides it into smaller rhythmic units.
-  Typically used for finer timing precision within a beat.
+.. code-block:: json
 
-- **separate**  
-  The index of a fine-grained subdivision when a beat is divided into smaller, fixed segments.
-  For example, if separate = 192, it means the beat is sliced into 192 equal parts, and this value specifies the current segment number.
+   {
+     "note_type": "TAP",
+     "note_detail": 0,
+     "first": "",
+     "second": "",
+     "third": "",
+     "beat": 16,
+     "sub_beat": 0,
+     "separate": 1,
+     "e_beat": 0,
+     "e_subBeat": 0,
+     "e_separate": 0,
+     "rail_id": 1
+   }
 
-- **ebeat / esubBeat / eseparate**  
-  The prefix ``e`` stands for **end**.
-  These fields indicate the ending positions of an event that spans a duration (e.g., long notes, sustained effects), using the same beat/subBeat/separate indexing system.
+Translation Layer
+-----------------
 
+The current conversion path is:
 
----
+1. JSON working files are manipulated through `PDJE_JSONHandler`.
+2. `CapWriter<MixBinaryCapnpData>`, `CapWriter<NoteBinaryCapnpData>`, and
+   `CapWriter<MusicBinaryCapnpData>` serialize the working representation.
+3. `MixTranslator`, `MusicTranslator`, and `NoteTranslator` deserialize those
+   binaries into runtime structures such as `MIX`, `BPM`, and note callbacks.
 
-Summary
--------
+This split is important:
 
-- **firstBeat** represents the actual PCM frame in the audio stream where the music begins.  
-- **beat / subBeat / separate** describe the timeline position of an event according to the BPM and time signature.  
-- **ebeat / esubBeat / eseparate** mark the ending position of the event, allowing representation of interval-based events.  
+- JSON is the editor-friendly working representation
+- binary payloads are the runtime-facing data stored in the root DB
 
-This structure enables the PDJE engine to achieve **precise synchronization** between the audio signal (PCM-level) and rhythm game events (beat-level).
+For the operational side of the editor, including `AddLine()`, `deleteLine()`,
+history navigation, preview playback, and the distinction between `render()`
+and `pushToRootDB()`, use :doc:`Editor_Workflows`.

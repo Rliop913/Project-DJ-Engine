@@ -86,15 +86,13 @@ Program Listing for File KVJson.cpp
            }
        } else {
            fs::create_directories(filepath.parent_path());
-           std::ofstream jfile(filepath);
-           if (!jfile.is_open()) {
+           ROOT = nj::object();
+           if (!PDJE_JSON_IO_DETAIL::WriteDiffFriendlyJsonToFile(filepath, ROOT)) {
                critlog("failed to make or open new json file. from "
                        "PDJE_JSONHandler<KW_W> load. path: ");
                critlog(filepath.generic_string());
                return false;
            }
-           jfile << std::setw(4) << ROOT;
-           jfile.close();
        }
        return true;
    }

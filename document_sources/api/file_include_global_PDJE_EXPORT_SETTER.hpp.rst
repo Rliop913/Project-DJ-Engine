@@ -59,7 +59,7 @@ Included By
 
 - :ref:`file_include_core_db_Capnp_CapnpBinary_CapnpBinary.hpp`
 
-- :ref:`file_include_core_db_Capnp_Translators_FrameCalc.hpp`
+- :ref:`file_include_core_db_Capnp_Translators_FrameCalcCore.hpp`
 
 - :ref:`file_include_core_db_Capnp_Translators_MixTranslator_Bpm.hpp`
 
@@ -98,6 +98,10 @@ Included By
 - :ref:`file_include_global_Highres_Clock_Windows_PDJE_Highres_Clock.hpp`
 
 - :ref:`file_include_global_PDJE_ATOMIC_EVENT.hpp`
+
+- :ref:`file_include_global_PDJE_LOG_RUNTIME_API.h`
+
+- :ref:`file_include_global_PDJE_LOG_SETTER.hpp`
 
 - :ref:`file_include_global_PDJE_SYNC_CORE.hpp`
 

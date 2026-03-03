@@ -72,7 +72,6 @@ Program Listing for File Secured_IPC_TX_RX.hpp
            : aead(key)
        {
            try {
-               startlog();
                if (isHost) {
                    TXBuf.MakeIPCSharedMemory(memFirst, MSG_MAX_SIZE);
                    RXBuf.MakeIPCSharedMemory(memSecond, MSG_MAX_SIZE);

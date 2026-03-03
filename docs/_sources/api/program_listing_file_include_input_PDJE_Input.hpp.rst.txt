@@ -36,6 +36,9 @@ Program Listing for File PDJE_Input.hpp
        std::optional<PDJE_MIDI::MIDI> midi_engine;
        bool                           FLAG_MIDI_ON = false;
        PDJE_INPUT_STATE               state        = PDJE_INPUT_STATE::DEAD;
+       void                          *platform_ctx0_ = nullptr;
+       void                          *platform_ctx1_ = nullptr;
+       bool                           use_internal_window_ = false;
    
      public:
        std::vector<DeviceData>
@@ -44,7 +47,9 @@ Program Listing for File PDJE_Input.hpp
        std::vector<libremidi::input_port>
        GetMIDIDevs();
        bool
-       Init();
+       Init(void *platform_ctx0      = nullptr,
+            void *platform_ctx1      = nullptr,
+            bool  use_internal_window = false);
    
        bool
        Config(std::vector<DeviceData>                  &devs,
@@ -58,6 +63,9 @@ Program Listing for File PDJE_Input.hpp
    
        PDJE_INPUT_STATE
        GetState();
+   
+       std::string
+       GetCurrentInputBackend() const;
    
        PDJE_INPUT_DATA_LINE
        PullOutDataLine();

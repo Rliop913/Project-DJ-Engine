@@ -44,6 +44,8 @@ Included By
 
 - :ref:`file_include_input_DefaultDevs_linux_ParseKeyboard.cpp`
 
+- :ref:`file_include_input_DefaultDevs_linux_wayland_things_WaylandInputCore.cpp`
+
 
 
 

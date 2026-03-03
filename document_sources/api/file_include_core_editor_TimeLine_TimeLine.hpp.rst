@@ -40,6 +40,8 @@ Includes
 
 - ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_global_PDJE_LOG_SETTER.hpp`)
 
+- ``TimeLineDiffTypes.hpp`` (:ref:`file_include_core_editor_TimeLine_TimeLineDiffTypes.hpp`)
+
 - ``exception``
 
 - ``filesystem``
@@ -48,7 +50,11 @@ Includes
 
 - ``jsonWrapper.hpp`` (:ref:`file_include_core_editor_TimeLine_JSONWrap_jsonWrapper.hpp`)
 
+- ``optional``
+
 - ``string``
+
+- ``type_traits``
 
 
 

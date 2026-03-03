@@ -17,7 +17,6 @@ Program Listing for File PDJE_Crypto_AEAD.cpp
    
    AEAD::AEAD(PSK &key, const std::string &algo)
    {
-       startlog();
        try {
    
            enc = Botan::Cipher_Mode::create_or_throw(

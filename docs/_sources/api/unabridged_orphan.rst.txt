@@ -121,6 +121,11 @@ Directories
 .. toctree::
    :maxdepth: 5
 
+   dir_include_core_editor_TimeLine_DiffMachine.rst
+
+.. toctree::
+   :maxdepth: 5
+
    dir_include_core_editor_TimeLine_EventMarker.rst
 
 .. toctree::
@@ -232,6 +237,16 @@ Directories
    :maxdepth: 5
 
    dir_include_input_DefaultDevs_linux_evdev_things.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_input_DefaultDevs_linux_wayland_protocols.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_input_DefaultDevs_linux_wayland_things.rst
 
 .. toctree::
    :maxdepth: 5
@@ -378,6 +393,71 @@ Directories
 
    dir_include_tests_JUDGE_TESTS.rst
 
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_util.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_util_ai.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_util_common.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_util_db.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_util_db_backends.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_util_db_keyvalue.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_util_db_nearest.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_util_db_relational.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_util_function.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_util_function_halide.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_util_function_scalar.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_util_function_text.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir_include_util_Halide_Codes.rst
+
 Files
 *****
 
@@ -386,6 +466,21 @@ Files
    :maxdepth: 5
 
    file_include_core_MainObjects_editorObject_addline.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_ai_AI.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_db_backends_AnnoyBackend.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_global_DataLines_Atomic_Double_Buffer.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -435,6 +530,26 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_util_db_BackendConcept.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_db_keyvalue_BackendConcept.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_db_nearest_BackendConcept.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_db_relational_BackendConcept.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_core_audioRender_MixMachine_MUSIC_CTR_BattleDj.cpp.rst
 
 .. toctree::
@@ -470,6 +585,11 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_util_function_scalar_Clamp.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_input_trashbin_--DEPRECATED-linux_common_Common_Features.hpp.rst
 
 .. toctree::
@@ -486,6 +606,21 @@ Files
    :maxdepth: 5
 
    file_include_core_audioRender_ManualMix_ManualFausts_compressorMan.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_db_Database.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_db_keyvalue_Database.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_db_relational_Database.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -511,6 +646,11 @@ Files
    :maxdepth: 5
 
    file_include_tests_dbTest.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_db_DbTypes.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -700,6 +840,21 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_core_db_Capnp_Translators_FrameCalcCore.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_function_FunctionContext.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_function_halide_GainBias.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_core_MainObjects_editorObject_getall.cpp.rst
 
 .. toctree::
@@ -735,7 +890,17 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_util_Halide_Codes_Halide_CodeSample.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_tests_highway_Test.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_db_nearest_Index.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -825,6 +990,11 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_core_editor_TimeLine_JSONWrap_JsonDiffFriendlyIO.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_core_editor_TimeLine_JSONWrap_jsonWrapper.hpp.rst
 
 .. toctree::
@@ -876,6 +1046,16 @@ Files
    :maxdepth: 5
 
    file_include_input_trashbin_--DEPRECATED-linux_socket_linux_socket.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_DefaultDevs_linux_LinuxInputContracts.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_DefaultDevs_linux_LinuxMouseButtonMapping.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -1220,6 +1400,11 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_input_PDJE_Input_StateLogic.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_core_interface_PDJE_interface.cpp.rst
 
 .. toctree::
@@ -1266,6 +1451,16 @@ Files
    :maxdepth: 5
 
    file_include_judge_Loop_PDJE_Judge_Loop_Structs.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_global_PDJE_LOG_RUNTIME_API.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_global_PDJE_LOG_SETTER.cpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -1355,6 +1550,11 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_util_PDJE_Util.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_tests_INPUT_TESTS_pdjeInputTest.cpp.rst
 
 .. toctree::
@@ -1420,12 +1620,22 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_util_common_Result.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_core_audioRender_MixMachine_FAUST_VALS_robot.hpp.rst
 
 .. toctree::
    :maxdepth: 5
 
    file_include_core_audioRender_ManualMix_ManualFausts_robotMan.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_db_backends_RocksDbBackend.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -1495,6 +1705,26 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_util_function_text_Slugify.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_db_backends_SqliteBackend.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_common_Status.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_common_StatusCode.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_input_runner_windows_SubMain.cpp.rst
 
 .. toctree::
@@ -1545,6 +1775,41 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_core_editor_TimeLine_DiffMachine_TimeLineDiffMachine-KV.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_core_editor_TimeLine_DiffMachine_TimeLineDiffMachine-MIX.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_core_editor_TimeLine_DiffMachine_TimeLineDiffMachine-MUSIC.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_core_editor_TimeLine_DiffMachine_TimeLineDiffMachine-NOTE.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_core_editor_TimeLine_DiffMachine_TimeLineDiffMachine.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_core_editor_TimeLine_DiffMachine_TimeLineDiffMachine.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_core_editor_TimeLine_TimeLineDiffTypes.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_core_db_trackDB.cpp.rst
 
 .. toctree::
@@ -1556,6 +1821,11 @@ Files
    :maxdepth: 5
 
    file_include_core_editor_pdjeLinter_trackLinter.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_core_editor_pdjeLinter_TrackLinterRules.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -1640,6 +1910,16 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_util_db_nearest_Types.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_db_relational_Types.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_core_MainObjects_editorObject_undo.cpp.rst
 
 .. toctree::
@@ -1655,4 +1935,78 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_input_DefaultDevs_linux_wayland_things_WaylandInputCore.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_DefaultDevs_linux_wayland_things_WaylandInputCore.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_DefaultDevs_linux_wayland_things_WaylandOwnedWindow.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_DefaultDevs_linux_wayland_things_WaylandOwnedWindow.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_DefaultDevs_linux_wayland_things_WaylandRuntimeLoader.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_DefaultDevs_linux_wayland_things_WaylandRuntimeLoader.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_input_runner_windows_windows_keyboard_fill.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_DefaultDevs_linux_wayland_protocols_xdg-shell-client-protocol.c.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_DefaultDevs_linux_wayland_protocols_xdg-shell-client-protocol.h.rst
+
+Pages
+*****
+
+
+.. toctree::
+   :maxdepth: 5
+
+   page_page_xdg_shell.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   page_page_iface_xdg_wm_base.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   page_page_iface_xdg_positioner.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   page_page_iface_xdg_surface.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   page_page_iface_xdg_toplevel.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   page_page_iface_xdg_popup.rst

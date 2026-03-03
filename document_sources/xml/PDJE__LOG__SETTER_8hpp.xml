@@ -2,13 +2,13 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="PDJE__LOG__SETTER_8hpp" kind="file" language="C++">
     <compoundname>PDJE_LOG_SETTER.hpp</compoundname>
-    <includes local="no">filesystem</includes>
-    <includes local="no">mutex</includes>
-    <includes local="no">spdlog/sinks/basic_file_sink.h</includes>
-    <includes local="no">spdlog/sinks/stdout_color_sinks.h</includes>
+    <includes refid="PDJE__EXPORT__SETTER_8hpp" local="yes">PDJE_EXPORT_SETTER.hpp</includes>
+    <includes refid="PDJE__LOG__RUNTIME__API_8h" local="yes">PDJE_LOG_RUNTIME_API.h</includes>
+    <includes local="no">spdlog/fmt/fmt.h</includes>
     <includes local="no">spdlog/spdlog.h</includes>
+    <includes local="no">exception</includes>
     <includes local="no">string_view</includes>
-    <includes local="no">type_traits</includes>
+    <includes local="no">utility</includes>
     <includedby refid="audioPlayer_8cpp" local="yes">include/core/MainObjects/audioPlayer/audioPlayer.cpp</includedby>
     <includedby refid="audio__OS__impls_8hpp" local="yes">include/core/MainObjects/audioPlayer/audio_OS_impls.hpp</includedby>
     <includedby refid="addline_8cpp" local="yes">include/core/MainObjects/editorObject/addline.cpp</includedby>
@@ -34,11 +34,17 @@
     <includedby refid="dbState_8cpp" local="yes">include/core/db/dbState.cpp</includedby>
     <includedby refid="musicDB_8cpp" local="yes">include/core/db/musicDB.cpp</includedby>
     <includedby refid="trackDB_8cpp" local="yes">include/core/db/trackDB.cpp</includedby>
+    <includedby refid="TimeLineDiffMachine-KV_8cpp" local="yes">include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-KV.cpp</includedby>
+    <includedby refid="TimeLineDiffMachine-MIX_8cpp" local="yes">include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-MIX.cpp</includedby>
+    <includedby refid="TimeLineDiffMachine-MUSIC_8cpp" local="yes">include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-MUSIC.cpp</includedby>
+    <includedby refid="TimeLineDiffMachine-NOTE_8cpp" local="yes">include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-NOTE.cpp</includedby>
+    <includedby refid="TimeLineDiffMachine_8cpp" local="yes">include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.cpp</includedby>
     <includedby refid="EventMarker_8hpp" local="yes">include/core/editor/TimeLine/EventMarker/EventMarker.hpp</includedby>
     <includedby refid="GitDatas_8hpp" local="yes">include/core/editor/TimeLine/GitDataPack/GitDatas.hpp</includedby>
     <includedby refid="GitRAII_8hpp" local="yes">include/core/editor/TimeLine/GitDataPack/GitRAII.hpp</includedby>
     <includedby refid="jsonWrapper_8hpp" local="yes">include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp</includedby>
     <includedby refid="LineVersion_8cpp" local="yes">include/core/editor/TimeLine/LineVersion/LineVersion.cpp</includedby>
+    <includedby refid="TimeLine_8cpp" local="yes">include/core/editor/TimeLine/TimeLine.cpp</includedby>
     <includedby refid="TimeLine_8hpp" local="yes">include/core/editor/TimeLine/TimeLine.hpp</includedby>
     <includedby refid="editor_8cpp" local="yes">include/core/editor/editor.cpp</includedby>
     <includedby refid="editor_8hpp" local="yes">include/core/editor/editor.hpp</includedby>
@@ -48,9 +54,11 @@
     <includedby refid="PDJE__Crypto_8hpp" local="yes">include/global/Crypto/PDJE_Crypto.hpp</includedby>
     <includedby refid="PSKPipe_8hpp" local="yes">include/global/Crypto/PSKPipe.hpp</includedby>
     <includedby refid="fileNameSanitizer_8cpp" local="yes">include/global/DataLines/fileNameSanitizer.cpp</includedby>
+    <includedby refid="PDJE__LOG__SETTER_8cpp" local="yes">include/global/PDJE_LOG_SETTER.cpp</includedby>
     <includedby refid="PDJE__RAII__WRAP_8hpp" local="yes">include/global/PDJE_RAII_WRAP.hpp</includedby>
     <includedby refid="linux_2DefaultDevs_8hpp" local="yes">include/input/DefaultDevs/linux/DefaultDevs.hpp</includedby>
     <includedby refid="InputCore_8cpp" local="yes">include/input/DefaultDevs/linux/InputCore.cpp</includedby>
+    <includedby refid="WaylandInputCore_8cpp" local="yes">include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp</includedby>
     <includedby refid="ipc__util_8hpp" local="yes">include/input/IPC/common/ipc_util.hpp</includedby>
     <includedby refid="ipc__named__mutex_8hpp" local="no">include/input/IPC/memory/ipc_named_mutex.hpp</includedby>
     <includedby refid="ipc__shared__memory_8hpp" local="yes">include/input/IPC/memory/ipc_shared_memory.hpp</includedby>
@@ -61,6 +69,20 @@
     <includedby refid="PDJE__Judge__Loop_8cpp" local="yes">include/judge/Loop/PDJE_Judge_Loop.cpp</includedby>
     <includedby refid="PDJE__Judge_8cpp" local="yes">include/judge/PDJE_Judge.cpp</includedby>
     <incdepgraph>
+      <node id="2">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
+      </node>
+      <node id="3">
+        <label>PDJE_LOG_RUNTIME_API.h</label>
+        <link refid="PDJE__LOG__RUNTIME__API_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
       <node id="1">
         <label>include/global/PDJE_LOG_SETTER.hpp</label>
         <link refid="PDJE__LOG__SETTER_8hpp"/>
@@ -68,37 +90,37 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-      </node>
-      <node id="2">
-        <label>filesystem</label>
-      </node>
-      <node id="3">
-        <label>mutex</label>
-      </node>
-      <node id="4">
-        <label>spdlog/sinks/basic_file_sink.h</label>
-      </node>
-      <node id="5">
-        <label>spdlog/sinks/stdout_color_sinks.h</label>
-      </node>
-      <node id="6">
-        <label>spdlog/spdlog.h</label>
-      </node>
-      <node id="7">
-        <label>string_view</label>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
       </node>
       <node id="8">
-        <label>type_traits</label>
+        <label>exception</label>
+      </node>
+      <node id="6">
+        <label>spdlog/fmt/fmt.h</label>
+      </node>
+      <node id="7">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="4">
+        <label>stddef.h</label>
+      </node>
+      <node id="5">
+        <label>stdint.h</label>
+      </node>
+      <node id="9">
+        <label>string_view</label>
+      </node>
+      <node id="10">
+        <label>utility</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
@@ -481,18 +503,18 @@
         <link refid="CapnpBinary_8hpp"/>
         <childnode refid="56" relation="include">
         </childnode>
-        <childnode refid="78" relation="include">
+        <childnode refid="77" relation="include">
         </childnode>
-        <childnode refid="92" relation="include">
+        <childnode refid="99" relation="include">
         </childnode>
-        <childnode refid="94" relation="include">
+        <childnode refid="101" relation="include">
         </childnode>
-        <childnode refid="96" relation="include">
+        <childnode refid="103" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="74">
+      <node id="104">
         <label>include/core/db/Capnp/Translators/FrameCalc.cpp</label>
         <link refid="FrameCalc_8cpp"/>
       </node>
@@ -515,48 +537,46 @@
         </childnode>
         <childnode refid="74" relation="include">
         </childnode>
-        <childnode refid="75" relation="include">
+        <childnode refid="98" relation="include">
         </childnode>
-        <childnode refid="91" relation="include">
+        <childnode refid="99" relation="include">
         </childnode>
-        <childnode refid="92" relation="include">
-        </childnode>
-        <childnode refid="94" relation="include">
+        <childnode refid="101" relation="include">
         </childnode>
       </node>
-      <node id="76">
+      <node id="75">
         <label>include/core/db/Capnp/Translators/MixTranslator/Bpm.cpp</label>
         <link refid="Bpm_8cpp"/>
       </node>
-      <node id="75">
+      <node id="74">
         <label>include/core/db/Capnp/Translators/MixTranslator/Bpm.hpp</label>
         <link refid="Bpm_8hpp"/>
+        <childnode refid="75" relation="include">
+        </childnode>
         <childnode refid="76" relation="include">
         </childnode>
         <childnode refid="77" relation="include">
         </childnode>
-        <childnode refid="78" relation="include">
-        </childnode>
       </node>
-      <node id="77">
+      <node id="76">
         <label>include/core/db/Capnp/Translators/MixTranslator/Mix.cpp</label>
         <link refid="Mix_8cpp"/>
       </node>
-      <node id="91">
+      <node id="98">
         <label>include/core/db/Capnp/Translators/MixTranslator/Mix.hpp</label>
         <link refid="Mix_8hpp"/>
-        <childnode refid="75" relation="include">
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
         </childnode>
         <childnode refid="77" relation="include">
         </childnode>
-        <childnode refid="78" relation="include">
-        </childnode>
       </node>
-      <node id="79">
+      <node id="78">
         <label>include/core/db/Capnp/Translators/MixTranslator/MixTranslator.cpp</label>
         <link refid="MixTranslator_8cpp"/>
       </node>
-      <node id="78">
+      <node id="77">
         <label>include/core/db/Capnp/Translators/MixTranslator/MixTranslator.hpp</label>
         <link refid="MixTranslator_8hpp"/>
         <childnode refid="72" relation="include">
@@ -565,100 +585,140 @@
         </childnode>
         <childnode refid="37" relation="include">
         </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
         <childnode refid="79" relation="include">
         </childnode>
-        <childnode refid="80" relation="include">
-        </childnode>
-        <childnode refid="82" relation="include">
+        <childnode refid="81" relation="include">
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
       </node>
-      <node id="93">
+      <node id="100">
         <label>include/core/db/Capnp/Translators/MusicTranslator/MusicTranslator.cpp</label>
         <link refid="MusicTranslator_8cpp"/>
       </node>
-      <node id="92">
+      <node id="99">
         <label>include/core/db/Capnp/Translators/MusicTranslator/MusicTranslator.hpp</label>
         <link refid="MusicTranslator_8hpp"/>
         <childnode refid="71" relation="include">
         </childnode>
-        <childnode refid="93" relation="include">
+        <childnode refid="100" relation="include">
         </childnode>
       </node>
-      <node id="95">
+      <node id="102">
         <label>include/core/db/Capnp/Translators/NoteTranslator/NoteTranslator.cpp</label>
         <link refid="NoteTranslator_8cpp"/>
       </node>
-      <node id="94">
+      <node id="101">
         <label>include/core/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp</label>
         <link refid="NoteTranslator_8hpp"/>
-        <childnode refid="95" relation="include">
+        <childnode refid="102" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="97">
+      <node id="105">
         <label>include/core/db/dbRoot.cpp</label>
         <link refid="dbRoot_8cpp"/>
       </node>
-      <node id="98">
+      <node id="106">
         <label>include/core/db/dbState.cpp</label>
         <link refid="dbState_8cpp"/>
       </node>
-      <node id="99">
+      <node id="107">
         <label>include/core/db/musicDB.cpp</label>
         <link refid="musicDB_8cpp"/>
       </node>
-      <node id="100">
+      <node id="108">
         <label>include/core/db/trackDB.cpp</label>
         <link refid="trackDB_8cpp"/>
       </node>
-      <node id="83">
+      <node id="89">
+        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-KV.cpp</label>
+        <link refid="TimeLineDiffMachine-KV_8cpp"/>
+      </node>
+      <node id="90">
+        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-MIX.cpp</label>
+        <link refid="TimeLineDiffMachine-MIX_8cpp"/>
+      </node>
+      <node id="91">
+        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-MUSIC.cpp</label>
+        <link refid="TimeLineDiffMachine-MUSIC_8cpp"/>
+      </node>
+      <node id="92">
+        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-NOTE.cpp</label>
+        <link refid="TimeLineDiffMachine-NOTE_8cpp"/>
+      </node>
+      <node id="93">
+        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.cpp</label>
+        <link refid="TimeLineDiffMachine_8cpp"/>
+      </node>
+      <node id="88">
+        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp</label>
+        <link refid="TimeLineDiffMachine_8hpp"/>
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="91" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+      </node>
+      <node id="82">
         <label>include/core/editor/TimeLine/EventMarker/EventMarker.hpp</label>
         <link refid="EventMarker_8hpp"/>
-        <childnode refid="84" relation="include">
+        <childnode refid="83" relation="include">
         </childnode>
       </node>
-      <node id="85">
+      <node id="84">
         <label>include/core/editor/TimeLine/GitDataPack/GitDatas.hpp</label>
         <link refid="GitDatas_8hpp"/>
-        <childnode refid="83" relation="include">
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
         </childnode>
         <childnode refid="86" relation="include">
         </childnode>
+        <childnode refid="83" relation="include">
+        </childnode>
         <childnode refid="87" relation="include">
         </childnode>
-        <childnode refid="84" relation="include">
-        </childnode>
       </node>
-      <node id="101">
+      <node id="109">
         <label>include/core/editor/TimeLine/GitDataPack/GitRAII.hpp</label>
         <link refid="GitRAII_8hpp"/>
-        <childnode refid="83" relation="include">
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
         </childnode>
         <childnode refid="86" relation="include">
         </childnode>
-        <childnode refid="87" relation="include">
-        </childnode>
-        <childnode refid="84" relation="include">
+        <childnode refid="83" relation="include">
         </childnode>
       </node>
-      <node id="80">
+      <node id="79">
         <label>include/core/editor/TimeLine/JSONWrap/EditorArgs.hpp</label>
         <link refid="EditorArgs_8hpp"/>
-        <childnode refid="81" relation="include">
+        <childnode refid="80" relation="include">
         </childnode>
-        <childnode refid="82" relation="include">
+        <childnode refid="81" relation="include">
         </childnode>
         <childnode refid="62" relation="include">
         </childnode>
       </node>
-      <node id="88">
+      <node id="95">
         <label>include/core/editor/TimeLine/JSONWrap/KVJson.cpp</label>
         <link refid="KVJson_8cpp"/>
       </node>
-      <node id="89">
+      <node id="96">
         <label>include/core/editor/TimeLine/JSONWrap/MixJson.cpp</label>
         <link refid="MixJson_8cpp"/>
       </node>
@@ -666,7 +726,7 @@
         <label>include/core/editor/TimeLine/JSONWrap/MusicJson.cpp</label>
         <link refid="MusicJson_8cpp"/>
       </node>
-      <node id="81">
+      <node id="80">
         <label>include/core/editor/TimeLine/JSONWrap/MusicJsonHelper.hpp</label>
         <link refid="MusicJsonHelper_8hpp"/>
         <childnode refid="7" relation="include">
@@ -680,48 +740,62 @@
         <childnode refid="62" relation="include">
         </childnode>
       </node>
-      <node id="90">
+      <node id="97">
         <label>include/core/editor/TimeLine/JSONWrap/NoteJson.cpp</label>
         <link refid="NoteJson_8cpp"/>
       </node>
-      <node id="82">
+      <node id="81">
         <label>include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp</label>
         <link refid="jsonWrapper_8hpp"/>
-        <childnode refid="83" relation="include">
+        <childnode refid="82" relation="include">
         </childnode>
-        <childnode refid="85" relation="include">
+        <childnode refid="84" relation="include">
         </childnode>
-        <childnode refid="88" relation="include">
+        <childnode refid="95" relation="include">
         </childnode>
-        <childnode refid="89" relation="include">
+        <childnode refid="96" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="81" relation="include">
+        <childnode refid="80" relation="include">
         </childnode>
-        <childnode refid="90" relation="include">
+        <childnode refid="97" relation="include">
         </childnode>
-        <childnode refid="84" relation="include">
+        <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
         </childnode>
       </node>
-      <node id="86">
+      <node id="85">
         <label>include/core/editor/TimeLine/LineVersion/LineVersion.cpp</label>
         <link refid="LineVersion_8cpp"/>
       </node>
-      <node id="87">
+      <node id="86">
         <label>include/core/editor/TimeLine/LineVersion/LineVersion.hpp</label>
         <link refid="LineVersion_8hpp"/>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
+        </childnode>
         <childnode refid="83" relation="include">
         </childnode>
-        <childnode refid="86" relation="include">
-        </childnode>
-        <childnode refid="84" relation="include">
-        </childnode>
       </node>
-      <node id="84">
+      <node id="94">
+        <label>include/core/editor/TimeLine/TimeLine.cpp</label>
+        <link refid="TimeLine_8cpp"/>
+      </node>
+      <node id="83">
         <label>include/core/editor/TimeLine/TimeLine.hpp</label>
         <link refid="TimeLine_8hpp"/>
         <childnode refid="62" relation="include">
+        </childnode>
+      </node>
+      <node id="87">
+        <label>include/core/editor/TimeLine/TimeLineDiffTypes.hpp</label>
+        <link refid="TimeLineDiffTypes_8hpp"/>
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
         </childnode>
       </node>
       <node id="63">
@@ -737,8 +811,10 @@
         </childnode>
         <childnode refid="63" relation="include">
         </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
       </node>
-      <node id="96">
+      <node id="103">
         <label>include/core/editor/pdjeLinter/trackLinter.cpp</label>
         <link refid="trackLinter_8cpp"/>
       </node>
@@ -768,129 +844,133 @@
         <label>include/core/interface/PDJE_polyglot_wraps.cpp</label>
         <link refid="PDJE__polyglot__wraps_8cpp"/>
       </node>
-      <node id="165">
+      <node id="173">
         <label>include/global/Crypto/Linux/PSKPipe.cpp</label>
         <link refid="Linux_2PSKPipe_8cpp"/>
       </node>
-      <node id="166">
+      <node id="174">
         <label>include/global/Crypto/Mac/PSKPipe.cpp</label>
         <link refid="Mac_2PSKPipe_8cpp"/>
       </node>
-      <node id="102">
+      <node id="110">
         <label>include/global/Crypto/PDJE_Crypto.hpp</label>
         <link refid="PDJE__Crypto_8hpp"/>
-        <childnode refid="103" relation="include">
-        </childnode>
-        <childnode refid="104" relation="include">
-        </childnode>
-        <childnode refid="105" relation="include">
-        </childnode>
-        <childnode refid="106" relation="include">
-        </childnode>
-        <childnode refid="108" relation="include">
-        </childnode>
         <childnode refid="111" relation="include">
+        </childnode>
+        <childnode refid="112" relation="include">
+        </childnode>
+        <childnode refid="113" relation="include">
         </childnode>
         <childnode refid="114" relation="include">
         </childnode>
-        <childnode refid="118" relation="include">
-        </childnode>
-        <childnode refid="127" relation="include">
-        </childnode>
-        <childnode refid="131" relation="include">
-        </childnode>
-        <childnode refid="120" relation="include">
-        </childnode>
-        <childnode refid="125" relation="include">
-        </childnode>
-        <childnode refid="113" relation="include">
-        </childnode>
-        <childnode refid="163" relation="include">
-        </childnode>
-      </node>
-      <node id="103">
-        <label>include/global/Crypto/PDJE_Crypto_AEAD.cpp</label>
-        <link refid="PDJE__Crypto__AEAD_8cpp"/>
-      </node>
-      <node id="104">
-        <label>include/global/Crypto/PDJE_Crypto_Hash.cpp</label>
-        <link refid="PDJE__Crypto__Hash_8cpp"/>
-      </node>
-      <node id="105">
-        <label>include/global/Crypto/PDJE_Crypto_Token.cpp</label>
-        <link refid="PDJE__Crypto__Token_8cpp"/>
-      </node>
-      <node id="164">
-        <label>include/global/Crypto/PSKPipe.hpp</label>
-        <link refid="PSKPipe_8hpp"/>
-        <childnode refid="165" relation="include">
-        </childnode>
-        <childnode refid="166" relation="include">
-        </childnode>
-        <childnode refid="167" relation="include">
-        </childnode>
-        <childnode refid="106" relation="include">
-        </childnode>
-        <childnode refid="125" relation="include">
-        </childnode>
         <childnode refid="116" relation="include">
         </childnode>
-        <childnode refid="163" relation="include">
+        <childnode refid="119" relation="include">
         </childnode>
-        <childnode refid="117" relation="include">
+        <childnode refid="122" relation="include">
         </childnode>
-      </node>
-      <node id="167">
-        <label>include/global/Crypto/Windows/PSKPipe.cpp</label>
-        <link refid="Windows_2PSKPipe_8cpp"/>
-      </node>
-      <node id="128">
-        <label>include/global/DataLines/PDJE_Buffer.hpp</label>
-        <link refid="PDJE__Buffer_8hpp"/>
-        <childnode refid="129" relation="include">
+        <childnode refid="126" relation="include">
         </childnode>
-        <childnode refid="131" relation="include">
-        </childnode>
-        <childnode refid="133" relation="include">
-        </childnode>
-        <childnode refid="120" relation="include">
-        </childnode>
-        <childnode refid="113" relation="include">
-        </childnode>
-        <childnode refid="149" relation="include">
-        </childnode>
-        <childnode refid="158" relation="include">
-        </childnode>
-      </node>
-      <node id="134">
-        <label>include/global/DataLines/PDJE_Input_DataLine.hpp</label>
-        <link refid="PDJE__Input__DataLine_8hpp"/>
         <childnode refid="135" relation="include">
-        </childnode>
-        <childnode refid="106" relation="include">
-        </childnode>
-        <childnode refid="108" relation="include">
-        </childnode>
-        <childnode refid="137" relation="include">
-        </childnode>
-        <childnode refid="120" relation="include">
         </childnode>
         <childnode refid="139" relation="include">
         </childnode>
-        <childnode refid="113" relation="include">
+        <childnode refid="128" relation="include">
+        </childnode>
+        <childnode refid="133" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+        <childnode refid="171" relation="include">
+        </childnode>
+      </node>
+      <node id="111">
+        <label>include/global/Crypto/PDJE_Crypto_AEAD.cpp</label>
+        <link refid="PDJE__Crypto__AEAD_8cpp"/>
+      </node>
+      <node id="112">
+        <label>include/global/Crypto/PDJE_Crypto_Hash.cpp</label>
+        <link refid="PDJE__Crypto__Hash_8cpp"/>
+      </node>
+      <node id="113">
+        <label>include/global/Crypto/PDJE_Crypto_Token.cpp</label>
+        <link refid="PDJE__Crypto__Token_8cpp"/>
+      </node>
+      <node id="172">
+        <label>include/global/Crypto/PSKPipe.hpp</label>
+        <link refid="PSKPipe_8hpp"/>
+        <childnode refid="173" relation="include">
+        </childnode>
+        <childnode refid="174" relation="include">
+        </childnode>
+        <childnode refid="175" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="133" relation="include">
+        </childnode>
+        <childnode refid="124" relation="include">
+        </childnode>
+        <childnode refid="171" relation="include">
+        </childnode>
+        <childnode refid="125" relation="include">
+        </childnode>
+      </node>
+      <node id="175">
+        <label>include/global/Crypto/Windows/PSKPipe.cpp</label>
+        <link refid="Windows_2PSKPipe_8cpp"/>
+      </node>
+      <node id="136">
+        <label>include/global/DataLines/PDJE_Buffer.hpp</label>
+        <link refid="PDJE__Buffer_8hpp"/>
+        <childnode refid="137" relation="include">
+        </childnode>
+        <childnode refid="139" relation="include">
         </childnode>
         <childnode refid="141" relation="include">
         </childnode>
-        <childnode refid="155" relation="include">
+        <childnode refid="128" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+        <childnode refid="157" relation="include">
+        </childnode>
+        <childnode refid="166" relation="include">
+        </childnode>
+      </node>
+      <node id="142">
+        <label>include/global/DataLines/PDJE_Input_DataLine.hpp</label>
+        <link refid="PDJE__Input__DataLine_8hpp"/>
+        <childnode refid="143" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="116" relation="include">
+        </childnode>
+        <childnode refid="145" relation="include">
+        </childnode>
+        <childnode refid="128" relation="include">
+        </childnode>
+        <childnode refid="147" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
         </childnode>
         <childnode refid="149" relation="include">
         </childnode>
-        <childnode refid="152" relation="include">
+        <childnode refid="163" relation="include">
+        </childnode>
+        <childnode refid="157" relation="include">
+        </childnode>
+        <childnode refid="160" relation="include">
         </childnode>
       </node>
-      <node id="168">
+      <node id="176">
         <label>include/global/DataLines/fileNameSanitizer.cpp</label>
         <link refid="fileNameSanitizer_8cpp"/>
+      </node>
+      <node id="177">
+        <label>include/global/PDJE_LOG_SETTER.cpp</label>
+        <link refid="PDJE__LOG__SETTER_8cpp"/>
       </node>
       <node id="1">
         <label>include/global/PDJE_LOG_SETTER.hpp</label>
@@ -927,35 +1007,47 @@
         </childnode>
         <childnode refid="55" relation="include">
         </childnode>
-        <childnode refid="74" relation="include">
+        <childnode refid="104" relation="include">
         </childnode>
-        <childnode refid="77" relation="include">
+        <childnode refid="76" relation="include">
         </childnode>
-        <childnode refid="79" relation="include">
-        </childnode>
-        <childnode refid="93" relation="include">
-        </childnode>
-        <childnode refid="95" relation="include">
-        </childnode>
-        <childnode refid="97" relation="include">
-        </childnode>
-        <childnode refid="98" relation="include">
-        </childnode>
-        <childnode refid="99" relation="include">
+        <childnode refid="78" relation="include">
         </childnode>
         <childnode refid="100" relation="include">
         </childnode>
-        <childnode refid="83" relation="include">
+        <childnode refid="102" relation="include">
         </childnode>
-        <childnode refid="85" relation="include">
+        <childnode refid="105" relation="include">
         </childnode>
-        <childnode refid="101" relation="include">
+        <childnode refid="106" relation="include">
+        </childnode>
+        <childnode refid="107" relation="include">
+        </childnode>
+        <childnode refid="108" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="91" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+        <childnode refid="93" relation="include">
         </childnode>
         <childnode refid="82" relation="include">
         </childnode>
-        <childnode refid="86" relation="include">
-        </childnode>
         <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="109" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
+        </childnode>
+        <childnode refid="94" relation="include">
+        </childnode>
+        <childnode refid="83" relation="include">
         </childnode>
         <childnode refid="63" relation="include">
         </childnode>
@@ -967,423 +1059,431 @@
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="102" relation="include">
-        </childnode>
-        <childnode refid="164" relation="include">
-        </childnode>
-        <childnode refid="168" relation="include">
-        </childnode>
-        <childnode refid="169" relation="include">
-        </childnode>
-        <childnode refid="135" relation="include">
-        </childnode>
-        <childnode refid="170" relation="include">
-        </childnode>
-        <childnode refid="114" relation="include">
-        </childnode>
-        <childnode refid="171" relation="include">
-        </childnode>
-        <childnode refid="127" relation="include">
-        </childnode>
-        <childnode refid="160" relation="include">
-        </childnode>
-        <childnode refid="112" relation="include">
-        </childnode>
-        <childnode refid="133" relation="include">
-        </childnode>
-        <childnode refid="113" relation="include">
-        </childnode>
-        <childnode refid="149" relation="include">
-        </childnode>
-        <childnode refid="151" relation="include">
-        </childnode>
-      </node>
-      <node id="169">
-        <label>include/global/PDJE_RAII_WRAP.hpp</label>
-        <link refid="PDJE__RAII__WRAP_8hpp"/>
-        <childnode refid="107" relation="include">
-        </childnode>
-        <childnode refid="106" relation="include">
-        </childnode>
-      </node>
-      <node id="136">
-        <label>include/input/DefaultDevs/linux/DefaultDevs.cpp</label>
-        <link refid="linux_2DefaultDevs_8cpp"/>
-      </node>
-      <node id="135">
-        <label>include/input/DefaultDevs/linux/DefaultDevs.hpp</label>
-        <link refid="linux_2DefaultDevs_8hpp"/>
-        <childnode refid="136" relation="include">
-        </childnode>
-      </node>
-      <node id="170">
-        <label>include/input/DefaultDevs/linux/InputCore.cpp</label>
-        <link refid="InputCore_8cpp"/>
-      </node>
-      <node id="107">
-        <label>include/input/DefaultDevs/windows/DefaultDevs.cpp</label>
-        <link refid="windows_2DefaultDevs_8cpp"/>
-      </node>
-      <node id="106">
-        <label>include/input/DefaultDevs/windows/DefaultDevs.hpp</label>
-        <link refid="windows_2DefaultDevs_8hpp"/>
-        <childnode refid="107" relation="include">
-        </childnode>
-      </node>
-      <node id="109">
-        <label>include/input/DefaultDevs/windows/TXRX/MetadataTXRX.cpp</label>
-        <link refid="MetadataTXRX_8cpp"/>
-      </node>
-      <node id="108">
-        <label>include/input/DefaultDevs/windows/TXRX/MetadataTXRX.hpp</label>
-        <link refid="MetadataTXRX_8hpp"/>
-        <childnode refid="106" relation="include">
-        </childnode>
-        <childnode refid="109" relation="include">
-        </childnode>
         <childnode refid="110" relation="include">
-        </childnode>
-      </node>
-      <node id="110">
-        <label>include/input/DefaultDevs/windows/TXRX/SetFeatures.cpp</label>
-        <link refid="SetFeatures_8cpp"/>
-      </node>
-      <node id="111">
-        <label>include/input/IPC/common/NameGen.hpp</label>
-        <link refid="NameGen_8hpp"/>
-        <childnode refid="107" relation="include">
-        </childnode>
-        <childnode refid="106" relation="include">
-        </childnode>
-        <childnode refid="108" relation="include">
-        </childnode>
-        <childnode refid="112" relation="include">
-        </childnode>
-        <childnode refid="113" relation="include">
-        </childnode>
-      </node>
-      <node id="114">
-        <label>include/input/IPC/common/ipc_util.hpp</label>
-        <link refid="ipc__util_8hpp"/>
-        <childnode refid="107" relation="include">
-        </childnode>
-        <childnode refid="115" relation="include">
-        </childnode>
-        <childnode refid="116" relation="include">
-        </childnode>
-        <childnode refid="117" relation="include">
-        </childnode>
-      </node>
-      <node id="119">
-        <label>include/input/IPC/memory/Secured_IPC_TX_RX.cpp</label>
-        <link refid="Secured__IPC__TX__RX_8cpp"/>
-      </node>
-      <node id="118">
-        <label>include/input/IPC/memory/Secured_IPC_TX_RX.hpp</label>
-        <link refid="Secured__IPC__TX__RX_8hpp"/>
-        <childnode refid="106" relation="include">
-        </childnode>
-        <childnode refid="108" relation="include">
-        </childnode>
-        <childnode refid="119" relation="include">
-        </childnode>
-        <childnode refid="120" relation="include">
-        </childnode>
-        <childnode refid="113" relation="include">
-        </childnode>
-      </node>
-      <node id="171">
-        <label>include/input/IPC/memory/ipc_named_mutex.hpp</label>
-        <link refid="ipc__named__mutex_8hpp"/>
-        <childnode refid="118" relation="include">
-        </childnode>
-        <childnode refid="160" relation="include">
-        </childnode>
-        <childnode refid="131" relation="include">
         </childnode>
         <childnode refid="172" relation="include">
         </childnode>
-      </node>
-      <node id="127">
-        <label>include/input/IPC/memory/ipc_shared_memory.hpp</label>
-        <link refid="ipc__shared__memory_8hpp"/>
-        <childnode refid="128" relation="include">
+        <childnode refid="176" relation="include">
         </childnode>
-        <childnode refid="114" relation="include">
+        <childnode refid="177" relation="include">
         </childnode>
-        <childnode refid="118" relation="include">
+        <childnode refid="178" relation="include">
         </childnode>
-        <childnode refid="159" relation="include">
+        <childnode refid="143" relation="include">
         </childnode>
-        <childnode refid="160" relation="include">
+        <childnode refid="179" relation="include">
         </childnode>
-        <childnode refid="131" relation="include">
+        <childnode refid="180" relation="include">
+        </childnode>
+        <childnode refid="122" relation="include">
+        </childnode>
+        <childnode refid="181" relation="include">
+        </childnode>
+        <childnode refid="135" relation="include">
+        </childnode>
+        <childnode refid="168" relation="include">
         </childnode>
         <childnode refid="120" relation="include">
         </childnode>
+        <childnode refid="141" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+        <childnode refid="157" relation="include">
+        </childnode>
+        <childnode refid="159" relation="include">
+        </childnode>
+      </node>
+      <node id="178">
+        <label>include/global/PDJE_RAII_WRAP.hpp</label>
+        <link refid="PDJE__RAII__WRAP_8hpp"/>
+        <childnode refid="115" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+      </node>
+      <node id="144">
+        <label>include/input/DefaultDevs/linux/DefaultDevs.cpp</label>
+        <link refid="linux_2DefaultDevs_8cpp"/>
+      </node>
+      <node id="143">
+        <label>include/input/DefaultDevs/linux/DefaultDevs.hpp</label>
+        <link refid="linux_2DefaultDevs_8hpp"/>
+        <childnode refid="144" relation="include">
+        </childnode>
+      </node>
+      <node id="179">
+        <label>include/input/DefaultDevs/linux/InputCore.cpp</label>
+        <link refid="InputCore_8cpp"/>
+      </node>
+      <node id="180">
+        <label>include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp</label>
+        <link refid="WaylandInputCore_8cpp"/>
+      </node>
+      <node id="115">
+        <label>include/input/DefaultDevs/windows/DefaultDevs.cpp</label>
+        <link refid="windows_2DefaultDevs_8cpp"/>
+      </node>
+      <node id="114">
+        <label>include/input/DefaultDevs/windows/DefaultDevs.hpp</label>
+        <link refid="windows_2DefaultDevs_8hpp"/>
+        <childnode refid="115" relation="include">
+        </childnode>
+      </node>
+      <node id="117">
+        <label>include/input/DefaultDevs/windows/TXRX/MetadataTXRX.cpp</label>
+        <link refid="MetadataTXRX_8cpp"/>
+      </node>
+      <node id="116">
+        <label>include/input/DefaultDevs/windows/TXRX/MetadataTXRX.hpp</label>
+        <link refid="MetadataTXRX_8hpp"/>
+        <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="117" relation="include">
+        </childnode>
+        <childnode refid="118" relation="include">
+        </childnode>
+      </node>
+      <node id="118">
+        <label>include/input/DefaultDevs/windows/TXRX/SetFeatures.cpp</label>
+        <link refid="SetFeatures_8cpp"/>
+      </node>
+      <node id="119">
+        <label>include/input/IPC/common/NameGen.hpp</label>
+        <link refid="NameGen_8hpp"/>
+        <childnode refid="115" relation="include">
+        </childnode>
+        <childnode refid="114" relation="include">
+        </childnode>
+        <childnode refid="116" relation="include">
+        </childnode>
+        <childnode refid="120" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+      </node>
+      <node id="122">
+        <label>include/input/IPC/common/ipc_util.hpp</label>
+        <link refid="ipc__util_8hpp"/>
+        <childnode refid="115" relation="include">
+        </childnode>
+        <childnode refid="123" relation="include">
+        </childnode>
         <childnode refid="124" relation="include">
         </childnode>
-        <childnode refid="161" relation="include">
+        <childnode refid="125" relation="include">
         </childnode>
-        <childnode refid="162" relation="include">
+      </node>
+      <node id="127">
+        <label>include/input/IPC/memory/Secured_IPC_TX_RX.cpp</label>
+        <link refid="Secured__IPC__TX__RX_8cpp"/>
+      </node>
+      <node id="126">
+        <label>include/input/IPC/memory/Secured_IPC_TX_RX.hpp</label>
+        <link refid="Secured__IPC__TX__RX_8hpp"/>
+        <childnode refid="114" relation="include">
         </childnode>
-        <childnode refid="113" relation="include">
+        <childnode refid="116" relation="include">
+        </childnode>
+        <childnode refid="127" relation="include">
+        </childnode>
+        <childnode refid="128" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+      </node>
+      <node id="181">
+        <label>include/input/IPC/memory/ipc_named_mutex.hpp</label>
+        <link refid="ipc__named__mutex_8hpp"/>
+        <childnode refid="126" relation="include">
+        </childnode>
+        <childnode refid="168" relation="include">
+        </childnode>
+        <childnode refid="139" relation="include">
+        </childnode>
+        <childnode refid="182" relation="include">
+        </childnode>
+      </node>
+      <node id="135">
+        <label>include/input/IPC/memory/ipc_shared_memory.hpp</label>
+        <link refid="ipc__shared__memory_8hpp"/>
+        <childnode refid="136" relation="include">
+        </childnode>
+        <childnode refid="122" relation="include">
         </childnode>
         <childnode refid="126" relation="include">
         </childnode>
+        <childnode refid="167" relation="include">
+        </childnode>
+        <childnode refid="168" relation="include">
+        </childnode>
+        <childnode refid="139" relation="include">
+        </childnode>
+        <childnode refid="128" relation="include">
+        </childnode>
+        <childnode refid="132" relation="include">
+        </childnode>
+        <childnode refid="169" relation="include">
+        </childnode>
+        <childnode refid="170" relation="include">
+        </childnode>
+        <childnode refid="121" relation="include">
+        </childnode>
+        <childnode refid="134" relation="include">
+        </childnode>
       </node>
-      <node id="130">
+      <node id="138">
         <label>include/input/IPC/memory/linux/Input_Transfer.cpp</label>
         <link refid="linux_2Input__Transfer_8cpp"/>
       </node>
-      <node id="129">
+      <node id="137">
         <label>include/input/IPC/memory/linux/Input_Transfer.hpp</label>
         <link refid="linux_2Input__Transfer_8hpp"/>
-        <childnode refid="130" relation="include">
+        <childnode refid="138" relation="include">
         </childnode>
       </node>
-      <node id="159">
+      <node id="167">
         <label>include/input/IPC/memory/linux/named_event.cpp</label>
         <link refid="linux_2named__event_8cpp"/>
       </node>
-      <node id="160">
+      <node id="168">
         <label>include/input/IPC/memory/linux/named_mutex.cpp</label>
         <link refid="linux_2named__mutex_8cpp"/>
       </node>
-      <node id="132">
+      <node id="140">
         <label>include/input/IPC/memory/windows/Input_Transfer.cpp</label>
         <link refid="windows_2Input__Transfer_8cpp"/>
       </node>
-      <node id="131">
+      <node id="139">
         <label>include/input/IPC/memory/windows/Input_Transfer.hpp</label>
         <link refid="windows_2Input__Transfer_8hpp"/>
-        <childnode refid="132" relation="include">
+        <childnode refid="140" relation="include">
         </childnode>
       </node>
-      <node id="172">
+      <node id="182">
         <label>include/input/IPC/memory/windows/named_mutex.cpp</label>
         <link refid="windows_2named__mutex_8cpp"/>
       </node>
-      <node id="112">
+      <node id="120">
         <label>include/input/PDJE_Input.cpp</label>
         <link refid="PDJE__Input_8cpp"/>
       </node>
-      <node id="137">
+      <node id="145">
         <label>include/input/PDJE_Input.hpp</label>
         <link refid="PDJE__Input_8hpp"/>
-        <childnode refid="112" relation="include">
+        <childnode refid="120" relation="include">
         </childnode>
-        <childnode refid="138" relation="include">
+        <childnode refid="146" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
       </node>
-      <node id="156">
+      <node id="164">
         <label>include/input/midi/PDJE_MIDI.cpp</label>
         <link refid="PDJE__MIDI_8cpp"/>
       </node>
-      <node id="133">
+      <node id="141">
         <label>include/input/midi/PDJE_MIDI.hpp</label>
         <link refid="PDJE__MIDI_8hpp"/>
-        <childnode refid="134" relation="include">
-        </childnode>
-        <childnode refid="137" relation="include">
-        </childnode>
-        <childnode refid="156" relation="include">
-        </childnode>
-        <childnode refid="157" relation="include">
-        </childnode>
-      </node>
-      <node id="121">
-        <label>include/input/runner/SetTXRXFeatures.cpp</label>
-        <link refid="SetTXRXFeatures_8cpp"/>
-      </node>
-      <node id="120">
-        <label>include/input/runner/SubProcess.hpp</label>
-        <link refid="SubProcess_8hpp"/>
-        <childnode refid="121" relation="include">
-        </childnode>
-        <childnode refid="122" relation="include">
-        </childnode>
-        <childnode refid="123" relation="include">
-        </childnode>
-        <childnode refid="125" relation="include">
-        </childnode>
-        <childnode refid="124" relation="include">
-        </childnode>
-        <childnode refid="126" relation="include">
-        </childnode>
-      </node>
-      <node id="122">
-        <label>include/input/runner/windows/InputLoop.cpp</label>
-        <link refid="InputLoop_8cpp"/>
-      </node>
-      <node id="123">
-        <label>include/input/runner/windows/ListDevice.hpp</label>
-        <link refid="ListDevice_8hpp"/>
-        <childnode refid="122" relation="include">
-        </childnode>
-        <childnode refid="124" relation="include">
-        </childnode>
-      </node>
-      <node id="125">
-        <label>include/input/runner/windows/SubMain.cpp</label>
-        <link refid="runner_2windows_2SubMain_8cpp"/>
-      </node>
-      <node id="124">
-        <label>include/input/runner/windows/SubProcess.cpp</label>
-        <link refid="runner_2windows_2SubProcess_8cpp"/>
-      </node>
-      <node id="161">
-        <label>include/input/trashbin/--DEPRECATED--transmission/linux/ChildProcess.cpp</label>
-        <link refid="ChildProcess_8cpp"/>
-      </node>
-      <node id="115">
-        <label>include/input/trashbin/--DEPRECATED--transmission/linux/MainProcess.cpp</label>
-        <link refid="--DEPRECATED--transmission_2linux_2MainProcess_8cpp"/>
-      </node>
-      <node id="162">
-        <label>include/input/trashbin/--DEPRECATED--transmission/linux/pack_ipc.hpp</label>
-        <link refid="pack__ipc_8hpp"/>
-      </node>
-      <node id="140">
-        <label>include/input/trashbin/--DEPRECATED-linux/linux_input.cpp</label>
-        <link refid="linux__input_8cpp"/>
-      </node>
-      <node id="139">
-        <label>include/input/trashbin/--DEPRECATED-linux/linux_input.hpp</label>
-        <link refid="linux__input_8hpp"/>
-        <childnode refid="140" relation="include">
-        </childnode>
-      </node>
-      <node id="113">
-        <label>include/input/trashbin/MainProcess_deprecated.hpp</label>
-        <link refid="MainProcess__deprecated_8hpp"/>
-      </node>
-      <node id="116">
-        <label>include/input/trashbin/MainProcess_windows.cpp</label>
-        <link refid="MainProcess__windows_8cpp"/>
-      </node>
-      <node id="163">
-        <label>include/input/trashbin/SubMain.cpp</label>
-        <link refid="trashbin_2SubMain_8cpp"/>
-      </node>
-      <node id="126">
-        <label>include/input/trashbin/SubProcess.cpp</label>
-        <link refid="trashbin_2SubProcess_8cpp"/>
-      </node>
-      <node id="117">
-        <label>include/input/trashbin/host_linux/MainProcess.cpp</label>
-        <link refid="host__linux_2MainProcess_8cpp"/>
-      </node>
-      <node id="142">
-        <label>include/judge/Init/PDJE_Judge_Init.cpp</label>
-        <link refid="PDJE__Judge__Init_8cpp"/>
-      </node>
-      <node id="141">
-        <label>include/judge/Init/PDJE_Judge_Init.hpp</label>
-        <link refid="PDJE__Judge__Init_8hpp"/>
         <childnode refid="142" relation="include">
-        </childnode>
-        <childnode refid="143" relation="include">
-        </childnode>
-        <childnode refid="149" relation="include">
-        </childnode>
-        <childnode refid="146" relation="include">
-        </childnode>
-        <childnode refid="152" relation="include">
-        </childnode>
-      </node>
-      <node id="155">
-        <label>include/judge/InputParser/InputParser.hpp</label>
-        <link refid="InputParser_8hpp"/>
-        <childnode refid="141" relation="include">
-        </childnode>
-        <childnode refid="149" relation="include">
-        </childnode>
-        <childnode refid="146" relation="include">
-        </childnode>
-        <childnode refid="152" relation="include">
-        </childnode>
-      </node>
-      <node id="144">
-        <label>include/judge/Loop/Match/Keyboard.cpp</label>
-        <link refid="Keyboard_8cpp"/>
-      </node>
-      <node id="147">
-        <label>include/judge/Loop/Match/MIDI.cpp</label>
-        <link refid="MIDI_8cpp"/>
-      </node>
-      <node id="148">
-        <label>include/judge/Loop/Match/Mouse.cpp</label>
-        <link refid="Mouse_8cpp"/>
-      </node>
-      <node id="145">
-        <label>include/judge/Loop/Match/PDJE_Match.cpp</label>
-        <link refid="PDJE__Match_8cpp"/>
-      </node>
-      <node id="143">
-        <label>include/judge/Loop/Match/PDJE_Match.hpp</label>
-        <link refid="PDJE__Match_8hpp"/>
-        <childnode refid="144" relation="include">
         </childnode>
         <childnode refid="145" relation="include">
         </childnode>
-        <childnode refid="146" relation="include">
+        <childnode refid="164" relation="include">
+        </childnode>
+        <childnode refid="165" relation="include">
         </childnode>
       </node>
-      <node id="149">
-        <label>include/judge/Loop/PDJE_Judge_Loop.cpp</label>
-        <link refid="PDJE__Judge__Loop_8cpp"/>
+      <node id="129">
+        <label>include/input/runner/SetTXRXFeatures.cpp</label>
+        <link refid="SetTXRXFeatures_8cpp"/>
       </node>
-      <node id="146">
-        <label>include/judge/Loop/PDJE_Judge_Loop.hpp</label>
-        <link refid="PDJE__Judge__Loop_8hpp"/>
-        <childnode refid="147" relation="include">
+      <node id="128">
+        <label>include/input/runner/SubProcess.hpp</label>
+        <link refid="SubProcess_8hpp"/>
+        <childnode refid="129" relation="include">
         </childnode>
+        <childnode refid="130" relation="include">
+        </childnode>
+        <childnode refid="131" relation="include">
+        </childnode>
+        <childnode refid="133" relation="include">
+        </childnode>
+        <childnode refid="132" relation="include">
+        </childnode>
+        <childnode refid="134" relation="include">
+        </childnode>
+      </node>
+      <node id="130">
+        <label>include/input/runner/windows/InputLoop.cpp</label>
+        <link refid="InputLoop_8cpp"/>
+      </node>
+      <node id="131">
+        <label>include/input/runner/windows/ListDevice.hpp</label>
+        <link refid="ListDevice_8hpp"/>
+        <childnode refid="130" relation="include">
+        </childnode>
+        <childnode refid="132" relation="include">
+        </childnode>
+      </node>
+      <node id="133">
+        <label>include/input/runner/windows/SubMain.cpp</label>
+        <link refid="runner_2windows_2SubMain_8cpp"/>
+      </node>
+      <node id="132">
+        <label>include/input/runner/windows/SubProcess.cpp</label>
+        <link refid="runner_2windows_2SubProcess_8cpp"/>
+      </node>
+      <node id="169">
+        <label>include/input/trashbin/--DEPRECATED--transmission/linux/ChildProcess.cpp</label>
+        <link refid="ChildProcess_8cpp"/>
+      </node>
+      <node id="123">
+        <label>include/input/trashbin/--DEPRECATED--transmission/linux/MainProcess.cpp</label>
+        <link refid="--DEPRECATED--transmission_2linux_2MainProcess_8cpp"/>
+      </node>
+      <node id="170">
+        <label>include/input/trashbin/--DEPRECATED--transmission/linux/pack_ipc.hpp</label>
+        <link refid="pack__ipc_8hpp"/>
+      </node>
+      <node id="148">
+        <label>include/input/trashbin/--DEPRECATED-linux/linux_input.cpp</label>
+        <link refid="linux__input_8cpp"/>
+      </node>
+      <node id="147">
+        <label>include/input/trashbin/--DEPRECATED-linux/linux_input.hpp</label>
+        <link refid="linux__input_8hpp"/>
         <childnode refid="148" relation="include">
         </childnode>
-        <childnode refid="149" relation="include">
-        </childnode>
+      </node>
+      <node id="121">
+        <label>include/input/trashbin/MainProcess_deprecated.hpp</label>
+        <link refid="MainProcess__deprecated_8hpp"/>
+      </node>
+      <node id="124">
+        <label>include/input/trashbin/MainProcess_windows.cpp</label>
+        <link refid="MainProcess__windows_8cpp"/>
+      </node>
+      <node id="171">
+        <label>include/input/trashbin/SubMain.cpp</label>
+        <link refid="trashbin_2SubMain_8cpp"/>
+      </node>
+      <node id="134">
+        <label>include/input/trashbin/SubProcess.cpp</label>
+        <link refid="trashbin_2SubProcess_8cpp"/>
+      </node>
+      <node id="125">
+        <label>include/input/trashbin/host_linux/MainProcess.cpp</label>
+        <link refid="host__linux_2MainProcess_8cpp"/>
+      </node>
+      <node id="150">
+        <label>include/judge/Init/PDJE_Judge_Init.cpp</label>
+        <link refid="PDJE__Judge__Init_8cpp"/>
+      </node>
+      <node id="149">
+        <label>include/judge/Init/PDJE_Judge_Init.hpp</label>
+        <link refid="PDJE__Judge__Init_8hpp"/>
         <childnode refid="150" relation="include">
         </childnode>
-      </node>
-      <node id="158">
-        <label>include/judge/Loop/PDJE_Judge_Loop_Structs.hpp</label>
-        <link refid="PDJE__Judge__Loop__Structs_8hpp"/>
-        <childnode refid="146" relation="include">
+        <childnode refid="151" relation="include">
         </childnode>
-        <childnode refid="152" relation="include">
+        <childnode refid="157" relation="include">
+        </childnode>
+        <childnode refid="154" relation="include">
+        </childnode>
+        <childnode refid="160" relation="include">
         </childnode>
       </node>
-      <node id="153">
-        <label>include/judge/Loop/PreProcess/PDJE_PreProcess.cpp</label>
-        <link refid="PDJE__PreProcess_8cpp"/>
+      <node id="163">
+        <label>include/judge/InputParser/InputParser.hpp</label>
+        <link refid="InputParser_8hpp"/>
+        <childnode refid="149" relation="include">
+        </childnode>
+        <childnode refid="157" relation="include">
+        </childnode>
+        <childnode refid="154" relation="include">
+        </childnode>
+        <childnode refid="160" relation="include">
+        </childnode>
       </node>
       <node id="152">
-        <label>include/judge/Loop/PreProcess/PDJE_PreProcess.hpp</label>
-        <link refid="PDJE__PreProcess_8hpp"/>
-        <childnode refid="143" relation="include">
-        </childnode>
-        <childnode refid="146" relation="include">
+        <label>include/judge/Loop/Match/Keyboard.cpp</label>
+        <link refid="Keyboard_8cpp"/>
+      </node>
+      <node id="155">
+        <label>include/judge/Loop/Match/MIDI.cpp</label>
+        <link refid="MIDI_8cpp"/>
+      </node>
+      <node id="156">
+        <label>include/judge/Loop/Match/Mouse.cpp</label>
+        <link refid="Mouse_8cpp"/>
+      </node>
+      <node id="153">
+        <label>include/judge/Loop/Match/PDJE_Match.cpp</label>
+        <link refid="PDJE__Match_8cpp"/>
+      </node>
+      <node id="151">
+        <label>include/judge/Loop/Match/PDJE_Match.hpp</label>
+        <link refid="PDJE__Match_8hpp"/>
+        <childnode refid="152" relation="include">
         </childnode>
         <childnode refid="153" relation="include">
         </childnode>
         <childnode refid="154" relation="include">
         </childnode>
       </node>
+      <node id="157">
+        <label>include/judge/Loop/PDJE_Judge_Loop.cpp</label>
+        <link refid="PDJE__Judge__Loop_8cpp"/>
+      </node>
       <node id="154">
+        <label>include/judge/Loop/PDJE_Judge_Loop.hpp</label>
+        <link refid="PDJE__Judge__Loop_8hpp"/>
+        <childnode refid="155" relation="include">
+        </childnode>
+        <childnode refid="156" relation="include">
+        </childnode>
+        <childnode refid="157" relation="include">
+        </childnode>
+        <childnode refid="158" relation="include">
+        </childnode>
+      </node>
+      <node id="166">
+        <label>include/judge/Loop/PDJE_Judge_Loop_Structs.hpp</label>
+        <link refid="PDJE__Judge__Loop__Structs_8hpp"/>
+        <childnode refid="154" relation="include">
+        </childnode>
+        <childnode refid="160" relation="include">
+        </childnode>
+      </node>
+      <node id="161">
+        <label>include/judge/Loop/PreProcess/PDJE_PreProcess.cpp</label>
+        <link refid="PDJE__PreProcess_8cpp"/>
+      </node>
+      <node id="160">
+        <label>include/judge/Loop/PreProcess/PDJE_PreProcess.hpp</label>
+        <link refid="PDJE__PreProcess_8hpp"/>
+        <childnode refid="151" relation="include">
+        </childnode>
+        <childnode refid="154" relation="include">
+        </childnode>
+        <childnode refid="161" relation="include">
+        </childnode>
+        <childnode refid="162" relation="include">
+        </childnode>
+      </node>
+      <node id="162">
         <label>include/judge/Loop/PreProcess/PDJE_PreProcess_Work.cpp</label>
         <link refid="PDJE__PreProcess__Work_8cpp"/>
       </node>
-      <node id="151">
+      <node id="159">
         <label>include/judge/PDJE_Judge.cpp</label>
         <link refid="PDJE__Judge_8cpp"/>
       </node>
-      <node id="150">
+      <node id="158">
         <label>include/judge/PDJE_Judge.hpp</label>
         <link refid="PDJE__Judge_8hpp"/>
-        <childnode refid="151" relation="include">
+        <childnode refid="159" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
@@ -1392,11 +1492,11 @@
         <label>include/tests/CapnpTest.cpp</label>
         <link refid="CapnpTest_8cpp"/>
       </node>
-      <node id="157">
+      <node id="165">
         <label>include/tests/INPUT_TESTS/miditest.cpp</label>
         <link refid="miditest_8cpp"/>
       </node>
-      <node id="138">
+      <node id="146">
         <label>include/tests/INPUT_TESTS/pdjeInputTest.cpp</label>
         <link refid="pdjeInputTest_8cpp"/>
       </node>
@@ -1429,6 +1529,7 @@
         <link refid="manualAudioTest_8cpp"/>
       </node>
     </invincdepgraph>
+    <innernamespace refid="namespacePDJE__LOG__DETAIL">PDJE_LOG_DETAIL</innernamespace>
     <sectiondef kind="define">
       <memberdef kind="define" id="PDJE__LOG__SETTER_8hpp_1a2721d826078db7a962e7664a9d2f4016" prot="public" static="no">
         <name>infolog</name>
@@ -1439,7 +1540,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/PDJE_LOG_SETTER.hpp" line="57" column="10" bodyfile="include/global/PDJE_LOG_SETTER.hpp" bodystart="57" bodyend="-1"/>
+        <location file="include/global/PDJE_LOG_SETTER.hpp" line="131" column="10" bodyfile="include/global/PDJE_LOG_SETTER.hpp" bodystart="131" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="PDJE__LOG__SETTER_8hpp_1a6f4ac2826ed21d631281a5644018f590" prot="public" static="no">
         <name>warnlog</name>
@@ -1450,12 +1551,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/PDJE_LOG_SETTER.hpp" line="67" column="10" bodyfile="include/global/PDJE_LOG_SETTER.hpp" bodystart="67" bodyend="-1"/>
+        <location file="include/global/PDJE_LOG_SETTER.hpp" line="141" column="10" bodyfile="include/global/PDJE_LOG_SETTER.hpp" bodystart="141" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" prot="public" static="no">
         <name>critlog</name>
         <param><defname>...</defname></param>
-        <initializer>SPDLOG_CRITICAL(__VA_ARGS__)</initializer>
+        <initializer><ref refid="namespacePDJE__LOG__DETAIL_1a1d5e43c742f9573b552e5af26ddb2d75" kindref="member">PDJE_LOG_DETAIL::critical</ref>(__VA_ARGS__)</initializer>
         <briefdescription>
 <para>Logs a critical message. </para>
         </briefdescription>
@@ -1463,11 +1564,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/PDJE_LOG_SETTER.hpp" line="74" column="9" bodyfile="include/global/PDJE_LOG_SETTER.hpp" bodystart="74" bodyend="-1"/>
+        <location file="include/global/PDJE_LOG_SETTER.hpp" line="148" column="9" bodyfile="include/global/PDJE_LOG_SETTER.hpp" bodystart="148" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
-      <memberdef kind="function" id="PDJE__LOG__SETTER_8hpp_1a27caf5fb9d1eed1f15d54bab91b74f36" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="PDJE__LOG__SETTER_8hpp_1a27caf5fb9d1eed1f15d54bab91b74f36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void startlog</definition>
         <argsstring>()</argsstring>
@@ -1476,11 +1577,26 @@
 <para>Initializes the logging system. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function sets up a global logger with both a file sink and a console sink. The log level is set to <computeroutput>debug</computeroutput> in debug builds and <computeroutput>err</computeroutput> in release builds. </para>
+<para>This compatibility shim initializes the default <ref refid="classPDJE" kindref="compound">PDJE</ref> file logger backend. Host applications loading multiple DSOs should prefer <computeroutput>pdje_logging_init_v1</computeroutput> during startup and <computeroutput>pdje_logging_shutdown_v1</computeroutput> during shutdown/unload. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/global/PDJE_LOG_SETTER.hpp" line="23" column="1" bodyfile="include/global/PDJE_LOG_SETTER.hpp" bodystart="23" bodyend="47"/>
+        <location file="include/global/PDJE_LOG_SETTER.hpp" line="24" column="1" bodyfile="include/global/PDJE_LOG_SETTER.cpp" bodystart="413" bodyend="416" declfile="include/global/PDJE_LOG_SETTER.hpp" declline="24" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="PDJE__LOG__SETTER_8hpp_1aa34453b30c474e0e23518fdfe3e57a3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void shutdownlog</definition>
+        <argsstring>()</argsstring>
+        <name>shutdownlog</name>
+        <briefdescription>
+<para>Shuts down the <ref refid="classPDJE" kindref="compound">PDJE</ref> logging runtime. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Host applications using reloadable plugin flows should call this explicitly before unloading the owning module. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/global/PDJE_LOG_SETTER.hpp" line="33" column="1" bodyfile="include/global/PDJE_LOG_SETTER.cpp" bodystart="419" bodyend="422" declfile="include/global/PDJE_LOG_SETTER.hpp" declline="33" declcolumn="1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -1492,60 +1608,128 @@
 <codeline lineno="1"><highlight class="normal"></highlight></codeline>
 <codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight></codeline>
-<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;filesystem&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;mutex&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;spdlog/sinks/basic_file_sink.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;spdlog/sinks/stdout_color_sinks.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="PDJE__EXPORT__SETTER_8hpp" kindref="compound">PDJE_EXPORT_SETTER.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="PDJE__LOG__RUNTIME__API_8h" kindref="compound">PDJE_LOG_RUNTIME_API.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;spdlog/fmt/fmt.h&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;spdlog/spdlog.h&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string_view&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;type_traits&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="14"><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="23" refid="PDJE__LOG__SETTER_8hpp_1a27caf5fb9d1eed1f15d54bab91b74f36" refkind="member"><highlight class="normal"><ref refid="PDJE__LOG__SETTER_8hpp_1a27caf5fb9d1eed1f15d54bab91b74f36" kindref="member">startlog</ref>()</highlight></codeline>
-<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::once_flag<sp/>SPD_LOG_ONCE_FLAG;</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LOG_OFF</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>std::call_once(SPD_LOG_ONCE_FLAG,<sp/>[]()<sp/>{</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::filesystem::create_directories(</highlight><highlight class="stringliteral">&quot;logs&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>fileSink<sp/>=<sp/>std::make_shared&lt;spdlog::sinks::basic_file_sink_mt&gt;(</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;logs/pdjeLog.txt&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"></highlight></codeline>
-<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;spdlog::sink_ptr&gt;<sp/>sinks{<sp/>fileSink<sp/>};</highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>logger<sp/>=<sp/>std::make_shared&lt;spdlog::logger&gt;(</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;global_logger&quot;</highlight><highlight class="normal">,<sp/>sinks.begin(),<sp/>sinks.end());</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>NDEBUG</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logger-&gt;set_level(spdlog::level::debug);</highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logger-&gt;set_level(spdlog::level::err);</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logger-&gt;flush_on(spdlog::level::err);</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>logger-&gt;set_pattern(</highlight><highlight class="stringliteral">&quot;[%Y-%m-%d<sp/>%H:%M:%S.%e]<sp/>[%^%l%$]<sp/>%v&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>spdlog::set_default_logger(logger);</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>});</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LOG_OFF</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>ENABLE_INFO_LOG</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>infolog(...)<sp/>SPDLOG_INFO(__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57" refid="PDJE__LOG__SETTER_8hpp_1a2721d826078db7a962e7664a9d2f4016" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>infolog(...)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;exception&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string_view&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><ref refid="PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kindref="member">PDJE_API</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><ref refid="PDJE__LOG__SETTER_8hpp_1a27caf5fb9d1eed1f15d54bab91b74f36" kindref="member">startlog</ref>();</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><ref refid="PDJE__EXPORT__SETTER_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kindref="member">PDJE_API</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><ref refid="PDJE__LOG__SETTER_8hpp_1aa34453b30c474e0e23518fdfe3e57a3d" kindref="member">shutdownlog</ref>();</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>LOG_OFF</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="namespacePDJE__LOG__DETAIL" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__LOG__DETAIL" kindref="compound">PDJE_LOG_DETAIL</ref><sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="namespacePDJE__LOG__DETAIL_1a5e93659ee07d2be7f03ca641535958f9" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__LOG__DETAIL_1a5e93659ee07d2be7f03ca641535958f9" kindref="member">log_preformatted</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>level,<sp/>std::string_view<sp/>message)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__RUNTIME__API_8h_1a7a133aaf3fd197ed80e423ccd3e336a8" kindref="member">pdje_log_write_v1</ref>(level,<sp/>message.data(),<sp/>message.size());</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="namespacePDJE__LOG__DETAIL_1ae18d2bcca09be1d547f3697bd4c2c6af" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__LOG__DETAIL_1ae18d2bcca09be1d547f3697bd4c2c6af" kindref="member">log_value</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>level,<sp/><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref><sp/>&amp;&amp;value)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>formatted<sp/>=<sp/>spdlog::fmt_lib::format(</highlight><highlight class="stringliteral">&quot;{}&quot;</highlight><highlight class="normal">,<sp/>std::forward&lt;T&gt;(value));</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__RUNTIME__API_8h_1a7a133aaf3fd197ed80e423ccd3e336a8" kindref="member">pdje_log_write_v1</ref>(level,<sp/>formatted.data(),<sp/>formatted.size());</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception<sp/>&amp;e)<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__LOG__DETAIL_1a5e93659ee07d2be7f03ca641535958f9" kindref="member">log_preformatted</ref>(<ref refid="PDJE__LOG__RUNTIME__API_8h_1a9e6da84f7a656758c0ae2891ba6ba02ca487ee41d3634633eeb17144458874faa" kindref="member">PDJE_LOG_LEVEL_ERROR_V1</ref>,</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;pdje<sp/>logging<sp/>format<sp/>error<sp/>in<sp/>log_value&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__LOG__DETAIL_1a5e93659ee07d2be7f03ca641535958f9" kindref="member">log_preformatted</ref>(<ref refid="PDJE__LOG__RUNTIME__API_8h_1a9e6da84f7a656758c0ae2891ba6ba02ca487ee41d3634633eeb17144458874faa" kindref="member">PDJE_LOG_LEVEL_ERROR_V1</ref>,<sp/>e.what());</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(...)<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__LOG__DETAIL_1a5e93659ee07d2be7f03ca641535958f9" kindref="member">log_preformatted</ref>(<ref refid="PDJE__LOG__RUNTIME__API_8h_1a9e6da84f7a656758c0ae2891ba6ba02ca487ee41d3634633eeb17144458874faa" kindref="member">PDJE_LOG_LEVEL_ERROR_V1</ref>,</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;pdje<sp/>logging<sp/>unknown<sp/>format<sp/>error<sp/>in<sp/>log_value&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>ENABLE_WARN_LOG</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>warnlog(...)<sp/>SPDLOG_WARN(__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="67" refid="PDJE__LOG__SETTER_8hpp_1a6f4ac2826ed21d631281a5644018f590" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>warnlog(...)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="69"><highlight class="normal"></highlight></codeline>
-<codeline lineno="74" refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>critlog(...)<sp/>SPDLOG_CRITICAL(__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>infolog(...)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>warnlog(...)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>critlog(...)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="79"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args&gt;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="namespacePDJE__LOG__DETAIL_1a8cf6dc50e37344e1113e4112bd5f9ea3" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__LOG__DETAIL_1a8cf6dc50e37344e1113e4112bd5f9ea3" kindref="member">log_format</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>level,</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>spdlog::format_string_t&lt;Args...&gt;<sp/>fmt,</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Args<sp/>&amp;&amp;...args)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">requires</highlight><highlight class="normal">(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">...(Args)<sp/>&gt;<sp/>0)</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>formatted<sp/>=<sp/>spdlog::fmt_lib::format(fmt,<sp/>std::forward&lt;Args&gt;(args)...);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__RUNTIME__API_8h_1a7a133aaf3fd197ed80e423ccd3e336a8" kindref="member">pdje_log_write_v1</ref>(level,<sp/>formatted.data(),<sp/>formatted.size());</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception<sp/>&amp;e)<sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__LOG__DETAIL_1a5e93659ee07d2be7f03ca641535958f9" kindref="member">log_preformatted</ref>(<ref refid="PDJE__LOG__RUNTIME__API_8h_1a9e6da84f7a656758c0ae2891ba6ba02ca487ee41d3634633eeb17144458874faa" kindref="member">PDJE_LOG_LEVEL_ERROR_V1</ref>,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;pdje<sp/>logging<sp/>format<sp/>error<sp/>in<sp/>log_format&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__LOG__DETAIL_1a5e93659ee07d2be7f03ca641535958f9" kindref="member">log_preformatted</ref>(<ref refid="PDJE__LOG__RUNTIME__API_8h_1a9e6da84f7a656758c0ae2891ba6ba02ca487ee41d3634633eeb17144458874faa" kindref="member">PDJE_LOG_LEVEL_ERROR_V1</ref>,<sp/>e.what());</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(...)<sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__LOG__DETAIL_1a5e93659ee07d2be7f03ca641535958f9" kindref="member">log_preformatted</ref>(<ref refid="PDJE__LOG__RUNTIME__API_8h_1a9e6da84f7a656758c0ae2891ba6ba02ca487ee41d3634633eeb17144458874faa" kindref="member">PDJE_LOG_LEVEL_ERROR_V1</ref>,</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;pdje<sp/>logging<sp/>unknown<sp/>format<sp/>error<sp/>in<sp/>log_format&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="namespacePDJE__LOG__DETAIL_1a37d3b462e363785e8639714b1c346bec" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__LOG__DETAIL_1a37d3b462e363785e8639714b1c346bec" kindref="member">info</ref>(<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref><sp/>&amp;&amp;value)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__LOG__DETAIL_1ae18d2bcca09be1d547f3697bd4c2c6af" kindref="member">log_value</ref>(<ref refid="PDJE__LOG__RUNTIME__API_8h_1a9e6da84f7a656758c0ae2891ba6ba02ca9f2966b6513f65ffb4b1cd2d115521d4" kindref="member">PDJE_LOG_LEVEL_INFO_V1</ref>,<sp/>std::forward&lt;T&gt;(value));</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args&gt;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="namespacePDJE__LOG__DETAIL_1a0ac70731f5d92b0059a07ed2544ed876" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__LOG__DETAIL_1a37d3b462e363785e8639714b1c346bec" kindref="member">info</ref>(spdlog::format_string_t&lt;Args...&gt;<sp/>fmt,<sp/>Args<sp/>&amp;&amp;...args)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">requires</highlight><highlight class="normal">(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">...(Args)<sp/>&gt;<sp/>0)</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__LOG__DETAIL_1a8cf6dc50e37344e1113e4112bd5f9ea3" kindref="member">log_format</ref>(<ref refid="PDJE__LOG__RUNTIME__API_8h_1a9e6da84f7a656758c0ae2891ba6ba02ca9f2966b6513f65ffb4b1cd2d115521d4" kindref="member">PDJE_LOG_LEVEL_INFO_V1</ref>,<sp/>fmt,<sp/>std::forward&lt;Args&gt;(args)...);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="namespacePDJE__LOG__DETAIL_1a8fbbbb6ecf4d5cf3365296b04d2c7636" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__LOG__DETAIL_1a8fbbbb6ecf4d5cf3365296b04d2c7636" kindref="member">warn</ref>(<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref><sp/>&amp;&amp;value)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__LOG__DETAIL_1ae18d2bcca09be1d547f3697bd4c2c6af" kindref="member">log_value</ref>(<ref refid="PDJE__LOG__RUNTIME__API_8h_1a9e6da84f7a656758c0ae2891ba6ba02ca32075dfbecfcf55e16122d0cdbe77c3b" kindref="member">PDJE_LOG_LEVEL_WARN_V1</ref>,<sp/>std::forward&lt;T&gt;(value));</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args&gt;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="namespacePDJE__LOG__DETAIL_1a7140251b9a3cfff2fa2f61000b80060d" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__LOG__DETAIL_1a8fbbbb6ecf4d5cf3365296b04d2c7636" kindref="member">warn</ref>(spdlog::format_string_t&lt;Args...&gt;<sp/>fmt,<sp/>Args<sp/>&amp;&amp;...args)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">requires</highlight><highlight class="normal">(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">...(Args)<sp/>&gt;<sp/>0)</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__LOG__DETAIL_1a8cf6dc50e37344e1113e4112bd5f9ea3" kindref="member">log_format</ref>(<ref refid="PDJE__LOG__RUNTIME__API_8h_1a9e6da84f7a656758c0ae2891ba6ba02ca32075dfbecfcf55e16122d0cdbe77c3b" kindref="member">PDJE_LOG_LEVEL_WARN_V1</ref>,<sp/>fmt,<sp/>std::forward&lt;Args&gt;(args)...);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;<sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="namespacePDJE__LOG__DETAIL_1a1d5e43c742f9573b552e5af26ddb2d75" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__LOG__DETAIL_1a1d5e43c742f9573b552e5af26ddb2d75" kindref="member">critical</ref>(<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref><sp/>&amp;&amp;value)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__LOG__DETAIL_1ae18d2bcca09be1d547f3697bd4c2c6af" kindref="member">log_value</ref>(<ref refid="PDJE__LOG__RUNTIME__API_8h_1a9e6da84f7a656758c0ae2891ba6ba02ca1a238dc5392740d426e4008b90586bc7" kindref="member">PDJE_LOG_LEVEL_CRITICAL_V1</ref>,<sp/>std::forward&lt;T&gt;(value));</highlight></codeline>
+<codeline lineno="112"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/>Args&gt;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="namespacePDJE__LOG__DETAIL_1ac993d88cb68b0496900c3aff1707c5be" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__LOG__DETAIL_1a1d5e43c742f9573b552e5af26ddb2d75" kindref="member">critical</ref>(spdlog::format_string_t&lt;Args...&gt;<sp/>fmt,<sp/>Args<sp/>&amp;&amp;...args)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">requires</highlight><highlight class="normal">(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">...(Args)<sp/>&gt;<sp/>0)</highlight></codeline>
+<codeline lineno="118"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__LOG__DETAIL_1a8cf6dc50e37344e1113e4112bd5f9ea3" kindref="member">log_format</ref>(<ref refid="PDJE__LOG__RUNTIME__API_8h_1a9e6da84f7a656758c0ae2891ba6ba02ca1a238dc5392740d426e4008b90586bc7" kindref="member">PDJE_LOG_LEVEL_CRITICAL_V1</ref>,<sp/>fmt,<sp/>std::forward&lt;Args&gt;(args)...);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_LOG_DETAIL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>ENABLE_INFO_LOG</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>infolog(...)<sp/>PDJE_LOG_DETAIL::info(__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131" refid="PDJE__LOG__SETTER_8hpp_1a2721d826078db7a962e7664a9d2f4016" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>infolog(...)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>ENABLE_WARN_LOG</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>warnlog(...)<sp/>PDJE_LOG_DETAIL::warn(__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141" refid="PDJE__LOG__SETTER_8hpp_1a6f4ac2826ed21d631281a5644018f590" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>warnlog(...)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148" refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>critlog(...)<sp/>PDJE_LOG_DETAIL::critical(__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>infolog(...)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>warnlog(...)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>critlog(...)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="include/global/PDJE_LOG_SETTER.hpp"/>
   </compounddef>

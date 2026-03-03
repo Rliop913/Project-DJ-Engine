@@ -1,0 +1,209 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="WaylandOwnedWindow_8hpp" kind="file" language="C++">
+    <compoundname>WaylandOwnedWindow.hpp</compoundname>
+    <includes local="no">cstddef</includes>
+    <includes local="no">cstdint</includes>
+    <includes local="no">atomic</includes>
+    <includes local="no">string</includes>
+    <includedby refid="WaylandInputCore_8hpp" local="yes">include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp</includedby>
+    <includedby refid="WaylandOwnedWindow_8cpp" local="yes">include/input/DefaultDevs/linux/wayland_things/WaylandOwnedWindow.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>include/input/DefaultDevs/linux/wayland_things/WaylandOwnedWindow.hpp</label>
+        <link refid="WaylandOwnedWindow_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>atomic</label>
+      </node>
+      <node id="2">
+        <label>cstddef</label>
+      </node>
+      <node id="3">
+        <label>cstdint</label>
+      </node>
+      <node id="5">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="4">
+        <label>include/input/DefaultDevs/linux/DefaultDevs.cpp</label>
+        <link refid="linux_2DefaultDevs_8cpp"/>
+      </node>
+      <node id="3">
+        <label>include/input/DefaultDevs/linux/DefaultDevs.hpp</label>
+        <link refid="linux_2DefaultDevs_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp</label>
+        <link refid="WaylandInputCore_8cpp"/>
+      </node>
+      <node id="2">
+        <label>include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp</label>
+        <link refid="WaylandInputCore_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>include/input/DefaultDevs/linux/wayland_things/WaylandOwnedWindow.cpp</label>
+        <link refid="WaylandOwnedWindow_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/input/DefaultDevs/linux/wayland_things/WaylandOwnedWindow.hpp</label>
+        <link refid="WaylandOwnedWindow_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classWaylandOwnedWindow" prot="public">WaylandOwnedWindow</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstddef&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;atomic&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_display;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_registry;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_compositor;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_surface;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_shm;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_shm_pool;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_buffer;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_seat;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_array;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">xdg_wm_base;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">xdg_surface;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">xdg_toplevel;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classWaylandOwnedWindow" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classWaylandOwnedWindow_1ae26c21b2e1702cdb47ffa919fd198c59" kindref="member">WaylandOwnedWindow</ref><sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="23" refid="classWaylandOwnedWindow_1ae614fa58b236dea0607de00458c29fc4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>wl_display<sp/><sp/><sp/><sp/>*<ref refid="classWaylandOwnedWindow_1ae614fa58b236dea0607de00458c29fc4" kindref="member">display_</ref><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="24" refid="classWaylandOwnedWindow_1ad1486b7c71c7acaed982a25962d871d4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>wl_registry<sp/><sp/><sp/>*<ref refid="classWaylandOwnedWindow_1ad1486b7c71c7acaed982a25962d871d4" kindref="member">registry_</ref><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="25" refid="classWaylandOwnedWindow_1a72ee4018e205cb546c12e9dfbd7d2435" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>wl_compositor<sp/>*<ref refid="classWaylandOwnedWindow_1a72ee4018e205cb546c12e9dfbd7d2435" kindref="member">compositor_</ref><sp/><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="26" refid="classWaylandOwnedWindow_1ae45e82b0b74366b612987a96c63341e4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>wl_shm<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="classWaylandOwnedWindow_1ae45e82b0b74366b612987a96c63341e4" kindref="member">shm_</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="27" refid="classWaylandOwnedWindow_1a8ad6d784d78d7a973d2a86d0a1ff1e8a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>wl_seat<sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="classWaylandOwnedWindow_1a8ad6d784d78d7a973d2a86d0a1ff1e8a" kindref="member">seat_</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="28" refid="classWaylandOwnedWindow_1ab01771642c9058392f0f6fe9d2825f66" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>xdg_wm_base<sp/><sp/><sp/>*<ref refid="classWaylandOwnedWindow_1ab01771642c9058392f0f6fe9d2825f66" kindref="member">wm_base_</ref><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="29" refid="classWaylandOwnedWindow_1a42cdbe29e91799f6267eddfdfdc136c6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>wl_surface<sp/><sp/><sp/><sp/>*<ref refid="classWaylandOwnedWindow_1a42cdbe29e91799f6267eddfdfdc136c6" kindref="member">surface_</ref><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="30" refid="classWaylandOwnedWindow_1a7ffd6a8c712fe03bef3c55ed82ec4f64" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>xdg_surface<sp/><sp/><sp/>*<ref refid="classWaylandOwnedWindow_1a7ffd6a8c712fe03bef3c55ed82ec4f64" kindref="member">xdg_surface_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31" refid="classWaylandOwnedWindow_1a61a8fee60afcb2306341b60ee4762fe5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>xdg_toplevel<sp/><sp/>*<ref refid="classWaylandOwnedWindow_1a61a8fee60afcb2306341b60ee4762fe5" kindref="member">toplevel_</ref><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classWaylandOwnedWindow_1ad2fbdc70f56c5549571d8aea519432df" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>wl_shm_pool<sp/>*<ref refid="classWaylandOwnedWindow_1ad2fbdc70f56c5549571d8aea519432df" kindref="member">shm_pool_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34" refid="classWaylandOwnedWindow_1aac5b19281f89b3f9ab41e3f7d6f6376a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>wl_buffer<sp/><sp/><sp/>*<ref refid="classWaylandOwnedWindow_1aac5b19281f89b3f9ab41e3f7d6f6376a" kindref="member">buffer_</ref><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35" refid="classWaylandOwnedWindow_1a3d7a1ea9dc343a8c827f7642c8deef67" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="classWaylandOwnedWindow_1a3d7a1ea9dc343a8c827f7642c8deef67" kindref="member">buffer_map_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36" refid="classWaylandOwnedWindow_1ad956dae413a37dca50244a37b22f2c2a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::size_t<sp/><sp/><ref refid="classWaylandOwnedWindow_1ad956dae413a37dca50244a37b22f2c2a" kindref="member">buffer_size_</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="37" refid="classWaylandOwnedWindow_1a26ef85f6186f6c3c09c27f051dde3ba6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1a26ef85f6186f6c3c09c27f051dde3ba6" kindref="member">shm_fd_</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="38" refid="classWaylandOwnedWindow_1aa3eed7845cca022cb959b7a5dca5c72c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1aa3eed7845cca022cb959b7a5dca5c72c" kindref="member">width_</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>640;</highlight></codeline>
+<codeline lineno="39" refid="classWaylandOwnedWindow_1a37acb7d387d7bad0a551ddcec493b774" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1a37acb7d387d7bad0a551ddcec493b774" kindref="member">height_</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>360;</highlight></codeline>
+<codeline lineno="40" refid="classWaylandOwnedWindow_1aab7c2fd2ffc180bcd60ca59808565450" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1aab7c2fd2ffc180bcd60ca59808565450" kindref="member">configured_</ref><sp/><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41" refid="classWaylandOwnedWindow_1a588321f8fe2ae094a7f11adddfce6cd6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1a588321f8fe2ae094a7f11adddfce6cd6" kindref="member">seat_caps_known_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="42" refid="classWaylandOwnedWindow_1ae4d8486d815fac31c5f5c3c8b214f0c9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1ae4d8486d815fac31c5f5c3c8b214f0c9" kindref="member">seat_caps_</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="43" refid="classWaylandOwnedWindow_1aa57891af29ddf525c5648498ba2e3ee4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::atomic&lt;bool&gt;<sp/><ref refid="classWaylandOwnedWindow_1aa57891af29ddf525c5648498ba2e3ee4" kindref="member">closed_</ref>{<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal"><sp/>};</highlight></codeline>
+<codeline lineno="44" refid="classWaylandOwnedWindow_1a6466a2bf6b97568e094d966202ed1c77" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><sp/><ref refid="classWaylandOwnedWindow_1a6466a2bf6b97568e094d966202ed1c77" kindref="member">last_error_</ref>;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1aa1b61b558a9cbd6ceac2c8b32a1fce26" kindref="member">SetError</ref>(std::string<sp/>msg);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1affe663defda799512de597da864213fa" kindref="member">CreateShmBuffer</ref>();</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1a8a2daaedfdaafcf888968d88d5cacf10" kindref="member">DestroyShmBuffer</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1aba8a1aef85181587e51b309499f3324f" kindref="member">CleanupWaylandObjects</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1adba52ba8bb1c0b343586d2a52dadfe6e" kindref="member">OnRegistryGlobal</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*data,</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wl_registry<sp/>*registry,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/><sp/><sp/><sp/><sp/>name,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><sp/>*interface,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/><sp/><sp/><sp/><sp/>version);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1a68a6efd14c33ce4d6809bb068725858f" kindref="member">OnRegistryGlobalRemove</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*,<sp/>wl_registry<sp/>*,<sp/>uint32_t);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1acdc62737bad2a18e8a23351dd3e91987" kindref="member">OnWmBasePing</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*,<sp/>xdg_wm_base<sp/>*wm_base,<sp/>uint32_t<sp/>serial);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1a61013f55235bc8915c44dd6c3a29b59d" kindref="member">OnXdgSurfaceConfigure</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*data,<sp/>xdg_surface<sp/>*surface,<sp/>uint32_t<sp/>serial);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1ac20ee19f65d19e44f8824d58702fcb9c" kindref="member">OnToplevelConfigure</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*,<sp/>xdg_toplevel<sp/>*,<sp/>int32_t,<sp/>int32_t,<sp/>struct<sp/>wl_array<sp/>*);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1a03c4282c51a6cddf83321c477adb0f2a" kindref="member">OnToplevelClose</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*data,<sp/>xdg_toplevel<sp/>*);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1a09450efd8a77f4e4d0c9e7f1e56765f8" kindref="member">OnBufferRelease</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*,<sp/>wl_buffer<sp/>*);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1a923a378e347a695d862f3ab4d3b2b275" kindref="member">OnSeatCapabilities</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*data,<sp/>wl_seat<sp/>*seat,<sp/>uint32_t<sp/>capabilities);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1ab225b86954646bd2f729ca7cc70340b9" kindref="member">OnSeatName</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*,<sp/>wl_seat<sp/>*,<sp/>const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/>public:</highlight></codeline>
+<codeline lineno="79" refid="classWaylandOwnedWindow_1ae26c21b2e1702cdb47ffa919fd198c59" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1ae26c21b2e1702cdb47ffa919fd198c59" kindref="member">WaylandOwnedWindow</ref>()<sp/>=<sp/>default;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>~<ref refid="classWaylandOwnedWindow_1ae26c21b2e1702cdb47ffa919fd198c59" kindref="member">WaylandOwnedWindow</ref>();</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="classWaylandOwnedWindow_1a87f64ec3ba804a4fdac94a67ba0174bb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1ae26c21b2e1702cdb47ffa919fd198c59" kindref="member">WaylandOwnedWindow</ref>(const<sp/><ref refid="classWaylandOwnedWindow_1ae26c21b2e1702cdb47ffa919fd198c59" kindref="member">WaylandOwnedWindow</ref><sp/>&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="83" refid="classWaylandOwnedWindow_1a87570c87f5c5bc09a84a7989f29ddd9a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1ae26c21b2e1702cdb47ffa919fd198c59" kindref="member">WaylandOwnedWindow</ref><sp/>&amp;operator=(const<sp/><ref refid="classWaylandOwnedWindow_1ae26c21b2e1702cdb47ffa919fd198c59" kindref="member">WaylandOwnedWindow</ref><sp/>&amp;)<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="84" refid="classWaylandOwnedWindow_1ae2ae61953888423179a5e7e732014ab2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1ae26c21b2e1702cdb47ffa919fd198c59" kindref="member">WaylandOwnedWindow</ref>(<ref refid="classWaylandOwnedWindow_1ae26c21b2e1702cdb47ffa919fd198c59" kindref="member">WaylandOwnedWindow</ref><sp/>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="85" refid="classWaylandOwnedWindow_1a9358fab33e1a0685d4bd3814212058ef" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1ae26c21b2e1702cdb47ffa919fd198c59" kindref="member">WaylandOwnedWindow</ref><sp/>&amp;operator=(<ref refid="classWaylandOwnedWindow_1ae26c21b2e1702cdb47ffa919fd198c59" kindref="member">WaylandOwnedWindow</ref><sp/>&amp;&amp;)<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1ae84ed0d7e41c6a6827e9fceef0734655" kindref="member">Create</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*title,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>width,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>height);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1a75747eb6e0f7e98180c650f139b7e1e9" kindref="member">Destroy</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>wl_display<sp/>*</highlight></codeline>
+<codeline lineno="93" refid="classWaylandOwnedWindow_1a4142743e11785c289bce1317ddbd121f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1a4142743e11785c289bce1317ddbd121f" kindref="member">Display</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classWaylandOwnedWindow_1ae614fa58b236dea0607de00458c29fc4" kindref="member">display_</ref>;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>wl_surface<sp/>*</highlight></codeline>
+<codeline lineno="98" refid="classWaylandOwnedWindow_1a9c747a1c79379cfd7b467cad35f5265f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1a9c747a1c79379cfd7b467cad35f5265f" kindref="member">Surface</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classWaylandOwnedWindow_1a42cdbe29e91799f6267eddfdfdc136c6" kindref="member">surface_</ref>;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>wl_seat<sp/>*</highlight></codeline>
+<codeline lineno="103" refid="classWaylandOwnedWindow_1a99c47e0126f64a6390fe3f6b4703f560" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1a99c47e0126f64a6390fe3f6b4703f560" kindref="member">Seat</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classWaylandOwnedWindow_1a8ad6d784d78d7a973d2a86d0a1ff1e8a" kindref="member">seat_</ref>;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="classWaylandOwnedWindow_1a6aa719cbc0cb0c4d10c18a41edc02c39" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1a6aa719cbc0cb0c4d10c18a41edc02c39" kindref="member">SeatCapabilitiesKnown</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classWaylandOwnedWindow_1a588321f8fe2ae094a7f11adddfce6cd6" kindref="member">seat_caps_known_</ref>;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t</highlight></codeline>
+<codeline lineno="113" refid="classWaylandOwnedWindow_1a943e0139c724a051c5d84be42c49c366" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1a943e0139c724a051c5d84be42c49c366" kindref="member">SeatCapabilities</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classWaylandOwnedWindow_1ae4d8486d815fac31c5f5c3c8b214f0c9" kindref="member">seat_caps_</ref>;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118" refid="classWaylandOwnedWindow_1ac50cde5e8d15dd5b17f8674baf2f54bd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1ac50cde5e8d15dd5b17f8674baf2f54bd" kindref="member">Closed</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classWaylandOwnedWindow_1aa57891af29ddf525c5648498ba2e3ee4" kindref="member">closed_</ref>.load();</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;</highlight></codeline>
+<codeline lineno="123" refid="classWaylandOwnedWindow_1aff3370c010bf2f15dfdf0fb6a39b8513" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1aff3370c010bf2f15dfdf0fb6a39b8513" kindref="member">LastError</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classWaylandOwnedWindow_1a6466a2bf6b97568e094d966202ed1c77" kindref="member">last_error_</ref>;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="include/input/DefaultDevs/linux/wayland_things/WaylandOwnedWindow.hpp"/>
+  </compounddef>
+</doxygen>

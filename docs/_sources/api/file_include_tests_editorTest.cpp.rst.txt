@@ -34,7 +34,21 @@ Includes
 
 - ``PDJE_interface.hpp`` (:ref:`file_include_core_interface_PDJE_interface.hpp`)
 
+- ``editor.hpp`` (:ref:`file_include_core_editor_editor.hpp`)
+
+- ``filesystem``
+
+- ``fstream``
+
 - ``iostream``
+
+- ``nlohmann/json.hpp``
+
+- ``optional``
+
+- ``set``
+
+- ``sstream``
 
 - ``string``
 
@@ -47,5 +61,5 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_editorTest_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4`
+- :ref:`exhale_function_editorTest_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627`
 

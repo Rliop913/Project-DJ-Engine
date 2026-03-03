@@ -61,6 +61,16 @@ Program Listing for File DefaultDevs.hpp
        InitEvents();
    
      public:
+       void
+       SetPlatformContexts(void *, void *, bool)
+       {
+           // Reserved for cross-platform PDJE_Input::Init(...) signature parity.
+       }
+       std::string
+       GetCurrentBackendString() const
+       {
+           return "rawinput-ipc";
+       }
        bool
        Kill()
        {

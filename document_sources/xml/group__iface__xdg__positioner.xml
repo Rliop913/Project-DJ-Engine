@@ -1,0 +1,506 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="group__iface__xdg__positioner" kind="group">
+    <compoundname>iface_xdg_positioner</compoundname>
+    <title>The xdg_positioner interface</title>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__iface__xdg__positioner_1ga2d4543f555d079de131eb49d7787c85f" prot="public" static="no" strong="no">
+        <type></type>
+        <name>xdg_positioner_constraint_adjustment</name>
+        <enumvalue id="group__iface__xdg__positioner_1gga2d4543f555d079de131eb49d7787c85fa44f1660f28048349487c7cbace5d2d3e" prot="public">
+          <name>XDG_POSITIONER_CONSTRAINT_ADJUSTMENT_NONE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>don&apos;t move the child surface when constrained</para>
+<para>Don&apos;t alter the surface position even if it is constrained on some axis, for example partially outside the edge of an output. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__iface__xdg__positioner_1gga2d4543f555d079de131eb49d7787c85fa3169ca4e42d1143b7f906af6b0378969" prot="public">
+          <name>XDG_POSITIONER_CONSTRAINT_ADJUSTMENT_SLIDE_X</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>move along the x axis until unconstrained</para>
+<para>Slide the surface along the x axis until it is no longer constrained.</para>
+<para>First try to slide towards the direction of the gravity on the x axis until either the edge in the opposite direction of the gravity is unconstrained or the edge in the direction of the gravity is constrained.</para>
+<para>Then try to slide towards the opposite direction of the gravity on the x axis until either the edge in the direction of the gravity is unconstrained or the edge in the opposite direction of the gravity is constrained. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__iface__xdg__positioner_1gga2d4543f555d079de131eb49d7787c85fa066357a9a6de591a0a2696597d857e91" prot="public">
+          <name>XDG_POSITIONER_CONSTRAINT_ADJUSTMENT_SLIDE_Y</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>move along the y axis until unconstrained</para>
+<para>Slide the surface along the y axis until it is no longer constrained.</para>
+<para>First try to slide towards the direction of the gravity on the y axis until either the edge in the opposite direction of the gravity is unconstrained or the edge in the direction of the gravity is constrained.</para>
+<para>Then try to slide towards the opposite direction of the gravity on the y axis until either the edge in the direction of the gravity is unconstrained or the edge in the opposite direction of the gravity is constrained. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__iface__xdg__positioner_1gga2d4543f555d079de131eb49d7787c85fa8e0c3271b0c560c5121ca99b6f8c65b7" prot="public">
+          <name>XDG_POSITIONER_CONSTRAINT_ADJUSTMENT_FLIP_X</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>invert the anchor and gravity on the x axis</para>
+<para>Invert the anchor and gravity on the x axis if the surface is constrained on the x axis. For example, if the left edge of the surface is constrained, the gravity is &apos;left&apos; and the anchor is &apos;left&apos;, change the gravity to &apos;right&apos; and the anchor to &apos;right&apos;.</para>
+<para>If the adjusted position also ends up being constrained, the resulting position of the flip_x adjustment will be the one before the adjustment. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__iface__xdg__positioner_1gga2d4543f555d079de131eb49d7787c85fa4015c1eade9d716c59e1a8209a7fde6a" prot="public">
+          <name>XDG_POSITIONER_CONSTRAINT_ADJUSTMENT_FLIP_Y</name>
+          <initializer>= 8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>invert the anchor and gravity on the y axis</para>
+<para>Invert the anchor and gravity on the y axis if the surface is constrained on the y axis. For example, if the bottom edge of the surface is constrained, the gravity is &apos;bottom&apos; and the anchor is &apos;bottom&apos;, change the gravity to &apos;top&apos; and the anchor to &apos;top&apos;.</para>
+<para>The adjusted position is calculated given the original anchor rectangle and offset, but with the new flipped anchor and gravity values.</para>
+<para>If the adjusted position also ends up being constrained, the resulting position of the flip_y adjustment will be the one before the adjustment. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__iface__xdg__positioner_1gga2d4543f555d079de131eb49d7787c85fa3905454c90089d34fe80470a8dad7f36" prot="public">
+          <name>XDG_POSITIONER_CONSTRAINT_ADJUSTMENT_RESIZE_X</name>
+          <initializer>= 16</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>horizontally resize the surface</para>
+<para>Resize the surface horizontally so that it is completely unconstrained. </para>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__iface__xdg__positioner_1gga2d4543f555d079de131eb49d7787c85facb0dac66328d3e4a82437dd2978210db" prot="public">
+          <name>XDG_POSITIONER_CONSTRAINT_ADJUSTMENT_RESIZE_Y</name>
+          <initializer>= 32</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>vertically resize the surface</para>
+<para>Resize the surface vertically so that it is completely unconstrained. </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>constraint adjustments</para>
+<para>The constraint adjustment value define ways the compositor will adjust the position of the surface, if the unadjusted position would result in the surface being partly constrained.</para>
+<para>Whether a surface is considered &apos;constrained&apos; is left to the compositor to determine. For example, the surface may be partly outside the compositor&apos;s defined &apos;work area&apos;, thus necessitating the child surface&apos;s position be adjusted until it is entirely inside the work area.</para>
+<para>The adjustments can be combined, according to a defined precedence: 1) Flip, 2) Slide, 3) Resize. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="626" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="626" bodyend="713"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__iface__xdg__positioner_1gaf85d8cc991344c82a8fab4dc9755076f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void xdg_positioner_set_user_data</definition>
+        <argsstring>(struct xdg_positioner *xdg_positioner, void *user_data)</argsstring>
+        <name>xdg_positioner_set_user_data</name>
+        <param>
+          <type>struct xdg_positioner *</type>
+          <declname>xdg_positioner</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="771" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="771" bodyend="774"/>
+      </memberdef>
+      <memberdef kind="function" id="group__iface__xdg__positioner_1ga2ecf2ae9597b49ef40f46a330eccc92a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void *</type>
+        <definition>static void * xdg_positioner_get_user_data</definition>
+        <argsstring>(struct xdg_positioner *xdg_positioner)</argsstring>
+        <name>xdg_positioner_get_user_data</name>
+        <param>
+          <type>struct xdg_positioner *</type>
+          <declname>xdg_positioner</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="778" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="778" bodyend="781"/>
+      </memberdef>
+      <memberdef kind="function" id="group__iface__xdg__positioner_1ga4480bbe5bc6f1deb96e21c5e0f0b7de3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void xdg_positioner_destroy</definition>
+        <argsstring>(struct xdg_positioner *xdg_positioner)</argsstring>
+        <name>xdg_positioner_destroy</name>
+        <param>
+          <type>struct xdg_positioner *</type>
+          <declname>xdg_positioner</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Notify the compositor that the xdg_positioner will no longer be used. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="795" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="795" bodyend="799"/>
+      </memberdef>
+      <memberdef kind="function" id="group__iface__xdg__positioner_1gad28f21dd8d1fa33338928b477aa16ab1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void xdg_positioner_set_size</definition>
+        <argsstring>(struct xdg_positioner *xdg_positioner, int32_t width, int32_t height)</argsstring>
+        <name>xdg_positioner_set_size</name>
+        <param>
+          <type>struct xdg_positioner *</type>
+          <declname>xdg_positioner</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>height</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the size of the surface that is to be positioned with the positioner object. The size is in surface-local coordinates and corresponds to the window geometry. See xdg_surface.set_window_geometry.</para>
+<para>If a zero or negative size is set the invalid_input error is raised. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="811" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="811" bodyend="815"/>
+      </memberdef>
+      <memberdef kind="function" id="group__iface__xdg__positioner_1ga87f7cf443c8864a1fedb537223a6cbf6" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void xdg_positioner_set_anchor_rect</definition>
+        <argsstring>(struct xdg_positioner *xdg_positioner, int32_t x, int32_t y, int32_t width, int32_t height)</argsstring>
+        <name>xdg_positioner_set_anchor_rect</name>
+        <param>
+          <type>struct xdg_positioner *</type>
+          <declname>xdg_positioner</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>width</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>height</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specify the anchor rectangle within the parent surface that the child surface will be placed relative to. The rectangle is relative to the window geometry as defined by xdg_surface.set_window_geometry of the parent surface.</para>
+<para>When the xdg_positioner object is used to position a child surface, the anchor rectangle may not extend outside the window geometry of the positioned child&apos;s parent surface.</para>
+<para>If a negative size is set the invalid_input error is raised. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="832" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="832" bodyend="836"/>
+      </memberdef>
+      <memberdef kind="function" id="group__iface__xdg__positioner_1gac600cf0ce9cc45c49caf0a7c5d336615" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void xdg_positioner_set_anchor</definition>
+        <argsstring>(struct xdg_positioner *xdg_positioner, uint32_t anchor)</argsstring>
+        <name>xdg_positioner_set_anchor</name>
+        <param>
+          <type>struct xdg_positioner *</type>
+          <declname>xdg_positioner</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>anchor</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Defines the anchor point for the anchor rectangle. The specified anchor is used derive an anchor point that the child surface will be positioned relative to. If a corner anchor is set (e.g. &apos;top_left&apos; or &apos;bottom_right&apos;), the anchor point will be at the specified corner; otherwise, the derived anchor point will be centered on the specified edge, or in the center of the anchor rectangle if no edge is specified. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="849" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="849" bodyend="853"/>
+      </memberdef>
+      <memberdef kind="function" id="group__iface__xdg__positioner_1gafded3c56c5cd18c3436aa72763d18e3e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void xdg_positioner_set_gravity</definition>
+        <argsstring>(struct xdg_positioner *xdg_positioner, uint32_t gravity)</argsstring>
+        <name>xdg_positioner_set_gravity</name>
+        <param>
+          <type>struct xdg_positioner *</type>
+          <declname>xdg_positioner</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>gravity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Defines in what direction a surface should be positioned, relative to the anchor point of the parent surface. If a corner gravity is specified (e.g. &apos;bottom_right&apos; or &apos;top_left&apos;), then the child surface will be placed towards the specified gravity; otherwise, the child surface will be centered over the anchor point on any axis that had no gravity specified. If the gravity is not in the ‘gravity’ enum, an invalid_input error is raised. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="867" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="867" bodyend="871"/>
+      </memberdef>
+      <memberdef kind="function" id="group__iface__xdg__positioner_1ga0969ad376c5edd0d28a688c39231712e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void xdg_positioner_set_constraint_adjustment</definition>
+        <argsstring>(struct xdg_positioner *xdg_positioner, uint32_t constraint_adjustment)</argsstring>
+        <name>xdg_positioner_set_constraint_adjustment</name>
+        <param>
+          <type>struct xdg_positioner *</type>
+          <declname>xdg_positioner</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>constraint_adjustment</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specify how the window should be positioned if the originally intended position caused the surface to be constrained, meaning at least partially outside positioning boundaries set by the compositor. The adjustment is set by constructing a bitmask describing the adjustment to be made when the surface is constrained on that axis.</para>
+<para>If no bit for one axis is set, the compositor will assume that the child surface should not change its position on that axis when constrained.</para>
+<para>If more than one bit for one axis is set, the order of how adjustments are applied is specified in the corresponding adjustment descriptions.</para>
+<para>The default adjustment is none. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="891" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="891" bodyend="895"/>
+      </memberdef>
+      <memberdef kind="function" id="group__iface__xdg__positioner_1gab92acfa9e0a07c3d3979bcb23181c71d" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void xdg_positioner_set_offset</definition>
+        <argsstring>(struct xdg_positioner *xdg_positioner, int32_t x, int32_t y)</argsstring>
+        <name>xdg_positioner_set_offset</name>
+        <param>
+          <type>struct xdg_positioner *</type>
+          <declname>xdg_positioner</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Specify the surface position offset relative to the position of the anchor on the anchor rectangle and the anchor on the surface. For example if the anchor of the anchor rectangle is at (x, y), the surface has the gravity bottom|right, and the offset is (ox, oy), the calculated surface position will be (x + ox, y + oy). The offset position of the surface is the one used for constraint testing. See set_constraint_adjustment.</para>
+<para>An example use case is placing a popup menu on top of a user interface element, while aligning the user interface element of the parent surface with some user interface element placed somewhere in the popup surface. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="913" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="913" bodyend="917"/>
+      </memberdef>
+      <memberdef kind="function" id="group__iface__xdg__positioner_1gac6a4d854184ccac49c75402f99cf4924" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void xdg_positioner_set_reactive</definition>
+        <argsstring>(struct xdg_positioner *xdg_positioner)</argsstring>
+        <name>xdg_positioner_set_reactive</name>
+        <param>
+          <type>struct xdg_positioner *</type>
+          <declname>xdg_positioner</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>When set reactive, the surface is reconstrained if the conditions used for constraining changed, e.g. the parent window moved.</para>
+<para>If the conditions changed and the popup was reconstrained, an xdg_popup.configure event is sent with updated geometry, followed by an xdg_surface.configure event. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="930" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="930" bodyend="934"/>
+      </memberdef>
+      <memberdef kind="function" id="group__iface__xdg__positioner_1gae9d07bd57520696a8062d2237cba1a2b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void xdg_positioner_set_parent_size</definition>
+        <argsstring>(struct xdg_positioner *xdg_positioner, int32_t parent_width, int32_t parent_height)</argsstring>
+        <name>xdg_positioner_set_parent_size</name>
+        <param>
+          <type>struct xdg_positioner *</type>
+          <declname>xdg_positioner</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>parent_width</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>parent_height</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the parent window geometry the compositor should use when positioning the popup. The compositor may use this information to determine the future state the popup should be constrained using. If this doesn&apos;t match the dimension of the parent the popup is eventually positioned against, the behavior is undefined.</para>
+<para>The arguments are given in the surface-local coordinate space. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="948" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="948" bodyend="952"/>
+      </memberdef>
+      <memberdef kind="function" id="group__iface__xdg__positioner_1gad540aca61b99146ca605110a39e61e75" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void xdg_positioner_set_parent_configure</definition>
+        <argsstring>(struct xdg_positioner *xdg_positioner, uint32_t serial)</argsstring>
+        <name>xdg_positioner_set_parent_configure</name>
+        <param>
+          <type>struct xdg_positioner *</type>
+          <declname>xdg_positioner</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>serial</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set the serial of an xdg_surface.configure event this positioner will be used in response to. The compositor may use this information together with set_parent_size to determine what future state the popup should be constrained using. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="963" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="963" bodyend="967"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__iface__xdg__positioner_1ga3d18b7208aa266eec54f1a437dd42e33" prot="public" static="no">
+        <name>XDG_POSITIONER_DESTROY_SINCE_VERSION</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="731" column="9" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="731" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__iface__xdg__positioner_1gab6e7b1104a2309ded8c722bac5038ed6" prot="public" static="no">
+        <name>XDG_POSITIONER_SET_SIZE_SINCE_VERSION</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="735" column="9" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="735" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__iface__xdg__positioner_1ga3ef0d821776d545ab84686b99945a3af" prot="public" static="no">
+        <name>XDG_POSITIONER_SET_ANCHOR_RECT_SINCE_VERSION</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="739" column="9" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="739" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__iface__xdg__positioner_1ga0bd68e1dbaf738c942d963f337a26509" prot="public" static="no">
+        <name>XDG_POSITIONER_SET_ANCHOR_SINCE_VERSION</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="743" column="9" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="743" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__iface__xdg__positioner_1gafe5bf03fc03e051d0a798f6fd8390593" prot="public" static="no">
+        <name>XDG_POSITIONER_SET_GRAVITY_SINCE_VERSION</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="747" column="9" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="747" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__iface__xdg__positioner_1gaf1a789c9b8987c2d620c788d677fa593" prot="public" static="no">
+        <name>XDG_POSITIONER_SET_CONSTRAINT_ADJUSTMENT_SINCE_VERSION</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="751" column="9" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="751" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__iface__xdg__positioner_1gaaa1a3683222a7fdb004f4f19eca50b84" prot="public" static="no">
+        <name>XDG_POSITIONER_SET_OFFSET_SINCE_VERSION</name>
+        <initializer>1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="755" column="9" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="755" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__iface__xdg__positioner_1gacb16ae69f785d4e1d120dab025023b4e" prot="public" static="no">
+        <name>XDG_POSITIONER_SET_REACTIVE_SINCE_VERSION</name>
+        <initializer>3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="759" column="9" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="759" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__iface__xdg__positioner_1ga8c6be97f1cf9fcb2cf800f50c0c66d8a" prot="public" static="no">
+        <name>XDG_POSITIONER_SET_PARENT_SIZE_SINCE_VERSION</name>
+        <initializer>3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="763" column="9" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="763" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__iface__xdg__positioner_1ga093d5cdbfd183567f68e2a893191b417" prot="public" static="no">
+        <name>XDG_POSITIONER_SET_PARENT_CONFIGURE_SINCE_VERSION</name>
+        <initializer>3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="767" column="9" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="767" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>The xdg_positioner provides a collection of rules for the placement of a child surface relative to a parent surface. Rules can be defined to ensure the child surface remains within the visible area&apos;s borders, and to specify how the child surface changes its position, such as sliding along an axis, or flipping around a rectangle. These positioner-created rules are constrained by the requirement that a child surface must intersect with or be at least partially adjacent to its parent surface.</para>
+<para>See the various requests for details about possible rules.</para>
+<para>At the time of the request, the compositor makes a copy of the rules specified by the xdg_positioner. Thus, after the request is complete the xdg_positioner object can be destroyed or reused; further changes to the object will have no effect on previous usages.</para>
+<para>For an xdg_positioner object to be considered complete, it must have a non-zero size set by set_size, and a non-zero anchor rectangle set by set_anchor_rect. Passing an incomplete xdg_positioner object when positioning a surface raises an invalid_positioner error. </para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

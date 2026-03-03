@@ -77,6 +77,8 @@ include(cmakes/src/IPCsrc.cmake)
 include(cmakes/src/GLOBALsrc.cmake)
 include(cmakes/src/INPUTsrc.cmake)
 include(cmakes/src/CRYPTOsrc.cmake)
+include(cmakes/src/UTILsrc.cmake)
+include(cmakes/HalideSupport.cmake)
 
 if(PDJE_LOG_RUNTIME_SHARED)
   set(PDJE_LOG_RUNTIME_LIBRARY_TYPE SHARED)
@@ -146,7 +148,6 @@ endif()
 
 set(CORE_SRCS
   ${editorSource} 
-  ${sql_amalgam_src} 
   ${dbSource} 
   ${audioRenderSource} 
   ${SoundTouch_src} 
@@ -192,12 +193,14 @@ function(setCoreReqs targetName)
     endif()
   endif()
   target_link_libraries(${targetName} PUBLIC nlohmann_json::nlohmann_json)
+  setSqliteReqLib(${targetName})
   setRocksDBReqLib(${targetName})
   setSpdlogReqLib(${targetName})
   setPdjeLogRuntimeReqLib(${targetName})
   setCapnpReqLib(${targetName})
   setLibgit2ReqLib(${targetName})
   setHighwayReqLib(${targetName})
+  pdje_halide_attach_to_target(${targetName})
   LinuxSetAtomic(${targetName})
   LinuxSetAudioLibs(${targetName})
   PDJE_COMPILE_OPTION(${targetName})
@@ -220,6 +223,7 @@ function(setInputReqs targetName)
   setPdjeLogRuntimeReqLib(${targetName})
   setBotanReqLib(${targetName})
   PDJE_INPUT_LINK_LIB(${targetName})
+  pdje_halide_attach_to_target(${targetName})
   LinuxSetAtomic(${targetName})
   
   SET_PROPERTIES(${targetName})
@@ -241,6 +245,7 @@ function(setJudgeReqs targetName)
   setPdjeLogRuntimeReqLib(${targetName})
   setCapnpReqLib(${targetName})
   setBotanReqLib(${targetName})
+  pdje_halide_attach_to_target(${targetName})
   LinuxSetAtomic(${targetName})
   SET_PROPERTIES(${targetName})
   PDJE_COMPILE_OPTION(${targetName})
@@ -281,6 +286,10 @@ endfunction()
 add_executable(
   pdje_unit_core
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/main_doctest.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/public_headers.test.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/db_relational_sqlite.test.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/db_keyvalue_rocksdb.test.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/db_nearest_annoy.test.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/core/name_sanitizer.test.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/core/atomic_double_buffer.test.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/core/framecalc_countframe.test.cpp
@@ -292,6 +301,8 @@ add_executable(
   ${CMAKE_CURRENT_SOURCE_DIR}/include/global/DataLines/fileNameSanitizer.cpp)
 target_include_directories(pdje_unit_core PRIVATE ${PDJE_INCLUDE_GLOBAL} ${PDJE_INCLUDE_CORE})
 target_link_libraries(pdje_unit_core PRIVATE doctest::doctest)
+target_link_libraries(pdje_unit_core PRIVATE PDJE_UTIL)
+target_link_libraries(pdje_unit_core PRIVATE PDJE_UTIL_DB)
 target_compile_definitions(pdje_unit_core PRIVATE PDJE_UNIT_TESTING)
 setSpdlogReqLib(pdje_unit_core)
 setPdjeLogRuntimeReqLib(pdje_unit_core)
@@ -409,6 +420,8 @@ endif()
 
 
 include(GNUInstallDirs)
+
+pdje_halide_install_generated_targets()
 
 
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
