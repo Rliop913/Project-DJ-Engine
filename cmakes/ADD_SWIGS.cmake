@@ -11,7 +11,7 @@ swig_add_library(pdje_csharp
 TYPE MODULE
 LANGUAGE CSharp
 OUTPUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/swig_csharp
-SOURCES PDJE_swig.i ${miniaudio_src}  ${SoundTouch_src} ${dbSource} ${audioRenderSource} ${sql_amalgam_src} ${editorSource}
+SOURCES PDJE_swig.i ${miniaudio_src}  ${SoundTouch_src} ${dbSource} ${audioRenderSource} ${editorSource}
 )
 
 
@@ -24,7 +24,7 @@ swig_add_library(pdje_python
 TYPE MODULE
 LANGUAGE Python
 OUTPUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/swig_python
-SOURCES PDJE_swig.i ${miniaudio_src}  ${SoundTouch_src} ${dbSource} ${audioRenderSource} ${sql_amalgam_src} ${editorSource}
+SOURCES PDJE_swig.i ${miniaudio_src}  ${SoundTouch_src} ${dbSource} ${audioRenderSource} ${editorSource}
 )
 
 set_target_properties(${SWIG_MODULE_pdje_python_REAL_NAME} PROPERTIES
@@ -57,6 +57,7 @@ setPdjeLogRuntimeReqLib(${SWIG_MODULE_pdje_python_REAL_NAME})
 setCapnpReqLib(${SWIG_MODULE_pdje_python_REAL_NAME})
 setLibgit2ReqLib(${SWIG_MODULE_pdje_python_REAL_NAME})
 setHighwayReqLib(${SWIG_MODULE_pdje_python_REAL_NAME})
+setSqliteReqLib(${SWIG_MODULE_pdje_python_REAL_NAME})
 
 target_link_libraries(${SWIG_MODULE_pdje_csharp_REAL_NAME} PRIVATE nlohmann_json::nlohmann_json rocksdb Annoy::Annoy)
 target_include_directories(${SWIG_MODULE_pdje_csharp_REAL_NAME} PRIVATE ${PDJE_INCLUDE_CORE})
@@ -65,3 +66,4 @@ setPdjeLogRuntimeReqLib(${SWIG_MODULE_pdje_csharp_REAL_NAME})
 setCapnpReqLib(${SWIG_MODULE_pdje_csharp_REAL_NAME})
 setLibgit2ReqLib(${SWIG_MODULE_pdje_csharp_REAL_NAME})
 setHighwayReqLib(${SWIG_MODULE_pdje_csharp_REAL_NAME})
+setSqliteReqLib(${SWIG_MODULE_pdje_csharp_REAL_NAME})
