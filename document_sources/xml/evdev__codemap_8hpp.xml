@@ -6,6 +6,7 @@
     <includes local="no">array</includes>
     <includes local="no">libevdev/libevdev.h</includes>
     <includedby refid="ParseKeyboard_8cpp" local="yes">include/input/DefaultDevs/linux/ParseKeyboard.cpp</includedby>
+    <includedby refid="WaylandInputCore_8cpp" local="yes">include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp</includedby>
     <incdepgraph>
       <node id="2">
         <label>Input_State.hpp</label>
@@ -63,6 +64,12 @@
         <link refid="evdev__codemap_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp</label>
+        <link refid="WaylandInputCore_8cpp"/>
       </node>
     </invincdepgraph>
     <innernamespace refid="namespacePDJE__EVDEV__KEYMAP">PDJE_EVDEV_KEYMAP</innernamespace>

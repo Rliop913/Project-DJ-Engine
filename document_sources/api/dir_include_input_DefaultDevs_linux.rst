@@ -16,6 +16,8 @@ Subdirectories
 --------------
 
 - :ref:`dir_include_input_DefaultDevs_linux_evdev_things`
+- :ref:`dir_include_input_DefaultDevs_linux_wayland_protocols`
+- :ref:`dir_include_input_DefaultDevs_linux_wayland_things`
 
 
 Files
@@ -25,6 +27,8 @@ Files
 - :ref:`file_include_input_DefaultDevs_linux_DefaultDevs.hpp`
 - :ref:`file_include_input_DefaultDevs_linux_InputCore.cpp`
 - :ref:`file_include_input_DefaultDevs_linux_InputCore.hpp`
+- :ref:`file_include_input_DefaultDevs_linux_LinuxInputContracts.hpp`
+- :ref:`file_include_input_DefaultDevs_linux_LinuxMouseButtonMapping.hpp`
 - :ref:`file_include_input_DefaultDevs_linux_ParseKeyboard.cpp`
 - :ref:`file_include_input_DefaultDevs_linux_ParseMouse.cpp`
 - :ref:`file_include_input_DefaultDevs_linux_rtkitcodes.hpp`

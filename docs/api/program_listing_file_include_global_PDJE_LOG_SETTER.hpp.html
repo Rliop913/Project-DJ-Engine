@@ -53,7 +53,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -85,55 +84,123 @@
 <p>↰ <a class="reference internal" href="file_include_global_PDJE_LOG_SETTER.hpp.html#file-include-global-pdje-log-setter-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/global/PDJE_LOG_SETTER.hpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
 
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;filesystem&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mutex&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;spdlog/sinks/basic_file_sink.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;spdlog/sinks/stdout_color_sinks.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_EXPORT_SETTER.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_RUNTIME_API.h&quot;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;spdlog/fmt/fmt.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;spdlog/spdlog.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;exception&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string_view&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;type_traits&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;utility&gt;</span>
+
+<span class="n">PDJE_API</span><span class="w"> </span><span class="kt">void</span>
+<span class="n">startlog</span><span class="p">();</span>
+
+<span class="n">PDJE_API</span><span class="w"> </span><span class="kt">void</span>
+<span class="n">shutdownlog</span><span class="p">();</span>
+
+<span class="cp">#ifndef LOG_OFF</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">PDJE_LOG_DETAIL</span><span class="w"> </span><span class="p">{</span>
 
 <span class="kr">inline</span><span class="w"> </span><span class="kt">void</span>
-<span class="nf">startlog</span><span class="p">()</span>
+<span class="nf">log_preformatted</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">level</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string_view</span><span class="w"> </span><span class="n">message</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">once_flag</span><span class="w"> </span><span class="n">SPD_LOG_ONCE_FLAG</span><span class="p">;</span>
-<span class="cp">#ifndef LOG_OFF</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">call_once</span><span class="p">(</span><span class="n">SPD_LOG_ONCE_FLAG</span><span class="p">,</span><span class="w"> </span><span class="p">[]()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">filesystem</span><span class="o">::</span><span class="n">create_directories</span><span class="p">(</span><span class="s">&quot;logs&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">fileSink</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">spdlog</span><span class="o">::</span><span class="n">sinks</span><span class="o">::</span><span class="n">basic_file_sink_mt</span><span class="o">&gt;</span><span class="p">(</span>
-<span class="w">            </span><span class="s">&quot;logs/pdjeLog.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
-
-<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">spdlog</span><span class="o">::</span><span class="n">sink_ptr</span><span class="o">&gt;</span><span class="w"> </span><span class="n">sinks</span><span class="p">{</span><span class="w"> </span><span class="n">fileSink</span><span class="w"> </span><span class="p">};</span>
-
-<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">logger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">spdlog</span><span class="o">::</span><span class="n">logger</span><span class="o">&gt;</span><span class="p">(</span>
-<span class="w">            </span><span class="s">&quot;global_logger&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sinks</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">sinks</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
-
-<span class="cp">#ifndef NDEBUG</span>
-<span class="w">        </span><span class="n">logger</span><span class="o">-&gt;</span><span class="n">set_level</span><span class="p">(</span><span class="n">spdlog</span><span class="o">::</span><span class="n">level</span><span class="o">::</span><span class="n">debug</span><span class="p">);</span>
-<span class="cp">#else</span>
-<span class="w">                </span><span class="n">logger</span><span class="o">-&gt;</span><span class="n">set_level</span><span class="p">(</span><span class="n">spdlog</span><span class="o">::</span><span class="n">level</span><span class="o">::</span><span class="n">err</span><span class="p">);</span>
-<span class="cp">#endif</span>
-<span class="w">        </span><span class="n">logger</span><span class="o">-&gt;</span><span class="n">flush_on</span><span class="p">(</span><span class="n">spdlog</span><span class="o">::</span><span class="n">level</span><span class="o">::</span><span class="n">err</span><span class="p">);</span>
-<span class="w">        </span><span class="n">logger</span><span class="o">-&gt;</span><span class="n">set_pattern</span><span class="p">(</span><span class="s">&quot;[%Y-%m-%d %H:%M:%S.%e] [%^%l%$] %v&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">spdlog</span><span class="o">::</span><span class="n">set_default_logger</span><span class="p">(</span><span class="n">logger</span><span class="p">);</span>
-<span class="w">    </span><span class="p">});</span>
-<span class="cp">#endif</span>
+<span class="w">    </span><span class="n">pdje_log_write_v1</span><span class="p">(</span><span class="n">level</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
 <span class="p">}</span>
 
-<span class="cp">#ifndef LOG_OFF</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span>
+<span class="n">log_value</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">level</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">formatted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spdlog</span><span class="o">::</span><span class="n">fmt_lib</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="s">&quot;{}&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">value</span><span class="p">));</span>
+<span class="w">        </span><span class="n">pdje_log_write_v1</span><span class="p">(</span><span class="n">level</span><span class="p">,</span><span class="w"> </span><span class="n">formatted</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="n">formatted</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="w"> </span><span class="o">&amp;</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">log_preformatted</span><span class="p">(</span><span class="n">PDJE_LOG_LEVEL_ERROR_V1</span><span class="p">,</span>
+<span class="w">                         </span><span class="s">&quot;pdje logging format error in log_value&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">log_preformatted</span><span class="p">(</span><span class="n">PDJE_LOG_LEVEL_ERROR_V1</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">log_preformatted</span><span class="p">(</span><span class="n">PDJE_LOG_LEVEL_ERROR_V1</span><span class="p">,</span>
+<span class="w">                         </span><span class="s">&quot;pdje logging unknown format error in log_value&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span>
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span>
+<span class="n">log_format</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">level</span><span class="p">,</span>
+<span class="w">           </span><span class="n">spdlog</span><span class="o">::</span><span class="n">format_string_t</span><span class="o">&lt;</span><span class="n">Args</span><span class="p">...</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fmt</span><span class="p">,</span>
+<span class="w">           </span><span class="n">Args</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="w">    </span><span class="k">requires</span><span class="p">(</span><span class="k">sizeof</span><span class="p">...(</span><span class="n">Args</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">formatted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">spdlog</span><span class="o">::</span><span class="n">fmt_lib</span><span class="o">::</span><span class="n">format</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">Args</span><span class="o">&gt;</span><span class="p">(</span><span class="n">args</span><span class="p">)...);</span>
+<span class="w">        </span><span class="n">pdje_log_write_v1</span><span class="p">(</span><span class="n">level</span><span class="p">,</span><span class="w"> </span><span class="n">formatted</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="n">formatted</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="w"> </span><span class="o">&amp;</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">log_preformatted</span><span class="p">(</span><span class="n">PDJE_LOG_LEVEL_ERROR_V1</span><span class="p">,</span>
+<span class="w">                         </span><span class="s">&quot;pdje logging format error in log_format&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">log_preformatted</span><span class="p">(</span><span class="n">PDJE_LOG_LEVEL_ERROR_V1</span><span class="p">,</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">log_preformatted</span><span class="p">(</span><span class="n">PDJE_LOG_LEVEL_ERROR_V1</span><span class="p">,</span>
+<span class="w">                         </span><span class="s">&quot;pdje logging unknown format error in log_format&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span>
+<span class="n">info</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">log_value</span><span class="p">(</span><span class="n">PDJE_LOG_LEVEL_INFO_V1</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">value</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span>
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span>
+<span class="n">info</span><span class="p">(</span><span class="n">spdlog</span><span class="o">::</span><span class="n">format_string_t</span><span class="o">&lt;</span><span class="n">Args</span><span class="p">...</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fmt</span><span class="p">,</span><span class="w"> </span><span class="n">Args</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="w">    </span><span class="k">requires</span><span class="p">(</span><span class="k">sizeof</span><span class="p">...(</span><span class="n">Args</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">log_format</span><span class="p">(</span><span class="n">PDJE_LOG_LEVEL_INFO_V1</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">Args</span><span class="o">&gt;</span><span class="p">(</span><span class="n">args</span><span class="p">)...);</span>
+<span class="p">}</span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span>
+<span class="n">warn</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">log_value</span><span class="p">(</span><span class="n">PDJE_LOG_LEVEL_WARN_V1</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">value</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span>
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span>
+<span class="n">warn</span><span class="p">(</span><span class="n">spdlog</span><span class="o">::</span><span class="n">format_string_t</span><span class="o">&lt;</span><span class="n">Args</span><span class="p">...</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fmt</span><span class="p">,</span><span class="w"> </span><span class="n">Args</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="w">    </span><span class="k">requires</span><span class="p">(</span><span class="k">sizeof</span><span class="p">...(</span><span class="n">Args</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">log_format</span><span class="p">(</span><span class="n">PDJE_LOG_LEVEL_WARN_V1</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">Args</span><span class="o">&gt;</span><span class="p">(</span><span class="n">args</span><span class="p">)...);</span>
+<span class="p">}</span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span>
+<span class="n">critical</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">log_value</span><span class="p">(</span><span class="n">PDJE_LOG_LEVEL_CRITICAL_V1</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">value</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="p">...</span><span class="w"> </span><span class="n">Args</span><span class="o">&gt;</span>
+<span class="kr">inline</span><span class="w"> </span><span class="kt">void</span>
+<span class="n">critical</span><span class="p">(</span><span class="n">spdlog</span><span class="o">::</span><span class="n">format_string_t</span><span class="o">&lt;</span><span class="n">Args</span><span class="p">...</span><span class="o">&gt;</span><span class="w"> </span><span class="n">fmt</span><span class="p">,</span><span class="w"> </span><span class="n">Args</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="p">...</span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="w">    </span><span class="k">requires</span><span class="p">(</span><span class="k">sizeof</span><span class="p">...(</span><span class="n">Args</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">log_format</span><span class="p">(</span><span class="n">PDJE_LOG_LEVEL_CRITICAL_V1</span><span class="p">,</span><span class="w"> </span><span class="n">fmt</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">forward</span><span class="o">&lt;</span><span class="n">Args</span><span class="o">&gt;</span><span class="p">(</span><span class="n">args</span><span class="p">)...);</span>
+<span class="p">}</span>
+
+<span class="p">}</span><span class="w"> </span><span class="c1">// namespace PDJE_LOG_DETAIL</span>
+
 <span class="cp">#ifdef ENABLE_INFO_LOG</span>
-<span class="cp">#define infolog(...) SPDLOG_INFO(__VA_ARGS__)</span>
+<span class="cp">#define infolog(...) PDJE_LOG_DETAIL::info(__VA_ARGS__)</span>
 <span class="cp">#else</span>
 <span class="cp">#define infolog(...)</span>
 <span class="cp">#endif</span>
 
 <span class="cp">#ifdef ENABLE_WARN_LOG</span>
-<span class="cp">#define warnlog(...) SPDLOG_WARN(__VA_ARGS__)</span>
+<span class="cp">#define warnlog(...) PDJE_LOG_DETAIL::warn(__VA_ARGS__)</span>
 <span class="cp">#else</span>
 <span class="cp">#define warnlog(...)</span>
 <span class="cp">#endif</span>
 
-<span class="cp">#define critlog(...) SPDLOG_CRITICAL(__VA_ARGS__)</span>
+<span class="cp">#define critlog(...) PDJE_LOG_DETAIL::critical(__VA_ARGS__)</span>
 <span class="cp">#else</span>
 <span class="cp">#define infolog(...)</span>
 <span class="cp">#define warnlog(...)</span>

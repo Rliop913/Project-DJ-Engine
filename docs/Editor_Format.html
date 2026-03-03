@@ -55,15 +55,28 @@
 <li class="toctree-l1"><a class="reference internal" href="Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/api_root.html">API Reference</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Editor_Format</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#track-data">Track Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#music-meta-data">Music Meta Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#mix-data">Mix Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#note-data">Note Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#semantic-model">Semantic Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#root-database-payloads">Root Database Payloads</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv49trackdata"><code class="docutils literal notranslate"><span class="pre">trackdata</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv47musdata"><code class="docutils literal notranslate"><span class="pre">musdata</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#key-terms">Key Terms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#editor-argument-shapes">Editor Argument Shapes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv47MixArgs"><code class="docutils literal notranslate"><span class="pre">MixArgs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv48NoteArgs"><code class="docutils literal notranslate"><span class="pre">NoteArgs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#_CPPv49MusicArgs"><code class="docutils literal notranslate"><span class="pre">MusicArgs</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#time-and-position-model">Time And Position Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#interpolation-and-eightpointvalues">Interpolation And <cite>EightPointValues</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#json-working-sets">JSON Working Sets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mix-json-keys">Mix JSON Keys</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#note-json-keys">Note JSON Keys</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#music-json-keys">Music JSON Keys</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#example-json-fragments">Example JSON Fragments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#translation-layer">Translation Layer</a></li>
 </ul>
 </li>
 </ul>
@@ -95,428 +108,310 @@
              
   <section id="editor-format">
 <h1>Editor_Format<a class="headerlink" href="#editor-format" title="Link to this heading"></a></h1>
-<section id="track-data">
-<h2>Track Data<a class="headerlink" href="#track-data" title="Link to this heading"></a></h2>
-<p>Track is the core data structure in the PDJE engine that represents a single music mixset unit.</p>
-<p>Each track includes the song’s metadata, actual audio mixing information, rhythm game note data, and a cached mix list.</p>
-<table class="docutils align-default" id="id1">
-<caption><span class="caption-text">Track Data Format</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
-<colgroup>
-<col style="width: 25.0%" />
-<col style="width: 25.0%" />
-<col style="width: 25.0%" />
-<col style="width: 25.0%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>TrackTitle</p></th>
-<th class="head"><p>MixBinary</p></th>
-<th class="head"><p>NoteBinary</p></th>
-<th class="head"><p>CachedMixList</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Text</p></td>
-<td><p>Binary(CapNProto)</p></td>
-<td><p>Binary(CapNProto)</p></td>
-<td><p>Text(CSV)</p></td>
-</tr>
-</tbody>
-</table>
+<p>This page explains the editor’s on-disk and translation-layer data structures.
+It does not describe the full operational editing workflow. For lifecycle,
+mutation, persistence, and history behavior, read <a class="reference internal" href="Editor_Workflows.html"><span class="doc">Editor_Workflows</span></a>.</p>
+<p>The editor stack uses two storage layers:</p>
+<ul class="simple">
+<li><p>human-editable JSON working files used by the timeline/editor code</p></li>
+<li><p>binary and root-database payloads used by <cite>trackdata</cite> and <cite>musdata</cite></p></li>
+</ul>
+<p>The current source of truth for JSON key names is
+<cite>include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp</cite>.</p>
+<section id="semantic-model">
+<h2>Semantic Model<a class="headerlink" href="#semantic-model" title="Link to this heading"></a></h2>
+<p>PDJE editor data is easier to understand if you split it into four semantic
+layers:</p>
+<ul class="simple">
+<li><p><cite>trackdata</cite>
+the root-database unit that represents an authored track. It stores a track
+title plus serialized mix and note payloads, along with a cached list of
+referenced music titles.</p></li>
+<li><p><cite>musdata</cite>
+the root-database unit for a concrete music asset. It stores title, composer,
+path, BPM information, and <cite>firstBeat</cite>.</p></li>
+<li><p><cite>MixArgs</cite>
+timeline data that changes playback or processing behavior over musical time.
+Current mix categories include <cite>FILTER</cite>, <cite>EQ</cite>, <cite>DISTORTION</cite>, <cite>CONTROL</cite>,
+<cite>VOL</cite>, <cite>LOAD</cite>, <cite>UNLOAD</cite>, <cite>BPM_CONTROL</cite>, <cite>ECHO</cite>, <cite>OSC_FILTER</cite>, <cite>FLANGER</cite>,
+<cite>PHASER</cite>, <cite>TRANCE</cite>, <cite>PANNER</cite>, <cite>BATTLE_DJ</cite>, <cite>ROLL</cite>, <cite>COMPRESSOR</cite>, and
+<cite>ROBOT</cite>.</p></li>
+<li><p><cite>NoteArgs</cite>
+chart and judgment data. These rows describe note timing, note metadata, and
+the target <cite>railID</cite>.</p></li>
+</ul>
+<p><cite>MusicArgs</cite> is the bridge between the music metadata side and the BPM timeline
+side of the editor. It records a BPM value plus a beat-position tuple.</p>
 </section>
-<section id="music-meta-data">
-<h2>Music Meta Data<a class="headerlink" href="#music-meta-data" title="Link to this heading"></a></h2>
-<p>Music Meta Data in the PDJE engine is a data structure that contains the attributes and fundamental information of a song itself.</p>
-<p>It defines the key data required for playback and analysis, such as the audio file path, composer, and BPM.</p>
-<table class="docutils align-default" id="id2">
-<caption><span class="caption-text">Music Meta Data Format</span><a class="headerlink" href="#id2" title="Link to this table"></a></caption>
-<colgroup>
-<col style="width: 16.7%" />
-<col style="width: 16.7%" />
-<col style="width: 16.7%" />
-<col style="width: 16.7%" />
-<col style="width: 16.7%" />
-<col style="width: 16.7%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Title</p></th>
-<th class="head"><p>Composer</p></th>
-<th class="head"><p>MusicPath</p></th>
-<th class="head"><p>Bpm</p></th>
-<th class="head"><p>BpmBinary</p></th>
-<th class="head"><p>firstBeat</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Text</p></td>
-<td><p>Text</p></td>
-<td><p>Text</p></td>
-<td><p>Double</p></td>
-<td><p>Binary(CapNProto)</p></td>
-<td><p>TEXT</p></td>
-</tr>
-</tbody>
-</table>
+<section id="root-database-payloads">
+<h2>Root Database Payloads<a class="headerlink" href="#root-database-payloads" title="Link to this heading"></a></h2>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv49trackdata">
+<span id="_CPPv39trackdata"></span><span id="_CPPv29trackdata"></span><span id="trackdata"></span><span class="target" id="structtrackdata"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">trackdata</span></span></span><a class="headerlink" href="#_CPPv49trackdata" title="Link to this definition"></a><br /></dt>
+<dd><p>the music meta data’s struct </p>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv47musdata">
+<span id="_CPPv37musdata"></span><span id="_CPPv27musdata"></span><span id="musdata"></span><span class="target" id="structmusdata"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">musdata</span></span></span><a class="headerlink" href="#_CPPv47musdata" title="Link to this definition"></a><br /></dt>
+<dd><p>the music meta data’s struct </p>
+</dd></dl>
+
+<p><cite>trackdata</cite> stores:</p>
+<ul class="simple">
+<li><p><cite>trackTitle</cite></p></li>
+<li><p><cite>mixBinary</cite></p></li>
+<li><p><cite>noteBinary</cite></p></li>
+<li><p><cite>cachedMixList</cite></p></li>
+</ul>
+<p><cite>musdata</cite> stores:</p>
+<ul class="simple">
+<li><p><cite>title</cite></p></li>
+<li><p><cite>composer</cite></p></li>
+<li><p><cite>musicPath</cite></p></li>
+<li><p><cite>bpmBinary</cite></p></li>
+<li><p><cite>bpm</cite></p></li>
+<li><p><cite>firstBeat</cite></p></li>
+</ul>
+<p>The binary fields are produced by the editor translation layer and then written
+into the root database. They are not intended to be edited by hand.</p>
+<p><cite>firstBeat</cite> is important operationally: in the current source it is used as the
+PCM-frame offset where the first musical beat begins for that audio asset.</p>
 </section>
-<section id="mix-data">
-<span id="about-mix-data"></span><h2>Mix Data<a class="headerlink" href="#mix-data" title="Link to this heading"></a></h2>
-<p>Mix Data in the PDJE engine is a data structure that defines mixing events, effect parameter changes, and load/unload controls that occur during track playback.</p>
-<p>Each entry specifies what action takes place at a particular time (based on Beat/subBeat), covering various audio control elements such as filters, EQ, volume, distortion, delay, and DJ scratching.</p>
-<p>Unlike rhythm game note events, this data records changes in audio processing parameters themselves, which are applied in real time during playback.</p>
-<table class="docutils align-default" id="id3">
-<caption><span class="caption-text">Mix Data Format</span><a class="headerlink" href="#id3" title="Link to this table"></a></caption>
-<colgroup>
-<col style="width: 8.3%" />
-<col style="width: 8.3%" />
-<col style="width: 8.3%" />
-<col style="width: 8.3%" />
-<col style="width: 8.3%" />
-<col style="width: 8.3%" />
-<col style="width: 8.3%" />
-<col style="width: 8.3%" />
-<col style="width: 8.3%" />
-<col style="width: 8.3%" />
-<col style="width: 8.3%" />
-<col style="width: 8.3%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>type</p></th>
-<th class="head"><p>details</p></th>
-<th class="head"><p>ID</p></th>
-<th class="head"><p>first</p></th>
-<th class="head"><p>second</p></th>
-<th class="head"><p>third</p></th>
-<th class="head"><p>beat</p></th>
-<th class="head"><p>subBeat</p></th>
-<th class="head"><p>separate</p></th>
-<th class="head"><p>Ebeat</p></th>
-<th class="head"><p>EsubBeat</p></th>
-<th class="head"><p>Eseparate</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>TYPE_ENUM</p></td>
-<td><p>DETAIL_ENUM</p></td>
-<td><p>int</p></td>
-<td><p>TEXT</p></td>
-<td><p>TEXT</p></td>
-<td><p>TEXT</p></td>
-<td><p>long</p></td>
-<td><p>long</p></td>
-<td><p>long</p></td>
-<td><p>long</p></td>
-<td><p>long</p></td>
-<td><p>long</p></td>
-</tr>
-</tbody>
-</table>
-<table class="docutils align-default" id="id4">
-<caption><span class="caption-text">Mix Data Table</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
-<colgroup>
-<col style="width: 10.0%" />
-<col style="width: 6.7%" />
-<col style="width: 23.3%" />
-<col style="width: 13.3%" />
-<col style="width: 13.3%" />
-<col style="width: 20.0%" />
-<col style="width: 13.3%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>type</p></th>
-<th class="head"><p>ID</p></th>
-<th class="head"><p>details</p></th>
-<th class="head"><p>first</p></th>
-<th class="head"><p>second</p></th>
-<th class="head"><p>third</p></th>
-<th class="head"><p>Interpolated Value</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>FILTER(0)</p></td>
-<td><p>ID</p></td>
-<td><p>HIGH(0)/LOW(2)</p></td>
-<td><p>ITPL</p></td>
-<td><p>8PointValues</p></td>
-<td><p>NONE</p></td>
-<td><p>filter Frequency</p></td>
-</tr>
-<tr class="row-odd"><td><p>EQ(1)</p></td>
-<td><p>ID</p></td>
-<td><p>HIGH(0)/MID(1)/LOW(2)</p></td>
-<td><p>ITPL</p></td>
-<td><p>8PointValues</p></td>
-<td><p>NONE</p></td>
-<td><p>eq value</p></td>
-</tr>
-<tr class="row-even"><td><p>DISTORTION(2)</p></td>
-<td><p>ID</p></td>
-<td><p>0</p></td>
-<td><p>ITPL</p></td>
-<td><p>8PointValues</p></td>
-<td><p>NONE</p></td>
-<td><p>drive value</p></td>
-</tr>
-<tr class="row-odd"><td><p>CONTROL(3)</p></td>
-<td><p>ID</p></td>
-<td><p>PAUSE(3)/CUE(4)</p></td>
-<td><p>approx_loc</p></td>
-<td><p>X</p></td>
-<td><p>NONE</p></td>
-<td><p>NONE</p></td>
-</tr>
-<tr class="row-even"><td><p>VOL(4)</p></td>
-<td><p>ID</p></td>
-<td><p>TRIM(5)/FADER(6)</p></td>
-<td><p>ITPL</p></td>
-<td><p>8PointValues</p></td>
-<td><p>NONE</p></td>
-<td><p>volume</p></td>
-</tr>
-<tr class="row-odd"><td><p>LOAD(5)</p></td>
-<td><p>ID</p></td>
-<td><p>0</p></td>
-<td><p>title</p></td>
-<td><p>composer</p></td>
-<td><p>bpm</p></td>
-<td><p>NONE</p></td>
-</tr>
-<tr class="row-even"><td><p>UNLOAD(6)</p></td>
-<td><p>ID</p></td>
-<td><p>0</p></td>
-<td><p>X</p></td>
-<td><p>X</p></td>
-<td><p>NONE</p></td>
-<td><p>NONE</p></td>
-</tr>
-<tr class="row-odd"><td><p>bpmControl(7)</p></td>
-<td><p>ID</p></td>
-<td><p>timeStretch(7)</p></td>
-<td><p>BPM(double)</p></td>
-<td><p>NONE</p></td>
-<td><p>NONE</p></td>
-<td><p>NONE</p></td>
-</tr>
-<tr class="row-even"><td><p>ECHO(8)</p></td>
-<td><p>ID</p></td>
-<td><p>0</p></td>
-<td><p>ITPL</p></td>
-<td><p>8PointValues</p></td>
-<td><p>BPM, feedback</p></td>
-<td><p>Wet amount</p></td>
-</tr>
-<tr class="row-odd"><td><p>OCS_Filter(9)</p></td>
-<td><p>ID</p></td>
-<td><p>HIGH(0)/LOW(2)</p></td>
-<td><p>ITPL</p></td>
-<td><p>8PointValues</p></td>
-<td><p>BPM, MiddleFreq, RangeHalfFreq</p></td>
-<td><p>Wet amount</p></td>
-</tr>
-<tr class="row-even"><td><p>FLANGER(10)</p></td>
-<td><p>ID</p></td>
-<td><p>0</p></td>
-<td><p>ITPL</p></td>
-<td><p>8PointValues</p></td>
-<td><p>BPM</p></td>
-<td><p>Wet amount</p></td>
-</tr>
-<tr class="row-odd"><td><p>PHASER(11)</p></td>
-<td><p>ID</p></td>
-<td><p>0</p></td>
-<td><p>ITPL</p></td>
-<td><p>8PointValues</p></td>
-<td><p>BPM</p></td>
-<td><p>Wet amount</p></td>
-</tr>
-<tr class="row-even"><td><p>TRANCE(12)</p></td>
-<td><p>ID</p></td>
-<td><p>0</p></td>
-<td><p>ITPL</p></td>
-<td><p>8PointValues</p></td>
-<td><p>BPM, GAIN</p></td>
-<td><p>Wet amount</p></td>
-</tr>
-<tr class="row-odd"><td><p>PANNER(13)</p></td>
-<td><p>ID</p></td>
-<td><p>0</p></td>
-<td><p>ITPL</p></td>
-<td><p>8PointValues</p></td>
-<td><p>BPM, GAIN</p></td>
-<td><p>Wet amount</p></td>
-</tr>
-<tr class="row-even"><td><p>BATTLE_DJ(14)</p></td>
-<td><p>ID</p></td>
-<td><p>SPIN(8)/PITCH(9)/REV(10)</p></td>
-<td><p>SPEED</p></td>
-<td><p>NONE</p></td>
-<td><p>NONE</p></td>
-<td><p>NONE</p></td>
-</tr>
-<tr class="row-odd"><td><p>BATTLE_DJ(14)</p></td>
-<td><p>ID</p></td>
-<td><p>SCRATCH(11)</p></td>
-<td><p>StartPosition</p></td>
-<td><p>SPEED</p></td>
-<td><p>NONE</p></td>
-<td><p>NONE</p></td>
-</tr>
-<tr class="row-even"><td><p>ROLL(15)</p></td>
-<td><p>ID</p></td>
-<td><p>0</p></td>
-<td><p>ITPL</p></td>
-<td><p>8PointValues</p></td>
-<td><p>BPM</p></td>
-<td><p>Wet amount</p></td>
-</tr>
-<tr class="row-odd"><td><p>COMPRESSOR(16)</p></td>
-<td><p>ID</p></td>
-<td><p>0</p></td>
-<td><p>Strength</p></td>
-<td><p>Thresh, Knee</p></td>
-<td><p>ATT, REL</p></td>
-<td><p>NONE</p></td>
-</tr>
-<tr class="row-even"><td><p>ROBOT(17)</p></td>
-<td><p>ID</p></td>
-<td><p>0</p></td>
-<td><p>ITPL</p></td>
-<td><p>8PointValues</p></td>
-<td><p>ocsFreq</p></td>
-<td><p>Wet amount</p></td>
-</tr>
-</tbody>
-</table>
-<p>KEYWORDS</p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>ITPL</p></th>
-<th class="head"><p>8PointValues</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Choose Interpolator type(linear, cosine, cubic, flat)</p></td>
-<td><p>8 data points that define a waveform for the interpolator</p></td>
-</tr>
-</tbody>
-</table>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">EightPoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;5000,1000,2000,3000,4000,5000,5500,6000&quot;</span><span class="p">;</span>
+<section id="editor-argument-shapes">
+<h2>Editor Argument Shapes<a class="headerlink" href="#editor-argument-shapes" title="Link to this heading"></a></h2>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv47MixArgs">
+<span id="_CPPv37MixArgs"></span><span id="_CPPv27MixArgs"></span><span id="MixArgs"></span><span class="target" id="structMixArgs"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MixArgs</span></span></span><a class="headerlink" href="#_CPPv47MixArgs" title="Link to this definition"></a><br /></dt>
+<dd><p>Arguments describing a mix entry. </p>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv48NoteArgs">
+<span id="_CPPv38NoteArgs"></span><span id="_CPPv28NoteArgs"></span><span id="NoteArgs"></span><span class="target" id="structNoteArgs"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">NoteArgs</span></span></span><a class="headerlink" href="#_CPPv48NoteArgs" title="Link to this definition"></a><br /></dt>
+<dd><p>Arguments describing a note entry. </p>
+</dd></dl>
+
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv49MusicArgs">
+<span id="_CPPv39MusicArgs"></span><span id="_CPPv29MusicArgs"></span><span id="MusicArgs"></span><span class="target" id="structMusicArgs"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">MusicArgs</span></span></span><a class="headerlink" href="#_CPPv49MusicArgs" title="Link to this definition"></a><br /></dt>
+<dd><p>Arguments describing a music entry. </p>
+</dd></dl>
+
+<p>These three structs describe the semantic payload handled by the editor code
+before rendering to binary:</p>
+<ul class="simple">
+<li><p><cite>MixArgs</cite>
+one mix/event row with type, detail enum, free-form string arguments, and a
+start/end musical position</p></li>
+<li><p><cite>NoteArgs</cite>
+one note row with note type/detail, arguments, start/end position, and
+<cite>railID</cite></p></li>
+<li><p><cite>MusicArgs</cite>
+music timing metadata used by the music BPM editor flow</p></li>
+</ul>
+</section>
+<section id="time-and-position-model">
+<h2>Time And Position Model<a class="headerlink" href="#time-and-position-model" title="Link to this heading"></a></h2>
+<p>The timeline fields follow the beat-grid style layout used across the editor
+and translators:</p>
+<ul class="simple">
+<li><p><cite>beat</cite>
+whole-beat index</p></li>
+<li><p><cite>subBeat</cite>
+subdivision index inside the current beat</p></li>
+<li><p><cite>separate</cite>
+subdivision denominator</p></li>
+<li><p><cite>e_beat</cite>, <cite>e_subBeat</cite>, <cite>e_separate</cite>
+end-position tuple for duration-based events</p></li>
+</ul>
+<p>In the current frame calculation helpers, the approximate position is handled
+as:</p>
+<p><cite>beat + (subBeat / separate)</cite></p>
+<p>with zero <cite>separate</cite> values treated as <cite>1</cite> by the translation path when needed.</p>
+<p>This means:</p>
+<ul class="simple">
+<li><p>a simple point event only needs the start position</p></li>
+<li><p>sustained notes or automation spans use the <cite>e_*</cite> fields too</p></li>
+<li><p>mix automation and long-note style data both reuse the same timing model</p></li>
+</ul>
+</section>
+<section id="interpolation-and-eightpointvalues">
+<h2>Interpolation And <cite>EightPointValues</cite><a class="headerlink" href="#interpolation-and-eightpointvalues" title="Link to this heading"></a></h2>
+<p>The runtime mix path still contains an explicit <cite>EightPointValues</cite> parser in
+<cite>MixMachine.hpp</cite>. Older docs referred to these comma-separated control values as
+<cite>8PointValues</cite>, and that term is still useful for understanding the editor
+format.</p>
+<p>Operationally:</p>
+<ul class="simple">
+<li><p><cite>MixArgs.first</cite> often carries an interpolation selector</p></li>
+<li><p><cite>MixArgs.second</cite> often carries the comma-separated control values</p></li>
+<li><p>the runtime renderer converts those values into time-varying control curves
+between the start and end positions</p></li>
+</ul>
+<p>The interpolation-related runtime enums in the tree are:</p>
+<ul class="simple">
+<li><p><cite>ITPL_LINEAR</cite></p></li>
+<li><p><cite>ITPL_COSINE</cite></p></li>
+<li><p><cite>ITPL_CUBIC</cite></p></li>
+<li><p><cite>ITPL_FLAT</cite></p></li>
+</ul>
+<p>Example control string:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">points</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;5000,1000,2000,3000,4000,5000,5500,6000&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>this means</p>
 <img alt="_images/eightPoint_example.png" src="_images/eightPoint_example.png" />
-<p>We interpolate this data using various interpolation methods.</p>
-<p>Point Index 1 corresponds to the <strong>Start Position</strong>, defined as:
-<cite>beat + (beat / separate) * subBeat</cite></p>
-<p>Point Index 8 corresponds to the <strong>End Position</strong>, defined as:
-<cite>Ebeat + (Ebeat / Eseparate) * EsubBeat</cite></p>
-<p>As you may have noticed, the data provided through <cite>8PointValues</cite> is transformed into a graph consisting of 8 key points.
-This data serves as the <cite>Interpolated Value</cite>, which transitions smoothly from the <strong>Start Position</strong> to the <strong>End Position</strong> using the specified <cite>ITPL</cite> interpolation method—such as linear, cosine, cubic, or flat.</p>
-<p>This mechanism allows for precise control of parameters (e.g., filter frequency, volume, drive) that vary over time, enabling <strong>smooth and continuous modulation</strong> within audio effect modules.</p>
-<p>In other words, rather than relying on static values, the system supports <strong>curve-based, time-dependent control</strong>, allowing for more <strong>dynamic and expressive musical behavior</strong>.</p>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<ul class="simple">
-<li><p>On Flat interpolator type, you need to write just one value</p></li>
-<li><p>SPEED: -N ~ N (float) 1 Equals 100%, -1.0 Equals -100%(reverse play), 10.0 Equals 1000%. Based on BPM before time stretching.</p></li>
-</ul>
-</div>
+<p>Read that example as eight control points stretched across the event span from
+the start beat tuple to the end beat tuple. This is the model older docs used
+to explain automated filter, EQ, volume, and other FX changes, and it still
+matches the current runtime parser.</p>
+<p>With <cite>ITPL_FLAT</cite>, older examples used a single value because the control is not
+meant to interpolate across a curve. That guidance still matches the flat
+interpolator concept in the current tree.</p>
 </section>
-<section id="note-data">
-<h2>Note Data<a class="headerlink" href="#note-data" title="Link to this heading"></a></h2>
-<p>Note Data in the PDJE engine is a data structure that defines rhythm game note events.</p>
-<p>Each note specifies what kind of input is required at a particular point in time (Beat, subBeat, Separate), and the player must respond accurately at that timing in order to score.</p>
-<p>Note data is the core element representing player interaction. Unlike Mix Data, which records changes to audio parameters, Note Data strictly handles “input events.”</p>
-<p>In particular, both Note_Type and Note_Detail are declared as TEXT fields, not as predefined ENUM values.</p>
-<p>Aside from reserved keywords such as the BPM prefix, users are expected to define and extend their own types and details. This design allows for flexible customization to support specific game modes, input devices, or user-defined rules.</p>
-<p>Additionally, any Note_Type beginning with BPM carries special meaning, as it represents an event that applies a tempo (BPM) change during playback.</p>
-<p>In this case, the first field is treated as the new BPM value, ensuring synchronization between note judgment timing and the actual playback speed of the track.</p>
-<table class="docutils align-default" id="id5">
-<caption><span class="caption-text">Note Table</span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
-<colgroup>
-<col style="width: 7.9%" />
-<col style="width: 10.5%" />
-<col style="width: 7.9%" />
-<col style="width: 7.9%" />
-<col style="width: 7.9%" />
-<col style="width: 7.9%" />
-<col style="width: 7.9%" />
-<col style="width: 7.9%" />
-<col style="width: 7.9%" />
-<col style="width: 7.9%" />
-<col style="width: 10.5%" />
-<col style="width: 7.9%" />
-</colgroup>
+<section id="json-working-sets">
+<h2>JSON Working Sets<a class="headerlink" href="#json-working-sets" title="Link to this heading"></a></h2>
+<p><cite>jsonWrapper.hpp</cite> defines the current root object names:</p>
+<ul class="simple">
+<li><p><cite>PDJE_MIX</cite></p></li>
+<li><p><cite>PDJE_NOTE</cite></p></li>
+<li><p><cite>PDJE_MUSIC_BPM</cite></p></li>
+</ul>
+<p>It also defines the field keys below.</p>
+<section id="mix-json-keys">
+<h3>Mix JSON Keys<a class="headerlink" href="#mix-json-keys" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>Note_Type</p></th>
-<th class="head"><p>Note_Detail</p></th>
-<th class="head"><p>first</p></th>
-<th class="head"><p>second</p></th>
-<th class="head"><p>third</p></th>
-<th class="head"><p>beat</p></th>
-<th class="head"><p>subBeat</p></th>
-<th class="head"><p>separate</p></th>
-<th class="head"><p>Ebeat</p></th>
-<th class="head"><p>EsubBeat</p></th>
-<th class="head"><p>Eseparate</p></th>
-<th class="head"><p>RailID</p></th>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Meaning</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>TEXT</p></td>
-<td><p>uint16</p></td>
-<td><p>TEXT</p></td>
-<td><p>TEXT</p></td>
-<td><p>TEXT</p></td>
-<td><p>long</p></td>
-<td><p>long</p></td>
-<td><p>long</p></td>
-<td><p>long</p></td>
-<td><p>long</p></td>
-<td><p>long</p></td>
-<td><p>uint64</p></td>
+<tr class="row-even"><td><p><cite>type</cite></p></td>
+<td><p>integer <cite>TypeEnum</cite> value</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>details</cite></p></td>
+<td><p>integer <cite>DetailEnum</cite> value</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>id</cite></p></td>
+<td><p>logical target ID</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>first</cite></p></td>
+<td><p>first free-form argument</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>second</cite></p></td>
+<td><p>second free-form argument</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>third</cite></p></td>
+<td><p>third free-form argument</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>beat</cite></p></td>
+<td><p>start beat</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>sub_beat</cite></p></td>
+<td><p>start subdivision index</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>separate</cite></p></td>
+<td><p>start subdivision denominator</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>e_beat</cite></p></td>
+<td><p>end beat</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>e_subBeat</cite></p></td>
+<td><p>end subdivision index</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>e_separate</cite></p></td>
+<td><p>end subdivision denominator</p></td>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="note-json-keys">
+<h3>Note JSON Keys<a class="headerlink" href="#note-json-keys" title="Link to this heading"></a></h3>
+<p>Note rows reuse the same timeline position keys as mix rows and add:</p>
 <ul class="simple">
-<li><p>The “BPM” Note_Type name is prefixed for the default bpm change implementation.</p></li>
-<li><p>The “AXIS” Note_Type name is prefixed for the mouse movements. Warn: you need to implement your own judge logic</p></li>
+<li><p><cite>note_type</cite></p></li>
+<li><p><cite>note_detail</cite></p></li>
+<li><p><cite>rail_id</cite></p></li>
 </ul>
+<p><cite>note_type</cite> is intentionally open text in the current editor model. One special
+reserved value is visible in the current translator path:</p>
+<ul class="simple">
+<li><p>note type exactly equal to <cite>BPM</cite></p></li>
+</ul>
+<p><cite>NoteTranslator</cite> treats <cite>BPM</cite> rows as tempo fragments rather than normal
+judged notes. This is the current source-backed behavior and is narrower than
+the older “BPM-prefixed note” phrasing.</p>
+</section>
+<section id="music-json-keys">
+<h3>Music JSON Keys<a class="headerlink" href="#music-json-keys" title="Link to this heading"></a></h3>
+<p>Music metadata and BPM editor flows use:</p>
+<ul class="simple">
+<li><p><cite>title</cite></p></li>
+<li><p><cite>composer</cite></p></li>
+<li><p><cite>path</cite></p></li>
+<li><p><cite>bpm</cite></p></li>
+<li><p><cite>first_beat</cite></p></li>
+</ul>
+<p>The <cite>MusicArgs</cite> helper itself carries <cite>bpm</cite>, <cite>beat</cite>, <cite>subBeat</cite>, and <cite>separate</cite>
+for the BPM-timeline side of the editor.</p>
 </section>
 </section>
-<section id="about-beat-subbeat-separate">
-<h1>About Beat &amp; subBeat &amp; Separate<a class="headerlink" href="#about-beat-subbeat-separate" title="Link to this heading"></a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">Beat</span></code>, <code class="docutils literal notranslate"><span class="pre">subBeat</span></code>, and <code class="docutils literal notranslate"><span class="pre">Separate</span></code> are indexing methods derived from the Beat Grid concept (See: <a class="reference external" href="https://support.serato.com/hc/en-us/articles/202523390-Introduction-to-Beatgrids">Serato Beat Grid</a>), which is widely used in DAWs (Digital Audio Workstations), DJ software and MIDI sequencing.</p>
-<p>A Beat Grid divides musical time based on <strong>BPM (tempo)</strong> and <strong>time signature</strong>, providing a precise rhythmic framework for placing musical events along a timeline.</p>
-<p>Within this framework, <code class="docutils literal notranslate"><span class="pre">Beat</span></code> represents the primary rhythmic unit (typically a quarter note in 4/4 time), <code class="docutils literal notranslate"><span class="pre">subBeat</span></code> further subdivides each beat into smaller logical segments (such as 1/4 or 1/8 of a beat), and <code class="docutils literal notranslate"><span class="pre">Separate</span></code> defines custom high-resolution divisions used for fine-grained quantization or event positioning.</p>
-<p>This indexing method is conceptually aligned with timeline systems used in rhythm games and digital audio applications, where accurate synchronization and sub-beat resolution are essential.</p>
-<section id="key-terms">
-<h2>Key Terms<a class="headerlink" href="#key-terms" title="Link to this heading"></a></h2>
-<ul class="simple">
-<li><p><strong>firstBeat</strong>
-The PCM frame (sample-level position) where the first Beat begins.
-Used as the reference point for synchronization of the music.</p></li>
-<li><p><strong>beat</strong>
-The position of the <strong>beat</strong> (not the measure) calculated based on BPM and time signature.
-It represents the primary rhythmic unit (e.g., a quarter note in 4/4 time).</p></li>
-<li><p><strong>subBeat</strong>
-The position within a beat that divides it into smaller rhythmic units.
-Typically used for finer timing precision within a beat.</p></li>
-<li><p><strong>separate</strong>
-The index of a fine-grained subdivision when a beat is divided into smaller, fixed segments.
-For example, if separate = 192, it means the beat is sliced into 192 equal parts, and this value specifies the current segment number.</p></li>
-<li><p><strong>ebeat / esubBeat / eseparate</strong>
-The prefix <code class="docutils literal notranslate"><span class="pre">e</span></code> stands for <strong>end</strong>.
-These fields indicate the ending positions of an event that spans a duration (e.g., long notes, sustained effects), using the same beat/subBeat/separate indexing system.</p></li>
-</ul>
-<p>—</p>
+<section id="example-json-fragments">
+<h2>Example JSON Fragments<a class="headerlink" href="#example-json-fragments" title="Link to this heading"></a></h2>
+<p>Mix row:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;details&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;first&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;second&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0,0,0,0,0,0,0,0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;third&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;beat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sub_beat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;separate&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;e_beat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;e_subBeat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;e_separate&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note row:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;note_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TAP&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;note_detail&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;first&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;second&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;third&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;beat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sub_beat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;separate&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;e_beat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;e_subBeat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;e_separate&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;rail_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </section>
-<section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
+<section id="translation-layer">
+<h2>Translation Layer<a class="headerlink" href="#translation-layer" title="Link to this heading"></a></h2>
+<p>The current conversion path is:</p>
+<ol class="arabic simple">
+<li><p>JSON working files are manipulated through <cite>PDJE_JSONHandler</cite>.</p></li>
+<li><p><cite>CapWriter&lt;MixBinaryCapnpData&gt;</cite>, <cite>CapWriter&lt;NoteBinaryCapnpData&gt;</cite>, and
+<cite>CapWriter&lt;MusicBinaryCapnpData&gt;</cite> serialize the working representation.</p></li>
+<li><p><cite>MixTranslator</cite>, <cite>MusicTranslator</cite>, and <cite>NoteTranslator</cite> deserialize those
+binaries into runtime structures such as <cite>MIX</cite>, <cite>BPM</cite>, and note callbacks.</p></li>
+</ol>
+<p>This split is important:</p>
 <ul class="simple">
-<li><p><strong>firstBeat</strong> represents the actual PCM frame in the audio stream where the music begins.</p></li>
-<li><p><strong>beat / subBeat / separate</strong> describe the timeline position of an event according to the BPM and time signature.</p></li>
-<li><p><strong>ebeat / esubBeat / eseparate</strong> mark the ending position of the event, allowing representation of interval-based events.</p></li>
+<li><p>JSON is the editor-friendly working representation</p></li>
+<li><p>binary payloads are the runtime-facing data stored in the root DB</p></li>
 </ul>
-<p>This structure enables the PDJE engine to achieve <strong>precise synchronization</strong> between the audio signal (PCM-level) and rhythm game events (beat-level).</p>
+<p>For the operational side of the editor, including <cite>AddLine()</cite>, <cite>deleteLine()</cite>,
+history navigation, preview playback, and the distinction between <cite>render()</cite>
+and <cite>pushToRootDB()</cite>, use <a class="reference internal" href="Editor_Workflows.html"><span class="doc">Editor_Workflows</span></a>.</p>
 </section>
 </section>
 

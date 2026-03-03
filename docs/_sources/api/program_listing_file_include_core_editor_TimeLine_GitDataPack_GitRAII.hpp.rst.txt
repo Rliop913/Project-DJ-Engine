@@ -13,7 +13,9 @@ Program Listing for File GitRAII.hpp
    #pragma once
    #include "PDJE_LOG_SETTER.hpp"
    #include <git2.h>
+   #include <git2/blob.h>
    #include <git2/branch.h>
+   #include <git2/diff.h>
    #include <git2/refs.h>
    #include <git2/tree.h>
    #include <git2/types.h>
@@ -72,6 +74,30 @@ Program Listing for File GitRAII.hpp
        }
    };
    
+   class tree_entry {
+     public:
+       git_tree_entry *p = nullptr;
+       tree_entry()      = default;
+       ~tree_entry()
+       {
+           if (p) {
+               git_tree_entry_free(p);
+           }
+       }
+   };
+   
+   class blob {
+     public:
+       git_blob *p = nullptr;
+       blob()      = default;
+       ~blob()
+       {
+           if (p) {
+               git_blob_free(p);
+           }
+       }
+   };
+   
    class branch_itr {
      public:
        git_branch_iterator *p = nullptr;
@@ -80,6 +106,30 @@ Program Listing for File GitRAII.hpp
        {
            if (p) {
                git_branch_iterator_free(p);
+           }
+       }
+   };
+   
+   class diff {
+     public:
+       git_diff *p = nullptr;
+       diff()      = default;
+       ~diff()
+       {
+           if (p) {
+               git_diff_free(p);
+           }
+       }
+   };
+   
+   class patch {
+     public:
+       git_patch *p = nullptr;
+       patch()      = default;
+       ~patch()
+       {
+           if (p) {
+               git_patch_free(p);
            }
        }
    };

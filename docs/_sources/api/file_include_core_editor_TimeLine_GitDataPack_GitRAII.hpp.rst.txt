@@ -34,7 +34,11 @@ Includes
 
 - ``git2.h``
 
+- ``git2/blob.h``
+
 - ``git2/branch.h``
+
+- ``git2/diff.h``
 
 - ``git2/refs.h``
 
@@ -47,6 +51,8 @@ Includes
 Included By
 -----------
 
+
+- :ref:`file_include_core_editor_TimeLine_DiffMachine_TimeLineDiffMachine.hpp`
 
 - :ref:`file_include_core_editor_TimeLine_EventMarker_EventMarker.hpp`
 
@@ -70,13 +76,21 @@ Classes
 -------
 
 
+- :ref:`exhale_class_classGIT__RAII_1_1blob`
+
 - :ref:`exhale_class_classGIT__RAII_1_1branch__itr`
 
 - :ref:`exhale_class_classGIT__RAII_1_1commit`
 
+- :ref:`exhale_class_classGIT__RAII_1_1diff`
+
+- :ref:`exhale_class_classGIT__RAII_1_1patch`
+
 - :ref:`exhale_class_classGIT__RAII_1_1ref`
 
 - :ref:`exhale_class_classGIT__RAII_1_1tree`
+
+- :ref:`exhale_class_classGIT__RAII_1_1tree__entry`
 
 
 Typedefs

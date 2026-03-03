@@ -110,7 +110,11 @@ PDJE is organized into major modules. In the default build these are linked toge
   * Initial synchronization (with periodic drift checks) aligns the input and audio epochs so the computed time differences reflect true inter-event timing.
 
 - **Utility Engine** :
-  The Utility Engine page currently represents roadmap-level ideas (for example, AI/analysis helpers). There is no active `PDJE_MODULE_UTILITY` build target in the current CMake configuration.
+  The Utility Engine is active code in the current tree. It is centered around
+  `util/PDJE_Util.hpp` and the `PDJE_UTIL` interface targets, providing shared
+  status/result types, database abstractions, and function helpers. The current
+  utility direction also includes Halide-based function examples for
+  GPGPU-oriented processing workflows.
 
 MileStones
 ------------
@@ -124,16 +128,15 @@ MileStones
       0.6.0 : PDJE_Input module implement-Windows
       0.7.0 : PDJE_Judge module implement
       0.8.0 : PDjE_Input module implement-Linux, MIDI
-      0.9.0 : PDJE_Input module implement-Mac (planned)
-      1.0.0 : Stable Release
+      0.9.0 : Utility Module Implementation & Utility Module GPGPU Support via Halide
+      1.0.0 : PDJE_Input module implement-Mac (planned)
+            : Stable Release
     section DJ + DAW + HPC + AI Rhythm Engine
-      1.2.0 : Basic Utility Module (roadmap)
+      1.2.0 : Utility Module Expansion
       1.5.0 : OnnxRuntime Integration Utility Module
-      2.0.0 : OnnxRuntime Integrated with AdaptiveCPP
-            : Cross-Vendor GPGPU Support Enabled
+      2.0.0 : OnnxRuntime Integrated with Halide-backed utility workflows
 
-
-See: AdaptiveCPP (https://github.com/AdaptiveCpp/AdaptiveCpp)
+See: Halide and the Utility Engine documentation for the current GPGPU-oriented direction.
 
 Use Cases
 ---------

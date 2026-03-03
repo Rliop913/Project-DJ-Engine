@@ -37,6 +37,8 @@ Includes
 
 - ``EditorArgs.hpp`` (:ref:`file_include_core_editor_TimeLine_JSONWrap_EditorArgs.hpp`)
 
+- ``JsonDiffFriendlyIO.hpp`` (:ref:`file_include_core_editor_TimeLine_JSONWrap_JsonDiffFriendlyIO.hpp`)
+
 - ``MixTranslator.hpp`` (:ref:`file_include_core_db_Capnp_Translators_MixTranslator_MixTranslator.hpp`)
 
 - ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_global_PDJE_EXPORT_SETTER.hpp`)
@@ -56,6 +58,8 @@ Includes
 - ``nlohmann/json.hpp``
 
 - ``ranges``
+
+- ``sstream``
 
 - ``string``
 
@@ -80,6 +84,8 @@ Included By
 - :ref:`file_include_core_editor_TimeLine_JSONWrap_NoteJson.cpp`
 
 - :ref:`file_include_core_editor_TimeLine_TimeLine.hpp`
+
+- :ref:`file_include_core_editor_TimeLine_TimeLineDiffTypes.hpp`
 
 
 

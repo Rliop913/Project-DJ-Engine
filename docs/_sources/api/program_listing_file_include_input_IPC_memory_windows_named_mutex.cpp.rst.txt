@@ -18,7 +18,6 @@ Program Listing for File named_mutex.cpp
    
    MUTEX::MUTEX()
    {
-       startlog();
    }
    
    void

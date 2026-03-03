@@ -45,7 +45,6 @@ Program Listing for File ipc_shared_memory.hpp
      public:
        SharedMem()
        {
-           startlog();
        }
    
        SharedMem(const SharedMem &) = delete;

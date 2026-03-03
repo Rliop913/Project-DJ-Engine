@@ -13,7 +13,11 @@ Program Listing for File PDJE_EXPORT_SETTER.hpp
    
    #pragma once
    
+   #if defined(_WIN32) || defined(__CYGWIN__)
    #define PDJE_CALL __cdecl
+   #else
+   #define PDJE_CALL
+   #endif
    
    #ifdef PDJE_WINDOWS_DLL
    #ifdef PDJE_BUILDING
@@ -22,5 +26,9 @@ Program Listing for File PDJE_EXPORT_SETTER.hpp
    #define PDJE_API __declspec(dllimport)
    #endif
    #else
+   #if defined(__GNUC__) || defined(__clang__)
+   #define PDJE_API __attribute__((visibility("default")))
+   #else
    #define PDJE_API
+   #endif
    #endif

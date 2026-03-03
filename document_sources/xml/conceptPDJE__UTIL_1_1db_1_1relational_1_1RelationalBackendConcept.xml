@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="conceptPDJE__UTIL_1_1db_1_1relational_1_1RelationalBackendConcept" kind="concept">
+    <compoundname>PDJE_UTIL::db::relational::RelationalBackendConcept</compoundname>
+    <includes refid="relational_2BackendConcept_8hpp" local="no">BackendConcept.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class Backend</type>
+      </param>
+    </templateparamlist>
+    <initializer>template&lt;class Backend&gt;
+concept <ref refid="conceptPDJE__UTIL_1_1db_1_1relational_1_1RelationalBackendConcept" kindref="compound">PDJE_UTIL::db::relational::RelationalBackendConcept</ref> =  requires(typename Backend::config_type cfg,
+                                            Backend                      backend,
+                                            std::string_view             sql,
+                                            const Params                &amp;params) {
+    typename Backend::config_type;
+
+    { Backend::create(cfg) } -&gt; std::same_as&lt;common::Result&lt;void&gt;&gt;;
+    { Backend::destroy(cfg) } -&gt; std::same_as&lt;common::Result&lt;void&gt;&gt;;
+
+    { backend.open(cfg) } -&gt; std::same_as&lt;common::Result&lt;void&gt;&gt;;
+    { backend.close() } -&gt; std::same_as&lt;common::Result&lt;void&gt;&gt;;
+
+    { backend.execute(sql, params) } -&gt; std::same_as&lt;common::Result&lt;ExecResult&gt;&gt;;
+    { backend.query(sql, params) } -&gt; std::same_as&lt;common::Result&lt;QueryResult&gt;&gt;;
+    { backend.begin_transaction() } -&gt; std::same_as&lt;common::Result&lt;void&gt;&gt;;
+    { backend.commit() } -&gt; std::same_as&lt;common::Result&lt;void&gt;&gt;;
+    { backend.rollback() } -&gt; std::same_as&lt;common::Result&lt;void&gt;&gt;;
+}    </initializer>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/util/db/relational/BackendConcept.hpp" line="12" column="1"/>
+  </compounddef>
+</doxygen>

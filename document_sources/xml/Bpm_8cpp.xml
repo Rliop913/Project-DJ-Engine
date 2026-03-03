@@ -4,14 +4,12 @@
     <compoundname>Bpm.cpp</compoundname>
     <includes refid="Bpm_8hpp" local="yes">Bpm.hpp</includes>
     <incdepgraph>
-      <node id="10">
+      <node id="11">
         <label>CapnpBinary.hpp</label>
         <link refid="CapnpBinary_8hpp"/>
-        <childnode refid="11" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
@@ -23,6 +21,8 @@
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
         <childnode refid="18" relation="include">
         </childnode>
       </node>
@@ -31,13 +31,21 @@
         <link refid="FrameCalc_8hpp"/>
         <childnode refid="8" relation="include">
         </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>FrameCalcCore.hpp</label>
+        <link refid="FrameCalcCore_8hpp"/>
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -59,15 +67,15 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="26">
+      <node id="28">
         <label>Mix.hpp</label>
         <link refid="Mix_8hpp"/>
-        <childnode refid="8" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
@@ -77,23 +85,29 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="17">
+      <node id="9">
         <label>PDJE_EXPORT_SETTER.hpp</label>
         <link refid="PDJE__EXPORT__SETTER_8hpp"/>
       </node>
-      <node id="18">
-        <label>PDJE_LOG_SETTER.hpp</label>
-        <link refid="PDJE__LOG__SETTER_8hpp"/>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
+      <node id="19">
+        <label>PDJE_LOG_RUNTIME_API.h</label>
+        <link refid="PDJE__LOG__RUNTIME__API_8h"/>
+        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="PDJE__LOG__SETTER_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
@@ -101,60 +115,67 @@
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
-      </node>
-      <node id="14">
-        <label>MixBinary.capnp.h</label>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
       </node>
       <node id="15">
-        <label>MusicBinary.capnp.h</label>
+        <label>MixBinary.capnp.h</label>
       </node>
       <node id="16">
+        <label>MusicBinary.capnp.h</label>
+      </node>
+      <node id="17">
         <label>NoteBinary.capnp.h</label>
       </node>
-      <node id="8">
+      <node id="29">
         <label>algorithm</label>
       </node>
-      <node id="12">
+      <node id="13">
         <label>capnp/message.h</label>
       </node>
-      <node id="13">
+      <node id="14">
         <label>capnp/serialize.h</label>
       </node>
-      <node id="9">
-        <label>cmath</label>
+      <node id="10">
+        <label>cstdint</label>
       </node>
-      <node id="19">
-        <label>filesystem</label>
+      <node id="24">
+        <label>exception</label>
       </node>
-      <node id="25">
+      <node id="27">
         <label>hwy/aligned_allocator.h</label>
       </node>
       <node id="3">
         <label>mutex</label>
       </node>
-      <node id="11">
+      <node id="12">
         <label>optional</label>
       </node>
+      <node id="22">
+        <label>spdlog/fmt/fmt.h</label>
+      </node>
+      <node id="23">
+        <label>spdlog/spdlog.h</label>
+      </node>
       <node id="20">
-        <label>spdlog/sinks/basic_file_sink.h</label>
+        <label>stddef.h</label>
       </node>
       <node id="21">
-        <label>spdlog/sinks/stdout_color_sinks.h</label>
-      </node>
-      <node id="22">
-        <label>spdlog/spdlog.h</label>
+        <label>stdint.h</label>
       </node>
       <node id="4">
         <label>string</label>
       </node>
-      <node id="23">
+      <node id="25">
         <label>string_view</label>
       </node>
       <node id="5">
         <label>thread</label>
       </node>
-      <node id="24">
-        <label>type_traits</label>
+      <node id="26">
+        <label>utility</label>
       </node>
       <node id="6">
         <label>vector</label>

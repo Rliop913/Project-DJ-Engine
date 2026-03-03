@@ -53,7 +53,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -84,10 +83,11 @@
 <span id="program-listing-file-include-input-defaultdevs-linux-rtkitcodes-hpp"></span><h1>Program Listing for File rtkitcodes.hpp<a class="headerlink" href="#program-listing-for-file-rtkitcodes-hpp" title="Link to this heading"></a></h1>
 <p>↰ <a class="reference internal" href="file_include_input_DefaultDevs_linux_rtkitcodes.hpp.html#file-include-input-defaultdevs-linux-rtkitcodes-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/input/DefaultDevs/linux/rtkitcodes.hpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cerrno&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdint&gt;</span>
+
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdexcept&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
-
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/syscall.h&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
 
@@ -95,25 +95,14 @@
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">rtkit</span><span class="w"> </span><span class="p">{</span>
 
-<span class="c1">//AI generated -&gt; how to use acl</span>
-<span class="c1">// 1) 네, 글로브로 한 번에 줄 수 있어</span>
-
-<span class="c1">// 쉘이 event*를 실제 파일 목록으로 확장해줘서 아래처럼 동작해.</span>
-
-<span class="c1">// sudo setfacl -m u:$USER:r /dev/input/event*</span>
-
-
-<span class="c1">// 그리고 해제도 동일하게:</span>
-
-<span class="c1">// sudo setfacl -x u:$USER /dev/input/event*</span>
-
-
-<span class="c1">// AI GENERATED... todo - fix &amp; modulize these code</span>
-
 <span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">uint64_t</span>
 <span class="nf">get_tid</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint64_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">syscall</span><span class="p">(</span><span class="n">SYS_gettid</span><span class="p">));</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">tid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">syscall</span><span class="p">(</span><span class="n">SYS_gettid</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tid</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span><span class="s">&quot;SYS_gettid failed: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">errno</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint64_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">tid</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span>
@@ -127,12 +116,67 @@
 <span class="w">        </span><span class="n">msg</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="p">;</span>
 <span class="w">        </span><span class="n">msg</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">err</span><span class="o">-&gt;</span><span class="n">message</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">err</span><span class="o">-&gt;</span><span class="n">message</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;(no message)&quot;</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">sd_bus_error_free</span><span class="p">(</span><span class="n">err</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="c1">// Query helpers (optional)</span>
+<span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">int32_t</span>
+<span class="nf">get_int32_property</span><span class="p">(</span><span class="n">sd_bus</span><span class="w"> </span><span class="o">*</span><span class="n">bus</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">property_name</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">sd_bus_error</span><span class="w">    </span><span class="n">err</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">SD_BUS_ERROR_NULL</span><span class="p">;</span>
+<span class="w">    </span><span class="n">sd_bus_message</span><span class="w"> </span><span class="o">*</span><span class="n">reply</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sd_bus_call_method</span><span class="p">(</span><span class="n">bus</span><span class="p">,</span>
+<span class="w">                               </span><span class="s">&quot;org.freedesktop.RealtimeKit1&quot;</span><span class="p">,</span>
+<span class="w">                               </span><span class="s">&quot;/org/freedesktop/RealtimeKit1&quot;</span><span class="p">,</span>
+<span class="w">                               </span><span class="s">&quot;org.freedesktop.DBus.Properties&quot;</span><span class="p">,</span>
+<span class="w">                               </span><span class="s">&quot;Get&quot;</span><span class="p">,</span>
+<span class="w">                               </span><span class="o">&amp;</span><span class="n">err</span><span class="p">,</span>
+<span class="w">                               </span><span class="o">&amp;</span><span class="n">reply</span><span class="p">,</span>
+<span class="w">                               </span><span class="s">&quot;ss&quot;</span><span class="p">,</span>
+<span class="w">                               </span><span class="s">&quot;org.freedesktop.RealtimeKit1&quot;</span><span class="p">,</span>
+<span class="w">                               </span><span class="n">property_name</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reply</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">sd_bus_message_unref</span><span class="p">(</span><span class="n">reply</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">throw_bus_err</span><span class="p">(</span><span class="s">&quot;Properties.Get failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">err</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sd_bus_message_enter_container</span><span class="p">(</span><span class="n">reply</span><span class="p">,</span><span class="w"> </span><span class="n">SD_BUS_TYPE_VARIANT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;i&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">sd_bus_error_free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">err</span><span class="p">);</span>
+<span class="w">        </span><span class="n">sd_bus_message_unref</span><span class="p">(</span><span class="n">reply</span><span class="p">);</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;Failed to enter variant for &quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                                 </span><span class="n">property_name</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sd_bus_message_read_basic</span><span class="p">(</span><span class="n">reply</span><span class="p">,</span><span class="w"> </span><span class="n">SD_BUS_TYPE_INT32</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">value</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">sd_bus_error_free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">err</span><span class="p">);</span>
+<span class="w">        </span><span class="n">sd_bus_message_unref</span><span class="p">(</span><span class="n">reply</span><span class="p">);</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span>
+<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;Failed to read property value for &quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">property_name</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sd_bus_message_exit_container</span><span class="p">(</span><span class="n">reply</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">sd_bus_error_free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">err</span><span class="p">);</span>
+<span class="w">        </span><span class="n">sd_bus_message_unref</span><span class="p">(</span><span class="n">reply</span><span class="p">);</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;Failed to exit variant for &quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                                 </span><span class="n">property_name</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">sd_bus_error_free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">err</span><span class="p">);</span>
+<span class="w">    </span><span class="n">sd_bus_message_unref</span><span class="p">(</span><span class="n">reply</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+<span class="p">}</span>
+
 <span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">uint32_t</span>
-<span class="nf">get_max_realtime_priority</span><span class="p">(</span><span class="n">sd_bus</span><span class="w"> </span><span class="o">*</span><span class="n">bus</span><span class="p">)</span>
+<span class="nf">get_max_realtime_priority_legacy_method</span><span class="p">(</span><span class="n">sd_bus</span><span class="w"> </span><span class="o">*</span><span class="n">bus</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">sd_bus_error</span><span class="w">    </span><span class="n">err</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">SD_BUS_ERROR_NULL</span><span class="p">;</span>
 <span class="w">    </span><span class="n">sd_bus_message</span><span class="w"> </span><span class="o">*</span><span class="n">reply</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
@@ -146,7 +190,9 @@
 <span class="w">                               </span><span class="o">&amp;</span><span class="n">reply</span><span class="p">,</span>
 <span class="w">                               </span><span class="s">&quot;&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">sd_bus_error_free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">err</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reply</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">sd_bus_message_unref</span><span class="p">(</span><span class="n">reply</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="n">throw_bus_err</span><span class="p">(</span><span class="s">&quot;GetMaxRealtimePriority failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">err</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -160,7 +206,7 @@
 <span class="p">}</span>
 
 <span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">int32_t</span>
-<span class="nf">get_min_nice_level</span><span class="p">(</span><span class="n">sd_bus</span><span class="w"> </span><span class="o">*</span><span class="n">bus</span><span class="p">)</span>
+<span class="nf">get_min_nice_level_legacy_method</span><span class="p">(</span><span class="n">sd_bus</span><span class="w"> </span><span class="o">*</span><span class="n">bus</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">sd_bus_error</span><span class="w">    </span><span class="n">err</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">SD_BUS_ERROR_NULL</span><span class="p">;</span>
 <span class="w">    </span><span class="n">sd_bus_message</span><span class="w"> </span><span class="o">*</span><span class="n">reply</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
@@ -174,7 +220,9 @@
 <span class="w">                               </span><span class="o">&amp;</span><span class="n">reply</span><span class="p">,</span>
 <span class="w">                               </span><span class="s">&quot;&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">sd_bus_error_free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">err</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reply</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">sd_bus_message_unref</span><span class="p">(</span><span class="n">reply</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="w">        </span><span class="n">throw_bus_err</span><span class="p">(</span><span class="s">&quot;GetMinNiceLevel failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">err</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -186,8 +234,54 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">nicev</span><span class="p">;</span>
 <span class="p">}</span>
 
+<span class="c1">// Query helpers (optional)</span>
+<span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">uint32_t</span>
+<span class="nf">get_max_realtime_priority</span><span class="p">(</span><span class="n">sd_bus</span><span class="w"> </span><span class="o">*</span><span class="n">bus</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">property_prio</span><span class="w"> </span><span class="o">=</span>
+<span class="w">            </span><span class="n">get_int32_property</span><span class="p">(</span><span class="n">bus</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MaxRealtimePriority&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">property_prio</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span>
+<span class="w">                </span><span class="s">&quot;MaxRealtimePriority property returned non-positive value&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">property_prio</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="w"> </span><span class="o">&amp;</span><span class="n">prop_err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">method_prio</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                </span><span class="n">get_max_realtime_priority_legacy_method</span><span class="p">(</span><span class="n">bus</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">method_prio</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">throw</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span>
+<span class="w">                    </span><span class="s">&quot;GetMaxRealtimePriority returned zero value&quot;</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">method_prio</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="w"> </span><span class="o">&amp;</span><span class="n">legacy_err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span>
+<span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;Failed to query MaxRealtimePriority. property: &quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                </span><span class="n">prop_err</span><span class="p">.</span><span class="n">what</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;; legacy method: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">legacy_err</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">int32_t</span>
+<span class="nf">get_min_nice_level</span><span class="p">(</span><span class="n">sd_bus</span><span class="w"> </span><span class="o">*</span><span class="n">bus</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">get_int32_property</span><span class="p">(</span><span class="n">bus</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MinNiceLevel&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="w"> </span><span class="o">&amp;</span><span class="n">prop_err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">get_min_nice_level_legacy_method</span><span class="p">(</span><span class="n">bus</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="w"> </span><span class="o">&amp;</span><span class="n">legacy_err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span>
+<span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="s">&quot;Failed to query MinNiceLevel. property: &quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                </span><span class="n">prop_err</span><span class="p">.</span><span class="n">what</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;; legacy method: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">legacy_err</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
 <span class="c1">// Make current thread SCHED_FIFO realtime with given priority (1..99, but rtkit</span>
 <span class="c1">// caps it)</span>
+
 <span class="k">static</span><span class="w"> </span><span class="kr">inline</span><span class="w"> </span><span class="kt">void</span>
 <span class="nf">make_current_thread_realtime</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">priority</span><span class="p">)</span>
 <span class="p">{</span>
@@ -199,41 +293,52 @@
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
 <span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span><span class="s">&quot;sd_bus_open_system failed: &quot;</span><span class="w"> </span><span class="o">+</span>
 <span class="w">                                 </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">r</span><span class="p">));</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">priority</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">priority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">tid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_tid</span><span class="p">();</span>
-
-<span class="w">    </span><span class="c1">// (optional) clamp to rtkit max</span>
-<span class="w">    </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">max_prio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">max_prio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_max_realtime_priority</span><span class="p">(</span><span class="n">bus</span><span class="p">);</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">priority</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">max_prio</span><span class="p">)</span>
-<span class="w">            </span><span class="n">priority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max_prio</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">priority</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
-<span class="w">            </span><span class="n">priority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">tid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_tid</span><span class="p">();</span>
+
+<span class="w">        </span><span class="c1">// optional: clamp to rtkit max</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">max_prio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_max_realtime_priority</span><span class="p">(</span><span class="n">bus</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">priority</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">max_prio</span><span class="p">)</span>
+<span class="w">                </span><span class="n">priority</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max_prio</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sd_bus_call_method</span><span class="p">(</span>
+<span class="w">            </span><span class="n">bus</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;org.freedesktop.RealtimeKit1&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;/org/freedesktop/RealtimeKit1&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;org.freedesktop.RealtimeKit1&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;MakeThreadRealtime&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="o">&amp;</span><span class="n">err</span><span class="p">,</span>
+<span class="w">            </span><span class="o">&amp;</span><span class="n">reply</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;tu&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// t = uint64 (thread id), u = uint32 (priority)</span>
+<span class="w">            </span><span class="n">tid</span><span class="p">,</span>
+<span class="w">            </span><span class="n">priority</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">throw_bus_err</span><span class="p">(</span><span class="s">&quot;MakeThreadRealtime failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">err</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// If query fails, still try the call with provided priority</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reply</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">sd_bus_message_unref</span><span class="p">(</span><span class="n">reply</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bus</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">sd_bus_unref</span><span class="p">(</span><span class="n">bus</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">throw</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sd_bus_call_method</span><span class="p">(</span>
-<span class="w">        </span><span class="n">bus</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;org.freedesktop.RealtimeKit1&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;/org/freedesktop/RealtimeKit1&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;org.freedesktop.RealtimeKit1&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;MakeThreadRealtime&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="o">&amp;</span><span class="n">err</span><span class="p">,</span>
-<span class="w">        </span><span class="o">&amp;</span><span class="n">reply</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;tu&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// t = uint64 (thread id), u = uint32 (priority)</span>
-<span class="w">        </span><span class="n">tid</span><span class="p">,</span>
-<span class="w">        </span><span class="n">priority</span><span class="p">);</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">sd_bus_error_free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">err</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reply</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">sd_bus_message_unref</span><span class="p">(</span><span class="n">reply</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bus</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">sd_bus_unref</span><span class="p">(</span><span class="n">bus</span><span class="p">);</span>
-<span class="w">        </span><span class="n">throw_bus_err</span><span class="p">(</span><span class="s">&quot;MakeThreadRealtime failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">err</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="n">sd_bus_message_unref</span><span class="p">(</span><span class="n">reply</span><span class="p">);</span>
-<span class="w">    </span><span class="n">sd_bus_unref</span><span class="p">(</span><span class="n">bus</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="c1">// Make current thread &quot;high priority&quot; by lowering nice (negative is higher</span>
@@ -251,37 +356,49 @@
 <span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span><span class="s">&quot;sd_bus_open_system failed: &quot;</span><span class="w"> </span><span class="o">+</span>
 <span class="w">                                 </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">r</span><span class="p">));</span>
 
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">tid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_tid</span><span class="p">();</span>
-
-<span class="w">    </span><span class="c1">// (optional) clamp to rtkit min nice</span>
 <span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">min_nice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_min_nice_level</span><span class="p">(</span><span class="n">bus</span><span class="p">);</span><span class="w"> </span><span class="c1">// e.g. -11</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nice_level</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">min_nice</span><span class="p">)</span>
-<span class="w">            </span><span class="n">nice_level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">min_nice</span><span class="p">;</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">tid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_tid</span><span class="p">();</span>
+
+<span class="w">        </span><span class="c1">// optional: clamp to rtkit min nice</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="kt">int32_t</span><span class="w"> </span><span class="n">min_nice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_min_nice_level</span><span class="p">(</span><span class="n">bus</span><span class="p">);</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nice_level</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">min_nice</span><span class="p">)</span>
+<span class="w">                </span><span class="n">nice_level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">min_nice</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// query failure is non-fatal; try with provided level</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sd_bus_call_method</span><span class="p">(</span>
+<span class="w">            </span><span class="n">bus</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;org.freedesktop.RealtimeKit1&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;/org/freedesktop/RealtimeKit1&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;org.freedesktop.RealtimeKit1&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;MakeThreadHighPriority&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="o">&amp;</span><span class="n">err</span><span class="p">,</span>
+<span class="w">            </span><span class="o">&amp;</span><span class="n">reply</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;ti&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// t = uint64 (thread id), i = int32 (nice level)</span>
+<span class="w">            </span><span class="n">tid</span><span class="p">,</span>
+<span class="w">            </span><span class="n">nice_level</span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">throw_bus_err</span><span class="p">(</span><span class="s">&quot;MakeThreadHighPriority failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">err</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// ignore</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reply</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">sd_bus_message_unref</span><span class="p">(</span><span class="n">reply</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bus</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">sd_bus_unref</span><span class="p">(</span><span class="n">bus</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">throw</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sd_bus_call_method</span><span class="p">(</span>
-<span class="w">        </span><span class="n">bus</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;org.freedesktop.RealtimeKit1&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;/org/freedesktop/RealtimeKit1&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;org.freedesktop.RealtimeKit1&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;MakeThreadHighPriority&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="o">&amp;</span><span class="n">err</span><span class="p">,</span>
-<span class="w">        </span><span class="o">&amp;</span><span class="n">reply</span><span class="p">,</span>
-<span class="w">        </span><span class="s">&quot;ti&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// t = uint64 (thread id), i = int32 (nice level)</span>
-<span class="w">        </span><span class="n">tid</span><span class="p">,</span>
-<span class="w">        </span><span class="n">nice_level</span><span class="p">);</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">sd_bus_error_free</span><span class="p">(</span><span class="o">&amp;</span><span class="n">err</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">reply</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">sd_bus_message_unref</span><span class="p">(</span><span class="n">reply</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">bus</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">sd_bus_unref</span><span class="p">(</span><span class="n">bus</span><span class="p">);</span>
-<span class="w">        </span><span class="n">throw_bus_err</span><span class="p">(</span><span class="s">&quot;MakeThreadHighPriority failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">err</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="n">sd_bus_message_unref</span><span class="p">(</span><span class="n">reply</span><span class="p">);</span>
-<span class="w">    </span><span class="n">sd_bus_unref</span><span class="p">(</span><span class="n">bus</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="p">}</span><span class="w"> </span><span class="c1">// namespace rtkit</span>

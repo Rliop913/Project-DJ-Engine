@@ -28,5 +28,6 @@ Files
 - :ref:`file_include_input_PDJE_Input.cpp`
 - :ref:`file_include_input_PDJE_Input.hpp`
 - :ref:`file_include_input_PDJE_Input_Log.hpp`
+- :ref:`file_include_input_PDJE_Input_StateLogic.hpp`
 
 

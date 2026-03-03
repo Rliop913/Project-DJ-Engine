@@ -26,7 +26,31 @@ Definition (``include/core/editor/TimeLine/TimeLine.cpp``)
 
 
 
+Includes
+--------
+
+
+- ``DiffMachine/TimeLineDiffMachine.hpp`` (:ref:`file_include_core_editor_TimeLine_DiffMachine_TimeLineDiffMachine.hpp`)
+
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_global_PDJE_LOG_SETTER.hpp`)
+
+- ``exception``
 
 
 
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_PDJE_TIMELINE`
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_namespacePDJE__TIMELINE_1ab83bb0336ea942465a28915f5d82fe9f`
 

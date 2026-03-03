@@ -40,6 +40,10 @@ Includes
 
 - ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_global_PDJE_LOG_SETTER.hpp`)
 
+- ``WaylandInputCore.hpp`` (:ref:`file_include_input_DefaultDevs_linux_wayland_things_WaylandInputCore.hpp`)
+
+- ``WaylandRuntimeLoader.hpp`` (:ref:`file_include_input_DefaultDevs_linux_wayland_things_WaylandRuntimeLoader.hpp`)
+
 - ``exception``
 
 - ``filesystem``
@@ -47,6 +51,8 @@ Includes
 - ``nlohmann/json.hpp``
 
 - ``optional``
+
+- ``thread``
 
 - ``unordered_map``
 

@@ -77,6 +77,51 @@
         </inbodydescription>
         <location file="include/input/PDJE_Input.hpp" line="31" column="36" bodyfile="include/input/PDJE_Input.hpp" bodystart="31" bodyend="-1"/>
       </memberdef>
+      <memberdef kind="variable" id="classPDJE__Input_1a9786ef88e83dee4f26343f4a2bf51a8b" prot="private" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* PDJE_Input::platform_ctx0_</definition>
+        <argsstring></argsstring>
+        <name>platform_ctx0_</name>
+        <qualifiedname>PDJE_Input::platform_ctx0_</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/PDJE_Input.hpp" line="32" column="35" bodyfile="include/input/PDJE_Input.hpp" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__Input_1af9f109685fc05b1c2032341d6507672c" prot="private" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* PDJE_Input::platform_ctx1_</definition>
+        <argsstring></argsstring>
+        <name>platform_ctx1_</name>
+        <qualifiedname>PDJE_Input::platform_ctx1_</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/PDJE_Input.hpp" line="33" column="35" bodyfile="include/input/PDJE_Input.hpp" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__Input_1aa3d995f97130285fcab18ea8b1a742e4" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool PDJE_Input::use_internal_window_</definition>
+        <argsstring></argsstring>
+        <name>use_internal_window_</name>
+        <qualifiedname>PDJE_Input::use_internal_window_</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/PDJE_Input.hpp" line="34" column="36" bodyfile="include/input/PDJE_Input.hpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classPDJE__Input_1a57ffda3b7e96de7b73deb3557b089e9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -92,7 +137,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/PDJE_Input.hpp" line="37" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="149" bodyend="153"/>
+        <location file="include/input/PDJE_Input.hpp" line="40" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="165" bodyend="169"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__Input_1a1de51439e4e58f538ca08f2488baf481" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; libremidi::input_port &gt;</type>
@@ -107,22 +152,47 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/PDJE_Input.hpp" line="42" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="156" bodyend="159"/>
+        <location file="include/input/PDJE_Input.hpp" line="45" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="172" bodyend="175"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__Input_1a5e124b018f37cd0d4ebdb1aa0f4e234e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__Input_1a4c1c84d82d5f698ac07e32e11072ec12" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool PDJE_Input::Init</definition>
-        <argsstring>()</argsstring>
+        <argsstring>(void *platform_ctx0=nullptr, void *platform_ctx1=nullptr, bool use_internal_window=false)</argsstring>
         <name>Init</name>
         <qualifiedname>PDJE_Input::Init</qualifiedname>
+        <param>
+          <type>void *</type>
+          <declname>platform_ctx0</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>platform_ctx1</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>use_internal_window</declname>
+          <defval>false</defval>
+        </param>
         <briefdescription>
 <para>initialize pdje input. </para>
         </briefdescription>
         <detaileddescription>
+<para>Platform contexts (optional):<itemizedlist>
+<listitem><para>Linux: <computeroutput>platform_ctx0 = wl_display*</computeroutput>, <computeroutput>platform_ctx1 = wl_surface*</computeroutput></para>
+</listitem><listitem><para>Windows: currently ignored (reserved)</para>
+</listitem></itemizedlist>
+</para>
+<para><computeroutput>use_internal_window</computeroutput>:<itemizedlist>
+<listitem><para>Linux: if true, allows <ref refid="classPDJE" kindref="compound">PDJE</ref> to create an internal Wayland window when evdev -&gt; wayland fallback is needed and host handles are unavailable.</para>
+</listitem><listitem><para>Windows: currently ignored (reserved) </para>
+</listitem></itemizedlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/PDJE_Input.hpp" line="47" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="10" bodyend="44"/>
+        <location file="include/input/PDJE_Input.hpp" line="59" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="10" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__Input_1aa504274ac6dfd37beb248fb5fac470c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -145,7 +215,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/PDJE_Input.hpp" line="53" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="47" bodyend="89"/>
+        <location file="include/input/PDJE_Input.hpp" line="67" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="54" bodyend="101"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__Input_1a141055482bcb2c52442ad9f596d72cba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -160,7 +230,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/PDJE_Input.hpp" line="60" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="92" bodyend="111"/>
+        <location file="include/input/PDJE_Input.hpp" line="74" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="104" bodyend="123"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__Input_1acd31c013ea5cf83003795bb58c60f9e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -175,7 +245,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/PDJE_Input.hpp" line="66" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="114" bodyend="146"/>
+        <location file="include/input/PDJE_Input.hpp" line="80" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="126" bodyend="162"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__Input_1a618aaec5a5067bf8f729e4e6b31812c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9" kindref="member">PDJE_INPUT_STATE</ref></type>
@@ -190,7 +260,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/PDJE_Input.hpp" line="72" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="162" bodyend="165"/>
+        <location file="include/input/PDJE_Input.hpp" line="86" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="178" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__Input_1a9a1fc326414a2c5c44c3790bed09174a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string PDJE_Input::GetCurrentInputBackend</definition>
+        <argsstring>() const</argsstring>
+        <name>GetCurrentInputBackend</name>
+        <qualifiedname>PDJE_Input::GetCurrentInputBackend</qualifiedname>
+        <briefdescription>
+<para>get current active input backend name. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/PDJE_Input.hpp" line="92" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="184" bodyend="190"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__Input_1ac4a8a1fc6bce51c498176db187c03e34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structPDJE__INPUT__DATA__LINE" kindref="compound">PDJE_INPUT_DATA_LINE</ref></type>
@@ -205,7 +290,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/PDJE_Input.hpp" line="78" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="168" bodyend="178"/>
+        <location file="include/input/PDJE_Input.hpp" line="98" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="193" bodyend="203"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__Input_1a6a66c5c863c7c489d9a0da4be2de97bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -220,7 +305,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/PDJE_Input.hpp" line="83" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="4" bodyend="7"/>
+        <location file="include/input/PDJE_Input.hpp" line="103" column="5" bodyfile="include/input/PDJE_Input.cpp" bodystart="5" bodyend="7"/>
       </memberdef>
       <memberdef kind="function" id="classPDJE__Input_1a2459c713b4af968b34679f87ca9dcdfd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -235,7 +320,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/PDJE_Input.hpp" line="88" column="5" bodyfile="include/input/PDJE_Input.hpp" bodystart="88" bodyend="91"/>
+        <location file="include/input/PDJE_Input.hpp" line="108" column="5" bodyfile="include/input/PDJE_Input.hpp" bodystart="108" bodyend="111"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -244,22 +329,26 @@
     <detaileddescription>
 <para>Searches for connected devices and pairs them with the engine. </para>
     </detaileddescription>
-    <location file="include/input/PDJE_Input.hpp" line="23" column="1" bodyfile="include/input/PDJE_Input.hpp" bodystart="23" bodyend="92"/>
+    <location file="include/input/PDJE_Input.hpp" line="23" column="1" bodyfile="include/input/PDJE_Input.hpp" bodystart="23" bodyend="112"/>
     <listofallmembers>
       <member refid="classPDJE__Input_1aa504274ac6dfd37beb248fb5fac470c5" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>Config</name></member>
       <member refid="classPDJE__Input_1ad52b67cfabec09be1b320406514baa4c" prot="private" virt="non-virtual"><scope>PDJE_Input</scope><name>default_devs</name></member>
       <member refid="classPDJE__Input_1a48613a9644bb509d4508dcd955c6407f" prot="private" virt="non-virtual"><scope>PDJE_Input</scope><name>FLAG_INPUT_ON</name></member>
       <member refid="classPDJE__Input_1a6c2bd5f760a7f1b1677af5447909614b" prot="private" virt="non-virtual"><scope>PDJE_Input</scope><name>FLAG_MIDI_ON</name></member>
+      <member refid="classPDJE__Input_1a9a1fc326414a2c5c44c3790bed09174a" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>GetCurrentInputBackend</name></member>
       <member refid="classPDJE__Input_1a57ffda3b7e96de7b73deb3557b089e9b" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>GetDevs</name></member>
       <member refid="classPDJE__Input_1a1de51439e4e58f538ca08f2488baf481" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>GetMIDIDevs</name></member>
       <member refid="classPDJE__Input_1a618aaec5a5067bf8f729e4e6b31812c9" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>GetState</name></member>
-      <member refid="classPDJE__Input_1a5e124b018f37cd0d4ebdb1aa0f4e234e" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>Init</name></member>
+      <member refid="classPDJE__Input_1a4c1c84d82d5f698ac07e32e11072ec12" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>Init</name></member>
       <member refid="classPDJE__Input_1acd31c013ea5cf83003795bb58c60f9e5" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>Kill</name></member>
       <member refid="classPDJE__Input_1af879d0958866337b0a9d748458038ecf" prot="private" virt="non-virtual"><scope>PDJE_Input</scope><name>midi_engine</name></member>
       <member refid="classPDJE__Input_1a6a66c5c863c7c489d9a0da4be2de97bc" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>PDJE_Input</name></member>
+      <member refid="classPDJE__Input_1a9786ef88e83dee4f26343f4a2bf51a8b" prot="private" virt="non-virtual"><scope>PDJE_Input</scope><name>platform_ctx0_</name></member>
+      <member refid="classPDJE__Input_1af9f109685fc05b1c2032341d6507672c" prot="private" virt="non-virtual"><scope>PDJE_Input</scope><name>platform_ctx1_</name></member>
       <member refid="classPDJE__Input_1ac4a8a1fc6bce51c498176db187c03e34" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>PullOutDataLine</name></member>
       <member refid="classPDJE__Input_1a141055482bcb2c52442ad9f596d72cba" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>Run</name></member>
       <member refid="classPDJE__Input_1a4ab3e975c31414e17cd1542319a30a62" prot="private" virt="non-virtual"><scope>PDJE_Input</scope><name>state</name></member>
+      <member refid="classPDJE__Input_1aa3d995f97130285fcab18ea8b1a742e4" prot="private" virt="non-virtual"><scope>PDJE_Input</scope><name>use_internal_window_</name></member>
       <member refid="classPDJE__Input_1a2459c713b4af968b34679f87ca9dcdfd" prot="public" virt="non-virtual"><scope>PDJE_Input</scope><name>~PDJE_Input</name></member>
     </listofallmembers>
   </compounddef>

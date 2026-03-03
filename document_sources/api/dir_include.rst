@@ -15,6 +15,7 @@ Subdirectories
 - :ref:`dir_include_input`
 - :ref:`dir_include_judge`
 - :ref:`dir_include_tests`
+- :ref:`dir_include_util`
 
 
 

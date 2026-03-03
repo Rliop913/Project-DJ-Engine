@@ -1,0 +1,80 @@
+
+.. _file_include_util_db_backends_RocksDbBackend.hpp:
+
+File RocksDbBackend.hpp
+=======================
+
+|exhale_lsh| :ref:`Parent directory <dir_include_util_db_backends>` (``include/util/db/backends``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``include/util/db/backends/RocksDbBackend.hpp``)
+------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_include_util_db_backends_RocksDbBackend.hpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``algorithm``
+
+- ``cstring``
+
+- ``filesystem``
+
+- ``memory`` (:ref:`file_include_input_IPC_memory_linux_Input_Transfer.cpp`)
+
+- ``rocksdb/db.h``
+
+- ``rocksdb/options.h``
+
+- ``span``
+
+- ``string``
+
+- ``string_view``
+
+- ``util/common/Result.hpp`` (:ref:`file_include_util_common_Result.hpp`)
+
+- ``util/db/DbTypes.hpp`` (:ref:`file_include_util_db_DbTypes.hpp`)
+
+- ``vector``
+
+
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_PDJE_UTIL`
+
+- :ref:`namespace_PDJE_UTIL__db`
+
+- :ref:`namespace_PDJE_UTIL__db__backends`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_struct_structPDJE__UTIL_1_1db_1_1backends_1_1RocksDbConfig`
+
+- :ref:`exhale_class_classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend`
+

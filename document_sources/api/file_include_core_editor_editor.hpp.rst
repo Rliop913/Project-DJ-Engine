@@ -71,6 +71,8 @@ Included By
 
 - :ref:`file_include_core_editor_editor.cpp`
 
+- :ref:`file_include_tests_editorTest.cpp`
+
 
 
 

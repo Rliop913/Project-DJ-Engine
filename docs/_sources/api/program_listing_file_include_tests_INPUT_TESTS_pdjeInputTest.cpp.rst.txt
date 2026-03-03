@@ -13,34 +13,22 @@ Program Listing for File pdjeInputTest.cpp
    #include "Input_State.hpp"
    #include "PDJE_Input.hpp"
    #include "PDJE_Input_Device_Data.hpp"
-   #include <string>
-   #include <thread>
-   // #include "linux/linux_input.hpp"
    #include <iostream>
-   // #include <unistd.h>
-   #include "DefaultDevs.hpp"
-   #include <filesystem>
-   #include <format>
-   namespace fs = std::filesystem;
+   #include <thread>
+   #include <vector>
+   
    int
    main()
    {
-       // std::cout << GenExecuteShell("./PDJE_MODULE_INPUT_PROCESS", 84300)
-       //           << std::endl;
-       // auto mp = PDJE_IPC::TXRXTransport(54335);
-       // std::cout << "opened connection" << std::endl;
-       // if (mp.EndTransmission()) {
-       //     std::cout << "Ended Transmission" << std::endl;
-       // } else {
-       //     std::cout << "Failed to End Transmission" << std::endl;
-       // }
-   
-       // return 0;
        PDJE_Input pip;
-       pip.Init();
+       if (!pip.Init()) {
+           std::cerr << "Init failed\n";
+           return 1;
+       }
+   
        auto     devs = pip.GetDevs();
        DEV_LIST set_targets;
-       for (auto i : devs) {
+       for (const auto &i : devs) {
            std::cout << "name: " << i.Name << std::endl;
            switch (i.Type) {
            case PDJE_Dev_Type::MOUSE:
@@ -57,32 +45,40 @@ Program Listing for File pdjeInputTest.cpp
            default:
                break;
            }
-   
            std::cout << "dev path: " << i.device_specific_id << std::endl;
        }
    
-       pip.Config(set_targets, std::vector<libremidi::input_port>());
-       // pip.NEXT();
+       if (!pip.Config(set_targets, std::vector<libremidi::input_port>())) {
+           std::cerr << "Config failed\n";
+           pip.Kill();
+           return 2;
+       }
    
        auto dline = pip.PullOutDataLine();
-       pip.Run(); // todo - impl process terminator
-       // pip.NEXT();
+       if (!pip.Run()) {
+           std::cerr << "Run failed\n";
+           pip.Kill();
+           return 3;
+       }
+       if (!dline.input_arena) {
+           std::cerr << "Input arena is null\n";
+           pip.Kill();
+           return 4;
+       }
+   
        int         times = 100;
        std::thread watcher([&]() {
            while (true) {
                try {
-   
                    dline.input_arena->Receive();
    
-                   auto got = dline.input_arena->datas;
+                   const auto got = dline.input_arena->datas;
                    for (const auto &idx : got) {
-   
                        std::cout << "time: " << idx.microSecond << std::endl;
                        std::cout << "id: " << idx.id << std::endl;
                        std::cout << "name: " << idx.name << std::endl;
    
                        if (idx.type == PDJE_Dev_Type::KEYBOARD) {
-   
                            std::cout << "keyNumber: "
                                      << static_cast<int>(idx.event.keyboard.k)
                                      << std::endl;
@@ -100,7 +96,6 @@ Program Listing for File pdjeInputTest.cpp
                        if (times < 0) {
                            return;
                        }
-                       // }
                    }
                } catch (const std::exception &e) {
                    std::cout << e.what() << std::endl;
@@ -110,21 +105,5 @@ Program Listing for File pdjeInputTest.cpp
    
        watcher.join();
        pip.Kill();
-   
-       // OS_Input linux_oi;
-       // linux_oi.SocketOpen("./PDJE_MODULE_INPUT_RTMAIN");
-       // auto     devs = linux_oi.getDevices();
-       // DEV_LIST toSet;
-       // for (const auto &i : devs) {
-       //     std::cout << i.Name << ", " << i.Type << std::endl;
-       //     if (i.Type == "MOUSE") {
-       //         toSet.push_back(i);
-       //     }
-       // }
-       // std::cout << linux_oi.setDevices(toSet) << std::endl;
-       // sleep(1);
-       // linux_oi.EndSocketTransmission();
-       // sleep(1);
-       // std::cout << "end server" << std::endl;
        return 0;
    }

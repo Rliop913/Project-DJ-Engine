@@ -58,6 +58,8 @@ Included By
 
 - :ref:`file_include_core_editor_TimeLine_TimeLine.hpp`
 
+- :ref:`file_include_core_editor_TimeLine_TimeLineDiffTypes.hpp`
+
 
 
 

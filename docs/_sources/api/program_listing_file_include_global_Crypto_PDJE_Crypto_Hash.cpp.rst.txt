@@ -16,7 +16,6 @@ Program Listing for File PDJE_Crypto_Hash.cpp
    namespace PDJE_CRYPTO {
    Hash::Hash()
    {
-       startlog();
        try {
            hashEngine = Botan::HashFunction::create_or_throw("SHA-256");
        } catch (const std::exception &e) {

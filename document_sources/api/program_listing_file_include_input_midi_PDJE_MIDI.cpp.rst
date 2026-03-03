@@ -16,7 +16,6 @@ Program Listing for File PDJE_MIDI.cpp
    
    MIDI::MIDI(const int buffer_size) : evlog(buffer_size)
    {
-       startlog();
    }
    
    void

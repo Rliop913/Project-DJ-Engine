@@ -25,5 +25,6 @@ Files
 
 - :ref:`file_include_core_db_Capnp_Translators_FrameCalc.cpp`
 - :ref:`file_include_core_db_Capnp_Translators_FrameCalc.hpp`
+- :ref:`file_include_core_db_Capnp_Translators_FrameCalcCore.hpp`
 
 

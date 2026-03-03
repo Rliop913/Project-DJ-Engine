@@ -13,14 +13,12 @@
     <includedby refid="Mix_8cpp" local="yes">include/core/db/Capnp/Translators/MixTranslator/Mix.cpp</includedby>
     <includedby refid="MixTranslator_8hpp" local="yes">include/core/db/Capnp/Translators/MixTranslator/MixTranslator.hpp</includedby>
     <incdepgraph>
-      <node id="9">
+      <node id="10">
         <label>CapnpBinary.hpp</label>
         <link refid="CapnpBinary_8hpp"/>
-        <childnode refid="10" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
@@ -32,6 +30,8 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
         <childnode refid="17" relation="include">
         </childnode>
       </node>
@@ -40,13 +40,21 @@
         <link refid="FrameCalc_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>FrameCalcCore.hpp</label>
+        <link refid="FrameCalcCore_8hpp"/>
         <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -62,15 +70,15 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="25">
+      <node id="27">
         <label>Mix.hpp</label>
         <link refid="Mix_8hpp"/>
-        <childnode refid="7" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
@@ -80,23 +88,29 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="16">
+      <node id="8">
         <label>PDJE_EXPORT_SETTER.hpp</label>
         <link refid="PDJE__EXPORT__SETTER_8hpp"/>
       </node>
-      <node id="17">
-        <label>PDJE_LOG_SETTER.hpp</label>
-        <link refid="PDJE__LOG__SETTER_8hpp"/>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
+      <node id="18">
+        <label>PDJE_LOG_RUNTIME_API.h</label>
+        <link refid="PDJE__LOG__RUNTIME__API_8h"/>
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="PDJE__LOG__SETTER_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
@@ -104,60 +118,67 @@
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-      </node>
-      <node id="13">
-        <label>MixBinary.capnp.h</label>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
       </node>
       <node id="14">
-        <label>MusicBinary.capnp.h</label>
+        <label>MixBinary.capnp.h</label>
       </node>
       <node id="15">
+        <label>MusicBinary.capnp.h</label>
+      </node>
+      <node id="16">
         <label>NoteBinary.capnp.h</label>
       </node>
-      <node id="7">
+      <node id="28">
         <label>algorithm</label>
       </node>
-      <node id="11">
+      <node id="12">
         <label>capnp/message.h</label>
       </node>
-      <node id="12">
+      <node id="13">
         <label>capnp/serialize.h</label>
       </node>
-      <node id="8">
-        <label>cmath</label>
+      <node id="9">
+        <label>cstdint</label>
       </node>
-      <node id="18">
-        <label>filesystem</label>
+      <node id="23">
+        <label>exception</label>
       </node>
-      <node id="24">
+      <node id="26">
         <label>hwy/aligned_allocator.h</label>
       </node>
       <node id="2">
         <label>mutex</label>
       </node>
-      <node id="10">
+      <node id="11">
         <label>optional</label>
       </node>
+      <node id="21">
+        <label>spdlog/fmt/fmt.h</label>
+      </node>
+      <node id="22">
+        <label>spdlog/spdlog.h</label>
+      </node>
       <node id="19">
-        <label>spdlog/sinks/basic_file_sink.h</label>
+        <label>stddef.h</label>
       </node>
       <node id="20">
-        <label>spdlog/sinks/stdout_color_sinks.h</label>
-      </node>
-      <node id="21">
-        <label>spdlog/spdlog.h</label>
+        <label>stdint.h</label>
       </node>
       <node id="3">
         <label>string</label>
       </node>
-      <node id="22">
+      <node id="24">
         <label>string_view</label>
       </node>
       <node id="4">
         <label>thread</label>
       </node>
-      <node id="23">
-        <label>type_traits</label>
+      <node id="25">
+        <label>utility</label>
       </node>
       <node id="5">
         <label>vector</label>
@@ -458,6 +479,42 @@
         <childnode refid="33" relation="include">
         </childnode>
       </node>
+      <node id="69">
+        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-KV.cpp</label>
+        <link refid="TimeLineDiffMachine-KV_8cpp"/>
+      </node>
+      <node id="70">
+        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-MIX.cpp</label>
+        <link refid="TimeLineDiffMachine-MIX_8cpp"/>
+      </node>
+      <node id="71">
+        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-MUSIC.cpp</label>
+        <link refid="TimeLineDiffMachine-MUSIC_8cpp"/>
+      </node>
+      <node id="72">
+        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-NOTE.cpp</label>
+        <link refid="TimeLineDiffMachine-NOTE_8cpp"/>
+      </node>
+      <node id="73">
+        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.cpp</label>
+        <link refid="TimeLineDiffMachine_8cpp"/>
+      </node>
+      <node id="68">
+        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp</label>
+        <link refid="TimeLineDiffMachine_8hpp"/>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+      </node>
       <node id="62">
         <label>include/core/editor/TimeLine/EventMarker/EventMarker.hpp</label>
         <link refid="EventMarker_8hpp"/>
@@ -475,6 +532,8 @@
         </childnode>
         <childnode refid="63" relation="include">
         </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
       </node>
       <node id="57">
         <label>include/core/editor/TimeLine/JSONWrap/EditorArgs.hpp</label>
@@ -486,11 +545,11 @@
         <childnode refid="59" relation="include">
         </childnode>
       </node>
-      <node id="67">
+      <node id="75">
         <label>include/core/editor/TimeLine/JSONWrap/KVJson.cpp</label>
         <link refid="KVJson_8cpp"/>
       </node>
-      <node id="68">
+      <node id="76">
         <label>include/core/editor/TimeLine/JSONWrap/MixJson.cpp</label>
         <link refid="MixJson_8cpp"/>
       </node>
@@ -512,7 +571,7 @@
         <childnode refid="59" relation="include">
         </childnode>
       </node>
-      <node id="69">
+      <node id="77">
         <label>include/core/editor/TimeLine/JSONWrap/NoteJson.cpp</label>
         <link refid="NoteJson_8cpp"/>
       </node>
@@ -523,17 +582,19 @@
         </childnode>
         <childnode refid="64" relation="include">
         </childnode>
-        <childnode refid="67" relation="include">
+        <childnode refid="75" relation="include">
         </childnode>
-        <childnode refid="68" relation="include">
+        <childnode refid="76" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="58" relation="include">
         </childnode>
-        <childnode refid="69" relation="include">
+        <childnode refid="77" relation="include">
         </childnode>
         <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
         </childnode>
       </node>
       <node id="65">
@@ -550,10 +611,22 @@
         <childnode refid="63" relation="include">
         </childnode>
       </node>
+      <node id="74">
+        <label>include/core/editor/TimeLine/TimeLine.cpp</label>
+        <link refid="TimeLine_8cpp"/>
+      </node>
       <node id="63">
         <label>include/core/editor/TimeLine/TimeLine.hpp</label>
         <link refid="TimeLine_8hpp"/>
         <childnode refid="59" relation="include">
+        </childnode>
+      </node>
+      <node id="67">
+        <label>include/core/editor/TimeLine/TimeLineDiffTypes.hpp</label>
+        <link refid="TimeLineDiffTypes_8hpp"/>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
         </childnode>
       </node>
       <node id="60">
@@ -568,6 +641,8 @@
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
         </childnode>
       </node>
       <node id="26">

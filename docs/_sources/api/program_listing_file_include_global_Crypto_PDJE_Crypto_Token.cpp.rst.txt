@@ -18,7 +18,6 @@ Program Listing for File PDJE_Crypto_Token.cpp
    
    PSK::PSK()
    {
-       startlog();
    }
    
    bool

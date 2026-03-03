@@ -30,17 +30,15 @@ Includes
 --------
 
 
-- ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_global_PDJE_EXPORT_SETTER.hpp`)
+- ``Atomic_Double_Buffer.hpp`` (:ref:`file_include_global_DataLines_Atomic_Double_Buffer.hpp`)
 
-- ``atomic``
+- ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_global_PDJE_EXPORT_SETTER.hpp`)
 
 - ``ipc_shared_memory.hpp`` (:ref:`file_include_input_IPC_memory_ipc_shared_memory.hpp`)
 
 - ``memory_resource``
 
 - ``random``
-
-- ``vector``
 
 
 
@@ -63,11 +61,4 @@ Included By
 - :ref:`file_include_judge_Loop_PDJE_Judge_Loop_Structs.hpp`
 
 
-
-
-Classes
--------
-
-
-- :ref:`exhale_class_classAtomic__Double__Buffer`
 

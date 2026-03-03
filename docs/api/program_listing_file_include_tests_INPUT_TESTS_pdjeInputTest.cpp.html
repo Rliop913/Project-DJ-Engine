@@ -53,7 +53,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -86,34 +85,22 @@
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Input_State.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Input.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Input_Device_Data.hpp&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;thread&gt;</span>
-<span class="c1">// #include &quot;linux/linux_input.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
-<span class="c1">// #include &lt;unistd.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;DefaultDevs.hpp&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;filesystem&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;format&gt;</span>
-<span class="k">namespace</span><span class="w"> </span><span class="nn">fs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">filesystem</span><span class="p">;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;thread&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+
 <span class="kt">int</span>
 <span class="nf">main</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="c1">// std::cout &lt;&lt; GenExecuteShell(&quot;./PDJE_MODULE_INPUT_PROCESS&quot;, 84300)</span>
-<span class="w">    </span><span class="c1">//           &lt;&lt; std::endl;</span>
-<span class="w">    </span><span class="c1">// auto mp = PDJE_IPC::TXRXTransport(54335);</span>
-<span class="w">    </span><span class="c1">// std::cout &lt;&lt; &quot;opened connection&quot; &lt;&lt; std::endl;</span>
-<span class="w">    </span><span class="c1">// if (mp.EndTransmission()) {</span>
-<span class="w">    </span><span class="c1">//     std::cout &lt;&lt; &quot;Ended Transmission&quot; &lt;&lt; std::endl;</span>
-<span class="w">    </span><span class="c1">// } else {</span>
-<span class="w">    </span><span class="c1">//     std::cout &lt;&lt; &quot;Failed to End Transmission&quot; &lt;&lt; std::endl;</span>
-<span class="w">    </span><span class="c1">// }</span>
-
-<span class="w">    </span><span class="c1">// return 0;</span>
 <span class="w">    </span><span class="n">PDJE_Input</span><span class="w"> </span><span class="n">pip</span><span class="p">;</span>
-<span class="w">    </span><span class="n">pip</span><span class="p">.</span><span class="n">Init</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">pip</span><span class="p">.</span><span class="n">Init</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Init failed</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
 <span class="w">    </span><span class="k">auto</span><span class="w">     </span><span class="n">devs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pip</span><span class="p">.</span><span class="n">GetDevs</span><span class="p">();</span>
 <span class="w">    </span><span class="n">DEV_LIST</span><span class="w"> </span><span class="n">set_targets</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">devs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">devs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;name: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="w">        </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">Type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_Dev_Type</span><span class="o">::</span><span class="no">MOUSE</span><span class="p">:</span>
@@ -130,32 +117,40 @@
 <span class="w">        </span><span class="k">default</span><span class="o">:</span>
 <span class="w">            </span><span class="k">break</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
-
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;dev path: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">device_specific_id</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="n">pip</span><span class="p">.</span><span class="n">Config</span><span class="p">(</span><span class="n">set_targets</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">libremidi</span><span class="o">::</span><span class="n">input_port</span><span class="o">&gt;</span><span class="p">());</span>
-<span class="w">    </span><span class="c1">// pip.NEXT();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">pip</span><span class="p">.</span><span class="n">Config</span><span class="p">(</span><span class="n">set_targets</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">libremidi</span><span class="o">::</span><span class="n">input_port</span><span class="o">&gt;</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Config failed</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="n">pip</span><span class="p">.</span><span class="n">Kill</span><span class="p">();</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">dline</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pip</span><span class="p">.</span><span class="n">PullOutDataLine</span><span class="p">();</span>
-<span class="w">    </span><span class="n">pip</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span><span class="w"> </span><span class="c1">// todo - impl process terminator</span>
-<span class="w">    </span><span class="c1">// pip.NEXT();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">pip</span><span class="p">.</span><span class="n">Run</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Run failed</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="n">pip</span><span class="p">.</span><span class="n">Kill</span><span class="p">();</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">dline</span><span class="p">.</span><span class="n">input_arena</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Input arena is null</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="n">pip</span><span class="p">.</span><span class="n">Kill</span><span class="p">();</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
 <span class="w">    </span><span class="kt">int</span><span class="w">         </span><span class="n">times</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="w"> </span><span class="n">watcher</span><span class="p">([</span><span class="o">&amp;</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">                </span><span class="n">dline</span><span class="p">.</span><span class="n">input_arena</span><span class="o">-&gt;</span><span class="n">Receive</span><span class="p">();</span>
 
-<span class="w">                </span><span class="k">auto</span><span class="w"> </span><span class="n">got</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dline</span><span class="p">.</span><span class="n">input_arena</span><span class="o">-&gt;</span><span class="n">datas</span><span class="p">;</span>
+<span class="w">                </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">got</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dline</span><span class="p">.</span><span class="n">input_arena</span><span class="o">-&gt;</span><span class="n">datas</span><span class="p">;</span>
 <span class="w">                </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">idx</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">got</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">                    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;time: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">idx</span><span class="p">.</span><span class="n">microSecond</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="w">                    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;id: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">idx</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="w">                    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;name: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">idx</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 
 <span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">idx</span><span class="p">.</span><span class="n">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">PDJE_Dev_Type</span><span class="o">::</span><span class="n">KEYBOARD</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-
 <span class="w">                        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;keyNumber: &quot;</span>
 <span class="w">                                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">idx</span><span class="p">.</span><span class="n">event</span><span class="p">.</span><span class="n">keyboard</span><span class="p">.</span><span class="n">k</span><span class="p">)</span>
 <span class="w">                                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
@@ -173,7 +168,6 @@
 <span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">times</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                        </span><span class="k">return</span><span class="p">;</span>
 <span class="w">                    </span><span class="p">}</span>
-<span class="w">                    </span><span class="c1">// }</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="w"> </span><span class="o">&amp;</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
@@ -183,22 +177,6 @@
 
 <span class="w">    </span><span class="n">watcher</span><span class="p">.</span><span class="n">join</span><span class="p">();</span>
 <span class="w">    </span><span class="n">pip</span><span class="p">.</span><span class="n">Kill</span><span class="p">();</span>
-
-<span class="w">    </span><span class="c1">// OS_Input linux_oi;</span>
-<span class="w">    </span><span class="c1">// linux_oi.SocketOpen(&quot;./PDJE_MODULE_INPUT_RTMAIN&quot;);</span>
-<span class="w">    </span><span class="c1">// auto     devs = linux_oi.getDevices();</span>
-<span class="w">    </span><span class="c1">// DEV_LIST toSet;</span>
-<span class="w">    </span><span class="c1">// for (const auto &amp;i : devs) {</span>
-<span class="w">    </span><span class="c1">//     std::cout &lt;&lt; i.Name &lt;&lt; &quot;, &quot; &lt;&lt; i.Type &lt;&lt; std::endl;</span>
-<span class="w">    </span><span class="c1">//     if (i.Type == &quot;MOUSE&quot;) {</span>
-<span class="w">    </span><span class="c1">//         toSet.push_back(i);</span>
-<span class="w">    </span><span class="c1">//     }</span>
-<span class="w">    </span><span class="c1">// }</span>
-<span class="w">    </span><span class="c1">// std::cout &lt;&lt; linux_oi.setDevices(toSet) &lt;&lt; std::endl;</span>
-<span class="w">    </span><span class="c1">// sleep(1);</span>
-<span class="w">    </span><span class="c1">// linux_oi.EndSocketTransmission();</span>
-<span class="w">    </span><span class="c1">// sleep(1);</span>
-<span class="w">    </span><span class="c1">// std::cout &lt;&lt; &quot;end server&quot; &lt;&lt; std::endl;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>

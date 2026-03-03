@@ -1,0 +1,292 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend" kind="class" language="C++" prot="public">
+    <compoundname>PDJE_UTIL::db::backends::SqliteBackend</compoundname>
+    <includes refid="SqliteBackend_8hpp" local="no">SqliteBackend.hpp</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a76b224b3db35c1e89d9d3c2db3f058b5" prot="public" static="no">
+        <type><ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1SqliteConfig" kindref="compound">SqliteConfig</ref></type>
+        <definition>using PDJE_UTIL::db::backends::SqliteBackend::config_type =  SqliteConfig</definition>
+        <argsstring></argsstring>
+        <name>config_type</name>
+        <qualifiedname>PDJE_UTIL::db::backends::SqliteBackend::config_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/db/backends/SqliteBackend.hpp" line="173" column="5" bodyfile="include/util/db/backends/SqliteBackend.hpp" bodystart="173" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa13cd249d5257c76b76053a35abaaad8" prot="private" static="no" mutable="no">
+        <type><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a76b224b3db35c1e89d9d3c2db3f058b5" kindref="member">config_type</ref></type>
+        <definition>config_type PDJE_UTIL::db::backends::SqliteBackend::config_</definition>
+        <argsstring></argsstring>
+        <name>config_</name>
+        <qualifiedname>PDJE_UTIL::db::backends::SqliteBackend::config_</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/db/backends/SqliteBackend.hpp" line="443" column="17" bodyfile="include/util/db/backends/SqliteBackend.hpp" bodystart="443" bodyend="443"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa18566c27aa427475a6089dbf43e3f39" prot="private" static="no" mutable="no">
+        <type>sqlite3 *</type>
+        <definition>sqlite3* PDJE_UTIL::db::backends::SqliteBackend::db_</definition>
+        <argsstring></argsstring>
+        <name>db_</name>
+        <qualifiedname>PDJE_UTIL::db::backends::SqliteBackend::db_</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/db/backends/SqliteBackend.hpp" line="444" column="16" bodyfile="include/util/db/backends/SqliteBackend.hpp" bodystart="444" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1ac9f02bdc9b1e72a92a840bdf94d2a4a8" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
+        <definition>static common::Result&lt; void &gt; PDJE_UTIL::db::backends::SqliteBackend::create</definition>
+        <argsstring>(const config_type &amp;cfg)</argsstring>
+        <name>create</name>
+        <qualifiedname>PDJE_UTIL::db::backends::SqliteBackend::create</qualifiedname>
+        <param>
+          <type>const <ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a76b224b3db35c1e89d9d3c2db3f058b5" kindref="member">config_type</ref> &amp;</type>
+          <declname>cfg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/db/backends/SqliteBackend.hpp" line="176" column="5" bodyfile="include/util/db/backends/SqliteBackend.hpp" bodystart="176" bodyend="210"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1ab37f8b6516d3cb141f985261178566ce" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
+        <definition>static common::Result&lt; void &gt; PDJE_UTIL::db::backends::SqliteBackend::destroy</definition>
+        <argsstring>(const config_type &amp;cfg)</argsstring>
+        <name>destroy</name>
+        <qualifiedname>PDJE_UTIL::db::backends::SqliteBackend::destroy</qualifiedname>
+        <param>
+          <type>const <ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a76b224b3db35c1e89d9d3c2db3f058b5" kindref="member">config_type</ref> &amp;</type>
+          <declname>cfg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/db/backends/SqliteBackend.hpp" line="213" column="5" bodyfile="include/util/db/backends/SqliteBackend.hpp" bodystart="213" bodyend="234"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a0b480d46d4addc3726d0374d8d0b4a7f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
+        <definition>common::Result&lt; void &gt; PDJE_UTIL::db::backends::SqliteBackend::open</definition>
+        <argsstring>(const config_type &amp;cfg)</argsstring>
+        <name>open</name>
+        <qualifiedname>PDJE_UTIL::db::backends::SqliteBackend::open</qualifiedname>
+        <param>
+          <type>const <ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a76b224b3db35c1e89d9d3c2db3f058b5" kindref="member">config_type</ref> &amp;</type>
+          <declname>cfg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/db/backends/SqliteBackend.hpp" line="237" column="5" bodyfile="include/util/db/backends/SqliteBackend.hpp" bodystart="237" bodyend="296"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1abad9772969ccb96a3bf507a8a22704e4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
+        <definition>common::Result&lt; void &gt; PDJE_UTIL::db::backends::SqliteBackend::close</definition>
+        <argsstring>()</argsstring>
+        <name>close</name>
+        <qualifiedname>PDJE_UTIL::db::backends::SqliteBackend::close</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/db/backends/SqliteBackend.hpp" line="299" column="5" bodyfile="include/util/db/backends/SqliteBackend.hpp" bodystart="299" bodyend="310"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a3d05725c60f4df18f29cb94fc4fdeaa1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; <ref refid="structPDJE__UTIL_1_1db_1_1relational_1_1ExecResult" kindref="compound">relational::ExecResult</ref> &gt;</type>
+        <definition>common::Result&lt; relational::ExecResult &gt; PDJE_UTIL::db::backends::SqliteBackend::execute</definition>
+        <argsstring>(std::string_view sql, const relational::Params &amp;params)</argsstring>
+        <name>execute</name>
+        <qualifiedname>PDJE_UTIL::db::backends::SqliteBackend::execute</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>sql</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacePDJE__UTIL_1_1db_1_1relational_1a03d7b850c6d4c14c870bb5548dd36873" kindref="member">relational::Params</ref> &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/db/backends/SqliteBackend.hpp" line="313" column="5" bodyfile="include/util/db/backends/SqliteBackend.hpp" bodystart="313" bodyend="352"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa6ece242a32cf9759660c26ee17f838b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; <ref refid="structPDJE__UTIL_1_1db_1_1relational_1_1QueryResult" kindref="compound">relational::QueryResult</ref> &gt;</type>
+        <definition>common::Result&lt; relational::QueryResult &gt; PDJE_UTIL::db::backends::SqliteBackend::query</definition>
+        <argsstring>(std::string_view sql, const relational::Params &amp;params) const</argsstring>
+        <name>query</name>
+        <qualifiedname>PDJE_UTIL::db::backends::SqliteBackend::query</qualifiedname>
+        <param>
+          <type>std::string_view</type>
+          <declname>sql</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespacePDJE__UTIL_1_1db_1_1relational_1a03d7b850c6d4c14c870bb5548dd36873" kindref="member">relational::Params</ref> &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/db/backends/SqliteBackend.hpp" line="355" column="5" bodyfile="include/util/db/backends/SqliteBackend.hpp" bodystart="355" bodyend="398"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1add1dff3eb7c8332eedb65e076187e1d1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
+        <definition>common::Result&lt; void &gt; PDJE_UTIL::db::backends::SqliteBackend::begin_transaction</definition>
+        <argsstring>()</argsstring>
+        <name>begin_transaction</name>
+        <qualifiedname>PDJE_UTIL::db::backends::SqliteBackend::begin_transaction</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/db/backends/SqliteBackend.hpp" line="401" column="5" bodyfile="include/util/db/backends/SqliteBackend.hpp" bodystart="401" bodyend="404"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a4cf9a4c0b15030cdb48fcec37564f5d7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
+        <definition>common::Result&lt; void &gt; PDJE_UTIL::db::backends::SqliteBackend::commit</definition>
+        <argsstring>()</argsstring>
+        <name>commit</name>
+        <qualifiedname>PDJE_UTIL::db::backends::SqliteBackend::commit</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/db/backends/SqliteBackend.hpp" line="407" column="5" bodyfile="include/util/db/backends/SqliteBackend.hpp" bodystart="407" bodyend="410"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a30ae0a2775b973af4eeac6e1dbb10332" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
+        <definition>common::Result&lt; void &gt; PDJE_UTIL::db::backends::SqliteBackend::rollback</definition>
+        <argsstring>()</argsstring>
+        <name>rollback</name>
+        <qualifiedname>PDJE_UTIL::db::backends::SqliteBackend::rollback</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/db/backends/SqliteBackend.hpp" line="413" column="5" bodyfile="include/util/db/backends/SqliteBackend.hpp" bodystart="413" bodyend="416"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a37793c9f48134e9439ca96773374dff5" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="structPDJE__UTIL_1_1common_1_1Status" kindref="compound">common::Status</ref></type>
+        <definition>common::Status PDJE_UTIL::db::backends::SqliteBackend::require_open</definition>
+        <argsstring>() const</argsstring>
+        <name>require_open</name>
+        <qualifiedname>PDJE_UTIL::db::backends::SqliteBackend::require_open</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/db/backends/SqliteBackend.hpp" line="420" column="5" bodyfile="include/util/db/backends/SqliteBackend.hpp" bodystart="420" bodyend="426"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1af37910d8d8aaec77691710bb20fd936a" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
+        <definition>common::Result&lt; void &gt; PDJE_UTIL::db::backends::SqliteBackend::exec_sqlite_command</definition>
+        <argsstring>(const char *sql, std::string_view context)</argsstring>
+        <name>exec_sqlite_command</name>
+        <qualifiedname>PDJE_UTIL::db::backends::SqliteBackend::exec_sqlite_command</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>sql</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/db/backends/SqliteBackend.hpp" line="429" column="5" bodyfile="include/util/db/backends/SqliteBackend.hpp" bodystart="429" bodyend="441"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>PDJE_UTIL::db::OpenOptions</label>
+        <link refid="structPDJE__UTIL_1_1db_1_1OpenOptions"/>
+      </node>
+      <node id="1">
+        <label>PDJE_UTIL::db::backends::SqliteBackend</label>
+        <link refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>config_</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>PDJE_UTIL::db::backends::SqliteConfig</label>
+        <link refid="structPDJE__UTIL_1_1db_1_1backends_1_1SqliteConfig"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>open_options</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/util/db/backends/SqliteBackend.hpp" line="171" column="1" bodyfile="include/util/db/backends/SqliteBackend.hpp" bodystart="171" bodyend="445"/>
+    <listofallmembers>
+      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1add1dff3eb7c8332eedb65e076187e1d1" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::SqliteBackend</scope><name>begin_transaction</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1abad9772969ccb96a3bf507a8a22704e4" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::SqliteBackend</scope><name>close</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a4cf9a4c0b15030cdb48fcec37564f5d7" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::SqliteBackend</scope><name>commit</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa13cd249d5257c76b76053a35abaaad8" prot="private" virt="non-virtual"><scope>PDJE_UTIL::db::backends::SqliteBackend</scope><name>config_</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a76b224b3db35c1e89d9d3c2db3f058b5" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::SqliteBackend</scope><name>config_type</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1ac9f02bdc9b1e72a92a840bdf94d2a4a8" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::SqliteBackend</scope><name>create</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa18566c27aa427475a6089dbf43e3f39" prot="private" virt="non-virtual"><scope>PDJE_UTIL::db::backends::SqliteBackend</scope><name>db_</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1ab37f8b6516d3cb141f985261178566ce" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::SqliteBackend</scope><name>destroy</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1af37910d8d8aaec77691710bb20fd936a" prot="private" virt="non-virtual"><scope>PDJE_UTIL::db::backends::SqliteBackend</scope><name>exec_sqlite_command</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a3d05725c60f4df18f29cb94fc4fdeaa1" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::SqliteBackend</scope><name>execute</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a0b480d46d4addc3726d0374d8d0b4a7f" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::SqliteBackend</scope><name>open</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa6ece242a32cf9759660c26ee17f838b" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::SqliteBackend</scope><name>query</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a37793c9f48134e9439ca96773374dff5" prot="private" virt="non-virtual"><scope>PDJE_UTIL::db::backends::SqliteBackend</scope><name>require_open</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a30ae0a2775b973af4eeac6e1dbb10332" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::SqliteBackend</scope><name>rollback</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

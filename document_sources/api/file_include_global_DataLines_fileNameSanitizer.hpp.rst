@@ -75,6 +75,8 @@ Included By
 
 - :ref:`file_include_core_editor_editor.hpp`
 
+- :ref:`file_include_core_editor_pdjeLinter_TrackLinterRules.hpp`
+
 - :ref:`file_include_core_editor_pdjeLinter_trackLinter.cpp`
 
 - :ref:`file_include_global_DataLines_fileNameSanitizer.cpp`

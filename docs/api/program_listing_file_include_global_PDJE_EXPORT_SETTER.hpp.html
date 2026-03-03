@@ -53,7 +53,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -85,7 +84,11 @@
 <p>↰ <a class="reference internal" href="file_include_global_PDJE_EXPORT_SETTER.hpp.html#file-include-global-pdje-export-setter-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/global/PDJE_EXPORT_SETTER.hpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
 
+<span class="cp">#if defined(_WIN32) || defined(__CYGWIN__)</span>
 <span class="cp">#define PDJE_CALL __cdecl</span>
+<span class="cp">#else</span>
+<span class="cp">#define PDJE_CALL</span>
+<span class="cp">#endif</span>
 
 <span class="cp">#ifdef PDJE_WINDOWS_DLL</span>
 <span class="cp">#ifdef PDJE_BUILDING</span>
@@ -94,7 +97,11 @@
 <span class="cp">#define PDJE_API __declspec(dllimport)</span>
 <span class="cp">#endif</span>
 <span class="cp">#else</span>
+<span class="cp">#if defined(__GNUC__) || defined(__clang__)</span>
+<span class="cp">#define PDJE_API __attribute__((visibility(&quot;default&quot;)))</span>
+<span class="cp">#else</span>
 <span class="cp">#define PDJE_API</span>
+<span class="cp">#endif</span>
 <span class="cp">#endif</span>
 </pre></div>
 </div>

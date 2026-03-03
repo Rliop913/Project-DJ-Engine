@@ -1,208 +1,256 @@
 Input_Engine
-======================
+============
 
-The PDJE Input Engine is a cross-platform, low-latency module for handling input from keyboards, mice, and MIDI devices. It is designed for high-performance, real-time applications where responsive input is critical.
+`PDJE_Input` is the current public entry point for low-latency keyboard, mouse,
+and MIDI ingestion.
 
-Platform Support
------------------
-
-The Input Engine provides platform-specific backends to achieve the best possible performance:
-
-*   **Windows:** Uses the **Raw Input API** to capture keyboard and mouse events. To ensure low latency and isolation, input is handled in a separate child process, with data securely transmitted back to the main process using a robust Inter-Process Communication (IPC) system.
-*   **Linux:** Uses the **`evdev`** (event device) interface to directly read events from input devices, bypassing higher-level abstractions for lower latency.
-*   **macOS:** Planned, but not implemented in the current source tree.
-
-Usage Overview
---------------
-
-The primary interface for the Input Engine is the `PDJE_Input` class. Its typical lifecycle involves:
-
-1.  **Initialization:** Calling `Init()` to prepare the input system.
-2.  **Device Discovery:** Using `GetDevs()` and `GetMIDIDevs()` to identify available input devices.
-3.  **Configuration:** Selecting specific devices and passing them to `Config()` to enable input processing for those devices.
-4.  **Data Line Connection:** Obtaining an `PDJE_INPUT_DATA_LINE` via `PullOutDataLine()` to receive processed input events.
-5.  **Running the Loop:** Starting the input processing with `Run()`.
-6.  **Event Consumption:** Continuously reading events from the `PDJE_INPUT_DATA_LINE`.
-7.  **Termination:** Stopping the input loop with `Kill()` when input is no longer needed.
-
-Classes & Functions
--------------------
+Public Types
+------------
 
 .. doxygenclass:: PDJE_Input
-    :project: Project_DJ_Engine
-
-    The `PDJE_Input` class manages all aspects of input device interaction. It abstracts away platform-specific implementations and provides a unified API for keyboard, mouse, and MIDI input.
+   :project: Project_DJ_Engine
 
 .. doxygenstruct:: DeviceData
-    :project: Project_DJ_Engine
-
-    The `DeviceData` struct provides a standardized way to describe an input device, including its type (e.g., `MOUSE`, `KEYBOARD`), a human-readable name, and a platform-specific identifier.
+   :project: Project_DJ_Engine
 
 .. doxygenenum:: PDJE_Dev_Type
-    :project: Project_DJ_Engine
+   :project: Project_DJ_Engine
 
-.. doxygenfunction:: PDJE_Input::Init()
-    :project: Project_DJ_Engine
+.. doxygenenum:: PDJE_INPUT_STATE
+   :project: Project_DJ_Engine
 
-    Initializes the internal components of the input engine, including platform-specific backends and the MIDI engine. This must be called before discovering or configuring devices.
+Platform Behavior
+-----------------
 
-.. doxygenfunction:: PDJE_Input::Config
-    :project: Project_DJ_Engine
+- **Windows** uses the Raw Input subprocess and IPC path and currently reports
+  the backend string `rawinput-ipc`.
+- **Linux** can use the evdev path directly or a Wayland-backed path when
+  device selection requires it.
+- **macOS** is not implemented in the current source tree.
 
-    Configures the input engine with the selected `DeviceData` for standard input (keyboard/mouse) and `libremidi::input_port` for MIDI devices. Only configured devices will generate input events.
-    
-    :param devs: A vector of `DeviceData` structs representing the keyboard and mouse devices to enable. Pass an empty vector if no standard input is required.
-    :param midi_dev: A vector of `libremidi::input_port` objects representing the MIDI devices to enable. Pass an empty vector if no MIDI input is required.
-    :returns: `true` if configuration was successful, `false` otherwise.
+Transport Notes
+---------------
+
+The older docs spent more time on transport details, and that context is still
+useful:
+
+- On Windows, standard input is intentionally isolated behind a child-process
+  Raw Input path so the engine can collect low-latency keyboard and mouse data
+  and ship it back through IPC.
+- On Linux, the default low-level path is evdev. When evdev is not the path the
+  current environment can use, the engine can also operate through the
+  Wayland-backed route described by `Init(...)`.
+- MIDI is handled as a separate stream and surfaces through `midi_datas` even
+  though the standard input backend and MIDI engine are configured together.
+
+Binding Status
+--------------
+
+The older docs also covered non-C++ integration paths. The current split is:
+
+- the in-tree SWIG C# and Python bindings do not expose `PDJE_Input`
+- the Godot-facing wrapper path is still the documented non-C++ route for this
+  module
+- that Godot wrapper uses `PDJE_Input_Module` together with an `InputLine` node
+  that emits keyboard and MIDI signals instead of handing out raw transport
+  pointers
+
+Initialization Signature
+------------------------
+
+.. doxygenfunction:: PDJE_Input::Init
+   :project: Project_DJ_Engine
+
+`Init()` accepts optional platform handles:
+
+- `platform_ctx0`
+  on Linux is expected to be `wl_display*` when the host already owns the
+  Wayland connection
+- `platform_ctx1`
+  on Linux is expected to be `wl_surface*` when the host already owns the
+  Wayland surface
+- `use_internal_window`
+  allows PDJE to create its own internal Wayland window when a Wayland fallback
+  is needed and host handles are not available
+
+Windows keeps the same signature for parity but ignores these parameters in the
+current implementation.
+
+Current Lifecycle
+-----------------
+
+The tested integration path in the current tree is:
+
+1. Call `Init(...)`.
+2. Discover devices with `GetDevs()` and `GetMIDIDevs()`.
+3. Select at least one keyboard or mouse device for the standard backend, then
+   add any desired MIDI ports.
+4. Call `Config(...)`.
+5. Inspect `GetCurrentInputBackend()` if you need to know which backend was
+   selected.
+6. Acquire a `PDJE_INPUT_DATA_LINE` with `PullOutDataLine()`.
+7. Call `Run()`.
+8. Consume `input_arena` and `midi_datas`.
+9. Call `Kill()` on shutdown.
+
+Selected methods:
 
 .. doxygenfunction:: PDJE_Input::GetDevs
-    :project: Project_DJ_Engine
-
-    Discovers all currently connected standard input devices (keyboards and mice) and returns them as a list of `DeviceData` structs.
+   :project: Project_DJ_Engine
 
 .. doxygenfunction:: PDJE_Input::GetMIDIDevs
-    :project: Project_DJ_Engine
-    
-    Discovers all currently connected MIDI input devices and returns them as a list of `libremidi::input_port` objects.
-    
-.. doxygenfunction:: PDJE_Input::Run()
-    :project: Project_DJ_Engine
+   :project: Project_DJ_Engine
 
-    Starts the input processing loops for all configured devices. Once running, input events will be available via the `PDJE_INPUT_DATA_LINE`.
+.. doxygenfunction:: PDJE_Input::Config
+   :project: Project_DJ_Engine
 
-.. doxygenfunction:: PDJE_Input::Kill()
-    :project: Project_DJ_Engine
+.. doxygenfunction:: PDJE_Input::GetState
+   :project: Project_DJ_Engine
 
-    Stops all input processing loops and releases associated resources. It is good practice to call this when input is no longer needed (e.g., at application shutdown).
+.. doxygenfunction:: PDJE_Input::GetCurrentInputBackend
+   :project: Project_DJ_Engine
 
-.. doxygenfunction:: PDJE_Input::GetState()
-    :project: Project_DJ_Engine
+.. doxygenfunction:: PDJE_Input::Run
+   :project: Project_DJ_Engine
 
-    Returns the current operational state of the `PDJE_Input` module (e.g., `DEVICE_CONFIG_STATE`, `INPUT_LOOP_RUNNING`).
+.. doxygenfunction:: PDJE_Input::Kill
+   :project: Project_DJ_Engine
 
 .. doxygenfunction:: PDJE_Input::PullOutDataLine
-    :project: Project_DJ_Engine
+   :project: Project_DJ_Engine
 
-    Provides access to the `PDJE_INPUT_DATA_LINE`, a zero-copy mechanism for receiving input events from the engine. This data line contains pointers to buffers where processed keyboard, mouse, and MIDI events are stored.
+Data Line Semantics
+-------------------
 
-Example Usage
--------------
-    
-.. tab-set-code:: 
+.. doxygenstruct:: PDJE_INPUT_DATA_LINE
+   :project: Project_DJ_Engine
 
-    .. code-block:: c++
+`PDJE_INPUT_DATA_LINE` exposes two optional pointers:
 
-        PDJE_Input input;
-        input.Init(); // 1. Initialize the input system
+- `input_arena`
+  points at the standard keyboard and mouse event transport. Call
+  `input_arena->Receive()` before reading `input_arena->datas`.
+- `midi_datas`
+  points at `Atomic_Double_Buffer<PDJE_MIDI::MIDI_EV>`. Call `Get()` to swap
+  buffers and read the current vector snapshot.
 
-        // 2. Discover available devices
-        auto     devs = input.GetDevs();
-        auto     midi_devs = input.GetMIDIDevs();
+Operationally:
 
-        // Prepare target lists for configuration
-        DEV_LIST set_targets;
-        std::vector<libremidi::input_port> target_midi;
+- `input_arena` is the keyboard and mouse lane the judge currently expects when
+  `Judge_Init::SetInputLine()` validates the input path
+- `midi_datas` is a separate MIDI lane and can be consumed independently of the
+  standard input events
 
-        std::cout << "Available Devices:" << std::endl;
-        for (auto &d : devs) {
-            std::cout << "  Name: " << d.Name << ", Type: " << (d.Type == PDJE_Dev_Type::MOUSE ? "mouse" : (d.Type == PDJE_Dev_Type::KEYBOARD ? "keyboard" : "unknown")) << ", ID: " << d.device_specific_id << std::endl;
-            // Example: Add all keyboards to target
-            if (d.Type == PDJE_Dev_Type::KEYBOARD) {
-                set_targets.push_back(d);
-            }
-        }
-        std::cout << "Available MIDI Devices:" << std::endl;
-        for (auto &m : midi_devs){
-            std::cout << "  Port Name: " << m.port_name << ", API: " << m.api << ", ID: " << m.port_id << std::endl;
-            // Example: Select a specific MIDI port
-            // if(m.port_name == "My MIDI Controller") {
-            //     target_midi.push_back(m);
-            // }
-            target_midi.push_back(m); // For demonstration, add all MIDI devices
-        }
+Example
+-------
 
-        // 3. Configure selected devices
-        input.Config(set_targets, target_midi); 
-        // input.Config(set_targets, std::vector<libremidi::input_port>()); // Config only keyboards/mice
-        // input.Config(std::vector<DeviceData>(), target_midi);             // Config only MIDI
+.. code-block:: c++
 
-        // 4. Connect to the data line
-        auto dline = input.PullOutDataLine();
+   PDJE_Input input;
+   if (!input.Init(nullptr, nullptr, false)) {
+       return;
+   }
 
-        // 5. Run the input loop
-        input.Run();
+   auto devs = input.GetDevs();
+   auto midi_ports = input.GetMIDIDevs();
 
-        std::cout << "Input loop running. Press Ctrl+C to stop." << std::endl;
+   DEV_LIST selected_standard;
+   std::vector<libremidi::input_port> selected_midi;
 
-        // 6. Continuously consume input events (example loop)
-        while (input.GetState() == PDJE_INPUT_STATE::INPUT_LOOP_RUNNING) {
-            // Handle Keyboard/Mouse Input (if configured)
-            if (dline.input_arena) {
-                dline.input_arena->Receive(); // On Windows, this signals and waits for data; on Linux, it gets the latest buffer
-                for (const auto &i : dline.input_arena->datas) {
-                    std::cout << "KM Event - Dev: " << (std::string(i.name, i.name_len)) << ", Time: " << i.microSecond;
-                    if (i.type == PDJE_Dev_Type::KEYBOARD) {
-                        std::cout << ", Key: " << static_cast<int>(i.event.keyboard.k) << ", Pressed: " << (i.event.keyboard.pressed ? "true" : "false");
-                    } else if (i.type == PDJE_Dev_Type::MOUSE) {
-                        std::cout << ", Mouse Btn: " << i.event.mouse.button_type << ", Wheel: " << i.event.mouse.wheel_move << ", X: " << i.event.mouse.x << ", Y: " << i.event.mouse.y;
-                    }
-                    std::cout << std::endl;
-                }
-            }
+   for (const auto &dev : devs) {
+       if (dev.Type == PDJE_Dev_Type::KEYBOARD) {
+           selected_standard.push_back(dev);
+       }
+   }
 
-            // Handle MIDI Input (if configured)
-            if (dline.midi_datas) {
-                auto midi_events = dline.midi_datas->Get(); // Get the latest buffered MIDI events
-                for (const auto &midi_ev : *midi_events) {
-                    std::cout << "MIDI Event - Port: " << (std::string(midi_ev.port_name, midi_ev.port_name_len)) << ", Type: " << static_cast<int>(midi_ev.type) << ", Ch: " << static_cast<int>(midi_ev.ch) << ", Pos: " << static_cast<int>(midi_ev.pos) << ", Val: " << midi_ev.value << ", Time: " << midi_ev.highres_time << std::endl;
-                }
-            }
-            std::this_thread::sleep_for(std::chrono::milliseconds(10)); // Prevent busy-waiting
-        }
+   for (const auto &port : midi_ports) {
+       selected_midi.push_back(port);
+   }
 
+   if (!input.Config(selected_standard, selected_midi)) {
+       return;
+   }
 
-        // 7. Termination
-        input.Kill();
-        std::cout << "Input loop terminated." << std::endl;
-    
-    .. code-block:: c#
+   auto backend = input.GetCurrentInputBackend();
+   auto line = input.PullOutDataLine();
 
-        //no impl
+   if (!input.Run()) {
+       return;
+   }
 
-    .. code-block:: python
+   while (input.GetState() == PDJE_INPUT_STATE::INPUT_LOOP_RUNNING) {
+       if (line.input_arena) {
+           line.input_arena->Receive();
+           for (const auto &event : line.input_arena->datas) {
+               std::string device_name(event.name, event.name_len);
+               (void)device_name;
+               (void)event.microSecond;
+           }
+       }
 
-        #no impl
-        
-    .. code-block:: gdscript
-        
-        extends Node
-        var IM:PDJE_Input_Module
+       if (line.midi_datas) {
+           auto *midi_events = line.midi_datas->Get();
+           for (const auto &event : *midi_events) {
+               std::string port_name(event.port_name, event.port_name_len);
+               (void)port_name;
+               (void)event.highres_time;
+           }
+       }
 
-        func _ready():
-            IM = PDJE_Input_Module.new()
-            IM.Init()
-            var configlist:Array
-            for i in dev:
-                if i["type"] == "KEYBOARD":
-                    configlist.push_back(i)
-            var mididevs = IM.GetMIDIDevs()
-            print(mididevs)
-            IM.Config(dev, mididevs)#if you don't need kb&mouse or midi, send blank array.
+       std::this_thread::sleep_for(std::chrono::milliseconds(10));
+   }
 
-            IM.InitializeInputLine($InputLine)#connect InputLine Node. you can find it in "Add Child Node" tab
-            IM.Run()
+   (void)backend;
+   input.Kill();
 
-        func _process():
-            $InputLine.emit_input_signal()
+Notes
+-----
 
-        #connect this function with InputLine Node. you can find it in the signals tab. beside the inspector tab.
-        func _on_input_line_pdje_input_keyboard_signal(device_id:String, device_name:String, microsecond_string:String, keyboard_key:int, isPressed:bool):
-            print(device_id, device_name, microsecond_string)
-        
-        func _on_input_line_pdje_midi_input_signal(port_name: String, input_type: String, channel: int, position: int, value: int, microsecond_string: String) -> void:
-	        print(port_name, input_type, position, microsecond_string)
-        
-        #IM.Kill()#use kill function to deactivate input module. use after game stage.
+- `GetCurrentInputBackend()` returns `"none"` until `default_devs` has been
+  initialized.
+- Reacquire the data line after tearing down and rebuilding the input module.
+- The judge module currently expects `SetInputLine()` to receive a non-null
+  `input_arena`, so the tested path includes a configured standard backend even
+  when MIDI rails are also used.
+- Keep device selection explicit. `GetDevs()` is for standard devices,
+  `GetMIDIDevs()` is for MIDI ports, and `Config(...)` is where the two streams
+  are joined into one input runtime.
 
+Godot Wrapper Example
+---------------------
 
-To use PDJE without Input Engine module, use :doc:`/Data_Lines`.
+.. code-block:: gdscript
+
+   extends Node
+
+   var input_module:PDJE_Input_Module
+
+   func _ready():
+       input_module = PDJE_Input_Module.new()
+       input_module.Init()
+
+       var selected_devices:Array = []
+       for device in input_module.GetDevs():
+           if device["type"] == "KEYBOARD":
+               selected_devices.push_back(device)
+
+       var selected_midi_devices = input_module.GetMIDIDevs()
+       input_module.Config(selected_devices, selected_midi_devices)
+
+       input_module.InitializeInputLine($InputLine)
+       input_module.Run()
+
+   func _process(_delta):
+       $InputLine.emit_input_signal()
+
+   func _on_input_line_pdje_input_keyboard_signal(device_id, device_name,
+                                                  microsecond_string,
+                                                  keyboard_key, is_pressed):
+       print(device_id, device_name, microsecond_string, keyboard_key,
+             is_pressed)
+
+   func _on_input_line_pdje_midi_input_signal(port_name, input_type, channel,
+                                              position, value,
+                                              microsecond_string):
+       print(port_name, input_type, channel, position, value,
+             microsecond_string)

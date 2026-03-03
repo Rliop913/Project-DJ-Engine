@@ -14,6 +14,7 @@ Program Listing for File InputCore.hpp
    #include "Input_Transfer.hpp"
    #include "PDJE_Highres_Clock.hpp"
    #include "PDJE_Input_Device_Data.hpp"
+   #include <atomic>
    #include <bitset>
    #include <filesystem>
    #include <libevdev/libevdev.h>
@@ -30,6 +31,8 @@ Program Listing for File InputCore.hpp
        DrainEvents(const int epFD, int FD, libevdev *evdev);
        void
        use_event(const input_event &evtrig, const int FD);
+       void
+       RemoveDeviceFD(int epFD, int FD);
        PDJE_HIGHRES_CLOCK::CLOCK clock;
    
        void
@@ -39,6 +42,13 @@ Program Listing for File InputCore.hpp
        mouseRead(const input_event &evtrig, const int FD);
    
      public:
+       struct AddResult {
+           bool ok            = false;
+           bool open_failed   = false;
+           int  error_code    = 0;
+           bool evdev_init_failed = false;
+       };
+   
        struct {
            std::atomic<bool> loop_switch   = true;
            int               stop_event_fd = -1;
@@ -54,7 +64,7 @@ Program Listing for File InputCore.hpp
        {
            out = input_trsf;
        }
-       bool
+       AddResult
        Add(const fs::path &target, PDJE_Dev_Type type, std::string name);
        void
        Trig();

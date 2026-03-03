@@ -53,7 +53,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html#about-beat-subbeat-separate">About Beat &amp; subBeat &amp; Separate</a></li>
 </ul>
 
         </div>
@@ -85,72 +84,11 @@
 <p>↰ <a class="reference internal" href="file_include_core_editor_pdjeLinter_trackLinter.cpp.html#file-include-core-editor-pdjelinter-tracklinter-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include/core/editor/pdjeLinter/trackLinter.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;CapnpBinary.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;MixBinary.capnp.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;TrackLinterRules.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;fileNameSanitizer.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;pdjeLinter.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdint&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unordered_map&gt;</span>
-
-<span class="k">using</span><span class="w"> </span><span class="n">ID_LOADED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">int32_t</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="p">;</span>
-
-<span class="kt">void</span>
-<span class="nf">FillIdHasLoad</span><span class="p">(</span><span class="n">ID_LOADED</span><span class="w">      </span><span class="o">&amp;</span><span class="n">accumulate_data</span><span class="p">,</span>
-<span class="w">              </span><span class="k">const</span><span class="w"> </span><span class="n">TypeEnum</span><span class="w"> </span><span class="o">&amp;</span><span class="n">type</span><span class="p">,</span>
-<span class="w">              </span><span class="k">const</span><span class="w"> </span><span class="kt">int32_t</span><span class="w">  </span><span class="o">&amp;</span><span class="n">id</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">accumulate_data</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="n">id</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">accumulate_data</span><span class="p">[</span><span class="n">id</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">LOAD</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">accumulate_data</span><span class="p">[</span><span class="n">id</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kt">void</span>
-<span class="nf">FillIdHasUnLoad</span><span class="p">(</span><span class="n">ID_LOADED</span><span class="w">      </span><span class="o">&amp;</span><span class="n">accumulate_data</span><span class="p">,</span>
-<span class="w">                </span><span class="k">const</span><span class="w"> </span><span class="n">TypeEnum</span><span class="w"> </span><span class="o">&amp;</span><span class="n">type</span><span class="p">,</span>
-<span class="w">                </span><span class="k">const</span><span class="w"> </span><span class="kt">int32_t</span><span class="w">  </span><span class="o">&amp;</span><span class="n">id</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">accumulate_data</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="n">id</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">accumulate_data</span><span class="p">[</span><span class="n">id</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">UNLOAD</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">accumulate_data</span><span class="p">[</span><span class="n">id</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-<span class="kt">bool</span>
-<span class="nf">CheckIDHasLoad</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ID_LOADED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">acc_data</span><span class="p">,</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">FLAG_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">id</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">acc_data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">.</span><span class="n">second</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">FLAG_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<span class="w">            </span><span class="n">msg</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">&quot; ID &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">id</span><span class="p">.</span><span class="n">first</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; has &quot;</span><span class="w"> </span><span class="o">+</span>
-<span class="w">                   </span><span class="p">(</span><span class="n">id</span><span class="p">.</span><span class="n">second</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">id</span><span class="p">.</span><span class="n">second</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-<span class="w">                                     </span><span class="s">&quot; load command. render failed.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="w">                                  </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;no load command. render failed.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">FLAG_OK</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">bool</span>
-<span class="nf">CheckIDHasUnLoad</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ID_LOADED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">acc_data</span><span class="p">,</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">FLAG_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">id</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">acc_data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">.</span><span class="n">second</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">FLAG_OK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<span class="w">            </span><span class="n">msg</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">&quot; ID &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">id</span><span class="p">.</span><span class="n">first</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; has &quot;</span><span class="w"> </span><span class="o">+</span>
-<span class="w">                   </span><span class="p">(</span><span class="n">id</span><span class="p">.</span><span class="n">second</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">id</span><span class="p">.</span><span class="n">second</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
-<span class="w">                                     </span><span class="s">&quot; unload command. render failed.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="w">                                  </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;no unload command. render failed.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">FLAG_OK</span><span class="p">;</span>
-<span class="p">}</span>
 
 <span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
 <span class="kt">bool</span>
@@ -163,17 +101,24 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">td</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trackReader</span><span class="p">.</span><span class="n">Rp</span><span class="o">-&gt;</span><span class="n">getDatas</span><span class="p">();</span>
 
-<span class="w">    </span><span class="n">ID_LOADED</span><span class="w"> </span><span class="n">id_has_load</span><span class="p">;</span>
-<span class="w">    </span><span class="n">ID_LOADED</span><span class="w"> </span><span class="n">id_has_unload</span><span class="p">;</span>
+<span class="w">    </span><span class="n">PDJE_TRACK_LINTER_RULES</span><span class="o">::</span><span class="n">TrackLinterIdCount</span><span class="w"> </span><span class="n">id_has_load</span><span class="p">;</span>
+<span class="w">    </span><span class="n">PDJE_TRACK_LINTER_RULES</span><span class="o">::</span><span class="n">TrackLinterIdCount</span><span class="w"> </span><span class="n">id_has_unload</span><span class="p">;</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">td</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">FillIdHasLoad</span><span class="p">(</span><span class="n">id_has_load</span><span class="p">,</span><span class="w"> </span><span class="n">td</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">getType</span><span class="p">(),</span><span class="w"> </span><span class="n">td</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">getId</span><span class="p">());</span>
-<span class="w">        </span><span class="n">FillIdHasUnLoad</span><span class="p">(</span><span class="n">id_has_unload</span><span class="p">,</span><span class="w"> </span><span class="n">td</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">getType</span><span class="p">(),</span><span class="w"> </span><span class="n">td</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">getId</span><span class="p">());</span>
+<span class="w">        </span><span class="n">PDJE_TRACK_LINTER_RULES</span><span class="o">::</span><span class="n">AccumulateIf</span><span class="p">(</span><span class="n">id_has_load</span><span class="p">,</span>
+<span class="w">                                              </span><span class="n">td</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">getId</span><span class="p">(),</span>
+<span class="w">                                              </span><span class="n">td</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">getType</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">LOAD</span><span class="p">);</span>
+<span class="w">        </span><span class="n">PDJE_TRACK_LINTER_RULES</span><span class="o">::</span><span class="n">AccumulateIf</span><span class="p">(</span>
+<span class="w">            </span><span class="n">id_has_unload</span><span class="p">,</span>
+<span class="w">            </span><span class="n">td</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">getId</span><span class="p">(),</span>
+<span class="w">            </span><span class="n">td</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">getType</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">TypeEnum</span><span class="o">::</span><span class="n">UNLOAD</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">FLAG_RESULT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">CheckIDHasLoad</span><span class="p">(</span><span class="n">id_has_load</span><span class="p">,</span><span class="w"> </span><span class="n">lint_msg</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">PDJE_TRACK_LINTER_RULES</span><span class="o">::</span><span class="n">ValidateExactlyOne</span><span class="p">(</span>
+<span class="w">            </span><span class="n">id_has_load</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;load&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lint_msg</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">FLAG_RESULT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">CheckIDHasUnLoad</span><span class="p">(</span><span class="n">id_has_unload</span><span class="p">,</span><span class="w"> </span><span class="n">lint_msg</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">PDJE_TRACK_LINTER_RULES</span><span class="o">::</span><span class="n">ValidateExactlyOne</span><span class="p">(</span>
+<span class="w">            </span><span class="n">id_has_unload</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;unload&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lint_msg</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">FLAG_RESULT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 

@@ -72,7 +72,7 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_namespacePDJE__JUDGE_1aa78869a4b4648bc707f541ee760da05e`
+- :ref:`exhale_function_namespacePDJE__JUDGE_1a574c44c479b58a00664b5f822ee8aae2`
 
 - :ref:`exhale_function_namespacePDJE__JUDGE_1ab1198e8ebc5c563e17abbef3a7523c3e`
 
@@ -124,7 +124,9 @@ Variables
 
 - :ref:`exhale_variable_namespacePDJE__JUDGE_1a49aeda368d2cf3a66f5f62f6a9238714`
 
-- :ref:`exhale_variable_namespacePDJE__JUDGE_1a714bad3267563db99990da3e32a42c5c`
+- :ref:`exhale_variable_namespacePDJE__JUDGE_1a445bd2ed97e90f1e4bde64c6c9525f9e`
+
+- :ref:`exhale_variable_namespacePDJE__JUDGE_1af240458754baff6cd37c60a6eacc4c88`
 
 - :ref:`exhale_variable_namespacePDJE__JUDGE_1ada74348e8e211eaf4e1157ab15e4a8ae`
 

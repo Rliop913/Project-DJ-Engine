@@ -15,6 +15,7 @@ Directory TimeLine
 Subdirectories
 --------------
 
+- :ref:`dir_include_core_editor_TimeLine_DiffMachine`
 - :ref:`dir_include_core_editor_TimeLine_EventMarker`
 - :ref:`dir_include_core_editor_TimeLine_GitDataPack`
 - :ref:`dir_include_core_editor_TimeLine_JSONWrap`
@@ -26,5 +27,6 @@ Files
 
 - :ref:`file_include_core_editor_TimeLine_TimeLine.cpp`
 - :ref:`file_include_core_editor_TimeLine_TimeLine.hpp`
+- :ref:`file_include_core_editor_TimeLine_TimeLineDiffTypes.hpp`
 
 
