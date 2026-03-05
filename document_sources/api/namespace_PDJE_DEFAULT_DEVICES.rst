@@ -30,32 +30,30 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structPDJE__DEFAULT__DEVICES_1_1DefaultDevs_1_1device__metadata`
+- :ref:`exhale_struct_struct_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1_1device__metadata`
 
-- :ref:`exhale_struct_structPDJE__DEFAULT__DEVICES_1_1HandleCloser`
+- :ref:`exhale_struct_struct_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_handle_closer`
 
-- :ref:`exhale_struct_structPDJE__DEFAULT__DEVICES_1_1WaylandDynLibOps`
+- :ref:`exhale_struct_struct_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_wayland_dyn_lib_ops`
 
-- :ref:`exhale_struct_structPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeStatus`
+- :ref:`exhale_struct_struct_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_wayland_runtime_status`
 
-- :ref:`exhale_class_classPDJE__DEFAULT__DEVICES_1_1DefaultDevs`
+- :ref:`exhale_class_class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs`
 
-- :ref:`exhale_class_classPDJE__DEFAULT__DEVICES_1_1DefaultDevs__Origin`
-
-- :ref:`exhale_class_classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader`
+- :ref:`exhale_class_class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_wayland_runtime_loader`
 
 
 Enums
 -----
 
 
-- :ref:`exhale_enum_namespacePDJE__DEFAULT__DEVICES_1ae16689a3920d6ddb9a03e669033334b7`
+- :ref:`exhale_enum_namespace_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1ae16689a3920d6ddb9a03e669033334b7`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef_namespacePDJE__DEFAULT__DEVICES_1aa7e4ca976f3fb919792fb80a98ba5dc6`
+- :ref:`exhale_typedef_namespace_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1aa7e4ca976f3fb919792fb80a98ba5dc6`
 
-- :ref:`exhale_typedef_namespacePDJE__DEFAULT__DEVICES_1a6874e9b2d750bcb78c3ed3ea925ee482`
+- :ref:`exhale_typedef_namespace_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1a6874e9b2d750bcb78c3ed3ea925ee482`

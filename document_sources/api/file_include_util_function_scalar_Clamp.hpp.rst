@@ -4,7 +4,7 @@
 File Clamp.hpp
 ==============
 
-|exhale_lsh| :ref:`Parent directory <dir_include_util_function_scalar>` (``include/util/function/scalar``)
+|exhale_lsh| :ref:`Parent directory <dir_include_util_function_scalar>` (``include\util\function\scalar``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Clamp.hpp
    :local:
    :backlinks: none
 
-Definition (``include/util/function/scalar/Clamp.hpp``)
+Definition (``include\util\function\scalar\Clamp.hpp``)
 -------------------------------------------------------
 
 
@@ -32,7 +32,7 @@ Includes
 
 - ``algorithm``
 
-- ``util/common/Result.hpp`` (:ref:`file_include_util_common_Result.hpp`)
+- ``util/common/Result.hpp``
 
 
 
@@ -58,12 +58,12 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structPDJE__UTIL_1_1function_1_1ClampArgs`
+- :ref:`exhale_struct_struct_p_d_j_e___u_t_i_l_1_1function_1_1_clamp_args`
 
 
 Functions
 ---------
 
 
-- :ref:`exhale_function_namespacePDJE__UTIL_1_1function_1a9e26d8c8d51b6a6306cfe8e3e197d0e6`
+- :ref:`exhale_function_namespace_p_d_j_e___u_t_i_l_1_1function_1a9e26d8c8d51b6a6306cfe8e3e197d0e6`
 

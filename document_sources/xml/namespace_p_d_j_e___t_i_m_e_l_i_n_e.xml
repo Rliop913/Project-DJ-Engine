@@ -5,7 +5,53 @@
     <innerclass refid="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_branch_line" prot="public">PDJE_TIMELINE::BranchLine</innerclass>
     <innerclass refid="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_event_marker" prot="public">PDJE_TIMELINE::EventMarker</innerclass>
     <innerclass refid="struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_git_data" prot="public">PDJE_TIMELINE::GitData</innerclass>
+    <innerclass refid="struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_music_meta_field_diff" prot="public">PDJE_TIMELINE::MusicMetaFieldDiff</innerclass>
     <innerclass refid="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line" prot="public">PDJE_TIMELINE::TimeLine</innerclass>
+    <innerclass refid="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_diff_machine" prot="public">PDJE_TIMELINE::TimeLineDiffMachine</innerclass>
+    <innerclass refid="class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_diff_machine_core" prot="public">PDJE_TIMELINE::TimeLineDiffMachineCore</innerclass>
+    <innerclass refid="struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_semantic_diff_result" prot="public">PDJE_TIMELINE::TimeLineSemanticDiffResult</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespace_p_d_j_e___t_i_m_e_l_i_n_e_1aab72ba929c50c7e6ab8c88f46105b96d" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>TimeLineDiffKind</name>
+        <qualifiedname>PDJE_TIMELINE::TimeLineDiffKind</qualifiedname>
+        <enumvalue id="namespace_p_d_j_e___t_i_m_e_l_i_n_e_1aab72ba929c50c7e6ab8c88f46105b96da5240ba2ae676b63d2bf1d706a9016990" prot="public">
+          <name>KV</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_p_d_j_e___t_i_m_e_l_i_n_e_1aab72ba929c50c7e6ab8c88f46105b96dac47ad3df475a6c89b4a162f268fb59c8" prot="public">
+          <name>MIX</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_p_d_j_e___t_i_m_e_l_i_n_e_1aab72ba929c50c7e6ab8c88f46105b96da10de4bc81f754b19b0d27246a0589c05" prot="public">
+          <name>NOTE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_p_d_j_e___t_i_m_e_l_i_n_e_1aab72ba929c50c7e6ab8c88f46105b96dad74c735013cdd2b883e25ccca502a2e9" prot="public">
+          <name>MUSIC</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/editor/TimeLine/TimeLineDiffTypes.hpp" line="11" column="1" bodyfile="include/core/editor/TimeLine/TimeLineDiffTypes.hpp" bodystart="11" bodyend="11"/>
+      </memberdef>
+    </sectiondef>
     <sectiondef kind="typedef">
       <memberdef kind="typedef" id="namespace_p_d_j_e___t_i_m_e_l_i_n_e_1a7f3a24ec3f3f8e7cf279712367924ce3" prot="public" static="no">
         <type>std::string</type>
@@ -161,11 +207,45 @@
         </inbodydescription>
         <location file="include/core/editor/TimeLine/LineVersion/LineVersion.hpp" line="31" column="1" bodyfile="include/core/editor/TimeLine/LineVersion/LineVersion.hpp" bodystart="31" bodyend="43"/>
       </memberdef>
+      <memberdef kind="function" id="namespace_p_d_j_e___t_i_m_e_l_i_n_e_1ab83bb0336ea942465a28915f5d82fe9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_semantic_diff_result" kindref="compound">TimeLineSemanticDiffResult</ref> &gt;</type>
+        <definition>std::optional&lt; TimeLineSemanticDiffResult &gt; PDJE_TIMELINE::BuildTimeLineSemanticDiff</definition>
+        <argsstring>(git_repository *repo, const std::string &amp;target_file, const OID &amp;origin, const OID &amp;compare, TimeLineDiffKind kind)</argsstring>
+        <name>BuildTimeLineSemanticDiff</name>
+        <qualifiedname>PDJE_TIMELINE::BuildTimeLineSemanticDiff</qualifiedname>
+        <param>
+          <type>git_repository *</type>
+          <declname>repo</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>target_file</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespace_p_d_j_e___t_i_m_e_l_i_n_e_1a7f3a24ec3f3f8e7cf279712367924ce3" kindref="member">OID</ref> &amp;</type>
+          <declname>origin</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespace_p_d_j_e___t_i_m_e_l_i_n_e_1a7f3a24ec3f3f8e7cf279712367924ce3" kindref="member">OID</ref> &amp;</type>
+          <declname>compare</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_p_d_j_e___t_i_m_e_l_i_n_e_1aab72ba929c50c7e6ab8c88f46105b96d" kindref="member">TimeLineDiffKind</ref></type>
+          <declname>kind</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/editor/TimeLine/TimeLine.cpp" line="9" column="1" bodyfile="include/core/editor/TimeLine/TimeLine.cpp" bodystart="9" bodyend="43" declfile="include/core/editor/TimeLine/TimeLineDiffTypes.hpp" declline="49" declcolumn="1"/>
+      </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="include/core/editor/TimeLine/EventMarker/EventMarker.hpp" line="15" column="1"/>
+    <location file="include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-KV.cpp" line="11" column="1"/>
   </compounddef>
 </doxygen>

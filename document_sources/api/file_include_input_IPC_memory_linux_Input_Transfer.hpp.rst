@@ -4,7 +4,7 @@
 File Input_Transfer.hpp
 =======================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_IPC_memory_linux>` (``include/input/IPC/memory/linux``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_IPC_memory_linux>` (``include\input\IPC\memory\linux``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Input_Transfer.hpp
    :local:
    :backlinks: none
 
-Definition (``include/input/IPC/memory/linux/Input_Transfer.hpp``)
+Definition (``include\input\IPC\memory\linux\Input_Transfer.hpp``)
 ------------------------------------------------------------------
 
 
@@ -58,5 +58,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classPDJE__IPC_1_1PDJE__Input__Transfer`
+- :ref:`exhale_class_class_p_d_j_e___i_p_c_1_1_p_d_j_e___input___transfer`
 

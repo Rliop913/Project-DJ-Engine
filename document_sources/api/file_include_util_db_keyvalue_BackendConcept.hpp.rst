@@ -4,7 +4,7 @@
 File BackendConcept.hpp
 =======================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_util_db_keyvalue>` (``include/util/db/keyvalue``)
+|exhale_lsh| :ref:`Parent directory <dir_include_util_db_keyvalue>` (``include\util\db\keyvalue``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File BackendConcept.hpp
    :local:
    :backlinks: none
 
-Definition (``include/util/db/keyvalue/BackendConcept.hpp``)
+Definition (``include\util\db\keyvalue\BackendConcept.hpp``)
 ------------------------------------------------------------
 
 
@@ -36,9 +36,9 @@ Includes
 
 - ``string_view``
 
-- ``util/common/Result.hpp`` (:ref:`file_include_util_common_Result.hpp`)
+- ``util/common/Result.hpp``
 
-- ``util/db/DbTypes.hpp`` (:ref:`file_include_util_db_DbTypes.hpp`)
+- ``util/db/DbTypes.hpp``
 
 - ``vector``
 

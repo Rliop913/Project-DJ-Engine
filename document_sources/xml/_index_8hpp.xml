@@ -1,0 +1,263 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="_index_8hpp" kind="file" language="C++">
+    <compoundname>Index.hpp</compoundname>
+    <includes refid="nearest_2_backend_concept_8hpp" local="yes">util/db/nearest/BackendConcept.hpp</includes>
+    <includes local="no">utility</includes>
+    <includedby refid="_p_d_j_e___util_8hpp" local="yes">include/util/PDJE_Util.hpp</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>util/common/Result.hpp</label>
+        <link refid="_result_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>util/common/Status.hpp</label>
+        <link refid="_status_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>util/common/StatusCode.hpp</label>
+        <link refid="_status_code_8hpp"/>
+      </node>
+      <node id="9">
+        <label>util/db/DbTypes.hpp</label>
+        <link refid="_db_types_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>util/db/nearest/BackendConcept.hpp</label>
+        <link refid="nearest_2_backend_concept_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/util/db/nearest/Index.hpp</label>
+        <link refid="_index_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>util/db/nearest/Types.hpp</label>
+        <link refid="nearest_2_types_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>concepts</label>
+      </node>
+      <node id="10">
+        <label>cstddef</label>
+      </node>
+      <node id="12">
+        <label>optional</label>
+      </node>
+      <node id="14">
+        <label>span</label>
+      </node>
+      <node id="6">
+        <label>string</label>
+      </node>
+      <node id="15">
+        <label>string_view</label>
+      </node>
+      <node id="7">
+        <label>utility</label>
+      </node>
+      <node id="11">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/util/PDJE_Util.hpp</label>
+        <link refid="_p_d_j_e___util_8hpp"/>
+      </node>
+      <node id="1">
+        <label>include/util/db/nearest/Index.hpp</label>
+        <link refid="_index_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index" prot="public">PDJE_UTIL::db::nearest::NearestNeighborIndex</innerclass>
+    <innernamespace refid="namespace_p_d_j_e___u_t_i_l">PDJE_UTIL</innernamespace>
+    <innernamespace refid="namespace_p_d_j_e___u_t_i_l_1_1db">PDJE_UTIL::db</innernamespace>
+    <innernamespace refid="namespace_p_d_j_e___u_t_i_l_1_1db_1_1nearest">PDJE_UTIL::db::nearest</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="nearest_2_backend_concept_8hpp" kindref="compound">util/db/nearest/BackendConcept.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_p_d_j_e___u_t_i_l_1_1db_1_1nearest" kindref="compound">PDJE_UTIL::db::nearest</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;NearestNeighborBackendConcept<sp/>Backend&gt;<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1af175889a4d92089bb7d5aa73a06faf3e" kindref="member">NearestNeighborIndex</ref><sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="11" refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a07f6965292fe5c22d0ba5e030791abd2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a07f6965292fe5c22d0ba5e030791abd2" kindref="member">backend_type</ref><sp/>=<sp/>Backend;</highlight></codeline>
+<codeline lineno="12" refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1ad3701d425da9ff83d03a6016959c428e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1ad3701d425da9ff83d03a6016959c428e" kindref="member">config_type</ref><sp/><sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Backend::config_type;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1common_1_1_result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="15" refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a64963bd16d4b894d82e25559857b832a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a64963bd16d4b894d82e25559857b832a" kindref="member">create</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1ad3701d425da9ff83d03a6016959c428e" kindref="member">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Backend::create(cfg);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1common_1_1_result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="21" refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1ac2af88e5666c7b4861f876a5b02200e2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1ac2af88e5666c7b4861f876a5b02200e2" kindref="member">destroy</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1ad3701d425da9ff83d03a6016959c428e" kindref="member">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Backend::destroy(cfg);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1common_1_1_result" kindref="compound">common::Result&lt;NearestNeighborIndex&gt;</ref></highlight></codeline>
+<codeline lineno="27" refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a4eb22245f0e0885496492903839b95ee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a4eb22245f0e0885496492903839b95ee" kindref="member">open</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1ad3701d425da9ff83d03a6016959c428e" kindref="member">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1af175889a4d92089bb7d5aa73a06faf3e" kindref="member">NearestNeighborIndex</ref><sp/>index;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>opened<sp/>=<sp/>index.<ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a5a04fb65040f092cb8d4eca83dae1ce8" kindref="member">backend_</ref>.open(cfg);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!opened.ok())<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1common_1_1_result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;NearestNeighborIndex&gt;::failure</ref>(opened.status());</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>index.<ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1ac0f21ff9e773f459c170bb7394d4a14d" kindref="member">is_open_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1common_1_1_result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;NearestNeighborIndex&gt;::success</ref>(std::move(index));</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1af175889a4d92089bb7d5aa73a06faf3e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1af175889a4d92089bb7d5aa73a06faf3e" kindref="member">NearestNeighborIndex</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="39" refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1aa1c0eda111e4acd8efebed64ad659207" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1aa1c0eda111e4acd8efebed64ad659207" kindref="member">NearestNeighborIndex</ref>(<ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1af175889a4d92089bb7d5aa73a06faf3e" kindref="member">NearestNeighborIndex</ref><sp/>&amp;&amp;other)<sp/>noexcept</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a5a04fb65040f092cb8d4eca83dae1ce8" kindref="member">backend_</ref>(std::move(other.backend_)),</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1ac0f21ff9e773f459c170bb7394d4a14d" kindref="member">is_open_</ref>(std::exchange(other.is_open_,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index" kindref="compound">NearestNeighborIndex</ref><sp/>&amp;</highlight></codeline>
+<codeline lineno="46" refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a1e2a8da770f13d26f466250f75a13995" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a1e2a8da770f13d26f466250f75a13995" kindref="member">operator=</ref>(<ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1af175889a4d92089bb7d5aa73a06faf3e" kindref="member">NearestNeighborIndex</ref><sp/>&amp;&amp;other)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>!=<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1ac0f21ff9e773f459c170bb7394d4a14d" kindref="member">is_open_</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(void)<ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a8d12c19ee2a00244088328647d0eafd9" kindref="member">close</ref>();</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a5a04fb65040f092cb8d4eca83dae1ce8" kindref="member">backend_</ref><sp/>=<sp/>std::move(other.backend_);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1ac0f21ff9e773f459c170bb7394d4a14d" kindref="member">is_open_</ref><sp/>=<sp/>std::exchange(other.is_open_,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a6dacbc5b0a13bb67068b9acff7abb3c5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a6dacbc5b0a13bb67068b9acff7abb3c5" kindref="member">NearestNeighborIndex</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1af175889a4d92089bb7d5aa73a06faf3e" kindref="member">NearestNeighborIndex</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1af175889a4d92089bb7d5aa73a06faf3e" kindref="member">NearestNeighborIndex</ref><sp/>&amp;</highlight></codeline>
+<codeline lineno="60" refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a1c6e4dfe5ba48074383a8fb87bf98a6c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a1c6e4dfe5ba48074383a8fb87bf98a6c" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1af175889a4d92089bb7d5aa73a06faf3e" kindref="member">NearestNeighborIndex</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1abb46a47d5c9616ce78bd3d660afb1fe4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1abb46a47d5c9616ce78bd3d660afb1fe4" kindref="member">~NearestNeighborIndex</ref>()</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1ac0f21ff9e773f459c170bb7394d4a14d" kindref="member">is_open_</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(void)<ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a8d12c19ee2a00244088328647d0eafd9" kindref="member">close</ref>();</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1common_1_1_result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="70" refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a8d12c19ee2a00244088328647d0eafd9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a8d12c19ee2a00244088328647d0eafd9" kindref="member">close</ref>()</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1ac0f21ff9e773f459c170bb7394d4a14d" kindref="member">is_open_</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1common_1_1_result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;void&gt;::success</ref>();</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>closed<sp/>=<sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a5a04fb65040f092cb8d4eca83dae1ce8" kindref="member">backend_</ref>.close();</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(closed.ok())<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1ac0f21ff9e773f459c170bb7394d4a14d" kindref="member">is_open_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>closed;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a5575dbca97a500151694af1f61ec0adb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a5575dbca97a500151694af1f61ec0adb" kindref="member">is_open</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1ac0f21ff9e773f459c170bb7394d4a14d" kindref="member">is_open_</ref>;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1common_1_1_result" kindref="compound">common::Result&lt;bool&gt;</ref></highlight></codeline>
+<codeline lineno="89" refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a617317761d2b78b3e0ff81118778afee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a617317761d2b78b3e0ff81118778afee" kindref="member">contains</ref>(std::string_view<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="90"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a5a04fb65040f092cb8d4eca83dae1ce8" kindref="member">backend_</ref>.contains(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1common_1_1_result" kindref="compound">common::Result&lt;Item&gt;</ref></highlight></codeline>
+<codeline lineno="95" refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a0ff78a20be661264d8485249f1cf3361" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a0ff78a20be661264d8485249f1cf3361" kindref="member">get_item</ref>(std::string_view<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="96"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a5a04fb65040f092cb8d4eca83dae1ce8" kindref="member">backend_</ref>.get_item(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1common_1_1_result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="101" refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a613c1854e5df8388f49fc6b626264d18" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a613c1854e5df8388f49fc6b626264d18" kindref="member">upsert_item</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_item" kindref="compound">Item</ref><sp/>&amp;item)</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a5a04fb65040f092cb8d4eca83dae1ce8" kindref="member">backend_</ref>.upsert_item(item);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1common_1_1_result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="107" refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a836b416f70e9b54316e6d23e3857ca55" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a836b416f70e9b54316e6d23e3857ca55" kindref="member">erase_item</ref>(std::string_view<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a5a04fb65040f092cb8d4eca83dae1ce8" kindref="member">backend_</ref>.erase_item(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1common_1_1_result" kindref="compound">common::Result&lt;std::vector&lt;SearchHit&gt;</ref>&gt;</highlight></codeline>
+<codeline lineno="113" refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1aae36e0a131785b7647ff7f6667f7c36a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1aae36e0a131785b7647ff7f6667f7c36a" kindref="member">search</ref>(std::span&lt;const<sp/>float&gt;<sp/>query,<sp/><ref refid="struct_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_search_options" kindref="compound">SearchOptions</ref><sp/>options<sp/>=<sp/>{})<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a5a04fb65040f092cb8d4eca83dae1ce8" kindref="member">backend_</ref>.search(query,<sp/>options);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1common_1_1_result" kindref="compound">common::Result&lt;std::vector&lt;Key&gt;</ref>&gt;</highlight></codeline>
+<codeline lineno="119" refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a15787ffb638557512afcaf078b41e36d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a15787ffb638557512afcaf078b41e36d" kindref="member">list_keys</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="120"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a5a04fb65040f092cb8d4eca83dae1ce8" kindref="member">backend_</ref>.list_keys();</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a07f6965292fe5c22d0ba5e030791abd2" kindref="member">backend_type</ref><sp/>&amp;</highlight></codeline>
+<codeline lineno="125" refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a5b10afae9ec16fdf981871ac3c86d623" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a5b10afae9ec16fdf981871ac3c86d623" kindref="member">backend</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a5a04fb65040f092cb8d4eca83dae1ce8" kindref="member">backend_</ref>;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a07f6965292fe5c22d0ba5e030791abd2" kindref="member">backend_type</ref><sp/>&amp;</highlight></codeline>
+<codeline lineno="131" refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1ae7b55cefc9efb3736d66461dca34fc76" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1ae7b55cefc9efb3736d66461dca34fc76" kindref="member">backend</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a5a04fb65040f092cb8d4eca83dae1ce8" kindref="member">backend_</ref>;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="137" refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a5a04fb65040f092cb8d4eca83dae1ce8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>Backend<sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1a5a04fb65040f092cb8d4eca83dae1ce8" kindref="member">backend_</ref>;</highlight></codeline>
+<codeline lineno="138" refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1ac0f21ff9e773f459c170bb7394d4a14d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index_1ac0f21ff9e773f459c170bb7394d4a14d" kindref="member">is_open_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_UTIL::db::nearest</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/util/db/nearest/Index.hpp"/>
+  </compounddef>
+</doxygen>

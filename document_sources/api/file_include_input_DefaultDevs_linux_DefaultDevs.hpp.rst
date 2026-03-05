@@ -4,7 +4,7 @@
 File DefaultDevs.hpp
 ====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_DefaultDevs_linux>` (``include/input/DefaultDevs/linux``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_DefaultDevs_linux>` (``include\input\DefaultDevs\linux``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File DefaultDevs.hpp
    :local:
    :backlinks: none
 
-Definition (``include/input/DefaultDevs/linux/DefaultDevs.hpp``)
+Definition (``include\input\DefaultDevs\linux\DefaultDevs.hpp``)
 ----------------------------------------------------------------
 
 
@@ -80,14 +80,14 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structPDJE__DEFAULT__DEVICES_1_1DefaultDevs_1_1device__metadata`
+- :ref:`exhale_struct_struct_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1_1device__metadata`
 
-- :ref:`exhale_class_classPDJE__DEFAULT__DEVICES_1_1DefaultDevs`
+- :ref:`exhale_class_class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef_namespacePDJE__DEFAULT__DEVICES_1aa7e4ca976f3fb919792fb80a98ba5dc6`
+- :ref:`exhale_typedef_namespace_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1aa7e4ca976f3fb919792fb80a98ba5dc6`
 

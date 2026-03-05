@@ -3,7 +3,7 @@
 Template Class Atomic_Double_Buffer
 ===================================
 
-- Defined in :ref:`file_include_global_DataLines_PDJE_Buffer.hpp`
+- Defined in :ref:`file_include_global_DataLines_Atomic_Double_Buffer.hpp`
 
 
 Class Documentation

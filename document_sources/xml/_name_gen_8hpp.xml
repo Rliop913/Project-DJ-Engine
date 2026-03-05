@@ -4,23 +4,39 @@
     <compoundname>NameGen.hpp</compoundname>
     <includes refid="_p_d_j_e___crypto_8hpp" local="yes">PDJE_Crypto.hpp</includes>
     <includes local="no">botan/hex.h</includes>
+    <includedby refid="windows_2_default_devs_8cpp" local="yes">include/input/DefaultDevs/windows/DefaultDevs.cpp</includedby>
+    <includedby refid="windows_2_default_devs_8hpp" local="yes">include/input/DefaultDevs/windows/DefaultDevs.hpp</includedby>
+    <includedby refid="_metadata_t_x_r_x_8hpp" local="yes">include/input/DefaultDevs/windows/TXRX/MetadataTXRX.hpp</includedby>
     <includedby refid="_p_d_j_e___input_8cpp" local="yes">include/input/PDJE_Input.cpp</includedby>
-    <includedby refid="_main_process_8hpp" local="yes">include/input/host/MainProcess.hpp</includedby>
     <incdepgraph>
       <node id="2">
         <label>PDJE_Crypto.hpp</label>
         <link refid="_p_d_j_e___crypto_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
         <childnode refid="13" relation="include">
         </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp"/>
+      </node>
+      <node id="5">
+        <label>PDJE_LOG_RUNTIME_API.h</label>
+        <link refid="_p_d_j_e___l_o_g___r_u_n_t_i_m_e___a_p_i_8h"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -30,100 +46,6 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-      </node>
-      <node id="1">
-        <label>include/input/IPC/common/NameGen.hpp</label>
-        <link refid="_name_gen_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-      </node>
-      <node id="11">
-        <label>botan/auto_rng.h</label>
-      </node>
-      <node id="12">
-        <label>botan/cipher_mode.h</label>
-      </node>
-      <node id="13">
-        <label>botan/hash.h</label>
-      </node>
-      <node id="15">
-        <label>botan/hex.h</label>
-      </node>
-      <node id="4">
-        <label>filesystem</label>
-      </node>
-      <node id="5">
-        <label>mutex</label>
-      </node>
-      <node id="6">
-        <label>spdlog/sinks/basic_file_sink.h</label>
-      </node>
-      <node id="7">
-        <label>spdlog/sinks/stdout_color_sinks.h</label>
-      </node>
-      <node id="8">
-        <label>spdlog/spdlog.h</label>
-      </node>
-      <node id="14">
-        <label>string</label>
-      </node>
-      <node id="9">
-        <label>string_view</label>
-      </node>
-      <node id="10">
-        <label>type_traits</label>
-      </node>
-    </incdepgraph>
-    <invincdepgraph>
-      <node id="4">
-        <label>include/input/IPC/--DEPRECATED--transmission/linux/MainProcess.cpp</label>
-        <link refid="_i_p_c_2--_d_e_p_r_e_c_a_t_e_d--transmission_2linux_2_main_process_8cpp"/>
-      </node>
-      <node id="1">
-        <label>include/input/IPC/common/NameGen.hpp</label>
-        <link refid="_name_gen_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-      </node>
-      <node id="2">
-        <label>include/input/PDJE_Input.cpp</label>
-        <link refid="_p_d_j_e___input_8cpp"/>
-      </node>
-      <node id="5">
-        <label>include/input/PDJE_Input.hpp</label>
-        <link refid="_p_d_j_e___input_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
-      <node id="8">
-        <label>include/input/host/MainProcess.cpp</label>
-        <link refid="host_2_main_process_8cpp"/>
-      </node>
-      <node id="3">
-        <label>include/input/host/MainProcess.hpp</label>
-        <link refid="_main_process_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
         <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
@@ -134,38 +56,99 @@
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+      </node>
+      <node id="1">
+        <label>include/input/IPC/common/NameGen.hpp</label>
+        <link refid="_name_gen_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>botan/auto_rng.h</label>
+      </node>
+      <node id="14">
+        <label>botan/cipher_mode.h</label>
+      </node>
+      <node id="15">
+        <label>botan/hash.h</label>
+      </node>
+      <node id="18">
+        <label>botan/hex.h</label>
+      </node>
+      <node id="10">
+        <label>exception</label>
+      </node>
+      <node id="16">
+        <label>filesystem</label>
+      </node>
+      <node id="8">
+        <label>spdlog/fmt/fmt.h</label>
+      </node>
+      <node id="9">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="6">
+        <label>stddef.h</label>
+      </node>
+      <node id="7">
+        <label>stdint.h</label>
+      </node>
+      <node id="17">
+        <label>string</label>
+      </node>
+      <node id="11">
+        <label>string_view</label>
+      </node>
+      <node id="12">
+        <label>utility</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/input/DefaultDevs/windows/DefaultDevs.cpp</label>
+        <link refid="windows_2_default_devs_8cpp"/>
+      </node>
+      <node id="3">
+        <label>include/input/DefaultDevs/windows/DefaultDevs.hpp</label>
+        <link refid="windows_2_default_devs_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>include/input/DefaultDevs/windows/TXRX/MetadataTXRX.cpp</label>
+        <link refid="_metadata_t_x_r_x_8cpp"/>
+      </node>
+      <node id="4">
+        <label>include/input/DefaultDevs/windows/TXRX/MetadataTXRX.hpp</label>
+        <link refid="_metadata_t_x_r_x_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="9">
-        <label>include/input/host/SetTXRXFeatures.cpp</label>
-        <link refid="host_2_set_t_x_r_x_features_8cpp"/>
-      </node>
-      <node id="10">
-        <label>include/input/host/linux/MainProcess.cpp</label>
-        <link refid="host_2linux_2_main_process_8cpp"/>
-      </node>
-      <node id="11">
-        <label>include/input/host/linux/ipc_Send_Linux.cpp</label>
-        <link refid="ipc___send___linux_8cpp"/>
-      </node>
-      <node id="12">
-        <label>include/input/host/windows/MainProcess.cpp</label>
-        <link refid="host_2windows_2_main_process_8cpp"/>
-      </node>
-      <node id="13">
-        <label>include/input/host/windows/ipc_Send_Windows.cpp</label>
-        <link refid="ipc___send___windows_8cpp"/>
-      </node>
       <node id="6">
-        <label>include/tests/INPUT_TESTS/pdjeInputTest.cpp</label>
-        <link refid="pdje_input_test_8cpp"/>
+        <label>include/input/DefaultDevs/windows/TXRX/SetFeatures.cpp</label>
+        <link refid="_set_features_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/input/IPC/common/NameGen.hpp</label>
+        <link refid="_name_gen_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
       </node>
       <node id="7">
-        <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
-        <link refid="judge_test_8cpp"/>
+        <label>include/input/PDJE_Input.cpp</label>
+        <link refid="_p_d_j_e___input_8cpp"/>
       </node>
     </invincdepgraph>
     <innerclass refid="class_p_d_j_e___c_r_y_p_t_o_1_1_r_a_n_d_o_m___g_e_n" prot="public">PDJE_CRYPTO::RANDOM_GEN</innerclass>

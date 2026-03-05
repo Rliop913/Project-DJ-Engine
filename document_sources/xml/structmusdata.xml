@@ -2,10 +2,10 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="structmusdata" kind="struct" language="C++" prot="public">
     <compoundname>musdata</compoundname>
-    <includes refid="musicDB_8hpp" local="no">musicDB.hpp</includes>
+    <includes refid="music_d_b_8hpp" local="no">musicDB.hpp</includes>
     <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structmusdata_1a9c537dbc78fd984f5316e3d167633f70" prot="public" static="no" mutable="no">
-        <type><ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref></type>
+        <type><ref refid="file_name_sanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref></type>
         <definition>SANITIZED musdata::title</definition>
         <argsstring></argsstring>
         <name>title</name>
@@ -19,7 +19,7 @@
         <location file="include/core/db/musicDB.hpp" line="16" column="21" bodyfile="include/core/db/musicDB.hpp" bodystart="16" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmusdata_1a401e0646fa7f98d230e9af9a6af577de" prot="public" static="no" mutable="no">
-        <type><ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref></type>
+        <type><ref refid="file_name_sanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref></type>
         <definition>SANITIZED musdata::composer</definition>
         <argsstring></argsstring>
         <name>composer</name>
@@ -33,7 +33,7 @@
         <location file="include/core/db/musicDB.hpp" line="17" column="21" bodyfile="include/core/db/musicDB.hpp" bodystart="17" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmusdata_1a5fcdc31f2bfb1fe90c038403791a00ae" prot="public" static="no" mutable="no">
-        <type><ref refid="fileNameSanitizer_8hpp_1a0662da7f5befd667eac83e4e3566cd47" kindref="member">SANITIZED_ORNOT</ref></type>
+        <type><ref refid="file_name_sanitizer_8hpp_1a0662da7f5befd667eac83e4e3566cd47" kindref="member">SANITIZED_ORNOT</ref></type>
         <definition>SANITIZED_ORNOT musdata::musicPath</definition>
         <argsstring></argsstring>
         <name>musicPath</name>
@@ -47,7 +47,7 @@
         <location file="include/core/db/musicDB.hpp" line="18" column="21" bodyfile="include/core/db/musicDB.hpp" bodystart="18" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmusdata_1aaba9b1ecc8a2a58f74a00ec2d9041a28" prot="public" static="no" mutable="no">
-        <type><ref refid="dbState_8hpp_1a32af0badd6a40566b8e04071484b2f83" kindref="member">BIN</ref></type>
+        <type><ref refid="db_state_8hpp_1a32af0badd6a40566b8e04071484b2f83" kindref="member">BIN</ref></type>
         <definition>BIN musdata::bpmBinary</definition>
         <argsstring></argsstring>
         <name>bpmBinary</name>
@@ -76,7 +76,7 @@
         <location file="include/core/db/musicDB.hpp" line="20" column="21" bodyfile="include/core/db/musicDB.hpp" bodystart="20" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structmusdata_1a1c1ff451a665b0a097b9596be0b231f9" prot="public" static="no" mutable="no">
-        <type><ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref></type>
+        <type><ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref></type>
         <definition>DONT_SANITIZE musdata::firstBeat</definition>
         <argsstring></argsstring>
         <name>firstBeat</name>
@@ -128,17 +128,17 @@
         <name>musdata</name>
         <qualifiedname>musdata::musdata</qualifiedname>
         <param>
-          <type>const <ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
           <declname>title__</declname>
           <defval>&quot;&quot;</defval>
         </param>
         <param>
-          <type>const <ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
           <declname>composer__</declname>
           <defval>&quot;&quot;</defval>
         </param>
         <param>
-          <type>const <ref refid="fileNameSanitizer_8hpp_1a0662da7f5befd667eac83e4e3566cd47" kindref="member">SANITIZED_ORNOT</ref> &amp;</type>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a0662da7f5befd667eac83e4e3566cd47" kindref="member">SANITIZED_ORNOT</ref> &amp;</type>
           <declname>musicPath__</declname>
           <defval>&quot;&quot;</defval>
         </param>
@@ -181,7 +181,7 @@
 <parametername>bpm__</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The <ref refid="classBPM" kindref="compound">BPM</ref> (beats per minute) of the music. Use a negative value to ignore this field. </para>
+<para>The <ref refid="class_b_p_m" kindref="compound">BPM</ref> (beats per minute) of the music. Use a negative value to ignore this field. </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>

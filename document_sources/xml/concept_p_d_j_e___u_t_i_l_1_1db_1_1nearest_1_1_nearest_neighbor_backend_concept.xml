@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="concept_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_backend_concept" kind="concept">
+    <compoundname>PDJE_UTIL::db::nearest::NearestNeighborBackendConcept</compoundname>
+    <includes refid="nearest_2_backend_concept_8hpp" local="no">BackendConcept.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class Backend</type>
+      </param>
+    </templateparamlist>
+    <initializer>template&lt;class Backend&gt;
+concept <ref refid="concept_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_backend_concept" kindref="compound">PDJE_UTIL::db::nearest::NearestNeighborBackendConcept</ref> = 
+    requires(typename Backend::config_type cfg,
+             Backend                      backend,
+             std::string_view             key,
+             const Item                  &amp;item,
+             std::span&lt;const float&gt;       query,
+             SearchOptions                options) {
+        typename Backend::config_type;
+
+        { Backend::create(cfg) } -&gt; std::same_as&lt;common::Result&lt;void&gt;&gt;;
+        { Backend::destroy(cfg) } -&gt; std::same_as&lt;common::Result&lt;void&gt;&gt;;
+
+        { backend.open(cfg) } -&gt; std::same_as&lt;common::Result&lt;void&gt;&gt;;
+        { backend.close() } -&gt; std::same_as&lt;common::Result&lt;void&gt;&gt;;
+
+        { backend.contains(key) } -&gt; std::same_as&lt;common::Result&lt;bool&gt;&gt;;
+        { backend.get_item(key) } -&gt; std::same_as&lt;common::Result&lt;Item&gt;&gt;;
+        { backend.upsert_item(item) } -&gt; std::same_as&lt;common::Result&lt;void&gt;&gt;;
+        { backend.erase_item(key) } -&gt; std::same_as&lt;common::Result&lt;void&gt;&gt;;
+        { backend.search(query, options) }
+        -&gt; std::same_as&lt;common::Result&lt;std::vector&lt;SearchHit&gt;&gt;&gt;;
+        { backend.list_keys() } -&gt; std::same_as&lt;common::Result&lt;std::vector&lt;Key&gt;&gt;&gt;;
+    }    </initializer>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/util/db/nearest/BackendConcept.hpp" line="14" column="1"/>
+  </compounddef>
+</doxygen>

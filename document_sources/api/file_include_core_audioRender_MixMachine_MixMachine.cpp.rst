@@ -4,7 +4,7 @@
 File MixMachine.cpp
 ===================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_MixMachine>` (``include/core/audioRender/MixMachine``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_MixMachine>` (``include\core\audioRender\MixMachine``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File MixMachine.cpp
    :local:
    :backlinks: none
 
-Definition (``include/core/audioRender/MixMachine/MixMachine.cpp``)
+Definition (``include\core\audioRender\MixMachine\MixMachine.cpp``)
 -------------------------------------------------------------------
 
 
@@ -45,5 +45,5 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_MixMachine_8cpp_1a2cf5e4fd933ff187fc184934669cb42d`
+- :ref:`exhale_function__mix_machine_8cpp_1a2cf5e4fd933ff187fc184934669cb42d`
 

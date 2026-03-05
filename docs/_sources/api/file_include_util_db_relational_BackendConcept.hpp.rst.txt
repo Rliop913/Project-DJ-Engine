@@ -4,7 +4,7 @@
 File BackendConcept.hpp
 =======================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_util_db_relational>` (``include/util/db/relational``)
+|exhale_lsh| :ref:`Parent directory <dir_include_util_db_relational>` (``include\util\db\relational``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File BackendConcept.hpp
    :local:
    :backlinks: none
 
-Definition (``include/util/db/relational/BackendConcept.hpp``)
+Definition (``include\util\db\relational\BackendConcept.hpp``)
 --------------------------------------------------------------
 
 
@@ -34,9 +34,9 @@ Includes
 
 - ``string_view``
 
-- ``util/common/Result.hpp`` (:ref:`file_include_util_common_Result.hpp`)
+- ``util/common/Result.hpp``
 
-- ``util/db/relational/Types.hpp`` (:ref:`file_include_util_db_relational_Types.hpp`)
+- ``util/db/relational/Types.hpp``
 
 
 

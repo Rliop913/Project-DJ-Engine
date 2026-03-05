@@ -4,7 +4,7 @@
 Program Listing for File MusicControlPanel-inl.h
 ================================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_audioRender_ManualMix_MusicControlPanel-inl.h>` (``include/core/audioRender/ManualMix/MusicControlPanel-inl.h``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_audioRender_ManualMix_MusicControlPanel-inl.h>` (``include\core\audioRender\ManualMix\MusicControlPanel-inl.h``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

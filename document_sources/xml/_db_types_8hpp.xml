@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="_db_types_8hpp" kind="file" language="C++">
+    <compoundname>DbTypes.hpp</compoundname>
+    <includes local="no">cstddef</includes>
+    <includes local="no">string</includes>
+    <includes local="no">vector</includes>
+    <includedby refid="_p_d_j_e___util_8hpp" local="yes">include/util/PDJE_Util.hpp</includedby>
+    <includedby refid="_annoy_backend_8hpp" local="yes">include/util/db/backends/AnnoyBackend.hpp</includedby>
+    <includedby refid="_rocks_db_backend_8hpp" local="yes">include/util/db/backends/RocksDbBackend.hpp</includedby>
+    <includedby refid="_sqlite_backend_8hpp" local="yes">include/util/db/backends/SqliteBackend.hpp</includedby>
+    <includedby refid="keyvalue_2_backend_concept_8hpp" local="yes">include/util/db/keyvalue/BackendConcept.hpp</includedby>
+    <includedby refid="nearest_2_types_8hpp" local="yes">include/util/db/nearest/Types.hpp</includedby>
+    <includedby refid="relational_2_types_8hpp" local="yes">include/util/db/relational/Types.hpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>include/util/db/DbTypes.hpp</label>
+        <link refid="_db_types_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>cstddef</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+      <node id="4">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/util/PDJE_Util.hpp</label>
+        <link refid="_p_d_j_e___util_8hpp"/>
+      </node>
+      <node id="7">
+        <label>include/util/db/BackendConcept.hpp</label>
+        <link refid="_backend_concept_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>include/util/db/Database.hpp</label>
+        <link refid="_database_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/util/db/DbTypes.hpp</label>
+        <link refid="_db_types_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>include/util/db/backends/AnnoyBackend.hpp</label>
+        <link refid="_annoy_backend_8hpp"/>
+      </node>
+      <node id="4">
+        <label>include/util/db/backends/RocksDbBackend.hpp</label>
+        <link refid="_rocks_db_backend_8hpp"/>
+      </node>
+      <node id="5">
+        <label>include/util/db/backends/SqliteBackend.hpp</label>
+        <link refid="_sqlite_backend_8hpp"/>
+      </node>
+      <node id="6">
+        <label>include/util/db/keyvalue/BackendConcept.hpp</label>
+        <link refid="keyvalue_2_backend_concept_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>include/util/db/keyvalue/Database.hpp</label>
+        <link refid="keyvalue_2_database_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>include/util/db/nearest/BackendConcept.hpp</label>
+        <link refid="nearest_2_backend_concept_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>include/util/db/nearest/Index.hpp</label>
+        <link refid="_index_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>include/util/db/nearest/Types.hpp</label>
+        <link refid="nearest_2_types_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>include/util/db/relational/BackendConcept.hpp</label>
+        <link refid="relational_2_backend_concept_8hpp"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>include/util/db/relational/Database.hpp</label>
+        <link refid="relational_2_database_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>include/util/db/relational/Types.hpp</label>
+        <link refid="relational_2_types_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct_p_d_j_e___u_t_i_l_1_1db_1_1_open_options" prot="public">PDJE_UTIL::db::OpenOptions</innerclass>
+    <innernamespace refid="namespace_p_d_j_e___u_t_i_l">PDJE_UTIL</innernamespace>
+    <innernamespace refid="namespace_p_d_j_e___u_t_i_l_1_1db">PDJE_UTIL::db</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstddef&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_p_d_j_e___u_t_i_l_1_1db" kindref="compound">PDJE_UTIL::db</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="namespace_p_d_j_e___u_t_i_l_1_1db_1aedbff324bfcd10a0857fd98f47045ba1" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespace_p_d_j_e___u_t_i_l_1_1db_1aedbff324bfcd10a0857fd98f47045ba1" kindref="member">Key</ref><sp/><sp/><sp/>=<sp/>std::string;</highlight></codeline>
+<codeline lineno="10" refid="namespace_p_d_j_e___u_t_i_l_1_1db_1a89f870d3c2a028544646a9b95b827d28" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespace_p_d_j_e___u_t_i_l_1_1db_1a89f870d3c2a028544646a9b95b827d28" kindref="member">Text</ref><sp/><sp/>=<sp/>std::string;</highlight></codeline>
+<codeline lineno="11" refid="namespace_p_d_j_e___u_t_i_l_1_1db_1a2ef3b7d9e6089bee19f07baae2cdaa81" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespace_p_d_j_e___u_t_i_l_1_1db_1a2ef3b7d9e6089bee19f07baae2cdaa81" kindref="member">Bytes</ref><sp/>=<sp/>std::vector&lt;std::byte&gt;;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="struct_p_d_j_e___u_t_i_l_1_1db_1_1_open_options" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_p_d_j_e___u_t_i_l_1_1db_1_1_open_options" kindref="compound">OpenOptions</ref><sp/>{</highlight></codeline>
+<codeline lineno="14" refid="struct_p_d_j_e___u_t_i_l_1_1db_1_1_open_options_1af59ce4bcdfb2d4f5929ef2e700776d2e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="struct_p_d_j_e___u_t_i_l_1_1db_1_1_open_options_1af59ce4bcdfb2d4f5929ef2e700776d2e" kindref="member">create_if_missing</ref><sp/><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="15" refid="struct_p_d_j_e___u_t_i_l_1_1db_1_1_open_options_1ae17d7423fa68120e197b73e3318c979e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="struct_p_d_j_e___u_t_i_l_1_1db_1_1_open_options_1ae17d7423fa68120e197b73e3318c979e" kindref="member">truncate_if_exists</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="16" refid="struct_p_d_j_e___u_t_i_l_1_1db_1_1_open_options_1a0a3190669f1f5d17b614c0511d802b66" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="struct_p_d_j_e___u_t_i_l_1_1db_1_1_open_options_1a0a3190669f1f5d17b614c0511d802b66" kindref="member">read_only</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_UTIL::db</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/util/db/DbTypes.hpp"/>
+  </compounddef>
+</doxygen>

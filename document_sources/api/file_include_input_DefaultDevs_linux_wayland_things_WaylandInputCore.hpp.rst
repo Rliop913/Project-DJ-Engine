@@ -4,7 +4,7 @@
 File WaylandInputCore.hpp
 =========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_DefaultDevs_linux_wayland_things>` (``include/input/DefaultDevs/linux/wayland_things``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_DefaultDevs_linux_wayland_things>` (``include\input\DefaultDevs\linux\wayland_things``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File WaylandInputCore.hpp
    :local:
    :backlinks: none
 
-Definition (``include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp``)
+Definition (``include\input\DefaultDevs\linux\wayland_things\WaylandInputCore.hpp``)
 ------------------------------------------------------------------------------------
 
 
@@ -67,5 +67,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classWaylandInputCore`
+- :ref:`exhale_class_class_wayland_input_core`
 

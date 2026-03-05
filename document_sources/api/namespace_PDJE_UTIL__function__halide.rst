@@ -17,15 +17,15 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structPDJE__UTIL_1_1function_1_1halide_1_1GainBiasArgs`
+- :ref:`exhale_struct_struct_p_d_j_e___u_t_i_l_1_1function_1_1halide_1_1_gain_bias_args`
 
-- :ref:`exhale_struct_structPDJE__UTIL_1_1function_1_1halide_1_1GrayImage`
+- :ref:`exhale_struct_struct_p_d_j_e___u_t_i_l_1_1function_1_1halide_1_1_gray_image`
 
-- :ref:`exhale_struct_structPDJE__UTIL_1_1function_1_1halide_1_1GrayImageView`
+- :ref:`exhale_struct_struct_p_d_j_e___u_t_i_l_1_1function_1_1halide_1_1_gray_image_view`
 
 
 Functions
 ---------
 
 
-- :ref:`exhale_function_namespacePDJE__UTIL_1_1function_1_1halide_1a5c7356e55195cf9a0b0c9126ea5beffa`
+- :ref:`exhale_function_namespace_p_d_j_e___u_t_i_l_1_1function_1_1halide_1a5c7356e55195cf9a0b0c9126ea5beffa`

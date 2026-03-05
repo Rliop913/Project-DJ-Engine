@@ -4,7 +4,7 @@
 File PDJE_LOG_SETTER.cpp
 ========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_global>` (``include/global``)
+|exhale_lsh| :ref:`Parent directory <dir_include_global>` (``include\global``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_LOG_SETTER.cpp
    :local:
    :backlinks: none
 
-Definition (``include/global/PDJE_LOG_SETTER.cpp``)
+Definition (``include\global\PDJE_LOG_SETTER.cpp``)
 ---------------------------------------------------
 
 
@@ -64,15 +64,15 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_PDJE__LOG__SETTER_8cpp_1a7a133aaf3fd197ed80e423ccd3e336a8`
+- :ref:`exhale_function__p_d_j_e___l_o_g___s_e_t_t_e_r_8cpp_1a7a133aaf3fd197ed80e423ccd3e336a8`
 
-- :ref:`exhale_function_PDJE__LOG__SETTER_8cpp_1afd260616f3218eeb5b140e3d9205b012`
+- :ref:`exhale_function__p_d_j_e___l_o_g___s_e_t_t_e_r_8cpp_1afd260616f3218eeb5b140e3d9205b012`
 
-- :ref:`exhale_function_PDJE__LOG__SETTER_8cpp_1a05ea6a11cfbb2aa9c486e60bddce921a`
+- :ref:`exhale_function__p_d_j_e___l_o_g___s_e_t_t_e_r_8cpp_1a05ea6a11cfbb2aa9c486e60bddce921a`
 
-- :ref:`exhale_function_PDJE__LOG__SETTER_8cpp_1a989dbdbef006e678455b128b63f4f35f`
+- :ref:`exhale_function__p_d_j_e___l_o_g___s_e_t_t_e_r_8cpp_1a989dbdbef006e678455b128b63f4f35f`
 
-- :ref:`exhale_function_PDJE__LOG__SETTER_8cpp_1aa34453b30c474e0e23518fdfe3e57a3d`
+- :ref:`exhale_function__p_d_j_e___l_o_g___s_e_t_t_e_r_8cpp_1aa34453b30c474e0e23518fdfe3e57a3d`
 
-- :ref:`exhale_function_PDJE__LOG__SETTER_8cpp_1a27caf5fb9d1eed1f15d54bab91b74f36`
+- :ref:`exhale_function__p_d_j_e___l_o_g___s_e_t_t_e_r_8cpp_1a27caf5fb9d1eed1f15d54bab91b74f36`
 

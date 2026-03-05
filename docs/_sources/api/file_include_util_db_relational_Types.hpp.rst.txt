@@ -4,7 +4,7 @@
 File Types.hpp
 ==============
 
-|exhale_lsh| :ref:`Parent directory <dir_include_util_db_relational>` (``include/util/db/relational``)
+|exhale_lsh| :ref:`Parent directory <dir_include_util_db_relational>` (``include\util\db\relational``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Types.hpp
    :local:
    :backlinks: none
 
-Definition (``include/util/db/relational/Types.hpp``)
+Definition (``include\util\db\relational\Types.hpp``)
 -----------------------------------------------------
 
 
@@ -40,7 +40,7 @@ Includes
 
 - ``string_view``
 
-- ``util/db/DbTypes.hpp`` (:ref:`file_include_util_db_DbTypes.hpp`)
+- ``util/db/DbTypes.hpp``
 
 - ``variant``
 
@@ -74,27 +74,27 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structPDJE__UTIL_1_1db_1_1relational_1_1ExecResult`
+- :ref:`exhale_struct_struct_p_d_j_e___u_t_i_l_1_1db_1_1relational_1_1_exec_result`
 
-- :ref:`exhale_struct_structPDJE__UTIL_1_1db_1_1relational_1_1QueryResult`
+- :ref:`exhale_struct_struct_p_d_j_e___u_t_i_l_1_1db_1_1relational_1_1_query_result`
 
-- :ref:`exhale_struct_structPDJE__UTIL_1_1db_1_1relational_1_1Row`
+- :ref:`exhale_struct_struct_p_d_j_e___u_t_i_l_1_1db_1_1relational_1_1_row`
 
-- :ref:`exhale_struct_structPDJE__UTIL_1_1db_1_1relational_1_1Value`
+- :ref:`exhale_struct_struct_p_d_j_e___u_t_i_l_1_1db_1_1relational_1_1_value`
 
 
 Enums
 -----
 
 
-- :ref:`exhale_enum_namespacePDJE__UTIL_1_1db_1_1relational_1ad958498eab11301215755895d3e45d3a`
+- :ref:`exhale_enum_namespace_p_d_j_e___u_t_i_l_1_1db_1_1relational_1ad958498eab11301215755895d3e45d3a`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef_namespacePDJE__UTIL_1_1db_1_1relational_1a03d7b850c6d4c14c870bb5548dd36873`
+- :ref:`exhale_typedef_namespace_p_d_j_e___u_t_i_l_1_1db_1_1relational_1a03d7b850c6d4c14c870bb5548dd36873`
 
-- :ref:`exhale_typedef_namespacePDJE__UTIL_1_1db_1_1relational_1aabe44701146cf664f2101ce2caa9d932`
+- :ref:`exhale_typedef_namespace_p_d_j_e___u_t_i_l_1_1db_1_1relational_1aabe44701146cf664f2101ce2caa9d932`
 

@@ -4,7 +4,7 @@
 File ipc_util.hpp
 =================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_IPC_common>` (``include/input/IPC/common``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_IPC_common>` (``include\input\IPC\common``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File ipc_util.hpp
    :local:
    :backlinks: none
 
-Definition (``include/input/IPC/common/ipc_util.hpp``)
+Definition (``include\input\IPC\common\ipc_util.hpp``)
 ------------------------------------------------------
 
 
@@ -62,10 +62,6 @@ Included By
 
 - :ref:`file_include_input_DefaultDevs_windows_DefaultDevs.cpp`
 
-- :ref:`file_include_input_trashbin_MainProcess_windows.cpp`
-
-- :ref:`file_include_input_trashbin_host_linux_MainProcess.cpp`
-
 
 
 
@@ -80,7 +76,7 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_namespacePDJE__IPC_1a70376465d929e8d1c237f737857d7f06`
+- :ref:`exhale_function_namespace_p_d_j_e___i_p_c_1a70376465d929e8d1c237f737857d7f06`
 
-- :ref:`exhale_function_namespacePDJE__IPC_1a01af1265fc9ad0972525db7352ad736c`
+- :ref:`exhale_function_namespace_p_d_j_e___i_p_c_1a01af1265fc9ad0972525db7352ad736c`
 

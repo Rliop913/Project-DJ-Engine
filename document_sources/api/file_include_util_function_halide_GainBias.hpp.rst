@@ -4,7 +4,7 @@
 File GainBias.hpp
 =================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_util_function_halide>` (``include/util/function/halide``)
+|exhale_lsh| :ref:`Parent directory <dir_include_util_function_halide>` (``include\util\function\halide``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File GainBias.hpp
    :local:
    :backlinks: none
 
-Definition (``include/util/function/halide/GainBias.hpp``)
+Definition (``include\util\function\halide\GainBias.hpp``)
 ----------------------------------------------------------
 
 
@@ -34,9 +34,9 @@ Includes
 
 - ``cstdint``
 
-- ``util/common/Result.hpp`` (:ref:`file_include_util_common_Result.hpp`)
+- ``util/common/Result.hpp``
 
-- ``util/function/FunctionContext.hpp`` (:ref:`file_include_util_function_FunctionContext.hpp`)
+- ``util/function/FunctionContext.hpp``
 
 - ``vector``
 
@@ -66,16 +66,16 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structPDJE__UTIL_1_1function_1_1halide_1_1GainBiasArgs`
+- :ref:`exhale_struct_struct_p_d_j_e___u_t_i_l_1_1function_1_1halide_1_1_gain_bias_args`
 
-- :ref:`exhale_struct_structPDJE__UTIL_1_1function_1_1halide_1_1GrayImage`
+- :ref:`exhale_struct_struct_p_d_j_e___u_t_i_l_1_1function_1_1halide_1_1_gray_image`
 
-- :ref:`exhale_struct_structPDJE__UTIL_1_1function_1_1halide_1_1GrayImageView`
+- :ref:`exhale_struct_struct_p_d_j_e___u_t_i_l_1_1function_1_1halide_1_1_gray_image_view`
 
 
 Functions
 ---------
 
 
-- :ref:`exhale_function_namespacePDJE__UTIL_1_1function_1_1halide_1a5c7356e55195cf9a0b0c9126ea5beffa`
+- :ref:`exhale_function_namespace_p_d_j_e___u_t_i_l_1_1function_1_1halide_1a5c7356e55195cf9a0b0c9126ea5beffa`
 

@@ -4,7 +4,7 @@
 File Database.hpp
 =================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_util_db_relational>` (``include/util/db/relational``)
+|exhale_lsh| :ref:`Parent directory <dir_include_util_db_relational>` (``include\util\db\relational``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Database.hpp
    :local:
    :backlinks: none
 
-Definition (``include/util/db/relational/Database.hpp``)
+Definition (``include\util\db\relational\Database.hpp``)
 --------------------------------------------------------
 
 
@@ -30,7 +30,7 @@ Includes
 --------
 
 
-- ``util/db/relational/BackendConcept.hpp`` (:ref:`file_include_util_db_relational_BackendConcept.hpp`)
+- ``util/db/relational/BackendConcept.hpp``
 
 - ``utility``
 
@@ -60,5 +60,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase`
+- :ref:`exhale_class_class_p_d_j_e___u_t_i_l_1_1db_1_1relational_1_1_relational_database`
 

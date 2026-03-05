@@ -4,7 +4,7 @@
 File PDJE_Highres_Clock.hpp
 ===========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_global_Highres_Clock_Windows>` (``include/global/Highres_Clock/Windows``)
+|exhale_lsh| :ref:`Parent directory <dir_include_global_Highres_Clock_Windows>` (``include\global\Highres_Clock\Windows``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_Highres_Clock.hpp
    :local:
    :backlinks: none
 
-Definition (``include/global/Highres_Clock/Windows/PDJE_Highres_Clock.hpp``)
+Definition (``include\global\Highres_Clock\Windows\PDJE_Highres_Clock.hpp``)
 ----------------------------------------------------------------------------
 
 

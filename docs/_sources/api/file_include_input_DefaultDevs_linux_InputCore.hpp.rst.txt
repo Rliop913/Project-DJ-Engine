@@ -4,7 +4,7 @@
 File InputCore.hpp
 ==================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_DefaultDevs_linux>` (``include/input/DefaultDevs/linux``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_DefaultDevs_linux>` (``include\input\DefaultDevs\linux``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File InputCore.hpp
    :local:
    :backlinks: none
 
-Definition (``include/input/DefaultDevs/linux/InputCore.hpp``)
+Definition (``include\input\DefaultDevs\linux\InputCore.hpp``)
 --------------------------------------------------------------
 
 
@@ -67,7 +67,7 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structInputCore_1_1AddResult`
+- :ref:`exhale_struct_struct_input_core_1_1_add_result`
 
-- :ref:`exhale_class_classInputCore`
+- :ref:`exhale_class_class_input_core`
 

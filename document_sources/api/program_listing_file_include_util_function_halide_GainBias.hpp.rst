@@ -4,7 +4,7 @@
 Program Listing for File GainBias.hpp
 =====================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_util_function_halide_GainBias.hpp>` (``include/util/function/halide/GainBias.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_util_function_halide_GainBias.hpp>` (``include\util\function\halide\GainBias.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

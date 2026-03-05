@@ -4,7 +4,7 @@
 File StatusCode.hpp
 ===================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_util_common>` (``include/util/common``)
+|exhale_lsh| :ref:`Parent directory <dir_include_util_common>` (``include\util\common``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File StatusCode.hpp
    :local:
    :backlinks: none
 
-Definition (``include/util/common/StatusCode.hpp``)
+Definition (``include\util\common\StatusCode.hpp``)
 ---------------------------------------------------
 
 
@@ -52,5 +52,5 @@ Enums
 -----
 
 
-- :ref:`exhale_enum_namespacePDJE__UTIL_1_1common_1a3025dd440bc92023d950561cff3dfdb4`
+- :ref:`exhale_enum_namespace_p_d_j_e___u_t_i_l_1_1common_1a3025dd440bc92023d950561cff3dfdb4`
 

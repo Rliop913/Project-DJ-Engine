@@ -7,17 +7,29 @@
     <includedby refid="_linux_2_p_s_k_pipe_8cpp" local="yes">include/global/Crypto/Linux/PSKPipe.cpp</includedby>
     <includedby refid="_mac_2_p_s_k_pipe_8cpp" local="yes">include/global/Crypto/Mac/PSKPipe.cpp</includedby>
     <includedby refid="_windows_2_p_s_k_pipe_8cpp" local="yes">include/global/Crypto/Windows/PSKPipe.cpp</includedby>
-    <includedby refid="host_2linux_2_main_process_8cpp" local="yes">include/input/host/linux/MainProcess.cpp</includedby>
-    <includedby refid="host_2windows_2_main_process_8cpp" local="yes">include/input/host/windows/MainProcess.cpp</includedby>
-    <includedby refid="linux_2_sub_main_8cpp" local="yes">include/input/runner/linux/SubMain.cpp</includedby>
-    <includedby refid="windows_2_sub_main_8cpp" local="yes">include/input/runner/windows/SubMain.cpp</includedby>
+    <includedby refid="windows_2_default_devs_8hpp" local="yes">include/input/DefaultDevs/windows/DefaultDevs.hpp</includedby>
+    <includedby refid="_sub_main_8cpp" local="yes">include/input/runner/windows/SubMain.cpp</includedby>
     <incdepgraph>
       <node id="1">
         <label>include/global/Crypto/PSKPipe.hpp</label>
         <link refid="_p_s_k_pipe_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp"/>
+      </node>
+      <node id="4">
+        <label>PDJE_LOG_RUNTIME_API.h</label>
+        <link refid="_p_d_j_e___l_o_g___r_u_n_t_i_m_e___a_p_i_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -27,40 +39,40 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-      </node>
-      <node id="3">
-        <label>filesystem</label>
-      </node>
-      <node id="4">
-        <label>mutex</label>
-      </node>
-      <node id="5">
-        <label>spdlog/sinks/basic_file_sink.h</label>
-      </node>
-      <node id="6">
-        <label>spdlog/sinks/stdout_color_sinks.h</label>
-      </node>
-      <node id="7">
-        <label>spdlog/spdlog.h</label>
-      </node>
-      <node id="10">
-        <label>string</label>
-      </node>
-      <node id="8">
-        <label>string_view</label>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
       </node>
       <node id="9">
-        <label>type_traits</label>
+        <label>exception</label>
+      </node>
+      <node id="7">
+        <label>spdlog/fmt/fmt.h</label>
+      </node>
+      <node id="8">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="5">
+        <label>stddef.h</label>
+      </node>
+      <node id="6">
+        <label>stdint.h</label>
+      </node>
+      <node id="12">
+        <label>string</label>
+      </node>
+      <node id="10">
+        <label>string_view</label>
+      </node>
+      <node id="11">
+        <label>utility</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
@@ -83,32 +95,26 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
         <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
         </childnode>
       </node>
       <node id="4">
         <label>include/global/Crypto/Windows/PSKPipe.cpp</label>
         <link refid="_windows_2_p_s_k_pipe_8cpp"/>
       </node>
-      <node id="5">
-        <label>include/input/host/linux/MainProcess.cpp</label>
-        <link refid="host_2linux_2_main_process_8cpp"/>
-      </node>
       <node id="6">
-        <label>include/input/host/windows/MainProcess.cpp</label>
-        <link refid="host_2windows_2_main_process_8cpp"/>
+        <label>include/input/DefaultDevs/windows/DefaultDevs.cpp</label>
+        <link refid="windows_2_default_devs_8cpp"/>
+      </node>
+      <node id="5">
+        <label>include/input/DefaultDevs/windows/DefaultDevs.hpp</label>
+        <link refid="windows_2_default_devs_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
       </node>
       <node id="7">
-        <label>include/input/runner/linux/SubMain.cpp</label>
-        <link refid="linux_2_sub_main_8cpp"/>
-      </node>
-      <node id="8">
         <label>include/input/runner/windows/SubMain.cpp</label>
-        <link refid="windows_2_sub_main_8cpp"/>
+        <link refid="_sub_main_8cpp"/>
       </node>
     </invincdepgraph>
     <innerclass refid="class_p_d_j_e___c_r_y_p_t_o_1_1_p_s_k_pipe" prot="public">PDJE_CRYPTO::PSKPipe</innerclass>
@@ -137,11 +143,10 @@
 <codeline lineno="17"><highlight class="normal"></highlight></codeline>
 <codeline lineno="18" refid="class_p_d_j_e___c_r_y_p_t_o_1_1_p_s_k_pipe_1a60f69e3342871f7ea3b3a81b7eae9dcc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___c_r_y_p_t_o_1_1_p_s_k_pipe_1a60f69e3342871f7ea3b3a81b7eae9dcc" kindref="member">PSKPipe</ref>()</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1a27caf5fb9d1eed1f15d54bab91b74f36" kindref="member">startlog</ref>();</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___c_r_y_p_t_o_1_1_p_s_k_pipe_1a01ac3e220af8172e8e73481d27f944d4" kindref="member">~PSKPipe</ref>();</highlight></codeline>
-<codeline lineno="23"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="24"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_CRYPTO</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___c_r_y_p_t_o_1_1_p_s_k_pipe_1a01ac3e220af8172e8e73481d27f944d4" kindref="member">~PSKPipe</ref>();</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_CRYPTO</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/global/Crypto/PSKPipe.hpp"/>
   </compounddef>

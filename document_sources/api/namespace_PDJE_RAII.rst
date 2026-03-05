@@ -17,4 +17,4 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classPDJE__RAII_1_1RAII`
+- :ref:`exhale_class_class_p_d_j_e___r_a_i_i_1_1_r_a_i_i`
