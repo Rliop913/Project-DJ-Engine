@@ -4,7 +4,7 @@
 File MetadataTXRX.hpp
 =====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_DefaultDevs_windows_TXRX>` (``include/input/DefaultDevs/windows/TXRX``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_DefaultDevs_windows_TXRX>` (``include\input\DefaultDevs\windows\TXRX``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File MetadataTXRX.hpp
    :local:
    :backlinks: none
 
-Definition (``include/input/DefaultDevs/windows/TXRX/MetadataTXRX.hpp``)
+Definition (``include\input\DefaultDevs\windows\TXRX\MetadataTXRX.hpp``)
 ------------------------------------------------------------------------
 
 
@@ -72,5 +72,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classPDJE__IPC_1_1MetadataTXRX`
+- :ref:`exhale_class_class_p_d_j_e___i_p_c_1_1_metadata_t_x_r_x`
 

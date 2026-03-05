@@ -4,7 +4,7 @@
 File PDJE_Core_DataLine.hpp
 ===========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_global_DataLines>` (``include/global/DataLines``)
+|exhale_lsh| :ref:`Parent directory <dir_include_global_DataLines>` (``include\global\DataLines``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_Core_DataLine.hpp
    :local:
    :backlinks: none
 
-Definition (``include/global/DataLines/PDJE_Core_DataLine.hpp``)
+Definition (``include\global\DataLines\PDJE_Core_DataLine.hpp``)
 ----------------------------------------------------------------
 
 
@@ -57,5 +57,5 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structPDJE__CORE__DATA__LINE`
+- :ref:`exhale_struct_struct_p_d_j_e___c_o_r_e___d_a_t_a___l_i_n_e`
 

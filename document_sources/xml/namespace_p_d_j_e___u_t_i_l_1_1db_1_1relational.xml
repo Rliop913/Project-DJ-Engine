@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="namespace_p_d_j_e___u_t_i_l_1_1db_1_1relational" kind="namespace" language="C++">
+    <compoundname>PDJE_UTIL::db::relational</compoundname>
+    <innerclass refid="struct_p_d_j_e___u_t_i_l_1_1db_1_1relational_1_1_exec_result" prot="public">PDJE_UTIL::db::relational::ExecResult</innerclass>
+    <innerclass refid="struct_p_d_j_e___u_t_i_l_1_1db_1_1relational_1_1_query_result" prot="public">PDJE_UTIL::db::relational::QueryResult</innerclass>
+    <innerclass refid="class_p_d_j_e___u_t_i_l_1_1db_1_1relational_1_1_relational_database" prot="public">PDJE_UTIL::db::relational::RelationalDatabase</innerclass>
+    <innerclass refid="struct_p_d_j_e___u_t_i_l_1_1db_1_1relational_1_1_row" prot="public">PDJE_UTIL::db::relational::Row</innerclass>
+    <innerclass refid="struct_p_d_j_e___u_t_i_l_1_1db_1_1relational_1_1_value" prot="public">PDJE_UTIL::db::relational::Value</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespace_p_d_j_e___u_t_i_l_1_1db_1_1relational_1ad958498eab11301215755895d3e45d3a" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>ValueKind</name>
+        <qualifiedname>PDJE_UTIL::db::relational::ValueKind</qualifiedname>
+        <enumvalue id="namespace_p_d_j_e___u_t_i_l_1_1db_1_1relational_1ad958498eab11301215755895d3e45d3aa9e374dadbd88854fd5b2631a6b83a295" prot="public">
+          <name>null_value</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_p_d_j_e___u_t_i_l_1_1db_1_1relational_1ad958498eab11301215755895d3e45d3aa157db7df530023575515d366c9b672e8" prot="public">
+          <name>integer</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_p_d_j_e___u_t_i_l_1_1db_1_1relational_1ad958498eab11301215755895d3e45d3aa4bca24304861acde5770fdbe3cc2503b" prot="public">
+          <name>real</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_p_d_j_e___u_t_i_l_1_1db_1_1relational_1ad958498eab11301215755895d3e45d3aa1cb251ec0d568de6a929b520c4aed8d1" prot="public">
+          <name>text</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_p_d_j_e___u_t_i_l_1_1db_1_1relational_1ad958498eab11301215755895d3e45d3aa4b3a6218bb3e3a7303e8a171a60fcf92" prot="public">
+          <name>bytes</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/db/relational/Types.hpp" line="15" column="1" bodyfile="include/util/db/relational/Types.hpp" bodystart="15" bodyend="21"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespace_p_d_j_e___u_t_i_l_1_1db_1_1relational_1aabe44701146cf664f2101ce2caa9d932" prot="public" static="no">
+        <type>std::variant&lt; std::monostate, std::int64_t, double, <ref refid="namespace_p_d_j_e___u_t_i_l_1_1db_1a89f870d3c2a028544646a9b95b827d28" kindref="member">Text</ref>, <ref refid="namespace_p_d_j_e___u_t_i_l_1_1db_1a2ef3b7d9e6089bee19f07baae2cdaa81" kindref="member">Bytes</ref> &gt;</type>
+        <definition>using PDJE_UTIL::db::relational::ValueStorage =  std::variant&lt;std::monostate, std::int64_t, double, Text, Bytes&gt;</definition>
+        <argsstring></argsstring>
+        <name>ValueStorage</name>
+        <qualifiedname>PDJE_UTIL::db::relational::ValueStorage</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/db/relational/Types.hpp" line="23" column="1" bodyfile="include/util/db/relational/Types.hpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespace_p_d_j_e___u_t_i_l_1_1db_1_1relational_1a03d7b850c6d4c14c870bb5548dd36873" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="struct_p_d_j_e___u_t_i_l_1_1db_1_1relational_1_1_value" kindref="compound">Value</ref> &gt;</type>
+        <definition>using PDJE_UTIL::db::relational::Params =  std::vector&lt;Value&gt;</definition>
+        <argsstring></argsstring>
+        <name>Params</name>
+        <qualifiedname>PDJE_UTIL::db::relational::Params</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/db/relational/Types.hpp" line="46" column="1" bodyfile="include/util/db/relational/Types.hpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/util/db/relational/BackendConcept.hpp" line="9" column="1"/>
+  </compounddef>
+</doxygen>

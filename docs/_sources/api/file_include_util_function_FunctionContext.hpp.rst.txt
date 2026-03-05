@@ -4,7 +4,7 @@
 File FunctionContext.hpp
 ========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_util_function>` (``include/util/function``)
+|exhale_lsh| :ref:`Parent directory <dir_include_util_function>` (``include\util\function``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File FunctionContext.hpp
    :local:
    :backlinks: none
 
-Definition (``include/util/function/FunctionContext.hpp``)
+Definition (``include\util\function\FunctionContext.hpp``)
 ----------------------------------------------------------
 
 
@@ -54,7 +54,7 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structPDJE__UTIL_1_1function_1_1EvalOptions`
+- :ref:`exhale_struct_struct_p_d_j_e___u_t_i_l_1_1function_1_1_eval_options`
 
-- :ref:`exhale_class_classPDJE__UTIL_1_1function_1_1CacheContext`
+- :ref:`exhale_class_class_p_d_j_e___u_t_i_l_1_1function_1_1_cache_context`
 

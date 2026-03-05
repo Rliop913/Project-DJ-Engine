@@ -4,7 +4,7 @@
 File PDJE_LOG_SETTER.hpp
 ========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_global>` (``include/global``)
+|exhale_lsh| :ref:`Parent directory <dir_include_global>` (``include\global``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -18,7 +18,7 @@ Configures the logging framework for the application.
    :local:
    :backlinks: none
 
-Definition (``include/global/PDJE_LOG_SETTER.hpp``)
+Definition (``include\global\PDJE_LOG_SETTER.hpp``)
 ---------------------------------------------------
 
 
@@ -159,8 +159,6 @@ Included By
 
 - :ref:`file_include_input_midi_PDJE_MIDI.hpp`
 
-- :ref:`file_include_input_trashbin_MainProcess_deprecated.hpp`
-
 - :ref:`file_include_judge_Loop_PDJE_Judge_Loop.cpp`
 
 - :ref:`file_include_judge_PDJE_Judge.cpp`
@@ -179,36 +177,36 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_namespacePDJE__LOG__DETAIL_1a1d5e43c742f9573b552e5af26ddb2d75`
+- :ref:`exhale_function_namespace_p_d_j_e___l_o_g___d_e_t_a_i_l_1ac993d88cb68b0496900c3aff1707c5be`
 
-- :ref:`exhale_function_namespacePDJE__LOG__DETAIL_1ac993d88cb68b0496900c3aff1707c5be`
+- :ref:`exhale_function_namespace_p_d_j_e___l_o_g___d_e_t_a_i_l_1a1d5e43c742f9573b552e5af26ddb2d75`
 
-- :ref:`exhale_function_namespacePDJE__LOG__DETAIL_1a0ac70731f5d92b0059a07ed2544ed876`
+- :ref:`exhale_function_namespace_p_d_j_e___l_o_g___d_e_t_a_i_l_1a37d3b462e363785e8639714b1c346bec`
 
-- :ref:`exhale_function_namespacePDJE__LOG__DETAIL_1a37d3b462e363785e8639714b1c346bec`
+- :ref:`exhale_function_namespace_p_d_j_e___l_o_g___d_e_t_a_i_l_1a0ac70731f5d92b0059a07ed2544ed876`
 
-- :ref:`exhale_function_namespacePDJE__LOG__DETAIL_1a8cf6dc50e37344e1113e4112bd5f9ea3`
+- :ref:`exhale_function_namespace_p_d_j_e___l_o_g___d_e_t_a_i_l_1a8cf6dc50e37344e1113e4112bd5f9ea3`
 
-- :ref:`exhale_function_namespacePDJE__LOG__DETAIL_1a5e93659ee07d2be7f03ca641535958f9`
+- :ref:`exhale_function_namespace_p_d_j_e___l_o_g___d_e_t_a_i_l_1a5e93659ee07d2be7f03ca641535958f9`
 
-- :ref:`exhale_function_namespacePDJE__LOG__DETAIL_1ae18d2bcca09be1d547f3697bd4c2c6af`
+- :ref:`exhale_function_namespace_p_d_j_e___l_o_g___d_e_t_a_i_l_1ae18d2bcca09be1d547f3697bd4c2c6af`
 
-- :ref:`exhale_function_namespacePDJE__LOG__DETAIL_1a8fbbbb6ecf4d5cf3365296b04d2c7636`
+- :ref:`exhale_function_namespace_p_d_j_e___l_o_g___d_e_t_a_i_l_1a8fbbbb6ecf4d5cf3365296b04d2c7636`
 
-- :ref:`exhale_function_namespacePDJE__LOG__DETAIL_1a7140251b9a3cfff2fa2f61000b80060d`
+- :ref:`exhale_function_namespace_p_d_j_e___l_o_g___d_e_t_a_i_l_1a7140251b9a3cfff2fa2f61000b80060d`
 
-- :ref:`exhale_function_PDJE__LOG__SETTER_8hpp_1aa34453b30c474e0e23518fdfe3e57a3d`
+- :ref:`exhale_function__p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1aa34453b30c474e0e23518fdfe3e57a3d`
 
-- :ref:`exhale_function_PDJE__LOG__SETTER_8hpp_1a27caf5fb9d1eed1f15d54bab91b74f36`
+- :ref:`exhale_function__p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1a27caf5fb9d1eed1f15d54bab91b74f36`
 
 
 Defines
 -------
 
 
-- :ref:`exhale_define_PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287`
+- :ref:`exhale_define__p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287`
 
-- :ref:`exhale_define_PDJE__LOG__SETTER_8hpp_1a2721d826078db7a962e7664a9d2f4016`
+- :ref:`exhale_define__p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1a2721d826078db7a962e7664a9d2f4016`
 
-- :ref:`exhale_define_PDJE__LOG__SETTER_8hpp_1a6f4ac2826ed21d631281a5644018f590`
+- :ref:`exhale_define__p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1a6f4ac2826ed21d631281a5644018f590`
 

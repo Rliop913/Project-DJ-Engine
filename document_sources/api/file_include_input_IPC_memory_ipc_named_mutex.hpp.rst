@@ -4,7 +4,7 @@
 File ipc_named_mutex.hpp
 ========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_IPC_memory>` (``include/input/IPC/memory``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_IPC_memory>` (``include\input\IPC\memory``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File ipc_named_mutex.hpp
    :local:
    :backlinks: none
 
-Definition (``include/input/IPC/memory/ipc_named_mutex.hpp``)
+Definition (``include\input\IPC\memory\ipc_named_mutex.hpp``)
 -------------------------------------------------------------
 
 
@@ -64,7 +64,7 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classPDJE__IPC_1_1MUTEX`
+- :ref:`exhale_class_class_p_d_j_e___i_p_c_1_1_m_u_t_e_x`
 
-- :ref:`exhale_class_classPDJE__IPC_1_1SCOPE__LOCK`
+- :ref:`exhale_class_class_p_d_j_e___i_p_c_1_1_s_c_o_p_e___l_o_c_k`
 

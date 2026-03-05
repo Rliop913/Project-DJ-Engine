@@ -4,7 +4,7 @@
 File TimeLineDiffMachine.hpp
 ============================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_editor_TimeLine_DiffMachine>` (``include/core/editor/TimeLine/DiffMachine``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_editor_TimeLine_DiffMachine>` (``include\core\editor\TimeLine\DiffMachine``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File TimeLineDiffMachine.hpp
    :local:
    :backlinks: none
 
-Definition (``include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp``)
+Definition (``include\core\editor\TimeLine\DiffMachine\TimeLineDiffMachine.hpp``)
 ---------------------------------------------------------------------------------
 
 
@@ -68,29 +68,29 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1BlobText`
+- :ref:`exhale_struct_struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_diff_machine_core_1_1_blob_text`
 
-- :ref:`exhale_struct_structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1CandidateOffsets`
+- :ref:`exhale_struct_struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_diff_machine_core_1_1_candidate_offsets`
 
-- :ref:`exhale_struct_structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1ChangedLineRef`
+- :ref:`exhale_struct_struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_diff_machine_core_1_1_changed_line_ref`
 
-- :ref:`exhale_struct_structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1DiffCollectPayload`
+- :ref:`exhale_struct_struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_diff_machine_core_1_1_diff_collect_payload`
 
-- :ref:`exhale_struct_structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1FinalizedRegion`
+- :ref:`exhale_struct_struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_diff_machine_core_1_1_finalized_region`
 
-- :ref:`exhale_struct_structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1HunkRange`
+- :ref:`exhale_struct_struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_diff_machine_core_1_1_hunk_range`
 
-- :ref:`exhale_struct_structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1JsonizedRegion`
+- :ref:`exhale_struct_struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_diff_machine_core_1_1_jsonized_region`
 
-- :ref:`exhale_struct_structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1LineIndex`
+- :ref:`exhale_struct_struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_diff_machine_core_1_1_line_index`
 
-- :ref:`exhale_struct_structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1RecoveredFragment`
+- :ref:`exhale_struct_struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_diff_machine_core_1_1_recovered_fragment`
 
-- :ref:`exhale_struct_structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1SideHunkKey`
+- :ref:`exhale_struct_struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_diff_machine_core_1_1_side_hunk_key`
 
-- :ref:`exhale_struct_structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1TypeHooks`
+- :ref:`exhale_struct_struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_diff_machine_core_1_1_type_hooks`
 
-- :ref:`exhale_class_classPDJE__TIMELINE_1_1TimeLineDiffMachine`
+- :ref:`exhale_class_class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_diff_machine`
 
-- :ref:`exhale_class_classPDJE__TIMELINE_1_1TimeLineDiffMachineCore`
+- :ref:`exhale_class_class_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_diff_machine_core`
 

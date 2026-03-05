@@ -4,7 +4,7 @@
 Program Listing for File editorTest.cpp
 =======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_tests_editorTest.cpp>` (``include/tests/editorTest.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_tests_editorTest.cpp>` (``include\tests\editorTest.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

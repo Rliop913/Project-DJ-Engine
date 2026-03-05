@@ -1,0 +1,1084 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs" kind="class" language="C++" prot="public">
+    <compoundname>PDJE_DEFAULT_DEVICES::DefaultDevs</compoundname>
+    <includes refid="linux_2_default_devs_8hpp" local="no">DefaultDevs.hpp</includes>
+    <innerclass refid="struct_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1_1device__metadata" prot="private">PDJE_DEFAULT_DEVICES::DefaultDevs::device_metadata</innerclass>
+    <sectiondef kind="private-type">
+      <memberdef kind="enum" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a3a4b276480b9eab0d9d8038056f9a822" prot="private" static="no" strong="yes">
+        <type></type>
+        <name>StoredBackendKind</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::StoredBackendKind</qualifiedname>
+        <enumvalue id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a3a4b276480b9eab0d9d8038056f9a822afb2ca1d1a7520948b95652bce1b5c1ab" prot="private">
+          <name>Evdev</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a3a4b276480b9eab0d9d8038056f9a822abd9c6c9ca372721e187caeb1654b4209" prot="private">
+          <name>Wayland</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="24" column="5" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.hpp" bodystart="24" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1ab514794040ca709cbca05854ddb2718a" prot="private" static="no" strong="yes">
+        <type></type>
+        <name>ActiveBackendKind</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::ActiveBackendKind</qualifiedname>
+        <enumvalue id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1ab514794040ca709cbca05854ddb2718aa6adf97f83acf6453d4a6a4b1070f3754" prot="private">
+          <name>None</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1ab514794040ca709cbca05854ddb2718aafb2ca1d1a7520948b95652bce1b5c1ab" prot="private">
+          <name>Evdev</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1ab514794040ca709cbca05854ddb2718aabd9c6c9ca372721e187caeb1654b4209" prot="private">
+          <name>Wayland</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="25" column="5" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.hpp" bodystart="25" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a804c76f7e5b4580fe0f6b0d1c9ae1065" prot="private" static="no" strong="yes">
+        <type></type>
+        <name>WaylandSourceMode</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::WaylandSourceMode</qualifiedname>
+        <enumvalue id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a804c76f7e5b4580fe0f6b0d1c9ae1065a6adf97f83acf6453d4a6a4b1070f3754" prot="private">
+          <name>None</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a804c76f7e5b4580fe0f6b0d1c9ae1065a08e274ca1d2f18a55425dbdd0948ef4c" prot="private">
+          <name>HostHandles</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a804c76f7e5b4580fe0f6b0d1c9ae1065a85a5db5f08fb83e993bd0929700d8166" prot="private">
+          <name>InternalWindow</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="26" column="5" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.hpp" bodystart="26" bodyend="26"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1ac1dc3c134627a989ca1ca8474bfdcec4" prot="private" static="no" mutable="no">
+        <type><ref refid="class_p_d_j_e___i_p_c_1_1_p_d_j_e___input___transfer" kindref="compound">PDJE_IPC::PDJE_Input_Transfer</ref></type>
+        <definition>PDJE_IPC::PDJE_Input_Transfer PDJE_DEFAULT_DEVICES::DefaultDevs::input_buffer</definition>
+        <argsstring></argsstring>
+        <name>input_buffer</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::input_buffer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="28" column="35" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.hpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a24271175a5091c33cc615dc4430e1464" prot="private" static="no" mutable="no">
+        <type>std::unordered_map&lt; std::string, <ref refid="struct_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1_1device__metadata" kindref="compound">device_metadata</ref> &gt;</type>
+        <definition>std::unordered_map&lt;std::string, device_metadata&gt; PDJE_DEFAULT_DEVICES::DefaultDevs::stored_dev</definition>
+        <argsstring></argsstring>
+        <name>stored_dev</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::stored_dev</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="37" column="24" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.hpp" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a4dccb0c1a851af8b213585cef7b6bcf4" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="class_input_core" kindref="compound">InputCore</ref> &gt;</type>
+        <definition>std::optional&lt;InputCore&gt; PDJE_DEFAULT_DEVICES::DefaultDevs::evdev_core</definition>
+        <argsstring></argsstring>
+        <name>evdev_core</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::evdev_core</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="39" column="25" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.hpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1acab13e0c7a73fc068469ad42c3901378" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="class_wayland_input_core" kindref="compound">WaylandInputCore</ref> &gt;</type>
+        <definition>std::optional&lt;WaylandInputCore&gt; PDJE_DEFAULT_DEVICES::DefaultDevs::wayland_core</definition>
+        <argsstring></argsstring>
+        <name>wayland_core</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::wayland_core</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="40" column="19" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.hpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a02ff9909346943dcaacea9db1161d27e" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; std::thread &gt;</type>
+        <definition>std::optional&lt;std::thread&gt; PDJE_DEFAULT_DEVICES::DefaultDevs::input_thread</definition>
+        <argsstring></argsstring>
+        <name>input_thread</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::input_thread</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="41" column="19" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.hpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a233eb7a77cf144961dac59aa05bf0831" prot="private" static="no" mutable="no">
+        <type><ref refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_wayland_runtime_loader" kindref="compound">WaylandRuntimeLoader</ref></type>
+        <definition>WaylandRuntimeLoader PDJE_DEFAULT_DEVICES::DefaultDevs::wayland_loader</definition>
+        <argsstring></argsstring>
+        <name>wayland_loader</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::wayland_loader</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="42" column="32" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.hpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1ad6003661742e6d74f550ca31069c026a" prot="private" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* PDJE_DEFAULT_DEVICES::DefaultDevs::platform_ctx0_</definition>
+        <argsstring></argsstring>
+        <name>platform_ctx0_</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::platform_ctx0_</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="43" column="31" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a4ca64f4621439385e0c23022aac77fbb" prot="private" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* PDJE_DEFAULT_DEVICES::DefaultDevs::platform_ctx1_</definition>
+        <argsstring></argsstring>
+        <name>platform_ctx1_</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::platform_ctx1_</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="44" column="31" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.hpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1ae036e5a07e034012bcbe83fd1eee5999" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool PDJE_DEFAULT_DEVICES::DefaultDevs::use_internal_window_</definition>
+        <argsstring></argsstring>
+        <name>use_internal_window_</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::use_internal_window_</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="45" column="32" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.hpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a7893676557aaffab0479941150467361" prot="private" static="no" mutable="no">
+        <type><ref refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1ab514794040ca709cbca05854ddb2718a" kindref="member">ActiveBackendKind</ref></type>
+        <definition>ActiveBackendKind PDJE_DEFAULT_DEVICES::DefaultDevs::active_backend</definition>
+        <argsstring></argsstring>
+        <name>active_backend</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::active_backend</qualifiedname>
+        <initializer>= <ref refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1ab514794040ca709cbca05854ddb2718aa6adf97f83acf6453d4a6a4b1070f3754" kindref="member">ActiveBackendKind::None</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="46" column="32" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.hpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a04fedaef553119a0d68b4dc07deb82f3" prot="private" static="no" mutable="no">
+        <type><ref refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a804c76f7e5b4580fe0f6b0d1c9ae1065" kindref="member">WaylandSourceMode</ref></type>
+        <definition>WaylandSourceMode PDJE_DEFAULT_DEVICES::DefaultDevs::wayland_source_mode</definition>
+        <argsstring></argsstring>
+        <name>wayland_source_mode</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::wayland_source_mode</qualifiedname>
+        <initializer>= <ref refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a804c76f7e5b4580fe0f6b0d1c9ae1065a6adf97f83acf6453d4a6a4b1070f3754" kindref="member">WaylandSourceMode::None</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="47" column="32" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.hpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a3ff881429d0c58cddf552468c680bb31" prot="private" static="no" mutable="no">
+        <type>STARTUPINFOW</type>
+        <definition>STARTUPINFOW PDJE_DEFAULT_DEVICES::DefaultDevs::start_up_info</definition>
+        <argsstring></argsstring>
+        <name>start_up_info</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::start_up_info</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/windows/DefaultDevs.hpp" line="33" column="50" bodyfile="include/input/DefaultDevs/windows/DefaultDevs.hpp" bodystart="33" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1ad5c790b94260fa77b43213b2489b4641" prot="private" static="no" mutable="no">
+        <type>PROCESS_INFORMATION</type>
+        <definition>PROCESS_INFORMATION PDJE_DEFAULT_DEVICES::DefaultDevs::process_info</definition>
+        <argsstring></argsstring>
+        <name>process_info</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::process_info</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/windows/DefaultDevs.hpp" line="34" column="50" bodyfile="include/input/DefaultDevs/windows/DefaultDevs.hpp" bodystart="34" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1ab7b8ce439ab6df4fc0e0c12d7dae1ea3" prot="private" static="no" mutable="no">
+        <type>std::optional&lt; <ref refid="class_p_d_j_e___i_p_c_1_1_p_d_j_e___input___transfer" kindref="compound">PDJE_IPC::PDJE_Input_Transfer</ref> &gt;</type>
+        <definition>std::optional&lt;PDJE_IPC::PDJE_Input_Transfer&gt; PDJE_DEFAULT_DEVICES::DefaultDevs::input_buffer</definition>
+        <argsstring></argsstring>
+        <name>input_buffer</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::input_buffer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/windows/DefaultDevs.hpp" line="35" column="19" bodyfile="include/input/DefaultDevs/windows/DefaultDevs.hpp" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1abf9e30a27632b8d90d40ca39938966c1" prot="private" static="no" mutable="no">
+        <type><ref refid="namespace_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1a6874e9b2d750bcb78c3ed3ea925ee482" kindref="member">WINRAII</ref></type>
+        <definition>WINRAII PDJE_DEFAULT_DEVICES::DefaultDevs::subprocess_RAII</definition>
+        <argsstring></argsstring>
+        <name>subprocess_RAII</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::subprocess_RAII</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/windows/DefaultDevs.hpp" line="36" column="50" bodyfile="include/input/DefaultDevs/windows/DefaultDevs.hpp" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a4eedbd55e0c6aed9ed5714fe2c3348ff" prot="private" static="no" mutable="no">
+        <type><ref refid="class_p_d_j_e___i_p_c_1_1_metadata_t_x_r_x" kindref="compound">MetadataTXRX</ref></type>
+        <definition>MetadataTXRX PDJE_DEFAULT_DEVICES::DefaultDevs::meta</definition>
+        <argsstring></argsstring>
+        <name>meta</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::meta</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/windows/DefaultDevs.hpp" line="37" column="50" bodyfile="include/input/DefaultDevs/windows/DefaultDevs.hpp" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a7ce0942c8bcb9ed7c5d8fd48c948ba9a" prot="private" static="no" mutable="no">
+        <type><ref refid="class_p_d_j_e___c_r_y_p_t_o_1_1_p_s_k_pipe" kindref="compound">PDJE_CRYPTO::PSKPipe</ref></type>
+        <definition>PDJE_CRYPTO::PSKPipe PDJE_DEFAULT_DEVICES::DefaultDevs::pipe</definition>
+        <argsstring></argsstring>
+        <name>pipe</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::pipe</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/windows/DefaultDevs.hpp" line="38" column="50" bodyfile="include/input/DefaultDevs/windows/DefaultDevs.hpp" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a28e9e4051b2c5da8c25fd4927d9721df" prot="private" static="no" mutable="no">
+        <type>struct <ref refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs" kindref="compound">PDJE_DEFAULT_DEVICES::DefaultDevs</ref></type>
+        <definition>struct PDJE_DEFAULT_DEVICES::DefaultDevs PDJE_DEFAULT_DEVICES::DefaultDevs::events</definition>
+        <argsstring></argsstring>
+        <name>events</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::events</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/windows/DefaultDevs.hpp" line="43" column="12"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1aeb8319a3e3d14668a1f88b4f07312d01" prot="public" static="no" mutable="no">
+        <type><ref refid="class_p_d_j_e___i_p_c_1_1_e_v_e_n_t" kindref="compound">EVENT</ref></type>
+        <definition>EVENT PDJE_DEFAULT_DEVICES::DefaultDevs::input_loop_run_event</definition>
+        <argsstring></argsstring>
+        <name>input_loop_run_event</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::input_loop_run_event</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/windows/DefaultDevs.hpp" line="41" column="15" bodyfile="include/input/DefaultDevs/windows/DefaultDevs.hpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a067d13786a2a689baf5a91ab10e93dce" prot="public" static="no" mutable="no">
+        <type><ref refid="class_p_d_j_e___i_p_c_1_1_e_v_e_n_t" kindref="compound">EVENT</ref></type>
+        <definition>EVENT PDJE_DEFAULT_DEVICES::DefaultDevs::terminate_event</definition>
+        <argsstring></argsstring>
+        <name>terminate_event</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::terminate_event</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/windows/DefaultDevs.hpp" line="42" column="15" bodyfile="include/input/DefaultDevs/windows/DefaultDevs.hpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a4906d99012de828664dfbda2c4f00b17" prot="private" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_DEFAULT_DEVICES::DefaultDevs::IsWaylandSyntheticId</definition>
+        <argsstring>(const std::string &amp;id) noexcept</argsstring>
+        <name>IsWaylandSyntheticId</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::IsWaylandSyntheticId</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="50" column="5" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.cpp" bodystart="21" bodyend="24"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1ab0b2386bb692a0aa120e57ee5eccbcd1" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_DEFAULT_DEVICES::DefaultDevs::HasValidWaylandHostContext</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>HasValidWaylandHostContext</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::HasValidWaylandHostContext</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="52" column="5" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.cpp" bodystart="27" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1ac5375ba8bd89f64eb4e50028964472cf" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_DEFAULT_DEVICES::DefaultDevs::ConfigureWayland</definition>
+        <argsstring>(const std::vector&lt; DeviceData &gt; &amp;devs)</argsstring>
+        <name>ConfigureWayland</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::ConfigureWayland</qualifiedname>
+        <param>
+          <type>const std::vector&lt; <ref refid="struct_device_data" kindref="compound">DeviceData</ref> &gt; &amp;</type>
+          <declname>devs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="54" column="5" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.cpp" bodystart="83" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a820ce9c95b03c9cebec568bda8a34f42" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_DEFAULT_DEVICES::DefaultDevs::OpenProcess</definition>
+        <argsstring>(const fs::path &amp;pt)</argsstring>
+        <name>OpenProcess</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::OpenProcess</qualifiedname>
+        <param>
+          <type>const fs::path &amp;</type>
+          <declname>pt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/windows/DefaultDevs.hpp" line="46" column="5" bodyfile="include/input/DefaultDevs/windows/DefaultDevs.cpp" bodystart="9" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a105a7a07febc1ec8cc60b92f79f134d8" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_DEFAULT_DEVICES::DefaultDevs::InitEvents</definition>
+        <argsstring>()</argsstring>
+        <name>InitEvents</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::InitEvents</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/windows/DefaultDevs.hpp" line="49" column="5" bodyfile="include/input/DefaultDevs/windows/DefaultDevs.cpp" bodystart="115" bodyend="125"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a808846cb658f1a30ccd67c884b83a194" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_DEFAULT_DEVICES::DefaultDevs::SetPlatformContexts</definition>
+        <argsstring>(void *platform_ctx0, void *platform_ctx1, bool use_internal_window) noexcept</argsstring>
+        <name>SetPlatformContexts</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::SetPlatformContexts</qualifiedname>
+        <param>
+          <type>void *</type>
+          <declname>platform_ctx0</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>platform_ctx1</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>use_internal_window</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="58" column="5" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.hpp" bodystart="58" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a5f69dd16a3e98fc1f4673bc7f8027cc7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string PDJE_DEFAULT_DEVICES::DefaultDevs::GetCurrentBackendString</definition>
+        <argsstring>() const</argsstring>
+        <name>GetCurrentBackendString</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::GetCurrentBackendString</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="67" column="5" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.cpp" bodystart="33" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1af5dd0306696c2844a8f5f880d2dece12" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_DEFAULT_DEVICES::DefaultDevs::Kill</definition>
+        <argsstring>()</argsstring>
+        <name>Kill</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::Kill</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="69" column="5" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.hpp" bodystart="69" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a5597b8b7bb437dadc0de81d7954d66e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="struct_device_data" kindref="compound">DeviceData</ref> &gt;</type>
+        <definition>std::vector&lt; DeviceData &gt; PDJE_DEFAULT_DEVICES::DefaultDevs::GetDevices</definition>
+        <argsstring>()</argsstring>
+        <name>GetDevices</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::GetDevices</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="74" column="5" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.cpp" bodystart="228" bodyend="342"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1affcdb7a21646bf54fdf96d4a85f93cb8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_p_d_j_e___i_p_c_1_1_p_d_j_e___input___transfer" kindref="compound">PDJE_IPC::PDJE_Input_Transfer</ref> *</type>
+        <definition>PDJE_IPC::PDJE_Input_Transfer * PDJE_DEFAULT_DEVICES::DefaultDevs::GetInputBufferPTR</definition>
+        <argsstring>()</argsstring>
+        <name>GetInputBufferPTR</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::GetInputBufferPTR</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="77" column="5" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.hpp" bodystart="77" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a94cf8f849a815b7a402d20c051c5633c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_DEFAULT_DEVICES::DefaultDevs::Ready</definition>
+        <argsstring>()</argsstring>
+        <name>Ready</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::Ready</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="83" column="5" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.cpp" bodystart="46" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1af12d58ca737dbe9d33baa64c63adbc02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_DEFAULT_DEVICES::DefaultDevs::RunLoop</definition>
+        <argsstring>()</argsstring>
+        <name>RunLoop</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::RunLoop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="86" column="5" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.cpp" bodystart="345" bodyend="373"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a0b3437e10087ab38ae74cd781a586049" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_DEFAULT_DEVICES::DefaultDevs::TerminateLoop</definition>
+        <argsstring>()</argsstring>
+        <name>TerminateLoop</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::TerminateLoop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="88" column="5" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.cpp" bodystart="376" bodyend="409"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a2a47d1524563bb4fbabf564db723cae6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_DEFAULT_DEVICES::DefaultDevs::Config</definition>
+        <argsstring>(const std::vector&lt; DeviceData &gt; &amp;devs)</argsstring>
+        <name>Config</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::Config</qualifiedname>
+        <param>
+          <type>const std::vector&lt; <ref refid="struct_device_data" kindref="compound">DeviceData</ref> &gt; &amp;</type>
+          <declname>devs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="91" column="5" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.cpp" bodystart="124" bodyend="225"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a469a77c7bbc7b883d21d694f587147b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_DEFAULT_DEVICES::DefaultDevs::DefaultDevs</definition>
+        <argsstring>()</argsstring>
+        <name>DefaultDevs</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::DefaultDevs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="92" column="5" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.cpp" bodystart="11" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1afdf97dd3d4bcdc828eec365081dfa3eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_DEFAULT_DEVICES::DefaultDevs::~DefaultDevs</definition>
+        <argsstring>()</argsstring>
+        <name>~DefaultDevs</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::~DefaultDevs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="93" column="5" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.cpp" bodystart="15" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a6bfddbe87399155b6722a97b123b8305" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_DEFAULT_DEVICES::DefaultDevs::SetPlatformContexts</definition>
+        <argsstring>(void *, void *, bool)</argsstring>
+        <name>SetPlatformContexts</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::SetPlatformContexts</qualifiedname>
+        <param>
+          <type>void *</type>
+        </param>
+        <param>
+          <type>void *</type>
+        </param>
+        <param>
+          <type>bool</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/windows/DefaultDevs.hpp" line="53" column="5" bodyfile="include/input/DefaultDevs/windows/DefaultDevs.hpp" bodystart="53" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a5f69dd16a3e98fc1f4673bc7f8027cc7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string PDJE_DEFAULT_DEVICES::DefaultDevs::GetCurrentBackendString</definition>
+        <argsstring>() const</argsstring>
+        <name>GetCurrentBackendString</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::GetCurrentBackendString</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/windows/DefaultDevs.hpp" line="58" column="5" bodyfile="include/input/DefaultDevs/windows/DefaultDevs.hpp" bodystart="58" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1af5dd0306696c2844a8f5f880d2dece12" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_DEFAULT_DEVICES::DefaultDevs::Kill</definition>
+        <argsstring>()</argsstring>
+        <name>Kill</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::Kill</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/windows/DefaultDevs.hpp" line="63" column="5" bodyfile="include/input/DefaultDevs/windows/DefaultDevs.hpp" bodystart="63" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a5597b8b7bb437dadc0de81d7954d66e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="struct_device_data" kindref="compound">DeviceData</ref> &gt;</type>
+        <definition>std::vector&lt; DeviceData &gt; PDJE_DEFAULT_DEVICES::DefaultDevs::GetDevices</definition>
+        <argsstring>()</argsstring>
+        <name>GetDevices</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::GetDevices</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/windows/DefaultDevs.hpp" line="68" column="5" bodyfile="include/input/DefaultDevs/windows/DefaultDevs.hpp" bodystart="68" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1affcdb7a21646bf54fdf96d4a85f93cb8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_p_d_j_e___i_p_c_1_1_p_d_j_e___input___transfer" kindref="compound">PDJE_IPC::PDJE_Input_Transfer</ref> *</type>
+        <definition>PDJE_IPC::PDJE_Input_Transfer * PDJE_DEFAULT_DEVICES::DefaultDevs::GetInputBufferPTR</definition>
+        <argsstring>()</argsstring>
+        <name>GetInputBufferPTR</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::GetInputBufferPTR</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/windows/DefaultDevs.hpp" line="74" column="5" bodyfile="include/input/DefaultDevs/windows/DefaultDevs.hpp" bodystart="74" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a94cf8f849a815b7a402d20c051c5633c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_DEFAULT_DEVICES::DefaultDevs::Ready</definition>
+        <argsstring>()</argsstring>
+        <name>Ready</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::Ready</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/windows/DefaultDevs.hpp" line="79" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1af12d58ca737dbe9d33baa64c63adbc02" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_DEFAULT_DEVICES::DefaultDevs::RunLoop</definition>
+        <argsstring>()</argsstring>
+        <name>RunLoop</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::RunLoop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/windows/DefaultDevs.hpp" line="82" column="5" bodyfile="include/input/DefaultDevs/windows/DefaultDevs.hpp" bodystart="82" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a0b3437e10087ab38ae74cd781a586049" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_DEFAULT_DEVICES::DefaultDevs::TerminateLoop</definition>
+        <argsstring>()</argsstring>
+        <name>TerminateLoop</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::TerminateLoop</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/windows/DefaultDevs.hpp" line="87" column="5" bodyfile="include/input/DefaultDevs/windows/DefaultDevs.hpp" bodystart="87" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a2a47d1524563bb4fbabf564db723cae6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PDJE_DEFAULT_DEVICES::DefaultDevs::Config</definition>
+        <argsstring>(const std::vector&lt; DeviceData &gt; &amp;devs)</argsstring>
+        <name>Config</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::Config</qualifiedname>
+        <param>
+          <type>const std::vector&lt; <ref refid="struct_device_data" kindref="compound">DeviceData</ref> &gt; &amp;</type>
+          <declname>devs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/windows/DefaultDevs.hpp" line="93" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a469a77c7bbc7b883d21d694f587147b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_DEFAULT_DEVICES::DefaultDevs::DefaultDevs</definition>
+        <argsstring>()</argsstring>
+        <name>DefaultDevs</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::DefaultDevs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/windows/DefaultDevs.hpp" line="94" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1afdf97dd3d4bcdc828eec365081dfa3eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_DEFAULT_DEVICES::DefaultDevs::~DefaultDevs</definition>
+        <argsstring>()</argsstring>
+        <name>~DefaultDevs</name>
+        <qualifiedname>PDJE_DEFAULT_DEVICES::DefaultDevs::~DefaultDevs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/input/DefaultDevs/windows/DefaultDevs.hpp" line="95" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4">
+        <label>Atomic_Double_Buffer&lt; PDJE_Input_Log &gt;</label>
+        <link refid="class_atomic___double___buffer"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>first</edgelabel>
+          <edgelabel>second</edgelabel>
+        </childnode>
+      </node>
+      <node id="20">
+        <label>PDJE_CRYPTO::PSK</label>
+        <link refid="class_p_d_j_e___c_r_y_p_t_o_1_1_p_s_k"/>
+      </node>
+      <node id="28">
+        <label>PDJE_CRYPTO::PSKPipe</label>
+        <link refid="class_p_d_j_e___c_r_y_p_t_o_1_1_p_s_k_pipe"/>
+      </node>
+      <node id="1">
+        <label>PDJE_DEFAULT_DEVICES::DefaultDevs</label>
+        <link refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>input_buffer</edgelabel>
+        </childnode>
+        <childnode refid="21" relation="usage">
+          <edgelabel>stored_dev</edgelabel>
+        </childnode>
+        <childnode refid="23" relation="usage">
+          <edgelabel>wayland_loader</edgelabel>
+        </childnode>
+        <childnode refid="26" relation="usage">
+          <edgelabel>subprocess_RAII</edgelabel>
+        </childnode>
+        <childnode refid="27" relation="usage">
+          <edgelabel>meta</edgelabel>
+        </childnode>
+        <childnode refid="28" relation="usage">
+          <edgelabel>pipe</edgelabel>
+        </childnode>
+        <childnode refid="13" relation="usage">
+          <edgelabel>input_loop_run_event</edgelabel>
+          <edgelabel>terminate_event</edgelabel>
+        </childnode>
+      </node>
+      <node id="22">
+        <label>PDJE_DEFAULT_DEVICES::DefaultDevs::device_metadata</label>
+        <link refid="struct_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1_1device__metadata"/>
+        <childnode refid="14" relation="usage">
+          <edgelabel>source_id</edgelabel>
+        </childnode>
+      </node>
+      <node id="25">
+        <label>PDJE_DEFAULT_DEVICES::WaylandDynLibOps</label>
+        <link refid="struct_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_wayland_dyn_lib_ops"/>
+      </node>
+      <node id="23">
+        <label>PDJE_DEFAULT_DEVICES::WaylandRuntimeLoader</label>
+        <link refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_wayland_runtime_loader"/>
+        <childnode refid="24" relation="usage">
+          <edgelabel>status</edgelabel>
+        </childnode>
+        <childnode refid="25" relation="usage">
+          <edgelabel>dynlib_ops</edgelabel>
+        </childnode>
+        <childnode refid="17" relation="usage">
+          <edgelabel>lock</edgelabel>
+        </childnode>
+      </node>
+      <node id="24">
+        <label>PDJE_DEFAULT_DEVICES::WaylandRuntimeStatus</label>
+        <link refid="struct_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_wayland_runtime_status"/>
+      </node>
+      <node id="11">
+        <label>PDJE_HID_Event</label>
+        <link refid="struct_p_d_j_e___h_i_d___event"/>
+      </node>
+      <node id="13">
+        <label>PDJE_IPC::EVENT</label>
+        <link refid="class_p_d_j_e___i_p_c_1_1_e_v_e_n_t"/>
+        <childnode refid="14" relation="usage">
+          <edgelabel>name_cache</edgelabel>
+        </childnode>
+      </node>
+      <node id="19">
+        <label>PDJE_IPC::Input_Transfer_Metadata</label>
+        <link refid="struct_p_d_j_e___i_p_c_1_1_input___transfer___metadata"/>
+        <childnode refid="20" relation="usage">
+          <edgelabel>psk</edgelabel>
+        </childnode>
+      </node>
+      <node id="27">
+        <label>PDJE_IPC::MetadataTXRX</label>
+        <link refid="class_p_d_j_e___i_p_c_1_1_metadata_t_x_r_x"/>
+        <childnode refid="20" relation="usage">
+          <edgelabel>psk</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>PDJE_IPC::PDJE_Input_Transfer</label>
+        <link refid="class_p_d_j_e___i_p_c_1_1_p_d_j_e___input___transfer"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>datas</edgelabel>
+          <edgelabel>subBuffer</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>adbf</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>length</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>body</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>hmac</edgelabel>
+        </childnode>
+        <childnode refid="13" relation="usage">
+          <edgelabel>req_event</edgelabel>
+          <edgelabel>stored_event</edgelabel>
+        </childnode>
+        <childnode refid="16" relation="usage">
+          <edgelabel>sendworker_switch</edgelabel>
+        </childnode>
+        <childnode refid="17" relation="usage">
+          <edgelabel>local_locker</edgelabel>
+        </childnode>
+        <childnode refid="18" relation="usage">
+          <edgelabel>hmacEngine</edgelabel>
+        </childnode>
+        <childnode refid="19" relation="usage">
+          <edgelabel>metadata</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>PDJE_IPC::SharedMem&lt; PDJE_Input_Log, PDJE_IPC_RW &gt;</label>
+        <link refid="class_p_d_j_e___i_p_c_1_1_shared_mem"/>
+        <childnode refid="7" relation="usage">
+          <edgelabel>ptr</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>PDJE_IPC::SharedMem&lt; uint64_t, PDJE_IPC_RW &gt;</label>
+        <link refid="class_p_d_j_e___i_p_c_1_1_shared_mem"/>
+      </node>
+      <node id="12">
+        <label>PDJE_IPC::SharedMem&lt; uint8_t, PDJE_IPC_RW &gt;</label>
+        <link refid="class_p_d_j_e___i_p_c_1_1_shared_mem"/>
+      </node>
+      <node id="8">
+        <label>PDJE_Input_Event</label>
+        <link refid="union_p_d_j_e___input___event"/>
+        <childnode refid="9" relation="usage">
+          <edgelabel>mouse</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>keyboard</edgelabel>
+        </childnode>
+      </node>
+      <node id="7">
+        <label>PDJE_Input_Log</label>
+        <link refid="struct_p_d_j_e___input___log"/>
+        <childnode refid="8" relation="usage">
+          <edgelabel>event</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>hid_event</edgelabel>
+        </childnode>
+      </node>
+      <node id="10">
+        <label>PDJE_Keyboard_Event</label>
+        <link refid="struct_p_d_j_e___keyboard___event"/>
+      </node>
+      <node id="9">
+        <label>PDJE_Mouse_Event</label>
+        <link refid="struct_p_d_j_e___mouse___event"/>
+      </node>
+      <node id="26">
+        <label>PDJE_RAII::RAII&lt; HANDLE, HandleCloser &gt;</label>
+        <link refid="class_p_d_j_e___r_a_i_i_1_1_r_a_i_i"/>
+      </node>
+      <node id="16">
+        <label>std::atomic&lt; bool &gt;</label>
+      </node>
+      <node id="15">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="17">
+        <label>std::mutex</label>
+      </node>
+      <node id="14">
+        <label>std::string</label>
+        <childnode refid="15" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>std::unique_ptr&lt; Botan::MessageAuthenticationCode &gt;</label>
+      </node>
+      <node id="21">
+        <label>std::unordered_map&lt; std::string, PDJE_DEFAULT_DEVICES::DefaultDevs::device_metadata &gt;</label>
+        <childnode refid="14" relation="usage">
+          <edgelabel>keys</edgelabel>
+        </childnode>
+        <childnode refid="22" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::vector&lt; PDJE_Input_Log &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/input/DefaultDevs/linux/DefaultDevs.hpp" line="22" column="1" bodyfile="include/input/DefaultDevs/linux/DefaultDevs.hpp" bodystart="22" bodyend="94"/>
+    <listofallmembers>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a7893676557aaffab0479941150467361" prot="private" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>active_backend</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1ab514794040ca709cbca05854ddb2718a" prot="private" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>ActiveBackendKind</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a2a47d1524563bb4fbabf564db723cae6" prot="public" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>Config</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a2a47d1524563bb4fbabf564db723cae6" prot="public" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>Config</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1ac5375ba8bd89f64eb4e50028964472cf" prot="private" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>ConfigureWayland</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a469a77c7bbc7b883d21d694f587147b1" prot="public" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>DefaultDevs</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a469a77c7bbc7b883d21d694f587147b1" prot="public" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>DefaultDevs</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a4dccb0c1a851af8b213585cef7b6bcf4" prot="private" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>evdev_core</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a28e9e4051b2c5da8c25fd4927d9721df" prot="private" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>events</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a5f69dd16a3e98fc1f4673bc7f8027cc7" prot="public" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>GetCurrentBackendString</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a5f69dd16a3e98fc1f4673bc7f8027cc7" prot="public" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>GetCurrentBackendString</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a5597b8b7bb437dadc0de81d7954d66e7" prot="public" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>GetDevices</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a5597b8b7bb437dadc0de81d7954d66e7" prot="public" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>GetDevices</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1affcdb7a21646bf54fdf96d4a85f93cb8" prot="public" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>GetInputBufferPTR</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1affcdb7a21646bf54fdf96d4a85f93cb8" prot="public" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>GetInputBufferPTR</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1ab0b2386bb692a0aa120e57ee5eccbcd1" prot="private" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>HasValidWaylandHostContext</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a105a7a07febc1ec8cc60b92f79f134d8" prot="private" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>InitEvents</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1ac1dc3c134627a989ca1ca8474bfdcec4" prot="private" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>input_buffer</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1ab7b8ce439ab6df4fc0e0c12d7dae1ea3" prot="private" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>input_buffer</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1aeb8319a3e3d14668a1f88b4f07312d01" prot="public" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>input_loop_run_event</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a02ff9909346943dcaacea9db1161d27e" prot="private" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>input_thread</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a4906d99012de828664dfbda2c4f00b17" prot="private" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>IsWaylandSyntheticId</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1af5dd0306696c2844a8f5f880d2dece12" prot="public" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>Kill</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1af5dd0306696c2844a8f5f880d2dece12" prot="public" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>Kill</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a4eedbd55e0c6aed9ed5714fe2c3348ff" prot="private" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>meta</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a820ce9c95b03c9cebec568bda8a34f42" prot="private" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>OpenProcess</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a7ce0942c8bcb9ed7c5d8fd48c948ba9a" prot="private" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>pipe</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1ad6003661742e6d74f550ca31069c026a" prot="private" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>platform_ctx0_</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a4ca64f4621439385e0c23022aac77fbb" prot="private" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>platform_ctx1_</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1ad5c790b94260fa77b43213b2489b4641" prot="private" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>process_info</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a94cf8f849a815b7a402d20c051c5633c" prot="public" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>Ready</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a94cf8f849a815b7a402d20c051c5633c" prot="public" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>Ready</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1af12d58ca737dbe9d33baa64c63adbc02" prot="public" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>RunLoop</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1af12d58ca737dbe9d33baa64c63adbc02" prot="public" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>RunLoop</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a808846cb658f1a30ccd67c884b83a194" prot="public" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>SetPlatformContexts</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a6bfddbe87399155b6722a97b123b8305" prot="public" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>SetPlatformContexts</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a3ff881429d0c58cddf552468c680bb31" prot="private" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>start_up_info</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a24271175a5091c33cc615dc4430e1464" prot="private" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>stored_dev</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a3a4b276480b9eab0d9d8038056f9a822" prot="private" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>StoredBackendKind</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1abf9e30a27632b8d90d40ca39938966c1" prot="private" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>subprocess_RAII</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a067d13786a2a689baf5a91ab10e93dce" prot="public" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>terminate_event</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a0b3437e10087ab38ae74cd781a586049" prot="public" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>TerminateLoop</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a0b3437e10087ab38ae74cd781a586049" prot="public" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>TerminateLoop</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1ae036e5a07e034012bcbe83fd1eee5999" prot="private" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>use_internal_window_</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1acab13e0c7a73fc068469ad42c3901378" prot="private" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>wayland_core</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a233eb7a77cf144961dac59aa05bf0831" prot="private" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>wayland_loader</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a04fedaef553119a0d68b4dc07deb82f3" prot="private" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>wayland_source_mode</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1a804c76f7e5b4580fe0f6b0d1c9ae1065" prot="private" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>WaylandSourceMode</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1afdf97dd3d4bcdc828eec365081dfa3eb" prot="public" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>~DefaultDevs</name></member>
+      <member refid="class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1afdf97dd3d4bcdc828eec365081dfa3eb" prot="public" virt="non-virtual"><scope>PDJE_DEFAULT_DEVICES::DefaultDevs</scope><name>~DefaultDevs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

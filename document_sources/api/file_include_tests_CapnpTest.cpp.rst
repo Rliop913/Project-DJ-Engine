@@ -4,7 +4,7 @@
 File CapnpTest.cpp
 ==================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_tests>` (``include/tests``)
+|exhale_lsh| :ref:`Parent directory <dir_include_tests>` (``include\tests``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File CapnpTest.cpp
    :local:
    :backlinks: none
 
-Definition (``include/tests/CapnpTest.cpp``)
+Definition (``include\tests\CapnpTest.cpp``)
 --------------------------------------------
 
 
@@ -45,5 +45,5 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_CapnpTest_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4`
+- :ref:`exhale_function__capnp_test_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4`
 

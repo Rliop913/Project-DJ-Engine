@@ -4,7 +4,7 @@
 File DbTypes.hpp
 ================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_util_db>` (``include/util/db``)
+|exhale_lsh| :ref:`Parent directory <dir_include_util_db>` (``include\util\db``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File DbTypes.hpp
    :local:
    :backlinks: none
 
-Definition (``include/util/db/DbTypes.hpp``)
+Definition (``include\util\db\DbTypes.hpp``)
 --------------------------------------------
 
 
@@ -72,16 +72,16 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structPDJE__UTIL_1_1db_1_1OpenOptions`
+- :ref:`exhale_struct_struct_p_d_j_e___u_t_i_l_1_1db_1_1_open_options`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef_namespacePDJE__UTIL_1_1db_1a2ef3b7d9e6089bee19f07baae2cdaa81`
+- :ref:`exhale_typedef_namespace_p_d_j_e___u_t_i_l_1_1db_1a2ef3b7d9e6089bee19f07baae2cdaa81`
 
-- :ref:`exhale_typedef_namespacePDJE__UTIL_1_1db_1aedbff324bfcd10a0857fd98f47045ba1`
+- :ref:`exhale_typedef_namespace_p_d_j_e___u_t_i_l_1_1db_1aedbff324bfcd10a0857fd98f47045ba1`
 
-- :ref:`exhale_typedef_namespacePDJE__UTIL_1_1db_1a89f870d3c2a028544646a9b95b827d28`
+- :ref:`exhale_typedef_namespace_p_d_j_e___u_t_i_l_1_1db_1a89f870d3c2a028544646a9b95b827d28`
 

@@ -5,12 +5,12 @@ Directory MixMachine
 ====================
 
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender>` (``include/core/audioRender``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender>` (``include\core\audioRender``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include/core/audioRender/MixMachine``
+*Directory path:* ``include\core\audioRender\MixMachine``
 
 Subdirectories
 --------------

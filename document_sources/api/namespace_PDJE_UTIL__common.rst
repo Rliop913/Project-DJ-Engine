@@ -17,15 +17,15 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structPDJE__UTIL_1_1common_1_1Status`
+- :ref:`exhale_struct_struct_p_d_j_e___u_t_i_l_1_1common_1_1_status`
 
-- :ref:`exhale_class_classPDJE__UTIL_1_1common_1_1Result`
+- :ref:`exhale_class_class_p_d_j_e___u_t_i_l_1_1common_1_1_result`
 
-- :ref:`exhale_class_classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4`
+- :ref:`exhale_class_class_p_d_j_e___u_t_i_l_1_1common_1_1_result_3_01void_01_4`
 
 
 Enums
 -----
 
 
-- :ref:`exhale_enum_namespacePDJE__UTIL_1_1common_1a3025dd440bc92023d950561cff3dfdb4`
+- :ref:`exhale_enum_namespace_p_d_j_e___u_t_i_l_1_1common_1a3025dd440bc92023d950561cff3dfdb4`

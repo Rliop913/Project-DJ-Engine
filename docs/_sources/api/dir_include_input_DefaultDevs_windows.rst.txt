@@ -5,12 +5,12 @@ Directory windows
 =================
 
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_DefaultDevs>` (``include/input/DefaultDevs``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_DefaultDevs>` (``include\input\DefaultDevs``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include/input/DefaultDevs/windows``
+*Directory path:* ``include\input\DefaultDevs\windows``
 
 Subdirectories
 --------------

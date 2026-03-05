@@ -4,7 +4,7 @@
 File distortionMan.hpp
 ======================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_ManualMix_ManualFausts>` (``include/core/audioRender/ManualMix/ManualFausts``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_ManualMix_ManualFausts>` (``include\core\audioRender\ManualMix\ManualFausts``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -18,7 +18,7 @@ Manual distortion effect controller.
    :local:
    :backlinks: none
 
-Definition (``include/core/audioRender/ManualMix/ManualFausts/distortionMan.hpp``)
+Definition (``include\core\audioRender\ManualMix\ManualFausts\distortionMan.hpp``)
 ----------------------------------------------------------------------------------
 
 
@@ -46,5 +46,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classDistortionMan`
+- :ref:`exhale_class_class_distortion_man`
 

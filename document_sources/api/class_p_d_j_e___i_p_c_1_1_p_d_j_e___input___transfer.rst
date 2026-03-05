@@ -3,7 +3,7 @@
 Class PDJE_Input_Transfer
 =========================
 
-- Defined in :ref:`file_include_input_IPC_memory_Input_Transfer.hpp`
+- Defined in :ref:`file_include_input_IPC_memory_linux_Input_Transfer.hpp`
 
 
 Class Documentation

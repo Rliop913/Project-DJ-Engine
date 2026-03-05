@@ -4,7 +4,7 @@
 File PDJE_Input.hpp
 ===================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input>` (``include/input``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input>` (``include\input``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_Input.hpp
    :local:
    :backlinks: none
 
-Definition (``include/input/PDJE_Input.hpp``)
+Definition (``include\input\PDJE_Input.hpp``)
 ---------------------------------------------
 
 
@@ -73,5 +73,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classPDJE__Input`
+- :ref:`exhale_class_class_p_d_j_e___input`
 

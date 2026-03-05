@@ -4,7 +4,7 @@
 Program Listing for File MusicControlPanel.hpp
 ==============================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_audioRender_ManualMix_MusicControlPanel.hpp>` (``include/core/audioRender/ManualMix/MusicControlPanel.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_audioRender_ManualMix_MusicControlPanel.hpp>` (``include\core\audioRender\ManualMix\MusicControlPanel.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

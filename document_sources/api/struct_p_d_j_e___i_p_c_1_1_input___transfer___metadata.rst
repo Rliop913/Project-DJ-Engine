@@ -3,7 +3,7 @@
 Struct Input_Transfer_Metadata
 ==============================
 
-- Defined in :ref:`file_include_input_IPC_memory_Input_Transfer.hpp`
+- Defined in :ref:`file_include_input_IPC_memory_windows_Input_Transfer.hpp`
 
 
 Struct Documentation

@@ -44,14 +44,22 @@
         <label>PDJE_EXPORT_SETTER.hpp</label>
         <link refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp"/>
       </node>
-      <node id="10">
-        <label>PDJE_LOG_SETTER.hpp</label>
-        <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
-        <childnode refid="11" relation="include">
+      <node id="11">
+        <label>PDJE_LOG_RUNTIME_API.h</label>
+        <link refid="_p_d_j_e___l_o_g___r_u_n_t_i_m_e___a_p_i_8h"/>
+        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>PDJE_LOG_SETTER.hpp</label>
+        <link refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
@@ -60,6 +68,8 @@
         <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
         </childnode>
       </node>
       <node id="6">
@@ -77,29 +87,29 @@
       <node id="5">
         <label>capnp/serialize.h</label>
       </node>
-      <node id="11">
-        <label>filesystem</label>
-      </node>
-      <node id="12">
-        <label>mutex</label>
+      <node id="16">
+        <label>exception</label>
       </node>
       <node id="2">
         <label>optional</label>
       </node>
-      <node id="13">
-        <label>spdlog/sinks/basic_file_sink.h</label>
-      </node>
       <node id="14">
-        <label>spdlog/sinks/stdout_color_sinks.h</label>
+        <label>spdlog/fmt/fmt.h</label>
       </node>
       <node id="15">
         <label>spdlog/spdlog.h</label>
       </node>
-      <node id="16">
-        <label>string_view</label>
+      <node id="12">
+        <label>stddef.h</label>
+      </node>
+      <node id="13">
+        <label>stdint.h</label>
       </node>
       <node id="17">
-        <label>type_traits</label>
+        <label>string_view</label>
+      </node>
+      <node id="18">
+        <label>utility</label>
       </node>
       <node id="3">
         <label>vector</label>
@@ -471,20 +481,16 @@
         <link refid="_capnp_binary_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="75" relation="include">
+        <childnode refid="74" relation="include">
         </childnode>
-        <childnode refid="89" relation="include">
+        <childnode refid="96" relation="include">
         </childnode>
-        <childnode refid="91" relation="include">
+        <childnode refid="98" relation="include">
         </childnode>
-        <childnode refid="93" relation="include">
+        <childnode refid="100" relation="include">
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
-      </node>
-      <node id="71">
-        <label>include/core/db/Capnp/Translators/FrameCalc.cpp</label>
-        <link refid="_frame_calc_8cpp"/>
       </node>
       <node id="2">
         <label>include/core/db/Capnp/Translators/FrameCalc.hpp</label>
@@ -505,48 +511,46 @@
         </childnode>
         <childnode refid="71" relation="include">
         </childnode>
-        <childnode refid="72" relation="include">
+        <childnode refid="95" relation="include">
         </childnode>
-        <childnode refid="88" relation="include">
+        <childnode refid="96" relation="include">
         </childnode>
-        <childnode refid="89" relation="include">
-        </childnode>
-        <childnode refid="91" relation="include">
+        <childnode refid="98" relation="include">
         </childnode>
       </node>
-      <node id="73">
+      <node id="72">
         <label>include/core/db/Capnp/Translators/MixTranslator/Bpm.cpp</label>
         <link refid="_bpm_8cpp"/>
       </node>
-      <node id="72">
+      <node id="71">
         <label>include/core/db/Capnp/Translators/MixTranslator/Bpm.hpp</label>
         <link refid="_bpm_8hpp"/>
+        <childnode refid="72" relation="include">
+        </childnode>
         <childnode refid="73" relation="include">
         </childnode>
         <childnode refid="74" relation="include">
         </childnode>
-        <childnode refid="75" relation="include">
-        </childnode>
       </node>
-      <node id="74">
+      <node id="73">
         <label>include/core/db/Capnp/Translators/MixTranslator/Mix.cpp</label>
         <link refid="_mix_8cpp"/>
       </node>
-      <node id="88">
+      <node id="95">
         <label>include/core/db/Capnp/Translators/MixTranslator/Mix.hpp</label>
         <link refid="_mix_8hpp"/>
-        <childnode refid="72" relation="include">
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
         </childnode>
         <childnode refid="74" relation="include">
         </childnode>
-        <childnode refid="75" relation="include">
-        </childnode>
       </node>
-      <node id="76">
+      <node id="75">
         <label>include/core/db/Capnp/Translators/MixTranslator/MixTranslator.cpp</label>
         <link refid="_mix_translator_8cpp"/>
       </node>
-      <node id="75">
+      <node id="74">
         <label>include/core/db/Capnp/Translators/MixTranslator/MixTranslator.hpp</label>
         <link refid="_mix_translator_8hpp"/>
         <childnode refid="65" relation="include">
@@ -555,72 +559,110 @@
         </childnode>
         <childnode refid="46" relation="include">
         </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
         <childnode refid="76" relation="include">
         </childnode>
-        <childnode refid="77" relation="include">
-        </childnode>
-        <childnode refid="79" relation="include">
+        <childnode refid="78" relation="include">
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
       </node>
-      <node id="90">
+      <node id="97">
         <label>include/core/db/Capnp/Translators/MusicTranslator/MusicTranslator.cpp</label>
         <link refid="_music_translator_8cpp"/>
       </node>
-      <node id="89">
+      <node id="96">
         <label>include/core/db/Capnp/Translators/MusicTranslator/MusicTranslator.hpp</label>
         <link refid="_music_translator_8hpp"/>
         <childnode refid="64" relation="include">
         </childnode>
-        <childnode refid="90" relation="include">
+        <childnode refid="97" relation="include">
         </childnode>
       </node>
-      <node id="92">
+      <node id="99">
         <label>include/core/db/Capnp/Translators/NoteTranslator/NoteTranslator.cpp</label>
         <link refid="_note_translator_8cpp"/>
       </node>
-      <node id="91">
+      <node id="98">
         <label>include/core/db/Capnp/Translators/NoteTranslator/NoteTranslator.hpp</label>
         <link refid="_note_translator_8hpp"/>
-        <childnode refid="92" relation="include">
+        <childnode refid="99" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="80">
-        <label>include/core/editor/TimeLine/EventMarker/EventMarker.hpp</label>
-        <link refid="_event_marker_8hpp"/>
-        <childnode refid="81" relation="include">
+      <node id="86">
+        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-KV.cpp</label>
+        <link refid="_time_line_diff_machine-_k_v_8cpp"/>
+      </node>
+      <node id="87">
+        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-MIX.cpp</label>
+        <link refid="_time_line_diff_machine-_m_i_x_8cpp"/>
+      </node>
+      <node id="88">
+        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-MUSIC.cpp</label>
+        <link refid="_time_line_diff_machine-_m_u_s_i_c_8cpp"/>
+      </node>
+      <node id="89">
+        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-NOTE.cpp</label>
+        <link refid="_time_line_diff_machine-_n_o_t_e_8cpp"/>
+      </node>
+      <node id="90">
+        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.cpp</label>
+        <link refid="_time_line_diff_machine_8cpp"/>
+      </node>
+      <node id="85">
+        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp</label>
+        <link refid="_time_line_diff_machine_8hpp"/>
+        <childnode refid="86" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+        <childnode refid="91" relation="include">
         </childnode>
       </node>
-      <node id="82">
+      <node id="79">
+        <label>include/core/editor/TimeLine/EventMarker/EventMarker.hpp</label>
+        <link refid="_event_marker_8hpp"/>
+        <childnode refid="80" relation="include">
+        </childnode>
+      </node>
+      <node id="81">
         <label>include/core/editor/TimeLine/GitDataPack/GitDatas.hpp</label>
         <link refid="_git_datas_8hpp"/>
-        <childnode refid="80" relation="include">
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
         </childnode>
         <childnode refid="83" relation="include">
         </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
         <childnode refid="84" relation="include">
         </childnode>
-        <childnode refid="81" relation="include">
-        </childnode>
       </node>
-      <node id="77">
+      <node id="76">
         <label>include/core/editor/TimeLine/JSONWrap/EditorArgs.hpp</label>
         <link refid="_editor_args_8hpp"/>
-        <childnode refid="78" relation="include">
+        <childnode refid="77" relation="include">
         </childnode>
-        <childnode refid="79" relation="include">
+        <childnode refid="78" relation="include">
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
       </node>
-      <node id="85">
+      <node id="92">
         <label>include/core/editor/TimeLine/JSONWrap/KVJson.cpp</label>
         <link refid="_k_v_json_8cpp"/>
       </node>
-      <node id="86">
+      <node id="93">
         <label>include/core/editor/TimeLine/JSONWrap/MixJson.cpp</label>
         <link refid="_mix_json_8cpp"/>
       </node>
@@ -628,7 +670,7 @@
         <label>include/core/editor/TimeLine/JSONWrap/MusicJson.cpp</label>
         <link refid="_music_json_8cpp"/>
       </node>
-      <node id="78">
+      <node id="77">
         <label>include/core/editor/TimeLine/JSONWrap/MusicJsonHelper.hpp</label>
         <link refid="_music_json_helper_8hpp"/>
         <childnode refid="8" relation="include">
@@ -642,48 +684,62 @@
         <childnode refid="36" relation="include">
         </childnode>
       </node>
-      <node id="87">
+      <node id="94">
         <label>include/core/editor/TimeLine/JSONWrap/NoteJson.cpp</label>
         <link refid="_note_json_8cpp"/>
       </node>
-      <node id="79">
+      <node id="78">
         <label>include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp</label>
         <link refid="json_wrapper_8hpp"/>
-        <childnode refid="80" relation="include">
+        <childnode refid="79" relation="include">
         </childnode>
-        <childnode refid="82" relation="include">
+        <childnode refid="81" relation="include">
         </childnode>
-        <childnode refid="85" relation="include">
+        <childnode refid="92" relation="include">
         </childnode>
-        <childnode refid="86" relation="include">
+        <childnode refid="93" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="78" relation="include">
+        <childnode refid="77" relation="include">
         </childnode>
-        <childnode refid="87" relation="include">
+        <childnode refid="94" relation="include">
         </childnode>
-        <childnode refid="81" relation="include">
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
         </childnode>
       </node>
-      <node id="83">
+      <node id="82">
         <label>include/core/editor/TimeLine/LineVersion/LineVersion.cpp</label>
         <link refid="_line_version_8cpp"/>
       </node>
-      <node id="84">
+      <node id="83">
         <label>include/core/editor/TimeLine/LineVersion/LineVersion.hpp</label>
         <link refid="_line_version_8hpp"/>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
         <childnode refid="80" relation="include">
         </childnode>
-        <childnode refid="83" relation="include">
-        </childnode>
-        <childnode refid="81" relation="include">
-        </childnode>
       </node>
-      <node id="81">
+      <node id="91">
+        <label>include/core/editor/TimeLine/TimeLine.cpp</label>
+        <link refid="_time_line_8cpp"/>
+      </node>
+      <node id="80">
         <label>include/core/editor/TimeLine/TimeLine.hpp</label>
         <link refid="_time_line_8hpp"/>
         <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="84">
+        <label>include/core/editor/TimeLine/TimeLineDiffTypes.hpp</label>
+        <link refid="_time_line_diff_types_8hpp"/>
+        <childnode refid="85" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
         </childnode>
       </node>
       <node id="37">
@@ -699,8 +755,10 @@
         </childnode>
         <childnode refid="37" relation="include">
         </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
       </node>
-      <node id="93">
+      <node id="100">
         <label>include/core/editor/pdjeLinter/trackLinter.cpp</label>
         <link refid="track_linter_8cpp"/>
       </node>

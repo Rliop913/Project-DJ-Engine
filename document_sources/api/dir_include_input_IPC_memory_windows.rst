@@ -5,12 +5,12 @@ Directory windows
 =================
 
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_IPC_memory>` (``include/input/IPC/memory``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_IPC_memory>` (``include\input\IPC\memory``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include/input/IPC/memory/windows``
+*Directory path:* ``include\input\IPC\memory\windows``
 
 
 Files

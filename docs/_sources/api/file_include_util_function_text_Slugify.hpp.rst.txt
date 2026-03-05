@@ -4,7 +4,7 @@
 File Slugify.hpp
 ================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_util_function_text>` (``include/util/function/text``)
+|exhale_lsh| :ref:`Parent directory <dir_include_util_function_text>` (``include\util\function\text``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Slugify.hpp
    :local:
    :backlinks: none
 
-Definition (``include/util/function/text/Slugify.hpp``)
+Definition (``include\util\function\text\Slugify.hpp``)
 -------------------------------------------------------
 
 
@@ -34,9 +34,9 @@ Includes
 
 - ``string``
 
-- ``util/common/Result.hpp`` (:ref:`file_include_util_common_Result.hpp`)
+- ``util/common/Result.hpp``
 
-- ``util/function/FunctionContext.hpp`` (:ref:`file_include_util_function_FunctionContext.hpp`)
+- ``util/function/FunctionContext.hpp``
 
 
 
@@ -62,12 +62,12 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structPDJE__UTIL_1_1function_1_1SlugifyArgs`
+- :ref:`exhale_struct_struct_p_d_j_e___u_t_i_l_1_1function_1_1_slugify_args`
 
 
 Functions
 ---------
 
 
-- :ref:`exhale_function_namespacePDJE__UTIL_1_1function_1a8a09a492f8131bd4439eea47ffc0ccd5`
+- :ref:`exhale_function_namespace_p_d_j_e___u_t_i_l_1_1function_1a8a09a492f8131bd4439eea47ffc0ccd5`
 

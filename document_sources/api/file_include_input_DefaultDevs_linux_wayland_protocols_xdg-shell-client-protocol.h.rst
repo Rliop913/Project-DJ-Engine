@@ -4,7 +4,7 @@
 File xdg-shell-client-protocol.h
 ================================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_DefaultDevs_linux_wayland_protocols>` (``include/input/DefaultDevs/linux/wayland_protocols``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_DefaultDevs_linux_wayland_protocols>` (``include\input\DefaultDevs\linux\wayland_protocols``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File xdg-shell-client-protocol.h
    :local:
    :backlinks: none
 
-Definition (``include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h``)
+Definition (``include\input\DefaultDevs\linux\wayland_protocols\xdg-shell-client-protocol.h``)
 ----------------------------------------------------------------------------------------------
 
 

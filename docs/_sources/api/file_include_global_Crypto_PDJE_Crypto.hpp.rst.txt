@@ -4,7 +4,7 @@
 File PDJE_Crypto.hpp
 ====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_global_Crypto>` (``include/global/Crypto``)
+|exhale_lsh| :ref:`Parent directory <dir_include_global_Crypto>` (``include\global\Crypto``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_Crypto.hpp
    :local:
    :backlinks: none
 
-Definition (``include/global/Crypto/PDJE_Crypto.hpp``)
+Definition (``include\global\Crypto\PDJE_Crypto.hpp``)
 ------------------------------------------------------
 
 
@@ -72,10 +72,6 @@ Included By
 
 - :ref:`file_include_input_runner_windows_SubMain.cpp`
 
-- :ref:`file_include_input_trashbin_MainProcess_deprecated.hpp`
-
-- :ref:`file_include_input_trashbin_SubMain.cpp`
-
 
 
 
@@ -90,9 +86,9 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classPDJE__CRYPTO_1_1AEAD`
+- :ref:`exhale_class_class_p_d_j_e___c_r_y_p_t_o_1_1_a_e_a_d`
 
-- :ref:`exhale_class_classPDJE__CRYPTO_1_1Hash`
+- :ref:`exhale_class_class_p_d_j_e___c_r_y_p_t_o_1_1_hash`
 
-- :ref:`exhale_class_classPDJE__CRYPTO_1_1PSK`
+- :ref:`exhale_class_class_p_d_j_e___c_r_y_p_t_o_1_1_p_s_k`
 

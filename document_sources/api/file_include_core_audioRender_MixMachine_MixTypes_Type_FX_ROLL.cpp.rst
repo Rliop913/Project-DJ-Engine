@@ -4,7 +4,7 @@
 File Type_FX_ROLL.cpp
 =====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_MixMachine_MixTypes>` (``include/core/audioRender/MixMachine/MixTypes``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_MixMachine_MixTypes>` (``include\core\audioRender\MixMachine\MixTypes``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Type_FX_ROLL.cpp
    :local:
    :backlinks: none
 
-Definition (``include/core/audioRender/MixMachine/MixTypes/Type_FX_ROLL.cpp``)
+Definition (``include\core\audioRender\MixMachine\MixTypes\Type_FX_ROLL.cpp``)
 ------------------------------------------------------------------------------
 
 
@@ -41,5 +41,5 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_Type__FX__ROLL_8cpp_1ab95bbfe12a1bf365ecb40cd0a25b751c`
+- :ref:`exhale_function__type___f_x___r_o_l_l_8cpp_1ab95bbfe12a1bf365ecb40cd0a25b751c`
 

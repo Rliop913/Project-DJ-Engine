@@ -3,7 +3,7 @@
 Struct BpmStruct
 ================
 
-- Defined in :ref:`file_include_core_db_Capnp_Translators_FrameCalc.hpp`
+- Defined in :ref:`file_include_core_db_Capnp_Translators_FrameCalcCore.hpp`
 
 
 Struct Documentation
