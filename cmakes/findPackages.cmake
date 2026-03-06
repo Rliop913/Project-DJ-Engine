@@ -65,6 +65,12 @@ FetchContent_Declare(
     GIT_TAG        v5.3.1
 )
 
+FetchContent_Declare(
+    libspng
+    GIT_REPOSITORY https://github.com/randy408/libspng.git
+    GIT_TAG        v0.7.4
+)
+
 if(PDJE_TEST)
 FetchContent_Declare(
     doctest
@@ -76,6 +82,35 @@ endif()
 function(setLibreMIDIReqLib targetName)
   target_link_libraries(${targetName} PUBLIC libremidi)
 endfunction(setLibreMIDIReqLib)
+
+find_package(ZLIB REQUIRED)
+
+function(setSpngReqLib targetName)
+  set(_pdje_spng_target "")
+  foreach(_pdje_spng_candidate
+      spng_static
+      spng::spng_static
+      spng
+      spng::spng
+      spng_shared
+      spng::spng_shared)
+    if(TARGET ${_pdje_spng_candidate})
+      set(_pdje_spng_target ${_pdje_spng_candidate})
+      break()
+    endif()
+  endforeach()
+
+  if("${_pdje_spng_target}" STREQUAL "")
+    message(FATAL_ERROR "libspng target not found after FetchContent_MakeAvailable(libspng)")
+  endif()
+
+  get_target_property(_pdje_target_type ${targetName} TYPE)
+  if("${_pdje_target_type}" STREQUAL "INTERFACE_LIBRARY")
+    target_link_libraries(${targetName} INTERFACE ${_pdje_spng_target} ZLIB::ZLIB)
+  else()
+    target_link_libraries(${targetName} PUBLIC ${_pdje_spng_target} ZLIB::ZLIB)
+  endif()
+endfunction(setSpngReqLib)
 
 
 
@@ -177,6 +212,7 @@ FetchContent_MakeAvailable(NHJson)
 FetchContent_MakeAvailable(sql_amalgam)
 FetchContent_MakeAvailable(cppCodec)
 FetchContent_MakeAvailable(libremidi)
+FetchContent_MakeAvailable(libspng)
 if(PDJE_TEST)
 FetchContent_MakeAvailable(doctest)
 endif()

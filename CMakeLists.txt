@@ -287,6 +287,7 @@ add_executable(
   pdje_unit_core
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/main_doctest.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/public_headers.test.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/png_writer.test.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/db_relational_sqlite.test.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/db_keyvalue_rocksdb.test.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/db_nearest_annoy.test.cpp
@@ -302,6 +303,7 @@ add_executable(
 target_include_directories(pdje_unit_core PRIVATE ${PDJE_INCLUDE_GLOBAL} ${PDJE_INCLUDE_CORE})
 target_link_libraries(pdje_unit_core PRIVATE doctest::doctest)
 target_link_libraries(pdje_unit_core PRIVATE PDJE_UTIL)
+target_link_libraries(pdje_unit_core PRIVATE PDJE_UTIL_IMAGE_PNG)
 target_link_libraries(pdje_unit_core PRIVATE PDJE_UTIL_DB)
 target_compile_definitions(pdje_unit_core PRIVATE PDJE_UNIT_TESTING)
 setSpdlogReqLib(pdje_unit_core)
