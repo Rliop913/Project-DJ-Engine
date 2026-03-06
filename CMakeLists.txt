@@ -288,6 +288,7 @@ add_executable(
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/main_doctest.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/public_headers.test.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/png_writer.test.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/waveform_png.test.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/db_relational_sqlite.test.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/db_keyvalue_rocksdb.test.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/db_nearest_annoy.test.cpp
@@ -414,6 +415,29 @@ if(PDJE_TEST)
   PDJE_COMPILE_OPTION(pdje_unit_interface)
   SET_PROPERTIES(pdje_unit_interface)
   pdje_discover_unit_tests(pdje_unit_interface core)
+endif()
+
+if(PDJE_DEV_TEST)
+  add_executable(
+    music_to_waveform_png
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/music_to_waveform_png.cpp)
+  target_include_directories(
+    music_to_waveform_png PRIVATE ${PDJE_INCLUDE_GLOBAL} ${PDJE_INCLUDE_CORE})
+  target_link_libraries(music_to_waveform_png PRIVATE PDJE)
+  target_link_libraries(music_to_waveform_png PRIVATE PDJE_UTIL_IMAGE_PNG)
+  if(WIN32)
+    set(_music_to_waveform_png_zlib_runtime
+      "$<$<CONFIG:Debug>:${zlib_BIN_DIRS_DEBUG}/zlib1.dll>$<$<CONFIG:Release>:${zlib_BIN_DIRS_RELEASE}/zlib1.dll>$<$<CONFIG:RelWithDebInfo>:${zlib_BIN_DIRS_RELEASE}/zlib1.dll>$<$<CONFIG:MinSizeRel>:${zlib_BIN_DIRS_RELEASE}/zlib1.dll>")
+    add_custom_command(
+      TARGET music_to_waveform_png
+      POST_BUILD
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${_music_to_waveform_png_zlib_runtime}"
+        $<TARGET_FILE_DIR:music_to_waveform_png>
+      VERBATIM)
+  endif()
+  PDJE_COMPILE_OPTION(music_to_waveform_png)
+  SET_PROPERTIES(music_to_waveform_png)
 endif()
 
 if(PDJE_DEVELOP_INPUT)
