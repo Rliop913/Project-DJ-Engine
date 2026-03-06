@@ -130,3 +130,78 @@ TEST_CASE("encode_waveform_pngs aggregates min max ranges within a pixel column"
     CHECK(alpha_at(decoded, 1, 1) == 0);
     CHECK(alpha_at(decoded, 1, 3) == 0);
 }
+
+TEST_CASE("encode_waveform_pngs pads incomplete chunks before waveform reduction")
+{
+    const std::vector<float> mono_pcm { 0.5f, -0.5f, 1.0f };
+
+    auto encoded = PDJE_UTIL::function::image::encode_waveform_pngs(
+        { .pcm = mono_pcm,
+          .channel_count = 1,
+          .y_pixels = 5,
+          .pcm_per_pixel = 3,
+          .x_pixels_per_png = 2,
+          .compression_level = 1 });
+
+    REQUIRE(encoded.ok());
+    REQUIRE(encoded.value().size() == 1);
+    REQUIRE(encoded.value()[0].size() == 1);
+
+    auto decoded = decode_rgba8(encoded.value()[0][0]);
+    CHECK(decoded.width == 2);
+    CHECK(decoded.height == 5);
+
+    CHECK(alpha_at(decoded, 0, 0) == 255);
+    CHECK(alpha_at(decoded, 0, 1) == 255);
+    CHECK(alpha_at(decoded, 0, 2) == 255);
+    CHECK(alpha_at(decoded, 0, 3) == 255);
+    CHECK(alpha_at(decoded, 0, 4) == 0);
+
+    CHECK(alpha_at(decoded, 1, 2) == 255);
+    CHECK(alpha_at(decoded, 1, 1) == 0);
+    CHECK(alpha_at(decoded, 1, 3) == 0);
+}
+
+TEST_CASE("encode_waveform_pngs keeps identical output across worker counts")
+{
+    const std::vector<float> interleaved_pcm {
+        1.0f, -1.0f, 0.25f, -0.25f,
+        -0.5f, 0.5f, 0.75f, -0.75f,
+        0.0f, 0.0f, -1.0f, 1.0f,
+        0.3f, -0.3f, -0.2f, 0.2f
+    };
+
+    auto single_worker = PDJE_UTIL::function::image::encode_waveform_pngs(
+        { .pcm = interleaved_pcm,
+          .channel_count = 2,
+          .y_pixels = 9,
+          .pcm_per_pixel = 2,
+          .x_pixels_per_png = 2,
+          .compression_level = 1,
+          .worker_thread_count = 1 });
+
+    auto multi_worker = PDJE_UTIL::function::image::encode_waveform_pngs(
+        { .pcm = interleaved_pcm,
+          .channel_count = 2,
+          .y_pixels = 9,
+          .pcm_per_pixel = 2,
+          .x_pixels_per_png = 2,
+          .compression_level = 1,
+          .worker_thread_count = 4 });
+
+    auto auto_worker = PDJE_UTIL::function::image::encode_waveform_pngs(
+        { .pcm = interleaved_pcm,
+          .channel_count = 2,
+          .y_pixels = 9,
+          .pcm_per_pixel = 2,
+          .x_pixels_per_png = 2,
+          .compression_level = 1,
+          .worker_thread_count = 0 });
+
+    REQUIRE(single_worker.ok());
+    REQUIRE(multi_worker.ok());
+    REQUIRE(auto_worker.ok());
+
+    CHECK(single_worker.value() == multi_worker.value());
+    CHECK(single_worker.value() == auto_worker.value());
+}
