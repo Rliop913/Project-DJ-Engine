@@ -1,5 +1,47 @@
 #include "PDJE_interface.hpp"
+#include "Decoder.hpp"
 #include "PDJE_LOG_SETTER.hpp"
+
+#include <optional>
+
+namespace {
+
+std::optional<SANITIZED_ORNOT>
+ResolveMusicKeyOrPath(litedb &db, const musdata &md)
+{
+    if (!md.musicPath.empty()) {
+        return md.musicPath;
+    }
+
+    const bool has_search_filter =
+        !md.title.empty() || !md.composer.empty() || md.bpm >= 0;
+    if (!has_search_filter) {
+        warnlog("cannot resolve music path from musdata without search clues. "
+                "from PDJE GetPCMFromMusData");
+        return std::nullopt;
+    }
+
+    musdata query = md;
+    auto    searchRes = db << query;
+    if (!searchRes.has_value()) {
+        critlog("failed to search music from database. from PDJE "
+                "GetPCMFromMusData");
+        return std::nullopt;
+    }
+    if (searchRes->empty()) {
+        warnlog("cannot find music from database. from PDJE GetPCMFromMusData");
+        return std::nullopt;
+    }
+    if (searchRes->front().musicPath.empty()) {
+        warnlog("resolved music entry has empty musicPath. from PDJE "
+                "GetPCMFromMusData");
+        return std::nullopt;
+    }
+    return searchRes->front().musicPath;
+}
+
+} // namespace
+
 PDJE::PDJE(const DONT_SANITIZE &rootPath)
 {
     DBROOT = std::make_shared<litedb>();
@@ -54,6 +96,42 @@ PDJE::SearchMusic(const UNSANITIZED &Title,
         warnlog(composer);
         return MUS_VEC();
     }
+}
+
+std::vector<float>
+PDJE::GetPCMFromMusData(const musdata &md)
+{
+    if (!DBROOT) {
+        critlog("database root is not initialized. from PDJE GetPCMFromMusData");
+        return {};
+    }
+
+    auto keyOrPath = ResolveMusicKeyOrPath(*DBROOT, md);
+    if (!keyOrPath.has_value()) {
+        return {};
+    }
+
+    Decoder decoder;
+    if (!decoder.init(*DBROOT, keyOrPath.value())) {
+        critlog("failed to initialize decoder. from PDJE GetPCMFromMusData");
+        return {};
+    }
+
+    ma_uint64 frameCount = 0;
+    if (ma_decoder_get_available_frames(&decoder.dec, &frameCount) !=
+        MA_SUCCESS) {
+        critlog("failed to get available pcm frames. from PDJE "
+                "GetPCMFromMusData");
+        return {};
+    }
+
+    std::vector<float> pcm;
+    if (!decoder.getRange(static_cast<FRAME_POS>(frameCount), pcm)) {
+        critlog("failed to decode pcm frames. from PDJE GetPCMFromMusData");
+        return {};
+    }
+
+    return pcm;
 }
 
 bool

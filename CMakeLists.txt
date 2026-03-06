@@ -306,6 +306,17 @@ target_link_libraries(pdje_unit_core PRIVATE PDJE_UTIL)
 target_link_libraries(pdje_unit_core PRIVATE PDJE_UTIL_IMAGE_PNG)
 target_link_libraries(pdje_unit_core PRIVATE PDJE_UTIL_DB)
 target_compile_definitions(pdje_unit_core PRIVATE PDJE_UNIT_TESTING)
+if(WIN32)
+  set(_pdje_unit_core_zlib_runtime
+    "$<$<CONFIG:Debug>:${zlib_BIN_DIRS_DEBUG}/zlib1.dll>$<$<CONFIG:Release>:${zlib_BIN_DIRS_RELEASE}/zlib1.dll>$<$<CONFIG:RelWithDebInfo>:${zlib_BIN_DIRS_RELEASE}/zlib1.dll>$<$<CONFIG:MinSizeRel>:${zlib_BIN_DIRS_RELEASE}/zlib1.dll>")
+  add_custom_command(
+    TARGET pdje_unit_core
+    POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+      "${_pdje_unit_core_zlib_runtime}"
+      $<TARGET_FILE_DIR:pdje_unit_core>
+    VERBATIM)
+endif()
 setSpdlogReqLib(pdje_unit_core)
 setPdjeLogRuntimeReqLib(pdje_unit_core)
 setCapnpReqLib(pdje_unit_core)
@@ -389,6 +400,21 @@ else()
 endif()
 
 setCoreReqs(PDJE)
+
+if(PDJE_TEST)
+  add_executable(
+    pdje_unit_interface
+    ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/main_doctest.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/core/pdje_interface_pcm.test.cpp)
+  target_include_directories(
+    pdje_unit_interface PRIVATE ${PDJE_INCLUDE_GLOBAL} ${PDJE_INCLUDE_CORE})
+  target_link_libraries(pdje_unit_interface PRIVATE doctest::doctest)
+  target_link_libraries(pdje_unit_interface PRIVATE PDJE)
+  target_compile_definitions(pdje_unit_interface PRIVATE PDJE_UNIT_TESTING)
+  PDJE_COMPILE_OPTION(pdje_unit_interface)
+  SET_PROPERTIES(pdje_unit_interface)
+  pdje_discover_unit_tests(pdje_unit_interface core)
+endif()
 
 if(PDJE_DEVELOP_INPUT)
 if(PDJE_DYNAMIC)
