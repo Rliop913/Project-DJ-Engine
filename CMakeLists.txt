@@ -118,7 +118,12 @@ if(PDJE_ENABLE_SUBPROC)
 add_executable(PDJE_MODULE_INPUT_PROCESS ${globalSource}  ${PDJE_INPUT_SUBPROC_SRC} ${PDJE_IPC_SRC} ${cryptoSource})
 
 target_include_directories(PDJE_MODULE_INPUT_PROCESS PUBLIC ${PDJE_INCLUDE_INPUT_SUBPROC})
-
+if(PDJE_DYNAMIC)
+  if(WIN32)
+    target_compile_definitions(PDJE_MODULE_INPUT_PROCESS PUBLIC PDJE_WINDOWS_DLL)
+    target_compile_definitions(PDJE_MODULE_INPUT_PROCESS PRIVATE PDJE_BUILDING)
+  endif()
+endif()
 PDJE_COMPILE_OPTION(PDJE_MODULE_INPUT_PROCESS)
 PDJE_INPUT_LINK_LIB(PDJE_MODULE_INPUT_PROCESS)
 setSpdlogReqLib(PDJE_MODULE_INPUT_PROCESS)
@@ -301,7 +306,8 @@ add_executable(
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/core/track_linter_rules.test.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/core/timeline_diff_types.test.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/core/db/Capnp/Translators/FrameCalc.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/global/DataLines/fileNameSanitizer.cpp)
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/global/DataLines/fileNameSanitizer.cpp
+  ${CORE_SRCS})
 target_include_directories(pdje_unit_core PRIVATE ${PDJE_INCLUDE_GLOBAL} ${PDJE_INCLUDE_CORE})
 target_link_libraries(pdje_unit_core PRIVATE doctest::doctest)
 target_link_libraries(pdje_unit_core PRIVATE PDJE_UTIL)
@@ -309,6 +315,13 @@ target_link_libraries(pdje_unit_core PRIVATE PDJE_UTIL_IMAGE_PNG)
 target_link_libraries(pdje_unit_core PRIVATE PDJE_UTIL_IMAGE_WAVEFORM)
 target_link_libraries(pdje_unit_core PRIVATE PDJE_UTIL_DB)
 target_compile_definitions(pdje_unit_core PRIVATE PDJE_UNIT_TESTING)
+if(PDJE_DYNAMIC)
+    if(WIN32)
+      target_compile_definitions(pdje_unit_core PUBLIC PDJE_WINDOWS_DLL)
+      target_compile_definitions(pdje_unit_core PRIVATE PDJE_BUILDING)
+    endif()
+  endif()
+
 if(WIN32)
   set(_pdje_unit_core_zlib_runtime
     "$<$<CONFIG:Debug>:${zlib_BIN_DIRS_DEBUG}/zlib1.dll>$<$<CONFIG:Release>:${zlib_BIN_DIRS_RELEASE}/zlib1.dll>$<$<CONFIG:RelWithDebInfo>:${zlib_BIN_DIRS_RELEASE}/zlib1.dll>$<$<CONFIG:MinSizeRel>:${zlib_BIN_DIRS_RELEASE}/zlib1.dll>")
@@ -332,7 +345,8 @@ add_executable(
   pdje_unit_input
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/main_doctest.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/input/input_sanity.test.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/input/pdje_input_state_logic.test.cpp)
+  ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/input/pdje_input_state_logic.test.cpp
+  ${INPUT_SRCS})
 if(LINUX)
   target_sources(
     pdje_unit_input
@@ -354,6 +368,13 @@ PDJE_COMPILE_OPTION(pdje_unit_input)
 SET_PROPERTIES(pdje_unit_input)
 pdje_discover_unit_tests(pdje_unit_input input)
 
+if(PDJE_DYNAMIC)
+    if(WIN32)
+      target_compile_definitions(pdje_unit_input PUBLIC PDJE_WINDOWS_DLL)
+      target_compile_definitions(pdje_unit_input PRIVATE PDJE_BUILDING)
+    endif()
+  endif()
+
 add_executable(
   pdje_unit_judge
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/main_doctest.cpp
@@ -361,7 +382,8 @@ add_executable(
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/judge/rail_db.test.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/judge/note_obj.test.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/judge/PDJE_RAIL.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/judge/NoteOBJ/PDJE_Note_OBJ.cpp)
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/judge/NoteOBJ/PDJE_Note_OBJ.cpp
+  ${JUDGE_SRCS})
 target_include_directories(
   pdje_unit_judge PRIVATE ${PDJE_INCLUDE_JUDGE} ${PDJE_INCLUDE_INPUT_MAINPROC})
 target_link_libraries(pdje_unit_judge PRIVATE doctest::doctest)
@@ -369,6 +391,14 @@ target_compile_definitions(pdje_unit_judge PRIVATE PDJE_UNIT_TESTING)
 PDJE_COMPILE_OPTION(pdje_unit_judge)
 SET_PROPERTIES(pdje_unit_judge)
 pdje_discover_unit_tests(pdje_unit_judge judge)
+
+if(PDJE_DYNAMIC)
+    if(WIN32)
+      target_compile_definitions(pdje_unit_judge PUBLIC PDJE_WINDOWS_DLL)
+      target_compile_definitions(pdje_unit_judge PRIVATE PDJE_BUILDING)
+    endif()
+  endif()
+
 endif()
 
 if(PDJE_DEV_TEST)
@@ -420,6 +450,12 @@ if(PDJE_TEST)
   PDJE_COMPILE_OPTION(pdje_unit_interface)
   SET_PROPERTIES(pdje_unit_interface)
   pdje_discover_unit_tests(pdje_unit_interface core)
+  if(PDJE_DYNAMIC)
+    if(WIN32)
+      target_compile_definitions(pdje_unit_interface PUBLIC PDJE_WINDOWS_DLL)
+      target_compile_definitions(pdje_unit_interface PRIVATE PDJE_BUILDING)
+    endif()
+  endif()
 endif()
 
 if(PDJE_DEV_TEST)
@@ -431,6 +467,14 @@ if(PDJE_DEV_TEST)
   target_link_libraries(music_to_waveform_png PRIVATE PDJE)
   target_link_libraries(music_to_waveform_png PRIVATE PDJE_UTIL_IMAGE_PNG)
   target_link_libraries(music_to_waveform_png PRIVATE PDJE_UTIL_IMAGE_WAVEFORM)
+
+  if(PDJE_DYNAMIC)
+    if(WIN32)
+      target_compile_definitions(music_to_waveform_png PUBLIC PDJE_WINDOWS_DLL)
+      target_compile_definitions(music_to_waveform_png PRIVATE PDJE_BUILDING)
+    endif()
+  endif()
+
   if(WIN32)
     set(_music_to_waveform_png_zlib_runtime
       "$<$<CONFIG:Debug>:${zlib_BIN_DIRS_DEBUG}/zlib1.dll>$<$<CONFIG:Release>:${zlib_BIN_DIRS_RELEASE}/zlib1.dll>$<$<CONFIG:RelWithDebInfo>:${zlib_BIN_DIRS_RELEASE}/zlib1.dll>$<$<CONFIG:MinSizeRel>:${zlib_BIN_DIRS_RELEASE}/zlib1.dll>")
