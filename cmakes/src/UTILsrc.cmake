@@ -12,10 +12,13 @@ endif()
 
 add_library(PDJE_UTIL_IMAGE_PNG INTERFACE)
 target_link_libraries(PDJE_UTIL_IMAGE_PNG INTERFACE PDJE_UTIL)
-setSpngReqLib(PDJE_UTIL_IMAGE_PNG)
+setWebpReqLib(PDJE_UTIL_IMAGE_PNG)
 
 add_library(PDJE_UTIL_IMAGE_WAVEFORM
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/image/WaveformPng.cpp)
+target_include_directories(PDJE_UTIL_IMAGE_WAVEFORM PRIVATE
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/image
+)
 target_link_libraries(PDJE_UTIL_IMAGE_WAVEFORM PUBLIC
   PDJE_UTIL
   PDJE_UTIL_IMAGE_PNG

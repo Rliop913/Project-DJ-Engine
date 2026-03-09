@@ -65,10 +65,19 @@ FetchContent_Declare(
     GIT_TAG        v5.3.1
 )
 
+set(WEBP_BUILD_ANIM_UTILS OFF CACHE BOOL "" FORCE)
+set(WEBP_BUILD_CWEBP OFF CACHE BOOL "" FORCE)
+set(WEBP_BUILD_DWEBP OFF CACHE BOOL "" FORCE)
+set(WEBP_BUILD_GIF2WEBP OFF CACHE BOOL "" FORCE)
+set(WEBP_BUILD_IMG2WEBP OFF CACHE BOOL "" FORCE)
+set(WEBP_BUILD_VWEBP OFF CACHE BOOL "" FORCE)
+set(WEBP_BUILD_WEBPINFO OFF CACHE BOOL "" FORCE)
+set(WEBP_BUILD_EXTRAS OFF CACHE BOOL "" FORCE)
+
 FetchContent_Declare(
-    libspng
-    GIT_REPOSITORY https://github.com/randy408/libspng.git
-    GIT_TAG        v0.7.4
+    libwebp
+    GIT_REPOSITORY https://github.com/webmproject/libwebp.git
+    GIT_TAG        v1.5.0
 )
 
 if(PDJE_TEST)
@@ -85,32 +94,37 @@ endfunction(setLibreMIDIReqLib)
 
 find_package(ZLIB REQUIRED)
 
-function(setSpngReqLib targetName)
-  set(_pdje_spng_target "")
-  foreach(_pdje_spng_candidate
-      spng_static
-      spng::spng_static
-      spng
-      spng::spng
-      spng_shared
-      spng::spng_shared)
-    if(TARGET ${_pdje_spng_candidate})
-      set(_pdje_spng_target ${_pdje_spng_candidate})
+function(setWebpReqLib targetName)
+  set(_pdje_webp_targets "")
+  foreach(_pdje_webp_candidate
+      webp
+      WebP::webp)
+    if(TARGET ${_pdje_webp_candidate})
+      list(APPEND _pdje_webp_targets ${_pdje_webp_candidate})
       break()
     endif()
   endforeach()
 
-  if("${_pdje_spng_target}" STREQUAL "")
-    message(FATAL_ERROR "libspng target not found after FetchContent_MakeAvailable(libspng)")
+  foreach(_pdje_webpdecoder_candidate
+      webpdecoder
+      WebP::webpdecoder)
+    if(TARGET ${_pdje_webpdecoder_candidate})
+      list(APPEND _pdje_webp_targets ${_pdje_webpdecoder_candidate})
+      break()
+    endif()
+  endforeach()
+
+  if("${_pdje_webp_targets}" STREQUAL "")
+    message(FATAL_ERROR "libwebp targets not found after FetchContent_MakeAvailable(libwebp)")
   endif()
 
   get_target_property(_pdje_target_type ${targetName} TYPE)
   if("${_pdje_target_type}" STREQUAL "INTERFACE_LIBRARY")
-    target_link_libraries(${targetName} INTERFACE ${_pdje_spng_target} ZLIB::ZLIB)
+    target_link_libraries(${targetName} INTERFACE ${_pdje_webp_targets})
   else()
-    target_link_libraries(${targetName} PUBLIC ${_pdje_spng_target} ZLIB::ZLIB)
+    target_link_libraries(${targetName} PUBLIC ${_pdje_webp_targets})
   endif()
-endfunction(setSpngReqLib)
+endfunction(setWebpReqLib)
 
 
 
@@ -212,7 +226,7 @@ FetchContent_MakeAvailable(NHJson)
 FetchContent_MakeAvailable(sql_amalgam)
 FetchContent_MakeAvailable(cppCodec)
 FetchContent_MakeAvailable(libremidi)
-FetchContent_MakeAvailable(libspng)
+FetchContent_MakeAvailable(libwebp)
 if(PDJE_TEST)
 FetchContent_MakeAvailable(doctest)
 endif()

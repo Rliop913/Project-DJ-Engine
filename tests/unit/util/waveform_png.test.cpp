@@ -2,7 +2,7 @@
 
 #include "util/function/image/WaveformPng.hpp"
 
-#include <spng.h>
+#include <webp/decode.h>
 
 #include <cstdint>
 #include <memory>
@@ -13,39 +13,29 @@ namespace {
 
 struct DecodedRgbaImage {
     std::vector<std::uint8_t> pixels;
-    std::uint32_t             width = 0;
+    std::uint32_t             width  = 0;
     std::uint32_t             height = 0;
 };
 
 DecodedRgbaImage
-decode_rgba8(std::span<const std::uint8_t> png_bytes)
+decode_rgba8(std::span<const std::uint8_t> webp_bytes)
 {
-    std::unique_ptr<spng_ctx, decltype(&spng_ctx_free)> ctx(
-        spng_ctx_new(0),
-        &spng_ctx_free);
-    REQUIRE(ctx != nullptr);
+    int width  = 0;
+    int height = 0;
+    REQUIRE(WebPGetInfo(
+                webp_bytes.data(), webp_bytes.size(), &width, &height) == 1);
 
-    REQUIRE(spng_set_png_buffer(
-                ctx.get(),
-                const_cast<std::uint8_t *>(png_bytes.data()),
-                png_bytes.size())
-            == 0);
-
-    spng_ihdr ihdr = {};
-    REQUIRE(spng_get_ihdr(ctx.get(), &ihdr) == 0);
-
-    std::size_t decoded_size = 0;
-    REQUIRE(spng_decoded_image_size(ctx.get(), SPNG_FMT_RGBA8, &decoded_size) == 0);
+    std::unique_ptr<std::uint8_t, decltype(&WebPFree)> decoded_bytes(
+        WebPDecodeRGBA(webp_bytes.data(), webp_bytes.size(), &width, &height),
+        &WebPFree);
+    REQUIRE(decoded_bytes != nullptr);
 
     DecodedRgbaImage decoded;
-    decoded.width = ihdr.width;
-    decoded.height = ihdr.height;
-    decoded.pixels.resize(decoded_size);
-
-    REQUIRE(
-        spng_decode_image(ctx.get(), decoded.pixels.data(), decoded_size, SPNG_FMT_RGBA8, 0)
-        == 0);
-
+    decoded.width  = static_cast<std::uint32_t>(width);
+    decoded.height = static_cast<std::uint32_t>(height);
+    decoded.pixels.assign(decoded_bytes.get(),
+                          decoded_bytes.get() +
+                              (static_cast<std::size_t>(width * height) * 4));
     return decoded;
 }
 
@@ -60,30 +50,31 @@ alpha_at(const DecodedRgbaImage &image, std::size_t x, std::size_t y)
 
 TEST_CASE("encode_waveform_pngs validates required waveform arguments")
 {
-    const std::vector<float> pcm { 0.0f, 0.0f };
+    const std::vector<float> pcm{ 0.0f, 0.0f };
 
     auto invalid = PDJE_UTIL::function::image::encode_waveform_pngs(
-        { .pcm = pcm,
-          .channel_count = 0,
-          .y_pixels = 8,
-          .pcm_per_pixel = 1,
+        { .pcm              = pcm,
+          .channel_count    = 0,
+          .y_pixels         = 8,
+          .pcm_per_pixel    = 1,
           .x_pixels_per_png = 4 });
 
     CHECK_FALSE(invalid.ok());
-    CHECK(
-        invalid.status().code == PDJE_UTIL::common::StatusCode::invalid_argument);
+    CHECK(invalid.status().code ==
+          PDJE_UTIL::common::StatusCode::invalid_argument);
 }
 
-TEST_CASE("encode_waveform_pngs splits interleaved channels and keeps background transparent")
+TEST_CASE("encode_waveform_pngs splits interleaved channels and keeps "
+          "background transparent")
 {
-    const std::vector<float> interleaved_pcm { 1.0f, -1.0f, 0.0f, 0.0f, -1.0f };
+    const std::vector<float> interleaved_pcm{ 1.0f, -1.0f, 0.0f, 0.0f, -1.0f };
 
     auto encoded = PDJE_UTIL::function::image::encode_waveform_pngs(
-        { .pcm = interleaved_pcm,
-          .channel_count = 2,
-          .y_pixels = 5,
-          .pcm_per_pixel = 1,
-          .x_pixels_per_png = 2,
+        { .pcm               = interleaved_pcm,
+          .channel_count     = 2,
+          .y_pixels          = 5,
+          .pcm_per_pixel     = 1,
+          .x_pixels_per_png  = 2,
           .compression_level = 1 });
 
     REQUIRE(encoded.ok());
@@ -104,15 +95,16 @@ TEST_CASE("encode_waveform_pngs splits interleaved channels and keeps background
     CHECK(alpha_at(right_first, 0, 0) == 0);
 }
 
-TEST_CASE("encode_waveform_pngs aggregates min max ranges within a pixel column")
+TEST_CASE(
+    "encode_waveform_pngs aggregates min max ranges within a pixel column")
 {
-    const std::vector<float> mono_pcm { 1.0f, -1.0f, 0.0f, 0.0f };
+    const std::vector<float> mono_pcm{ 1.0f, -1.0f, 0.0f, 0.0f };
 
     auto encoded = PDJE_UTIL::function::image::encode_waveform_pngs(
-        { .pcm = mono_pcm,
-          .channel_count = 1,
-          .y_pixels = 5,
-          .pcm_per_pixel = 2,
+        { .pcm              = mono_pcm,
+          .channel_count    = 1,
+          .y_pixels         = 5,
+          .pcm_per_pixel    = 2,
           .x_pixels_per_png = 2 });
 
     REQUIRE(encoded.ok());
@@ -131,16 +123,17 @@ TEST_CASE("encode_waveform_pngs aggregates min max ranges within a pixel column"
     CHECK(alpha_at(decoded, 1, 3) == 0);
 }
 
-TEST_CASE("encode_waveform_pngs pads incomplete chunks before waveform reduction")
+TEST_CASE(
+    "encode_waveform_pngs pads incomplete chunks before waveform reduction")
 {
-    const std::vector<float> mono_pcm { 0.5f, -0.5f, 1.0f };
+    const std::vector<float> mono_pcm{ 0.5f, -0.5f, 1.0f };
 
     auto encoded = PDJE_UTIL::function::image::encode_waveform_pngs(
-        { .pcm = mono_pcm,
-          .channel_count = 1,
-          .y_pixels = 5,
-          .pcm_per_pixel = 3,
-          .x_pixels_per_png = 2,
+        { .pcm               = mono_pcm,
+          .channel_count     = 1,
+          .y_pixels          = 5,
+          .pcm_per_pixel     = 3,
+          .x_pixels_per_png  = 2,
           .compression_level = 1 });
 
     REQUIRE(encoded.ok());
@@ -164,38 +157,36 @@ TEST_CASE("encode_waveform_pngs pads incomplete chunks before waveform reduction
 
 TEST_CASE("encode_waveform_pngs keeps identical output across worker counts")
 {
-    const std::vector<float> interleaved_pcm {
-        1.0f, -1.0f, 0.25f, -0.25f,
-        -0.5f, 0.5f, 0.75f, -0.75f,
-        0.0f, 0.0f, -1.0f, 1.0f,
-        0.3f, -0.3f, -0.2f, 0.2f
-    };
+    const std::vector<float> interleaved_pcm{ 1.0f,  -1.0f, 0.25f, -0.25f,
+                                              -0.5f, 0.5f,  0.75f, -0.75f,
+                                              0.0f,  0.0f,  -1.0f, 1.0f,
+                                              0.3f,  -0.3f, -0.2f, 0.2f };
 
     auto single_worker = PDJE_UTIL::function::image::encode_waveform_pngs(
-        { .pcm = interleaved_pcm,
-          .channel_count = 2,
-          .y_pixels = 9,
-          .pcm_per_pixel = 2,
-          .x_pixels_per_png = 2,
-          .compression_level = 1,
+        { .pcm                 = interleaved_pcm,
+          .channel_count       = 2,
+          .y_pixels            = 9,
+          .pcm_per_pixel       = 2,
+          .x_pixels_per_png    = 2,
+          .compression_level   = 1,
           .worker_thread_count = 1 });
 
     auto multi_worker = PDJE_UTIL::function::image::encode_waveform_pngs(
-        { .pcm = interleaved_pcm,
-          .channel_count = 2,
-          .y_pixels = 9,
-          .pcm_per_pixel = 2,
-          .x_pixels_per_png = 2,
-          .compression_level = 1,
+        { .pcm                 = interleaved_pcm,
+          .channel_count       = 2,
+          .y_pixels            = 9,
+          .pcm_per_pixel       = 2,
+          .x_pixels_per_png    = 2,
+          .compression_level   = 1,
           .worker_thread_count = 4 });
 
     auto auto_worker = PDJE_UTIL::function::image::encode_waveform_pngs(
-        { .pcm = interleaved_pcm,
-          .channel_count = 2,
-          .y_pixels = 9,
-          .pcm_per_pixel = 2,
-          .x_pixels_per_png = 2,
-          .compression_level = 1,
+        { .pcm                 = interleaved_pcm,
+          .channel_count       = 2,
+          .y_pixels            = 9,
+          .pcm_per_pixel       = 2,
+          .x_pixels_per_png    = 2,
+          .compression_level   = 1,
           .worker_thread_count = 0 });
 
     REQUIRE(single_worker.ok());

@@ -3,16 +3,14 @@
 #include "util/common/Result.hpp"
 #include "util/function/FunctionContext.hpp"
 
-#include <spng.h>
+#include <webp/encode.h>
 
 #include <cstddef>
 #include <cstdint>
-#include <cstdlib>
 #include <cstring>
 #include <filesystem>
 #include <fstream>
 #include <limits>
-#include <memory>
 #include <span>
 #include <string>
 #include <string_view>
@@ -20,18 +18,13 @@
 
 namespace PDJE_UTIL::function::image {
 
-enum class PngPixelFormat {
-    gray8,
-    gray_alpha8,
-    rgb8,
-    rgba8
-};
+enum class PngPixelFormat { gray8, gray_alpha8, rgb8, rgba8 };
 
 struct RasterImageView {
-    std::span<const std::uint8_t> pixels = {};
-    std::size_t                   width  = 0;
-    std::size_t                   height = 0;
-    std::size_t                   stride = 0;
+    std::span<const std::uint8_t> pixels       = {};
+    std::size_t                   width        = 0;
+    std::size_t                   height       = 0;
+    std::size_t                   stride       = 0;
     PngPixelFormat                pixel_format = PngPixelFormat::rgba8;
 };
 
@@ -41,15 +34,15 @@ struct EncodePngArgs {
 };
 
 struct WritePngArgs {
-    RasterImageView      image;
+    RasterImageView       image;
     std::filesystem::path output_path;
-    int                  compression_level = -1;
+    int                   compression_level = -1;
 };
 
 namespace detail {
 
 struct ImageLayout {
-    std::size_t row_bytes      = 0;
+    std::size_t row_bytes        = 0;
     std::size_t effective_stride = 0;
 };
 
@@ -92,30 +85,6 @@ bytes_per_pixel(PngPixelFormat pixel_format) noexcept
     return 0;
 }
 
-inline constexpr int
-spng_color_type(PngPixelFormat pixel_format) noexcept
-{
-    switch (pixel_format) {
-    case PngPixelFormat::gray8:
-        return SPNG_COLOR_TYPE_GRAYSCALE;
-    case PngPixelFormat::gray_alpha8:
-        return SPNG_COLOR_TYPE_GRAYSCALE_ALPHA;
-    case PngPixelFormat::rgb8:
-        return SPNG_COLOR_TYPE_TRUECOLOR;
-    case PngPixelFormat::rgba8:
-        return SPNG_COLOR_TYPE_TRUECOLOR_ALPHA;
-    }
-
-    return SPNG_COLOR_TYPE_TRUECOLOR_ALPHA;
-}
-
-inline common::Status
-make_spng_status(int error, std::string_view action)
-{
-    return { common::StatusCode::internal_error,
-             std::string(action) + ": " + spng_strerror(error) };
-}
-
 inline common::Result<ImageLayout>
 validate_image(const RasterImageView &image)
 {
@@ -131,11 +100,10 @@ validate_image(const RasterImageView &image)
               "RasterImageView width and height must be greater than zero." });
     }
 
-    if (image.width > (std::numeric_limits<std::uint32_t>::max)() ||
-        image.height > (std::numeric_limits<std::uint32_t>::max)()) {
+    if (image.width > 16383 || image.height > 16383) {
         return common::Result<ImageLayout>::failure(
             { common::StatusCode::invalid_argument,
-              "RasterImageView dimensions must fit in the PNG 32-bit IHDR fields." });
+              "RasterImageView dimensions must fit within WebP limits." });
     }
 
     ImageLayout layout;
@@ -147,31 +115,90 @@ validate_image(const RasterImageView &image)
               "RasterImageView row size overflows size_t." });
     }
 
-    layout.effective_stride = image.stride == 0 ? layout.row_bytes : image.stride;
+    layout.effective_stride =
+        image.stride == 0 ? layout.row_bytes : image.stride;
     if (layout.effective_stride < layout.row_bytes) {
         return common::Result<ImageLayout>::failure(
             { common::StatusCode::invalid_argument,
-              "RasterImageView.stride must be zero or greater than or equal to the packed row size." });
+              "RasterImageView.stride must be zero or greater than or equal to "
+              "the packed row size." });
     }
 
     std::size_t required_bytes = layout.row_bytes;
     if (image.height > 1) {
         std::size_t tail_bytes = 0;
-        if (!checked_multiply(layout.effective_stride, image.height - 1, tail_bytes) ||
+        if (!checked_multiply(
+                layout.effective_stride, image.height - 1, tail_bytes) ||
             !checked_add(tail_bytes, layout.row_bytes, required_bytes)) {
             return common::Result<ImageLayout>::failure(
                 { common::StatusCode::invalid_argument,
-                  "RasterImageView buffer size calculation overflows size_t." });
+                  "RasterImageView buffer size calculation overflows "
+                  "size_t." });
         }
     }
 
     if (image.pixels.size() < required_bytes) {
         return common::Result<ImageLayout>::failure(
             { common::StatusCode::invalid_argument,
-              "RasterImageView.pixels is smaller than the specified width, height, and stride require." });
+              "RasterImageView.pixels is smaller than the specified width, "
+              "height, and stride require." });
     }
 
     return common::Result<ImageLayout>::success(layout);
+}
+
+inline common::Result<std::vector<std::uint8_t>>
+pack_rgba(const RasterImageView &image, const ImageLayout &layout)
+{
+    std::size_t packed_size = 0;
+    if (!checked_multiply(
+            image.width * image.height, std::size_t{ 4 }, packed_size)) {
+        return common::Result<std::vector<std::uint8_t>>::failure(
+            { common::StatusCode::invalid_argument,
+              "RasterImageView packed RGBA buffer size overflows size_t." });
+    }
+
+    std::vector<std::uint8_t> rgba(packed_size, 0);
+    for (std::size_t y = 0; y < image.height; ++y) {
+        const auto *src_row =
+            image.pixels.data() + (y * layout.effective_stride);
+        auto *dst_row = rgba.data() + ((y * image.width) * 4);
+
+        for (std::size_t x = 0; x < image.width; ++x) {
+            const auto *src =
+                src_row + (x * bytes_per_pixel(image.pixel_format));
+            auto *dst = dst_row + (x * 4);
+
+            switch (image.pixel_format) {
+            case PngPixelFormat::gray8:
+                dst[0] = src[0];
+                dst[1] = src[0];
+                dst[2] = src[0];
+                dst[3] = 255;
+                break;
+            case PngPixelFormat::gray_alpha8:
+                dst[0] = src[0];
+                dst[1] = src[0];
+                dst[2] = src[0];
+                dst[3] = src[1];
+                break;
+            case PngPixelFormat::rgb8:
+                dst[0] = src[0];
+                dst[1] = src[1];
+                dst[2] = src[2];
+                dst[3] = 255;
+                break;
+            case PngPixelFormat::rgba8:
+                dst[0] = src[0];
+                dst[1] = src[1];
+                dst[2] = src[2];
+                dst[3] = src[3];
+                break;
+            }
+        }
+    }
+
+    return common::Result<std::vector<std::uint8_t>>::success(std::move(rgba));
 }
 
 } // namespace detail
@@ -189,86 +216,32 @@ encode_png(const EncodePngArgs &args, function::EvalOptions options = {})
 
     auto layout = detail::validate_image(args.image);
     if (!layout.ok()) {
-        return common::Result<std::vector<std::uint8_t>>::failure(layout.status());
+        return common::Result<std::vector<std::uint8_t>>::failure(
+            layout.status());
     }
 
-    std::unique_ptr<spng_ctx, decltype(&spng_ctx_free)> ctx(
-        spng_ctx_new(SPNG_CTX_ENCODER),
-        &spng_ctx_free);
-    if (ctx == nullptr) {
+    auto packed_rgba = detail::pack_rgba(args.image, layout.value());
+    if (!packed_rgba.ok()) {
+        return common::Result<std::vector<std::uint8_t>>::failure(
+            packed_rgba.status());
+    }
+
+    std::uint8_t *encoded_bytes = nullptr;
+    const auto    encoded_size =
+        WebPEncodeLosslessRGBA(packed_rgba.value().data(),
+                               static_cast<int>(args.image.width),
+                               static_cast<int>(args.image.height),
+                               static_cast<int>(args.image.width * 4),
+                               &encoded_bytes);
+    if (encoded_size == 0 || encoded_bytes == nullptr) {
         return common::Result<std::vector<std::uint8_t>>::failure(
             { common::StatusCode::internal_error,
-              "spng_ctx_new() failed while creating a PNG encoder context." });
-    }
-
-    int error = spng_set_option(ctx.get(), SPNG_ENCODE_TO_BUFFER, 1);
-    if (error != 0) {
-        return common::Result<std::vector<std::uint8_t>>::failure(
-            detail::make_spng_status(error, "spng_set_option(SPNG_ENCODE_TO_BUFFER) failed"));
-    }
-
-    error = spng_set_option(
-        ctx.get(), SPNG_IMG_COMPRESSION_LEVEL, args.compression_level);
-    if (error != 0) {
-        return common::Result<std::vector<std::uint8_t>>::failure(
-            detail::make_spng_status(error, "spng_set_option(SPNG_IMG_COMPRESSION_LEVEL) failed"));
-    }
-
-    spng_ihdr ihdr = {};
-    ihdr.width     = static_cast<std::uint32_t>(args.image.width);
-    ihdr.height    = static_cast<std::uint32_t>(args.image.height);
-    ihdr.bit_depth = 8;
-    ihdr.color_type = detail::spng_color_type(args.image.pixel_format);
-
-    error = spng_set_ihdr(ctx.get(), &ihdr);
-    if (error != 0) {
-        return common::Result<std::vector<std::uint8_t>>::failure(
-            detail::make_spng_status(error, "spng_set_ihdr() failed"));
-    }
-
-    error = spng_encode_image(
-        ctx.get(),
-        nullptr,
-        0,
-        SPNG_FMT_PNG,
-        SPNG_ENCODE_PROGRESSIVE | SPNG_ENCODE_FINALIZE);
-    if (error != 0) {
-        return common::Result<std::vector<std::uint8_t>>::failure(
-            detail::make_spng_status(error, "spng_encode_image() initialization failed"));
-    }
-
-    const auto &validated = layout.value();
-    for (std::size_t row_index = 0; row_index < args.image.height; ++row_index) {
-        const auto *row = args.image.pixels.data() + (row_index * validated.effective_stride);
-        error = spng_encode_row(ctx.get(), row, validated.row_bytes);
-        if (error == SPNG_EOI) {
-            break;
-        }
-        if (error != 0) {
-            return common::Result<std::vector<std::uint8_t>>::failure(
-                detail::make_spng_status(error, "spng_encode_row() failed"));
-        }
-    }
-
-    size_t encoded_size = 0;
-    error               = 0;
-    std::unique_ptr<void, decltype(&std::free)> encoded_png(
-        spng_get_png_buffer(ctx.get(), &encoded_size, &error),
-        &std::free);
-    if (error != 0) {
-        return common::Result<std::vector<std::uint8_t>>::failure(
-            detail::make_spng_status(error, "spng_get_png_buffer() failed"));
-    }
-    if (encoded_png == nullptr) {
-        return common::Result<std::vector<std::uint8_t>>::failure(
-            { common::StatusCode::internal_error,
-              "spng_get_png_buffer() returned a null buffer." });
+              "WebPEncodeLosslessRGBA() failed while encoding the image." });
     }
 
     std::vector<std::uint8_t> bytes(encoded_size);
-    if (!bytes.empty()) {
-        std::memcpy(bytes.data(), encoded_png.get(), encoded_size);
-    }
+    std::memcpy(bytes.data(), encoded_bytes, encoded_size);
+    WebPFree(encoded_bytes);
 
     return common::Result<std::vector<std::uint8_t>>::success(std::move(bytes));
 }
@@ -294,7 +267,7 @@ write_png(const WritePngArgs &args, function::EvalOptions options = {})
     if (!output.is_open()) {
         return common::Result<void>::failure(
             { common::StatusCode::io_error,
-              "Failed to open the PNG output path for writing." });
+              "Failed to open the WebP output path for writing." });
     }
 
     const auto &bytes = encoded.value();
@@ -303,7 +276,7 @@ write_png(const WritePngArgs &args, function::EvalOptions options = {})
     if (!output.good()) {
         return common::Result<void>::failure(
             { common::StatusCode::io_error,
-              "Failed while writing PNG bytes to the output path." });
+              "Failed while writing WebP bytes to the output path." });
     }
 
     return common::Result<void>::success();
