@@ -410,7 +410,8 @@ if(PDJE_TEST)
   add_executable(
     pdje_unit_interface
     ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/main_doctest.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/core/pdje_interface_pcm.test.cpp)
+    ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/core/pdje_interface_pcm.test.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/core/editor_object_diff_api.test.cpp)
   target_include_directories(
     pdje_unit_interface PRIVATE ${PDJE_INCLUDE_GLOBAL} ${PDJE_INCLUDE_CORE})
   target_link_libraries(pdje_unit_interface PRIVATE doctest::doctest)

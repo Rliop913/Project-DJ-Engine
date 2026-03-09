@@ -174,6 +174,7 @@ The editor subsystem includes public history-oriented operations:
 - `Undo()`
 - `Redo()`
 - `Go()`
+- `GetDiff()`
 - `GetLogWithJSONGraph()`
 - `UpdateLog()`
 
@@ -181,6 +182,7 @@ Conceptually:
 
 - `Undo()` and `Redo()` expose edit-history navigation.
 - `Go()` exposes a direct history/time-travel style jump.
+- `GetDiff()` exposes semantic added/removed data between two editor commits.
 - `GetLogWithJSONGraph()` exposes log data in a graph-oriented JSON form.
 - `UpdateLog()` refreshes the editor-side history/log state after you need a
   new view of the commit timeline.
@@ -207,6 +209,39 @@ The log JSON described in the older docs is still useful as the mental model:
    (void)editor->Undo<EDIT_ARG_MIX>();
    (void)editor->Redo<EDIT_ARG_MIX>();
    editor->UpdateLog<EDIT_ARG_MIX>();
+
+For diff operations, compare two commit OIDs from the same timeline.
+
+.. code-block:: c++
+
+   editor->UpdateLog<EDIT_ARG_MIX>();
+   auto graph = nlohmann::json::parse(
+       editor->GetLogWithJSONGraph<EDIT_ARG_MIX>());
+   auto old_oid = graph["LOGS"].at(0)["OID"].get<std::string>();
+   auto new_oid = graph["LOGS"].at(1)["OID"].get<std::string>();
+
+   auto mix_diff = editor->GetDiff<EDIT_ARG_MIX>(old_oid, new_oid);
+   auto music_diff =
+       editor->GetDiff<EDIT_ARG_MUSIC>("Song", old_oid, new_oid);
+
+   if (mix_diff.has_value() && !mix_diff->Empty()) {
+       for (const auto &added : mix_diff->mixAdded) {
+           // consume added MixArgs rows
+       }
+   }
+
+`GetDiff()` returns `std::optional<PDJE_TIMELINE::TimeLineSemanticDiffResult>`.
+Use `has_value()` to guard failure cases such as invalid OIDs or missing music
+targets, and then inspect the type-specific added/removed collections:
+
+- `kvAdded` / `kvRemoved`
+- `mixAdded` / `mixRemoved`
+- `noteAdded` / `noteRemoved`
+- `musicBpmAdded` / `musicBpmRemoved`
+- `musicMetaAdded` / `musicMetaRemoved`
+
+`EDIT_ARG_MUSIC` uses a separate overload that requires the music name as the
+first argument.
 
 Persistence Workflow
 --------------------
