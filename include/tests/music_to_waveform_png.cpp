@@ -226,7 +226,7 @@ main()
         constexpr std::size_t kChannelCount  = 2;
         constexpr std::size_t kYPixels       = 512;
         constexpr std::size_t kPcmPerPixel   = 4;
-        constexpr std::size_t kXPixelsPerPng = 1024;
+        constexpr std::size_t kXPixelsPerPng = 8192;
 
         double waveform_encode_ms = 0.0;
         {
