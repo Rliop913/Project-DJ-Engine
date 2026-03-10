@@ -115,7 +115,7 @@ include(cmakes/FunctionSet.cmake)
 if(PDJE_TEST)
   include(CTest)
   enable_testing()
-  include(cmakes/tests/UnitTests.cmake)
+  include(cmakes/tests/UnitTestRoot.cmake)
 endif()
 
 
