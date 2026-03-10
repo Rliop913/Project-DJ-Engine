@@ -4,6 +4,7 @@ pdje_unit_input
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/main_doctest.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/input/input_sanity.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/input/pdje_input_state_logic.test.cpp
+${INPUT_SRCS}
 )
 
 if(LINUX)
@@ -21,12 +22,12 @@ endif()
 
 target_include_directories(pdje_unit_input PRIVATE ${PDJE_INCLUDE_INPUT_MAINPROC})
 target_link_libraries(pdje_unit_input PRIVATE 
-doctest::doctest 
-PDJE_MODULE_INPUT)
+doctest::doctest )
 
 
 target_compile_definitions(pdje_unit_input PRIVATE PDJE_UNIT_TESTING)
 PDJE_COMPILE_OPTION(pdje_unit_input)
 SET_PROPERTIES(pdje_unit_input)
-AddDynamicDef(pdje_unit_input)
+# AddDynamicDef(pdje_unit_input)
+setInputReqs(pdje_unit_input)
 pdje_discover_unit_tests(pdje_unit_input input)

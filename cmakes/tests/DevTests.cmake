@@ -22,7 +22,7 @@ endif()
 
 add_executable(
     music_to_waveform_png
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/music_to_waveform_png.cpp)
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/music_to_waveform_png.cpp ${CORE_SRCS})
 
 
 target_include_directories(
@@ -32,11 +32,11 @@ target_include_directories(
     ${PDJE_INCLUDE_CORE}
     )
 
-target_link_libraries(music_to_waveform_png PRIVATE PDJE)
+
 target_link_libraries(music_to_waveform_png PRIVATE PDJE_UTIL_IMAGE_PNG)
 target_link_libraries(music_to_waveform_png PRIVATE PDJE_UTIL_IMAGE_WAVEFORM)
-
-AddDynamicDef(music_to_waveform_png)
+setCoreReqs(music_to_waveform_png)
+# AddDynamicDef(music_to_waveform_png)
 
 if(WIN32)
 set(_music_to_waveform_png_zlib_runtime

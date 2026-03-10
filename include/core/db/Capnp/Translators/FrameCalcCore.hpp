@@ -1,10 +1,10 @@
 #pragma once
 
 #include "PDJE_EXPORT_SETTER.hpp"
-
+#include "PDJE_LOG_SETTER.hpp"
 #include <cstdint>
 #include <vector>
-
+#include <cmath>
 #define CHANNEL 2
 #define SAMPLERATE 48000
 #define DSAMPLERATE 48000.0
@@ -18,14 +18,32 @@
         (static_cast<TYPE>(SUBBEAT) / static_cast<TYPE>(SEP))
 
 namespace FrameCalc {
-extern uint64_t
+
+
+static inline uint64_t
 CountFrame(uint64_t Sbeat,
            uint64_t SsubBeat,
            uint64_t Sseparate,
            uint64_t Ebeat,
            uint64_t EsubBeat,
            uint64_t Eseparate,
-           double   bpm);
+           double   bpm)
+           {
+            Sseparate   = Sseparate > 0 ? Sseparate : 1;
+            Eseparate   = Eseparate > 0 ? Eseparate : 1;
+            bpm         = bpm > 0 ? bpm : 1;
+            auto Sapprx = APPRX(double, Sbeat, SsubBeat, Sseparate);
+            auto Eapprx = APPRX(double, Ebeat, EsubBeat, Eseparate);
+            if (Sapprx > Eapprx) {
+                critlog("Failed to Count Frame. Start apprx position is bigger than "
+                        "End apprx position. Start apprx: ");
+                critlog(Sapprx);
+                critlog("End apprx: ");
+                critlog(Eapprx);
+            }
+            return static_cast<unsigned long>(
+                std::round((Eapprx - Sapprx) * (DMINUTE / bpm) * DSAMPLERATE));
+           }
 }; // namespace FrameCalc
 
 struct PDJE_API BpmFragment {
