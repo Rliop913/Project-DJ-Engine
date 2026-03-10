@@ -132,11 +132,14 @@ find_package(botan CONFIG REQUIRED)
 
 function(setBotanReqLib targetName)
   target_link_libraries(${targetName} PUBLIC botan::botan)
+  
   if(DEFINED botan_INCLUDE_DIRS)
     target_include_directories(${targetName} PUBLIC ${botan_INCLUDE_DIRS})
+    # message(FATAL_ERROR "${botan_INCLUDE_DIRS}")
   elseif(DEFINED botan_INCLUDE_DIR)
     target_include_directories(${targetName} PUBLIC ${botan_INCLUDE_DIR})
-  endif()
+  # else()
+    endif()
 endfunction()
 
 
@@ -230,7 +233,6 @@ FetchContent_MakeAvailable(libwebp)
 if(PDJE_TEST)
 FetchContent_MakeAvailable(doctest)
 endif()
-# FetchContent_MakeAvailable(cppHttp)
 
 if(NOT TARGET PDJE_SQLITE3_AMALGAM)
   add_library(PDJE_SQLITE3_AMALGAM STATIC ${sql_amalgam_SOURCE_DIR}/sqlite3.c)
@@ -260,8 +262,6 @@ endfunction(setSqliteReqLib)
 include_directories(${nlohmann_json_SOURCE_DIR}/include)
 include_directories(${sql_amalgam_SOURCE_DIR})
 include_directories(${cppcodec_SOURCE_DIR})
-# include_directories(${picosha_SOURCE_DIR})
-include_directories(${httplib_SOURCE_DIR})
 
 
 
