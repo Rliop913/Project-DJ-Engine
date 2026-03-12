@@ -78,14 +78,6 @@ ${PDJE_INCLUDE_ROOT}/include/judge/InputParser
 ${CAPNPC_OUTPUT_DIR}/third_party/Capnp
 )
 
-set(PDJE_INCLUDE_IPC
-${PDJE_INCLUDE_ROOT}/include/input/IPC/
-${PDJE_INCLUDE_ROOT}/include/input/IPC/common
-${PDJE_INCLUDE_ROOT}/include/input/IPC/memory
-${PDJE_INCLUDE_ROOT}/include/input/IPC/transmission
-# ${httplib_SOURCE_DIR}
-
-)
 
 set(PDJE_INCLUDE_INPUT_SUBPROC
 ${PDJE_INCLUDE_ROOT}/include/input
@@ -104,7 +96,6 @@ ${PDJE_INCLUDE_ROOT}/include/input/DefaultDevs
 set(PDJE_INCLUDE_GLOBAL
   ${PDJE_INCLUDE_ROOT}/include/global
   ${PDJE_INCLUDE_ROOT}/include/global/DataLines
-  ${PDJE_INCLUDE_ROOT}/include/global/Crypto
 )
 
 set(PDJE_INCLUDE_UTIL
@@ -119,24 +110,13 @@ if(WIN32)
     ${PDJE_INCLUDE_ROOT}/include/input/runner/windows
     ${PDJE_INCLUDE_ROOT}/include/input/DefaultDevs/windows
     ${PDJE_INCLUDE_ROOT}/include/input/DefaultDevs/windows/TXRX
-    
-    
-
-
-  )
-  list(APPEND PDJE_INCLUDE_IPC
-    ${PDJE_INCLUDE_ROOT}/include/input/IPC/memory/windows
-    ${PDJE_INCLUDE_ROOT}/include/input/IPC/transmission/windows
-
   )
 elseif(APPLE)
   list(APPEND PDJE_INCLUDE_GLOBAL
     ${PDJE_INCLUDE_ROOT}/include/global/Highres_Clock/Mac
   )
   list(APPEND PDJE_INCLUDE_INPUT ${PDJE_INCLUDE_ROOT}/include/input/apple)
-  # list(APPEND PDJE_INCLUDE_IPC
-  #   ${PDJE_INCLUDE_ROOT}/include/global/Process/utils/mac
-  # )
+
 else()
   list(APPEND PDJE_INCLUDE_GLOBAL
     ${PDJE_INCLUDE_ROOT}/include/global/Highres_Clock/Linux
@@ -149,14 +129,10 @@ else()
     
     
     )
-  list(APPEND PDJE_INCLUDE_IPC
-    ${PDJE_INCLUDE_ROOT}/include/input/IPC/memory/linux
-    # ${PDJE_INCLUDE_ROOT}/include/input/IPC/transmission/linux
-  )
 endif()
 
 list(APPEND PDJE_INCLUDE_JUDGE
-  ${PDJE_INCLUDE_IPC}
+  
   ${PDJE_INCLUDE_GLOBAL}
   ${PDJE_INCLUDE_ROOT}/include/input/midi
   
@@ -166,11 +142,11 @@ list(APPEND PDJE_INCLUDE_CORE
   ${PDJE_INCLUDE_GLOBAL}
 )
 list(APPEND PDJE_INCLUDE_INPUT_MAINPROC
-  ${PDJE_INCLUDE_IPC}
+  # ${PDJE_INCLUDE_IPC}
   ${PDJE_INCLUDE_GLOBAL}
 )
 list(APPEND PDJE_INCLUDE_INPUT_SUBPROC
-  ${PDJE_INCLUDE_IPC}
+  # ${PDJE_INCLUDE_IPC}
   ${PDJE_INCLUDE_GLOBAL}
   ${PDJE_INCLUDE_ROOT}/include/input/midi
 )

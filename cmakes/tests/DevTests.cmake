@@ -1,29 +1,36 @@
 
-add_executable(testEditor ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/editorTest.cpp ${CORE_SRCS})
-add_executable(DBTester ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/dbTest.cpp ${CORE_SRCS})
-add_executable(gitTester ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/gittest.cpp ${CORE_SRCS})
+add_executable(testEditor ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/editorTest.cpp ${CORE_SRC_EXPORT})
+add_executable(DBTester ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/dbTest.cpp ${CORE_SRC_EXPORT})
+add_executable(gitTester ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/gittest.cpp ${CORE_SRC_EXPORT})
 
-setCoreReqs(testEditor)
-setCoreReqs(DBTester)
-setCoreReqs(gitTester)
+target_link_libraries(testEditor PRIVATE CORE_OBJ)
+target_link_libraries(DBTester PRIVATE CORE_OBJ)
+target_link_libraries(gitTester PRIVATE CORE_OBJ)
+
+
 if(PDJE_DEVELOP_INPUT)
-add_executable(testInput ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/INPUT_TESTS/pdjeInputTest.cpp ${INPUT_SRCS})
-setInputReqs(testInput)
+add_executable(testInput ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/INPUT_TESTS/pdjeInputTest.cpp ${INPUT_SRC_EXPORT})
 
-add_executable(testMIDI ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/INPUT_TESTS/miditest.cpp ${INPUT_SRCS})
-setInputReqs(testMIDI)
 
-add_executable(testJudge ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/JUDGE_TESTS/judgeTest.cpp ${INPUT_SRCS} ${CORE_SRCS} ${JUDGE_SRCS})
-setJudgeReqs(testJudge)
-setCoreReqs(testJudge)
-setInputReqs(testJudge)
+add_executable(testMIDI ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/INPUT_TESTS/miditest.cpp ${INPUT_SRC_EXPORT})
+
+
+add_executable(testJudge ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/JUDGE_TESTS/judgeTest.cpp ${INPUT_SRC_EXPORT} ${CORE_SRC_ONLY_EXPORT} ${JUDGE_SRC_ONLY_EXPORT})
+
+
+
+target_link_libraries(testInput PRIVATE INPUT_OBJ)
+target_link_libraries(testMIDI PRIVATE INPUT_OBJ)
+target_link_libraries(testJudge PRIVATE INPUT_OBJ CORE_OBJ JUDGE_OBJ)
+
 endif()
 
 
 add_executable(
     music_to_waveform_png
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/music_to_waveform_png.cpp ${CORE_SRCS})
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/music_to_waveform_png.cpp ${CORE_SRC_EXPORT})
 
+target_link_libraries(music_to_waveform_png PRIVATE CORE_OBJ)
 
 target_include_directories(
     music_to_waveform_png 
@@ -35,8 +42,8 @@ target_include_directories(
 
 target_link_libraries(music_to_waveform_png PRIVATE PDJE_UTIL_IMAGE_PNG)
 target_link_libraries(music_to_waveform_png PRIVATE PDJE_UTIL_IMAGE_WAVEFORM)
-setCoreReqs(music_to_waveform_png)
-# AddDynamicDef(music_to_waveform_png)
+
+
 
 if(WIN32)
 set(_music_to_waveform_png_zlib_runtime

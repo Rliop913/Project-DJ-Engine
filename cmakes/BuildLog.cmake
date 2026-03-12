@@ -25,7 +25,8 @@ if(NOT WIN32)
   )
 endif()
 
-AddDynamicDef(PDJE_LOG_RUNTIME)
+DynamicInnerFlag(PDJE_LOG_RUNTIME)
+DynamicOuterFlag(PDJE_LOG_RUNTIME)
 
 setSpdlogReqLib(PDJE_LOG_RUNTIME)
 PDJE_COMPILE_OPTION(PDJE_LOG_RUNTIME)

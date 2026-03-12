@@ -20,38 +20,6 @@ if(NOT __sha_hex)
   message(FATAL_ERROR "Failed to compute SHA256 for ${RT_BIN} via file(SHA256).")
 endif()
 
-
-
-
-# #try sha256sum
-# find_program(SHA256SUM_EXE sha256sum)
-# if(SHA256SUM_EXE)
-#     execute_process(COMMAND ${SHA256SUM_EXE} "${RT_BIN}"
-#         OUTPUT_VARIABLE __shaout
-#         RESULT_VARIABLE __shares
-#         OUTPUT_STRIP_TRAILING_WHITESPACE
-#     )
-#     if(__shares EQUAL 0)
-#         string(REGEX REPLACE "^([0-9a-fA-F]+).*" "\\1" __sha_hex "${__shaout}")
-#     endif()
-# endif()
-
-# #openssl fallback
-# if(NOT __sha_hex)
-#     find_program(OPENSSL_EXE openssl)
-#     if(OPENSSL_EXE)
-#         execute_process(COMMAND ${OPENSSL_EXE} dgst -sha256 -r "${RT_BIN}"
-#             OUTPUT_VARIABLE __sslout
-#             RESULT_VARIABLE __sslres
-#             OUTPUT_STRIP_TRAILING_WHITESPACE
-#         )
-#         if(__sslres EQUAL 0)
-#             string(REGEX REPLACE "^([0-9a-fA-F]+).*" "\\1" __sha_hex "${__sslout}")
-#         endif()
-#     endif()
-
-# endif()
-
 if(NOT __sha_hex)
     message(FATAL_ERROR "Failed to compute SHA256 for ${RT_BIN}.")
 endif()

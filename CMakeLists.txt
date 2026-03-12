@@ -50,64 +50,64 @@ if(PDJE_DYNAMIC)
 endif()
 
 
-# Source Include
-include(cmakes/src/thirdPartySource.cmake)
-include(cmakes/includeDIRS.cmake)
-include(cmakes/src/DBsrc.cmake)
-include(cmakes/src/AUDIOsrc.cmake)
-include(cmakes/src/EDITORsrc.cmake)
-include(cmakes/src/JUDGEsrc.cmake)
-include(cmakes/src/IPCsrc.cmake)
-include(cmakes/src/GLOBALsrc.cmake)
-include(cmakes/src/INPUTsrc.cmake)
-include(cmakes/src/CRYPTOsrc.cmake)
-include(cmakes/src/UTILsrc.cmake)
+function(DynamicInnerFlag target)
+if(WIN32 AND PDJE_DYNAMIC)
+    target_compile_definitions(${target} PRIVATE PDJE_WINDOWS_DLL)
+    target_compile_definitions(${target} PRIVATE PDJE_BUILDING)
+  endif()
+endfunction(DynamicInnerFlag target)
+
+function(DynamicOuterFlag target)
+if(WIN32 AND PDJE_DYNAMIC)
+    target_compile_definitions(${target} PUBLIC PDJE_WINDOWS_DLL)
+  endif()
+endfunction(DynamicOuterFlag target)
+
+function(LinuxSetAtomic targetName)
+  if(LINUX)
+    target_link_libraries(${targetName} PUBLIC atomic)
+    target_link_options(${targetName} PUBLIC -Wl,-z,defs)
+  endif()
+endfunction()
+
+function(LinuxSetAudioLibs targetName)
+  if(LINUX)
+    target_link_libraries(${targetName} PUBLIC asound)
+  endif()
+endfunction(LinuxSetAudioLibs )
+
 include(cmakes/HalideSupport.cmake)
 
 
-function(AddDynamicDef target)
-  if(WIN32 AND PDJE_DYNAMIC)
-    target_compile_definitions(${target} PUBLIC PDJE_WINDOWS_DLL)
-    target_compile_definitions(${target} PRIVATE PDJE_BUILDING)
-  endif()
-endfunction(AddDynamicDef target)
-
+include(cmakes/BuildLog.cmake)
+include(cmakes/includeDIRS.cmake)
+include(cmakes/src/GLOBAL/GlobalPkg.cmake)
 
 # Build Logging Lib
-include(cmakes/BuildLog.cmake)
+
+# Source Include
+include(cmakes/src/CORE/CorePkg.cmake)
+
+
+include(cmakes/src/JUDGE/JudgePkg.cmake)
+include(cmakes/src/INPUT/InputPkg.cmake)
+
+include(cmakes/src/UTIL/UtilPkg.cmake)
+
+
+
+# include(cmakes/FunctionSet.cmake)
+
+
+# target_include_directories(CRYPTO_OBJ PUBLIC ${PDJE_INCLUDE_IPC} ${PDJE_INCLUDE_GLOBAL})
+
+
 
 
 # Build Subproc Target
 if(PDJE_DEVELOP_INPUT AND WIN32)
   include(cmakes/BuildSubProc.cmake)
 endif()
-
-
-# Set Sources
-set(CORE_SRCS
-  ${editorSource} 
-  ${dbSource} 
-  ${audioRenderSource} 
-  ${SoundTouch_src} 
-  ${miniaudio_src} 
-  ${globalSource}
-)  
-
-set(JUDGE_SRCS
-${judgeSource} 
-${cryptoSource}
-${PDJE_IPC_SRC}
-${globalSource}
-)
-
-set(INPUT_SRCS
-${globalSource} 
-${cryptoSource}
-${PDJE_INPUT_MAINPROC_SRC} 
-${PDJE_IPC_SRC}
-)
-
-include(cmakes/FunctionSet.cmake)
 
 
 # Build Unit Tests
@@ -132,24 +132,30 @@ endif(PDJE_DEV_TEST)
 # Build Main Targets
 
 if(PDJE_DYNAMIC)
-  add_library(PDJE SHARED ${CORE_SRCS})
+  add_library(PDJE SHARED ${CORE_SRC_EXPORT})
+  
 else()
-  add_library(PDJE ${CORE_SRCS})
+  add_library(PDJE ${CORE_SRC_EXPORT})
 endif()
 
-setCoreReqs(PDJE)
+DynamicOuterFlag(PDJE)
+target_link_libraries(PDJE PUBLIC CORE_OBJ)
 
 
 if(PDJE_DEVELOP_INPUT)
   if(PDJE_DYNAMIC)
-    add_library(PDJE_MODULE_JUDGE SHARED ${JUDGE_SRCS})
-    add_library(PDJE_MODULE_INPUT SHARED ${INPUT_SRCS})
+    add_library(PDJE_MODULE_JUDGE SHARED ${JUDGE_SRC_EXPORT})
+    add_library(PDJE_MODULE_INPUT SHARED ${INPUT_SRC_EXPORT})
   else()
-    add_library(PDJE_MODULE_JUDGE ${JUDGE_SRCS})
-    add_library(PDJE_MODULE_INPUT ${INPUT_SRCS})
+    add_library(PDJE_MODULE_JUDGE ${JUDGE_SRC_EXPORT})
+    add_library(PDJE_MODULE_INPUT ${INPUT_SRC_EXPORT})
 endif()# end dynamic
-  setInputReqs(PDJE_MODULE_INPUT)
-  setJudgeReqs(PDJE_MODULE_JUDGE)
+  DynamicOuterFlag(PDJE_MODULE_JUDGE)
+  DynamicOuterFlag(PDJE_MODULE_INPUT)
+  target_link_libraries(PDJE_MODULE_JUDGE PUBLIC JUDGE_OBJ)
+  target_link_libraries(PDJE_MODULE_INPUT PUBLIC INPUT_OBJ)
+  # setInputReqs(PDJE_MODULE_INPUT)
+  # setJudgeReqs(PDJE_MODULE_JUDGE)
 endif()
 
 

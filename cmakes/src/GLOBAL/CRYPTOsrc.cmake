@@ -18,3 +18,21 @@ list(APPEND cryptoSource
   ${CMAKE_CURRENT_SOURCE_DIR}/include/global/Crypto/Linux/PSKPipe.cpp
 )
 endif()
+
+set(PDJE_INCLUDE_CRYPTO
+${PDJE_INCLUDE_GLOBAL}
+${PDJE_INCLUDE_ROOT}/include/global/Crypto
+)
+
+add_library(CRYPTO_OBJ OBJECT
+${cryptoSource}
+)
+
+target_include_directories(CRYPTO_OBJ PUBLIC ${PDJE_INCLUDE_CRYPTO})
+target_link_libraries(CRYPTO_OBJ PUBLIC PDJE_LOG_RUNTIME)
+
+setBotanReqLib(CRYPTO_OBJ)
+
+set(CRYPTO_SRC_EXPORT
+$<TARGET_OBJECTS:CRYPTO_OBJ>
+)

@@ -11,7 +11,7 @@ ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/core/bpm_struct.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/core/json_diff_friendly_io.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/core/track_linter_rules.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/core/timeline_diff_types.test.cpp
-${CORE_SRCS}
+${CORE_SRC_EXPORT}
 )
 
 target_include_directories(
@@ -21,11 +21,11 @@ ${PDJE_INCLUDE_CORE}
 )
 
 target_link_libraries(pdje_unit_core PRIVATE 
-doctest::doctest)
+doctest::doctest CORE_OBJ)
 
 target_compile_definitions(pdje_unit_core PRIVATE PDJE_UNIT_TESTING)
 PDJE_COMPILE_OPTION(pdje_unit_core)
 SET_PROPERTIES(pdje_unit_core)
-setCoreReqs(pdje_unit_core)
-# AddDynamicDef(pdje_unit_core)
+
+
 pdje_discover_unit_tests(pdje_unit_core core)

@@ -181,15 +181,6 @@ function(setSpdlogReqLib targetName)
   target_include_directories(${targetName} PUBLIC ${spdlog_INCLUDE_DIR})
 endfunction(setSpdlogReqLib)
 
-function(setPdjeLogRuntimeReqLib targetName)
-  if("${targetName}" STREQUAL "PDJE_LOG_RUNTIME")
-    return()
-  endif()
-  if(NOT TARGET PDJE_LOG_RUNTIME)
-    message(FATAL_ERROR "PDJE_LOG_RUNTIME target must be defined before calling setPdjeLogRuntimeReqLib(${targetName})")
-  endif()
-  target_link_libraries(${targetName} PUBLIC PDJE_LOG_RUNTIME)
-endfunction(setPdjeLogRuntimeReqLib)
 
 
 find_package(libgit2 CONFIG REQUIRED)
@@ -265,7 +256,8 @@ include_directories(${cppcodec_SOURCE_DIR})
 
 
 
-
+if(PDJE_SWIG_BUILD)
 
 find_package(SWIG REQUIRED)
 include(UseSWIG)
+endif()
