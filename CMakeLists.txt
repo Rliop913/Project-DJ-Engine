@@ -90,9 +90,8 @@ include(cmakes/src/GLOBAL/GlobalPkg.cmake)
 # Source Include
 include(cmakes/src/CORE/CorePkg.cmake)
 
-
-include(cmakes/src/JUDGE/JudgePkg.cmake)
 if(PDJE_DEVELOP_INPUT)
+  include(cmakes/src/JUDGE/JudgePkg.cmake)
   include(cmakes/src/INPUT/InputPkg.cmake)
 endif()
 
