@@ -30,6 +30,8 @@ endfunction()
 
 
 include(cmakes/tests/units/Module_Util.cmake)
-include(cmakes/tests/units/Module_Input.cmake)
+if(PDJE_DEVELOP_INPUT)
+    include(cmakes/tests/units/Module_Input.cmake)
+endif()
 include(cmakes/tests/units/Module_Judge.cmake)
 include(cmakes/tests/units/Module_Core.cmake)
