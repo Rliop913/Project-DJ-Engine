@@ -15,5 +15,5 @@ set(judgeSource
     ${CMAKE_CURRENT_SOURCE_DIR}/include/judge/PDJE_RAIL.cpp
     
     
-    ${CAPNP_SRCS}
+    # ${CAPNP_SRCS}
 )

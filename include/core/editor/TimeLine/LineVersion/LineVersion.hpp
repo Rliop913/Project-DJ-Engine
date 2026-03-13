@@ -1,6 +1,7 @@
 #pragma once
 #include "GitDatas.hpp"
 #include "GitRAII.hpp"
+#include "PDJE_EXPORT_SETTER.hpp"
 #include <git2/commit.h>
 #include <git2/oid.h>
 namespace PDJE_TIMELINE {
@@ -43,7 +44,7 @@ LogBranch(const OID &head, std::shared_ptr<GitData> &git)
 }
 
 using TIME_STAMP = std::string;
-class BranchLine {
+class PDJE_API BranchLine {
   private:
     std::shared_ptr<GitData> git;
 

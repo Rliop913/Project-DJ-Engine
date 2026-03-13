@@ -148,6 +148,17 @@ class PDJE_API PDJE {
     TRACK_VEC
     SearchTrack(const UNSANITIZED &Title);
     /**
+     * @brief Decodes a music entry into interleaved stereo PCM samples.
+     *
+     * If `md.musicPath` is empty, this method searches the root database with
+     * the provided metadata and decodes the first matching result.
+     *
+     * @param md Music metadata or search clue.
+     * @return std::vector<float> Interleaved PCM samples. Empty on failure.
+     */
+    std::vector<float>
+    GetPCMFromMusData(const musdata &md);
+    /**
      * @brief music handler getter api for binded codes.
      * this function gives you a music handler.
      * you can access player directly in cpp, but not in binded languages.

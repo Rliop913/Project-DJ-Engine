@@ -65,6 +65,21 @@ FetchContent_Declare(
     GIT_TAG        v5.3.1
 )
 
+set(WEBP_BUILD_ANIM_UTILS OFF CACHE BOOL "" FORCE)
+set(WEBP_BUILD_CWEBP OFF CACHE BOOL "" FORCE)
+set(WEBP_BUILD_DWEBP OFF CACHE BOOL "" FORCE)
+set(WEBP_BUILD_GIF2WEBP OFF CACHE BOOL "" FORCE)
+set(WEBP_BUILD_IMG2WEBP OFF CACHE BOOL "" FORCE)
+set(WEBP_BUILD_VWEBP OFF CACHE BOOL "" FORCE)
+set(WEBP_BUILD_WEBPINFO OFF CACHE BOOL "" FORCE)
+set(WEBP_BUILD_EXTRAS OFF CACHE BOOL "" FORCE)
+
+FetchContent_Declare(
+    libwebp
+    GIT_REPOSITORY https://github.com/webmproject/libwebp.git
+    GIT_TAG        v1.5.0
+)
+
 if(PDJE_TEST)
 FetchContent_Declare(
     doctest
@@ -77,17 +92,54 @@ function(setLibreMIDIReqLib targetName)
   target_link_libraries(${targetName} PUBLIC libremidi)
 endfunction(setLibreMIDIReqLib)
 
+find_package(ZLIB REQUIRED)
+
+function(setWebpReqLib targetName)
+  set(_pdje_webp_targets "")
+  foreach(_pdje_webp_candidate
+      webp
+      WebP::webp)
+    if(TARGET ${_pdje_webp_candidate})
+      list(APPEND _pdje_webp_targets ${_pdje_webp_candidate})
+      break()
+    endif()
+  endforeach()
+
+  foreach(_pdje_webpdecoder_candidate
+      webpdecoder
+      WebP::webpdecoder)
+    if(TARGET ${_pdje_webpdecoder_candidate})
+      list(APPEND _pdje_webp_targets ${_pdje_webpdecoder_candidate})
+      break()
+    endif()
+  endforeach()
+
+  if("${_pdje_webp_targets}" STREQUAL "")
+    message(FATAL_ERROR "libwebp targets not found after FetchContent_MakeAvailable(libwebp)")
+  endif()
+
+  get_target_property(_pdje_target_type ${targetName} TYPE)
+  if("${_pdje_target_type}" STREQUAL "INTERFACE_LIBRARY")
+    target_link_libraries(${targetName} INTERFACE ${_pdje_webp_targets})
+  else()
+    target_link_libraries(${targetName} PUBLIC ${_pdje_webp_targets})
+  endif()
+endfunction(setWebpReqLib)
+
 
 
 find_package(botan CONFIG REQUIRED)
 
 function(setBotanReqLib targetName)
   target_link_libraries(${targetName} PUBLIC botan::botan)
+  
   if(DEFINED botan_INCLUDE_DIRS)
     target_include_directories(${targetName} PUBLIC ${botan_INCLUDE_DIRS})
+    # message(FATAL_ERROR "${botan_INCLUDE_DIRS}")
   elseif(DEFINED botan_INCLUDE_DIR)
     target_include_directories(${targetName} PUBLIC ${botan_INCLUDE_DIR})
-  endif()
+  # else()
+    endif()
 endfunction()
 
 
@@ -129,15 +181,6 @@ function(setSpdlogReqLib targetName)
   target_include_directories(${targetName} PUBLIC ${spdlog_INCLUDE_DIR})
 endfunction(setSpdlogReqLib)
 
-function(setPdjeLogRuntimeReqLib targetName)
-  if("${targetName}" STREQUAL "PDJE_LOG_RUNTIME")
-    return()
-  endif()
-  if(NOT TARGET PDJE_LOG_RUNTIME)
-    message(FATAL_ERROR "PDJE_LOG_RUNTIME target must be defined before calling setPdjeLogRuntimeReqLib(${targetName})")
-  endif()
-  target_link_libraries(${targetName} PUBLIC PDJE_LOG_RUNTIME)
-endfunction(setPdjeLogRuntimeReqLib)
 
 
 find_package(libgit2 CONFIG REQUIRED)
@@ -177,10 +220,10 @@ FetchContent_MakeAvailable(NHJson)
 FetchContent_MakeAvailable(sql_amalgam)
 FetchContent_MakeAvailable(cppCodec)
 FetchContent_MakeAvailable(libremidi)
+FetchContent_MakeAvailable(libwebp)
 if(PDJE_TEST)
 FetchContent_MakeAvailable(doctest)
 endif()
-# FetchContent_MakeAvailable(cppHttp)
 
 if(NOT TARGET PDJE_SQLITE3_AMALGAM)
   add_library(PDJE_SQLITE3_AMALGAM STATIC ${sql_amalgam_SOURCE_DIR}/sqlite3.c)
@@ -210,12 +253,11 @@ endfunction(setSqliteReqLib)
 include_directories(${nlohmann_json_SOURCE_DIR}/include)
 include_directories(${sql_amalgam_SOURCE_DIR})
 include_directories(${cppcodec_SOURCE_DIR})
-# include_directories(${picosha_SOURCE_DIR})
-include_directories(${httplib_SOURCE_DIR})
 
 
 
-
+if(PDJE_SWIG_BUILD)
 
 find_package(SWIG REQUIRED)
 include(UseSWIG)
+endif()
