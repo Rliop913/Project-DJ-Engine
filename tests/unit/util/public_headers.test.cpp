@@ -2,7 +2,6 @@
 
 #include "util/PDJE_Util.hpp"
 
-#include <cstdint>
 #include <span>
 #include <string>
 #include <string_view>

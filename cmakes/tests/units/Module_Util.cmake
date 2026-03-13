@@ -4,8 +4,8 @@ add_executable(
 pdje_unit_util
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/main_doctest.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/public_headers.test.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/png_writer.test.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/waveform_png.test.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/webp_writer.test.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/waveform_webp.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/db_relational_sqlite.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/db_keyvalue_rocksdb.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/db_nearest_annoy.test.cpp
@@ -17,7 +17,7 @@ ${CORE_SRC_EXPORT}
 target_include_directories(pdje_unit_util PRIVATE ${PDJE_INCLUDE_GLOBAL} ${PDJE_INCLUDE_CORE})
 target_link_libraries(pdje_unit_util PRIVATE doctest::doctest CORE_OBJ)
 target_link_libraries(pdje_unit_util PRIVATE PDJE_UTIL)
-target_link_libraries(pdje_unit_util PRIVATE PDJE_UTIL_IMAGE_PNG)
+target_link_libraries(pdje_unit_util PRIVATE PDJE_UTIL_IMAGE_WEBP)
 target_link_libraries(pdje_unit_util PRIVATE PDJE_UTIL_IMAGE_WAVEFORM)
 target_link_libraries(pdje_unit_util PRIVATE PDJE_UTIL_DB)
 

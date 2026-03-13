@@ -10,12 +10,12 @@ if(NOT TARGET PDJE_UTIL)
   )
 endif()
 
-add_library(PDJE_UTIL_IMAGE_PNG INTERFACE)
-target_link_libraries(PDJE_UTIL_IMAGE_PNG INTERFACE PDJE_UTIL)
-setWebpReqLib(PDJE_UTIL_IMAGE_PNG)
+add_library(PDJE_UTIL_IMAGE_WEBP INTERFACE)
+target_link_libraries(PDJE_UTIL_IMAGE_WEBP INTERFACE PDJE_UTIL)
+setWebpReqLib(PDJE_UTIL_IMAGE_WEBP)
 
 add_library(PDJE_UTIL_IMAGE_WAVEFORM
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/image/WaveformPng.cpp)
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/image/WaveformWebp.cpp)
 
   target_include_directories(PDJE_UTIL_IMAGE_WAVEFORM PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/image
@@ -23,7 +23,7 @@ add_library(PDJE_UTIL_IMAGE_WAVEFORM
 
 target_link_libraries(PDJE_UTIL_IMAGE_WAVEFORM PUBLIC
   PDJE_UTIL
-  PDJE_UTIL_IMAGE_PNG
+  PDJE_UTIL_IMAGE_WEBP
 )
 setHighwayReqLib(PDJE_UTIL_IMAGE_WAVEFORM)
 PDJE_COMPILE_OPTION(PDJE_UTIL_IMAGE_WAVEFORM)

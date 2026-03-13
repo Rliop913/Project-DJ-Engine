@@ -27,34 +27,34 @@ endif()
 
 
 add_executable(
-    music_to_waveform_png
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/music_to_waveform_png.cpp ${CORE_SRC_EXPORT})
+    music_to_waveform_webp
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/music_to_waveform_webp.cpp ${CORE_SRC_EXPORT})
 
-target_link_libraries(music_to_waveform_png PRIVATE CORE_OBJ)
+target_link_libraries(music_to_waveform_webp PRIVATE CORE_OBJ)
 
 target_include_directories(
-    music_to_waveform_png 
+    music_to_waveform_webp 
     PRIVATE
     ${PDJE_INCLUDE_GLOBAL} 
     ${PDJE_INCLUDE_CORE}
     )
 
 
-target_link_libraries(music_to_waveform_png PRIVATE PDJE_UTIL_IMAGE_PNG)
-target_link_libraries(music_to_waveform_png PRIVATE PDJE_UTIL_IMAGE_WAVEFORM)
+target_link_libraries(music_to_waveform_webp PRIVATE PDJE_UTIL_IMAGE_WEBP)
+target_link_libraries(music_to_waveform_webp PRIVATE PDJE_UTIL_IMAGE_WAVEFORM)
 
 
 
 if(WIN32)
-set(_music_to_waveform_png_zlib_runtime
+set(_music_to_waveform_webp_zlib_runtime
     "$<$<CONFIG:Debug>:${zlib_BIN_DIRS_DEBUG}/zlib1.dll>$<$<CONFIG:Release>:${zlib_BIN_DIRS_RELEASE}/zlib1.dll>$<$<CONFIG:RelWithDebInfo>:${zlib_BIN_DIRS_RELEASE}/zlib1.dll>$<$<CONFIG:MinSizeRel>:${zlib_BIN_DIRS_RELEASE}/zlib1.dll>")
 add_custom_command(
-    TARGET music_to_waveform_png
+    TARGET music_to_waveform_webp
     POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
-    "${_music_to_waveform_png_zlib_runtime}"
-    $<TARGET_FILE_DIR:music_to_waveform_png>
+    "${_music_to_waveform_webp_zlib_runtime}"
+    $<TARGET_FILE_DIR:music_to_waveform_webp>
     VERBATIM)
 endif()
-PDJE_COMPILE_OPTION(music_to_waveform_png)
-SET_PROPERTIES(music_to_waveform_png)
+PDJE_COMPILE_OPTION(music_to_waveform_webp)
+SET_PROPERTIES(music_to_waveform_webp)

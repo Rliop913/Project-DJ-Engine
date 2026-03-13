@@ -18,22 +18,22 @@
 
 namespace PDJE_UTIL::function::image {
 
-enum class PngPixelFormat { gray8, gray_alpha8, rgb8, rgba8 };
+enum class RasterPixelFormat { gray8, gray_alpha8, rgb8, rgba8 };
 
 struct RasterImageView {
     std::span<const std::uint8_t> pixels       = {};
     std::size_t                   width        = 0;
     std::size_t                   height       = 0;
     std::size_t                   stride       = 0;
-    PngPixelFormat                pixel_format = PngPixelFormat::rgba8;
+    RasterPixelFormat            pixel_format = RasterPixelFormat::rgba8;
 };
 
-struct EncodePngArgs {
+struct EncodeWebpArgs {
     RasterImageView image;
     int             compression_level = -1;
 };
 
-struct WritePngArgs {
+struct WriteWebpArgs {
     RasterImageView       image;
     std::filesystem::path output_path;
     int                   compression_level = -1;
@@ -69,16 +69,16 @@ checked_add(std::size_t lhs, std::size_t rhs, std::size_t &result) noexcept
 }
 
 inline constexpr std::size_t
-bytes_per_pixel(PngPixelFormat pixel_format) noexcept
+bytes_per_pixel(RasterPixelFormat pixel_format) noexcept
 {
     switch (pixel_format) {
-    case PngPixelFormat::gray8:
+    case RasterPixelFormat::gray8:
         return 1;
-    case PngPixelFormat::gray_alpha8:
+    case RasterPixelFormat::gray_alpha8:
         return 2;
-    case PngPixelFormat::rgb8:
+    case RasterPixelFormat::rgb8:
         return 3;
-    case PngPixelFormat::rgba8:
+    case RasterPixelFormat::rgba8:
         return 4;
     }
 
@@ -170,25 +170,25 @@ pack_rgba(const RasterImageView &image, const ImageLayout &layout)
             auto *dst = dst_row + (x * 4);
 
             switch (image.pixel_format) {
-            case PngPixelFormat::gray8:
+            case RasterPixelFormat::gray8:
                 dst[0] = src[0];
                 dst[1] = src[0];
                 dst[2] = src[0];
                 dst[3] = 255;
                 break;
-            case PngPixelFormat::gray_alpha8:
+            case RasterPixelFormat::gray_alpha8:
                 dst[0] = src[0];
                 dst[1] = src[0];
                 dst[2] = src[0];
                 dst[3] = src[1];
                 break;
-            case PngPixelFormat::rgb8:
+            case RasterPixelFormat::rgb8:
                 dst[0] = src[0];
                 dst[1] = src[1];
                 dst[2] = src[2];
                 dst[3] = 255;
                 break;
-            case PngPixelFormat::rgba8:
+            case RasterPixelFormat::rgba8:
                 dst[0] = src[0];
                 dst[1] = src[1];
                 dst[2] = src[2];
@@ -204,14 +204,14 @@ pack_rgba(const RasterImageView &image, const ImageLayout &layout)
 } // namespace detail
 
 inline common::Result<std::vector<std::uint8_t>>
-encode_png(const EncodePngArgs &args, function::EvalOptions options = {})
+encode_webp(const EncodeWebpArgs &args, function::EvalOptions options = {})
 {
     (void)options;
 
     if (args.compression_level < -1 || args.compression_level > 9) {
         return common::Result<std::vector<std::uint8_t>>::failure(
             { common::StatusCode::invalid_argument,
-              "EncodePngArgs.compression_level must be between -1 and 9." });
+              "EncodeWebpArgs.compression_level must be between -1 and 9." });
     }
 
     auto layout = detail::validate_image(args.image);
@@ -247,17 +247,17 @@ encode_png(const EncodePngArgs &args, function::EvalOptions options = {})
 }
 
 inline common::Result<void>
-write_png(const WritePngArgs &args, function::EvalOptions options = {})
+write_webp(const WriteWebpArgs &args, function::EvalOptions options = {})
 {
     (void)options;
 
     if (args.output_path.empty()) {
         return common::Result<void>::failure(
             { common::StatusCode::invalid_argument,
-              "WritePngArgs.output_path must not be empty." });
+              "WriteWebpArgs.output_path must not be empty." });
     }
 
-    auto encoded = encode_png(
+    auto encoded = encode_webp(
         { .image = args.image, .compression_level = args.compression_level });
     if (!encoded.ok()) {
         return common::Result<void>::failure(encoded.status());

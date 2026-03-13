@@ -1,6 +1,6 @@
 #include <doctest/doctest.h>
 
-#include "util/function/image/PngWriter.hpp"
+#include "util/function/image/WebpWriter.hpp"
 
 #include <webp/decode.h>
 
@@ -75,7 +75,7 @@ decode_rgba8(std::span<const std::uint8_t> webp_bytes)
 }
 
 fs::path
-make_temp_png_path()
+make_temp_webp_path()
 {
     const auto stamp =
         std::chrono::steady_clock::now().time_since_epoch().count();
@@ -85,7 +85,7 @@ make_temp_png_path()
 
 } // namespace
 
-TEST_CASE("encode_png produces a valid WebP from padded RGBA rows")
+TEST_CASE("encode_webp produces a valid WebP from padded RGBA rows")
 {
     const std::vector<std::uint8_t> padded_rgba_pixels{
         255, 0, 0,   255, 0,   255, 0,   255, 9, 9, 9, 9,
@@ -95,14 +95,14 @@ TEST_CASE("encode_png produces a valid WebP from padded RGBA rows")
         255, 0, 0, 255, 0, 255, 0, 255, 0, 0, 255, 255, 255, 255, 255, 255
     };
 
-    auto encoded = PDJE_UTIL::function::image::encode_png(
+    auto encoded = PDJE_UTIL::function::image::encode_webp(
         { .image =
               {
                   .pixels = padded_rgba_pixels,
                   .width = 2,
                   .height = 2,
                   .stride = 12,
-                  .pixel_format = PDJE_UTIL::function::image::PngPixelFormat::rgba8,
+                  .pixel_format = PDJE_UTIL::function::image::RasterPixelFormat::rgba8,
               },
           .compression_level = 3 });
 
@@ -115,20 +115,20 @@ TEST_CASE("encode_png produces a valid WebP from padded RGBA rows")
     CHECK(decoded.pixels == expected_rgba_pixels);
 }
 
-TEST_CASE("write_png writes a WebP file to disk")
+TEST_CASE("write_webp writes a WebP file to disk")
 {
     const std::vector<std::uint8_t> rgba_pixel{ 12, 34, 56, 255 };
-    const fs::path                  output_path = make_temp_png_path();
+    const fs::path                  output_path = make_temp_webp_path();
     const ScopedFileCleanup         cleanup{ output_path };
 
-    auto written = PDJE_UTIL::function::image::write_png(
+    auto written = PDJE_UTIL::function::image::write_webp(
         { .image =
               {
                   .pixels = rgba_pixel,
                   .width = 1,
                   .height = 1,
                   .stride = 0,
-                  .pixel_format = PDJE_UTIL::function::image::PngPixelFormat::rgba8,
+                  .pixel_format = PDJE_UTIL::function::image::RasterPixelFormat::rgba8,
               },
           .output_path = output_path,
           .compression_level = -1 });
@@ -153,16 +153,16 @@ TEST_CASE("write_png writes a WebP file to disk")
     CHECK(decoded.pixels == rgba_pixel);
 }
 
-TEST_CASE("encode_png validates buffer layout and compression range")
+TEST_CASE("encode_webp validates buffer layout and compression range")
 {
     const std::vector<std::uint8_t> too_small_pixels{ 1, 2, 3, 4, 5, 6, 7 };
-    auto invalid_layout = PDJE_UTIL::function::image::encode_png(
+    auto invalid_layout = PDJE_UTIL::function::image::encode_webp(
         { .image = {
               .pixels       = too_small_pixels,
               .width        = 2,
               .height       = 1,
               .stride       = 0,
-              .pixel_format = PDJE_UTIL::function::image::PngPixelFormat::rgba8,
+              .pixel_format = PDJE_UTIL::function::image::RasterPixelFormat::rgba8,
           } });
 
     CHECK_FALSE(invalid_layout.ok());
@@ -170,14 +170,14 @@ TEST_CASE("encode_png validates buffer layout and compression range")
           PDJE_UTIL::common::StatusCode::invalid_argument);
 
     const std::vector<std::uint8_t> valid_pixels{ 1, 2, 3, 255 };
-    auto invalid_compression = PDJE_UTIL::function::image::encode_png(
+    auto invalid_compression = PDJE_UTIL::function::image::encode_webp(
         { .image =
               {
                   .pixels = valid_pixels,
                   .width = 1,
                   .height = 1,
                   .stride = 0,
-                  .pixel_format = PDJE_UTIL::function::image::PngPixelFormat::rgba8,
+                  .pixel_format = PDJE_UTIL::function::image::RasterPixelFormat::rgba8,
               },
           .compression_level = 12 });
 
