@@ -43,7 +43,7 @@ litedb::openDB(const fs::path &dbPath)
     rdbops.create_if_missing = true;
     rdbops.OptimizeForPointLookup(512 * 1024 * 1024);
     rdbops.OptimizeLevelStyleCompaction();
-    rdbops.file_checksum_gen_factory.reset();
+    // rdbops.file_checksum_gen_factory.reset();
     ROCK_DB::BlockBasedTableOptions table_options;
     table_options.filter_policy.reset(ROCK_DB::NewBloomFilterPolicy(10, true));
     rdbops.table_factory.reset(NewBlockBasedTableFactory(table_options));
@@ -65,13 +65,13 @@ litedb::openDB(const fs::path &dbPath)
     if (sqlRes != SQLITE_OK) {
         critlog("failed to open sqlite. from litedb openDB. sqliteErrmsg: ");
         critlog(sqlite3_errmsg(sdb));
-        assert(false);
+        // assert(false);
         return false;
     }
     if (!kvdbRes.ok()) {
         critlog("failed to open rocksDB. from litedb openDB. rocksdbErrmsg: ");
         critlog(kvdbRes.ToString());
-        assert(false);
+        // assert(false);
         return false;
     }
     if (!CheckTables()) {
