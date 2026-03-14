@@ -43,8 +43,7 @@ litedb::openDB(const fs::path &dbPath)
     rdbops.create_if_missing = true;
     rdbops.OptimizeForPointLookup(512 * 1024 * 1024);
     rdbops.OptimizeLevelStyleCompaction();
-    rdbops.file_checksum_gen_factory =
-        rocksdb::GetFileChecksumGenCrc32cFactory();
+    rdbops.file_checksum_gen_factory.reset();
     ROCK_DB::BlockBasedTableOptions table_options;
     table_options.filter_policy.reset(ROCK_DB::NewBloomFilterPolicy(10, true));
     rdbops.table_factory.reset(NewBlockBasedTableFactory(table_options));
