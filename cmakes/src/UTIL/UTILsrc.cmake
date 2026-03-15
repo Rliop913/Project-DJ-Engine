@@ -50,6 +50,12 @@ target_link_libraries(PDJE_UTIL_DB INTERFACE
 
 add_library(PDJE_UTIL_INCLUDES INTERFACE)
 target_include_directories(PDJE_UTIL_INCLUDES INTERFACE
+${CMAKE_CURRENT_SOURCE_DIR}/include/util/
+${CMAKE_CURRENT_SOURCE_DIR}/include/util/common
+${CMAKE_CURRENT_SOURCE_DIR}/include/util/db
+${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/
 ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/image
+
+
 
 )
