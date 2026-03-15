@@ -47,3 +47,9 @@ target_link_libraries(PDJE_UTIL_DB INTERFACE
   PDJE_UTIL_DB_ROCKSDB
   PDJE_UTIL_DB_ANNOY
 )
+
+add_library(PDJE_UTIL_INCLUDES INTERFACE)
+target_include_directories(PDJE_UTIL_INCLUDES INTERFACE
+${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/image
+
+)
