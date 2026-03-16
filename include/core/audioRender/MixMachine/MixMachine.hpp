@@ -40,7 +40,7 @@ using ID = long;
  * interpolation
  *
  */
-struct PDJE_API EightPointValues {
+struct EightPointValues {
     float vals[8] = {
         0,
     };
@@ -68,7 +68,7 @@ struct PDJE_API EightPointValues {
  * @brief prerenderer class
  *
  */
-class PDJE_API MixMachine {
+class MixMachine {
   private:
     // FRAME_POS getMixSize(FRAME_POS frames);
   public:

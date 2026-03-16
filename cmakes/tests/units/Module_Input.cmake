@@ -25,6 +25,7 @@ target_include_directories(pdje_unit_input PRIVATE ${PDJE_INCLUDE_INPUT_MAINPROC
 target_link_libraries(pdje_unit_input PRIVATE 
 doctest::doctest INPUT_OBJ)
 
+setInputReqs(pdje_unit_input)
 
 target_compile_definitions(pdje_unit_input PRIVATE PDJE_UNIT_TESTING)
 PDJE_COMPILE_OPTION(pdje_unit_input)

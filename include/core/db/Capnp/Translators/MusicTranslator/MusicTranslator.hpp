@@ -17,7 +17,7 @@
  * }
  * \enddot
  */
-class PDJE_API MusicTranslator {
+class MusicTranslator {
   public:
     BpmStruct bpms;
     /**

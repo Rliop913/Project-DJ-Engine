@@ -16,6 +16,8 @@ ${PDJE_INCLUDE_INPUT_MAINPROC})
 target_link_libraries(pdje_unit_judge PRIVATE 
 doctest::doctest JUDGE_OBJ)
 
+setJudgeReqs(pdje_unit_judge)
+
 target_compile_definitions(pdje_unit_judge PRIVATE PDJE_UNIT_TESTING)
 PDJE_COMPILE_OPTION(pdje_unit_judge)
 SET_PROPERTIES(pdje_unit_judge)

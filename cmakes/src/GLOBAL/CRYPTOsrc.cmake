@@ -19,20 +19,29 @@ list(APPEND cryptoSource
 )
 endif()
 
-set(PDJE_INCLUDE_CRYPTO
-${PDJE_INCLUDE_GLOBAL}
-${PDJE_INCLUDE_ROOT}/include/global/Crypto
-)
+# set(PDJE_INCLUDE_CRYPTO
+# ${PDJE_INCLUDE_GLOBAL}
+# ${PDJE_INCLUDE_ROOT}/include/global/Crypto
+# )
 
 add_library(CRYPTO_OBJ OBJECT
 ${cryptoSource}
 )
 
-target_include_directories(CRYPTO_OBJ PUBLIC ${PDJE_INCLUDE_CRYPTO})
-target_link_libraries(CRYPTO_OBJ PUBLIC PDJE_LOG_RUNTIME)
+
+add_library(CRYPTO_INCLUDE INTERFACE)
+target_include_directories(CRYPTO_INCLUDE INTERFACE 
+
+${PDJE_INCLUDE_ROOT}/include/global/Crypto
+)
+
+
+
+# target_include_directories(CRYPTO_OBJ PRIVATE CRY)
+target_link_libraries(CRYPTO_OBJ PUBLIC PDJE_LOG_RUNTIME CRYPTO_INCLUDE GLOBAL_INCLUDE)
 
 setBotanReqLib(CRYPTO_OBJ)
-
+setSpdlogReqLib(CRYPTO_OBJ)
 set(CRYPTO_SRC_EXPORT
 $<TARGET_OBJECTS:CRYPTO_OBJ>
 )

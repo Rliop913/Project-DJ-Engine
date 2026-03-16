@@ -27,7 +27,7 @@ struct Input_Transfer_Metadata {
     PSK      psk;
 };
 
-class PDJE_API PDJE_Input_Transfer {
+class PDJE_Input_Transfer {
   private:
     SharedMem<uint64_t, PDJE_IPC_RW>                  length;
     SharedMem<PDJE_Input_Log, PDJE_IPC_RW>            body;

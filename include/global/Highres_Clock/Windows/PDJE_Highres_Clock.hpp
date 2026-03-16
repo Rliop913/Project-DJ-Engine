@@ -9,7 +9,7 @@
 #include <time.h>
 namespace PDJE_HIGHRES_CLOCK {
 
-class PDJE_API CLOCK {
+class CLOCK {
   private:
     struct timespec ts;
     uint64_t        qpc_freq;

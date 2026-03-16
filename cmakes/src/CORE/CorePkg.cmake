@@ -7,7 +7,18 @@ function(setCoreReqs targetName)
   target_include_directories(${targetName} PUBLIC ${PDJE_INCLUDE_CORE})
   
   DynamicInnerFlag(${targetName})
-  target_link_libraries(${targetName} PUBLIC nlohmann_json::nlohmann_json PDJE_LOG_RUNTIME)
+  target_link_libraries(${targetName} PRIVATE
+   nlohmann_json::nlohmann_json
+    PDJE_LOG_RUNTIME
+    MINIAUDIO_OBJ
+    MINIAUDIO_INCLUDE
+    SOUNDTOUCH_OBJ
+    SOUNDTOUCH_INCLUDE
+    SQL_OBJ
+    SQL_INCLUDE
+    GLOBAL_OBJ
+    GLOBAL_INCLUDE
+    )
   setSqliteReqLib(${targetName})
   setRocksDBReqLib(${targetName})
   setSpdlogReqLib(${targetName})
@@ -28,8 +39,8 @@ add_library(CORE_OBJ OBJECT
     ${editorSource} 
     ${dbSource} 
     ${audioRenderSource} 
-    ${SoundTouch_src} 
-    ${miniaudio_src} 
+    # ${SoundTouch_src} 
+    # ${miniaudio_src} 
     ${GLOBAL_SRC_EXPORT}
     # ${globalSource}
 )

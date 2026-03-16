@@ -18,9 +18,53 @@ endfunction(setInputReqs)
 
 
 add_library(INPUT_OBJ OBJECT
-${GLOBAL_SRC_EXPORT}
+# ${GLOBAL_SRC_EXPORT}
 ${PDJE_INPUT_MAINPROC_SRC}
 )
+
+add_library(INPUT_MAIN_INCLUDE INTERFACE)
+target_include_directories(INPUT_MAIN_INCLUDE
+  INTERFACE
+  ${PDJE_INCLUDE_ROOT}/include/input
+  ${PDJE_INCLUDE_ROOT}/include/input/midi
+  ${PDJE_INCLUDE_ROOT}/include/input/host
+  ${PDJE_INCLUDE_ROOT}/include/input/runner
+  ${PDJE_INCLUDE_ROOT}/include/input/DefaultDevs
+)
+
+if(WIN32)
+target_include_directories(INPUT_MAIN_INCLUDE
+  INTERFACE
+  ${PDJE_INCLUDE_ROOT}/include/input/runner/windows
+  ${PDJE_INCLUDE_ROOT}/include/input/DefaultDevs/windows
+  ${PDJE_INCLUDE_ROOT}/include/input/DefaultDevs/windows/TXRX
+)
+elseif(APPLE)
+
+else()
+target_include_directories(INPUT_MAIN_INCLUDE
+  INTERFACE
+  ${PDJE_INCLUDE_ROOT}/include/input/DefaultDevs/linux
+  ${PDJE_INCLUDE_ROOT}/include/input/DefaultDevs/linux/evdev_things
+  ${PDJE_INCLUDE_ROOT}/include/input/DefaultDevs
+  ${PDJE_INCLUDE_ROOT}/include/input/DefaultDevs/linux/wayland_things
+
+)
+endif()
+
+add_library(INPUT_SUBPROC_INCLUDE INTERFACE)
+
+target_include_directories(INPUT_SUBPROC_INCLUDE INTERFACE
+  ${PDJE_INCLUDE_ROOT}/include/input
+  ${PDJE_INCLUDE_ROOT}/include/input/runner
+  ${PDJE_INCLUDE_ROOT}/include/input/midi
+)
+
+
+
+target_link_libraries(INPUT_OBJ PRIVATE INPUT_MAIN_INCLUDE GLOBAL_OBJ GLOBAL_INCLUDE)
+
+
 
 if(PDJE_TEST)
   target_compile_definitions(INPUT_OBJ PRIVATE PDJE_UNIT_TESTING)

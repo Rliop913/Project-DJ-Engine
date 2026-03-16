@@ -15,7 +15,7 @@ using SIMD_FLOAT = std::vector<float, hwy::AlignedAllocator<float>>;
  * @brief processed mixing data struct.
  *
  */
-struct PDJE_API MixStruct {
+struct MixStruct {
     unsigned long long frame_in;
     unsigned long long frame_out;
     /// @brief capnp Reader Pointer

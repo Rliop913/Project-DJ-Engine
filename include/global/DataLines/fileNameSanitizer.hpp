@@ -4,11 +4,8 @@
  */
 #pragma once
 #include "PDJE_EXPORT_SETTER.hpp"
-#include <cppcodec/base64_default_url.hpp>
-#include <filesystem>
 #include <optional>
 #include <string>
-namespace fs = std::filesystem;
 
 /// @brief Type alias for a sanitized string.
 using SANITIZED = std::string;
@@ -21,9 +18,6 @@ using DONT_SANITIZE = std::string;
 
 /// @brief Type alias for a string that may or may not be sanitized.
 using SANITIZED_ORNOT = std::string;
-
-/// @brief Type alias for the base64 URL unpadded codec.
-using cbase = cppcodec::base64_url;
 
 /**
  * @brief A utility class for sanitizing and de-sanitizing file names.

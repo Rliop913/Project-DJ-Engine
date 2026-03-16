@@ -6,7 +6,9 @@ add_executable(gitTester ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/gittest.cpp $
 target_link_libraries(testEditor PRIVATE CORE_OBJ)
 target_link_libraries(DBTester PRIVATE CORE_OBJ)
 target_link_libraries(gitTester PRIVATE CORE_OBJ)
-
+setCoreReqs(testEditor)
+setCoreReqs(DBTester)
+setCoreReqs(gitTester)
 
 if(PDJE_DEVELOP_INPUT)
 add_executable(testInput ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/INPUT_TESTS/pdjeInputTest.cpp ${INPUT_SRC_EXPORT})
@@ -23,6 +25,11 @@ target_link_libraries(testInput PRIVATE INPUT_OBJ)
 target_link_libraries(testMIDI PRIVATE INPUT_OBJ)
 target_link_libraries(testJudge PRIVATE INPUT_OBJ CORE_OBJ JUDGE_OBJ)
 
+setInputReqs(testInput)
+setInputReqs(testMIDI)
+setInputReqs(testJudge)
+setJudgeReqs(testJudge)
+setCoreReqs(testJudge)
 endif()
 
 

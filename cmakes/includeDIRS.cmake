@@ -23,11 +23,11 @@ set(PDJE_INCLUDE_CORE
   ${PDJE_INCLUDE_ROOT}/include/core/db/Capnp/Translators/MusicTranslator
   ${PDJE_INCLUDE_ROOT}/include/core/db/Capnp/Translators/NoteTranslator
 
-	${miniaudio_SOURCE_DIR}/extras/miniaudio_split
-  ${SQLite3_INCLUDE_DIR}
+	
+  
   ${highway_INCLUDE_DIR}
 
-	${PDJE_INCLUDE_ROOT}/third_party/SoundTouch/soundtouch_include
+	
 	${PDJE_INCLUDE_ROOT}/third_party/Faust/compiled
   ${PDJE_INCLUDE_ROOT}/third_party/Faust/manual_compiled
   
@@ -79,57 +79,25 @@ ${CAPNPC_OUTPUT_DIR}/third_party/Capnp
 )
 
 
-set(PDJE_INCLUDE_INPUT_SUBPROC
-${PDJE_INCLUDE_ROOT}/include/input
-${PDJE_INCLUDE_ROOT}/include/input/runner
-)
+# set(PDJE_INCLUDE_INPUT_SUBPROC
+# ${PDJE_INCLUDE_ROOT}/include/input
+# ${PDJE_INCLUDE_ROOT}/include/input/runner
+# )
 
-set(PDJE_INCLUDE_INPUT_MAINPROC
-${PDJE_INCLUDE_ROOT}/include/input
-${PDJE_INCLUDE_ROOT}/include/input/midi
-${PDJE_INCLUDE_ROOT}/include/input/host
-${PDJE_INCLUDE_ROOT}/include/input/runner
-${PDJE_INCLUDE_ROOT}/include/input/DefaultDevs
+# set(PDJE_INCLUDE_INPUT_MAINPROC
+# ${PDJE_INCLUDE_ROOT}/include/input
+# ${PDJE_INCLUDE_ROOT}/include/input/midi
+# ${PDJE_INCLUDE_ROOT}/include/input/host
+# ${PDJE_INCLUDE_ROOT}/include/input/runner
+# ${PDJE_INCLUDE_ROOT}/include/input/DefaultDevs
 
-)
+# )
 
-set(PDJE_INCLUDE_GLOBAL
-  ${PDJE_INCLUDE_ROOT}/include/global
-  ${PDJE_INCLUDE_ROOT}/include/global/DataLines
-)
 
 set(PDJE_INCLUDE_UTIL
   ${PDJE_INCLUDE_ROOT}/include
 )
 
-if(WIN32)
-  list(APPEND PDJE_INCLUDE_GLOBAL
-    ${PDJE_INCLUDE_ROOT}/include/global/Highres_Clock/Windows
-  )
-  list(APPEND PDJE_INCLUDE_INPUT_MAINPROC
-    ${PDJE_INCLUDE_ROOT}/include/input/runner/windows
-    ${PDJE_INCLUDE_ROOT}/include/input/DefaultDevs/windows
-    ${PDJE_INCLUDE_ROOT}/include/input/DefaultDevs/windows/TXRX
-  )
-elseif(APPLE)
-  list(APPEND PDJE_INCLUDE_GLOBAL
-    ${PDJE_INCLUDE_ROOT}/include/global/Highres_Clock/Mac
-  )
-  list(APPEND PDJE_INCLUDE_INPUT ${PDJE_INCLUDE_ROOT}/include/input/apple)
-
-else()
-  list(APPEND PDJE_INCLUDE_GLOBAL
-    ${PDJE_INCLUDE_ROOT}/include/global/Highres_Clock/Linux
-  )
-  list(APPEND PDJE_INCLUDE_INPUT_MAINPROC
-    ${PDJE_INCLUDE_ROOT}/include/input/DefaultDevs/linux
-    ${PDJE_INCLUDE_ROOT}/include/input/DefaultDevs/linux/evdev_things
-    ${PDJE_INCLUDE_ROOT}/include/input/DefaultDevs
-    ${PDJE_INCLUDE_ROOT}/include/input/DefaultDevs/linux/wayland_things
-    
-    
-    )
-endif()
 
 list(APPEND PDJE_INCLUDE_JUDGE
   
@@ -141,12 +109,12 @@ list(APPEND PDJE_INCLUDE_JUDGE
 list(APPEND PDJE_INCLUDE_CORE
   ${PDJE_INCLUDE_GLOBAL}
 )
-list(APPEND PDJE_INCLUDE_INPUT_MAINPROC
-  # ${PDJE_INCLUDE_IPC}
-  ${PDJE_INCLUDE_GLOBAL}
-)
-list(APPEND PDJE_INCLUDE_INPUT_SUBPROC
-  # ${PDJE_INCLUDE_IPC}
-  ${PDJE_INCLUDE_GLOBAL}
-  ${PDJE_INCLUDE_ROOT}/include/input/midi
-)
+# list(APPEND PDJE_INCLUDE_INPUT_MAINPROC
+#   # ${PDJE_INCLUDE_IPC}
+#   ${PDJE_INCLUDE_GLOBAL}
+# )
+# list(APPEND PDJE_INCLUDE_INPUT_SUBPROC
+#   # ${PDJE_INCLUDE_IPC}
+#   ${PDJE_INCLUDE_GLOBAL}
+#   ${PDJE_INCLUDE_ROOT}/include/input/midi
+# )

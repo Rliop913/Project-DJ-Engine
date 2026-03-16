@@ -140,9 +140,9 @@ if(PDJE_DYNAMIC)
 else()
   add_library(PDJE ${CORE_SRC_EXPORT})
 endif()
-
+setCoreReqs(PDJE)
 DynamicOuterFlag(PDJE)
-target_link_libraries(PDJE PUBLIC CORE_OBJ)
+target_link_libraries(PDJE PRIVATE CORE_OBJ)
 
 
 if(PDJE_DEVELOP_INPUT)

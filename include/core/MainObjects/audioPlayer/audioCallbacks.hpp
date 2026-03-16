@@ -13,7 +13,7 @@
  * @brief the core Data
  *
  */
-struct PDJE_API audioEngineDataStruct {
+struct audioEngineDataStruct {
     float                           *faustPcmPP[2];
     std::optional<FXControlPanel>    FXManualPanel;
     std::optional<MusicControlPanel> MusCtrPanel;
@@ -22,10 +22,10 @@ struct PDJE_API audioEngineDataStruct {
     unsigned long long               maxCursor = 0;
     std::atomic<audioSyncData>       syncData =
         audioSyncData{ .consumed_frames = 0, .microsecond = 0 };
-    audioSyncData             cacheSync;
-    PDJE_HIGHRES_CLOCK::CLOCK highres_clock;
-    ma_ptr backend_ptr;
-    std::function<uint32_t(const ma_ptr&)> get_unused_frames;
+    audioSyncData                           cacheSync;
+    PDJE_HIGHRES_CLOCK::CLOCK               highres_clock;
+    ma_ptr                                  backend_ptr;
+    std::function<uint32_t(const ma_ptr &)> get_unused_frames;
     /**
      * @brief Get Current playback point
      *

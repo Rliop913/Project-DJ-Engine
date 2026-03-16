@@ -7,10 +7,10 @@ FetchContent_Declare(
 find_package(highway CONFIG REQUIRED)
 
 function(setHighwayReqLib targetName)
-  target_link_libraries(${targetName} PUBLIC
+  target_link_libraries(${targetName} PRIVATE
   highway::hwy
   )
-  target_include_directories(${targetName} PUBLIC ${highway_INCLUDE_DIR})
+  target_include_directories(${targetName} PRIVATE ${highway_INCLUDE_DIR})
 endfunction(setHighwayReqLib)
 
 find_package(CapnProto CONFIG REQUIRED)
@@ -33,12 +33,12 @@ add_custom_target(pdje_capnp_codegen DEPENDS ${CAPNP_SRCS} ${CAPNP_HDRS})
 
 function(setCapnpReqLib targetName)
   add_dependencies(${targetName} pdje_capnp_codegen)
-  target_link_libraries(${targetName} PUBLIC 
+  target_link_libraries(${targetName} PRIVATE 
   CapnProto::kj 
   CapnProto::capnp 
   CapnProto::capnpc 
   CapnProto::kj-gzip)
-  target_include_directories(${targetName} PUBLIC ${CAPNPC_OUTPUT_DIR})
+  target_include_directories(${targetName} PRIVATE ${CAPNPC_OUTPUT_DIR})
 endfunction(setCapnpReqLib)
 
 
@@ -89,7 +89,7 @@ FetchContent_Declare(
 endif()
 
 function(setLibreMIDIReqLib targetName)
-  target_link_libraries(${targetName} PUBLIC libremidi)
+  target_link_libraries(${targetName} PRIVATE libremidi)
 endfunction(setLibreMIDIReqLib)
 
 find_package(ZLIB REQUIRED)
@@ -122,7 +122,7 @@ function(setWebpReqLib targetName)
   if("${_pdje_target_type}" STREQUAL "INTERFACE_LIBRARY")
     target_link_libraries(${targetName} INTERFACE ${_pdje_webp_targets})
   else()
-    target_link_libraries(${targetName} PUBLIC ${_pdje_webp_targets})
+    target_link_libraries(${targetName} PRIVATE ${_pdje_webp_targets})
   endif()
 endfunction(setWebpReqLib)
 
@@ -131,13 +131,13 @@ endfunction(setWebpReqLib)
 find_package(botan CONFIG REQUIRED)
 
 function(setBotanReqLib targetName)
-  target_link_libraries(${targetName} PUBLIC botan::botan)
+  target_link_libraries(${targetName} PRIVATE botan::botan)
   
   if(DEFINED botan_INCLUDE_DIRS)
-    target_include_directories(${targetName} PUBLIC ${botan_INCLUDE_DIRS})
+    target_include_directories(${targetName} PRIVATE ${botan_INCLUDE_DIRS})
     # message(FATAL_ERROR "${botan_INCLUDE_DIRS}")
   elseif(DEFINED botan_INCLUDE_DIR)
-    target_include_directories(${targetName} PUBLIC ${botan_INCLUDE_DIR})
+    target_include_directories(${targetName} PRIVATE ${botan_INCLUDE_DIR})
   # else()
     endif()
 endfunction()
@@ -161,11 +161,11 @@ function(setAnnoyReqLib targetName)
       target_include_directories(${targetName} INTERFACE ${Annoy_INCLUDE_DIR})
     endif()
   else()
-    target_link_libraries(${targetName} PUBLIC Annoy::Annoy)
+    target_link_libraries(${targetName} PRIVATE Annoy::Annoy)
     if(DEFINED Annoy_INCLUDE_DIRS)
-      target_include_directories(${targetName} PUBLIC ${Annoy_INCLUDE_DIRS})
+      target_include_directories(${targetName} PRIVATE ${Annoy_INCLUDE_DIRS})
     elseif(DEFINED Annoy_INCLUDE_DIR)
-      target_include_directories(${targetName} PUBLIC ${Annoy_INCLUDE_DIR})
+      target_include_directories(${targetName} PRIVATE ${Annoy_INCLUDE_DIR})
     endif()
   endif()
 endfunction(setAnnoyReqLib)
@@ -174,11 +174,11 @@ find_package(spdlog CONFIG REQUIRED)
 
 function(setSpdlogReqLib targetName)
   if(TARGET spdlog::spdlog)
-    target_link_libraries(${targetName} PUBLIC spdlog::spdlog)
+    target_link_libraries(${targetName} PRIVATE spdlog::spdlog)
   else()
-    target_link_libraries(${targetName} PUBLIC spdlog::spdlog_header_only)
+    target_link_libraries(${targetName} PRIVATE spdlog::spdlog_header_only)
   endif()
-  target_include_directories(${targetName} PUBLIC ${spdlog_INCLUDE_DIR})
+  target_include_directories(${targetName} PRIVATE ${spdlog_INCLUDE_DIR})
 endfunction(setSpdlogReqLib)
 
 
@@ -186,8 +186,8 @@ endfunction(setSpdlogReqLib)
 find_package(libgit2 CONFIG REQUIRED)
 
 function(setLibgit2ReqLib targetName)
-  target_include_directories(${targetName} PUBLIC ${libgit2_INCLUDE_DIR} )
-  target_link_libraries(${targetName} PUBLIC libgit2::libgit2)
+  target_include_directories(${targetName} PRIVATE ${libgit2_INCLUDE_DIR} )
+  target_link_libraries(${targetName} PRIVATE libgit2::libgit2)
 endfunction(setLibgit2ReqLib)
 
 find_package(RocksDB REQUIRED)
@@ -238,7 +238,7 @@ endif()
 if(NOT TARGET PDJE_SQLITE3_AMALGAM)
   add_library(PDJE_SQLITE3_AMALGAM STATIC ${sql_amalgam_SOURCE_DIR}/sqlite3.c)
   set_target_properties(PDJE_SQLITE3_AMALGAM PROPERTIES POSITION_INDEPENDENT_CODE ON)
-  target_include_directories(PDJE_SQLITE3_AMALGAM PUBLIC ${sql_amalgam_SOURCE_DIR})
+  target_include_directories(PDJE_SQLITE3_AMALGAM PRIVATE ${sql_amalgam_SOURCE_DIR})
 endif()
 
 function(setSqliteReqLib targetName)
@@ -247,8 +247,8 @@ function(setSqliteReqLib targetName)
     target_link_libraries(${targetName} INTERFACE PDJE_SQLITE3_AMALGAM)
     target_include_directories(${targetName} INTERFACE ${sql_amalgam_SOURCE_DIR})
   else()
-    target_link_libraries(${targetName} PUBLIC PDJE_SQLITE3_AMALGAM)
-    target_include_directories(${targetName} PUBLIC ${sql_amalgam_SOURCE_DIR})
+    target_link_libraries(${targetName} PRIVATE PDJE_SQLITE3_AMALGAM)
+    target_include_directories(${targetName} PRIVATE ${sql_amalgam_SOURCE_DIR})
   endif()
 endfunction(setSqliteReqLib)
 

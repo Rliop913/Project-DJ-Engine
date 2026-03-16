@@ -17,7 +17,7 @@
  * }
  * \enddot
  */
-class PDJE_API BPM {
+class BPM {
   private:
     unsigned usable_threads;
 

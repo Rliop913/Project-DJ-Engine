@@ -15,7 +15,7 @@ namespace fs = std::filesystem;
  * This class provides a temporary database to store and manage project data
  * during the editing and rendering process.
  */
-class PDJE_API tempDB {
+class tempDB {
   private:
     std::optional<litedb> tempROOT;
 
