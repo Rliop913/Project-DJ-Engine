@@ -23,7 +23,14 @@ endif()
 
 target_include_directories(pdje_unit_input PRIVATE ${PDJE_INCLUDE_INPUT_MAINPROC})
 target_link_libraries(pdje_unit_input PRIVATE 
-doctest::doctest INPUT_OBJ)
+doctest::doctest 
+INPUT_OBJ 
+INPUT_MAIN_INCLUDE 
+CRYPTO_OBJ
+CRYPTO_INCLUDE
+GLOBAL_OBJ
+GLOBAL_INCLUDE
+)
 
 setInputReqs(pdje_unit_input)
 
@@ -31,5 +38,5 @@ target_compile_definitions(pdje_unit_input PRIVATE PDJE_UNIT_TESTING)
 PDJE_COMPILE_OPTION(pdje_unit_input)
 SET_PROPERTIES(pdje_unit_input)
 # AddDynamicDef(pdje_unit_input)
-# setInputReqs(pdje_unit_input)
+
 pdje_discover_unit_tests(pdje_unit_input input)

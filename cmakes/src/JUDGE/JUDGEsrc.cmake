@@ -17,3 +17,17 @@ set(judgeSource
     
     # ${CAPNP_SRCS}
 )
+
+
+set(PDJE_INCLUDE_JUDGE
+${PDJE_INCLUDE_ROOT}/include/judge
+${PDJE_INCLUDE_ROOT}/include/judge/NoteOBJ
+${PDJE_INCLUDE_ROOT}/include/judge/Init
+${PDJE_INCLUDE_ROOT}/include/judge/Loop
+${PDJE_INCLUDE_ROOT}/include/judge/Loop/PreProcess
+${PDJE_INCLUDE_ROOT}/include/judge/Loop/Match
+${PDJE_INCLUDE_ROOT}/include/judge/AxisModel
+${PDJE_INCLUDE_ROOT}/include/judge/InputParser
+${PDJE_INCLUDE_ROOT}/include/input/midi
+${CAPNPC_OUTPUT_DIR}/third_party/Capnp
+)

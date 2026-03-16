@@ -4,13 +4,16 @@ include(cmakes/src/INPUT/INPUTsrc.cmake)
 function(setInputReqs targetName)
   DynamicInnerFlag(${targetName})
   # target_sources(${targetName} PUBLIC ${IPC_SRC_EXPORT})
-  target_link_libraries(${targetName} PUBLIC IPC_OBJ)
-  target_include_directories(${targetName} PUBLIC ${PDJE_INCLUDE_INPUT_MAINPROC} )
+  target_link_libraries(${targetName} PRIVATE IPC_OBJ CRYPTO_OBJ PDJE_LOG_RUNTIME )
+  target_link_libraries(${targetName} PUBLIC IPC_INCLUDE CRYPTO_INCLUDE)
+  # target_include_directories(${targetName} 
+  # PUBLIC 
+  # ${PDJE_INCLUDE_INPUT_MAINPROC} )
   setBotanReqLib(${targetName})
   PDJE_INPUT_LINK_LIB(${targetName})
   pdje_halide_attach_to_target(${targetName})
   LinuxSetAtomic(${targetName})
-  
+  setSpdlogReqLib(${targetName})
   SET_PROPERTIES(${targetName})
   PDJE_COMPILE_OPTION(${targetName})
   setLibreMIDIReqLib(${targetName})
@@ -62,7 +65,15 @@ target_include_directories(INPUT_SUBPROC_INCLUDE INTERFACE
 
 
 
-target_link_libraries(INPUT_OBJ PRIVATE INPUT_MAIN_INCLUDE GLOBAL_OBJ GLOBAL_INCLUDE)
+target_link_libraries(INPUT_OBJ PRIVATE 
+  INPUT_MAIN_INCLUDE
+  IPC_OBJ
+  IPC_INCLUDE
+  CRYPTO_OBJ
+  CRYPTO_INCLUDE
+  GLOBAL_OBJ 
+  GLOBAL_INCLUDE
+  )
 
 
 

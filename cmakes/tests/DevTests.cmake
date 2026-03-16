@@ -21,9 +21,23 @@ add_executable(testJudge ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/JUDGE_TESTS/j
 
 
 
-target_link_libraries(testInput PRIVATE INPUT_OBJ)
-target_link_libraries(testMIDI PRIVATE INPUT_OBJ)
-target_link_libraries(testJudge PRIVATE INPUT_OBJ CORE_OBJ JUDGE_OBJ)
+target_link_libraries(testInput PRIVATE 
+INPUT_OBJ
+INPUT_MAIN_INCLUDE
+
+)
+target_link_libraries(testMIDI PRIVATE 
+INPUT_OBJ
+INPUT_MAIN_INCLUDE
+
+)
+target_link_libraries(testJudge PRIVATE 
+INPUT_OBJ 
+INPUT_MAIN_INCLUDE
+CORE_OBJ
+JUDGE_OBJ
+JUDGE_INCLUDE)
+
 
 setInputReqs(testInput)
 setInputReqs(testMIDI)
@@ -37,8 +51,12 @@ add_executable(
     music_to_waveform_webp
     ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/music_to_waveform_webp.cpp ${CORE_SRC_EXPORT})
 
-target_link_libraries(music_to_waveform_webp PRIVATE CORE_OBJ)
-
+target_link_libraries(music_to_waveform_webp PRIVATE 
+CORE_OBJ 
+CORE_INCLUDE 
+GLOBAL_INCLUDE 
+GLOBAL_OBJ)
+setCoreReqs(music_to_waveform_webp)
 target_include_directories(
     music_to_waveform_webp 
     PRIVATE
@@ -46,6 +64,7 @@ target_include_directories(
     ${PDJE_INCLUDE_CORE}
     )
 
+setCapnpReqLib(music_to_waveform_webp)
 
 target_link_libraries(music_to_waveform_webp PRIVATE PDJE_UTIL_IMAGE_WEBP)
 target_link_libraries(music_to_waveform_webp PRIVATE PDJE_UTIL_IMAGE_WAVEFORM)

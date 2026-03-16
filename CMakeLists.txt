@@ -155,8 +155,21 @@ if(PDJE_DEVELOP_INPUT)
 endif()# end dynamic
   DynamicOuterFlag(PDJE_MODULE_JUDGE)
   DynamicOuterFlag(PDJE_MODULE_INPUT)
-  target_link_libraries(PDJE_MODULE_JUDGE PUBLIC JUDGE_OBJ)
-  target_link_libraries(PDJE_MODULE_INPUT PUBLIC INPUT_OBJ)
+  target_link_libraries(PDJE_MODULE_JUDGE PRIVATE 
+  JUDGE_OBJ
+  GLOBAL_OBJ
+  IPC_OBJ
+  CRYPTO_OBJ
+  )
+  
+  target_link_libraries(PDJE_MODULE_INPUT PRIVATE 
+  INPUT_OBJ
+  GLOBAL_OBJ
+  IPC_OBJ
+  CRYPTO_OBJ
+  )
+  
+
   # setInputReqs(PDJE_MODULE_INPUT)
   # setJudgeReqs(PDJE_MODULE_JUDGE)
 endif()

@@ -14,7 +14,7 @@ pdje_unit_judge PRIVATE
 ${PDJE_INCLUDE_JUDGE} 
 ${PDJE_INCLUDE_INPUT_MAINPROC})
 target_link_libraries(pdje_unit_judge PRIVATE 
-doctest::doctest JUDGE_OBJ)
+doctest::doctest JUDGE_OBJ IPC_OBJ CRYPTO_OBJ)
 
 setJudgeReqs(pdje_unit_judge)
 
