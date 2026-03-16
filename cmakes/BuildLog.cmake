@@ -14,6 +14,7 @@ add_library(
 
 # target_include_directories(PDJE_LOG_RUNTIME PUBLIC ${PDJE_INCLUDE_GLOBAL})
 
+
 if(PDJE_LOG_STRICT_EXPLICIT_INIT)
   target_compile_definitions(PDJE_LOG_RUNTIME PRIVATE PDJE_LOG_STRICT_EXPLICIT_INIT)
 endif()

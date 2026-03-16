@@ -179,6 +179,7 @@ function(setSpdlogReqLib targetName)
     target_link_libraries(${targetName} PRIVATE spdlog::spdlog_header_only)
   endif()
   target_include_directories(${targetName} PRIVATE ${spdlog_INCLUDE_DIR})
+  target_compile_definitions(${targetName} PRIVATE SPDLOG_FMT_EXTERNAL)
 endfunction(setSpdlogReqLib)
 
 
