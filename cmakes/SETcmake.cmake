@@ -94,10 +94,12 @@ endfunction(SET_PROPERTIES)
 #   )
 
 # endif()
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 add_compile_options(-frtti)
+endif()
 function(PDJE_COMPILE_OPTION targetName)
   
-
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 target_compile_options(${targetName} PRIVATE
   $<$<CXX_COMPILER_ID:MSVC>:/permissive- /WX- /W3 /GR /arch:AVX2>
   $<$<CXX_COMPILER_ID:GNU,Clang,AppleClang>:
@@ -107,7 +109,17 @@ target_compile_options(${targetName} PRIVATE
     -frtti
   >
 )
+else()
+target_compile_options(${targetName} PRIVATE
+  $<$<CXX_COMPILER_ID:MSVC>:/permissive- /WX- /W3 /GR /arch:AVX2>
+  $<$<CXX_COMPILER_ID:GNU,Clang,AppleClang>:
+    -Wnon-virtual-dtor
+    -Wpacked -Wpragma-pack
+    -Wabi
+  >
+)
 
+endif()
 # Apple Silicon (arm64)
 target_compile_options(${targetName} PRIVATE
   $<$<AND:$<CXX_COMPILER_ID:AppleClang>,$<STREQUAL:${CMAKE_SYSTEM_PROCESSOR},arm64>>:
