@@ -16,7 +16,10 @@ ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/status.test.cpp
 
 
 target_include_directories(pdje_unit_util PRIVATE ${PDJE_INCLUDE_GLOBAL} ${PDJE_INCLUDE_CORE})
-target_link_libraries(pdje_unit_util PRIVATE doctest::doctest INPUT_OBJ CORE_OBJ CRYPTO_OBJ IPC_OBJ GLOBAL_OBJ)
+target_link_libraries(pdje_unit_util PRIVATE doctest::doctest CORE_OBJ CRYPTO_OBJ IPC_OBJ GLOBAL_OBJ)
+if(NOT APPLE)
+target_link_libraries(pdje_unit_util PRIVATE INPUT_OBJ)
+endif()
 target_link_libraries(pdje_unit_util PRIVATE PDJE_UTIL)
 target_link_libraries(pdje_unit_util PRIVATE PDJE_UTIL_IMAGE_WEBP)
 target_link_libraries(pdje_unit_util PRIVATE PDJE_UTIL_IMAGE_WAVEFORM)
