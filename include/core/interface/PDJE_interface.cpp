@@ -3,6 +3,7 @@
 #include "PDJE_LOG_SETTER.hpp"
 
 #include <optional>
+#include <stdexcept>
 
 namespace {
 
@@ -21,7 +22,7 @@ ResolveMusicKeyOrPath(litedb &db, const musdata &md)
         return std::nullopt;
     }
 
-    musdata query = md;
+    musdata query     = md;
     auto    searchRes = db << query;
     if (!searchRes.has_value()) {
         critlog("failed to search music from database. from PDJE "
@@ -102,7 +103,8 @@ std::vector<float>
 PDJE::GetPCMFromMusData(const musdata &md)
 {
     if (!DBROOT) {
-        critlog("database root is not initialized. from PDJE GetPCMFromMusData");
+        critlog(
+            "database root is not initialized. from PDJE GetPCMFromMusData");
         return {};
     }
 
@@ -139,21 +141,27 @@ PDJE::InitPlayer(PLAY_MODE          mode,
                  trackdata         &td,
                  const unsigned int FrameBufferSize)
 {
-    switch (mode) {
-    case PLAY_MODE::FULL_PRE_RENDER:
-        player = std::make_shared<audioPlayer>(
-            (*DBROOT), td, FrameBufferSize, false);
-        break;
-    case PLAY_MODE::HYBRID_RENDER:
-        player =
-            std::make_shared<audioPlayer>((*DBROOT), td, FrameBufferSize, true);
-        break;
-    case PLAY_MODE::FULL_MANUAL_RENDER:
-        player = std::make_shared<audioPlayer>(FrameBufferSize);
-        break;
+    try {
+        switch (mode) {
+        case PLAY_MODE::FULL_PRE_RENDER:
+            player = std::make_shared<audioPlayer>(
+                (*DBROOT), td, FrameBufferSize, false);
+            break;
+        case PLAY_MODE::HYBRID_RENDER:
+            player = std::make_shared<audioPlayer>(
+                (*DBROOT), td, FrameBufferSize, true);
+            break;
+        case PLAY_MODE::FULL_MANUAL_RENDER:
+            player = std::make_shared<audioPlayer>(FrameBufferSize);
+            break;
 
-    default:
-        break;
+        default:
+            break;
+        }
+    } catch (const std::exception &e) {
+        critlog("failed to init player on PDJE initPlayer. why: ");
+        critlog(e.what());
+        return false;
     }
 
     if (!player) {
@@ -161,13 +169,6 @@ PDJE::InitPlayer(PLAY_MODE          mode,
         return false;
     } else {
         return true;
-        // if (player->STATUS != "OK") {
-        //     critlog("PDJE initPlayer failed. STATUS not OK. ErrStatus: ");
-        //     critlog(player->STATUS);
-        //     return false;
-        // } else {
-        //     return true;
-        // }
     }
 }
 
