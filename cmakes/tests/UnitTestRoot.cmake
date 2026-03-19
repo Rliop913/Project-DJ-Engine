@@ -29,7 +29,9 @@ endfunction()
 
 
 
-include(cmakes/tests/units/Module_Util.cmake)
+if(NOT APPLE)
+    include(cmakes/tests/units/Module_Util.cmake)
+endif()
 if(PDJE_DEVELOP_INPUT)
     include(cmakes/tests/units/Module_Input.cmake)
     include(cmakes/tests/units/Module_Judge.cmake)

@@ -56,6 +56,7 @@ ${CRYPTO_SRC_EXPORT}
 # $<TARGET_OBJECTS:CRYPTO_OBJ>
 )
 
+DynamicInnerFlag(IPC_OBJ)
 setBotanReqLib(IPC_OBJ)
 
 add_library(IPC_INCLUDE INTERFACE)

@@ -11,6 +11,7 @@ ${globalSource}
 add_library(GLOBAL_INCLUDE INTERFACE)
 
 
+DynamicInnerFlag(GLOBAL_OBJ)
 
 target_include_directories(GLOBAL_INCLUDE INTERFACE
     ${PDJE_INCLUDE_ROOT}/include/global
