@@ -1,6 +1,6 @@
 #include "CPDJE_Input.h"
 
-#include "PDJE_CAbi_Private.hpp"
+#include "PDJE_CAbi_Input_Private.hpp"
 #include "PDJE_Input.hpp"
 #include "PDJE_Input_Log.hpp"
 #include "PDJE_Input_StateLogic.hpp"

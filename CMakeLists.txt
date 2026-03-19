@@ -65,6 +65,18 @@ if(WIN32 AND PDJE_DYNAMIC)
   endif()
 endfunction(DynamicOuterFlag target)
 
+function(FacadeTargetFlags target)
+  if(WIN32)
+    target_compile_definitions(${target} PRIVATE PDJE_BUILDING)
+    target_compile_definitions(${target} PUBLIC PDJE_WINDOWS_DLL)
+  else()
+    set_target_properties(${target} PROPERTIES
+      CXX_VISIBILITY_PRESET hidden
+      VISIBILITY_INLINES_HIDDEN ON
+    )
+  endif()
+endfunction(FacadeTargetFlags)
+
 function(LinuxSetAtomic targetName)
   if(LINUX)
     target_link_libraries(${targetName} PUBLIC atomic)
@@ -150,6 +162,30 @@ setCoreReqs(PDJE)
 DynamicOuterFlag(PDJE)
 target_link_libraries(PDJE PRIVATE CORE_OBJ)
 
+add_library(CPDJE SHARED
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/core/interface/CPDJE_interface.cpp
+)
+target_include_directories(CPDJE
+  PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/global
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/core/interface
+  PRIVATE
+    ${PDJE_INCLUDE_CORE}
+    ${PDJE_INCLUDE_ROOT}/third_party/SoundTouch/soundtouch_include
+)
+target_link_libraries(CPDJE PRIVATE CORE_OBJ GLOBAL_OBJ PDJE_LOG_RUNTIME CORE_INCLUDE GLOBAL_INCLUDE IPC_INCLUDE MINIAUDIO_INCLUDE MINIAUDIO_OBJ SOUNDTOUCH_INCLUDE SOUNDTOUCH_OBJ SQL_INCLUDE SQL_OBJ)
+setSpdlogReqLib(CPDJE)
+setSqliteReqLib(CPDJE)
+setRocksDBReqLib(CPDJE)
+setLibgit2ReqLib(CPDJE)
+setHighwayReqLib(CPDJE)
+setCapnpReqLib(CPDJE)
+pdje_halide_attach_to_target(CPDJE)
+LinuxSetAtomic(CPDJE)
+LinuxSetAudioLibs(CPDJE)
+PDJE_COMPILE_OPTION(CPDJE)
+SET_PROPERTIES(CPDJE)
+FacadeTargetFlags(CPDJE)
 
 if(PDJE_DEVELOP_INPUT)
   if(PDJE_DYNAMIC)
@@ -183,6 +219,63 @@ endif()# end dynamic
 
   # setInputReqs(PDJE_MODULE_INPUT)
   # setJudgeReqs(PDJE_MODULE_JUDGE)
+
+  add_library(CPDJE_MODULE_INPUT SHARED
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/input/CPDJE_Input.cpp
+  )
+  target_include_directories(CPDJE_MODULE_INPUT
+    PUBLIC
+      ${CMAKE_CURRENT_SOURCE_DIR}/include/global
+      ${CMAKE_CURRENT_SOURCE_DIR}/include/input
+    PRIVATE
+      ${PDJE_INCLUDE_ROOT}/include/input/midi
+  )
+  target_link_libraries(CPDJE_MODULE_INPUT
+    PRIVATE
+      INPUT_OBJ
+      GLOBAL_OBJ
+      IPC_OBJ
+      CRYPTO_OBJ
+      PDJE_LOG_RUNTIME
+      INPUT_MAIN_INCLUDE
+      IPC_INCLUDE
+      GLOBAL_INCLUDE
+      CRYPTO_INCLUDE
+  )
+  setSpdlogReqLib(CPDJE_MODULE_INPUT)
+  setBotanReqLib(CPDJE_MODULE_INPUT)
+  setLibreMIDIReqLib(CPDJE_MODULE_INPUT)
+  FacadeTargetFlags(CPDJE_MODULE_INPUT)
+
+  add_library(CPDJE_MODULE_JUDGE SHARED
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/judge/CPDJE_Judge.cpp
+  )
+  target_include_directories(CPDJE_MODULE_JUDGE
+    PUBLIC
+      ${CMAKE_CURRENT_SOURCE_DIR}/include/global
+      ${CMAKE_CURRENT_SOURCE_DIR}/include/core/interface
+      ${CMAKE_CURRENT_SOURCE_DIR}/include/input
+      ${CMAKE_CURRENT_SOURCE_DIR}/include/judge
+    PRIVATE
+      ${PDJE_INCLUDE_ROOT}/include/judge
+  )
+  target_link_libraries(CPDJE_MODULE_JUDGE
+    PRIVATE
+      JUDGE_OBJ
+      GLOBAL_OBJ
+      IPC_OBJ
+      CRYPTO_OBJ
+      PDJE_LOG_RUNTIME
+      JUDGE_INCLUDE
+      INPUT_MAIN_INCLUDE
+      IPC_INCLUDE
+      GLOBAL_INCLUDE
+      CRYPTO_INCLUDE
+  )
+  setSpdlogReqLib(CPDJE_MODULE_JUDGE)
+  setBotanReqLib(CPDJE_MODULE_JUDGE)
+  setLibreMIDIReqLib(CPDJE_MODULE_JUDGE)
+  FacadeTargetFlags(CPDJE_MODULE_JUDGE)
 endif()
 
 

@@ -1,6 +1,6 @@
 #include "CPDJE_interface.h"
 
-#include "PDJE_CAbi_Private.hpp"
+#include "PDJE_CAbi_Core_Private.hpp"
 #include "PDJE_LOG_SETTER.hpp"
 #include "PDJE_interface.hpp"
 

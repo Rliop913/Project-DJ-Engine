@@ -1,6 +1,7 @@
 #include "CPDJE_Judge.h"
 
-#include "PDJE_CAbi_Private.hpp"
+#include "PDJE_CAbi_Core_Private.hpp"
+#include "PDJE_CAbi_Input_Private.hpp"
 #include "PDJE_Judge.hpp"
 #include "PDJE_LOG_SETTER.hpp"
 
