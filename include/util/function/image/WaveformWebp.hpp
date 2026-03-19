@@ -10,22 +10,22 @@
 
 namespace PDJE_UTIL::function::image {
 
-using EncodedPngBytes = std::vector<std::uint8_t>;
-using ChannelWaveformPngs = std::vector<EncodedPngBytes>;
-using WaveformPngBatch = std::vector<ChannelWaveformPngs>;
+using EncodedWebpBytes = std::vector<std::uint8_t>;
+using ChannelWaveformWebps = std::vector<EncodedWebpBytes>;
+using WaveformWebpBatch = std::vector<ChannelWaveformWebps>;
 
-struct EncodeWaveformPngArgs {
+struct EncodeWaveformWebpArgs {
     std::span<const float> pcm;
     std::size_t            channel_count = 0;
     std::size_t            y_pixels = 0;
     std::size_t            pcm_per_pixel = 0;
-    std::size_t            x_pixels_per_png = 0;
+    std::size_t            x_pixels_per_image = 0;
     int                    compression_level = -1;
     std::size_t            worker_thread_count = 0;
 };
 
-common::Result<WaveformPngBatch>
-encode_waveform_pngs(const EncodeWaveformPngArgs &args,
-                     function::EvalOptions        options = {});
+common::Result<WaveformWebpBatch>
+encode_waveform_webps(const EncodeWaveformWebpArgs &args,
+                      function::EvalOptions         options = {});
 
 } // namespace PDJE_UTIL::function::image

@@ -16,7 +16,7 @@ constexpr int BUFFER_SUB  = 1;
 using GLOBAL_TIME = uint64_t;
 using LOCAL_TIME  = int64_t;
 /** @brief Judgable note metadata stored in buffers. */
-struct PDJE_API NOTE {
+struct NOTE {
     std::string type;
     uint16_t    detail;
     std::string first;
@@ -31,7 +31,7 @@ using NOTE_VEC   = std::vector<NOTE>;
 using P_NOTE_VEC = std::vector<NOTE *>;
 
 /** @brief Iterator wrapper keeping note vector and current cursor. */
-struct PDJE_API NOTE_ITR {
+struct NOTE_ITR {
     NOTE_VEC           vec;
     NOTE_VEC::iterator itr;
 };
@@ -40,7 +40,7 @@ using RAILID_TO_NOTE   = std::unordered_map<uint64_t, NOTE_ITR>;
 using RAILID_TO_OFFSET = std::unordered_map<uint64_t, uint64_t>;
 
 /** @brief Note buffer manager used during initialization and playback. */
-class PDJE_API OBJ {
+class OBJ {
   private:
     RAILID_TO_NOTE Buffer_Main;
     RAILID_TO_NOTE Buffer_Sub;

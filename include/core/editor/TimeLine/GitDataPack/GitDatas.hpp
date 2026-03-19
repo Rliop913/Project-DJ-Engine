@@ -35,7 +35,7 @@ GenTimeStamp()
 
     return oss.str();
 }
-struct PDJE_API GitData {
+struct GitData {
   private:
     git_repository *repo = nullptr;
     git_signature  *sign = nullptr;

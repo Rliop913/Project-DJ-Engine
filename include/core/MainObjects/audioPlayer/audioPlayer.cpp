@@ -3,6 +3,7 @@
 #include "audioCallbacks.hpp"
 #include "audio_OS_impls.hpp"
 #include <atomic>
+#include <stdexcept>
 
 extern void
 FullPreRender_callback(ma_device  *pDevice,
@@ -30,7 +31,10 @@ audioPlayer::ContextInit()
     conf.threadPriority = ma_thread_priority_high;
     auto backs          = OS_IMPL::get_backends();
 
-    ma_context_init(backs.data(), backs.size(), &conf, &ctxt);
+    if (ma_context_init(backs.data(), backs.size(), &conf, &ctxt) !=
+        MA_SUCCESS) {
+        throw std::runtime_error("failed to init miniaudio context");
+    }
 }
 
 ma_device_config
@@ -57,6 +61,8 @@ audioPlayer::audioPlayer(litedb            &db,
                          const unsigned int frameBufferSize,
                          const bool         hasManual)
 {
+    player    = {};
+    ctxt      = {};
     auto conf = DefaultInit(frameBufferSize);
     if (hasManual) {
         conf.dataCallback = HybridRender_callback;
@@ -69,7 +75,8 @@ audioPlayer::audioPlayer(litedb            &db,
     if (!renderer.LoadTrack(db, td)) {
         critlog("failed to load track. from audioPlayer::audioPlayer(db, td "
                 ",fbsize, hasmanual)");
-        return;
+        ma_context_uninit(&ctxt);
+        throw std::runtime_error("failed to load track");
     }
     engineDatas->pcmDataPoint = &renderer.rendered_frames.value();
     engineDatas->maxCursor    = renderer.rendered_frames->size() / CHANNEL;
@@ -77,7 +84,8 @@ audioPlayer::audioPlayer(litedb            &db,
     if (ma_device_init(&ctxt, &conf, &player) != MA_SUCCESS) {
         critlog("failed to init device. from audioPlayer::audioPlayer(db, td "
                 ",fbsize, hasmanual)");
-        return;
+        ma_context_uninit(&ctxt);
+        throw std::runtime_error("failed to init device");
     }
     engineDatas->backend_ptr       = OS_IMPL::extract_backend(player);
     engineDatas->get_unused_frames = OS_IMPL::set_unused_frame_function(player);
@@ -85,6 +93,8 @@ audioPlayer::audioPlayer(litedb            &db,
 
 audioPlayer::audioPlayer(const unsigned int frameBufferSize)
 {
+    player                = {};
+    ctxt                  = {};
     ma_device_config conf = DefaultInit(frameBufferSize);
 
     conf.dataCallback = FullManualRender_callback;
@@ -93,6 +103,8 @@ audioPlayer::audioPlayer(const unsigned int frameBufferSize)
 
     if (ma_device_init(&ctxt, &conf, &player) != MA_SUCCESS) {
         critlog("failed to init device. from audioPlayer::audioPlayer(fbsize)");
+        ma_context_uninit(&ctxt);
+        throw std::runtime_error("failed to init device");
     }
     engineDatas->backend_ptr       = OS_IMPL::extract_backend(player);
     engineDatas->get_unused_frames = OS_IMPL::set_unused_frame_function(player);
@@ -177,7 +189,8 @@ audioPlayer::PullOutDataLine()
     dline.nowCursor = &engineDatas->nowCursor;
     dline.maxCursor = &engineDatas->maxCursor;
     dline.syncD     = &engineDatas->syncData;
-    if (!engineDatas->pcmDataPoint->empty()) {
+    if (engineDatas->pcmDataPoint != nullptr &&
+        !engineDatas->pcmDataPoint->empty()) {
         dline.preRenderedData = engineDatas->pcmDataPoint->data();
     }
     return dline;

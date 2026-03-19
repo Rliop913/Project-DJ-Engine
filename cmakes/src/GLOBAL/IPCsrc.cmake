@@ -4,8 +4,6 @@ set(PDJE_IPC_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/include/input/IPC/memory/windows/named_mutex.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/include/input/IPC/memory/windows/named_event.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/include/input/IPC/memory/windows/Input_Transfer.cpp
-    # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/IPC/memory/Input_Transfer.cpp
-    
     
 )
 elseif(APPLE)
@@ -17,9 +15,6 @@ set(PDJE_IPC_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/include/input/IPC/memory/linux/named_mutex.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/include/input/IPC/memory/linux/named_event.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/include/input/IPC/memory/linux/Input_Transfer.cpp
-    # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/IPC/memory/Input_Transfer.cpp
-    # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/IPC/transmission/linux/MainProcess.cpp
-    # ${CMAKE_CURRENT_SOURCE_DIR}/include/input/IPC/transmission/linux/ChildProcess.cpp
 )
 endif()
 
@@ -33,7 +28,7 @@ ${PDJE_INCLUDE_ROOT}/include/input/IPC/
 ${PDJE_INCLUDE_ROOT}/include/input/IPC/common
 ${PDJE_INCLUDE_ROOT}/include/input/IPC/memory
 ${PDJE_INCLUDE_ROOT}/include/input/IPC/transmission
-${PDJE_INCLUDE_CRYPTO}
+# ${PDJE_INCLUDE_CRYPTO}
 )
 
 if(WIN32)
@@ -58,15 +53,23 @@ endif(WIN32)
 add_library(IPC_OBJ OBJECT
 ${PDJE_IPC_SRC}
 ${CRYPTO_SRC_EXPORT}
+# $<TARGET_OBJECTS:CRYPTO_OBJ>
 )
 
+DynamicInnerFlag(IPC_OBJ)
+setBotanReqLib(IPC_OBJ)
 
-target_include_directories(IPC_OBJ PUBLIC 
+add_library(IPC_INCLUDE INTERFACE)
+
+target_include_directories(IPC_INCLUDE INTERFACE 
 ${PDJE_INCLUDE_IPC}
 )
-target_link_libraries(IPC_OBJ PUBLIC CRYPTO_OBJ)
+target_link_libraries(IPC_OBJ PRIVATE CRYPTO_OBJ IPC_INCLUDE CRYPTO_INCLUDE PDJE_LOG_RUNTIME)
+# target_link_libraries(IPC_OBJ PUBLIC CRYPTO_OBJ)
+setSpdlogReqLib(IPC_OBJ)
+
 
 set(IPC_SRC_EXPORT
-${CRYPTO_SRC_EXPORT}
+# ${CRYPTO_SRC_EXPORT}
 $<TARGET_OBJECTS:IPC_OBJ>
 )

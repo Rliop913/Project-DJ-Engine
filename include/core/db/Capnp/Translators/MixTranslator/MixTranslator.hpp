@@ -22,7 +22,7 @@
  * }
  * \enddot
  */
-class PDJE_API MixTranslator {
+class MixTranslator {
   private:
     unsigned int usable_threads = 0;
 

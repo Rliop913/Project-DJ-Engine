@@ -17,7 +17,7 @@ struct PREDICT {
     std::vector<float> predict_fragment;
 };
 
-template <int SZ> class PDJE_API PredictBuffer {
+template <int SZ> class PredictBuffer {
   private:
     using iterator = typename std::array<PREDICT, SZ>::iterator;
     std::array<PREDICT, SZ> buffer;

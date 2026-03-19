@@ -7,6 +7,8 @@ option(PDJE_BENCHMARK "Enable benchmark codes" OFF)
 option(PDJE_SWIG_BUILD "Enable build with multiple languages" OFF)
 option(PDJE_DYNAMIC "Make Shared Library" OFF)
 
+option(PDJE_RTTI_FORCE_OFF "turn off frtti option with force" OFF)
+
 if(NOT APPLE)
 # if(WIN32)
   option(PDJE_DEVELOP_INPUT "Enable linux develop build" ON)

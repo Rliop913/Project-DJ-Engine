@@ -23,6 +23,8 @@ ${PDJE_INCLUDE_CORE}
 target_link_libraries(pdje_unit_core PRIVATE 
 doctest::doctest CORE_OBJ)
 
+setCoreReqs(pdje_unit_core)
+
 target_compile_definitions(pdje_unit_core PRIVATE PDJE_UNIT_TESTING)
 PDJE_COMPILE_OPTION(pdje_unit_core)
 SET_PROPERTIES(pdje_unit_core)

@@ -1,18 +1,13 @@
 #pragma once
-#include <optional>
-#include <sqlite3.h>
-#include <string>
-#include <vector>
-
-#include <rocksdb/db.h>
-#include <rocksdb/filter_policy.h>
-#include <rocksdb/options.h>
-#include <rocksdb/table.h>
-
 #include "PDJE_EXPORT_SETTER.hpp"
 #include "musicDB.hpp"
 #include "trackDB.hpp"
 #include <filesystem>
+#include <memory>
+#include <optional>
+#include <sqlite3.h>
+#include <string>
+#include <vector>
 
 namespace fs = std::filesystem;
 
@@ -26,7 +21,8 @@ using TRACK_VEC = std::vector<trackdata>;
 /// track data vector. check before use.
 using MAYBE_TRACK_VEC = std::optional<TRACK_VEC>;
 
-namespace RDB = ROCKSDB_NAMESPACE;
+// namespace RDB = ROCKSDB_NAMESPACE;
+class RDB;
 /**
  * @brief the Root database Object
  *
@@ -39,10 +35,11 @@ class PDJE_API litedb {
     fs::path kvdbPath;
     fs::path vectordbPath;
     /// sqlite pointer
-    sqlite3          *sdb  = nullptr;
-    RDB::DB          *kvdb = nullptr;
-    RDB::WriteOptions wops;
-    RDB::ReadOptions  rops;
+    sqlite3             *sdb = nullptr;
+    std::unique_ptr<RDB> kvdb_impl;
+    // RDB::DB          *kvdb = nullptr;
+    // RDB::WriteOptions wops;
+    // RDB::ReadOptions  rops;
 
     /// @brief checkes tables.
     /// @return OK / Not OK

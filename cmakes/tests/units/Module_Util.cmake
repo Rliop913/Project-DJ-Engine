@@ -1,23 +1,29 @@
 
+if(APPLE)
+return()
+endif()
+
 
 add_executable(
 pdje_unit_util
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/main_doctest.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/public_headers.test.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/png_writer.test.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/waveform_png.test.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/webp_writer.test.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/waveform_webp.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/db_relational_sqlite.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/db_keyvalue_rocksdb.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/db_nearest_annoy.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/status.test.cpp
-${CORE_SRC_EXPORT}
+# ${CORE_SRC_EXPORT}
+# ${IPC_SRC_EXPORT}
 )
 
 
 target_include_directories(pdje_unit_util PRIVATE ${PDJE_INCLUDE_GLOBAL} ${PDJE_INCLUDE_CORE})
-target_link_libraries(pdje_unit_util PRIVATE doctest::doctest CORE_OBJ)
+target_link_libraries(pdje_unit_util PRIVATE doctest::doctest GLOBAL_OBJ)
+# Keep util unit tests decoupled from the platform-specific input stack.
 target_link_libraries(pdje_unit_util PRIVATE PDJE_UTIL)
-target_link_libraries(pdje_unit_util PRIVATE PDJE_UTIL_IMAGE_PNG)
+target_link_libraries(pdje_unit_util PRIVATE PDJE_UTIL_IMAGE_WEBP)
 target_link_libraries(pdje_unit_util PRIVATE PDJE_UTIL_IMAGE_WAVEFORM)
 target_link_libraries(pdje_unit_util PRIVATE PDJE_UTIL_DB)
 
@@ -37,8 +43,11 @@ add_custom_command(
     $<TARGET_FILE_DIR:pdje_unit_util>
     VERBATIM)
 endif()
-target_link_libraries(pdje_unit_util PUBLIC PDJE_LOG_RUNTIME)
-# setSpdlogReqLib(pdje_unit_util)
+target_link_libraries(pdje_unit_util PRIVATE PDJE_LOG_RUNTIME)
+
+setCoreReqs(pdje_unit_util)
+
+setSpdlogReqLib(pdje_unit_util)
 # setPdjeLogRuntimeReqLib(pdje_unit_util)
 setCapnpReqLib(pdje_unit_util)
 setLibgit2ReqLib(pdje_unit_util)

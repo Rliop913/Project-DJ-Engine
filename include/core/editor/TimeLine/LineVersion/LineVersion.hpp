@@ -44,7 +44,7 @@ LogBranch(const OID &head, std::shared_ptr<GitData> &git)
 }
 
 using TIME_STAMP = std::string;
-class PDJE_API BranchLine {
+class BranchLine {
   private:
     std::shared_ptr<GitData> git;
 
