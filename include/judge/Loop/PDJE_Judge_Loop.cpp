@@ -103,14 +103,24 @@ Judge_Loop::StartEventLoop()
 void
 Judge_Loop::EndEventLoop()
 {
-    Event_Controls.use_event_switch  = false;
-    Event_Controls.miss_event_switch = false;
-    if (Event_Controls.use_event_thread->joinable()) {
+    if (Event_Controls.use_event_switch.has_value()) {
+        Event_Controls.use_event_switch = false;
+    }
+    if (Event_Controls.miss_event_switch.has_value()) {
+        Event_Controls.miss_event_switch = false;
+    }
+    if (Event_Controls.use_event_thread.has_value() &&
+        Event_Controls.use_event_thread->joinable()) {
         Event_Controls.use_event_thread->join();
     }
-    if (Event_Controls.miss_event_thread->joinable()) {
+    if (Event_Controls.miss_event_thread.has_value() &&
+        Event_Controls.miss_event_thread->joinable()) {
         Event_Controls.miss_event_thread->join();
     }
+    Event_Controls.use_event_thread.reset();
+    Event_Controls.miss_event_thread.reset();
+    Event_Controls.use_event_switch.reset();
+    Event_Controls.miss_event_switch.reset();
 }
 
 }; // namespace PDJE_JUDGE

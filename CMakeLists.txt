@@ -206,3 +206,4 @@ install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/  DESTINATION ${CMAKE_INST
     PATTERN "*.h" PATTERN "*.hpp" PATTERN "*.hxx" PATTERN "*.inl" PATTERN "*.ipp"
   PATTERN ".git*" EXCLUDE
   PATTERN "CMakeLists.txt" EXCLUDE)
+

@@ -189,7 +189,8 @@ audioPlayer::PullOutDataLine()
     dline.nowCursor = &engineDatas->nowCursor;
     dline.maxCursor = &engineDatas->maxCursor;
     dline.syncD     = &engineDatas->syncData;
-    if (!engineDatas->pcmDataPoint->empty()) {
+    if (engineDatas->pcmDataPoint != nullptr &&
+        !engineDatas->pcmDataPoint->empty()) {
         dline.preRenderedData = engineDatas->pcmDataPoint->data();
     }
     return dline;
