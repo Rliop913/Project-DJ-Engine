@@ -55,6 +55,21 @@ Root Database Payloads
 - `noteBinary`
 - `cachedMixList`
 
+The root-database column layout for tracks is:
+
+.. list-table:: Track Data Format
+   :header-rows: 1
+   :widths: 25 25 25 25
+
+   * - `TrackTitle`
+     - `MixBinary`
+     - `NoteBinary`
+     - `CachedMixList`
+   * - Text
+     - Binary (Cap'n Proto)
+     - Binary (Cap'n Proto)
+     - Text (CSV)
+
 `musdata` stores:
 
 - `title`
@@ -63,6 +78,25 @@ Root Database Payloads
 - `bpmBinary`
 - `bpm`
 - `firstBeat`
+
+The root-database column layout for music metadata is:
+
+.. list-table:: Music Meta Data Format
+   :header-rows: 1
+   :widths: 20 20 20 15 20 15
+
+   * - `Title`
+     - `Composer`
+     - `MusicPath`
+     - `Bpm`
+     - `BpmBinary`
+     - `FirstBeat`
+   * - Text
+     - Text
+     - Text
+     - Double
+     - Binary (Cap'n Proto)
+     - TEXT
 
 The binary fields are produced by the editor translation layer and then written
 into the root database. They are not intended to be edited by hand.
@@ -93,6 +127,96 @@ before rendering to binary:
   `railID`
 - `MusicArgs`
   music timing metadata used by the music BPM editor flow
+
+The older editor reference docs also included compact field tables that are
+still useful when authoring or reviewing raw data rows.
+
+.. list-table:: Mix Data Format
+   :header-rows: 1
+   :widths: 15 15 10 12 12 12 10 10 12 10 10 12
+
+   * - `type`
+     - `details`
+     - `ID`
+     - `first`
+     - `second`
+     - `third`
+     - `beat`
+     - `subBeat`
+     - `separate`
+     - `Ebeat`
+     - `EsubBeat`
+     - `Eseparate`
+   * - `TYPE_ENUM`
+     - `DETAIL_ENUM`
+     - int
+     - TEXT
+     - TEXT
+     - TEXT
+     - long
+     - long
+     - long
+     - long
+     - long
+     - long
+
+The table below preserves the older author-facing labels because it captures
+how `first`, `second`, and `third` are interpreted for each mix type. Current
+source names such as `BPM_CONTROL` and `OSC_FILTER` map to the older
+`bpmControl` and `OCS_Filter` spellings shown here.
+
+.. csv-table:: Mix Data Table
+   :header: "type", "ID", "details", "first", "second", "third", "Interpolated Value"
+   :widths: 15, 10, 35, 20, 20, 30, 20
+
+   "FILTER(0)", "ID", "HIGH(0)/LOW(2)", "ITPL", "8PointValues", "NONE", "filter Frequency"
+   "EQ(1)", "ID", "HIGH(0)/MID(1)/LOW(2)", "ITPL", "8PointValues", "NONE", "eq value"
+   "DISTORTION(2)", "ID", "0", "ITPL", "8PointValues", "NONE", "drive value"
+   "CONTROL(3)", "ID", "PAUSE(3)/CUE(4)", "approx_loc", "X", "NONE", "NONE"
+   "VOL(4)", "ID", "TRIM(5)/FADER(6)", "ITPL", "8PointValues", "NONE", "volume"
+   "LOAD(5)", "ID", "0", "title", "composer", "bpm", "NONE"
+   "UNLOAD(6)", "ID", "0", "X", "X", "NONE", "NONE"
+   "bpmControl(7)", "ID", "timeStretch(7)", "BPM(double)", "NONE", "NONE", "NONE"
+   "ECHO(8)", "ID", "0", "ITPL", "8PointValues", "BPM, feedback", "Wet amount"
+   "OCS_Filter(9)", "ID", "HIGH(0)/LOW(2)", "ITPL", "8PointValues", "BPM, MiddleFreq, RangeHalfFreq", "Wet amount"
+   "FLANGER(10)", "ID", "0", "ITPL", "8PointValues", "BPM", "Wet amount"
+   "PHASER(11)", "ID", "0", "ITPL", "8PointValues", "BPM", "Wet amount"
+   "TRANCE(12)", "ID", "0", "ITPL", "8PointValues", "BPM, GAIN", "Wet amount"
+   "PANNER(13)", "ID", "0", "ITPL", "8PointValues", "BPM, GAIN", "Wet amount"
+   "BATTLE_DJ(14)", "ID", "SPIN(8)/PITCH(9)/REV(10)", "SPEED", "NONE", "NONE", "NONE"
+   "BATTLE_DJ(14)", "ID", "SCRATCH(11)", "StartPosition", "SPEED", "NONE", "NONE"
+   "ROLL(15)", "ID", "0", "ITPL", "8PointValues", "BPM", "Wet amount"
+   "COMPRESSOR(16)", "ID", "0", "Strength", "Thresh, Knee", "ATT, REL", "NONE"
+   "ROBOT(17)", "ID", "0", "ITPL", "8PointValues", "ocsFreq", "Wet amount"
+
+.. list-table:: Note Data Format
+   :header-rows: 1
+   :widths: 15 20 15 15 15 12 12 12 12 12 12 12
+
+   * - `Note_Type`
+     - `Note_Detail`
+     - `first`
+     - `second`
+     - `third`
+     - `beat`
+     - `subBeat`
+     - `separate`
+     - `Ebeat`
+     - `EsubBeat`
+     - `Eseparate`
+     - `RailID`
+   * - TEXT
+     - uint16
+     - TEXT
+     - TEXT
+     - TEXT
+     - long
+     - long
+     - long
+     - long
+     - long
+     - long
+     - uint64
 
 Time And Position Model
 -----------------------
@@ -143,6 +267,17 @@ The interpolation-related runtime enums in the tree are:
 - `ITPL_COSINE`
 - `ITPL_CUBIC`
 - `ITPL_FLAT`
+
+.. list-table:: Interpolation Keywords
+   :header-rows: 1
+   :widths: 20 80
+
+   * - Keyword
+     - Meaning
+   * - `ITPL`
+     - Choose the interpolator type (`linear`, `cosine`, `cubic`, or `flat`)
+   * - `8PointValues`
+     - Eight data points that define the waveform used by the interpolator
 
 Example control string:
 
