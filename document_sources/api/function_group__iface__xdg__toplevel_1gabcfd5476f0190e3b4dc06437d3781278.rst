@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_toplevel_add_listener(struct xdg_toplevel *, const struct xdg_toplevel_listener *, void *)
+.. doxygenfunction:: xdg_toplevel_add_listener()
    :project: Project_DJ_Engine

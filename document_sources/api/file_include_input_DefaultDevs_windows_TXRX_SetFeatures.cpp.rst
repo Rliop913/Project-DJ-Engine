@@ -4,7 +4,7 @@
 File SetFeatures.cpp
 ====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_DefaultDevs_windows_TXRX>` (``include/input/DefaultDevs/windows/TXRX``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_DefaultDevs_windows_TXRX>` (``include\input\DefaultDevs\windows\TXRX``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File SetFeatures.cpp
    :local:
    :backlinks: none
 
-Definition (``include/input/DefaultDevs/windows/TXRX/SetFeatures.cpp``)
+Definition (``include\input\DefaultDevs\windows\TXRX\SetFeatures.cpp``)
 -----------------------------------------------------------------------
 
 

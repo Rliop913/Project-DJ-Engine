@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_popup_destroy(struct xdg_popup *)
+.. doxygenfunction:: xdg_popup_destroy()
    :project: Project_DJ_Engine

@@ -81,10 +81,27 @@
 <span id="program-listing-file-include-core-db-dbroot-cpp"></span><h1>Program Listing for File dbRoot.cpp<a class="headerlink" href="#program-listing-for-file-dbroot-cpp" title="Link to this heading"></a></h1>
 <p>↰ <a class="reference internal" href="file_include_core_db_dbRoot.cpp.html#file-include-core-db-dbroot-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include\core\db\dbRoot.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;dbRoot.hpp&quot;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cassert&gt;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;rocksdb/db.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;rocksdb/filter_policy.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;rocksdb/options.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;rocksdb/table.h&gt;</span>
+
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdexcept&gt;</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
-<span class="n">litedb</span><span class="o">::</span><span class="n">litedb</span><span class="p">()</span>
+<span class="k">namespace</span><span class="w"> </span><span class="nn">ROCK_DB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">ROCKSDB_NAMESPACE</span><span class="p">;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">RDB</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">ROCK_DB</span><span class="o">::</span><span class="n">DB</span><span class="w">          </span><span class="o">*</span><span class="n">kvdb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ROCK_DB</span><span class="o">::</span><span class="n">WriteOptions</span><span class="w"> </span><span class="n">wops</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ROCK_DB</span><span class="o">::</span><span class="n">ReadOptions</span><span class="w">  </span><span class="n">rops</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">litedb</span><span class="o">::</span><span class="n">litedb</span><span class="p">()</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">kvdb_impl</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">RDB</span><span class="o">&gt;</span><span class="p">())</span>
 <span class="p">{</span>
 <span class="p">}</span>
 
@@ -104,36 +121,39 @@
 <span class="w">    </span><span class="n">kvdbPath</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">dbPath</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="p">(</span><span class="s">&quot;rocksdb.db&quot;</span><span class="p">);</span>
 <span class="w">    </span><span class="n">vectordbPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dbPath</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="p">(</span><span class="s">&quot;annoy.db&quot;</span><span class="p">);</span>
 
-<span class="w">    </span><span class="n">RDB</span><span class="o">::</span><span class="n">Options</span><span class="w"> </span><span class="n">rdbops</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ROCK_DB</span><span class="o">::</span><span class="n">Options</span><span class="w"> </span><span class="n">rdbops</span><span class="p">;</span>
 <span class="w">    </span><span class="n">rdbops</span><span class="p">.</span><span class="n">create_if_missing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="w">    </span><span class="n">rdbops</span><span class="p">.</span><span class="n">OptimizeForPointLookup</span><span class="p">(</span><span class="mi">512</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1024</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1024</span><span class="p">);</span>
 <span class="w">    </span><span class="n">rdbops</span><span class="p">.</span><span class="n">OptimizeLevelStyleCompaction</span><span class="p">();</span>
-<span class="w">    </span><span class="n">rdbops</span><span class="p">.</span><span class="n">file_checksum_gen_factory</span><span class="w"> </span><span class="o">=</span>
-<span class="w">        </span><span class="n">rocksdb</span><span class="o">::</span><span class="n">GetFileChecksumGenCrc32cFactory</span><span class="p">();</span>
-<span class="w">    </span><span class="n">RDB</span><span class="o">::</span><span class="n">BlockBasedTableOptions</span><span class="w"> </span><span class="n">table_options</span><span class="p">;</span>
-<span class="w">    </span><span class="n">table_options</span><span class="p">.</span><span class="n">filter_policy</span><span class="p">.</span><span class="n">reset</span><span class="p">(</span><span class="n">RDB</span><span class="o">::</span><span class="n">NewBloomFilterPolicy</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">));</span>
+<span class="w">    </span><span class="c1">// rdbops.file_checksum_gen_factory.reset();</span>
+<span class="w">    </span><span class="n">ROCK_DB</span><span class="o">::</span><span class="n">BlockBasedTableOptions</span><span class="w"> </span><span class="n">table_options</span><span class="p">;</span>
+<span class="w">    </span><span class="n">table_options</span><span class="p">.</span><span class="n">filter_policy</span><span class="p">.</span><span class="n">reset</span><span class="p">(</span><span class="n">ROCK_DB</span><span class="o">::</span><span class="n">NewBloomFilterPolicy</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">));</span>
 <span class="w">    </span><span class="n">rdbops</span><span class="p">.</span><span class="n">table_factory</span><span class="p">.</span><span class="n">reset</span><span class="p">(</span><span class="n">NewBlockBasedTableFactory</span><span class="p">(</span><span class="n">table_options</span><span class="p">));</span>
-<span class="w">    </span><span class="n">rdbops</span><span class="p">.</span><span class="n">compression</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RDB</span><span class="o">::</span><span class="n">kNoCompression</span><span class="p">;</span>
+<span class="w">    </span><span class="n">rdbops</span><span class="p">.</span><span class="n">compression</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ROCK_DB</span><span class="o">::</span><span class="n">kNoCompression</span><span class="p">;</span>
 
-<span class="w">    </span><span class="n">wops</span><span class="p">.</span><span class="n">sync</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
-<span class="w">    </span><span class="n">wops</span><span class="p">.</span><span class="n">disableWAL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">kvdb_impl</span><span class="o">-&gt;</span><span class="n">wops</span><span class="p">.</span><span class="n">sync</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="n">kvdb_impl</span><span class="o">-&gt;</span><span class="n">wops</span><span class="p">.</span><span class="n">disableWAL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 
-<span class="w">    </span><span class="n">rops</span><span class="p">.</span><span class="n">verify_checksums</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
-<span class="w">    </span><span class="n">rops</span><span class="p">.</span><span class="n">fill_cache</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">kvdb_impl</span><span class="o">-&gt;</span><span class="n">rops</span><span class="p">.</span><span class="n">verify_checksums</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="n">kvdb_impl</span><span class="o">-&gt;</span><span class="n">rops</span><span class="p">.</span><span class="n">fill_cache</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">sqlRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqlite3_open</span><span class="p">(</span><span class="n">sqldbPath</span><span class="p">.</span><span class="n">generic_string</span><span class="p">().</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sdb</span><span class="p">);</span>
 
 <span class="w">    </span><span class="n">sqlite3_exec</span><span class="p">(</span><span class="n">sdb</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PRAGMA synchronous   = FULL;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">kvdbRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RDB</span><span class="o">::</span><span class="n">DB</span><span class="o">::</span><span class="n">Open</span><span class="p">(</span><span class="n">rdbops</span><span class="p">,</span><span class="w"> </span><span class="n">kvdbPath</span><span class="p">.</span><span class="n">generic_string</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">kvdb</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">kvdbRes</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="n">ROCK_DB</span><span class="o">::</span><span class="n">DB</span><span class="o">::</span><span class="n">Open</span><span class="p">(</span><span class="n">rdbops</span><span class="p">,</span><span class="w"> </span><span class="n">kvdbPath</span><span class="p">.</span><span class="n">generic_string</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">kvdb_impl</span><span class="o">-&gt;</span><span class="n">kvdb</span><span class="p">);</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sqlRes</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">SQLITE_OK</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to open sqlite. from litedb openDB. sqliteErrmsg: &quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">sqlite3_errmsg</span><span class="p">(</span><span class="n">sdb</span><span class="p">));</span>
+<span class="w">        </span><span class="c1">// assert(false);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">kvdbRes</span><span class="p">.</span><span class="n">ok</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to open rocksDB. from litedb openDB. rocksdbErrmsg: &quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">kvdbRes</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
+<span class="w">        </span><span class="c1">// assert(false);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">CheckTables</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
@@ -149,8 +169,8 @@
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sdb</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">sqlite3_close</span><span class="p">(</span><span class="n">sdb</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">kvdb</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">delete</span><span class="w"> </span><span class="n">kvdb</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">kvdb_impl</span><span class="o">-&gt;</span><span class="n">kvdb</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">delete</span><span class="w"> </span><span class="n">kvdb_impl</span><span class="o">-&gt;</span><span class="n">kvdb</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 
@@ -220,7 +240,7 @@
 <span class="n">litedb</span><span class="o">::</span><span class="n">KVGet</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SANITIZED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">V</span><span class="p">)</span>
 <span class="p">{</span>
 
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">getRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kvdb</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="n">rops</span><span class="p">,</span><span class="w"> </span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">V</span><span class="p">);</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">getRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kvdb_impl</span><span class="o">-&gt;</span><span class="n">kvdb</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">(</span><span class="n">kvdb_impl</span><span class="o">-&gt;</span><span class="n">rops</span><span class="p">,</span><span class="w"> </span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">V</span><span class="p">);</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">getRes</span><span class="p">.</span><span class="n">IsNotFound</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">warnlog</span><span class="p">(</span>
 <span class="w">            </span><span class="s">&quot;cannot find music from database. from litedb KVGet. Keydata: &quot;</span><span class="p">);</span>
@@ -240,7 +260,8 @@
 <span class="kt">bool</span>
 <span class="n">litedb</span><span class="o">::</span><span class="n">KVPut</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SANITIZED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">V</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">putRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kvdb</span><span class="o">-&gt;</span><span class="n">Put</span><span class="p">(</span><span class="n">wops</span><span class="p">,</span><span class="w"> </span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">V</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">putRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kvdb_impl</span><span class="o">-&gt;</span><span class="n">kvdb</span><span class="o">-&gt;</span><span class="n">Put</span><span class="p">(</span><span class="n">kvdb_impl</span><span class="o">-&gt;</span><span class="n">wops</span><span class="p">,</span><span class="w"> </span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">V</span><span class="p">);</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">putRes</span><span class="p">.</span><span class="n">ok</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to put new datas to database. from litedb KVPut. &quot;</span>
 <span class="w">                </span><span class="s">&quot;rocksdbErr: &quot;</span><span class="p">);</span>

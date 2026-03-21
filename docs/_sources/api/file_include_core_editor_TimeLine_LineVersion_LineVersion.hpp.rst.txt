@@ -34,6 +34,8 @@ Includes
 
 - ``GitRAII.hpp`` (:ref:`file_include_core_editor_TimeLine_GitDataPack_GitRAII.hpp`)
 
+- ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_global_PDJE_EXPORT_SETTER.hpp`)
+
 - ``git2/commit.h``
 
 - ``git2/oid.h``

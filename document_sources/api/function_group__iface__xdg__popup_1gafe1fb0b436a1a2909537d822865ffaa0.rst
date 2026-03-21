@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_popup_reposition(struct xdg_popup *, struct xdg_positioner *, uint32_t)
+.. doxygenfunction:: xdg_popup_reposition()
    :project: Project_DJ_Engine

@@ -4,7 +4,7 @@
 File AnnoyBackend.hpp
 =====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_util_db_backends>` (``include/util/db/backends``)
+|exhale_lsh| :ref:`Parent directory <dir_include_util_db_backends>` (``include\util\db\backends``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File AnnoyBackend.hpp
    :local:
    :backlinks: none
 
-Definition (``include/util/db/backends/AnnoyBackend.hpp``)
+Definition (``include\util\db\backends\AnnoyBackend.hpp``)
 ----------------------------------------------------------
 
 
@@ -62,11 +62,11 @@ Includes
 
 - ``unordered_map``
 
-- ``util/common/Result.hpp`` (:ref:`file_include_util_common_Result.hpp`)
+- ``util/common/Result.hpp``
 
-- ``util/db/DbTypes.hpp`` (:ref:`file_include_util_db_DbTypes.hpp`)
+- ``util/db/DbTypes.hpp``
 
-- ``util/db/nearest/Types.hpp`` (:ref:`file_include_util_db_nearest_Types.hpp`)
+- ``util/db/nearest/Types.hpp``
 
 - ``utility``
 
@@ -94,32 +94,32 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structPDJE__UTIL_1_1db_1_1backends_1_1AnnoyConfig`
+- :ref:`exhale_struct_struct_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_annoy_config`
 
-- :ref:`exhale_class_classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend`
+- :ref:`exhale_class_class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_annoy_backend`
 
 
 Functions
 ---------
 
 
-- :ref:`exhale_function_namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1aef1ee84a30c8dbe94ad687eec41feca0`
+- :ref:`exhale_function_namespace_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1detail_1aef1ee84a30c8dbe94ad687eec41feca0`
 
-- :ref:`exhale_function_namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a3eb8babb813a8c10dcc81d3de5604d89`
+- :ref:`exhale_function_namespace_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1detail_1a3eb8babb813a8c10dcc81d3de5604d89`
 
-- :ref:`exhale_function_namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a0c4366e3a53a130192824e38de23eaee`
+- :ref:`exhale_function_namespace_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1detail_1a46fd237b3317763d682518b5ea010887`
 
-- :ref:`exhale_function_namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a6388a2d13302adc4fda16cd876549ee7`
+- :ref:`exhale_function_namespace_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1detail_1a6388a2d13302adc4fda16cd876549ee7`
 
-- :ref:`exhale_function_namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a24391d1532342679ea43f9ac33ec702b`
+- :ref:`exhale_function_namespace_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1detail_1a24391d1532342679ea43f9ac33ec702b`
 
-- :ref:`exhale_function_namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a0182747311ae00f0253e418317029be3`
+- :ref:`exhale_function_namespace_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1detail_1a5bbfa57cdab8dbe4b7e223f56fe00909`
 
-- :ref:`exhale_function_namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a1c24eaa3cde05d744cd175bc7564fb30`
+- :ref:`exhale_function_namespace_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1detail_1aa3c012afe7fe73bd9cfaa224930f13ab`
 
-- :ref:`exhale_function_namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a766c7e77eb3fe1873001af578f4a495c`
+- :ref:`exhale_function_namespace_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1detail_1a766c7e77eb3fe1873001af578f4a495c`
 
-- :ref:`exhale_function_namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a258536e6b909618ebc9dfbf7dbdfcfc0`
+- :ref:`exhale_function_namespace_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1detail_1a258536e6b909618ebc9dfbf7dbdfcfc0`
 
-- :ref:`exhale_function_namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1aff83ceeb15d3b25e7eb9df37ab52dd94`
+- :ref:`exhale_function_namespace_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1detail_1aa3b64e3dd0aa4978f1fbf064347081eb`
 

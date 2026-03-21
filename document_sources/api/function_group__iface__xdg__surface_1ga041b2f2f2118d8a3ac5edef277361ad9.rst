@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_surface_add_listener(struct xdg_surface *, const struct xdg_surface_listener *, void *)
+.. doxygenfunction:: xdg_surface_add_listener()
    :project: Project_DJ_Engine

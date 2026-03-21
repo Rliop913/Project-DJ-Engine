@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_positioner_set_constraint_adjustment(struct xdg_positioner *, uint32_t)
+.. doxygenfunction:: xdg_positioner_set_constraint_adjustment()
    :project: Project_DJ_Engine

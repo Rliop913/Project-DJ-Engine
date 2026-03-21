@@ -25,6 +25,9 @@ Files
 
 - :ref:`file_include_global_PDJE_ATOMIC_EVENT.hpp`
 - :ref:`file_include_global_PDJE_Benchmark.hpp`
+- :ref:`file_include_global_PDJE_CAbi_Core_Private.hpp`
+- :ref:`file_include_global_PDJE_CAbi_Input_Private.hpp`
+- :ref:`file_include_global_PDJE_CAbi_Private.hpp`
 - :ref:`file_include_global_PDJE_EXPORT_SETTER.hpp`
 - :ref:`file_include_global_PDJE_LOG_RUNTIME_API.h`
 - :ref:`file_include_global_PDJE_LOG_SETTER.cpp`

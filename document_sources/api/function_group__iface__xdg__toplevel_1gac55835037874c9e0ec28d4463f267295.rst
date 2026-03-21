@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_toplevel_set_min_size(struct xdg_toplevel *, int32_t, int32_t)
+.. doxygenfunction:: xdg_toplevel_set_min_size()
    :project: Project_DJ_Engine

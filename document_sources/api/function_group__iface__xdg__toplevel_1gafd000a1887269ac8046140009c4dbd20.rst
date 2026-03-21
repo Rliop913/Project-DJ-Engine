@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_toplevel_destroy(struct xdg_toplevel *)
+.. doxygenfunction:: xdg_toplevel_destroy()
    :project: Project_DJ_Engine

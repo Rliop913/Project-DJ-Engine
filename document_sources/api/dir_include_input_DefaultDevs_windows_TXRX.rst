@@ -5,12 +5,12 @@ Directory TXRX
 ==============
 
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_DefaultDevs_windows>` (``include/input/DefaultDevs/windows``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_DefaultDevs_windows>` (``include\input\DefaultDevs\windows``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include/input/DefaultDevs/windows/TXRX``
+*Directory path:* ``include\input\DefaultDevs\windows\TXRX``
 
 
 Files

@@ -17,6 +17,8 @@ Namespaces
 ----------
 
 
+- :ref:`namespace_PDJE_UTIL__db__backends__@324203207233005122353332060165136074233332340107`
+
 - :ref:`namespace_PDJE_UTIL__db__backends__detail`
 
 
@@ -33,5 +35,7 @@ Classes
 - :ref:`exhale_class_class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_annoy_backend`
 
 - :ref:`exhale_class_class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend`
+
+- :ref:`exhale_class_class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1_1_impl`
 
 - :ref:`exhale_class_class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_sqlite_backend`

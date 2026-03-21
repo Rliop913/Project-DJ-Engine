@@ -10,7 +10,7 @@ Directory global
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include/global``
+*Directory path:* ``include\global``
 
 Subdirectories
 --------------

@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_positioner_set_parent_configure(struct xdg_positioner *, uint32_t)
+.. doxygenfunction:: xdg_positioner_set_parent_configure()
    :project: Project_DJ_Engine

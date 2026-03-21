@@ -15,7 +15,7 @@ Program Listing for File PDJE_ATOMIC_EVENT.hpp
    #include "PDJE_EXPORT_SETTER.hpp"
    #include <atomic>
    #include <thread>
-   class PDJE_API ATOMIC_EVENT {
+   class ATOMIC_EVENT {
      private:
        std::atomic<bool> flag{ false };
    

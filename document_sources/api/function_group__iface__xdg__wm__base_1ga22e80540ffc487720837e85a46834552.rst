@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_wm_base_destroy(struct xdg_wm_base *)
+.. doxygenfunction:: xdg_wm_base_destroy()
    :project: Project_DJ_Engine

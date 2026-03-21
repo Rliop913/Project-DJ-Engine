@@ -10,7 +10,7 @@ Directory input
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include/input``
+*Directory path:* ``include\input``
 
 Subdirectories
 --------------

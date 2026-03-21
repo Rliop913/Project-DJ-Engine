@@ -1,56 +1,34 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="ipc__named__event_8hpp" kind="file" language="C++">
     <compoundname>ipc_named_event.hpp</compoundname>
     <includes local="no">filesystem</includes>
-    <includedby refid="windows_2DefaultDevs_8hpp" local="yes">include/input/DefaultDevs/windows/DefaultDevs.hpp</includedby>
+    <includedby refid="windows_2_default_devs_8hpp" local="yes">include/input/DefaultDevs/windows/DefaultDevs.hpp</includedby>
     <includedby refid="linux_2named__event_8cpp" local="yes">include/input/IPC/memory/linux/named_event.cpp</includedby>
-    <includedby refid="windows_2Input__Transfer_8hpp" local="yes">include/input/IPC/memory/windows/Input_Transfer.hpp</includedby>
+    <includedby refid="windows_2_input___transfer_8hpp" local="yes">include/input/IPC/memory/windows/Input_Transfer.hpp</includedby>
     <includedby refid="windows_2named__event_8cpp" local="yes">include/input/IPC/memory/windows/named_event.cpp</includedby>
-    <includedby refid="SubProcess_8hpp" local="yes">include/input/runner/SubProcess.hpp</includedby>
+    <includedby refid="_sub_process_8hpp" local="yes">include/input/runner/SubProcess.hpp</includedby>
     <incdepgraph>
-      <node id="2">
-        <label>filesystem</label>
-      </node>
       <node id="1">
         <label>include/input/IPC/memory/ipc_named_event.hpp</label>
         <link refid="ipc__named__event_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
+      <node id="2">
+        <label>filesystem</label>
+      </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="8">
-        <label>include/input/runner/SubProcess.hpp</label>
-        <link refid="SubProcess_8hpp"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-      </node>
-      <node id="13">
-        <label>include/input/runner/windows/SubMain.cpp</label>
-        <link refid="SubMain_8cpp"/>
-      </node>
-      <node id="6">
-        <label>include/input/IPC/memory/windows/Input_Transfer.cpp</label>
-        <link refid="windows_2Input__Transfer_8cpp"/>
+      <node id="3">
+        <label>include/input/DefaultDevs/windows/DefaultDevs.cpp</label>
+        <link refid="windows_2_default_devs_8cpp"/>
       </node>
       <node id="2">
         <label>include/input/DefaultDevs/windows/DefaultDevs.hpp</label>
-        <link refid="windows_2DefaultDevs_8hpp"/>
+        <link refid="windows_2_default_devs_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
-      </node>
-      <node id="4">
-        <label>include/input/IPC/memory/linux/named_event.cpp</label>
-        <link refid="linux_2named__event_8cpp"/>
       </node>
       <node id="1">
         <label>include/input/IPC/memory/ipc_named_event.hpp</label>
@@ -66,43 +44,65 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
+      <node id="4">
+        <label>include/input/IPC/memory/linux/named_event.cpp</label>
+        <link refid="linux_2named__event_8cpp"/>
+      </node>
+      <node id="6">
+        <label>include/input/IPC/memory/windows/Input_Transfer.cpp</label>
+        <link refid="windows_2_input___transfer_8cpp"/>
+      </node>
       <node id="5">
         <label>include/input/IPC/memory/windows/Input_Transfer.hpp</label>
-        <link refid="windows_2Input__Transfer_8hpp"/>
+        <link refid="windows_2_input___transfer_8hpp"/>
         <childnode refid="6" relation="include">
         </childnode>
-      </node>
-      <node id="10">
-        <label>include/input/runner/windows/InputLoop.cpp</label>
-        <link refid="InputLoop_8cpp"/>
-      </node>
-      <node id="11">
-        <label>include/input/runner/windows/ListDevice.hpp</label>
-        <link refid="ListDevice_8hpp"/>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-      </node>
-      <node id="12">
-        <label>include/input/runner/windows/SubProcess.cpp</label>
-        <link refid="SubProcess_8cpp"/>
-      </node>
-      <node id="3">
-        <label>include/input/DefaultDevs/windows/DefaultDevs.cpp</label>
-        <link refid="windows_2DefaultDevs_8cpp"/>
-      </node>
-      <node id="9">
-        <label>include/input/runner/SetTXRXFeatures.cpp</label>
-        <link refid="SetTXRXFeatures_8cpp"/>
       </node>
       <node id="7">
         <label>include/input/IPC/memory/windows/named_event.cpp</label>
         <link refid="windows_2named__event_8cpp"/>
       </node>
+      <node id="9">
+        <label>include/input/runner/SetTXRXFeatures.cpp</label>
+        <link refid="_set_t_x_r_x_features_8cpp"/>
+      </node>
+      <node id="8">
+        <label>include/input/runner/SubProcess.hpp</label>
+        <link refid="_sub_process_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>include/input/runner/windows/InputLoop.cpp</label>
+        <link refid="_input_loop_8cpp"/>
+      </node>
+      <node id="11">
+        <label>include/input/runner/windows/ListDevice.hpp</label>
+        <link refid="_list_device_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>include/input/runner/windows/SubMain.cpp</label>
+        <link refid="_sub_main_8cpp"/>
+      </node>
+      <node id="12">
+        <label>include/input/runner/windows/SubProcess.cpp</label>
+        <link refid="_sub_process_8cpp"/>
+      </node>
     </invincdepgraph>
-    <innerclass refid="classPDJE__IPC_1_1EVENT" prot="public">PDJE_IPC::EVENT</innerclass>
-    <innernamespace refid="namespacePDJE__IPC">PDJE_IPC</innernamespace>
+    <innerclass refid="class_p_d_j_e___i_p_c_1_1_e_v_e_n_t" prot="public">PDJE_IPC::EVENT</innerclass>
+    <innernamespace refid="namespace_p_d_j_e___i_p_c">PDJE_IPC</innernamespace>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -110,28 +110,28 @@
     <programlisting>
 <codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;filesystem&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__IPC" kindref="compound">PDJE_IPC</ref><sp/>{</highlight></codeline>
-<codeline lineno="4" refid="namespacePDJE__IPC_1a9fde1a10ab51831bfa1320d45d91aec5" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__IPC_1a9fde1a10ab51831bfa1320d45d91aec5" kindref="member">MNAME</ref><sp/>=<sp/>std::filesystem::path;</highlight></codeline>
-<codeline lineno="5" refid="classPDJE__IPC_1_1EVENT" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPDJE__IPC_1_1EVENT" kindref="compound">EVENT</ref><sp/>{</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_p_d_j_e___i_p_c" kindref="compound">PDJE_IPC</ref><sp/>{</highlight></codeline>
+<codeline lineno="4" refid="namespace_p_d_j_e___i_p_c_1a04902c541254b5ef872d47ec219cc36b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespace_p_d_j_e___i_p_c_1a04902c541254b5ef872d47ec219cc36b" kindref="member">MNAME</ref><sp/>=<sp/>std::filesystem::path;</highlight></codeline>
+<codeline lineno="5" refid="class_p_d_j_e___i_p_c_1_1_e_v_e_n_t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_p_d_j_e___i_p_c_1_1_e_v_e_n_t_1a2ed4200f20a3893e6e7c197bdbc6a19e" kindref="member">EVENT</ref><sp/>{</highlight></codeline>
 <codeline lineno="6"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="7" refid="classPDJE__IPC_1_1EVENT_1a91c5e84936cc68961213c1d13c13318a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="classPDJE__IPC_1_1EVENT_1a91c5e84936cc68961213c1d13c13318a" kindref="member">name_cache</ref>;</highlight></codeline>
+<codeline lineno="7" refid="class_p_d_j_e___i_p_c_1_1_e_v_e_n_t_1a91c5e84936cc68961213c1d13c13318a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="class_p_d_j_e___i_p_c_1_1_e_v_e_n_t_1a91c5e84936cc68961213c1d13c13318a" kindref="member">name_cache</ref>;</highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight></codeline>
 <codeline lineno="9"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="10" refid="classPDJE__IPC_1_1EVENT_1acdd1f78601b0adf27ec1dd5aac6884cb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<ref refid="classPDJE__IPC_1_1EVENT_1acdd1f78601b0adf27ec1dd5aac6884cb" kindref="member">hdlp</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="10" refid="class_p_d_j_e___i_p_c_1_1_e_v_e_n_t_1acdd1f78601b0adf27ec1dd5aac6884cb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<ref refid="class_p_d_j_e___i_p_c_1_1_e_v_e_n_t_1acdd1f78601b0adf27ec1dd5aac6884cb" kindref="member">hdlp</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1EVENT_1a68526390e1dd1ca62571fd17faff4a88" kindref="member">Wait</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint16_t<sp/>waittime_ms<sp/>=<sp/>100);</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_e_v_e_n_t_1a68526390e1dd1ca62571fd17faff4a88" kindref="member">Wait</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint16_t<sp/>waittime_ms<sp/>=<sp/>100);</highlight></codeline>
 <codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1EVENT_1aa22e01b26e072bfb613b27a1d7afe81b" kindref="member">Wait_Infinite</ref>();</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_e_v_e_n_t_1aa22e01b26e072bfb613b27a1d7afe81b" kindref="member">Wait_Infinite</ref>();</highlight></codeline>
 <codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1EVENT_1a155e397a08e4430f93576570e7308f13" kindref="member">Wake</ref>();</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_e_v_e_n_t_1a155e397a08e4430f93576570e7308f13" kindref="member">Wake</ref>();</highlight></codeline>
 <codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1EVENT_1add528ebcc737f3bc13fd259f4c688f6b" kindref="member">HostInit</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__IPC_1a9fde1a10ab51831bfa1320d45d91aec5" kindref="member">MNAME</ref><sp/>&amp;name);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_e_v_e_n_t_1add528ebcc737f3bc13fd259f4c688f6b" kindref="member">HostInit</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespace_p_d_j_e___i_p_c_1a04902c541254b5ef872d47ec219cc36b" kindref="member">MNAME</ref><sp/>&amp;name);</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1EVENT_1a58e3fb8670b388d936d02dde8690bc55" kindref="member">ClientInit</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__IPC_1a9fde1a10ab51831bfa1320d45d91aec5" kindref="member">MNAME</ref><sp/>&amp;name);</highlight></codeline>
-<codeline lineno="21" refid="classPDJE__IPC_1_1EVENT_1a2ed4200f20a3893e6e7c197bdbc6a19e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1EVENT_1a2ed4200f20a3893e6e7c197bdbc6a19e" kindref="member">EVENT</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1EVENT_1a9cce95b23b178730ddcd852295e9bb92" kindref="member">~EVENT</ref>();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_e_v_e_n_t_1a58e3fb8670b388d936d02dde8690bc55" kindref="member">ClientInit</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespace_p_d_j_e___i_p_c_1a04902c541254b5ef872d47ec219cc36b" kindref="member">MNAME</ref><sp/>&amp;name);</highlight></codeline>
+<codeline lineno="21" refid="class_p_d_j_e___i_p_c_1_1_e_v_e_n_t_1a2ed4200f20a3893e6e7c197bdbc6a19e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_e_v_e_n_t_1a2ed4200f20a3893e6e7c197bdbc6a19e" kindref="member">EVENT</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_p_d_j_e___i_p_c_1_1_e_v_e_n_t_1a9cce95b23b178730ddcd852295e9bb92" kindref="member">~EVENT</ref>();</highlight></codeline>
 <codeline lineno="23"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="24"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_IPC</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_IPC</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/input/IPC/memory/ipc_named_event.hpp"/>
   </compounddef>

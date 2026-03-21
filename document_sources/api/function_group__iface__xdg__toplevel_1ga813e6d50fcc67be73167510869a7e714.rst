@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_toplevel_set_minimized(struct xdg_toplevel *)
+.. doxygenfunction:: xdg_toplevel_set_minimized()
    :project: Project_DJ_Engine

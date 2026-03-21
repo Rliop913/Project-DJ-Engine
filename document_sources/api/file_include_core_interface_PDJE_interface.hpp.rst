@@ -4,7 +4,7 @@
 File PDJE_interface.hpp
 =======================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_interface>` (``include/core/interface``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_interface>` (``include\core\interface``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_interface.hpp
    :local:
    :backlinks: none
 
-Definition (``include/core/interface/PDJE_interface.hpp``)
+Definition (``include\core\interface\PDJE_interface.hpp``)
 ----------------------------------------------------------
 
 
@@ -56,6 +56,8 @@ Included By
 
 - :ref:`file_include_core_interface_PDJE_polyglot_wraps.cpp`
 
+- :ref:`file_include_tests_JUDGE_TESTS_judgeTest.cpp`
+
 - :ref:`file_include_tests_dbTest.cpp`
 
 - :ref:`file_include_tests_editorTest.cpp`
@@ -63,8 +65,6 @@ Included By
 - :ref:`file_include_tests_gittest.cpp`
 
 - :ref:`file_include_tests_interfaceTest.cpp`
-
-- :ref:`file_include_tests_JUDGE_TESTS_judgeTest.cpp`
 
 - :ref:`file_include_tests_music_to_waveform_webp.cpp`
 
@@ -75,14 +75,14 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classARGSETTER__WRAPPER`
+- :ref:`exhale_class_class_a_r_g_s_e_t_t_e_r___w_r_a_p_p_e_r`
 
-- :ref:`exhale_class_classPDJE`
+- :ref:`exhale_class_class_p_d_j_e`
 
 
 Enums
 -----
 
 
-- :ref:`exhale_enum_PDJE__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16`
+- :ref:`exhale_enum__p_d_j_e__interface_8hpp_1a69adf2c2084046791b1bd87c68a42e16`
 

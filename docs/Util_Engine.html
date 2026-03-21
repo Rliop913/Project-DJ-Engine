@@ -433,8 +433,85 @@ exceptions.</p>
 <li><p><cite>PDJE_UTIL_DB_ANNOY</cite></p></li>
 <li><p><cite>PDJE_UTIL_DB</cite></p></li>
 </ul>
-<section id="key-value-example">
-<h3>Key-Value Example<a class="headerlink" href="#key-value-example" title="Link to this heading"></a></h3>
+<p><cite>db::OpenOptions</cite> is shared across the shipped backends and controls three
+important behaviors:</p>
+<ul class="simple">
+<li><p><cite>create_if_missing</cite>
+create the underlying database if the target path does not exist yet</p></li>
+<li><p><cite>truncate_if_exists</cite>
+delete and recreate the target before opening it</p></li>
+<li><p><cite>read_only</cite>
+open an existing database without permitting writes</p></li>
+</ul>
+<p><cite>db::Database&lt;Backend&gt;</cite> is still available as a convenience alias for
+key-value access, but the more explicit <cite>keyvalue::KeyValueDatabase&lt;Backend&gt;</cite>
+and <cite>relational::RelationalDatabase&lt;Backend&gt;</cite> names are clearer in new docs and
+new call sites.</p>
+<p>The utility tests in the current tree show two practical patterns:</p>
+<ul class="simple">
+<li><p>use <cite>RocksDbBackend</cite> when the workload is key/value oriented</p></li>
+<li><p>use <cite>SqliteBackend</cite> when the workload is SQL oriented</p></li>
+</ul>
+<p><cite>AnnoyBackend</cite> and <cite>db::nearest::NearestNeighborIndex&lt;Backend&gt;</cite> are still part
+of the public capability set, but this page only touches them briefly because
+the current engine-facing and example-facing usage is dominated by SQLite and
+RocksDB.</p>
+<section id="db-access-api">
+<h3>DB Access API<a class="headerlink" href="#db-access-api" title="Link to this heading"></a></h3>
+<section id="low-level-c">
+<h4>Low-Level C++<a class="headerlink" href="#low-level-c" title="Link to this heading"></a></h4>
+<p>At the low-level utility layer, the wrapper classes all follow the same
+lifecycle:</p>
+<ul class="simple">
+<li><p><cite>create(config)</cite></p></li>
+<li><p><cite>open(config)</cite></p></li>
+<li><p>use the database object</p></li>
+<li><p><cite>close()</cite></p></li>
+<li><p>optionally <cite>destroy(config)</cite> when the backing store should be removed</p></li>
+</ul>
+<p>The public wrapper split is:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 45.0%" />
+<col style="width: 30.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Wrapper</p></th>
+<th class="head"><p>Main use</p></th>
+<th class="head"><p>Typical backend</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><cite>db::keyvalue::KeyValueDatabase&lt;Backend&gt;</cite></p></td>
+<td><p>text/blob lookups by key</p></td>
+<td><p><cite>db::backends::RocksDbBackend</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>db::relational::RelationalDatabase&lt;Backend&gt;</cite></p></td>
+<td><p>SQL execution, queries, and transactions</p></td>
+<td><p><cite>db::backends::SqliteBackend</cite></p></td>
+</tr>
+<tr class="row-even"><td><p><cite>db::nearest::NearestNeighborIndex&lt;Backend&gt;</cite></p></td>
+<td><p>embedding search and ANN indexing</p></td>
+<td><p><cite>db::backends::AnnoyBackend</cite></p></td>
+</tr>
+</tbody>
+</table>
+<p>For key-value code, the important value types are:</p>
+<ul class="simple">
+<li><p><cite>db::Key</cite></p></li>
+<li><p><cite>db::Text</cite></p></li>
+<li><p><cite>db::Bytes</cite></p></li>
+</ul>
+<p>For relational code, the important data carriers are:</p>
+<ul class="simple">
+<li><p><cite>db::relational::Value</cite></p></li>
+<li><p><cite>db::relational::Params</cite></p></li>
+<li><p><cite>db::relational::Row</cite></p></li>
+<li><p><cite>db::relational::ExecResult</cite></p></li>
+<li><p><cite>db::relational::QueryResult</cite></p></li>
+</ul>
+<p>RocksDB key-value usage:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">PDJE_UTIL</span><span class="p">;</span>
 
 <span class="n">db</span><span class="o">::</span><span class="n">backends</span><span class="o">::</span><span class="n">RocksDbConfig</span><span class="w"> </span><span class="n">cfg</span><span class="p">;</span>
@@ -449,11 +526,16 @@ exceptions.</p>
 <span class="k">auto</span><span class="w"> </span><span class="n">db</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">opened</span><span class="p">.</span><span class="n">value</span><span class="p">());</span>
 <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">db</span><span class="p">.</span><span class="n">put_text</span><span class="p">(</span><span class="s">&quot;artist&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;RLIOP913&quot;</span><span class="p">);</span>
 <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">db</span><span class="p">.</span><span class="n">put_bytes</span><span class="p">(</span><span class="s">&quot;blob&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{});</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="n">artist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">db</span><span class="p">.</span><span class="n">get_text</span><span class="p">(</span><span class="s">&quot;artist&quot;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">artist</span><span class="p">.</span><span class="n">ok</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">artist</span><span class="p">.</span><span class="n">value</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-</section>
-<section id="relational-example">
-<h3>Relational Example<a class="headerlink" href="#relational-example" title="Link to this heading"></a></h3>
+<p>The key-value wrapper also exposes <cite>contains()</cite>, <cite>erase()</cite>, and <cite>list_keys()</cite>
+for simple metadata stores and blob caches.</p>
+<p>SQLite relational usage:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">PDJE_UTIL</span><span class="p">;</span>
 
 <span class="n">db</span><span class="o">::</span><span class="n">backends</span><span class="o">::</span><span class="n">SqliteConfig</span><span class="w"> </span><span class="n">cfg</span><span class="p">;</span>
@@ -466,32 +548,120 @@ exceptions.</p>
 <span class="p">}</span>
 
 <span class="k">auto</span><span class="w"> </span><span class="n">db</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">opened</span><span class="p">.</span><span class="n">value</span><span class="p">());</span>
-<span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">db</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;CREATE TABLE IF NOT EXISTS notes(id INTEGER PRIMARY KEY, lane TEXT)&quot;</span><span class="p">);</span>
-</pre></div>
-</div>
-</section>
-<section id="nearest-neighbor-example">
-<h3>Nearest-Neighbor Example<a class="headerlink" href="#nearest-neighbor-example" title="Link to this heading"></a></h3>
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">PDJE_UTIL</span><span class="p">;</span>
+<span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">db</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;CREATE TABLE IF NOT EXISTS notes(&quot;</span>
+<span class="w">    </span><span class="s">&quot;id INTEGER PRIMARY KEY, &quot;</span>
+<span class="w">    </span><span class="s">&quot;lane TEXT NOT NULL)&quot;</span><span class="p">);</span>
 
-<span class="n">db</span><span class="o">::</span><span class="n">backends</span><span class="o">::</span><span class="n">AnnoyConfig</span><span class="w"> </span><span class="n">cfg</span><span class="p">;</span>
-<span class="n">cfg</span><span class="p">.</span><span class="n">root_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;tmp/example-annoy&quot;</span><span class="p">;</span>
-<span class="n">cfg</span><span class="p">.</span><span class="n">dimension</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span>
-<span class="n">cfg</span><span class="p">.</span><span class="n">open_options</span><span class="p">.</span><span class="n">create_if_missing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">db</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&quot;INSERT INTO notes(id, lane) VALUES(?1, ?2);&quot;</span><span class="p">,</span>
+<span class="w">                 </span><span class="p">{</span><span class="w"> </span><span class="n">db</span><span class="o">::</span><span class="n">relational</span><span class="o">::</span><span class="n">Value</span><span class="p">{</span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="p">{</span><span class="mi">1</span><span class="p">}},</span>
+<span class="w">                   </span><span class="n">db</span><span class="o">::</span><span class="n">relational</span><span class="o">::</span><span class="n">Value</span><span class="p">{</span><span class="n">db</span><span class="o">::</span><span class="n">Text</span><span class="p">{</span><span class="s">&quot;left&quot;</span><span class="p">}}</span><span class="w"> </span><span class="p">});</span>
 
-<span class="k">auto</span><span class="w"> </span><span class="n">opened</span><span class="w"> </span><span class="o">=</span>
-<span class="w">    </span><span class="n">db</span><span class="o">::</span><span class="n">nearest</span><span class="o">::</span><span class="n">NearestNeighborIndex</span><span class="o">&lt;</span><span class="n">db</span><span class="o">::</span><span class="n">backends</span><span class="o">::</span><span class="n">AnnoyBackend</span><span class="o">&gt;::</span><span class="n">open</span><span class="p">(</span><span class="n">cfg</span><span class="p">);</span>
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">opened</span><span class="p">.</span><span class="n">ok</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">rows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">db</span><span class="p">.</span><span class="n">query</span><span class="p">(</span><span class="s">&quot;SELECT lane FROM notes WHERE id = ?1;&quot;</span><span class="p">,</span>
+<span class="w">                     </span><span class="p">{</span><span class="w"> </span><span class="n">db</span><span class="o">::</span><span class="n">relational</span><span class="o">::</span><span class="n">Value</span><span class="p">{</span><span class="n">std</span><span class="o">::</span><span class="kt">int64_t</span><span class="p">{</span><span class="mi">1</span><span class="p">}}</span><span class="w"> </span><span class="p">});</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rows</span><span class="p">.</span><span class="n">ok</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">rows</span><span class="p">.</span><span class="n">value</span><span class="p">().</span><span class="n">rows</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">*</span><span class="n">lane</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rows</span><span class="p">.</span><span class="n">value</span><span class="p">().</span><span class="n">rows</span><span class="p">.</span><span class="n">front</span><span class="p">().</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;lane&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lane</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="n">db</span><span class="o">::</span><span class="n">Text</span><span class="o">&gt;</span><span class="p">(</span><span class="n">lane</span><span class="o">-&gt;</span><span class="n">storage</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-
-<span class="k">auto</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">opened</span><span class="p">.</span><span class="n">value</span><span class="p">());</span>
-<span class="n">db</span><span class="o">::</span><span class="n">nearest</span><span class="o">::</span><span class="n">Item</span><span class="w"> </span><span class="n">item</span><span class="p">;</span>
-<span class="n">item</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;kick&quot;</span><span class="p">;</span>
-<span class="n">item</span><span class="p">.</span><span class="n">embedding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">1.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">};</span>
-<span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">index</span><span class="p">.</span><span class="n">upsert_item</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
 </pre></div>
 </div>
+<p><cite>RelationalDatabase&lt;SqliteBackend&gt;</cite> also exposes <cite>begin_transaction()</cite>,
+<cite>commit()</cite>, and <cite>rollback()</cite>. The utility tests explicitly cover successful SQL
+queries, parameter binding, blob transport, transaction rollback/commit, and
+read-only open mode.</p>
+</section>
+<section id="godot-api">
+<h4>Godot API<a class="headerlink" href="#godot-api" title="Link to this heading"></a></h4>
+<p>In <cite>PDJE-Godot-Plugin-cloned</cite>, the Godot-facing DB story is split into two
+layers:</p>
+<ul class="simple">
+<li><p><cite>PDJE_LowLevelUtilAPI</cite>
+direct util-wrapper access for key-value, relational, nearest-neighbor, and
+waveform helper entrypoints</p></li>
+<li><p><cite>PDJE_Wrapper</cite> plus <cite>EditorWrapper</cite>
+higher-level engine and root-DB workflows for authored PDJE content</p></li>
+</ul>
+<p><cite>PDJE_LowLevelUtilAPI</cite> is the low-level Godot bridge for util DB wrappers. Its
+methods mirror the C++ lifecycle and return a normalized <cite>Dictionary</cite> envelope:</p>
+<ul class="simple">
+<li><p><cite>ok</cite></p></li>
+<li><p><cite>code</cite></p></li>
+<li><p><cite>message</cite></p></li>
+<li><p><cite>data</cite></p></li>
+</ul>
+<p>The current bridge exposes:</p>
+<ul class="simple">
+<li><p><cite>KeyValueCreate</cite>, <cite>KeyValueOpen</cite>, <cite>KeyValueClose</cite>, <cite>KeyValueGetText</cite>,
+<cite>KeyValueGetBytes</cite>, <cite>KeyValuePutText</cite>, <cite>KeyValuePutBytes</cite>, <cite>KeyValueErase</cite>,
+<cite>KeyValueListKeys</cite></p></li>
+<li><p><cite>RelationalCreate</cite>, <cite>RelationalOpen</cite>, <cite>RelationalClose</cite>,
+<cite>RelationalExecute</cite>, <cite>RelationalQuery</cite>, <cite>RelationalBeginTransaction</cite>,
+<cite>RelationalCommit</cite>, <cite>RelationalRollback</cite></p></li>
+<li><p><cite>NearestCreate</cite>, <cite>NearestOpen</cite>, <cite>NearestSearch</cite>, and related ANN helpers</p></li>
+</ul>
+<p>Low-level util-style usage in Godot therefore looks like this:</p>
+<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">util</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_LowLevelUtilAPI</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">util</span><span class="o">.</span><span class="n">KeyValueOpen</span><span class="p">({</span>
+<span class="w">    </span><span class="s2">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;res://imgdb&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;create_if_missing&quot;</span><span class="p">:</span><span class="w"> </span><span class="bp">true</span>
+<span class="p">}))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">util</span><span class="o">.</span><span class="n">KeyValuePutText</span><span class="p">(</span><span class="s2">&quot;artist&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;RLIOP913&quot;</span><span class="p">))</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">rows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">util</span><span class="o">.</span><span class="n">RelationalQuery</span><span class="p">(</span>
+<span class="w">    </span><span class="s2">&quot;SELECT ?1 AS lane;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">[</span><span class="s2">&quot;left&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <cite>data</cite> payload varies by method. For example:</p>
+<ul class="simple">
+<li><p>key-value payloads include fields such as <cite>text</cite>, <cite>bytes</cite>, <cite>keys</cite>, and
+<cite>is_open</cite></p></li>
+<li><p>relational query payloads include <cite>rows</cite>, where each row carries <cite>columns</cite>
+and <cite>values</cite></p></li>
+<li><p>relational execute payloads include <cite>affected_rows</cite> and
+<cite>last_insert_rowid</cite></p></li>
+</ul>
+<p>When the task is not generic DB access but authored engine content, the higher
+level Godot path still goes through the engine wrapper layer:</p>
+<ul class="simple">
+<li><p><cite>PDJE_Wrapper.InitEngine(path)</cite></p></li>
+<li><p><cite>PDJE_Wrapper.SearchMusic(title, composer, bpm)</cite></p></li>
+<li><p><cite>PDJE_Wrapper.SearchTrack(title)</cite></p></li>
+<li><p><cite>PDJE_Wrapper.GetEditor()</cite></p></li>
+<li><p><cite>EditorWrapper.render(track_title)</cite></p></li>
+<li><p><cite>EditorWrapper.pushToRootDB(music_title, music_composer)</cite></p></li>
+<li><p><cite>EditorWrapper.pushTrackToRootDB(track_title)</cite></p></li>
+</ul>
+<p>Current wrapper-style root-DB usage from the Godot example project looks like
+this:</p>
+<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Wrapper</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">InitEngine</span><span class="p">(</span><span class="s2">&quot;res://rootdb&quot;</span><span class="p">)</span>
+
+<span class="k">if</span><span class="w"> </span><span class="n">engine</span><span class="o">.</span><span class="n">SearchMusic</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;composer&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>
+<span class="w">    </span><span class="n">engine</span><span class="o">.</span><span class="n">InitEditor</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;none&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;res://sandbox&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">editor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">.</span><span class="n">GetEditor</span><span class="p">()</span>
+<span class="w">    </span><span class="n">editor</span><span class="o">.</span><span class="n">ConfigNewMusic</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;composer&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;G://YMCA.wav&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="n">editor</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="s2">&quot;sample_track&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="n">editor</span><span class="o">.</span><span class="n">pushToRootDB</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;composer&quot;</span><span class="p">))</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">tracks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">.</span><span class="n">SearchTrack</span><span class="p">(</span><span class="s2">&quot;sample_track&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tracks</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This distinction is important:</p>
+<ul class="simple">
+<li><p>use <cite>PDJE_LowLevelUtilAPI</cite> when you want direct util DB semantics</p></li>
+<li><p>use <cite>PDJE_Wrapper</cite> and <cite>EditorWrapper</cite> when you want PDJE music, track, and
+editor workflows backed by the root DB</p></li>
+<li><p>nearest-neighbor methods are available in the low-level util bridge, but they
+remain secondary to the SQLite and RocksDB scenarios emphasized on this page</p></li>
+</ul>
+</section>
 </section>
 </section>
 <section id="function-helpers">
@@ -501,9 +671,13 @@ exceptions.</p>
 <li><p><cite>clamp(ClampArgs)</cite> clamps a floating-point value inside a range.</p></li>
 <li><p><cite>slugify(SlugifyArgs, EvalOptions)</cite> normalizes text into a delimiter-based
 slug.</p></li>
-<li><p><cite>halide::apply_gain_bias(GrayImageView, GainBiasArgs, EvalOptions)</cite> applies a
-simple grayscale gain/bias transform and returns a new <cite>GrayImage</cite>.</p></li>
+<li><p><cite>function::image</cite> contains image-oriented helpers such as WebP writers and
+waveform image generation.</p></li>
 </ul>
+<p>There are also Halide-oriented helper entrypoints in the tree, but this page
+does not use the Halide sample code as its teaching path. The focus here stays
+on the utility APIs that are already exercised by public headers, unit tests,
+and wrapper-facing workflows.</p>
 <p>Example:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">PDJE_UTIL</span><span class="p">;</span>
 
@@ -513,6 +687,209 @@ simple grayscale gain/bias transform and returns a new <cite>GrayImage</cite>.</
 <span class="p">}</span>
 </pre></div>
 </div>
+<section id="soundtowaveform">
+<h3>SoundToWaveForm<a class="headerlink" href="#soundtowaveform" title="Link to this heading"></a></h3>
+<p>The waveform-image path lives under <cite>PDJE_UTIL::function::image</cite> and is exposed
+through:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;util/function/image/WaveformWebp.hpp&quot;</span>
+</pre></div>
+</div>
+<p>This is an important include detail: <cite>encode_waveform_webps()</cite> is currently
+declared in <cite>util/function/image/WaveformWebp.hpp</cite>, and it is not re-exported
+by <cite>util/PDJE_Util.hpp</cite>.</p>
+<section id="id1">
+<h4>Low-Level C++<a class="headerlink" href="#id1" title="Link to this heading"></a></h4>
+<p>The public entrypoints are:</p>
+<ul class="simple">
+<li><p><cite>PDJE_UTIL::function::image::EncodeWaveformWebpArgs</cite></p></li>
+<li><p><cite>PDJE_UTIL::function::image::encode_waveform_webps</cite></p></li>
+<li><p><cite>PDJE_UTIL::function::image::WaveformWebpBatch</cite></p></li>
+</ul>
+<p><cite>EncodeWaveformWebpArgs</cite> is the full call contract:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><cite>pcm</cite></p></td>
+<td><p>input PCM sample span; expected as interleaved float samples</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>channel_count</cite></p></td>
+<td><p>number of channels in the interleaved PCM input</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>y_pixels</cite></p></td>
+<td><p>waveform image height in pixels</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>pcm_per_pixel</cite></p></td>
+<td><p>number of PCM samples reduced into one x-axis column</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>x_pixels_per_image</cite></p></td>
+<td><p>image width in pixels for each emitted waveform tile</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>compression_level</cite></p></td>
+<td><p>WebP compression level from <cite>-1</cite> to <cite>9</cite></p></td>
+</tr>
+<tr class="row-even"><td><p><cite>worker_thread_count</cite></p></td>
+<td><p>explicit worker count; <cite>0</cite> means auto-select</p></td>
+</tr>
+</tbody>
+</table>
+<p>The return type is a nested batch:</p>
+<ul class="simple">
+<li><p><cite>WaveformWebpBatch</cite>
+<cite>batch[channel][image]</cite></p></li>
+<li><p>each leaf value is an encoded WebP byte array for one channel tile</p></li>
+</ul>
+<p>Operationally, the implementation does the following:</p>
+<ul class="simple">
+<li><p>validates that the PCM span and shape parameters are usable</p></li>
+<li><p>splits interleaved PCM into per-channel vectors</p></li>
+<li><p>pads incomplete channel tails with zeroes when a chunk is short</p></li>
+<li><p>groups each output image into <cite>pcm_per_pixel * x_pixels_per_image</cite> samples</p></li>
+<li><p>reduces each x-axis column to min/max sample values</p></li>
+<li><p>maps those min/max values into pixel rows</p></li>
+<li><p>draws opaque white waveform strokes on a transparent RGBA background</p></li>
+<li><p>encodes each generated tile into WebP bytes</p></li>
+<li><p>runs jobs across multiple workers when <cite>worker_thread_count</cite> is greater than
+<cite>1</cite>, or chooses a hardware-based worker count when it is <cite>0</cite></p></li>
+</ul>
+<p>The waveform tests also verify several practical behaviors:</p>
+<ul class="simple">
+<li><p>invalid required arguments return <cite>StatusCode::invalid_argument</cite></p></li>
+<li><p>channel splitting preserves per-channel output layout</p></li>
+<li><p>min/max aggregation fills vertical spans inside a column</p></li>
+<li><p>incomplete chunks are padded before reduction</p></li>
+<li><p>single-worker and multi-worker runs produce the same output bytes</p></li>
+</ul>
+<p>Example:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="k">namespace</span><span class="w"> </span><span class="nn">PDJE_UTIL</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pcm</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="mf">1.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">-1.0f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.25f</span><span class="p">,</span><span class="w"> </span><span class="mf">-0.25f</span><span class="p">,</span>
+<span class="w">    </span><span class="mf">-0.5f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.75f</span><span class="p">,</span><span class="w"> </span><span class="mf">-0.75f</span>
+<span class="p">};</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="n">encoded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">function</span><span class="o">::</span><span class="n">image</span><span class="o">::</span><span class="n">encode_waveform_webps</span><span class="p">(</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="p">.</span><span class="n">pcm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pcm</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">channel_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">y_pixels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">pcm_per_pixel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">x_pixels_per_image</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">512</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">compression_level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="p">.</span><span class="n">worker_thread_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">});</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">encoded</span><span class="p">.</span><span class="n">ok</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">encoded</span><span class="p">.</span><span class="n">status</span><span class="p">().</span><span class="n">message</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">batch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">encoded</span><span class="p">.</span><span class="n">value</span><span class="p">();</span>
+<span class="c1">// batch[channel][image] -&gt; encoded WebP bytes</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h4>Godot API<a class="headerlink" href="#id2" title="Link to this heading"></a></h4>
+<p><cite>PDJE-Godot-Plugin-cloned</cite> exposes waveform functionality in two Godot-facing
+layers, and both are registered as public classes:</p>
+<ul class="simple">
+<li><p><cite>PDJE_LowLevelUtilAPI</cite></p></li>
+<li><p><cite>PDJE_HighLevelUtilAPI</cite></p></li>
+</ul>
+<p>The low-level Godot entrypoint is:</p>
+<ul class="simple">
+<li><p><cite>PDJE_LowLevelUtilAPI.EncodeWaveformWebps(…)</cite></p></li>
+</ul>
+<p>This method mirrors the native <cite>encode_waveform_webps()</cite> call but accepts Godot
+types such as <cite>Array</cite> and returns the same normalized result envelope used by
+the other low-level util bridges:</p>
+<ul class="simple">
+<li><p><cite>ok</cite></p></li>
+<li><p><cite>code</cite></p></li>
+<li><p><cite>message</cite></p></li>
+<li><p><cite>data</cite></p></li>
+</ul>
+<p>For waveform generation, <cite>data</cite> includes:</p>
+<ul class="simple">
+<li><p><cite>images</cite>
+a flattened <cite>Array</cite> of <cite>PackedByteArray</cite> WebP payloads</p></li>
+<li><p><cite>layout</cite>
+currently <cite>“channel_major”</cite></p></li>
+<li><p><cite>channel_count</cite></p></li>
+<li><p><cite>images_per_channel</cite></p></li>
+<li><p><cite>total_images</cite></p></li>
+<li><p><cite>y_pixels</cite></p></li>
+<li><p><cite>pcm_per_pixel</cite></p></li>
+<li><p><cite>x_pixels_per_image</cite></p></li>
+<li><p><cite>compression_level</cite></p></li>
+<li><p><cite>worker_thread_count</cite></p></li>
+<li><p><cite>pcm_length</cite></p></li>
+</ul>
+<p>Low-level Godot usage looks like this:</p>
+<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">util</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_LowLevelUtilAPI</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="k">var</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">util</span><span class="o">.</span><span class="n">EncodeWaveformWebps</span><span class="p">(</span>
+<span class="w">    </span><span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.25</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">0.25</span><span class="p">],</span>
+<span class="w">    </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">256</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">48</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">4096</span><span class="p">,</span>
+<span class="w">    </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">0</span>
+<span class="p">)</span>
+
+<span class="k">if</span><span class="w"> </span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;ok&quot;</span><span class="p">]:</span>
+<span class="w">    </span><span class="k">var</span><span class="w"> </span><span class="n">images</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">][</span><span class="s2">&quot;images&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="nb">print</span><span class="p">(</span><span class="n">images</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>The higher-level Godot entrypoint is:</p>
+<ul class="simple">
+<li><p><cite>PDJE_HighLevelUtilAPI.SoundToWaveform(core_api, keyvalue_db_path, music_item, pcm_per_pixel, width, height, start_index, end_index)</cite></p></li>
+</ul>
+<p>This high-level adapter does more than simple forwarding:</p>
+<ul class="simple">
+<li><p>reads PCM by calling <cite>PDJE_Wrapper.GetPCMFromMusicData(music_item)</cite></p></li>
+<li><p>encodes waveform WebPs through the low-level waveform bridge</p></li>
+<li><p>caches the generated image array in a RocksDB key-value store at
+<cite>keyvalue_db_path</cite></p></li>
+<li><p>slices the cached/generated image list using <cite>start_index</cite> and <cite>end_index</cite></p></li>
+</ul>
+<p>Current high-level waveform usage from <cite>util_test.tscn</cite> looks like this:</p>
+<div class="highlight-gdscript notranslate"><div class="highlight"><pre><span></span><span class="k">var</span><span class="w"> </span><span class="n">core</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_Wrapper</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="n">core</span><span class="o">.</span><span class="n">InitEngine</span><span class="p">(</span><span class="s2">&quot;res://rootdb&quot;</span><span class="p">)</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">util</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PDJE_HighLevelUtilAPI</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="k">var</span><span class="w"> </span><span class="n">music</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">core</span><span class="o">.</span><span class="n">SearchMusic</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">var</span><span class="w"> </span><span class="n">images</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">util</span><span class="o">.</span><span class="n">SoundToWaveform</span><span class="p">(</span>
+<span class="w">    </span><span class="n">core</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;res://imgdb&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">music</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">48</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">4096</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">256</span><span class="p">,</span>
+<span class="w">    </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="o">-</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="k">var</span><span class="w"> </span><span class="n">image</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="n">image</span><span class="o">.</span><span class="n">load_webp_from_buffer</span><span class="p">(</span><span class="n">images</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>The practical split is:</p>
+<ul class="simple">
+<li><p>use <cite>PDJE_LowLevelUtilAPI.EncodeWaveformWebps()</cite> when you already have PCM and
+want a thin wrapper over the util module</p></li>
+<li><p>use <cite>PDJE_HighLevelUtilAPI.SoundToWaveform()</cite> when you want the Godot wrapper
+to fetch PCM from music metadata and manage cached waveform images for you</p></li>
+</ul>
+</section>
+</section>
 </section>
 <section id="ai-namespace">
 <h2>AI Namespace<a class="headerlink" href="#ai-namespace" title="Link to this heading"></a></h2>

@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_positioner_set_anchor(struct xdg_positioner *, uint32_t)
+.. doxygenfunction:: xdg_positioner_set_anchor()
    :project: Project_DJ_Engine

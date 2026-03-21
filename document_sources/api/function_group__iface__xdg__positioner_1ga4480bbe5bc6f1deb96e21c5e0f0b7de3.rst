@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_positioner_destroy(struct xdg_positioner *)
+.. doxygenfunction:: xdg_positioner_destroy()
    :project: Project_DJ_Engine

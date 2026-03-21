@@ -23,7 +23,7 @@ Program Listing for File FrameCalc.hpp
    
    using SIMD_FLOAT = std::vector<float, hwy::AlignedAllocator<float>>;
    
-   struct PDJE_API MixStruct {
+   struct MixStruct {
        unsigned long long frame_in;
        unsigned long long frame_out;
        MBData::Reader RP;

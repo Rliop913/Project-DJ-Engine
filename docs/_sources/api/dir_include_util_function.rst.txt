@@ -16,6 +16,7 @@ Subdirectories
 --------------
 
 - :ref:`dir_include_util_function_halide`
+- :ref:`dir_include_util_function_image`
 - :ref:`dir_include_util_function_scalar`
 - :ref:`dir_include_util_function_text`
 

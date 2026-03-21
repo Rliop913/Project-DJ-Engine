@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_positioner_set_size(struct xdg_positioner *, int32_t, int32_t)
+.. doxygenfunction:: xdg_positioner_set_size()
    :project: Project_DJ_Engine

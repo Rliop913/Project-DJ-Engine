@@ -4,7 +4,7 @@
 File fileNameSanitizer.cpp
 ==========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_global_DataLines>` (``include/global/DataLines``)
+|exhale_lsh| :ref:`Parent directory <dir_include_global_DataLines>` (``include\global\DataLines``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File fileNameSanitizer.cpp
    :local:
    :backlinks: none
 
-Definition (``include/global/DataLines/fileNameSanitizer.cpp``)
+Definition (``include\global\DataLines\fileNameSanitizer.cpp``)
 ---------------------------------------------------------------
 
 
@@ -43,5 +43,5 @@ Typedefs
 --------
 
 
-- :ref:`exhale_typedef_fileNameSanitizer_8cpp_1a60e6f3a42a8bab43c807f31be0e7aab1`
+- :ref:`exhale_typedef_file_name_sanitizer_8cpp_1a60e6f3a42a8bab43c807f31be0e7aab1`
 

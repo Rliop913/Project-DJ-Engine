@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="group__iface__xdg__surface" kind="group">
     <compoundname>iface_xdg_surface</compoundname>
     <title>The xdg_surface interface</title>
     <innerclass refid="structxdg__surface__listener" prot="public">xdg_surface_listener</innerclass>
-      <sectiondef kind="func">
+    <sectiondef kind="func">
       <memberdef kind="function" id="group__iface__xdg__surface_1ga041b2f2f2118d8a3ac5edef277361ad9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>int</type>
         <definition>static int xdg_surface_add_listener</definition>
@@ -51,9 +51,9 @@
         </inbodydescription>
         <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="1078" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="1078" bodyend="1081"/>
       </memberdef>
-      <memberdef kind="function" id="group__iface__xdg__surface_1gad03aa3689029a1850eec800c40553540" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="group__iface__xdg__surface_1ga2346a83243cf8fda68b44e91d0671ae9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void *</type>
-        <definition>static void* xdg_surface_get_user_data</definition>
+        <definition>static void * xdg_surface_get_user_data</definition>
         <argsstring>(struct xdg_surface *xdg_surface)</argsstring>
         <name>xdg_surface_get_user_data</name>
         <param>
@@ -86,9 +86,9 @@
         </inbodydescription>
         <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="1104" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="1104" bodyend="1108"/>
       </memberdef>
-      <memberdef kind="function" id="group__iface__xdg__surface_1ga86408dc891224abcf7c28ca86dda3765" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="group__iface__xdg__surface_1ga85ae329154f5cc3b8de8d2870e1bc8e0" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>struct xdg_toplevel *</type>
-        <definition>static struct xdg_toplevel* xdg_surface_get_toplevel</definition>
+        <definition>static struct xdg_toplevel * xdg_surface_get_toplevel</definition>
         <argsstring>(struct xdg_surface *xdg_surface)</argsstring>
         <name>xdg_surface_get_toplevel</name>
         <param>
@@ -105,9 +105,9 @@
         </inbodydescription>
         <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="1120" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="1120" bodyend="1128"/>
       </memberdef>
-      <memberdef kind="function" id="group__iface__xdg__surface_1ga262c892c7b219d1c2ea148a392ae4d3c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="group__iface__xdg__surface_1ga1e77913f1bd9c55e8cea22e5240b030e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>struct xdg_popup *</type>
-        <definition>static struct xdg_popup* xdg_surface_get_popup</definition>
+        <definition>static struct xdg_popup * xdg_surface_get_popup</definition>
         <argsstring>(struct xdg_surface *xdg_surface, struct xdg_surface *parent, struct xdg_positioner *positioner)</argsstring>
         <name>xdg_surface_get_popup</name>
         <param>
@@ -203,8 +203,8 @@
         </inbodydescription>
         <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="1238" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="1238" bodyend="1242"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="define">
+    </sectiondef>
+    <sectiondef kind="define">
       <memberdef kind="define" id="group__iface__xdg__surface_1ga2acbd1b0ff328849e1361a7780359fc5" prot="public" static="no">
         <name>XDG_SURFACE_CONFIGURE_SINCE_VERSION</name>
         <initializer>1</initializer>
@@ -271,7 +271,7 @@
         </inbodydescription>
         <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="1074" column="9" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="1074" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -281,7 +281,7 @@
 <para>A role must be assigned before any other requests are made to the xdg_surface object.</para>
 <para>The client must call wl_surface.commit on the corresponding wl_surface for the xdg_surface state to take effect.</para>
 <para>Creating an xdg_surface from a wl_surface which has a buffer attached or committed is a client error, and any attempts by a client to attach or manipulate a buffer prior to the first xdg_surface.configure call must also be treated as errors.</para>
-<para>After creating a role-specific object and setting it up (e.g. by sending the title, app ID, size constraints, parent, etc), the client must perform an initial commit without any buffer attached. The compositor will reply with initial wl_surface state such as wl_surface.preferred_buffer_scale followed by an xdg_surface.configure event. The client must acknowledge it and is then allowed to attach a buffer to map the surface.</para>
+<para>After creating a role-specific object and setting it up (e.g. by sending the title, app <ref refid="_mix_machine_8hpp_1a61bcf5b33c99ebcd26c016da6c8a69bc" kindref="member">ID</ref>, size constraints, parent, etc), the client must perform an initial commit without any buffer attached. The compositor will reply with initial wl_surface state such as wl_surface.preferred_buffer_scale followed by an xdg_surface.configure event. The client must acknowledge it and is then allowed to attach a buffer to map the surface.</para>
 <para>Mapping an xdg_surface-based role surface is defined as making it possible for the surface to be shown by the compositor. Note that a mapped surface is not guaranteed to be visible once it is mapped.</para>
 <para>For an xdg_surface to be mapped by the compositor, the following conditions must be met: (1) the client has assigned an xdg_surface-based role to the surface (2) the client has set and committed the xdg_surface state and the role-dependent state to the surface (3) the client has committed a buffer to the surface</para>
 <para>A newly-unmapped surface is considered to have met condition (1) out of the 3 required conditions for mapping a surface if its role surface has not been destroyed, i.e. the client must perform the initial commit again before attaching a buffer. </para>

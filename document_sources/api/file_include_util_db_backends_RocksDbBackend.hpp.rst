@@ -4,7 +4,7 @@
 File RocksDbBackend.hpp
 =======================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_util_db_backends>` (``include/util/db/backends``)
+|exhale_lsh| :ref:`Parent directory <dir_include_util_db_backends>` (``include\util\db\backends``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File RocksDbBackend.hpp
    :local:
    :backlinks: none
 
-Definition (``include/util/db/backends/RocksDbBackend.hpp``)
+Definition (``include\util\db\backends\RocksDbBackend.hpp``)
 ------------------------------------------------------------
 
 
@@ -40,9 +40,9 @@ Includes
 
 - ``string_view``
 
-- ``util/common/Result.hpp`` (:ref:`file_include_util_common_Result.hpp`)
+- ``util/common/Result.hpp``
 
-- ``util/db/DbTypes.hpp`` (:ref:`file_include_util_db_DbTypes.hpp`)
+- ``util/db/DbTypes.hpp``
 
 - ``vector``
 
@@ -72,7 +72,7 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structPDJE__UTIL_1_1db_1_1backends_1_1RocksDbConfig`
+- :ref:`exhale_struct_struct_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_config`
 
-- :ref:`exhale_class_classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend`
+- :ref:`exhale_class_class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend`
 

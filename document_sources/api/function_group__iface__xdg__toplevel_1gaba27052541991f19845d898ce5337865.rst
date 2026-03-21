@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_toplevel_set_user_data(struct xdg_toplevel *, void *)
+.. doxygenfunction:: xdg_toplevel_set_user_data()
    :project: Project_DJ_Engine

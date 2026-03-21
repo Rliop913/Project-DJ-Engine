@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_surface_ack_configure(struct xdg_surface *, uint32_t)
+.. doxygenfunction:: xdg_surface_ack_configure()
    :project: Project_DJ_Engine

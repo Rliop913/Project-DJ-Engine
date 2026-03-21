@@ -32,11 +32,30 @@ Includes
 
 - ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_global_PDJE_LOG_SETTER.hpp`)
 
+- ``cassert``
+
 - ``dbRoot.hpp`` (:ref:`file_include_core_db_dbRoot.hpp`)
+
+- ``memory`` (:ref:`file_include_input_IPC_memory_linux_Input_Transfer.cpp`)
+
+- ``rocksdb/db.h``
+
+- ``rocksdb/filter_policy.h``
+
+- ``rocksdb/options.h``
+
+- ``rocksdb/table.h``
 
 - ``stdexcept``
 
 
 
 
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_class_r_d_b`
 

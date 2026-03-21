@@ -17,7 +17,7 @@ Namespaces
 ----------
 
 
-- :ref:`namespace_PDJE_UTIL__db__backends__@270`
+- :ref:`namespace_PDJE_UTIL__db__backends__@324203207233005122353332060165136074233332340107`
 
 - :ref:`namespace_PDJE_UTIL__db__backends__detail`
 
@@ -26,16 +26,16 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structPDJE__UTIL_1_1db_1_1backends_1_1AnnoyConfig`
+- :ref:`exhale_struct_struct_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_annoy_config`
 
-- :ref:`exhale_struct_structPDJE__UTIL_1_1db_1_1backends_1_1RocksDbConfig`
+- :ref:`exhale_struct_struct_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_config`
 
-- :ref:`exhale_struct_structPDJE__UTIL_1_1db_1_1backends_1_1SqliteConfig`
+- :ref:`exhale_struct_struct_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_sqlite_config`
 
-- :ref:`exhale_class_classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend`
+- :ref:`exhale_class_class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_annoy_backend`
 
-- :ref:`exhale_class_classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend`
+- :ref:`exhale_class_class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend`
 
-- :ref:`exhale_class_classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl`
+- :ref:`exhale_class_class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1_1_impl`
 
-- :ref:`exhale_class_classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend`
+- :ref:`exhale_class_class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_sqlite_backend`

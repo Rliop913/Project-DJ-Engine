@@ -4,7 +4,7 @@
 File dbRoot.cpp
 ===============
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_db>` (``include/core/db``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_db>` (``include\core\db``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File dbRoot.cpp
    :local:
    :backlinks: none
 
-Definition (``include/core/db/dbRoot.cpp``)
+Definition (``include\core\db\dbRoot.cpp``)
 -------------------------------------------
 
 
@@ -57,5 +57,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classRDB`
+- :ref:`exhale_class_class_r_d_b`
 

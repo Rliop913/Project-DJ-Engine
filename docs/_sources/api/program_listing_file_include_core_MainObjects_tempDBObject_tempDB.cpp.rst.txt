@@ -12,6 +12,7 @@ Program Listing for File tempDB.cpp
 
    #include "tempDB.hpp"
    #include "PDJE_LOG_SETTER.hpp"
+   
    bool
    tempDB::Open(const fs::path &projectRoot)
    {

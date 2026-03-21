@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_wm_base_set_user_data(struct xdg_wm_base *, void *)
+.. doxygenfunction:: xdg_wm_base_set_user_data()
    :project: Project_DJ_Engine

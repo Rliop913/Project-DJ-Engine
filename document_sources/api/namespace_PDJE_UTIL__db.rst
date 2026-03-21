@@ -30,24 +30,17 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structPDJE__UTIL_1_1db_1_1OpenOptions`
+- :ref:`exhale_struct_struct_p_d_j_e___u_t_i_l_1_1db_1_1_open_options`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef_namespacePDJE__UTIL_1_1db_1acfb13486a5f831dd08830ce1cc8c7ba3`
+- :ref:`exhale_typedef_namespace_p_d_j_e___u_t_i_l_1_1db_1a2ef3b7d9e6089bee19f07baae2cdaa81`
 
-- :ref:`exhale_typedef_namespacePDJE__UTIL_1_1db_1aedc4479cc9089f6782ace5f698496d2e`
+- :ref:`exhale_typedef_namespace_p_d_j_e___u_t_i_l_1_1db_1ae9f58016e0d9976052730993dff29c01`
 
-- :ref:`exhale_typedef_namespacePDJE__UTIL_1_1db_1aaa69bb1e1ba3230da8fb606c82d3ebc7`
+- :ref:`exhale_typedef_namespace_p_d_j_e___u_t_i_l_1_1db_1aedbff324bfcd10a0857fd98f47045ba1`
 
-- :ref:`exhale_typedef_namespacePDJE__UTIL_1_1db_1a4478e16df2aec53b3378bfd6337246b6`
-
-
-Variables
----------
-
-
-- :ref:`exhale_variable_namespacePDJE__UTIL_1_1db_1a59557c87079ab0460c94d35ea2f53143`
+- :ref:`exhale_typedef_namespace_p_d_j_e___u_t_i_l_1_1db_1a89f870d3c2a028544646a9b95b827d28`

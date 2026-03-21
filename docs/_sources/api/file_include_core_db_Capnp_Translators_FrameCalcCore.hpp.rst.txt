@@ -32,6 +32,10 @@ Includes
 
 - ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_global_PDJE_EXPORT_SETTER.hpp`)
 
+- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_global_PDJE_LOG_SETTER.hpp`)
+
+- ``cmath``
+
 - ``cstdint``
 
 - ``vector``
@@ -63,6 +67,13 @@ Classes
 - :ref:`exhale_struct_struct_bpm_fragment`
 
 - :ref:`exhale_struct_struct_bpm_struct`
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_namespace_frame_calc_1a65ae10119a1939c98d5e6fc981772b7c`
 
 
 Defines

@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_wm_base_add_listener(struct xdg_wm_base *, const struct xdg_wm_base_listener *, void *)
+.. doxygenfunction:: xdg_wm_base_add_listener()
    :project: Project_DJ_Engine

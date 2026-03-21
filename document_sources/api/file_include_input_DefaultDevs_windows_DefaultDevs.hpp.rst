@@ -4,7 +4,7 @@
 File DefaultDevs.hpp
 ====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_DefaultDevs_windows>` (``include/input/DefaultDevs/windows``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_DefaultDevs_windows>` (``include\input\DefaultDevs\windows``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File DefaultDevs.hpp
    :local:
    :backlinks: none
 
-Definition (``include/input/DefaultDevs/windows/DefaultDevs.hpp``)
+Definition (``include\input\DefaultDevs\windows\DefaultDevs.hpp``)
 ------------------------------------------------------------------
 
 
@@ -80,14 +80,14 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structPDJE__DEFAULT__DEVICES_1_1HandleCloser`
+- :ref:`exhale_struct_struct_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_handle_closer`
 
-- :ref:`exhale_class_classPDJE__DEFAULT__DEVICES_1_1DefaultDevs`
+- :ref:`exhale_class_class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef_namespacePDJE__DEFAULT__DEVICES_1aae060e8f876384a80802cd5753643e96`
+- :ref:`exhale_typedef_namespace_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1a6874e9b2d750bcb78c3ed3ea925ee482`
 

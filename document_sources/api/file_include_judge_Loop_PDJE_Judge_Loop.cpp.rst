@@ -4,7 +4,7 @@
 File PDJE_Judge_Loop.cpp
 ========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_judge_Loop>` (``include/judge/Loop``)
+|exhale_lsh| :ref:`Parent directory <dir_include_judge_Loop>` (``include\judge\Loop``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_Judge_Loop.cpp
    :local:
    :backlinks: none
 
-Definition (``include/judge/Loop/PDJE_Judge_Loop.cpp``)
+Definition (``include\judge\Loop\PDJE_Judge_Loop.cpp``)
 -------------------------------------------------------
 
 

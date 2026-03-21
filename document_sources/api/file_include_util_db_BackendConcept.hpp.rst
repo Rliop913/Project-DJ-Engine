@@ -4,7 +4,7 @@
 File BackendConcept.hpp
 =======================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_util_db>` (``include/util/db``)
+|exhale_lsh| :ref:`Parent directory <dir_include_util_db>` (``include\util\db``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File BackendConcept.hpp
    :local:
    :backlinks: none
 
-Definition (``include/util/db/BackendConcept.hpp``)
+Definition (``include\util\db\BackendConcept.hpp``)
 ---------------------------------------------------
 
 
@@ -30,7 +30,7 @@ Includes
 --------
 
 
-- ``util/db/keyvalue/BackendConcept.hpp`` (:ref:`file_include_util_db_keyvalue_BackendConcept.hpp`)
+- ``util/db/keyvalue/BackendConcept.hpp``
 
 
 
@@ -50,11 +50,4 @@ Namespaces
 - :ref:`namespace_PDJE_UTIL`
 
 - :ref:`namespace_PDJE_UTIL__db`
-
-
-Variables
----------
-
-
-- :ref:`exhale_variable_namespacePDJE__UTIL_1_1db_1a59557c87079ab0460c94d35ea2f53143`
 

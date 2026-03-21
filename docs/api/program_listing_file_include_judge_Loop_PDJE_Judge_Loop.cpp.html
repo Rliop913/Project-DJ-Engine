@@ -185,14 +185,24 @@
 <span class="kt">void</span>
 <span class="n">Judge_Loop</span><span class="o">::</span><span class="n">EndEventLoop</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">use_event_switch</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<span class="w">    </span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">miss_event_switch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">use_event_thread</span><span class="o">-&gt;</span><span class="n">joinable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">use_event_switch</span><span class="p">.</span><span class="n">has_value</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">use_event_switch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">miss_event_switch</span><span class="p">.</span><span class="n">has_value</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">miss_event_switch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">use_event_thread</span><span class="p">.</span><span class="n">has_value</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">        </span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">use_event_thread</span><span class="o">-&gt;</span><span class="n">joinable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">use_event_thread</span><span class="o">-&gt;</span><span class="n">join</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">miss_event_thread</span><span class="o">-&gt;</span><span class="n">joinable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">miss_event_thread</span><span class="p">.</span><span class="n">has_value</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">        </span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">miss_event_thread</span><span class="o">-&gt;</span><span class="n">joinable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">miss_event_thread</span><span class="o">-&gt;</span><span class="n">join</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">use_event_thread</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">miss_event_thread</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">use_event_switch</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Event_Controls</span><span class="p">.</span><span class="n">miss_event_switch</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
 <span class="p">}</span>
 
 <span class="p">};</span><span class="w"> </span><span class="c1">// namespace PDJE_JUDGE</span>

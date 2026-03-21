@@ -4,7 +4,7 @@
 File Database.hpp
 =================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_util_db>` (``include/util/db``)
+|exhale_lsh| :ref:`Parent directory <dir_include_util_db>` (``include\util\db``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Database.hpp
    :local:
    :backlinks: none
 
-Definition (``include/util/db/Database.hpp``)
+Definition (``include\util\db\Database.hpp``)
 ---------------------------------------------
 
 
@@ -30,7 +30,7 @@ Includes
 --------
 
 
-- ``util/db/keyvalue/Database.hpp`` (:ref:`file_include_util_db_keyvalue_Database.hpp`)
+- ``util/db/keyvalue/Database.hpp``
 
 
 
@@ -56,5 +56,5 @@ Typedefs
 --------
 
 
-- :ref:`exhale_typedef_namespacePDJE__UTIL_1_1db_1aedc4479cc9089f6782ace5f698496d2e`
+- :ref:`exhale_typedef_namespace_p_d_j_e___u_t_i_l_1_1db_1ae9f58016e0d9976052730993dff29c01`
 

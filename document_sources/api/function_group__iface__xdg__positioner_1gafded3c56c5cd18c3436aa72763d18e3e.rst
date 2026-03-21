@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_positioner_set_gravity(struct xdg_positioner *, uint32_t)
+.. doxygenfunction:: xdg_positioner_set_gravity()
    :project: Project_DJ_Engine

@@ -56,6 +56,10 @@ Included By
 
 - :ref:`file_include_util_function_halide_GainBias.hpp`
 
+- :ref:`file_include_util_function_image_WaveformWebp.hpp`
+
+- :ref:`file_include_util_function_image_WebpWriter.hpp`
+
 - :ref:`file_include_util_function_scalar_Clamp.hpp`
 
 - :ref:`file_include_util_function_text_Slugify.hpp`

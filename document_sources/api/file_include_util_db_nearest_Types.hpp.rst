@@ -4,7 +4,7 @@
 File Types.hpp
 ==============
 
-|exhale_lsh| :ref:`Parent directory <dir_include_util_db_nearest>` (``include/util/db/nearest``)
+|exhale_lsh| :ref:`Parent directory <dir_include_util_db_nearest>` (``include\util\db\nearest``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Types.hpp
    :local:
    :backlinks: none
 
-Definition (``include/util/db/nearest/Types.hpp``)
+Definition (``include\util\db\nearest\Types.hpp``)
 --------------------------------------------------
 
 
@@ -32,7 +32,7 @@ Includes
 
 - ``optional``
 
-- ``util/db/DbTypes.hpp`` (:ref:`file_include_util_db_DbTypes.hpp`)
+- ``util/db/DbTypes.hpp``
 
 - ``vector``
 
@@ -64,16 +64,16 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structPDJE__UTIL_1_1db_1_1nearest_1_1Item`
+- :ref:`exhale_struct_struct_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_item`
 
-- :ref:`exhale_struct_structPDJE__UTIL_1_1db_1_1nearest_1_1SearchHit`
+- :ref:`exhale_struct_struct_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_search_hit`
 
-- :ref:`exhale_struct_structPDJE__UTIL_1_1db_1_1nearest_1_1SearchOptions`
+- :ref:`exhale_struct_struct_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_search_options`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef_namespacePDJE__UTIL_1_1db_1_1nearest_1a0cae0a740c071c4c732a342bb27041f1`
+- :ref:`exhale_typedef_namespace_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1a7a11d5866d55b0da3b669e1e0a316463`
 

@@ -4,7 +4,7 @@
 Program Listing for File TimeLineDiffMachine-MIX.cpp
 ====================================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_editor_TimeLine_DiffMachine_TimeLineDiffMachine-MIX.cpp>` (``include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-MIX.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_editor_TimeLine_DiffMachine_TimeLineDiffMachine-MIX.cpp>` (``include\core\editor\TimeLine\DiffMachine\TimeLineDiffMachine-MIX.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

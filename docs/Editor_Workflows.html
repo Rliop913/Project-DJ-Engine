@@ -339,6 +339,7 @@ state. For on-disk key names and binary translation details, use
 <li><p><cite>Undo()</cite></p></li>
 <li><p><cite>Redo()</cite></p></li>
 <li><p><cite>Go()</cite></p></li>
+<li><p><cite>GetDiff()</cite></p></li>
 <li><p><cite>GetLogWithJSONGraph()</cite></p></li>
 <li><p><cite>UpdateLog()</cite></p></li>
 </ul>
@@ -346,6 +347,7 @@ state. For on-disk key names and binary translation details, use
 <ul class="simple">
 <li><p><cite>Undo()</cite> and <cite>Redo()</cite> expose edit-history navigation.</p></li>
 <li><p><cite>Go()</cite> exposes a direct history/time-travel style jump.</p></li>
+<li><p><cite>GetDiff()</cite> exposes semantic added/removed data between two editor commits.</p></li>
 <li><p><cite>GetLogWithJSONGraph()</cite> exposes log data in a graph-oriented JSON form.</p></li>
 <li><p><cite>UpdateLog()</cite> refreshes the editor-side history/log state after you need a
 new view of the commit timeline.</p></li>
@@ -371,6 +373,36 @@ commit metadata with <cite>OID</cite>, <cite>BACK</cite>, <cite>AUTHOR</cite>, <
 <span class="n">editor</span><span class="o">-&gt;</span><span class="n">UpdateLog</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MIX</span><span class="o">&gt;</span><span class="p">();</span>
 </pre></div>
 </div>
+<p>For diff operations, compare two commit OIDs from the same timeline.</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">editor</span><span class="o">-&gt;</span><span class="n">UpdateLog</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MIX</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">graph</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nlohmann</span><span class="o">::</span><span class="n">json</span><span class="o">::</span><span class="n">parse</span><span class="p">(</span>
+<span class="w">    </span><span class="n">editor</span><span class="o">-&gt;</span><span class="n">GetLogWithJSONGraph</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MIX</span><span class="o">&gt;</span><span class="p">());</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">old_oid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">graph</span><span class="p">[</span><span class="s">&quot;LOGS&quot;</span><span class="p">].</span><span class="n">at</span><span class="p">(</span><span class="mi">0</span><span class="p">)[</span><span class="s">&quot;OID&quot;</span><span class="p">].</span><span class="n">get</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">new_oid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">graph</span><span class="p">[</span><span class="s">&quot;LOGS&quot;</span><span class="p">].</span><span class="n">at</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="s">&quot;OID&quot;</span><span class="p">].</span><span class="n">get</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="p">();</span>
+
+<span class="k">auto</span><span class="w"> </span><span class="n">mix_diff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">editor</span><span class="o">-&gt;</span><span class="n">GetDiff</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MIX</span><span class="o">&gt;</span><span class="p">(</span><span class="n">old_oid</span><span class="p">,</span><span class="w"> </span><span class="n">new_oid</span><span class="p">);</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">music_diff</span><span class="w"> </span><span class="o">=</span>
+<span class="w">    </span><span class="n">editor</span><span class="o">-&gt;</span><span class="n">GetDiff</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MUSIC</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;Song&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">old_oid</span><span class="p">,</span><span class="w"> </span><span class="n">new_oid</span><span class="p">);</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mix_diff</span><span class="p">.</span><span class="n">has_value</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">mix_diff</span><span class="o">-&gt;</span><span class="n">Empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">added</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">mix_diff</span><span class="o">-&gt;</span><span class="n">mixAdded</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// consume added MixArgs rows</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><cite>GetDiff()</cite> returns <cite>std::optional&lt;PDJE_TIMELINE::TimeLineSemanticDiffResult&gt;</cite>.
+Use <cite>has_value()</cite> to guard failure cases such as invalid OIDs or missing music
+targets, and then inspect the type-specific added/removed collections:</p>
+<ul class="simple">
+<li><p><cite>kvAdded</cite> / <cite>kvRemoved</cite></p></li>
+<li><p><cite>mixAdded</cite> / <cite>mixRemoved</cite></p></li>
+<li><p><cite>noteAdded</cite> / <cite>noteRemoved</cite></p></li>
+<li><p><cite>musicBpmAdded</cite> / <cite>musicBpmRemoved</cite></p></li>
+<li><p><cite>musicMetaAdded</cite> / <cite>musicMetaRemoved</cite></p></li>
+</ul>
+<p><cite>EDIT_ARG_MUSIC</cite> uses a separate overload that requires the music name as the
+first argument.</p>
 </section>
 <section id="persistence-workflow">
 <h2>Persistence Workflow<a class="headerlink" href="#persistence-workflow" title="Link to this heading"></a></h2>

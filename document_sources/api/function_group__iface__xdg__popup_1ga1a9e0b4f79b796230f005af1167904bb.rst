@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_popup_add_listener(struct xdg_popup *, const struct xdg_popup_listener *, void *)
+.. doxygenfunction:: xdg_popup_add_listener()
    :project: Project_DJ_Engine

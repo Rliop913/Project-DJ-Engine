@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_toplevel_set_title(struct xdg_toplevel *, const char *)
+.. doxygenfunction:: xdg_toplevel_set_title()
    :project: Project_DJ_Engine

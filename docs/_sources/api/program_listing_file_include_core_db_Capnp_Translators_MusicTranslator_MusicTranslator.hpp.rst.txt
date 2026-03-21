@@ -21,7 +21,7 @@ Program Listing for File MusicTranslator.hpp
    #include "FrameCalc.hpp"
    
    #include "PDJE_EXPORT_SETTER.hpp"
-   class PDJE_API MusicTranslator {
+   class MusicTranslator {
      public:
        BpmStruct bpms;
        bool

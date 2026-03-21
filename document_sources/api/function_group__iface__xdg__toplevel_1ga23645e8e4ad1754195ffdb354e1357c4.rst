@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_toplevel_set_app_id(struct xdg_toplevel *, const char *)
+.. doxygenfunction:: xdg_toplevel_set_app_id()
    :project: Project_DJ_Engine

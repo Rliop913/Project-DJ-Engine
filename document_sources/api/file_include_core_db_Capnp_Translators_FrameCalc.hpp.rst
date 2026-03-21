@@ -4,7 +4,7 @@
 File FrameCalc.hpp
 ==================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_db_Capnp_Translators>` (``include/core/db/Capnp/Translators``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_db_Capnp_Translators>` (``include\core\db\Capnp\Translators``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File FrameCalc.hpp
    :local:
    :backlinks: none
 
-Definition (``include/core/db/Capnp/Translators/FrameCalc.hpp``)
+Definition (``include\core\db\Capnp\Translators\FrameCalc.hpp``)
 ----------------------------------------------------------------
 
 
@@ -44,13 +44,15 @@ Included By
 -----------
 
 
+- :ref:`file_include_core_MainObjects_audioPlayer_audioCallbacks.cpp`
+
 - :ref:`file_include_core_audioRender_ManualMix_ManualMix.hpp`
 
 - :ref:`file_include_core_audioRender_ManualMix_MusicControlPanel.hpp`
 
-- :ref:`file_include_core_audioRender_ManualMix_PredictMusic.hpp`
-
 - :ref:`file_include_core_audioRender_ManualMix_PreLoadedMusic_PreLoadedMusic.hpp`
+
+- :ref:`file_include_core_audioRender_ManualMix_PredictMusic.hpp`
 
 - :ref:`file_include_core_audioRender_MixMachine_EFFECT_EFFECTS.hpp`
 
@@ -64,8 +66,6 @@ Included By
 
 - :ref:`file_include_core_db_Capnp_Translators_NoteTranslator_NoteTranslator.hpp`
 
-- :ref:`file_include_core_MainObjects_audioPlayer_audioCallbacks.cpp`
-
 
 
 
@@ -73,12 +73,12 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structMixStruct`
+- :ref:`exhale_struct_struct_mix_struct`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef_FrameCalc_8hpp_1afaba0c56b304d05ee34bd4cc22319217`
+- :ref:`exhale_typedef__frame_calc_8hpp_1a4ae0f789157647f4609ec87fb5b58e5a`
 

@@ -4,7 +4,7 @@
 File NameGen.hpp
 ================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_IPC_common>` (``include/input/IPC/common``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_IPC_common>` (``include\input\IPC\common``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File NameGen.hpp
    :local:
    :backlinks: none
 
-Definition (``include/input/IPC/common/NameGen.hpp``)
+Definition (``include\input\IPC\common\NameGen.hpp``)
 -----------------------------------------------------
 
 
@@ -62,5 +62,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_classPDJE__CRYPTO_1_1RANDOM__GEN`
+- :ref:`exhale_class_class_p_d_j_e___c_r_y_p_t_o_1_1_r_a_n_d_o_m___g_e_n`
 

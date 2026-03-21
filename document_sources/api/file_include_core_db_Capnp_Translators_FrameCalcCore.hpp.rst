@@ -4,7 +4,7 @@
 File FrameCalcCore.hpp
 ======================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_db_Capnp_Translators>` (``include/core/db/Capnp/Translators``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_db_Capnp_Translators>` (``include\core\db\Capnp\Translators``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File FrameCalcCore.hpp
    :local:
    :backlinks: none
 
-Definition (``include/core/db/Capnp/Translators/FrameCalcCore.hpp``)
+Definition (``include\core\db\Capnp\Translators\FrameCalcCore.hpp``)
 --------------------------------------------------------------------
 
 
@@ -64,29 +64,29 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structBpmFragment`
+- :ref:`exhale_struct_struct_bpm_fragment`
 
-- :ref:`exhale_struct_structBpmStruct`
+- :ref:`exhale_struct_struct_bpm_struct`
 
 
 Functions
 ---------
 
 
-- :ref:`exhale_function_namespaceFrameCalc_1a65ae10119a1939c98d5e6fc981772b7c`
+- :ref:`exhale_function_namespace_frame_calc_1a65ae10119a1939c98d5e6fc981772b7c`
 
 
 Defines
 -------
 
 
-- :ref:`exhale_define_FrameCalcCore_8hpp_1a9fda6fc883a43c8152d04158950473e1`
+- :ref:`exhale_define__frame_calc_core_8hpp_1a9fda6fc883a43c8152d04158950473e1`
 
-- :ref:`exhale_define_FrameCalcCore_8hpp_1ace6a11e892466500d47d1f45f042bc53`
+- :ref:`exhale_define__frame_calc_core_8hpp_1ace6a11e892466500d47d1f45f042bc53`
 
-- :ref:`exhale_define_FrameCalcCore_8hpp_1ae4044ba6c1478138f538dd783e4f15a8`
+- :ref:`exhale_define__frame_calc_core_8hpp_1ae4044ba6c1478138f538dd783e4f15a8`
 
-- :ref:`exhale_define_FrameCalcCore_8hpp_1a8d49b592a3ad78882f8a1b8988043f51`
+- :ref:`exhale_define__frame_calc_core_8hpp_1a8d49b592a3ad78882f8a1b8988043f51`
 
-- :ref:`exhale_define_FrameCalcCore_8hpp_1a538e0cad3acb787a49e16b1e53787610`
+- :ref:`exhale_define__frame_calc_core_8hpp_1a538e0cad3acb787a49e16b1e53787610`
 

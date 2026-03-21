@@ -17,4 +17,4 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_namespaceFrameCalc_1a65ae10119a1939c98d5e6fc981772b7c`
+- :ref:`exhale_function_namespace_frame_calc_1a65ae10119a1939c98d5e6fc981772b7c`

@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_positioner_set_user_data(struct xdg_positioner *, void *)
+.. doxygenfunction:: xdg_positioner_set_user_data()
    :project: Project_DJ_Engine
