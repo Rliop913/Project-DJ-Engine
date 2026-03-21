@@ -4,7 +4,7 @@
 Program Listing for File Keyboard.cpp
 =====================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_judge_Loop_Match_Keyboard.cpp>` (``include\judge\Loop\Match\Keyboard.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_judge_Loop_Match_Keyboard.cpp>` (``include/judge/Loop/Match/Keyboard.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

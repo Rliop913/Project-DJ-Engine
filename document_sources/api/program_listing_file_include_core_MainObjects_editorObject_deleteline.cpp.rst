@@ -4,7 +4,7 @@
 Program Listing for File deleteline.cpp
 =======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_MainObjects_editorObject_deleteline.cpp>` (``include\core\MainObjects\editorObject\deleteline.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_MainObjects_editorObject_deleteline.cpp>` (``include/core/MainObjects/editorObject/deleteline.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

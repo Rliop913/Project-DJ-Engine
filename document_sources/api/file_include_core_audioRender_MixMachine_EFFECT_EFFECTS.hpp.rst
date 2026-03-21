@@ -4,7 +4,7 @@
 File EFFECTS.hpp
 ================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_MixMachine_EFFECT>` (``include\core\audioRender\MixMachine\EFFECT``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_MixMachine_EFFECT>` (``include/core/audioRender/MixMachine/EFFECT``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File EFFECTS.hpp
    :local:
    :backlinks: none
 
-Definition (``include\core\audioRender\MixMachine\EFFECT\EFFECTS.hpp``)
+Definition (``include/core/audioRender/MixMachine/EFFECT/EFFECTS.hpp``)
 -----------------------------------------------------------------------
 
 
@@ -83,9 +83,9 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_faust_d_type`
+- :ref:`exhale_class_classFaustDType`
 
-- :ref:`exhale_class_class_faust_effects`
+- :ref:`exhale_class_classFaustEffects`
 
-- :ref:`exhale_class_class_faust_object`
+- :ref:`exhale_class_classFaustObject`
 

@@ -4,7 +4,7 @@
 Program Listing for File Halide_CodeSample.cpp
 ==============================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_util_Halide_Codes_Halide_CodeSample.cpp>` (``include\util\Halide_Codes\Halide_CodeSample.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_util_Halide_Codes_Halide_CodeSample.cpp>` (``include/util/Halide_Codes/Halide_CodeSample.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

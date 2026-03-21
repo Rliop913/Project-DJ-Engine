@@ -4,7 +4,7 @@
 File Halide_CodeSample.cpp
 ==========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_util_Halide_Codes>` (``include\util\Halide_Codes``)
+|exhale_lsh| :ref:`Parent directory <dir_include_util_Halide_Codes>` (``include/util/Halide_Codes``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Halide_CodeSample.cpp
    :local:
    :backlinks: none
 
-Definition (``include\util\Halide_Codes\Halide_CodeSample.cpp``)
+Definition (``include/util/Halide_Codes/Halide_CodeSample.cpp``)
 ----------------------------------------------------------------
 
 
@@ -48,5 +48,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_sample_pipeline`
+- :ref:`exhale_class_classSamplePipeline`
 

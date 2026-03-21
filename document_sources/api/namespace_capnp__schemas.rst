@@ -26,6 +26,6 @@ Typedefs
 --------
 
 
-- :ref:`exhale_typedef_namespacecapnp_1_1schemas_1a28016f8cf19daee7e05b37b539124533`
+- :ref:`exhale_typedef_namespacecapnp_1_1schemas_1abf9c31133e491d217677e42c5f93baff`
 
-- :ref:`exhale_typedef_namespacecapnp_1_1schemas_1a123cf68bf6bfbda0bf27469dcb63e4c1`
+- :ref:`exhale_typedef_namespacecapnp_1_1schemas_1afb37d40a22074eb9c5304ed605c09b5d`

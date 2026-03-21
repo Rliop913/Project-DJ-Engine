@@ -4,7 +4,7 @@
 Program Listing for File MusicJsonHelper.hpp
 ============================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_editor_TimeLine_JSONWrap_MusicJsonHelper.hpp>` (``include\core\editor\TimeLine\JSONWrap\MusicJsonHelper.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_editor_TimeLine_JSONWrap_MusicJsonHelper.hpp>` (``include/core/editor/TimeLine/JSONWrap/MusicJsonHelper.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

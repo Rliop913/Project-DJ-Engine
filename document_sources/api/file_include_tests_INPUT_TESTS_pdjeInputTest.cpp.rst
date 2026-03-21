@@ -4,7 +4,7 @@
 File pdjeInputTest.cpp
 ======================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_tests_INPUT_TESTS>` (``include\tests\INPUT_TESTS``)
+|exhale_lsh| :ref:`Parent directory <dir_include_tests_INPUT_TESTS>` (``include/tests/INPUT_TESTS``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File pdjeInputTest.cpp
    :local:
    :backlinks: none
 
-Definition (``include\tests\INPUT_TESTS\pdjeInputTest.cpp``)
+Definition (``include/tests/INPUT_TESTS/pdjeInputTest.cpp``)
 ------------------------------------------------------------
 
 
@@ -51,5 +51,5 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_pdje_input_test_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4`
+- :ref:`exhale_function_pdjeInputTest_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4`
 

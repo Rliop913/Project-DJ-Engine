@@ -5,12 +5,12 @@ Directory common
 ================
 
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_IPC>` (``include\input\IPC``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_IPC>` (``include/input/IPC``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include\input\IPC\common``
+*Directory path:* ``include/input/IPC/common``
 
 
 Files

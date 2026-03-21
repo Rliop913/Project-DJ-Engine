@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="GainBias_8hpp" kind="file" language="C++">
     <compoundname>GainBias.hpp</compoundname>
     <includes refid="Result_8hpp" local="yes">util/common/Result.hpp</includes>
@@ -9,6 +9,12 @@
     <includes local="no">vector</includes>
     <includedby refid="PDJE__Util_8hpp" local="yes">include/util/PDJE_Util.hpp</includedby>
     <incdepgraph>
+      <node id="9">
+        <label>cstdint</label>
+      </node>
+      <node id="5">
+        <label>string</label>
+      </node>
       <node id="2">
         <label>util/common/Result.hpp</label>
         <link refid="Result_8hpp"/>
@@ -17,6 +23,23 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
+      <node id="4">
+        <label>util/common/StatusCode.hpp</label>
+        <link refid="StatusCode_8hpp"/>
+      </node>
+      <node id="10">
+        <label>vector</label>
+      </node>
+      <node id="6">
+        <label>utility</label>
+      </node>
+      <node id="7">
+        <label>util/function/FunctionContext.hpp</label>
+        <link refid="FunctionContext_8hpp"/>
+      </node>
+      <node id="8">
+        <label>cstddef</label>
+      </node>
       <node id="3">
         <label>util/common/Status.hpp</label>
         <link refid="Status_8hpp"/>
@@ -24,14 +47,6 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-      </node>
-      <node id="4">
-        <label>util/common/StatusCode.hpp</label>
-        <link refid="StatusCode_8hpp"/>
-      </node>
-      <node id="7">
-        <label>util/function/FunctionContext.hpp</label>
-        <link refid="FunctionContext_8hpp"/>
       </node>
       <node id="1">
         <label>include/util/function/halide/GainBias.hpp</label>
@@ -46,21 +61,6 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-      </node>
-      <node id="8">
-        <label>cstddef</label>
-      </node>
-      <node id="9">
-        <label>cstdint</label>
-      </node>
-      <node id="5">
-        <label>string</label>
-      </node>
-      <node id="6">
-        <label>utility</label>
-      </node>
-      <node id="10">
-        <label>vector</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
@@ -118,7 +118,7 @@
 <codeline lineno="30"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;GrayImage&gt;</ref></highlight></codeline>
-<codeline lineno="33" refid="namespacePDJE__UTIL_1_1function_1_1halide_1a5c7356e55195cf9a0b0c9126ea5beffa" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1_1halide_1a5c7356e55195cf9a0b0c9126ea5beffa" kindref="member">apply_gain_bias</ref>(<ref refid="structPDJE__UTIL_1_1function_1_1halide_1_1GrayImageView" kindref="compound">GrayImageView</ref><sp/>input,</highlight></codeline>
+<codeline lineno="33" refid="namespacePDJE__UTIL_1_1function_1_1halide_1abbac24902b0aa4525c4816494d519266" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1_1halide_1abbac24902b0aa4525c4816494d519266" kindref="member">apply_gain_bias</ref>(<ref refid="structPDJE__UTIL_1_1function_1_1halide_1_1GrayImageView" kindref="compound">GrayImageView</ref><sp/>input,</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1function_1_1halide_1_1GainBiasArgs" kindref="compound">GainBiasArgs</ref><sp/>&amp;args,</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPDJE__UTIL_1_1function_1_1EvalOptions" kindref="compound">function::EvalOptions</ref><sp/>options<sp/>=<sp/>{})</highlight></codeline>
 <codeline lineno="36"><highlight class="normal">{</highlight></codeline>
@@ -139,8 +139,8 @@
 <codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;GrayImageView.stride<sp/>must<sp/>be<sp/>greater<sp/>than<sp/>or<sp/>equal<sp/>to<sp/>width.&quot;</highlight><highlight class="normal"><sp/>});</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structPDJE__UTIL_1_1function_1_1halide_1_1GrayImage" kindref="compound">GrayImage</ref><sp/>output;</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>output.<ref refid="structPDJE__UTIL_1_1function_1_1halide_1_1GrayImage_1aa9b0a2cd603c695c9229adc4d000ffb8" kindref="member">width</ref><sp/><sp/>=<sp/>input.<ref refid="structPDJE__UTIL_1_1function_1_1halide_1_1GrayImageView_1ac247929ec7cc7b7d9e6309c8723460f6" kindref="member">width</ref>;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>GrayImage<sp/>output;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>output.width<sp/><sp/>=<sp/>input.<ref refid="structPDJE__UTIL_1_1function_1_1halide_1_1GrayImageView_1ac247929ec7cc7b7d9e6309c8723460f6" kindref="member">width</ref>;</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>output.height<sp/>=<sp/>input.<ref refid="structPDJE__UTIL_1_1function_1_1halide_1_1GrayImageView_1a33be066651b78a51ee472243dda46943" kindref="member">height</ref>;</highlight></codeline>
 <codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>output.stride<sp/>=<sp/>input.<ref refid="structPDJE__UTIL_1_1function_1_1halide_1_1GrayImageView_1ac247929ec7cc7b7d9e6309c8723460f6" kindref="member">width</ref>;</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>output.pixels.resize(output.width<sp/>*<sp/>output.height);</highlight></codeline>
@@ -150,7 +150,7 @@
 <codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>src_index<sp/>=<sp/>y<sp/>*<sp/>input.<ref refid="structPDJE__UTIL_1_1function_1_1halide_1_1GrayImageView_1a8881e49ae3120a0a84115c70fe6653da" kindref="member">stride</ref><sp/>+<sp/>x;</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>dst_index<sp/>=<sp/>y<sp/>*<sp/>output.stride<sp/>+<sp/>x;</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>value<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(input.<ref refid="structPDJE__UTIL_1_1function_1_1halide_1_1GrayImageView_1aab16ceb6403f58e85b308e0451421f80" kindref="member">data</ref>[src_index])<sp/>*<sp/>args.<ref refid="structPDJE__UTIL_1_1function_1_1halide_1_1GainBiasArgs_1a2d5c6aaf0c91c600212098f8b67a27a8" kindref="member">gain</ref><sp/>+<sp/>args.<ref refid="structPDJE__UTIL_1_1function_1_1halide_1_1GainBiasArgs_1a53e869864b3bf21f9c066002c03c97a3" kindref="member">bias</ref>;</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(args.<ref refid="structPDJE__UTIL_1_1function_1_1halide_1_1GainBiasArgs_1a6de8cbb0fe9675e84b79ddd187f5d714" kindref="member">clamp</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(args.<ref refid="structPDJE__UTIL_1_1function_1_1halide_1_1GainBiasArgs_1a6de8cbb0fe9675e84b79ddd187f5d714" kindref="member">clamp</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(value<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>value<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(value<sp/>&gt;<sp/>255)<sp/>{</highlight></codeline>

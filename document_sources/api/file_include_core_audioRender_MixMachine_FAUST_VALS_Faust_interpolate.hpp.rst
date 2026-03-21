@@ -4,7 +4,7 @@
 File Faust_interpolate.hpp
 ==========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_MixMachine_FAUST_VALS>` (``include\core\audioRender\MixMachine\FAUST_VALS``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_MixMachine_FAUST_VALS>` (``include/core/audioRender/MixMachine/FAUST_VALS``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Faust_interpolate.hpp
    :local:
    :backlinks: none
 
-Definition (``include\core\audioRender\MixMachine\FAUST_VALS\Faust_interpolate.hpp``)
+Definition (``include/core/audioRender/MixMachine/FAUST_VALS/Faust_interpolate.hpp``)
 -------------------------------------------------------------------------------------
 
 
@@ -67,5 +67,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_faust_interpolate`
+- :ref:`exhale_class_classFaustInterpolate`
 

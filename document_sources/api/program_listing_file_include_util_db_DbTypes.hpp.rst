@@ -4,7 +4,7 @@
 Program Listing for File DbTypes.hpp
 ====================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_util_db_DbTypes.hpp>` (``include\util\db\DbTypes.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_util_db_DbTypes.hpp>` (``include/util/db/DbTypes.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

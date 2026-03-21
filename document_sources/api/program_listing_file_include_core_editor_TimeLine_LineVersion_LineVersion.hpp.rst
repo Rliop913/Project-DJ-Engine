@@ -4,7 +4,7 @@
 Program Listing for File LineVersion.hpp
 ========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_editor_TimeLine_LineVersion_LineVersion.hpp>` (``include\core\editor\TimeLine\LineVersion\LineVersion.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_editor_TimeLine_LineVersion_LineVersion.hpp>` (``include/core/editor/TimeLine/LineVersion/LineVersion.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,6 +13,7 @@ Program Listing for File LineVersion.hpp
    #pragma once
    #include "GitDatas.hpp"
    #include "GitRAII.hpp"
+   #include "PDJE_EXPORT_SETTER.hpp"
    #include <git2/commit.h>
    #include <git2/oid.h>
    namespace PDJE_TIMELINE {

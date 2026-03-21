@@ -1,22 +1,21 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex" kind="class" language="C++" prot="public">
     <compoundname>PDJE_UTIL::db::nearest::NearestNeighborIndex</compoundname>
     <includes refid="Index_8hpp" local="no">Index.hpp</includes>
     <templateparamlist>
       <param>
-        <type>NearestNeighborBackendConcept</type>
+        <type><ref refid="namespacePDJE__UTIL_1_1db_1_1nearest_1a3b329ace73fe72e0496c10e3c393fadc" kindref="member">NearestNeighborBackendConcept</ref></type>
         <declname>Backend</declname>
         <defname>Backend</defname>
       </param>
     </templateparamlist>
-    <sectiondef kind="public-type">
+      <sectiondef kind="public-type">
       <memberdef kind="typedef" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a07f6965292fe5c22d0ba5e030791abd2" prot="public" static="no">
         <type>Backend</type>
         <definition>using PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::backend_type =  Backend</definition>
         <argsstring></argsstring>
         <name>backend_type</name>
-        <qualifiedname>PDJE_UTIL::db::nearest::NearestNeighborIndex::backend_type</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -30,7 +29,6 @@
         <definition>using PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::config_type =  typename Backend::config_type</definition>
         <argsstring></argsstring>
         <name>config_type</name>
-        <qualifiedname>PDJE_UTIL::db::nearest::NearestNeighborIndex::config_type</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -39,14 +37,13 @@
         </inbodydescription>
         <location file="include/util/db/nearest/Index.hpp" line="12" column="5" bodyfile="include/util/db/nearest/Index.hpp" bodystart="12" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="private-attrib">
+      </sectiondef>
+      <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a5a04fb65040f092cb8d4eca83dae1ce8" prot="private" static="no" mutable="no">
         <type>Backend</type>
         <definition>Backend PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::backend_</definition>
         <argsstring></argsstring>
         <name>backend_</name>
-        <qualifiedname>PDJE_UTIL::db::nearest::NearestNeighborIndex::backend_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -60,7 +57,6 @@
         <definition>bool PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::is_open_</definition>
         <argsstring></argsstring>
         <name>is_open_</name>
-        <qualifiedname>PDJE_UTIL::db::nearest::NearestNeighborIndex::is_open_</qualifiedname>
         <initializer>= false</initializer>
         <briefdescription>
         </briefdescription>
@@ -70,14 +66,13 @@
         </inbodydescription>
         <location file="include/util/db/nearest/Index.hpp" line="138" column="13" bodyfile="include/util/db/nearest/Index.hpp" bodystart="138" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a64963bd16d4b894d82e25559857b832a" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1aecfd3e059949c2b0a455675b6057d770" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
-        <definition>static common::Result&lt; void &gt; PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::create</definition>
+        <definition>static common::Result&lt;void&gt; PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::create</definition>
         <argsstring>(const config_type &amp;cfg)</argsstring>
         <name>create</name>
-        <qualifiedname>PDJE_UTIL::db::nearest::NearestNeighborIndex::create</qualifiedname>
         <param>
           <type>const <ref refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1ad3701d425da9ff83d03a6016959c428e" kindref="member">config_type</ref> &amp;</type>
           <declname>cfg</declname>
@@ -90,12 +85,11 @@
         </inbodydescription>
         <location file="include/util/db/nearest/Index.hpp" line="15" column="5" bodyfile="include/util/db/nearest/Index.hpp" bodystart="15" bodyend="18"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1ac2af88e5666c7b4861f876a5b02200e2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a606bf0a0352c6c528fe2cf509506ad73" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
-        <definition>static common::Result&lt; void &gt; PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::destroy</definition>
+        <definition>static common::Result&lt;void&gt; PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::destroy</definition>
         <argsstring>(const config_type &amp;cfg)</argsstring>
         <name>destroy</name>
-        <qualifiedname>PDJE_UTIL::db::nearest::NearestNeighborIndex::destroy</qualifiedname>
         <param>
           <type>const <ref refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1ad3701d425da9ff83d03a6016959c428e" kindref="member">config_type</ref> &amp;</type>
           <declname>cfg</declname>
@@ -108,12 +102,11 @@
         </inbodydescription>
         <location file="include/util/db/nearest/Index.hpp" line="21" column="5" bodyfile="include/util/db/nearest/Index.hpp" bodystart="21" bodyend="24"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a4eb22245f0e0885496492903839b95ee" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1aaf5139cbe568065a709f45694ff868a0" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; <ref refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex" kindref="compound">NearestNeighborIndex</ref> &gt;</type>
-        <definition>static common::Result&lt; NearestNeighborIndex &gt; PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::open</definition>
+        <definition>static common::Result&lt;NearestNeighborIndex&gt; PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::open</definition>
         <argsstring>(const config_type &amp;cfg)</argsstring>
         <name>open</name>
-        <qualifiedname>PDJE_UTIL::db::nearest::NearestNeighborIndex::open</qualifiedname>
         <param>
           <type>const <ref refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1ad3701d425da9ff83d03a6016959c428e" kindref="member">config_type</ref> &amp;</type>
           <declname>cfg</declname>
@@ -126,14 +119,13 @@
         </inbodydescription>
         <location file="include/util/db/nearest/Index.hpp" line="27" column="5" bodyfile="include/util/db/nearest/Index.hpp" bodystart="27" bodyend="36"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-func">
+      </sectiondef>
+      <sectiondef kind="public-func">
       <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1af175889a4d92089bb7d5aa73a06faf3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::NearestNeighborIndex</definition>
         <argsstring>()=default</argsstring>
         <name>NearestNeighborIndex</name>
-        <qualifiedname>PDJE_UTIL::db::nearest::NearestNeighborIndex::NearestNeighborIndex</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -147,7 +139,6 @@
         <definition>PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::NearestNeighborIndex</definition>
         <argsstring>(NearestNeighborIndex &amp;&amp;other) noexcept</argsstring>
         <name>NearestNeighborIndex</name>
-        <qualifiedname>PDJE_UTIL::db::nearest::NearestNeighborIndex::NearestNeighborIndex</qualifiedname>
         <param>
           <type><ref refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex" kindref="compound">NearestNeighborIndex</ref> &amp;&amp;</type>
           <declname>other</declname>
@@ -160,12 +151,11 @@
         </inbodydescription>
         <location file="include/util/db/nearest/Index.hpp" line="39" column="5" bodyfile="include/util/db/nearest/Index.hpp" bodystart="39" bodyend="43"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a1e2a8da770f13d26f466250f75a13995" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a786c6843402e76f23d5cd47290c94dc8" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex" kindref="compound">NearestNeighborIndex</ref> &amp;</type>
-        <definition>NearestNeighborIndex &amp; PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::operator=</definition>
+        <definition>NearestNeighborIndex&amp; PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::operator=</definition>
         <argsstring>(NearestNeighborIndex &amp;&amp;other) noexcept</argsstring>
         <name>operator=</name>
-        <qualifiedname>PDJE_UTIL::db::nearest::NearestNeighborIndex::operator=</qualifiedname>
         <param>
           <type><ref refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex" kindref="compound">NearestNeighborIndex</ref> &amp;&amp;</type>
           <declname>other</declname>
@@ -183,7 +173,6 @@
         <definition>PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::NearestNeighborIndex</definition>
         <argsstring>(const NearestNeighborIndex &amp;)=delete</argsstring>
         <name>NearestNeighborIndex</name>
-        <qualifiedname>PDJE_UTIL::db::nearest::NearestNeighborIndex::NearestNeighborIndex</qualifiedname>
         <param>
           <type>const <ref refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex" kindref="compound">NearestNeighborIndex</ref> &amp;</type>
         </param>
@@ -195,12 +184,11 @@
         </inbodydescription>
         <location file="include/util/db/nearest/Index.hpp" line="58" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a1c6e4dfe5ba48074383a8fb87bf98a6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a663ab12c00dbb451a16774f1adca9e29" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex" kindref="compound">NearestNeighborIndex</ref> &amp;</type>
-        <definition>NearestNeighborIndex &amp; PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::operator=</definition>
+        <definition>NearestNeighborIndex&amp; PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::operator=</definition>
         <argsstring>(const NearestNeighborIndex &amp;)=delete</argsstring>
         <name>operator=</name>
-        <qualifiedname>PDJE_UTIL::db::nearest::NearestNeighborIndex::operator=</qualifiedname>
         <param>
           <type>const <ref refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex" kindref="compound">NearestNeighborIndex</ref> &amp;</type>
         </param>
@@ -217,7 +205,6 @@
         <definition>PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::~NearestNeighborIndex</definition>
         <argsstring>()</argsstring>
         <name>~NearestNeighborIndex</name>
-        <qualifiedname>PDJE_UTIL::db::nearest::NearestNeighborIndex::~NearestNeighborIndex</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -226,12 +213,11 @@
         </inbodydescription>
         <location file="include/util/db/nearest/Index.hpp" line="62" column="5" bodyfile="include/util/db/nearest/Index.hpp" bodystart="62" bodyend="67"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a8d12c19ee2a00244088328647d0eafd9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1ab609a59712dcfa426720fc157a2c1b7b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
-        <definition>common::Result&lt; void &gt; PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::close</definition>
+        <definition>common::Result&lt;void&gt; PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::close</definition>
         <argsstring>()</argsstring>
         <name>close</name>
-        <qualifiedname>PDJE_UTIL::db::nearest::NearestNeighborIndex::close</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -245,7 +231,6 @@
         <definition>bool PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::is_open</definition>
         <argsstring>() const noexcept</argsstring>
         <name>is_open</name>
-        <qualifiedname>PDJE_UTIL::db::nearest::NearestNeighborIndex::is_open</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -254,12 +239,11 @@
         </inbodydescription>
         <location file="include/util/db/nearest/Index.hpp" line="83" column="5" bodyfile="include/util/db/nearest/Index.hpp" bodystart="83" bodyend="86"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a617317761d2b78b3e0ff81118778afee" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a052ebb05041347988a99715aba48a406" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; bool &gt;</type>
-        <definition>common::Result&lt; bool &gt; PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::contains</definition>
+        <definition>common::Result&lt;bool&gt; PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::contains</definition>
         <argsstring>(std::string_view id) const</argsstring>
         <name>contains</name>
-        <qualifiedname>PDJE_UTIL::db::nearest::NearestNeighborIndex::contains</qualifiedname>
         <param>
           <type>std::string_view</type>
           <declname>id</declname>
@@ -272,12 +256,11 @@
         </inbodydescription>
         <location file="include/util/db/nearest/Index.hpp" line="89" column="5" bodyfile="include/util/db/nearest/Index.hpp" bodystart="89" bodyend="92"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a0ff78a20be661264d8485249f1cf3361" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1afa3ae59b603cebd95a655da4c6ac6b4b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; <ref refid="structPDJE__UTIL_1_1db_1_1nearest_1_1Item" kindref="compound">Item</ref> &gt;</type>
-        <definition>common::Result&lt; Item &gt; PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::get_item</definition>
+        <definition>common::Result&lt;Item&gt; PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::get_item</definition>
         <argsstring>(std::string_view id) const</argsstring>
         <name>get_item</name>
-        <qualifiedname>PDJE_UTIL::db::nearest::NearestNeighborIndex::get_item</qualifiedname>
         <param>
           <type>std::string_view</type>
           <declname>id</declname>
@@ -290,12 +273,11 @@
         </inbodydescription>
         <location file="include/util/db/nearest/Index.hpp" line="95" column="5" bodyfile="include/util/db/nearest/Index.hpp" bodystart="95" bodyend="98"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a613c1854e5df8388f49fc6b626264d18" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a1e49e7cc0d4b03a0f28900acf3b940b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
-        <definition>common::Result&lt; void &gt; PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::upsert_item</definition>
+        <definition>common::Result&lt;void&gt; PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::upsert_item</definition>
         <argsstring>(const Item &amp;item)</argsstring>
         <name>upsert_item</name>
-        <qualifiedname>PDJE_UTIL::db::nearest::NearestNeighborIndex::upsert_item</qualifiedname>
         <param>
           <type>const <ref refid="structPDJE__UTIL_1_1db_1_1nearest_1_1Item" kindref="compound">Item</ref> &amp;</type>
           <declname>item</declname>
@@ -308,12 +290,11 @@
         </inbodydescription>
         <location file="include/util/db/nearest/Index.hpp" line="101" column="5" bodyfile="include/util/db/nearest/Index.hpp" bodystart="101" bodyend="104"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a836b416f70e9b54316e6d23e3857ca55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a4f71e44eb157154381c52aa7694d09a8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
-        <definition>common::Result&lt; void &gt; PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::erase_item</definition>
+        <definition>common::Result&lt;void&gt; PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::erase_item</definition>
         <argsstring>(std::string_view id)</argsstring>
         <name>erase_item</name>
-        <qualifiedname>PDJE_UTIL::db::nearest::NearestNeighborIndex::erase_item</qualifiedname>
         <param>
           <type>std::string_view</type>
           <declname>id</declname>
@@ -326,12 +307,11 @@
         </inbodydescription>
         <location file="include/util/db/nearest/Index.hpp" line="107" column="5" bodyfile="include/util/db/nearest/Index.hpp" bodystart="107" bodyend="110"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1aae36e0a131785b7647ff7f6667f7c36a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1ab107847b77a5ff2087d4e454452749cd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; std::vector&lt; <ref refid="structPDJE__UTIL_1_1db_1_1nearest_1_1SearchHit" kindref="compound">SearchHit</ref> &gt; &gt;</type>
-        <definition>common::Result&lt; std::vector&lt; SearchHit &gt; &gt; PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::search</definition>
+        <definition>common::Result&lt;std::vector&lt;SearchHit&gt; &gt; PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::search</definition>
         <argsstring>(std::span&lt; const float &gt; query, SearchOptions options={}) const</argsstring>
         <name>search</name>
-        <qualifiedname>PDJE_UTIL::db::nearest::NearestNeighborIndex::search</qualifiedname>
         <param>
           <type>std::span&lt; const float &gt;</type>
           <declname>query</declname>
@@ -349,12 +329,11 @@
         </inbodydescription>
         <location file="include/util/db/nearest/Index.hpp" line="113" column="5" bodyfile="include/util/db/nearest/Index.hpp" bodystart="113" bodyend="116"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a15787ffb638557512afcaf078b41e36d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; std::vector&lt; <ref refid="namespacePDJE__UTIL_1_1db_1aedbff324bfcd10a0857fd98f47045ba1" kindref="member">Key</ref> &gt; &gt;</type>
-        <definition>common::Result&lt; std::vector&lt; Key &gt; &gt; PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::list_keys</definition>
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1ac913a821d35ffd4c3aeb968ed0f68802" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; std::vector&lt; <ref refid="namespacePDJE__UTIL_1_1db_1aaa69bb1e1ba3230da8fb606c82d3ebc7" kindref="member">Key</ref> &gt; &gt;</type>
+        <definition>common::Result&lt;std::vector&lt;Key&gt; &gt; PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::list_keys</definition>
         <argsstring>() const</argsstring>
         <name>list_keys</name>
-        <qualifiedname>PDJE_UTIL::db::nearest::NearestNeighborIndex::list_keys</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -363,12 +342,11 @@
         </inbodydescription>
         <location file="include/util/db/nearest/Index.hpp" line="119" column="5" bodyfile="include/util/db/nearest/Index.hpp" bodystart="119" bodyend="122"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a5b10afae9ec16fdf981871ac3c86d623" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1ac60fcc1f4da0b3436ca038a81842fd91" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a07f6965292fe5c22d0ba5e030791abd2" kindref="member">backend_type</ref> &amp;</type>
-        <definition>backend_type &amp; PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::backend</definition>
+        <definition>backend_type&amp; PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::backend</definition>
         <argsstring>() noexcept</argsstring>
         <name>backend</name>
-        <qualifiedname>PDJE_UTIL::db::nearest::NearestNeighborIndex::backend</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -377,12 +355,11 @@
         </inbodydescription>
         <location file="include/util/db/nearest/Index.hpp" line="125" column="5" bodyfile="include/util/db/nearest/Index.hpp" bodystart="125" bodyend="128"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1ae7b55cefc9efb3736d66461dca34fc76" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a98425b0c493232847389f10ad5120621" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const <ref refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a07f6965292fe5c22d0ba5e030791abd2" kindref="member">backend_type</ref> &amp;</type>
-        <definition>const backend_type &amp; PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::backend</definition>
+        <definition>const backend_type&amp; PDJE_UTIL::db::nearest::NearestNeighborIndex&lt; Backend &gt;::backend</definition>
         <argsstring>() const noexcept</argsstring>
         <name>backend</name>
-        <qualifiedname>PDJE_UTIL::db::nearest::NearestNeighborIndex::backend</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -391,7 +368,7 @@
         </inbodydescription>
         <location file="include/util/db/nearest/Index.hpp" line="131" column="5" bodyfile="include/util/db/nearest/Index.hpp" bodystart="131" bodyend="134"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -410,28 +387,28 @@
     </collaborationgraph>
     <location file="include/util/db/nearest/Index.hpp" line="9" column="12" bodyfile="include/util/db/nearest/Index.hpp" bodystart="9" bodyend="139"/>
     <listofallmembers>
-      <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a5b10afae9ec16fdf981871ac3c86d623" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>backend</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1ae7b55cefc9efb3736d66461dca34fc76" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>backend</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1ac60fcc1f4da0b3436ca038a81842fd91" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>backend</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a98425b0c493232847389f10ad5120621" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>backend</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a5a04fb65040f092cb8d4eca83dae1ce8" prot="private" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>backend_</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a07f6965292fe5c22d0ba5e030791abd2" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>backend_type</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a8d12c19ee2a00244088328647d0eafd9" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>close</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1ab609a59712dcfa426720fc157a2c1b7b" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>close</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1ad3701d425da9ff83d03a6016959c428e" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>config_type</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a617317761d2b78b3e0ff81118778afee" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>contains</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a64963bd16d4b894d82e25559857b832a" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>create</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1ac2af88e5666c7b4861f876a5b02200e2" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>destroy</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a836b416f70e9b54316e6d23e3857ca55" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>erase_item</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a0ff78a20be661264d8485249f1cf3361" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>get_item</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a052ebb05041347988a99715aba48a406" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>contains</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1aecfd3e059949c2b0a455675b6057d770" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>create</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a606bf0a0352c6c528fe2cf509506ad73" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>destroy</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a4f71e44eb157154381c52aa7694d09a8" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>erase_item</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1afa3ae59b603cebd95a655da4c6ac6b4b" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>get_item</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a5575dbca97a500151694af1f61ec0adb" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>is_open</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1ac0f21ff9e773f459c170bb7394d4a14d" prot="private" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>is_open_</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a15787ffb638557512afcaf078b41e36d" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>list_keys</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1ac913a821d35ffd4c3aeb968ed0f68802" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>list_keys</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1af175889a4d92089bb7d5aa73a06faf3e" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>NearestNeighborIndex</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1aa1c0eda111e4acd8efebed64ad659207" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>NearestNeighborIndex</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a6dacbc5b0a13bb67068b9acff7abb3c5" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>NearestNeighborIndex</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a4eb22245f0e0885496492903839b95ee" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>open</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a1e2a8da770f13d26f466250f75a13995" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>operator=</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a1c6e4dfe5ba48074383a8fb87bf98a6c" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>operator=</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1aae36e0a131785b7647ff7f6667f7c36a" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>search</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a613c1854e5df8388f49fc6b626264d18" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>upsert_item</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1aaf5139cbe568065a709f45694ff868a0" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>open</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a786c6843402e76f23d5cd47290c94dc8" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>operator=</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a663ab12c00dbb451a16774f1adca9e29" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>operator=</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1ab107847b77a5ff2087d4e454452749cd" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>search</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1a1e49e7cc0d4b03a0f28900acf3b940b2" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>upsert_item</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex_1abb46a47d5c9616ce78bd3d660afb1fe4" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::nearest::NearestNeighborIndex</scope><name>~NearestNeighborIndex</name></member>
     </listofallmembers>
   </compounddef>

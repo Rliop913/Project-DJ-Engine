@@ -4,7 +4,7 @@
 File PDJE_Crypto.hpp
 ====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_global_Crypto>` (``include\global\Crypto``)
+|exhale_lsh| :ref:`Parent directory <dir_include_global_Crypto>` (``include/global/Crypto``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_Crypto.hpp
    :local:
    :backlinks: none
 
-Definition (``include\global\Crypto\PDJE_Crypto.hpp``)
+Definition (``include/global/Crypto/PDJE_Crypto.hpp``)
 ------------------------------------------------------
 
 
@@ -58,13 +58,13 @@ Included By
 
 - :ref:`file_include_input_DefaultDevs_windows_TXRX_MetadataTXRX.hpp`
 
-- :ref:`file_include_input_IPC_common_NameGen.hpp`
-
 - :ref:`file_include_input_IPC_common_ipc_util.hpp`
 
-- :ref:`file_include_input_IPC_memory_Secured_IPC_TX_RX.hpp`
+- :ref:`file_include_input_IPC_common_NameGen.hpp`
 
 - :ref:`file_include_input_IPC_memory_ipc_shared_memory.hpp`
+
+- :ref:`file_include_input_IPC_memory_Secured_IPC_TX_RX.hpp`
 
 - :ref:`file_include_input_IPC_memory_windows_Input_Transfer.hpp`
 
@@ -86,9 +86,9 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_p_d_j_e___c_r_y_p_t_o_1_1_a_e_a_d`
+- :ref:`exhale_class_classPDJE__CRYPTO_1_1AEAD`
 
-- :ref:`exhale_class_class_p_d_j_e___c_r_y_p_t_o_1_1_hash`
+- :ref:`exhale_class_classPDJE__CRYPTO_1_1Hash`
 
-- :ref:`exhale_class_class_p_d_j_e___c_r_y_p_t_o_1_1_p_s_k`
+- :ref:`exhale_class_classPDJE__CRYPTO_1_1PSK`
 

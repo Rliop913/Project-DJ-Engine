@@ -4,7 +4,7 @@
 File TimeLineDiffMachine-NOTE.cpp
 =================================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_editor_TimeLine_DiffMachine>` (``include\core\editor\TimeLine\DiffMachine``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_editor_TimeLine_DiffMachine>` (``include/core/editor/TimeLine/DiffMachine``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File TimeLineDiffMachine-NOTE.cpp
    :local:
    :backlinks: none
 
-Definition (``include\core\editor\TimeLine\DiffMachine\TimeLineDiffMachine-NOTE.cpp``)
+Definition (``include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-NOTE.cpp``)
 --------------------------------------------------------------------------------------
 
 

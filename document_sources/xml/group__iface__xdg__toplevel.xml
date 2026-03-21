@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="group__iface__xdg__toplevel" kind="group">
     <compoundname>iface_xdg_toplevel</compoundname>
     <title>The xdg_toplevel interface</title>
     <innerclass refid="structxdg__toplevel__listener" prot="public">xdg_toplevel_listener</innerclass>
-    <sectiondef kind="enum">
+      <sectiondef kind="enum">
       <memberdef kind="enum" id="group__iface__xdg__toplevel_1ga9c5f29d74e9f5e730fe59ecdc397b116" prot="public" static="no" strong="no">
         <type></type>
         <name>xdg_toplevel_resize_edge</name>
@@ -257,8 +257,8 @@
         </inbodydescription>
         <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="1297" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="1297" bodyend="1433"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="func">
+      </sectiondef>
+      <sectiondef kind="func">
       <memberdef kind="function" id="group__iface__xdg__toplevel_1gabcfd5476f0190e3b4dc06437d3781278" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>int</type>
         <definition>static int xdg_toplevel_add_listener</definition>
@@ -305,9 +305,9 @@
         </inbodydescription>
         <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="1702" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="1702" bodyend="1705"/>
       </memberdef>
-      <memberdef kind="function" id="group__iface__xdg__toplevel_1ga47a2d3f90ab9763f1d91f854395fb6ec" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="group__iface__xdg__toplevel_1gad44930651133a355ee9e1ff2d57a2bc4" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void *</type>
-        <definition>static void * xdg_toplevel_get_user_data</definition>
+        <definition>static void* xdg_toplevel_get_user_data</definition>
         <argsstring>(struct xdg_toplevel *xdg_toplevel)</argsstring>
         <name>xdg_toplevel_get_user_data</name>
         <param>
@@ -407,9 +407,9 @@
         </briefdescription>
         <detaileddescription>
 <para>Set an application identifier for the surface.</para>
-<para>The app <ref refid="_mix_machine_8hpp_1a61bcf5b33c99ebcd26c016da6c8a69bc" kindref="member">ID</ref> identifies the general class of applications to which the surface belongs. The compositor can use this to group multiple surfaces together, or to determine how to launch a new application.</para>
-<para>For D-Bus activatable applications, the app <ref refid="_mix_machine_8hpp_1a61bcf5b33c99ebcd26c016da6c8a69bc" kindref="member">ID</ref> is used as the D-Bus service name.</para>
-<para>The compositor shell will try to group application surfaces together by their app <ref refid="_mix_machine_8hpp_1a61bcf5b33c99ebcd26c016da6c8a69bc" kindref="member">ID</ref>. As a best practice, it is suggested to select app <ref refid="_mix_machine_8hpp_1a61bcf5b33c99ebcd26c016da6c8a69bc" kindref="member">ID</ref>&apos;s that match the basename of the application&apos;s .desktop file. For example, &quot;org.freedesktop.FooViewer&quot; where the .desktop file is &quot;org.freedesktop.FooViewer.desktop&quot;.</para>
+<para>The app ID identifies the general class of applications to which the surface belongs. The compositor can use this to group multiple surfaces together, or to determine how to launch a new application.</para>
+<para>For D-Bus activatable applications, the app ID is used as the D-Bus service name.</para>
+<para>The compositor shell will try to group application surfaces together by their app ID. As a best practice, it is suggested to select app ID&apos;s that match the basename of the application&apos;s .desktop file. For example, &quot;org.freedesktop.FooViewer&quot; where the .desktop file is &quot;org.freedesktop.FooViewer.desktop&quot;.</para>
 <para>Like other properties, a set_app_id request can be sent after the xdg_toplevel has been mapped to update the property.</para>
 <para>See the desktop-entry specification [0] for more details on application identifiers and how they relate to well-known D-Bus names and .desktop files.</para>
 <para>[0] <ulink url="https://standards.freedesktop.org/desktop-entry-spec/">https://standards.freedesktop.org/desktop-entry-spec/</ulink> </para>
@@ -704,8 +704,8 @@
         </inbodydescription>
         <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="2133" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="2133" bodyend="2137"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="define">
+      </sectiondef>
+      <sectiondef kind="define">
       <memberdef kind="define" id="group__iface__xdg__toplevel_1gac45a56bd702dfaae9773d8d8dbbb7e16" prot="public" static="no">
         <name>XDG_TOPLEVEL_STATE_TILED_LEFT_SINCE_VERSION</name>
         <initializer>2</initializer>
@@ -1003,7 +1003,7 @@
         </inbodydescription>
         <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" line="1698" column="9" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h" bodystart="1698" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

@@ -4,7 +4,7 @@
 File InputCore.cpp
 ==================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_DefaultDevs_linux>` (``include\input\DefaultDevs\linux``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_DefaultDevs_linux>` (``include/input/DefaultDevs/linux``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File InputCore.cpp
    :local:
    :backlinks: none
 
-Definition (``include\input\DefaultDevs\linux\InputCore.cpp``)
+Definition (``include/input/DefaultDevs/linux/InputCore.cpp``)
 --------------------------------------------------------------
 
 

@@ -4,7 +4,7 @@
 Program Listing for File judgeTest.cpp
 ======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_tests_JUDGE_TESTS_judgeTest.cpp>` (``include\tests\JUDGE_TESTS\judgeTest.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_tests_JUDGE_TESTS_judgeTest.cpp>` (``include/tests/JUDGE_TESTS/judgeTest.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

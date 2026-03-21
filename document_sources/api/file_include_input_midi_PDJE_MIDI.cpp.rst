@@ -4,7 +4,7 @@
 File PDJE_MIDI.cpp
 ==================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_midi>` (``include\input\midi``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_midi>` (``include/input/midi``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_MIDI.cpp
    :local:
    :backlinks: none
 
-Definition (``include\input\midi\PDJE_MIDI.cpp``)
+Definition (``include/input/midi/PDJE_MIDI.cpp``)
 -------------------------------------------------
 
 

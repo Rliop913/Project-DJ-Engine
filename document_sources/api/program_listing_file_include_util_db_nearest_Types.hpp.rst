@@ -4,7 +4,7 @@
 Program Listing for File Types.hpp
 ==================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_util_db_nearest_Types.hpp>` (``include\util\db\nearest\Types.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_util_db_nearest_Types.hpp>` (``include/util/db/nearest/Types.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

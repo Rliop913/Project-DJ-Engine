@@ -4,7 +4,7 @@
 File PDJE_Buffer.hpp
 ====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_global_DataLines>` (``include\global\DataLines``)
+|exhale_lsh| :ref:`Parent directory <dir_include_global_DataLines>` (``include/global/DataLines``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_Buffer.hpp
    :local:
    :backlinks: none
 
-Definition (``include\global\DataLines\PDJE_Buffer.hpp``)
+Definition (``include/global/DataLines/PDJE_Buffer.hpp``)
 ---------------------------------------------------------
 
 

@@ -4,7 +4,7 @@
 Program Listing for File FrameCalc.hpp
 ======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_db_Capnp_Translators_FrameCalc.hpp>` (``include\core\db\Capnp\Translators\FrameCalc.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_db_Capnp_Translators_FrameCalc.hpp>` (``include/core/db/Capnp/Translators/FrameCalc.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -23,7 +23,7 @@ Program Listing for File FrameCalc.hpp
    
    using SIMD_FLOAT = std::vector<float, hwy::AlignedAllocator<float>>;
    
-   struct PDJE_API MixStruct {
+   struct MixStruct {
        unsigned long long frame_in;
        unsigned long long frame_out;
        MBData::Reader RP;

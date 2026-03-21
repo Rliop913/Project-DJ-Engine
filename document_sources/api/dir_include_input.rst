@@ -10,7 +10,7 @@ Directory input
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include\input``
+*Directory path:* ``include/input``
 
 Subdirectories
 --------------
@@ -24,6 +24,8 @@ Subdirectories
 Files
 -----
 
+- :ref:`file_include_input_CPDJE_Input.cpp`
+- :ref:`file_include_input_CPDJE_Input.h`
 - :ref:`file_include_input_PDJE_Input.cpp`
 - :ref:`file_include_input_PDJE_Input.hpp`
 - :ref:`file_include_input_PDJE_Input_Log.hpp`

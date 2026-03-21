@@ -17,6 +17,6 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_struct_p_d_j_e___m_i_d_i_1_1_m_i_d_i___e_v`
+- :ref:`exhale_struct_structPDJE__MIDI_1_1MIDI__EV`
 
-- :ref:`exhale_class_class_p_d_j_e___m_i_d_i_1_1_m_i_d_i`
+- :ref:`exhale_class_classPDJE__MIDI_1_1MIDI`

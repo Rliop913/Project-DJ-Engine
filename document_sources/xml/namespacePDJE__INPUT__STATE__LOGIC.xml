@@ -1,13 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="namespacePDJE__INPUT__STATE__LOGIC" kind="namespace" language="C++">
     <compoundname>PDJE_INPUT_STATE_LOGIC</compoundname>
     <innerclass refid="structPDJE__INPUT__STATE__LOGIC_1_1ConfigDecision" prot="public">PDJE_INPUT_STATE_LOGIC::ConfigDecision</innerclass>
-    <sectiondef kind="enum">
+      <sectiondef kind="enum">
       <memberdef kind="enum" id="namespacePDJE__INPUT__STATE__LOGIC_1abc30d4db44f89d36200803f144dca3e0" prot="public" static="no" strong="yes">
         <type></type>
         <name>KillAction</name>
-        <qualifiedname>PDJE_INPUT_STATE_LOGIC::KillAction</qualifiedname>
         <enumvalue id="namespacePDJE__INPUT__STATE__LOGIC_1abc30d4db44f89d36200803f144dca3e0a60832e2e4bbebccf26555b9ba658bad5" prot="public">
           <name>NoOp</name>
           <briefdescription>
@@ -44,14 +43,13 @@
         </inbodydescription>
         <location file="include/input/PDJE_Input_StateLogic.hpp" line="99" column="1" bodyfile="include/input/PDJE_Input_StateLogic.hpp" bodystart="99" bodyend="104"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="func">
+      </sectiondef>
+      <sectiondef kind="func">
       <memberdef kind="function" id="namespacePDJE__INPUT__STATE__LOGIC_1a1300be1d13da0f831c5996df207a7802" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool PDJE_INPUT_STATE_LOGIC::IsValidConfigDevice</definition>
         <argsstring>(const DeviceData &amp;d) noexcept</argsstring>
         <name>IsValidConfigDevice</name>
-        <qualifiedname>PDJE_INPUT_STATE_LOGIC::IsValidConfigDevice</qualifiedname>
         <param>
           <type>const <ref refid="structDeviceData" kindref="compound">DeviceData</ref> &amp;</type>
           <declname>d</declname>
@@ -64,12 +62,11 @@
         </inbodydescription>
         <location file="include/input/PDJE_Input_StateLogic.hpp" line="11" column="1" bodyfile="include/input/PDJE_Input_StateLogic.hpp" bodystart="11" bodyend="15"/>
       </memberdef>
-      <memberdef kind="function" id="namespacePDJE__INPUT__STATE__LOGIC_1ae037e99390bb79d10afe1567feeac48d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="namespacePDJE__INPUT__STATE__LOGIC_1aad3923e0b49b4698d03e540a4d05b9fe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; <ref refid="structDeviceData" kindref="compound">DeviceData</ref> &gt;</type>
-        <definition>std::vector&lt; DeviceData &gt; PDJE_INPUT_STATE_LOGIC::SanitizeConfigDevices</definition>
+        <definition>std::vector&lt;DeviceData&gt; PDJE_INPUT_STATE_LOGIC::SanitizeConfigDevices</definition>
         <argsstring>(const std::vector&lt; DeviceData &gt; &amp;devs)</argsstring>
         <name>SanitizeConfigDevices</name>
-        <qualifiedname>PDJE_INPUT_STATE_LOGIC::SanitizeConfigDevices</qualifiedname>
         <param>
           <type>const std::vector&lt; <ref refid="structDeviceData" kindref="compound">DeviceData</ref> &gt; &amp;</type>
           <declname>devs</declname>
@@ -87,7 +84,6 @@
         <definition>bool PDJE_INPUT_STATE_LOGIC::CanInit</definition>
         <argsstring>(const PDJE_INPUT_STATE state) noexcept</argsstring>
         <name>CanInit</name>
-        <qualifiedname>PDJE_INPUT_STATE_LOGIC::CanInit</qualifiedname>
         <param>
           <type>const <ref refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9" kindref="member">PDJE_INPUT_STATE</ref></type>
           <declname>state</declname>
@@ -105,7 +101,6 @@
         <definition>bool PDJE_INPUT_STATE_LOGIC::CanConfig</definition>
         <argsstring>(const PDJE_INPUT_STATE state) noexcept</argsstring>
         <name>CanConfig</name>
-        <qualifiedname>PDJE_INPUT_STATE_LOGIC::CanConfig</qualifiedname>
         <param>
           <type>const <ref refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9" kindref="member">PDJE_INPUT_STATE</ref></type>
           <declname>state</declname>
@@ -123,7 +118,6 @@
         <definition>bool PDJE_INPUT_STATE_LOGIC::CanRun</definition>
         <argsstring>(const PDJE_INPUT_STATE state) noexcept</argsstring>
         <name>CanRun</name>
-        <qualifiedname>PDJE_INPUT_STATE_LOGIC::CanRun</qualifiedname>
         <param>
           <type>const <ref refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9" kindref="member">PDJE_INPUT_STATE</ref></type>
           <declname>state</declname>
@@ -141,7 +135,6 @@
         <definition>ConfigDecision PDJE_INPUT_STATE_LOGIC::DecideConfigOutcome</definition>
         <argsstring>(const bool has_valid_input, const bool has_midi, const bool backend_config_ok) noexcept</argsstring>
         <name>DecideConfigOutcome</name>
-        <qualifiedname>PDJE_INPUT_STATE_LOGIC::DecideConfigOutcome</qualifiedname>
         <param>
           <type>const bool</type>
           <declname>has_valid_input</declname>
@@ -167,7 +160,6 @@
         <definition>KillAction PDJE_INPUT_STATE_LOGIC::ClassifyKillAction</definition>
         <argsstring>(const PDJE_INPUT_STATE state) noexcept</argsstring>
         <name>ClassifyKillAction</name>
-        <qualifiedname>PDJE_INPUT_STATE_LOGIC::ClassifyKillAction</qualifiedname>
         <param>
           <type>const <ref refid="Input__State_8hpp_1a27b438b637f21bbd81b497303dacdfc9" kindref="member">PDJE_INPUT_STATE</ref></type>
           <declname>state</declname>
@@ -180,7 +172,7 @@
         </inbodydescription>
         <location file="include/input/PDJE_Input_StateLogic.hpp" line="107" column="1" bodyfile="include/input/PDJE_Input_StateLogic.hpp" bodystart="107" bodyend="120"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

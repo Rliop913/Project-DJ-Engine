@@ -4,7 +4,7 @@
 Program Listing for File audioPlayer.hpp
 ========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_MainObjects_audioPlayer_audioPlayer.hpp>` (``include\core\MainObjects\audioPlayer\audioPlayer.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_MainObjects_audioPlayer_audioPlayer.hpp>` (``include/core/MainObjects/audioPlayer/audioPlayer.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

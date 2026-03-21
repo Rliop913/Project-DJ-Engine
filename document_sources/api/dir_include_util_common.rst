@@ -5,12 +5,12 @@ Directory common
 ================
 
 
-|exhale_lsh| :ref:`Parent directory <dir_include_util>` (``include\util``)
+|exhale_lsh| :ref:`Parent directory <dir_include_util>` (``include/util``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include\util\common``
+*Directory path:* ``include/util/common``
 
 
 Files

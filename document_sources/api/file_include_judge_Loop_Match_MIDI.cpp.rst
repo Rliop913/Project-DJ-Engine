@@ -4,7 +4,7 @@
 File MIDI.cpp
 =============
 
-|exhale_lsh| :ref:`Parent directory <dir_include_judge_Loop_Match>` (``include\judge\Loop\Match``)
+|exhale_lsh| :ref:`Parent directory <dir_include_judge_Loop_Match>` (``include/judge/Loop/Match``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File MIDI.cpp
    :local:
    :backlinks: none
 
-Definition (``include\judge\Loop\Match\MIDI.cpp``)
+Definition (``include/judge/Loop/Match/MIDI.cpp``)
 --------------------------------------------------
 
 

@@ -4,7 +4,7 @@
 Program Listing for File PDJE_Note_OBJ.cpp
 ==========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_judge_NoteOBJ_PDJE_Note_OBJ.cpp>` (``include\judge\NoteOBJ\PDJE_Note_OBJ.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_judge_NoteOBJ_PDJE_Note_OBJ.cpp>` (``include/judge/NoteOBJ/PDJE_Note_OBJ.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

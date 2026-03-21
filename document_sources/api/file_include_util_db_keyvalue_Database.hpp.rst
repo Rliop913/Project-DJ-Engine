@@ -4,7 +4,7 @@
 File Database.hpp
 =================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_util_db_keyvalue>` (``include\util\db\keyvalue``)
+|exhale_lsh| :ref:`Parent directory <dir_include_util_db_keyvalue>` (``include/util/db/keyvalue``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Database.hpp
    :local:
    :backlinks: none
 
-Definition (``include\util\db\keyvalue\Database.hpp``)
+Definition (``include/util/db/keyvalue/Database.hpp``)
 ------------------------------------------------------
 
 
@@ -32,7 +32,7 @@ Includes
 
 - ``span``
 
-- ``util/db/keyvalue/BackendConcept.hpp``
+- ``util/db/keyvalue/BackendConcept.hpp`` (:ref:`file_include_util_db_keyvalue_BackendConcept.hpp`)
 
 - ``utility``
 
@@ -42,9 +42,9 @@ Included By
 -----------
 
 
-- :ref:`file_include_util_PDJE_Util.hpp`
-
 - :ref:`file_include_util_db_Database.hpp`
+
+- :ref:`file_include_util_PDJE_Util.hpp`
 
 
 
@@ -64,5 +64,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_p_d_j_e___u_t_i_l_1_1db_1_1keyvalue_1_1_key_value_database`
+- :ref:`exhale_class_classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase`
 

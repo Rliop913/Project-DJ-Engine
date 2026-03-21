@@ -4,7 +4,7 @@
 Program Listing for File Slugify.hpp
 ====================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_util_function_text_Slugify.hpp>` (``include\util\function\text\Slugify.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_util_function_text_Slugify.hpp>` (``include/util/function/text/Slugify.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

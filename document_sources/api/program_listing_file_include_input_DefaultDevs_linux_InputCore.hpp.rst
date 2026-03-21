@@ -4,7 +4,7 @@
 Program Listing for File InputCore.hpp
 ======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_input_DefaultDevs_linux_InputCore.hpp>` (``include\input\DefaultDevs\linux\InputCore.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_input_DefaultDevs_linux_InputCore.hpp>` (``include/input/DefaultDevs/linux/InputCore.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

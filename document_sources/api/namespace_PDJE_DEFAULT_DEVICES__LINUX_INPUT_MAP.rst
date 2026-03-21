@@ -17,4 +17,4 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_namespace_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_l_i_n_u_x___i_n_p_u_t___m_a_p_1a570a6beb4c166d9dc5c9a3fded351987`
+- :ref:`exhale_function_namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__MAP_1a810f704b7b3d66e4a1162ca6d8066a8f`

@@ -4,7 +4,7 @@
 File Atomic_Double_Buffer.hpp
 =============================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_global_DataLines>` (``include\global\DataLines``)
+|exhale_lsh| :ref:`Parent directory <dir_include_global_DataLines>` (``include/global/DataLines``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Atomic_Double_Buffer.hpp
    :local:
    :backlinks: none
 
-Definition (``include\global\DataLines\Atomic_Double_Buffer.hpp``)
+Definition (``include/global/DataLines/Atomic_Double_Buffer.hpp``)
 ------------------------------------------------------------------
 
 
@@ -51,5 +51,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_atomic___double___buffer`
+- :ref:`exhale_class_classAtomic__Double__Buffer`
 

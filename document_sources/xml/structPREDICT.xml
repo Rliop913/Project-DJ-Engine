@@ -1,15 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structPREDICT" kind="struct" language="C++" prot="public">
     <compoundname>PREDICT</compoundname>
     <includes refid="PredictMusic_8hpp" local="no">PredictMusic.hpp</includes>
-    <sectiondef kind="public-attrib">
+      <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structPREDICT_1a2558d153ed9a1ae579029dfd9fb0757f" prot="public" static="no" mutable="no">
         <type>uint64_t</type>
         <definition>uint64_t PREDICT::start_cursor</definition>
         <argsstring></argsstring>
         <name>start_cursor</name>
-        <qualifiedname>PREDICT::start_cursor</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -23,7 +22,6 @@
         <definition>uint64_t PREDICT::used_frames</definition>
         <argsstring></argsstring>
         <name>used_frames</name>
-        <qualifiedname>PREDICT::used_frames</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -37,7 +35,6 @@
         <definition>double PREDICT::io_ratio</definition>
         <argsstring></argsstring>
         <name>io_ratio</name>
-        <qualifiedname>PREDICT::io_ratio</qualifiedname>
         <initializer>= 1.0</initializer>
         <briefdescription>
         </briefdescription>
@@ -52,7 +49,6 @@
         <definition>std::vector&lt;float&gt; PREDICT::predict_fragment</definition>
         <argsstring></argsstring>
         <name>predict_fragment</name>
-        <qualifiedname>PREDICT::predict_fragment</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -61,21 +57,21 @@
         </inbodydescription>
         <location file="include/core/audioRender/ManualMix/PredictMusic.hpp" line="17" column="17" bodyfile="include/core/audioRender/ManualMix/PredictMusic.hpp" bodystart="17" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
+      <node id="2">
+        <label>std::vector&lt; float &gt;</label>
+      </node>
       <node id="1">
         <label>PREDICT</label>
         <link refid="structPREDICT"/>
         <childnode refid="2" relation="usage">
           <edgelabel>predict_fragment</edgelabel>
         </childnode>
-      </node>
-      <node id="2">
-        <label>std::vector&lt; float &gt;</label>
       </node>
     </collaborationgraph>
     <location file="include/core/audioRender/ManualMix/PredictMusic.hpp" line="13" column="1" bodyfile="include/core/audioRender/ManualMix/PredictMusic.hpp" bodystart="13" bodyend="18"/>

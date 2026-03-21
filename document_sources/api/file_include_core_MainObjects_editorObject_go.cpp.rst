@@ -4,7 +4,7 @@
 File go.cpp
 ===========
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_MainObjects_editorObject>` (``include\core\MainObjects\editorObject``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_MainObjects_editorObject>` (``include/core/MainObjects/editorObject``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File go.cpp
    :local:
    :backlinks: none
 
-Definition (``include\core\MainObjects\editorObject\go.cpp``)
+Definition (``include/core/MainObjects/editorObject/go.cpp``)
 -------------------------------------------------------------
 
 

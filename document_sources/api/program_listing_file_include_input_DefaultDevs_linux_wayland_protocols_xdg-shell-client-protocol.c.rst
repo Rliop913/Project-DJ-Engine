@@ -4,7 +4,7 @@
 Program Listing for File xdg-shell-client-protocol.c
 ====================================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_input_DefaultDevs_linux_wayland_protocols_xdg-shell-client-protocol.c>` (``include\input\DefaultDevs\linux\wayland_protocols\xdg-shell-client-protocol.c``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_input_DefaultDevs_linux_wayland_protocols_xdg-shell-client-protocol.c>` (``include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

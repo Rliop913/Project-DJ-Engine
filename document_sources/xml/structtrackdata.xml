@@ -1,15 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structtrackdata" kind="struct" language="C++" prot="public">
     <compoundname>trackdata</compoundname>
-    <includes refid="track_d_b_8hpp" local="no">trackDB.hpp</includes>
-    <sectiondef kind="public-attrib">
+    <includes refid="trackDB_8hpp" local="no">trackDB.hpp</includes>
+      <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structtrackdata_1a8944f02e7f1e048bce1be3be630dbc7e" prot="public" static="no" mutable="no">
-        <type><ref refid="file_name_sanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref></type>
+        <type><ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref></type>
         <definition>SANITIZED trackdata::trackTitle</definition>
         <argsstring></argsstring>
         <name>trackTitle</name>
-        <qualifiedname>trackdata::trackTitle</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -19,11 +18,10 @@
         <location file="include/core/db/trackDB.hpp" line="14" column="15" bodyfile="include/core/db/trackDB.hpp" bodystart="14" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structtrackdata_1a155e25ae9bef854aa3441d9702082ac3" prot="public" static="no" mutable="no">
-        <type><ref refid="db_state_8hpp_1a32af0badd6a40566b8e04071484b2f83" kindref="member">BIN</ref></type>
+        <type><ref refid="dbState_8hpp_1a32af0badd6a40566b8e04071484b2f83" kindref="member">BIN</ref></type>
         <definition>BIN trackdata::mixBinary</definition>
         <argsstring></argsstring>
         <name>mixBinary</name>
-        <qualifiedname>trackdata::mixBinary</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -33,11 +31,10 @@
         <location file="include/core/db/trackDB.hpp" line="15" column="15" bodyfile="include/core/db/trackDB.hpp" bodystart="15" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structtrackdata_1a0a2f02219cfb3b6f5e988fec61c37e7a" prot="public" static="no" mutable="no">
-        <type><ref refid="db_state_8hpp_1a32af0badd6a40566b8e04071484b2f83" kindref="member">BIN</ref></type>
+        <type><ref refid="dbState_8hpp_1a32af0badd6a40566b8e04071484b2f83" kindref="member">BIN</ref></type>
         <definition>BIN trackdata::noteBinary</definition>
         <argsstring></argsstring>
         <name>noteBinary</name>
-        <qualifiedname>trackdata::noteBinary</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -47,11 +44,10 @@
         <location file="include/core/db/trackDB.hpp" line="16" column="15" bodyfile="include/core/db/trackDB.hpp" bodystart="16" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structtrackdata_1aa1e66043414a3f6fe79c3b74ba7dfde8" prot="public" static="no" mutable="no">
-        <type><ref refid="file_name_sanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref></type>
+        <type><ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref></type>
         <definition>SANITIZED trackdata::cachedMixList</definition>
         <argsstring></argsstring>
         <name>cachedMixList</name>
-        <qualifiedname>trackdata::cachedMixList</qualifiedname>
         <briefdescription>
 <para>Included music list, csv data. </para>
         </briefdescription>
@@ -61,14 +57,13 @@
         </inbodydescription>
         <location file="include/core/db/trackDB.hpp" line="18" column="15" bodyfile="include/core/db/trackDB.hpp" bodystart="18" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-func">
+      </sectiondef>
+      <sectiondef kind="public-func">
       <memberdef kind="function" id="structtrackdata_1ad6d055f069e5dc899f7777a4f95ce001" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>trackdata::trackdata</definition>
         <argsstring>(stmt *dbstate)</argsstring>
         <name>trackdata</name>
-        <qualifiedname>trackdata::trackdata</qualifiedname>
         <param>
           <type><ref refid="structstmt" kindref="compound">stmt</ref> *</type>
           <declname>dbstate</declname>
@@ -97,9 +92,8 @@
         <definition>trackdata::trackdata</definition>
         <argsstring>(const UNSANITIZED &amp;trackTitle__=&quot;&quot;)</argsstring>
         <name>trackdata</name>
-        <qualifiedname>trackdata::trackdata</qualifiedname>
         <param>
-          <type>const <ref refid="file_name_sanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
+          <type>const <ref refid="fileNameSanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
           <declname>trackTitle__</declname>
           <defval>&quot;&quot;</defval>
         </param>
@@ -128,7 +122,6 @@
         <definition>bool trackdata::GenSearchSTMT</definition>
         <argsstring>(stmt &amp;dbstate, sqlite3 *db)</argsstring>
         <name>GenSearchSTMT</name>
-        <qualifiedname>trackdata::GenSearchSTMT</qualifiedname>
         <param>
           <type><ref refid="structstmt" kindref="compound">stmt</ref> &amp;</type>
           <declname>dbstate</declname>
@@ -173,7 +166,6 @@
         <definition>bool trackdata::GenInsertSTMT</definition>
         <argsstring>(stmt &amp;dbstate, sqlite3 *db)</argsstring>
         <name>GenInsertSTMT</name>
-        <qualifiedname>trackdata::GenInsertSTMT</qualifiedname>
         <param>
           <type><ref refid="structstmt" kindref="compound">stmt</ref> &amp;</type>
           <declname>dbstate</declname>
@@ -218,7 +210,6 @@
         <definition>bool trackdata::GenEditSTMT</definition>
         <argsstring>(stmt &amp;dbstate, sqlite3 *db, trackdata &amp;toEdit)</argsstring>
         <name>GenEditSTMT</name>
-        <qualifiedname>trackdata::GenEditSTMT</qualifiedname>
         <param>
           <type><ref refid="structstmt" kindref="compound">stmt</ref> &amp;</type>
           <declname>dbstate</declname>
@@ -273,7 +264,6 @@
         <definition>bool trackdata::GenDeleteSTMT</definition>
         <argsstring>(stmt &amp;dbstate, sqlite3 *db)</argsstring>
         <name>GenDeleteSTMT</name>
-        <qualifiedname>trackdata::GenDeleteSTMT</qualifiedname>
         <param>
           <type><ref refid="structstmt" kindref="compound">stmt</ref> &amp;</type>
           <declname>dbstate</declname>
@@ -311,34 +301,34 @@
         </inbodydescription>
         <location file="include/core/db/trackDB.hpp" line="80" column="5" bodyfile="include/core/db/trackDB.cpp" bodystart="100" bodyend="113"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
 <para>the music meta data&apos;s struct </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3">
+      <node id="4">
         <label>std::basic_string&lt; Char &gt;</label>
       </node>
       <node id="2">
-        <label>std::string</label>
-        <childnode refid="3" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="4">
         <label>std::vector&lt; u_int8_t &gt;</label>
       </node>
       <node id="1">
         <label>trackdata</label>
         <link refid="structtrackdata"/>
         <childnode refid="2" relation="usage">
+          <edgelabel>mixBinary</edgelabel>
+          <edgelabel>noteBinary</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
           <edgelabel>cachedMixList</edgelabel>
           <edgelabel>trackTitle</edgelabel>
         </childnode>
-        <childnode refid="4" relation="usage">
-          <edgelabel>mixBinary</edgelabel>
-          <edgelabel>noteBinary</edgelabel>
+      </node>
+      <node id="3">
+        <label>std::string</label>
+        <childnode refid="4" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

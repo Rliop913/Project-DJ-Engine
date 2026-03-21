@@ -4,7 +4,7 @@
 File Keyboard.cpp
 =================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_judge_Loop_Match>` (``include\judge\Loop\Match``)
+|exhale_lsh| :ref:`Parent directory <dir_include_judge_Loop_Match>` (``include/judge/Loop/Match``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Keyboard.cpp
    :local:
    :backlinks: none
 
-Definition (``include\judge\Loop\Match\Keyboard.cpp``)
+Definition (``include/judge/Loop/Match/Keyboard.cpp``)
 ------------------------------------------------------
 
 
@@ -54,5 +54,5 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_namespace_p_d_j_e___j_u_d_g_e_1ab1198e8ebc5c563e17abbef3a7523c3e`
+- :ref:`exhale_function_namespacePDJE__JUDGE_1ab1198e8ebc5c563e17abbef3a7523c3e`
 

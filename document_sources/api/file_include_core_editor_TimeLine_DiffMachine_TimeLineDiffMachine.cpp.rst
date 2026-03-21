@@ -4,7 +4,7 @@
 File TimeLineDiffMachine.cpp
 ============================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_editor_TimeLine_DiffMachine>` (``include\core\editor\TimeLine\DiffMachine``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_editor_TimeLine_DiffMachine>` (``include/core/editor/TimeLine/DiffMachine``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File TimeLineDiffMachine.cpp
    :local:
    :backlinks: none
 
-Definition (``include\core\editor\TimeLine\DiffMachine\TimeLineDiffMachine.cpp``)
+Definition (``include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.cpp``)
 ---------------------------------------------------------------------------------
 
 
@@ -72,4 +72,19 @@ Namespaces
 
 
 - :ref:`namespace_PDJE_TIMELINE`
+
+
+Variables
+---------
+
+
+- :ref:`exhale_variable_TimeLineDiffMachine_8cpp_1a25811daaf48bdb9d26ba6344854b6816`
+
+- :ref:`exhale_variable_TimeLineDiffMachine_8cpp_1a9a8cd1978c2473b474670e74c42a5843`
+
+- :ref:`exhale_variable_TimeLineDiffMachine_8cpp_1a26fbc874ecfc349b7748b3d4e3696cf2`
+
+- :ref:`exhale_variable_TimeLineDiffMachine_8cpp_1a6cf99e932c48c61749cb52bed976d28c`
+
+- :ref:`exhale_variable_TimeLineDiffMachine_8cpp_1a9d53e9b7bff6197e14a7b2734b8e5342`
 

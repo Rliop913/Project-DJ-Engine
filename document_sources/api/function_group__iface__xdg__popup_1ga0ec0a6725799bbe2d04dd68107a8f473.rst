@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_popup_set_user_data()
+.. doxygenfunction:: xdg_popup_set_user_data(struct xdg_popup *, void *)
    :project: Project_DJ_Engine

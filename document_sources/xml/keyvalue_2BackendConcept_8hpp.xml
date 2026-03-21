@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="keyvalue_2BackendConcept_8hpp" kind="file" language="C++">
     <compoundname>BackendConcept.hpp</compoundname>
     <includes refid="Result_8hpp" local="yes">util/common/Result.hpp</includes>
@@ -11,26 +11,6 @@
     <includedby refid="BackendConcept_8hpp" local="yes">include/util/db/BackendConcept.hpp</includedby>
     <includedby refid="keyvalue_2Database_8hpp" local="yes">include/util/db/keyvalue/Database.hpp</includedby>
     <incdepgraph>
-      <node id="2">
-        <label>util/common/Result.hpp</label>
-        <link refid="Result_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="3">
-        <label>util/common/Status.hpp</label>
-        <link refid="Status_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>util/common/StatusCode.hpp</label>
-        <link refid="StatusCode_8hpp"/>
-      </node>
       <node id="7">
         <label>util/db/DbTypes.hpp</label>
         <link refid="DbTypes_8hpp"/>
@@ -39,6 +19,17 @@
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>string</label>
+      </node>
+      <node id="2">
+        <label>util/common/Result.hpp</label>
+        <link refid="Result_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -57,32 +48,43 @@
         <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="10">
-        <label>concepts</label>
-      </node>
-      <node id="8">
-        <label>cstddef</label>
-      </node>
-      <node id="11">
-        <label>span</label>
-      </node>
-      <node id="5">
-        <label>string</label>
-      </node>
       <node id="12">
         <label>string_view</label>
       </node>
-      <node id="6">
-        <label>utility</label>
+      <node id="4">
+        <label>util/common/StatusCode.hpp</label>
+        <link refid="StatusCode_8hpp"/>
       </node>
       <node id="9">
         <label>vector</label>
       </node>
+      <node id="6">
+        <label>utility</label>
+      </node>
+      <node id="8">
+        <label>cstddef</label>
+      </node>
+      <node id="3">
+        <label>util/common/Status.hpp</label>
+        <link refid="Status_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>concepts</label>
+      </node>
+      <node id="11">
+        <label>span</label>
+      </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="3">
-        <label>include/util/PDJE_Util.hpp</label>
-        <link refid="PDJE__Util_8hpp"/>
+      <node id="5">
+        <label>include/util/db/Database.hpp</label>
+        <link refid="Database_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
       </node>
       <node id="2">
         <label>include/util/db/BackendConcept.hpp</label>
@@ -90,9 +92,11 @@
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="5">
-        <label>include/util/db/Database.hpp</label>
-        <link refid="Database_8hpp"/>
+      <node id="4">
+        <label>include/util/db/keyvalue/Database.hpp</label>
+        <link refid="keyvalue_2Database_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
         <childnode refid="3" relation="include">
         </childnode>
       </node>
@@ -104,13 +108,9 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="4">
-        <label>include/util/db/keyvalue/Database.hpp</label>
-        <link refid="keyvalue_2Database_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
+      <node id="3">
+        <label>include/util/PDJE_Util.hpp</label>
+        <link refid="PDJE__Util_8hpp"/>
       </node>
     </invincdepgraph>
     <innernamespace refid="namespacePDJE__UTIL">PDJE_UTIL</innernamespace>
@@ -134,7 +134,7 @@
 <codeline lineno="11" refid="namespacePDJE__UTIL_1_1db_1_1keyvalue" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1db_1_1keyvalue" kindref="compound">PDJE_UTIL::db::keyvalue</ref><sp/>{</highlight></codeline>
 <codeline lineno="12"><highlight class="normal"></highlight></codeline>
 <codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Backend&gt;</highlight></codeline>
-<codeline lineno="14" refid="conceptPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueBackendConcept" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">concept<sp/></highlight><highlight class="normal"><ref refid="conceptPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueBackendConcept" kindref="compound">KeyValueBackendConcept</ref><sp/>=<sp/></highlight><highlight class="keyword">requires</highlight><highlight class="normal">(</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Backend::config_type<sp/>cfg,</highlight></codeline>
+<codeline lineno="14" refid="namespacePDJE__UTIL_1_1db_1_1keyvalue_1ad862892c8319fcf5bf1c761f446f3680" refkind="member"><highlight class="normal">concept<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1keyvalue_1ad862892c8319fcf5bf1c761f446f3680" kindref="member">KeyValueBackendConcept</ref><sp/>=<sp/>requires(</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Backend::config_type<sp/>cfg,</highlight></codeline>
 <codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Backend<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>backend,</highlight></codeline>
 <codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>key,</highlight></codeline>
 <codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::span&lt;const<sp/>std::byte&gt;<sp/><sp/><sp/>bytes,</highlight></codeline>

@@ -4,7 +4,7 @@
 File WaylandRuntimeLoader.hpp
 =============================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_DefaultDevs_linux_wayland_things>` (``include\input\DefaultDevs\linux\wayland_things``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_DefaultDevs_linux_wayland_things>` (``include/input/DefaultDevs/linux/wayland_things``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File WaylandRuntimeLoader.hpp
    :local:
    :backlinks: none
 
-Definition (``include\input\DefaultDevs\linux\wayland_things\WaylandRuntimeLoader.hpp``)
+Definition (``include/input/DefaultDevs/linux/wayland_things/WaylandRuntimeLoader.hpp``)
 ----------------------------------------------------------------------------------------
 
 
@@ -56,16 +56,16 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_struct_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_wayland_dyn_lib_ops`
+- :ref:`exhale_struct_structPDJE__DEFAULT__DEVICES_1_1WaylandDynLibOps`
 
-- :ref:`exhale_struct_struct_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_wayland_runtime_status`
+- :ref:`exhale_struct_structPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeStatus`
 
-- :ref:`exhale_class_class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_wayland_runtime_loader`
+- :ref:`exhale_class_classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader`
 
 
 Enums
 -----
 
 
-- :ref:`exhale_enum_namespace_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1ae16689a3920d6ddb9a03e669033334b7`
+- :ref:`exhale_enum_namespacePDJE__DEFAULT__DEVICES_1ae16689a3920d6ddb9a03e669033334b7`
 

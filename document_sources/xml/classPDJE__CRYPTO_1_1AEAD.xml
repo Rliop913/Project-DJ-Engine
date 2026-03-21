@@ -1,15 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classPDJE__CRYPTO_1_1AEAD" kind="class" language="C++" prot="public">
     <compoundname>PDJE_CRYPTO::AEAD</compoundname>
     <includes refid="PDJE__Crypto_8hpp" local="no">PDJE_Crypto.hpp</includes>
-    <sectiondef kind="private-attrib">
+      <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classPDJE__CRYPTO_1_1AEAD_1ae880884a0fa838dd397c1431024cd226" prot="private" static="no" mutable="no">
         <type>Botan::AutoSeeded_RNG</type>
         <definition>Botan::AutoSeeded_RNG PDJE_CRYPTO::AEAD::rng</definition>
         <argsstring></argsstring>
         <name>rng</name>
-        <qualifiedname>PDJE_CRYPTO::AEAD::rng</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -23,7 +22,6 @@
         <definition>std::unique_ptr&lt;Botan::Cipher_Mode&gt; PDJE_CRYPTO::AEAD::enc</definition>
         <argsstring></argsstring>
         <name>enc</name>
-        <qualifiedname>PDJE_CRYPTO::AEAD::enc</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -37,7 +35,6 @@
         <definition>std::unique_ptr&lt;Botan::Cipher_Mode&gt; PDJE_CRYPTO::AEAD::dec</definition>
         <argsstring></argsstring>
         <name>dec</name>
-        <qualifiedname>PDJE_CRYPTO::AEAD::dec</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -46,14 +43,13 @@
         </inbodydescription>
         <location file="include/global/Crypto/PDJE_Crypto.hpp" line="41" column="21" bodyfile="include/global/Crypto/PDJE_Crypto.hpp" bodystart="41" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-func">
+      </sectiondef>
+      <sectiondef kind="public-func">
       <memberdef kind="function" id="classPDJE__CRYPTO_1_1AEAD_1a5d7f75c9e3e3e753f012afc393af6a05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
         <definition>std::string PDJE_CRYPTO::AEAD::Encrypt</definition>
         <argsstring>(std::string &amp;noncestr, const std::string &amp;plaintxt)</argsstring>
         <name>Encrypt</name>
-        <qualifiedname>PDJE_CRYPTO::AEAD::Encrypt</qualifiedname>
         <param>
           <type>std::string &amp;</type>
           <declname>noncestr</declname>
@@ -75,7 +71,6 @@
         <definition>std::string PDJE_CRYPTO::AEAD::Decrypt</definition>
         <argsstring>(const std::string &amp;nonce, const std::string &amp;hexenc)</argsstring>
         <name>Decrypt</name>
-        <qualifiedname>PDJE_CRYPTO::AEAD::Decrypt</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>nonce</declname>
@@ -97,7 +92,6 @@
         <definition>std::string PDJE_CRYPTO::AEAD::EncryptAndPack</definition>
         <argsstring>(const std::string &amp;plaintxt)</argsstring>
         <name>EncryptAndPack</name>
-        <qualifiedname>PDJE_CRYPTO::AEAD::EncryptAndPack</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>plaintxt</declname>
@@ -115,7 +109,6 @@
         <definition>std::string PDJE_CRYPTO::AEAD::UnpackAndDecrypt</definition>
         <argsstring>(const std::string &amp;aead_json)</argsstring>
         <name>UnpackAndDecrypt</name>
-        <qualifiedname>PDJE_CRYPTO::AEAD::UnpackAndDecrypt</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>aead_json</declname>
@@ -133,7 +126,6 @@
         <definition>PDJE_CRYPTO::AEAD::AEAD</definition>
         <argsstring>(PSK &amp;key, const std::string &amp;algo=&quot;AES-256/GCM&quot;)</argsstring>
         <name>AEAD</name>
-        <qualifiedname>PDJE_CRYPTO::AEAD::AEAD</qualifiedname>
         <param>
           <type><ref refid="classPDJE__CRYPTO_1_1PSK" kindref="compound">PSK</ref> &amp;</type>
           <declname>key</declname>
@@ -156,7 +148,6 @@
         <definition>PDJE_CRYPTO::AEAD::~AEAD</definition>
         <argsstring>()=default</argsstring>
         <name>~AEAD</name>
-        <qualifiedname>PDJE_CRYPTO::AEAD::~AEAD</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -165,7 +156,7 @@
         </inbodydescription>
         <location file="include/global/Crypto/PDJE_Crypto.hpp" line="55" column="5"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

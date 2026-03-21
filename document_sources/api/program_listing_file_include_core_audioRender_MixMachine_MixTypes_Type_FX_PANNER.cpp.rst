@@ -4,7 +4,7 @@
 Program Listing for File Type_FX_PANNER.cpp
 ===========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_audioRender_MixMachine_MixTypes_Type_FX_PANNER.cpp>` (``include\core\audioRender\MixMachine\MixTypes\Type_FX_PANNER.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_audioRender_MixMachine_MixTypes_Type_FX_PANNER.cpp>` (``include/core/audioRender/MixMachine/MixTypes/Type_FX_PANNER.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

@@ -4,7 +4,7 @@
 Program Listing for File FrameCalc.cpp
 ======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_db_Capnp_Translators_FrameCalc.cpp>` (``include\core\db\Capnp\Translators\FrameCalc.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_db_Capnp_Translators_FrameCalc.cpp>` (``include/core/db/Capnp/Translators/FrameCalc.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -18,32 +18,6 @@ Program Listing for File FrameCalc.cpp
    #include <iterator>
    #include <string>
    
-   namespace FrameCalc {
-   uint64_t
-   CountFrame(uint64_t Sbeat,
-              uint64_t SsubBeat,
-              uint64_t Sseparate,
-              uint64_t Ebeat,
-              uint64_t EsubBeat,
-              uint64_t Eseparate,
-              double   bpm)
-   {
-       Sseparate   = Sseparate > 0 ? Sseparate : 1;
-       Eseparate   = Eseparate > 0 ? Eseparate : 1;
-       bpm         = bpm > 0 ? bpm : 1;
-       auto Sapprx = APPRX(double, Sbeat, SsubBeat, Sseparate);
-       auto Eapprx = APPRX(double, Ebeat, EsubBeat, Eseparate);
-       if (Sapprx > Eapprx) {
-           critlog("Failed to Count Frame. Start apprx position is bigger than "
-                   "End apprx position. Start apprx: ");
-           critlog(Sapprx);
-           critlog("End apprx: ");
-           critlog(Eapprx);
-       }
-       return static_cast<unsigned long>(
-           std::round((Eapprx - Sapprx) * (DMINUTE / bpm) * DSAMPLERATE));
-   }
-   } // namespace FrameCalc
    
    bool
    sortLambda(const BpmFragment &first, const BpmFragment &second)

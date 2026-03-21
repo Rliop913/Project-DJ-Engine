@@ -4,7 +4,7 @@
 File AI.hpp
 ===========
 
-|exhale_lsh| :ref:`Parent directory <dir_include_util_ai>` (``include\util\ai``)
+|exhale_lsh| :ref:`Parent directory <dir_include_util_ai>` (``include/util/ai``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File AI.hpp
    :local:
    :backlinks: none
 
-Definition (``include\util\ai\AI.hpp``)
+Definition (``include/util/ai/AI.hpp``)
 ---------------------------------------
 
 

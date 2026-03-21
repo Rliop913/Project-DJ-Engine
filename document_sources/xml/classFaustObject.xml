@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classFaustObject" kind="class" language="C++" prot="public">
     <compoundname>FaustObject</compoundname>
     <includes refid="EFFECTS_8hpp" local="no">EFFECTS.hpp</includes>
@@ -8,13 +8,12 @@
         <type>typename FaustClass</type>
       </param>
     </templateparamlist>
-    <sectiondef kind="public-attrib">
+      <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="classFaustObject_1a11b55545d1825f6ce5559bd5133c3c7c" prot="public" static="no" mutable="no">
         <type>FaustClass</type>
         <definition>FaustClass FaustObject&lt; FaustClass &gt;::managingClass</definition>
         <argsstring></argsstring>
         <name>managingClass</name>
-        <qualifiedname>FaustObject::managingClass</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -23,9 +22,9 @@
         </inbodydescription>
         <location file="include/core/audioRender/MixMachine/EFFECT/EFFECTS.hpp" line="93" column="16" bodyfile="include/core/audioRender/MixMachine/EFFECT/EFFECTS.hpp" bodystart="93" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-func">
-      <memberdef kind="function" id="classFaustObject_1a22c6f81bb784e98ac2bedbd639850afe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classFaustObject_1a6de743b8eea8ace452dfc4c0d42dbbdb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename FClass</type>
@@ -33,11 +32,10 @@
         </templateparamlist>
         <type>void</type>
         <definition>void FaustObject&lt; FaustClass &gt;::consume</definition>
-        <argsstring>(std::vector&lt; FaustDType&lt; FClass &gt; &gt; &amp;jobs)</argsstring>
+        <argsstring>(std::vector&lt; FaustDType&lt; FClass &gt;&gt; &amp;jobs)</argsstring>
         <name>consume</name>
-        <qualifiedname>FaustObject::consume</qualifiedname>
         <param>
-          <type>std::vector&lt; <ref refid="classFaustDType" kindref="compound">FaustDType</ref>&lt; FClass &gt; &gt; &amp;</type>
+          <type>std::vector&lt; <ref refid="classFaustDType" kindref="compound">FaustDType</ref>&lt; FClass &gt;&gt; &amp;</type>
           <declname>jobs</declname>
         </param>
         <briefdescription>
@@ -69,7 +67,7 @@
         </inbodydescription>
         <location file="include/core/audioRender/MixMachine/EFFECT/EFFECTS.hpp" line="103" column="5" bodyfile="include/core/audioRender/MixMachine/EFFECT/EFFECTS.hpp" bodystart="103" bodyend="112"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
 <para>A class that defines the behavior of an FX. </para>
     </briefdescription>
@@ -88,7 +86,7 @@
     </detaileddescription>
     <location file="include/core/audioRender/MixMachine/EFFECT/EFFECTS.hpp" line="90" column="12" bodyfile="include/core/audioRender/MixMachine/EFFECT/EFFECTS.hpp" bodystart="90" bodyend="113"/>
     <listofallmembers>
-      <member refid="classFaustObject_1a22c6f81bb784e98ac2bedbd639850afe" prot="public" virt="non-virtual"><scope>FaustObject</scope><name>consume</name></member>
+      <member refid="classFaustObject_1a6de743b8eea8ace452dfc4c0d42dbbdb" prot="public" virt="non-virtual"><scope>FaustObject</scope><name>consume</name></member>
       <member refid="classFaustObject_1a11b55545d1825f6ce5559bd5133c3c7c" prot="public" virt="non-virtual"><scope>FaustObject</scope><name>managingClass</name></member>
     </listofallmembers>
   </compounddef>

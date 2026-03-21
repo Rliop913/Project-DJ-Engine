@@ -4,7 +4,7 @@
 Program Listing for File Types.hpp
 ==================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_util_db_relational_Types.hpp>` (``include\util\db\relational\Types.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_util_db_relational_Types.hpp>` (``include/util/db/relational/Types.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

@@ -1,15 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structstmt" kind="struct" language="C++" prot="public">
     <compoundname>stmt</compoundname>
-    <includes refid="db_state_8hpp" local="no">dbState.hpp</includes>
-    <sectiondef kind="public-attrib">
+    <includes refid="dbState_8hpp" local="no">dbState.hpp</includes>
+      <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structstmt_1ad512ebd1df9861c0bbe6cfd926735ae2" prot="public" static="no" mutable="no">
         <type>std::string</type>
         <definition>std::string stmt::placeHold</definition>
         <argsstring></argsstring>
         <name>placeHold</name>
-        <qualifiedname>stmt::placeHold</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -23,7 +22,6 @@
         <definition>sqlite3_stmt* stmt::S</definition>
         <argsstring></argsstring>
         <name>S</name>
-        <qualifiedname>stmt::S</qualifiedname>
         <initializer>= nullptr</initializer>
         <briefdescription>
         </briefdescription>
@@ -33,14 +31,13 @@
         </inbodydescription>
         <location file="include/core/db/dbState.hpp" line="25" column="18" bodyfile="include/core/db/dbState.hpp" bodystart="25" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-func">
+      </sectiondef>
+      <sectiondef kind="public-func">
       <memberdef kind="function" id="structstmt_1af5701984bdcd46068ff12283cb208379" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
         <definition>int stmt::bind_null</definition>
         <argsstring>(int idx)</argsstring>
         <name>bind_null</name>
-        <qualifiedname>stmt::bind_null</qualifiedname>
         <param>
           <type>int</type>
           <declname>idx</declname>
@@ -71,13 +68,12 @@
         <definition>int stmt::bind_text</definition>
         <argsstring>(int idx, SANITIZED_ORNOT &amp;str)</argsstring>
         <name>bind_text</name>
-        <qualifiedname>stmt::bind_text</qualifiedname>
         <param>
           <type>int</type>
           <declname>idx</declname>
         </param>
         <param>
-          <type><ref refid="file_name_sanitizer_8hpp_1a0662da7f5befd667eac83e4e3566cd47" kindref="member">SANITIZED_ORNOT</ref> &amp;</type>
+          <type><ref refid="fileNameSanitizer_8hpp_1a0662da7f5befd667eac83e4e3566cd47" kindref="member">SANITIZED_ORNOT</ref> &amp;</type>
           <declname>str</declname>
         </param>
         <briefdescription>
@@ -114,13 +110,12 @@
         <definition>int stmt::bind_blob</definition>
         <argsstring>(int idx, BIN &amp;bin)</argsstring>
         <name>bind_blob</name>
-        <qualifiedname>stmt::bind_blob</qualifiedname>
         <param>
           <type>int</type>
           <declname>idx</declname>
         </param>
         <param>
-          <type><ref refid="db_state_8hpp_1a32af0badd6a40566b8e04071484b2f83" kindref="member">BIN</ref> &amp;</type>
+          <type><ref refid="dbState_8hpp_1a32af0badd6a40566b8e04071484b2f83" kindref="member">BIN</ref> &amp;</type>
           <declname>bin</declname>
         </param>
         <briefdescription>
@@ -157,7 +152,6 @@
         <definition>int stmt::bind_double</definition>
         <argsstring>(int idx, double num)</argsstring>
         <name>bind_double</name>
-        <qualifiedname>stmt::bind_double</qualifiedname>
         <param>
           <type>int</type>
           <declname>idx</declname>
@@ -200,7 +194,6 @@
         <definition>int stmt::bind_int</definition>
         <argsstring>(int idx, double num)</argsstring>
         <name>bind_int</name>
-        <qualifiedname>stmt::bind_int</qualifiedname>
         <param>
           <type>int</type>
           <declname>idx</declname>
@@ -253,7 +246,6 @@
         <definition>res stmt::colGet</definition>
         <argsstring>(int idx)</argsstring>
         <name>colGet</name>
-        <qualifiedname>stmt::colGet</qualifiedname>
         <param>
           <type>int</type>
           <declname>idx</declname>
@@ -301,7 +293,6 @@
         <definition>bool stmt::activate</definition>
         <argsstring>(sqlite3 *db)</argsstring>
         <name>activate</name>
-        <qualifiedname>stmt::activate</qualifiedname>
         <param>
           <type>sqlite3 *</type>
           <declname>db</declname>
@@ -334,7 +325,6 @@
         <definition>stmt::stmt</definition>
         <argsstring>()</argsstring>
         <name>stmt</name>
-        <qualifiedname>stmt::stmt</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -348,7 +338,6 @@
         <definition>stmt::~stmt</definition>
         <argsstring>()</argsstring>
         <name>~stmt</name>
-        <qualifiedname>stmt::~stmt</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -357,26 +346,26 @@
         </inbodydescription>
         <location file="include/core/db/dbState.hpp" line="93" column="5" bodyfile="include/core/db/dbState.cpp" bodystart="8" bodyend="13"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
 <para>the statement wrapper for sqlite. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
+      <node id="1">
+        <label>stmt</label>
+        <link refid="structstmt"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>placeHold</edgelabel>
+        </childnode>
+      </node>
       <node id="3">
         <label>std::basic_string&lt; Char &gt;</label>
       </node>
       <node id="2">
         <label>std::string</label>
         <childnode refid="3" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="1">
-        <label>stmt</label>
-        <link refid="structstmt"/>
-        <childnode refid="2" relation="usage">
-          <edgelabel>placeHold</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>

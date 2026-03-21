@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_toplevel_set_parent()
+.. doxygenfunction:: xdg_toplevel_set_parent(struct xdg_toplevel *, struct xdg_toplevel *)
    :project: Project_DJ_Engine

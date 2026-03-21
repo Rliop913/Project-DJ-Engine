@@ -4,7 +4,7 @@
 Program Listing for File PredictMusic.hpp
 =========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_audioRender_ManualMix_PredictMusic.hpp>` (``include\core\audioRender\ManualMix\PredictMusic.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_audioRender_ManualMix_PredictMusic.hpp>` (``include/core/audioRender/ManualMix/PredictMusic.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -29,7 +29,7 @@ Program Listing for File PredictMusic.hpp
        std::vector<float> predict_fragment;
    };
    
-   template <int SZ> class PDJE_API PredictBuffer {
+   template <int SZ> class PredictBuffer {
      private:
        using iterator = typename std::array<PREDICT, SZ>::iterator;
        std::array<PREDICT, SZ> buffer;

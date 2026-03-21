@@ -1,15 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structPDJE__LogConfigV1" kind="struct" language="C++" prot="public">
     <compoundname>PDJE_LogConfigV1</compoundname>
     <includes refid="PDJE__LOG__RUNTIME__API_8h" local="no">PDJE_LOG_RUNTIME_API.h</includes>
-    <sectiondef kind="public-attrib">
+      <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structPDJE__LogConfigV1_1a4783bff5122c0577030e120cb2d2f808" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
         <definition>uint32_t PDJE_LogConfigV1::struct_size</definition>
         <argsstring></argsstring>
         <name>struct_size</name>
-        <qualifiedname>PDJE_LogConfigV1::struct_size</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -23,7 +22,6 @@
         <definition>int PDJE_LogConfigV1::backend</definition>
         <argsstring></argsstring>
         <name>backend</name>
-        <qualifiedname>PDJE_LogConfigV1::backend</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -37,7 +35,6 @@
         <definition>int PDJE_LogConfigV1::min_level</definition>
         <argsstring></argsstring>
         <name>min_level</name>
-        <qualifiedname>PDJE_LogConfigV1::min_level</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -51,7 +48,6 @@
         <definition>uint32_t PDJE_LogConfigV1::flags</definition>
         <argsstring></argsstring>
         <name>flags</name>
-        <qualifiedname>PDJE_LogConfigV1::flags</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -65,7 +61,6 @@
         <definition>const char* PDJE_LogConfigV1::file_path</definition>
         <argsstring></argsstring>
         <name>file_path</name>
-        <qualifiedname>PDJE_LogConfigV1::file_path</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -79,7 +74,6 @@
         <definition>PDJE_LogHostSinkV1 PDJE_LogConfigV1::host_sink</definition>
         <argsstring></argsstring>
         <name>host_sink</name>
-        <qualifiedname>PDJE_LogConfigV1::host_sink</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -88,22 +82,22 @@
         </inbodydescription>
         <location file="include/global/PDJE_LOG_RUNTIME_API.h" line="62" column="24" bodyfile="include/global/PDJE_LOG_RUNTIME_API.h" bodystart="62" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
+      <node id="2">
+        <label>PDJE_LogHostSinkV1</label>
+        <link refid="structPDJE__LogHostSinkV1"/>
+      </node>
       <node id="1">
         <label>PDJE_LogConfigV1</label>
         <link refid="structPDJE__LogConfigV1"/>
         <childnode refid="2" relation="usage">
           <edgelabel>host_sink</edgelabel>
         </childnode>
-      </node>
-      <node id="2">
-        <label>PDJE_LogHostSinkV1</label>
-        <link refid="structPDJE__LogHostSinkV1"/>
       </node>
     </collaborationgraph>
     <location file="include/global/PDJE_LOG_RUNTIME_API.h" line="56" column="1" bodyfile="include/global/PDJE_LOG_RUNTIME_API.h" bodystart="56" bodyend="63"/>

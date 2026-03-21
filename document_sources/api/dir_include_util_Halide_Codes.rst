@@ -5,12 +5,12 @@ Directory Halide_Codes
 ======================
 
 
-|exhale_lsh| :ref:`Parent directory <dir_include_util>` (``include\util``)
+|exhale_lsh| :ref:`Parent directory <dir_include_util>` (``include/util``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include\util\Halide_Codes``
+*Directory path:* ``include/util/Halide_Codes``
 
 
 Files

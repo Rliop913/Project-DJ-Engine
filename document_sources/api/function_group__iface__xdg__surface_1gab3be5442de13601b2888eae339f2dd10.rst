@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_surface_set_window_geometry()
+.. doxygenfunction:: xdg_surface_set_window_geometry(struct xdg_surface *, int32_t, int32_t, int32_t, int32_t)
    :project: Project_DJ_Engine

@@ -4,7 +4,7 @@
 File ListDevice.hpp
 ===================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_runner_windows>` (``include\input\runner\windows``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_runner_windows>` (``include/input/runner/windows``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File ListDevice.hpp
    :local:
    :backlinks: none
 
-Definition (``include\input\runner\windows\ListDevice.hpp``)
+Definition (``include/input/runner/windows/ListDevice.hpp``)
 ------------------------------------------------------------
 
 
@@ -58,16 +58,16 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_struct_p_d_j_e___i_p_c_1_1_raw_device_data`
+- :ref:`exhale_struct_structPDJE__IPC_1_1RawDeviceData`
 
 
 Functions
 ---------
 
 
-- :ref:`exhale_function_namespace_p_d_j_e___i_p_c_1a2935dc613202d6f1b6a9d3d071f9b29f`
+- :ref:`exhale_function_namespacePDJE__IPC_1a4edca9770de1add2c4262a750b743077`
 
-- :ref:`exhale_function_namespace_p_d_j_e___i_p_c_1a0998c09d9e3ac8fff4b870c0ef95165c`
+- :ref:`exhale_function_namespacePDJE__IPC_1a0998c09d9e3ac8fff4b870c0ef95165c`
 
-- :ref:`exhale_function_namespace_p_d_j_e___i_p_c_1aed45425b085b19ca0dd458d671462db9`
+- :ref:`exhale_function_namespacePDJE__IPC_1aed45425b085b19ca0dd458d671462db9`
 

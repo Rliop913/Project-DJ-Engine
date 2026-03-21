@@ -1,14 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="namespacePDJE__LOG__DETAIL" kind="namespace" language="C++">
     <compoundname>PDJE_LOG_DETAIL</compoundname>
-    <sectiondef kind="func">
+      <sectiondef kind="func">
       <memberdef kind="function" id="namespacePDJE__LOG__DETAIL_1a5e93659ee07d2be7f03ca641535958f9" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>void</type>
         <definition>void PDJE_LOG_DETAIL::log_preformatted</definition>
         <argsstring>(const int level, std::string_view message) noexcept</argsstring>
         <name>log_preformatted</name>
-        <qualifiedname>PDJE_LOG_DETAIL::log_preformatted</qualifiedname>
         <param>
           <type>const int</type>
           <declname>level</declname>
@@ -35,7 +34,6 @@
         <definition>void PDJE_LOG_DETAIL::log_value</definition>
         <argsstring>(const int level, T &amp;&amp;value) noexcept</argsstring>
         <name>log_value</name>
-        <qualifiedname>PDJE_LOG_DETAIL::log_value</qualifiedname>
         <param>
           <type>const int</type>
           <declname>level</declname>
@@ -52,7 +50,7 @@
         </inbodydescription>
         <location file="include/global/PDJE_LOG_SETTER.hpp" line="45" column="1" bodyfile="include/global/PDJE_LOG_SETTER.hpp" bodystart="45" bodyend="58"/>
       </memberdef>
-      <memberdef kind="function" id="namespacePDJE__LOG__DETAIL_1a8cf6dc50e37344e1113e4112bd5f9ea3" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="namespacePDJE__LOG__DETAIL_1a29b96ecbe46d891361eba6aa5e9f68c3" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename...</type>
@@ -62,9 +60,8 @@
         </templateparamlist>
         <type>void</type>
         <definition>void PDJE_LOG_DETAIL::log_format</definition>
-        <argsstring>(const int level, spdlog::format_string_t&lt; Args... &gt; fmt, Args &amp;&amp;...args) noexcept</argsstring>
+        <argsstring>(const int level, spdlog::format_string_t&lt; Args... &gt; fmt, Args &amp;&amp;...args) noexcept requires(sizeof...(Args) &gt; 0)</argsstring>
         <name>log_format</name>
-        <qualifiedname>PDJE_LOG_DETAIL::log_format</qualifiedname>
         <param>
           <type>const int</type>
           <declname>level</declname>
@@ -77,7 +74,6 @@
           <type>Args &amp;&amp;...</type>
           <declname>args</declname>
         </param>
-    <requiresclause>(sizeof...(Args) &gt; 0)    </requiresclause>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -96,7 +92,6 @@
         <definition>void PDJE_LOG_DETAIL::info</definition>
         <argsstring>(T &amp;&amp;value) noexcept</argsstring>
         <name>info</name>
-        <qualifiedname>PDJE_LOG_DETAIL::info</qualifiedname>
         <param>
           <type><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref> &amp;&amp;</type>
           <declname>value</declname>
@@ -109,7 +104,7 @@
         </inbodydescription>
         <location file="include/global/PDJE_LOG_SETTER.hpp" line="81" column="1" bodyfile="include/global/PDJE_LOG_SETTER.hpp" bodystart="81" bodyend="84"/>
       </memberdef>
-      <memberdef kind="function" id="namespacePDJE__LOG__DETAIL_1a0ac70731f5d92b0059a07ed2544ed876" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="namespacePDJE__LOG__DETAIL_1ab9c02da5fd19c341fc4a2b50de070874" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename...</type>
@@ -119,9 +114,8 @@
         </templateparamlist>
         <type>void</type>
         <definition>void PDJE_LOG_DETAIL::info</definition>
-        <argsstring>(spdlog::format_string_t&lt; Args... &gt; fmt, Args &amp;&amp;...args) noexcept</argsstring>
+        <argsstring>(spdlog::format_string_t&lt; Args... &gt; fmt, Args &amp;&amp;...args) noexcept requires(sizeof...(Args) &gt; 0)</argsstring>
         <name>info</name>
-        <qualifiedname>PDJE_LOG_DETAIL::info</qualifiedname>
         <param>
           <type>spdlog::format_string_t&lt; Args... &gt;</type>
           <declname>fmt</declname>
@@ -130,7 +124,6 @@
           <type>Args &amp;&amp;...</type>
           <declname>args</declname>
         </param>
-    <requiresclause>(sizeof...(Args) &gt; 0)    </requiresclause>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -149,7 +142,6 @@
         <definition>void PDJE_LOG_DETAIL::warn</definition>
         <argsstring>(T &amp;&amp;value) noexcept</argsstring>
         <name>warn</name>
-        <qualifiedname>PDJE_LOG_DETAIL::warn</qualifiedname>
         <param>
           <type><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref> &amp;&amp;</type>
           <declname>value</declname>
@@ -162,7 +154,7 @@
         </inbodydescription>
         <location file="include/global/PDJE_LOG_SETTER.hpp" line="95" column="1" bodyfile="include/global/PDJE_LOG_SETTER.hpp" bodystart="95" bodyend="98"/>
       </memberdef>
-      <memberdef kind="function" id="namespacePDJE__LOG__DETAIL_1a7140251b9a3cfff2fa2f61000b80060d" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="namespacePDJE__LOG__DETAIL_1aca9ed093b61017c6e6465dd5295d84f6" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename...</type>
@@ -172,9 +164,8 @@
         </templateparamlist>
         <type>void</type>
         <definition>void PDJE_LOG_DETAIL::warn</definition>
-        <argsstring>(spdlog::format_string_t&lt; Args... &gt; fmt, Args &amp;&amp;...args) noexcept</argsstring>
+        <argsstring>(spdlog::format_string_t&lt; Args... &gt; fmt, Args &amp;&amp;...args) noexcept requires(sizeof...(Args) &gt; 0)</argsstring>
         <name>warn</name>
-        <qualifiedname>PDJE_LOG_DETAIL::warn</qualifiedname>
         <param>
           <type>spdlog::format_string_t&lt; Args... &gt;</type>
           <declname>fmt</declname>
@@ -183,7 +174,6 @@
           <type>Args &amp;&amp;...</type>
           <declname>args</declname>
         </param>
-    <requiresclause>(sizeof...(Args) &gt; 0)    </requiresclause>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -202,7 +192,6 @@
         <definition>void PDJE_LOG_DETAIL::critical</definition>
         <argsstring>(T &amp;&amp;value) noexcept</argsstring>
         <name>critical</name>
-        <qualifiedname>PDJE_LOG_DETAIL::critical</qualifiedname>
         <param>
           <type><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref> &amp;&amp;</type>
           <declname>value</declname>
@@ -215,7 +204,7 @@
         </inbodydescription>
         <location file="include/global/PDJE_LOG_SETTER.hpp" line="109" column="1" bodyfile="include/global/PDJE_LOG_SETTER.hpp" bodystart="109" bodyend="112"/>
       </memberdef>
-      <memberdef kind="function" id="namespacePDJE__LOG__DETAIL_1ac993d88cb68b0496900c3aff1707c5be" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="namespacePDJE__LOG__DETAIL_1ac87c43d146daf8a5aaf114921662ca1f" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename...</type>
@@ -225,9 +214,8 @@
         </templateparamlist>
         <type>void</type>
         <definition>void PDJE_LOG_DETAIL::critical</definition>
-        <argsstring>(spdlog::format_string_t&lt; Args... &gt; fmt, Args &amp;&amp;...args) noexcept</argsstring>
+        <argsstring>(spdlog::format_string_t&lt; Args... &gt; fmt, Args &amp;&amp;...args) noexcept requires(sizeof...(Args) &gt; 0)</argsstring>
         <name>critical</name>
-        <qualifiedname>PDJE_LOG_DETAIL::critical</qualifiedname>
         <param>
           <type>spdlog::format_string_t&lt; Args... &gt;</type>
           <declname>fmt</declname>
@@ -236,7 +224,6 @@
           <type>Args &amp;&amp;...</type>
           <declname>args</declname>
         </param>
-    <requiresclause>(sizeof...(Args) &gt; 0)    </requiresclause>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -245,7 +232,7 @@
         </inbodydescription>
         <location file="include/global/PDJE_LOG_SETTER.hpp" line="116" column="1" bodyfile="include/global/PDJE_LOG_SETTER.hpp" bodystart="116" bodyend="120"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

@@ -1,96 +1,74 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend" kind="class" language="C++" prot="public">
     <compoundname>PDJE_UTIL::db::backends::RocksDbBackend</compoundname>
     <includes refid="RocksDbBackend_8hpp" local="no">RocksDbBackend.hpp</includes>
-    <sectiondef kind="public-type">
+    <innerclass refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl" prot="public">PDJE_UTIL::db::backends::RocksDbBackend::Impl</innerclass>
+      <sectiondef kind="public-type">
       <memberdef kind="typedef" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aab2831e1ecf74688e63164d7d1a22739" prot="public" static="no">
         <type><ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1RocksDbConfig" kindref="compound">RocksDbConfig</ref></type>
         <definition>using PDJE_UTIL::db::backends::RocksDbBackend::config_type =  RocksDbConfig</definition>
         <argsstring></argsstring>
         <name>config_type</name>
-        <qualifiedname>PDJE_UTIL::db::backends::RocksDbBackend::config_type</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/util/db/backends/RocksDbBackend.hpp" line="30" column="5" bodyfile="include/util/db/backends/RocksDbBackend.hpp" bodystart="30" bodyend="-1"/>
+        <location file="include/util/db/backends/RocksDbBackend.hpp" line="22" column="5" bodyfile="include/util/db/backends/RocksDbBackend.hpp" bodystart="22" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1adb93f0874fa88a3f2b8c4fcdf21487df" prot="private" static="no" mutable="no">
-        <type><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aab2831e1ecf74688e63164d7d1a22739" kindref="member">config_type</ref></type>
-        <definition>config_type PDJE_UTIL::db::backends::RocksDbBackend::config_</definition>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a26be8e5a480a0cdbd9054986727fb2e5" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl" kindref="compound">Impl</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;Impl&gt; PDJE_UTIL::db::backends::RocksDbBackend::impl_</definition>
         <argsstring></argsstring>
-        <name>config_</name>
-        <qualifiedname>PDJE_UTIL::db::backends::RocksDbBackend::config_</qualifiedname>
-        <initializer>{}</initializer>
+        <name>impl_</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/util/db/backends/RocksDbBackend.hpp" line="312" column="27" bodyfile="include/util/db/backends/RocksDbBackend.hpp" bodystart="312" bodyend="312"/>
+        <location file="include/util/db/backends/RocksDbBackend.hpp" line="71" column="21" bodyfile="include/util/db/backends/RocksDbBackend.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a1dca0525cade972742e49e2a3f811f0c" prot="private" static="no" mutable="no">
-        <type>rocksdb::DB *</type>
-        <definition>rocksdb::DB* PDJE_UTIL::db::backends::RocksDbBackend::db_</definition>
-        <argsstring></argsstring>
-        <name>db_</name>
-        <qualifiedname>PDJE_UTIL::db::backends::RocksDbBackend::db_</qualifiedname>
-        <initializer>= nullptr</initializer>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a7efbe9d1b5aa7804d913ac0924b2d5ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_UTIL::db::backends::RocksDbBackend::RocksDbBackend</definition>
+        <argsstring>()</argsstring>
+        <name>RocksDbBackend</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/util/db/backends/RocksDbBackend.hpp" line="313" column="26" bodyfile="include/util/db/backends/RocksDbBackend.hpp" bodystart="313" bodyend="-1"/>
+        <location file="include/util/db/backends/RocksDbBackend.hpp" line="24" column="5" bodyfile="include/util/db/backends/RocksDbBackend.cpp" bodystart="292" bodyend="294"/>
       </memberdef>
-      <memberdef kind="variable" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a4478fd24912273b158011bb0ebc240a8" prot="private" static="no" mutable="no">
-        <type>rocksdb::ReadOptions</type>
-        <definition>rocksdb::ReadOptions PDJE_UTIL::db::backends::RocksDbBackend::read_options_</definition>
-        <argsstring></argsstring>
-        <name>read_options_</name>
-        <qualifiedname>PDJE_UTIL::db::backends::RocksDbBackend::read_options_</qualifiedname>
-        <initializer>{}</initializer>
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1ad709d4c36e312c53599ff45e1d78cb2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_UTIL::db::backends::RocksDbBackend::~RocksDbBackend</definition>
+        <argsstring>()</argsstring>
+        <name>~RocksDbBackend</name>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/util/db/backends/RocksDbBackend.hpp" line="314" column="27" bodyfile="include/util/db/backends/RocksDbBackend.hpp" bodystart="314" bodyend="314"/>
+        <location file="include/util/db/backends/RocksDbBackend.hpp" line="25" column="5"/>
       </memberdef>
-      <memberdef kind="variable" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a3ce3323a75a57a46ec5cb8b552e588d9" prot="private" static="no" mutable="no">
-        <type>rocksdb::WriteOptions</type>
-        <definition>rocksdb::WriteOptions PDJE_UTIL::db::backends::RocksDbBackend::write_options_</definition>
-        <argsstring></argsstring>
-        <name>write_options_</name>
-        <qualifiedname>PDJE_UTIL::db::backends::RocksDbBackend::write_options_</qualifiedname>
-        <initializer>{}</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/util/db/backends/RocksDbBackend.hpp" line="315" column="27" bodyfile="include/util/db/backends/RocksDbBackend.hpp" bodystart="315" bodyend="315"/>
-      </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a7cb3c979c74a74496d18b09b680ec0dc" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
-        <definition>static common::Result&lt; void &gt; PDJE_UTIL::db::backends::RocksDbBackend::create</definition>
-        <argsstring>(const config_type &amp;cfg)</argsstring>
-        <name>create</name>
-        <qualifiedname>PDJE_UTIL::db::backends::RocksDbBackend::create</qualifiedname>
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1ac6ca580cb03b8bac8eb9d1dba1177b5e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_UTIL::db::backends::RocksDbBackend::RocksDbBackend</definition>
+        <argsstring>(RocksDbBackend &amp;&amp;other) noexcept</argsstring>
+        <name>RocksDbBackend</name>
         <param>
-          <type>const <ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aab2831e1ecf74688e63164d7d1a22739" kindref="member">config_type</ref> &amp;</type>
-          <declname>cfg</declname>
+          <type><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend" kindref="compound">RocksDbBackend</ref> &amp;&amp;</type>
+          <declname>other</declname>
         </param>
         <briefdescription>
         </briefdescription>
@@ -98,17 +76,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/util/db/backends/RocksDbBackend.hpp" line="33" column="5" bodyfile="include/util/db/backends/RocksDbBackend.hpp" bodystart="33" bodyend="51"/>
+        <location file="include/util/db/backends/RocksDbBackend.hpp" line="27" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1af0478545c7bc11591aba7ed93d12527e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
-        <definition>static common::Result&lt; void &gt; PDJE_UTIL::db::backends::RocksDbBackend::destroy</definition>
-        <argsstring>(const config_type &amp;cfg)</argsstring>
-        <name>destroy</name>
-        <qualifiedname>PDJE_UTIL::db::backends::RocksDbBackend::destroy</qualifiedname>
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a0e0f1a50cb1ddfe7818e26d4371417dd" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend" kindref="compound">RocksDbBackend</ref> &amp;</type>
+        <definition>RocksDbBackend &amp; PDJE_UTIL::db::backends::RocksDbBackend::operator=</definition>
+        <argsstring>(RocksDbBackend &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
         <param>
-          <type>const <ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aab2831e1ecf74688e63164d7d1a22739" kindref="member">config_type</ref> &amp;</type>
-          <declname>cfg</declname>
+          <type><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend" kindref="compound">RocksDbBackend</ref> &amp;&amp;</type>
+          <declname>other</declname>
         </param>
         <briefdescription>
         </briefdescription>
@@ -116,16 +93,45 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/util/db/backends/RocksDbBackend.hpp" line="54" column="5" bodyfile="include/util/db/backends/RocksDbBackend.hpp" bodystart="54" bodyend="68"/>
+        <location file="include/util/db/backends/RocksDbBackend.hpp" line="29" column="5"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-func">
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a0d90d2a61dcc96c6f84a413da82aff96" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a57af40025e03935bcfedd94fbae27833" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_UTIL::db::backends::RocksDbBackend::RocksDbBackend</definition>
+        <argsstring>(const RocksDbBackend &amp;)=delete</argsstring>
+        <name>RocksDbBackend</name>
+        <param>
+          <type>const <ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend" kindref="compound">RocksDbBackend</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/db/backends/RocksDbBackend.hpp" line="31" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1af19cc1d6de20cdd8ca133f7ea1fc56ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend" kindref="compound">RocksDbBackend</ref> &amp;</type>
+        <definition>RocksDbBackend&amp; PDJE_UTIL::db::backends::RocksDbBackend::operator=</definition>
+        <argsstring>(const RocksDbBackend &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend" kindref="compound">RocksDbBackend</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/db/backends/RocksDbBackend.hpp" line="33" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a0d90d2a61dcc96c6f84a413da82aff96" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
         <definition>common::Result&lt; void &gt; PDJE_UTIL::db::backends::RocksDbBackend::open</definition>
         <argsstring>(const config_type &amp;cfg)</argsstring>
         <name>open</name>
-        <qualifiedname>PDJE_UTIL::db::backends::RocksDbBackend::open</qualifiedname>
         <param>
           <type>const <ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aab2831e1ecf74688e63164d7d1a22739" kindref="member">config_type</ref> &amp;</type>
           <declname>cfg</declname>
@@ -136,28 +142,26 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/util/db/backends/RocksDbBackend.hpp" line="71" column="5" bodyfile="include/util/db/backends/RocksDbBackend.hpp" bodystart="71" bodyend="117"/>
+        <location file="include/util/db/backends/RocksDbBackend.hpp" line="42" column="5" bodyfile="include/util/db/backends/RocksDbBackend.cpp" bodystart="346" bodyend="352"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a651d24e1d4d28af06f4c246ffbfa3ceb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a651d24e1d4d28af06f4c246ffbfa3ceb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
         <definition>common::Result&lt; void &gt; PDJE_UTIL::db::backends::RocksDbBackend::close</definition>
         <argsstring>()</argsstring>
         <name>close</name>
-        <qualifiedname>PDJE_UTIL::db::backends::RocksDbBackend::close</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/util/db/backends/RocksDbBackend.hpp" line="120" column="5" bodyfile="include/util/db/backends/RocksDbBackend.hpp" bodystart="120" bodyend="125"/>
+        <location file="include/util/db/backends/RocksDbBackend.hpp" line="45" column="5" bodyfile="include/util/db/backends/RocksDbBackend.cpp" bodystart="355" bodyend="361"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a6d69b421bc1b21dd0a9bb3e4ce3ff18e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a6d69b421bc1b21dd0a9bb3e4ce3ff18e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; bool &gt;</type>
         <definition>common::Result&lt; bool &gt; PDJE_UTIL::db::backends::RocksDbBackend::contains</definition>
         <argsstring>(std::string_view key) const</argsstring>
         <name>contains</name>
-        <qualifiedname>PDJE_UTIL::db::backends::RocksDbBackend::contains</qualifiedname>
         <param>
           <type>std::string_view</type>
           <declname>key</declname>
@@ -168,14 +172,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/util/db/backends/RocksDbBackend.hpp" line="128" column="5" bodyfile="include/util/db/backends/RocksDbBackend.hpp" bodystart="128" bodyend="144"/>
+        <location file="include/util/db/backends/RocksDbBackend.hpp" line="48" column="5" bodyfile="include/util/db/backends/RocksDbBackend.cpp" bodystart="364" bodyend="371"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a75552df7a87658635b9a10dd9a1d4794" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; <ref refid="namespacePDJE__UTIL_1_1db_1a89f870d3c2a028544646a9b95b827d28" kindref="member">Text</ref> &gt;</type>
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a75552df7a87658635b9a10dd9a1d4794" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; <ref refid="namespacePDJE__UTIL_1_1db_1a4478e16df2aec53b3378bfd6337246b6" kindref="member">Text</ref> &gt;</type>
         <definition>common::Result&lt; Text &gt; PDJE_UTIL::db::backends::RocksDbBackend::get_text</definition>
         <argsstring>(std::string_view key) const</argsstring>
         <name>get_text</name>
-        <qualifiedname>PDJE_UTIL::db::backends::RocksDbBackend::get_text</qualifiedname>
         <param>
           <type>std::string_view</type>
           <declname>key</declname>
@@ -186,14 +189,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/util/db/backends/RocksDbBackend.hpp" line="147" column="5" bodyfile="include/util/db/backends/RocksDbBackend.hpp" bodystart="147" bodyend="159"/>
+        <location file="include/util/db/backends/RocksDbBackend.hpp" line="51" column="5" bodyfile="include/util/db/backends/RocksDbBackend.cpp" bodystart="374" bodyend="381"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a82e6fe32761225bfa1dacc54d5298404" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; <ref refid="namespacePDJE__UTIL_1_1db_1a2ef3b7d9e6089bee19f07baae2cdaa81" kindref="member">Bytes</ref> &gt;</type>
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a82e6fe32761225bfa1dacc54d5298404" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; <ref refid="namespacePDJE__UTIL_1_1db_1acfb13486a5f831dd08830ce1cc8c7ba3" kindref="member">Bytes</ref> &gt;</type>
         <definition>common::Result&lt; Bytes &gt; PDJE_UTIL::db::backends::RocksDbBackend::get_bytes</definition>
         <argsstring>(std::string_view key) const</argsstring>
         <name>get_bytes</name>
-        <qualifiedname>PDJE_UTIL::db::backends::RocksDbBackend::get_bytes</qualifiedname>
         <param>
           <type>std::string_view</type>
           <declname>key</declname>
@@ -204,14 +206,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/util/db/backends/RocksDbBackend.hpp" line="162" column="5" bodyfile="include/util/db/backends/RocksDbBackend.hpp" bodystart="162" bodyend="180"/>
+        <location file="include/util/db/backends/RocksDbBackend.hpp" line="54" column="5" bodyfile="include/util/db/backends/RocksDbBackend.cpp" bodystart="384" bodyend="391"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aef5316d6d2584099d56a3cf30519ef7c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aef5316d6d2584099d56a3cf30519ef7c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
         <definition>common::Result&lt; void &gt; PDJE_UTIL::db::backends::RocksDbBackend::put_text</definition>
         <argsstring>(std::string_view key, std::string_view value)</argsstring>
         <name>put_text</name>
-        <qualifiedname>PDJE_UTIL::db::backends::RocksDbBackend::put_text</qualifiedname>
         <param>
           <type>std::string_view</type>
           <declname>key</declname>
@@ -226,14 +227,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/util/db/backends/RocksDbBackend.hpp" line="183" column="5" bodyfile="include/util/db/backends/RocksDbBackend.hpp" bodystart="183" bodyend="200"/>
+        <location file="include/util/db/backends/RocksDbBackend.hpp" line="57" column="5" bodyfile="include/util/db/backends/RocksDbBackend.cpp" bodystart="394" bodyend="401"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a4219f699275815e48bff7dfa428fa597" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a4219f699275815e48bff7dfa428fa597" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
         <definition>common::Result&lt; void &gt; PDJE_UTIL::db::backends::RocksDbBackend::put_bytes</definition>
         <argsstring>(std::string_view key, std::span&lt; const std::byte &gt; value)</argsstring>
         <name>put_bytes</name>
-        <qualifiedname>PDJE_UTIL::db::backends::RocksDbBackend::put_bytes</qualifiedname>
         <param>
           <type>std::string_view</type>
           <declname>key</declname>
@@ -248,14 +248,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/util/db/backends/RocksDbBackend.hpp" line="203" column="5" bodyfile="include/util/db/backends/RocksDbBackend.hpp" bodystart="203" bodyend="220"/>
+        <location file="include/util/db/backends/RocksDbBackend.hpp" line="60" column="5" bodyfile="include/util/db/backends/RocksDbBackend.cpp" bodystart="404" bodyend="412"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a55fb000344a0fb233538944e3a2226e2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a55fb000344a0fb233538944e3a2226e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
         <definition>common::Result&lt; void &gt; PDJE_UTIL::db::backends::RocksDbBackend::erase</definition>
         <argsstring>(std::string_view key)</argsstring>
         <name>erase</name>
-        <qualifiedname>PDJE_UTIL::db::backends::RocksDbBackend::erase</qualifiedname>
         <param>
           <type>std::string_view</type>
           <declname>key</declname>
@@ -266,14 +265,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/util/db/backends/RocksDbBackend.hpp" line="223" column="5" bodyfile="include/util/db/backends/RocksDbBackend.hpp" bodystart="223" bodyend="235"/>
+        <location file="include/util/db/backends/RocksDbBackend.hpp" line="63" column="5" bodyfile="include/util/db/backends/RocksDbBackend.cpp" bodystart="415" bodyend="422"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1afc254b6c0fd83de1cb16f5a790323997" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; std::vector&lt; <ref refid="namespacePDJE__UTIL_1_1db_1aedbff324bfcd10a0857fd98f47045ba1" kindref="member">Key</ref> &gt; &gt;</type>
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1afc254b6c0fd83de1cb16f5a790323997" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; std::vector&lt; <ref refid="namespacePDJE__UTIL_1_1db_1aaa69bb1e1ba3230da8fb606c82d3ebc7" kindref="member">Key</ref> &gt; &gt;</type>
         <definition>common::Result&lt; std::vector&lt; Key &gt; &gt; PDJE_UTIL::db::backends::RocksDbBackend::list_keys</definition>
         <argsstring>(std::string_view prefix={}) const</argsstring>
         <name>list_keys</name>
-        <qualifiedname>PDJE_UTIL::db::backends::RocksDbBackend::list_keys</qualifiedname>
         <param>
           <type>std::string_view</type>
           <declname>prefix</declname>
@@ -285,19 +283,18 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/util/db/backends/RocksDbBackend.hpp" line="238" column="5" bodyfile="include/util/db/backends/RocksDbBackend.hpp" bodystart="238" bodyend="260"/>
+        <location file="include/util/db/backends/RocksDbBackend.hpp" line="66" column="5" bodyfile="include/util/db/backends/RocksDbBackend.cpp" bodystart="425" bodyend="432"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="private-static-func">
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1af6b1037b7ff5bfde9fff4a8348394f24" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>rocksdb::Slice</type>
-        <definition>static rocksdb::Slice PDJE_UTIL::db::backends::RocksDbBackend::slice_of</definition>
-        <argsstring>(std::string_view value)</argsstring>
-        <name>slice_of</name>
-        <qualifiedname>PDJE_UTIL::db::backends::RocksDbBackend::slice_of</qualifiedname>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aa5492a7ac19ced1ea16f8fa27d0b0ae5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
+        <definition>common::Result&lt; void &gt; PDJE_UTIL::db::backends::RocksDbBackend::create</definition>
+        <argsstring>(const config_type &amp;cfg)</argsstring>
+        <name>create</name>
         <param>
-          <type>std::string_view</type>
-          <declname>value</declname>
+          <type>const <ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aab2831e1ecf74688e63164d7d1a22739" kindref="member">config_type</ref> &amp;</type>
+          <declname>cfg</declname>
         </param>
         <briefdescription>
         </briefdescription>
@@ -305,47 +302,16 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/util/db/backends/RocksDbBackend.hpp" line="264" column="5" bodyfile="include/util/db/backends/RocksDbBackend.hpp" bodystart="264" bodyend="267"/>
+        <location file="include/util/db/backends/RocksDbBackend.hpp" line="36" column="5" bodyfile="include/util/db/backends/RocksDbBackend.cpp" bodystart="304" bodyend="325"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="private-func">
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a7495ef393b569806e86bc68368cd55f8" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="structPDJE__UTIL_1_1common_1_1Status" kindref="compound">common::Status</ref></type>
-        <definition>common::Status PDJE_UTIL::db::backends::RocksDbBackend::require_open</definition>
-        <argsstring>() const</argsstring>
-        <name>require_open</name>
-        <qualifiedname>PDJE_UTIL::db::backends::RocksDbBackend::require_open</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/util/db/backends/RocksDbBackend.hpp" line="270" column="5" bodyfile="include/util/db/backends/RocksDbBackend.hpp" bodystart="270" bodyend="276"/>
-      </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1ad5f26460e72b02899ce3666a02af84ca" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="structPDJE__UTIL_1_1common_1_1Status" kindref="compound">common::Status</ref></type>
-        <definition>common::Status PDJE_UTIL::db::backends::RocksDbBackend::require_writable</definition>
-        <argsstring>() const</argsstring>
-        <name>require_writable</name>
-        <qualifiedname>PDJE_UTIL::db::backends::RocksDbBackend::require_writable</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/util/db/backends/RocksDbBackend.hpp" line="279" column="5" bodyfile="include/util/db/backends/RocksDbBackend.hpp" bodystart="279" bodyend="288"/>
-      </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a512373b0afb30a57914f09dccb174b94" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; std::vector&lt; char &gt; &gt;</type>
-        <definition>common::Result&lt; std::vector&lt; char &gt; &gt; PDJE_UTIL::db::backends::RocksDbBackend::get_raw</definition>
-        <argsstring>(std::string_view key) const</argsstring>
-        <name>get_raw</name>
-        <qualifiedname>PDJE_UTIL::db::backends::RocksDbBackend::get_raw</qualifiedname>
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aa9159e03ef48c10653a7b8e874dd123c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
+        <definition>common::Result&lt; void &gt; PDJE_UTIL::db::backends::RocksDbBackend::destroy</definition>
+        <argsstring>(const config_type &amp;cfg)</argsstring>
+        <name>destroy</name>
         <param>
-          <type>std::string_view</type>
-          <declname>key</declname>
+          <type>const <ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aab2831e1ecf74688e63164d7d1a22739" kindref="member">config_type</ref> &amp;</type>
+          <declname>cfg</declname>
         </param>
         <briefdescription>
         </briefdescription>
@@ -353,55 +319,46 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/util/db/backends/RocksDbBackend.hpp" line="291" column="5" bodyfile="include/util/db/backends/RocksDbBackend.hpp" bodystart="291" bodyend="310"/>
+        <location file="include/util/db/backends/RocksDbBackend.hpp" line="39" column="5" bodyfile="include/util/db/backends/RocksDbBackend.cpp" bodystart="328" bodyend="343"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="3">
-        <label>PDJE_UTIL::db::OpenOptions</label>
-        <link refid="structPDJE__UTIL_1_1db_1_1OpenOptions"/>
-      </node>
       <node id="1">
         <label>PDJE_UTIL::db::backends::RocksDbBackend</label>
         <link refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend"/>
         <childnode refid="2" relation="usage">
-          <edgelabel>config_</edgelabel>
+          <edgelabel>impl_</edgelabel>
         </childnode>
       </node>
       <node id="2">
-        <label>PDJE_UTIL::db::backends::RocksDbConfig</label>
-        <link refid="structPDJE__UTIL_1_1db_1_1backends_1_1RocksDbConfig"/>
-        <childnode refid="3" relation="usage">
-          <edgelabel>open_options</edgelabel>
-        </childnode>
+        <label>std::unique_ptr&lt; PDJE_UTIL::db::backends::RocksDbBackend::Impl &gt;</label>
       </node>
     </collaborationgraph>
-    <location file="include/util/db/backends/RocksDbBackend.hpp" line="28" column="1" bodyfile="include/util/db/backends/RocksDbBackend.hpp" bodystart="28" bodyend="316"/>
+    <location file="include/util/db/backends/RocksDbBackend.hpp" line="20" column="1" bodyfile="include/util/db/backends/RocksDbBackend.hpp" bodystart="20" bodyend="72"/>
     <listofallmembers>
       <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a651d24e1d4d28af06f4c246ffbfa3ceb" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>close</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1adb93f0874fa88a3f2b8c4fcdf21487df" prot="private" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>config_</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aab2831e1ecf74688e63164d7d1a22739" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>config_type</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a6d69b421bc1b21dd0a9bb3e4ce3ff18e" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>contains</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a7cb3c979c74a74496d18b09b680ec0dc" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>create</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a1dca0525cade972742e49e2a3f811f0c" prot="private" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>db_</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1af0478545c7bc11591aba7ed93d12527e" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>destroy</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aa5492a7ac19ced1ea16f8fa27d0b0ae5" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>create</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aa9159e03ef48c10653a7b8e874dd123c" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>destroy</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a55fb000344a0fb233538944e3a2226e2" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>erase</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a82e6fe32761225bfa1dacc54d5298404" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>get_bytes</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a512373b0afb30a57914f09dccb174b94" prot="private" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>get_raw</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a75552df7a87658635b9a10dd9a1d4794" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>get_text</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a26be8e5a480a0cdbd9054986727fb2e5" prot="private" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>impl_</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1afc254b6c0fd83de1cb16f5a790323997" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>list_keys</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a0d90d2a61dcc96c6f84a413da82aff96" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>open</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a0e0f1a50cb1ddfe7818e26d4371417dd" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>operator=</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1af19cc1d6de20cdd8ca133f7ea1fc56ce" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>operator=</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a4219f699275815e48bff7dfa428fa597" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>put_bytes</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aef5316d6d2584099d56a3cf30519ef7c" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>put_text</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a4478fd24912273b158011bb0ebc240a8" prot="private" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>read_options_</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a7495ef393b569806e86bc68368cd55f8" prot="private" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>require_open</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1ad5f26460e72b02899ce3666a02af84ca" prot="private" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>require_writable</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1af6b1037b7ff5bfde9fff4a8348394f24" prot="private" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>slice_of</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a3ce3323a75a57a46ec5cb8b552e588d9" prot="private" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>write_options_</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a7efbe9d1b5aa7804d913ac0924b2d5ca" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>RocksDbBackend</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1ac6ca580cb03b8bac8eb9d1dba1177b5e" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>RocksDbBackend</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a57af40025e03935bcfedd94fbae27833" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>RocksDbBackend</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1ad709d4c36e312c53599ff45e1d78cb2c" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::backends::RocksDbBackend</scope><name>~RocksDbBackend</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

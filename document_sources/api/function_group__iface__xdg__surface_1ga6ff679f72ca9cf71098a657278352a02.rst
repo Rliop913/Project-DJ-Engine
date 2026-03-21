@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_surface_destroy()
+.. doxygenfunction:: xdg_surface_destroy(struct xdg_surface *)
    :project: Project_DJ_Engine

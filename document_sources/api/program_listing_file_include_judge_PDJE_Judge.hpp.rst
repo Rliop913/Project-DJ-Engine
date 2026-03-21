@@ -4,7 +4,7 @@
 Program Listing for File PDJE_Judge.hpp
 =======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_judge_PDJE_Judge.hpp>` (``include\judge\PDJE_Judge.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_judge_PDJE_Judge.hpp>` (``include/judge/PDJE_Judge.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

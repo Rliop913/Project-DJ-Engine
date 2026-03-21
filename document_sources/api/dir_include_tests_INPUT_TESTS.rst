@@ -5,12 +5,12 @@ Directory INPUT_TESTS
 =====================
 
 
-|exhale_lsh| :ref:`Parent directory <dir_include_tests>` (``include\tests``)
+|exhale_lsh| :ref:`Parent directory <dir_include_tests>` (``include/tests``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include\tests\INPUT_TESTS``
+*Directory path:* ``include/tests/INPUT_TESTS``
 
 
 Files

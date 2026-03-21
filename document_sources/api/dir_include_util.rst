@@ -10,7 +10,7 @@ Directory util
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include\util``
+*Directory path:* ``include/util``
 
 Subdirectories
 --------------

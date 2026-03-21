@@ -4,7 +4,7 @@
 Program Listing for File robot.hpp
 ==================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_audioRender_MixMachine_FAUST_VALS_robot.hpp>` (``include\core\audioRender\MixMachine\FAUST_VALS\robot.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_audioRender_MixMachine_FAUST_VALS_robot.hpp>` (``include/core/audioRender/MixMachine/FAUST_VALS/robot.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

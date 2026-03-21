@@ -4,7 +4,7 @@
 File TimeLineDiffTypes.hpp
 ==========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_editor_TimeLine>` (``include\core\editor\TimeLine``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_editor_TimeLine>` (``include/core/editor/TimeLine``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File TimeLineDiffTypes.hpp
    :local:
    :backlinks: none
 
-Definition (``include\core\editor\TimeLine\TimeLineDiffTypes.hpp``)
+Definition (``include/core/editor/TimeLine/TimeLineDiffTypes.hpp``)
 -------------------------------------------------------------------
 
 
@@ -62,14 +62,14 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_music_meta_field_diff`
+- :ref:`exhale_struct_structPDJE__TIMELINE_1_1MusicMetaFieldDiff`
 
-- :ref:`exhale_struct_struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_semantic_diff_result`
+- :ref:`exhale_struct_structPDJE__TIMELINE_1_1TimeLineSemanticDiffResult`
 
 
 Enums
 -----
 
 
-- :ref:`exhale_enum_namespace_p_d_j_e___t_i_m_e_l_i_n_e_1aab72ba929c50c7e6ab8c88f46105b96d`
+- :ref:`exhale_enum_namespacePDJE__TIMELINE_1aab72ba929c50c7e6ab8c88f46105b96d`
 

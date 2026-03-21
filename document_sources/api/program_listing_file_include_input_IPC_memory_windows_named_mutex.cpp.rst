@@ -4,7 +4,7 @@
 Program Listing for File named_mutex.cpp
 ========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_input_IPC_memory_windows_named_mutex.cpp>` (``include\input\IPC\memory\windows\named_mutex.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_input_IPC_memory_windows_named_mutex.cpp>` (``include/input/IPC/memory/windows/named_mutex.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

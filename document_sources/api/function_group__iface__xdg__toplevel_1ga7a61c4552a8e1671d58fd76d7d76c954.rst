@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_toplevel_unset_maximized()
+.. doxygenfunction:: xdg_toplevel_unset_maximized(struct xdg_toplevel *)
    :project: Project_DJ_Engine

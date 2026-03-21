@@ -4,7 +4,7 @@
 File PDJE_RAIL.hpp
 ==================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_judge>` (``include\judge``)
+|exhale_lsh| :ref:`Parent directory <dir_include_judge>` (``include/judge``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_RAIL.hpp
    :local:
    :backlinks: none
 
-Definition (``include\judge\PDJE_RAIL.hpp``)
+Definition (``include/judge/PDJE_RAIL.hpp``)
 --------------------------------------------
 
 
@@ -62,20 +62,20 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_struct_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___d_b`
+- :ref:`exhale_struct_structPDJE__JUDGE_1_1RAIL__DB`
 
-- :ref:`exhale_struct_structstd_1_1std_1_1hash_3_01_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___k_e_y_1_1_k_b___m_o_u_s_e_01_4`
+- :ref:`exhale_struct_structstd_1_1std_1_1hash_3_01PDJE__JUDGE_1_1RAIL__KEY_1_1KB__MOUSE_01_4`
 
-- :ref:`exhale_struct_structstd_1_1std_1_1hash_3_01_p_d_j_e___j_u_d_g_e_1_1_r_a_i_l___k_e_y_1_1_m_i_d_i_01_4`
+- :ref:`exhale_struct_structstd_1_1std_1_1hash_3_01PDJE__JUDGE_1_1RAIL__KEY_1_1MIDI_01_4`
 
 
 Functions
 ---------
 
 
-- :ref:`exhale_function__p_d_j_e___r_a_i_l_8hpp_1a6f95d57dcf1d83478ed15c575104b1b2`
+- :ref:`exhale_function_PDJE__RAIL_8hpp_1a6f95d57dcf1d83478ed15c575104b1b2`
 
-- :ref:`exhale_function__p_d_j_e___r_a_i_l_8hpp_1ae5715602eb3114f0d625d04eea5853e9`
+- :ref:`exhale_function_PDJE__RAIL_8hpp_1ae5715602eb3114f0d625d04eea5853e9`
 
-- :ref:`exhale_function__p_d_j_e___r_a_i_l_8hpp_1a2ca3253436495f02005feaec99725a87`
+- :ref:`exhale_function_PDJE__RAIL_8hpp_1a2ca3253436495f02005feaec99725a87`
 

@@ -4,7 +4,7 @@
 File AxisModel.hpp
 ==================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_judge_AxisModel>` (``include\judge\AxisModel``)
+|exhale_lsh| :ref:`Parent directory <dir_include_judge_AxisModel>` (``include/judge/AxisModel``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File AxisModel.hpp
    :local:
    :backlinks: none
 
-Definition (``include\judge\AxisModel\AxisModel.hpp``)
+Definition (``include/judge/AxisModel/AxisModel.hpp``)
 ------------------------------------------------------
 
 
@@ -42,5 +42,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_p_d_j_e___j_u_d_g_e_1_1_a_x_i_s___m_o_d_e_l`
+- :ref:`exhale_class_classPDJE__JUDGE_1_1AXIS__MODEL`
 

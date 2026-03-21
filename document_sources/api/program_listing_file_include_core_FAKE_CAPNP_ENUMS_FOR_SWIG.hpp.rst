@@ -4,7 +4,7 @@
 Program Listing for File FAKE_CAPNP_ENUMS_FOR_SWIG.hpp
 ======================================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_FAKE_CAPNP_ENUMS_FOR_SWIG.hpp>` (``include\core\FAKE_CAPNP_ENUMS_FOR_SWIG.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_FAKE_CAPNP_ENUMS_FOR_SWIG.hpp>` (``include/core/FAKE_CAPNP_ENUMS_FOR_SWIG.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

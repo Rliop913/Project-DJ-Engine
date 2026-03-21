@@ -4,7 +4,7 @@
 Program Listing for File InputParser.hpp
 ========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_judge_InputParser_InputParser.hpp>` (``include\judge\InputParser\InputParser.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_judge_InputParser_InputParser.hpp>` (``include/judge/InputParser/InputParser.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

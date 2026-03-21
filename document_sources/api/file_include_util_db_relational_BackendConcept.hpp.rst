@@ -4,7 +4,7 @@
 File BackendConcept.hpp
 =======================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_util_db_relational>` (``include\util\db\relational``)
+|exhale_lsh| :ref:`Parent directory <dir_include_util_db_relational>` (``include/util/db/relational``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File BackendConcept.hpp
    :local:
    :backlinks: none
 
-Definition (``include\util\db\relational\BackendConcept.hpp``)
+Definition (``include/util/db/relational/BackendConcept.hpp``)
 --------------------------------------------------------------
 
 
@@ -34,9 +34,9 @@ Includes
 
 - ``string_view``
 
-- ``util/common/Result.hpp``
+- ``util/common/Result.hpp`` (:ref:`file_include_util_common_Result.hpp`)
 
-- ``util/db/relational/Types.hpp``
+- ``util/db/relational/Types.hpp`` (:ref:`file_include_util_db_relational_Types.hpp`)
 
 
 
@@ -58,4 +58,11 @@ Namespaces
 - :ref:`namespace_PDJE_UTIL__db`
 
 - :ref:`namespace_PDJE_UTIL__db__relational`
+
+
+Variables
+---------
+
+
+- :ref:`exhale_variable_namespacePDJE__UTIL_1_1db_1_1relational_1a62b671f28fda26d3f1c05db715cc4001`
 

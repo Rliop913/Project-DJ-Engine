@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_popup_grab()
+.. doxygenfunction:: xdg_popup_grab(struct xdg_popup *, struct wl_seat *, uint32_t)
    :project: Project_DJ_Engine

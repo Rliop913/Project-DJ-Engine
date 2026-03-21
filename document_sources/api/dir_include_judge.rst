@@ -10,7 +10,7 @@ Directory judge
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include\judge``
+*Directory path:* ``include/judge``
 
 Subdirectories
 --------------
@@ -25,6 +25,8 @@ Subdirectories
 Files
 -----
 
+- :ref:`file_include_judge_CPDJE_Judge.cpp`
+- :ref:`file_include_judge_CPDJE_Judge.h`
 - :ref:`file_include_judge_PDJE_Judge.cpp`
 - :ref:`file_include_judge_PDJE_Judge.hpp`
 - :ref:`file_include_judge_PDJE_RAIL.cpp`

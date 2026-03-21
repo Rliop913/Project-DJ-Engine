@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_wm_base_pong()
+.. doxygenfunction:: xdg_wm_base_pong(struct xdg_wm_base *, uint32_t)
    :project: Project_DJ_Engine

@@ -5,12 +5,12 @@ Directory ManualFausts
 ======================
 
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_ManualMix>` (``include\core\audioRender\ManualMix``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_audioRender_ManualMix>` (``include/core/audioRender/ManualMix``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include\core\audioRender\ManualMix\ManualFausts``
+*Directory path:* ``include/core/audioRender/ManualMix/ManualFausts``
 
 
 Files

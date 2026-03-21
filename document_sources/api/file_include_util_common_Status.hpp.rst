@@ -4,7 +4,7 @@
 File Status.hpp
 ===============
 
-|exhale_lsh| :ref:`Parent directory <dir_include_util_common>` (``include\util\common``)
+|exhale_lsh| :ref:`Parent directory <dir_include_util_common>` (``include/util/common``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Status.hpp
    :local:
    :backlinks: none
 
-Definition (``include\util\common\Status.hpp``)
+Definition (``include/util/common/Status.hpp``)
 -----------------------------------------------
 
 
@@ -32,7 +32,7 @@ Includes
 
 - ``string``
 
-- ``util/common/StatusCode.hpp``
+- ``util/common/StatusCode.hpp`` (:ref:`file_include_util_common_StatusCode.hpp`)
 
 
 
@@ -40,9 +40,9 @@ Included By
 -----------
 
 
-- :ref:`file_include_util_PDJE_Util.hpp`
-
 - :ref:`file_include_util_common_Result.hpp`
+
+- :ref:`file_include_util_PDJE_Util.hpp`
 
 
 
@@ -60,5 +60,5 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_struct_p_d_j_e___u_t_i_l_1_1common_1_1_status`
+- :ref:`exhale_struct_structPDJE__UTIL_1_1common_1_1Status`
 

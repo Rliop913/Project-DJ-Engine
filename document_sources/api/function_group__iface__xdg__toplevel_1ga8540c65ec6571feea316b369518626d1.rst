@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_toplevel_move()
+.. doxygenfunction:: xdg_toplevel_move(struct xdg_toplevel *, struct wl_seat *, uint32_t)
    :project: Project_DJ_Engine

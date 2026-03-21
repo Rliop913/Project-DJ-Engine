@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="WaylandInputCore_8hpp" kind="file" language="C++">
     <compoundname>WaylandInputCore.hpp</compoundname>
     <includes local="yes">Input_Transfer.hpp</includes>
@@ -15,21 +15,17 @@
     <includedby refid="linux_2DefaultDevs_8hpp" local="yes">include/input/DefaultDevs/linux/DefaultDevs.hpp</includedby>
     <includedby refid="WaylandInputCore_8cpp" local="yes">include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp</includedby>
     <incdepgraph>
-      <node id="3">
-        <label>PDJE_Input_Device_Data.hpp</label>
-        <link refid="PDJE__Input__Device__Data_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
+      <node id="12">
+        <label>atomic</label>
+      </node>
+      <node id="4">
+        <label>cstdint</label>
+      </node>
+      <node id="14">
+        <label>wayland-client.h</label>
+      </node>
+      <node id="8">
+        <label>string</label>
       </node>
       <node id="1">
         <label>include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp</label>
@@ -55,6 +51,9 @@
         <childnode refid="14" relation="include">
         </childnode>
       </node>
+      <node id="2">
+        <label>Input_Transfer.hpp</label>
+      </node>
       <node id="10">
         <label>WaylandOwnedWindow.hpp</label>
         <link refid="WaylandOwnedWindow_8hpp"/>
@@ -67,55 +66,42 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="2">
-        <label>Input_Transfer.hpp</label>
-      </node>
-      <node id="12">
-        <label>atomic</label>
-      </node>
       <node id="13">
         <label>bitset</label>
-      </node>
-      <node id="11">
-        <label>cstddef</label>
-      </node>
-      <node id="4">
-        <label>cstdint</label>
       </node>
       <node id="5">
         <label>future</label>
       </node>
-      <node id="6">
-        <label>latch</label>
+      <node id="3">
+        <label>PDJE_Input_Device_Data.hpp</label>
+        <link refid="PDJE__Input__Device__Data_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
       </node>
       <node id="7">
         <label>optional</label>
       </node>
-      <node id="8">
-        <label>string</label>
-      </node>
       <node id="9">
         <label>vector</label>
       </node>
-      <node id="14">
-        <label>wayland-client.h</label>
+      <node id="6">
+        <label>latch</label>
+      </node>
+      <node id="11">
+        <label>cstddef</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="3">
-        <label>include/input/DefaultDevs/linux/DefaultDevs.cpp</label>
-        <link refid="linux_2DefaultDevs_8cpp"/>
-      </node>
-      <node id="2">
-        <label>include/input/DefaultDevs/linux/DefaultDevs.hpp</label>
-        <link refid="linux_2DefaultDevs_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp</label>
-        <link refid="WaylandInputCore_8cpp"/>
-      </node>
       <node id="1">
         <label>include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp</label>
         <link refid="WaylandInputCore_8hpp"/>
@@ -123,6 +109,20 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
+      </node>
+      <node id="4">
+        <label>include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp</label>
+        <link refid="WaylandInputCore_8cpp"/>
+      </node>
+      <node id="2">
+        <label>include/input/DefaultDevs/linux/DefaultDevs.hpp</label>
+        <link refid="linux_2DefaultDevs_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>include/input/DefaultDevs/linux/DefaultDevs.cpp</label>
+        <link refid="linux_2DefaultDevs_8cpp"/>
       </node>
     </invincdepgraph>
     <innerclass refid="classWaylandInputCore" prot="public">WaylandInputCore</innerclass>
@@ -154,7 +154,7 @@
 <codeline lineno="21"><highlight class="normal"></highlight></codeline>
 <codeline lineno="22" refid="classWaylandInputCore" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classWaylandInputCore" kindref="compound">WaylandInputCore</ref><sp/>{</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="24" refid="classWaylandInputCore_1adda32472a12053996baafa391b2c384aa08e274ca1d2f18a55425dbdd0948ef4c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="classWaylandInputCore_1adda32472a12053996baafa391b2c384a" kindref="member">SourceMode</ref><sp/>{<sp/><ref refid="classWaylandInputCore_1adda32472a12053996baafa391b2c384aa6adf97f83acf6453d4a6a4b1070f3754" kindref="member">None</ref>,<sp/><ref refid="classWaylandInputCore_1adda32472a12053996baafa391b2c384aa08e274ca1d2f18a55425dbdd0948ef4c" kindref="member">HostHandles</ref>,<sp/><ref refid="classWaylandInputCore_1adda32472a12053996baafa391b2c384aa85a5db5f08fb83e993bd0929700d8166" kindref="member">InternalWindow</ref><sp/>};</highlight></codeline>
+<codeline lineno="24" refid="classWaylandInputCore_1adda32472a12053996baafa391b2c384a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="classWaylandInputCore_1adda32472a12053996baafa391b2c384a" kindref="member">SourceMode</ref><sp/>{<sp/><ref refid="classWaylandInputCore_1adda32472a12053996baafa391b2c384aa6adf97f83acf6453d4a6a4b1070f3754" kindref="member">None</ref>,<sp/><ref refid="classWaylandInputCore_1adda32472a12053996baafa391b2c384aa08e274ca1d2f18a55425dbdd0948ef4c" kindref="member">HostHandles</ref>,<sp/><ref refid="classWaylandInputCore_1adda32472a12053996baafa391b2c384aa85a5db5f08fb83e993bd0929700d8166" kindref="member">InternalWindow</ref><sp/>};</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
 <codeline lineno="26" refid="classWaylandInputCore_1a87c453f1cc7570292495e98d24355c63" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__IPC_1_1PDJE__Input__Transfer" kindref="compound">PDJE_IPC::PDJE_Input_Transfer</ref><sp/>*<ref refid="classWaylandInputCore_1a87c453f1cc7570292495e98d24355c63" kindref="member">out</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight></codeline>
@@ -328,7 +328,7 @@
 <codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classWaylandInputCore_1aa47e91ce1c7661cf466f1614e0bd71f9" kindref="member">wants_keyboard</ref><sp/>||<sp/><ref refid="classWaylandInputCore_1af4f54562b1076a7ae7fe57e8a0dd1686" kindref="member">wants_pointer</ref>;</highlight></codeline>
 <codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;</highlight></codeline>
-<codeline lineno="198" refid="classWaylandInputCore_1ae4faf633ddfbb988149f92b04b5f2b16" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandInputCore_1ae4faf633ddfbb988149f92b04b5f2b16" kindref="member">LastError</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="198" refid="classWaylandInputCore_1a3a1fa5e94b7a0259e244272980f20fba" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandInputCore_1a3a1fa5e94b7a0259e244272980f20fba" kindref="member">LastError</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
 <codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classWaylandInputCore_1acc1fb14d9515487917b8fc3ea26a5a37" kindref="member">last_error</ref>;</highlight></codeline>
 <codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>

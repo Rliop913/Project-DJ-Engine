@@ -4,7 +4,7 @@
 File PSKPipe.cpp
 ================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_global_Crypto_Mac>` (``include\global\Crypto\Mac``)
+|exhale_lsh| :ref:`Parent directory <dir_include_global_Crypto_Mac>` (``include/global/Crypto/Mac``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PSKPipe.cpp
    :local:
    :backlinks: none
 
-Definition (``include\global\Crypto\Mac\PSKPipe.cpp``)
+Definition (``include/global/Crypto/Mac/PSKPipe.cpp``)
 ------------------------------------------------------
 
 
@@ -48,5 +48,5 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_namespace_p_d_j_e___c_r_y_p_t_o_1a5251f485ccb6ad140e2c1ca97a66e30b`
+- :ref:`exhale_function_namespacePDJE__CRYPTO_1a5251f485ccb6ad140e2c1ca97a66e30b`
 

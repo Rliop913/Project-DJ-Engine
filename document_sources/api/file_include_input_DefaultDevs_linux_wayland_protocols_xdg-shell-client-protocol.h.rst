@@ -4,7 +4,7 @@
 File xdg-shell-client-protocol.h
 ================================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_DefaultDevs_linux_wayland_protocols>` (``include\input\DefaultDevs\linux\wayland_protocols``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_DefaultDevs_linux_wayland_protocols>` (``include/input/DefaultDevs/linux/wayland_protocols``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File xdg-shell-client-protocol.h
    :local:
    :backlinks: none
 
-Definition (``include\input\DefaultDevs\linux\wayland_protocols\xdg-shell-client-protocol.h``)
+Definition (``include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.h``)
 ----------------------------------------------------------------------------------------------
 
 
@@ -95,7 +95,7 @@ Functions
 
 - :ref:`exhale_function_group__iface__xdg__popup_1gaaa662105930acc53ddce8419f56c7c00`
 
-- :ref:`exhale_function_group__iface__xdg__popup_1gae38bef1fbc1541a49aafdeddb412e107`
+- :ref:`exhale_function_group__iface__xdg__popup_1gae18cd5da648f2d49d39578a035bcd211`
 
 - :ref:`exhale_function_xdg-shell-client-protocol_8h_1a29686a8bc4b60fed8e3fdbda36536a13`
 
@@ -107,7 +107,7 @@ Functions
 
 - :ref:`exhale_function_group__iface__xdg__positioner_1ga4480bbe5bc6f1deb96e21c5e0f0b7de3`
 
-- :ref:`exhale_function_group__iface__xdg__positioner_1ga2ecf2ae9597b49ef40f46a330eccc92a`
+- :ref:`exhale_function_group__iface__xdg__positioner_1gacc63cdb9a8158f9f2fb4239087f43b51`
 
 - :ref:`exhale_function_xdg-shell-client-protocol_8h_1a55f6e7d91c0081c73cbdbc2c57d5ca1a`
 
@@ -137,11 +137,11 @@ Functions
 
 - :ref:`exhale_function_group__iface__xdg__surface_1ga6ff679f72ca9cf71098a657278352a02`
 
-- :ref:`exhale_function_group__iface__xdg__surface_1ga1e77913f1bd9c55e8cea22e5240b030e`
+- :ref:`exhale_function_group__iface__xdg__surface_1ga262c892c7b219d1c2ea148a392ae4d3c`
 
-- :ref:`exhale_function_group__iface__xdg__surface_1ga85ae329154f5cc3b8de8d2870e1bc8e0`
+- :ref:`exhale_function_group__iface__xdg__surface_1ga86408dc891224abcf7c28ca86dda3765`
 
-- :ref:`exhale_function_group__iface__xdg__surface_1ga2346a83243cf8fda68b44e91d0671ae9`
+- :ref:`exhale_function_group__iface__xdg__surface_1gad03aa3689029a1850eec800c40553540`
 
 - :ref:`exhale_function_xdg-shell-client-protocol_8h_1aaecde12e17ae75a8a1046dca06fe6999`
 
@@ -153,7 +153,7 @@ Functions
 
 - :ref:`exhale_function_group__iface__xdg__toplevel_1gafd000a1887269ac8046140009c4dbd20`
 
-- :ref:`exhale_function_group__iface__xdg__toplevel_1ga47a2d3f90ab9763f1d91f854395fb6ec`
+- :ref:`exhale_function_group__iface__xdg__toplevel_1gad44930651133a355ee9e1ff2d57a2bc4`
 
 - :ref:`exhale_function_xdg-shell-client-protocol_8h_1aa26fce9daa83428588d097277575fbf4`
 
@@ -187,15 +187,15 @@ Functions
 
 - :ref:`exhale_function_group__iface__xdg__wm__base_1ga8f46ae46604ede327e8f69869875449f`
 
-- :ref:`exhale_function_group__iface__xdg__wm__base_1ga0c549e7dc59346bd66e8408c946a89ec`
+- :ref:`exhale_function_group__iface__xdg__wm__base_1ga26d0f63aa223031659780f053c5793cb`
 
 - :ref:`exhale_function_group__iface__xdg__wm__base_1ga22e80540ffc487720837e85a46834552`
 
-- :ref:`exhale_function_group__iface__xdg__wm__base_1gadc6e98af5c964385a17cbbdd8e389116`
+- :ref:`exhale_function_group__iface__xdg__wm__base_1ga6ee591118d27659f013644e38f4a2c77`
 
 - :ref:`exhale_function_xdg-shell-client-protocol_8h_1ac6325e74ce94067acc51c9afff6aca27`
 
-- :ref:`exhale_function_group__iface__xdg__wm__base_1gae59d1896c5fb50124ebd8421aa967782`
+- :ref:`exhale_function_group__iface__xdg__wm__base_1ga6e9508d587e48bd1008c2d6ba981dd5b`
 
 - :ref:`exhale_function_group__iface__xdg__wm__base_1gaf1105ebe9c99f0eb6bf2792fab28f742`
 

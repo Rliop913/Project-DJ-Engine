@@ -4,7 +4,7 @@
 File Index.hpp
 ==============
 
-|exhale_lsh| :ref:`Parent directory <dir_include_util_db_nearest>` (``include\util\db\nearest``)
+|exhale_lsh| :ref:`Parent directory <dir_include_util_db_nearest>` (``include/util/db/nearest``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Index.hpp
    :local:
    :backlinks: none
 
-Definition (``include\util\db\nearest\Index.hpp``)
+Definition (``include/util/db/nearest/Index.hpp``)
 --------------------------------------------------
 
 
@@ -30,7 +30,7 @@ Includes
 --------
 
 
-- ``util/db/nearest/BackendConcept.hpp``
+- ``util/db/nearest/BackendConcept.hpp`` (:ref:`file_include_util_db_nearest_BackendConcept.hpp`)
 
 - ``utility``
 
@@ -60,5 +60,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_nearest_neighbor_index`
+- :ref:`exhale_class_classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex`
 

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="xdg-shell-client-protocol_8c" kind="file" language="C++">
     <compoundname>xdg-shell-client-protocol.c</compoundname>
     <includes local="no">stdbool.h</includes>
@@ -7,6 +7,9 @@
     <includes local="no">stdint.h</includes>
     <includes local="yes">wayland-util.h</includes>
     <incdepgraph>
+      <node id="2">
+        <label>stdbool.h</label>
+      </node>
       <node id="1">
         <label>include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c</label>
         <link refid="xdg-shell-client-protocol_8c"/>
@@ -19,9 +22,6 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="2">
-        <label>stdbool.h</label>
-      </node>
       <node id="4">
         <label>stdint.h</label>
       </node>
@@ -32,7 +32,7 @@
         <label>wayland-util.h</label>
       </node>
     </incdepgraph>
-    <sectiondef kind="define">
+      <sectiondef kind="define">
       <memberdef kind="define" id="xdg-shell-client-protocol_8c_1a54d2d7742701f3f112afbcd8d4f9ccdb" prot="public" static="no">
         <name>__has_attribute</name>
         <param><defname>x</defname></param>
@@ -55,9 +55,9 @@
         </inbodydescription>
         <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="43" column="10" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="43" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="var">
-      <memberdef kind="variable" id="xdg-shell-client-protocol_8c_1ae97e9c3c498cdd2419db058fa13f26a5" prot="public" static="no" extern="yes" mutable="no">
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="xdg-shell-client-protocol_8c_1ae97e9c3c498cdd2419db058fa13f26a5" prot="public" static="no" mutable="no">
         <type>const struct wl_interface</type>
         <definition>const struct wl_interface wl_output_interface</definition>
         <argsstring></argsstring>
@@ -68,9 +68,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="46" column="32" declfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" declline="46" declcolumn="32"/>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="1" column="0" declfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" declline="1" declcolumn="0"/>
       </memberdef>
-      <memberdef kind="variable" id="xdg-shell-client-protocol_8c_1abaec16e5d3db301ad4c2f3430c218239" prot="public" static="no" extern="yes" mutable="no">
+      <memberdef kind="variable" id="xdg-shell-client-protocol_8c_1abaec16e5d3db301ad4c2f3430c218239" prot="public" static="no" mutable="no">
         <type>const struct wl_interface</type>
         <definition>const struct wl_interface wl_seat_interface</definition>
         <argsstring></argsstring>
@@ -81,9 +81,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="47" column="32" declfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" declline="47" declcolumn="32"/>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="1" column="0" declfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" declline="1" declcolumn="0"/>
       </memberdef>
-      <memberdef kind="variable" id="xdg-shell-client-protocol_8c_1ab5b94bcc25b21d2fdd945533016d0e33" prot="public" static="no" extern="yes" mutable="no">
+      <memberdef kind="variable" id="xdg-shell-client-protocol_8c_1ab5b94bcc25b21d2fdd945533016d0e33" prot="public" static="no" mutable="no">
         <type>const struct wl_interface</type>
         <definition>const struct wl_interface wl_surface_interface</definition>
         <argsstring></argsstring>
@@ -94,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="48" column="32" declfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" declline="48" declcolumn="32"/>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="1" column="0" declfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" declline="1" declcolumn="0"/>
       </memberdef>
       <memberdef kind="variable" id="xdg-shell-client-protocol_8c_1aa60edf2c19b40f7ba7e31b4aa1bf8d19" prot="public" static="no" mutable="no">
         <type>const struct wl_interface</type>
@@ -103,7 +103,7 @@
         <name>xdg_popup_interface</name>
         <initializer>= {
 	&quot;xdg_popup&quot;, 7,
-	3, <ref refid="xdg-shell-client-protocol_8c_1a3f4c4d0c81f6efddf1a337e488b3d999" kindref="member">xdg_popup_requests</ref>,
+	3, xdg_popup_requests,
 	3, <ref refid="xdg-shell-client-protocol_8c_1afaf16d7a07b821dd9d76d83a28cc02e3" kindref="member">xdg_popup_events</ref>,
 }</initializer>
         <briefdescription>
@@ -112,7 +112,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="179" column="36" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="179" bodyend="183" declfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" declline="49" declcolumn="32"/>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="179" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="179" bodyend="-1" declfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" declline="1" declcolumn="0"/>
       </memberdef>
       <memberdef kind="variable" id="xdg-shell-client-protocol_8c_1a16a9be7454042fdc62e0418508a624d4" prot="public" static="no" mutable="no">
         <type>const struct wl_interface</type>
@@ -121,7 +121,7 @@
         <name>xdg_positioner_interface</name>
         <initializer>= {
 	&quot;xdg_positioner&quot;, 7,
-	10, <ref refid="xdg-shell-client-protocol_8c_1a74d60c715e45804abbfb69a9e0716e23" kindref="member">xdg_positioner_requests</ref>,
+	10, xdg_positioner_requests,
 	0, NULL,
 }</initializer>
         <briefdescription>
@@ -130,7 +130,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="113" column="36" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="113" bodyend="117" declfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" declline="50" declcolumn="32"/>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="113" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="113" bodyend="-1" declfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" declline="1" declcolumn="0"/>
       </memberdef>
       <memberdef kind="variable" id="xdg-shell-client-protocol_8c_1a5ac26be247039c7cdf4a5a26f613cfe6" prot="public" static="no" mutable="no">
         <type>const struct wl_interface</type>
@@ -139,7 +139,7 @@
         <name>xdg_surface_interface</name>
         <initializer>= {
 	&quot;xdg_surface&quot;, 7,
-	5, <ref refid="xdg-shell-client-protocol_8c_1a822df53758e9616d29a1f8fade4108a2" kindref="member">xdg_surface_requests</ref>,
+	5, xdg_surface_requests,
 	1, <ref refid="xdg-shell-client-protocol_8c_1a002ff434c94b3a9dd7a333d06a9df531" kindref="member">xdg_surface_events</ref>,
 }</initializer>
         <briefdescription>
@@ -148,7 +148,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="131" column="36" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="131" bodyend="135" declfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" declline="51" declcolumn="32"/>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="131" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="131" bodyend="-1" declfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" declline="1" declcolumn="0"/>
       </memberdef>
       <memberdef kind="variable" id="xdg-shell-client-protocol_8c_1a41eaf1ac12f3ef225df8b9f2f6559326" prot="public" static="no" mutable="no">
         <type>const struct wl_interface</type>
@@ -157,7 +157,7 @@
         <name>xdg_toplevel_interface</name>
         <initializer>= {
 	&quot;xdg_toplevel&quot;, 7,
-	14, <ref refid="xdg-shell-client-protocol_8c_1ad5745b9472db2bfe53010f0a77e03e17" kindref="member">xdg_toplevel_requests</ref>,
+	14, xdg_toplevel_requests,
 	4, <ref refid="xdg-shell-client-protocol_8c_1a438bc0a84d9f8032bc13b34feff2a3cd" kindref="member">xdg_toplevel_events</ref>,
 }</initializer>
         <briefdescription>
@@ -166,7 +166,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="161" column="36" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="161" bodyend="165" declfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" declline="52" declcolumn="32"/>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="161" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="161" bodyend="-1" declfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" declline="1" declcolumn="0"/>
       </memberdef>
       <memberdef kind="variable" id="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" prot="public" static="yes" mutable="no">
         <type>const struct wl_interface *</type>
@@ -178,14 +178,14 @@
 	NULL,
 	NULL,
 	NULL,
-	&amp;<ref refid="xdg-shell-client-protocol_8c_1a16a9be7454042fdc62e0418508a624d4" kindref="member">xdg_positioner_interface</ref>,
-	&amp;<ref refid="xdg-shell-client-protocol_8c_1a5ac26be247039c7cdf4a5a26f613cfe6" kindref="member">xdg_surface_interface</ref>,
+	&amp;<ref refid="xdg-shell-client-protocol_8h_1a0fd9d7b88edacfac02acc1ad21ba2009" kindref="member">xdg_positioner_interface</ref>,
+	&amp;<ref refid="xdg-shell-client-protocol_8h_1ae4b21b2e318741ccad4182addb6b3109" kindref="member">xdg_surface_interface</ref>,
 	&amp;<ref refid="xdg-shell-client-protocol_8c_1ab5b94bcc25b21d2fdd945533016d0e33" kindref="member">wl_surface_interface</ref>,
-	&amp;<ref refid="xdg-shell-client-protocol_8c_1a41eaf1ac12f3ef225df8b9f2f6559326" kindref="member">xdg_toplevel_interface</ref>,
-	&amp;<ref refid="xdg-shell-client-protocol_8c_1aa60edf2c19b40f7ba7e31b4aa1bf8d19" kindref="member">xdg_popup_interface</ref>,
-	&amp;<ref refid="xdg-shell-client-protocol_8c_1a5ac26be247039c7cdf4a5a26f613cfe6" kindref="member">xdg_surface_interface</ref>,
-	&amp;<ref refid="xdg-shell-client-protocol_8c_1a16a9be7454042fdc62e0418508a624d4" kindref="member">xdg_positioner_interface</ref>,
-	&amp;<ref refid="xdg-shell-client-protocol_8c_1a41eaf1ac12f3ef225df8b9f2f6559326" kindref="member">xdg_toplevel_interface</ref>,
+	&amp;<ref refid="xdg-shell-client-protocol_8h_1a363cde4bb499232c7210ceb9d5023a4c" kindref="member">xdg_toplevel_interface</ref>,
+	&amp;<ref refid="xdg-shell-client-protocol_8h_1a6f8572885f6cd32c17dbc140f53c1688" kindref="member">xdg_popup_interface</ref>,
+	&amp;<ref refid="xdg-shell-client-protocol_8h_1ae4b21b2e318741ccad4182addb6b3109" kindref="member">xdg_surface_interface</ref>,
+	&amp;<ref refid="xdg-shell-client-protocol_8h_1a0fd9d7b88edacfac02acc1ad21ba2009" kindref="member">xdg_positioner_interface</ref>,
+	&amp;<ref refid="xdg-shell-client-protocol_8h_1a363cde4bb499232c7210ceb9d5023a4c" kindref="member">xdg_toplevel_interface</ref>,
 	&amp;<ref refid="xdg-shell-client-protocol_8c_1abaec16e5d3db301ad4c2f3430c218239" kindref="member">wl_seat_interface</ref>,
 	NULL,
 	NULL,
@@ -198,7 +198,7 @@
 	&amp;<ref refid="xdg-shell-client-protocol_8c_1ae97e9c3c498cdd2419db058fa13f26a5" kindref="member">wl_output_interface</ref>,
 	&amp;<ref refid="xdg-shell-client-protocol_8c_1abaec16e5d3db301ad4c2f3430c218239" kindref="member">wl_seat_interface</ref>,
 	NULL,
-	&amp;<ref refid="xdg-shell-client-protocol_8c_1a16a9be7454042fdc62e0418508a624d4" kindref="member">xdg_positioner_interface</ref>,
+	&amp;<ref refid="xdg-shell-client-protocol_8h_1a0fd9d7b88edacfac02acc1ad21ba2009" kindref="member">xdg_positioner_interface</ref>,
 	NULL,
 }</initializer>
         <briefdescription>
@@ -207,7 +207,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="54" column="32" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="54" bodyend="81"/>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="54" column="32" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="54" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="xdg-shell-client-protocol_8c_1af554e1eb2989ab3a59118e4d038fceb1" prot="public" static="yes" mutable="no">
         <type>const struct wl_message</type>
@@ -215,10 +215,10 @@
         <argsstring>[]</argsstring>
         <name>xdg_wm_base_requests</name>
         <initializer>= {
-	{ &quot;destroy&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;create_positioner&quot;, &quot;n&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 4 },
-	{ &quot;get_xdg_surface&quot;, &quot;no&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 5 },
-	{ &quot;pong&quot;, &quot;u&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+	{ &quot;destroy&quot;, &quot;&quot;, xdg_shell_types + 0 },
+	{ &quot;create_positioner&quot;, &quot;n&quot;, xdg_shell_types + 4 },
+	{ &quot;get_xdg_surface&quot;, &quot;no&quot;, xdg_shell_types + 5 },
+	{ &quot;pong&quot;, &quot;u&quot;, xdg_shell_types + 0 },
 }</initializer>
         <briefdescription>
         </briefdescription>
@@ -226,7 +226,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="83" column="30" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="83" bodyend="88"/>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="54" column="32" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="83" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="xdg-shell-client-protocol_8c_1a1f43f6e8f0a8519a6aeeb05080036d6d" prot="public" static="yes" mutable="no">
         <type>const struct wl_message</type>
@@ -234,7 +234,7 @@
         <argsstring>[]</argsstring>
         <name>xdg_wm_base_events</name>
         <initializer>= {
-	{ &quot;ping&quot;, &quot;u&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+	{ &quot;ping&quot;, &quot;u&quot;, xdg_shell_types + 0 },
 }</initializer>
         <briefdescription>
         </briefdescription>
@@ -242,7 +242,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="90" column="30" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="90" bodyend="92"/>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="54" column="32" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="90" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="xdg-shell-client-protocol_8c_1a23c96730741064951b7a6c714ebb9403" prot="public" static="no" mutable="no">
         <type><ref refid="xdg-shell-client-protocol_8c_1acc932c37426d4b9d57ab3766973f81f6" kindref="member">WL_PRIVATE</ref> const struct wl_interface</type>
@@ -251,7 +251,7 @@
         <name>xdg_wm_base_interface</name>
         <initializer>= {
 	&quot;xdg_wm_base&quot;, 7,
-	4, <ref refid="xdg-shell-client-protocol_8c_1af554e1eb2989ab3a59118e4d038fceb1" kindref="member">xdg_wm_base_requests</ref>,
+	4, xdg_wm_base_requests,
 	1, <ref refid="xdg-shell-client-protocol_8c_1a1f43f6e8f0a8519a6aeeb05080036d6d" kindref="member">xdg_wm_base_events</ref>,
 }</initializer>
         <briefdescription>
@@ -260,7 +260,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="94" column="36" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="94" bodyend="98"/>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="94" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="94" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="xdg-shell-client-protocol_8c_1a74d60c715e45804abbfb69a9e0716e23" prot="public" static="yes" mutable="no">
         <type>const struct wl_message</type>
@@ -268,16 +268,16 @@
         <argsstring>[]</argsstring>
         <name>xdg_positioner_requests</name>
         <initializer>= {
-	{ &quot;destroy&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_size&quot;, &quot;ii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_anchor_rect&quot;, &quot;iiii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_anchor&quot;, &quot;u&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_gravity&quot;, &quot;u&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_constraint_adjustment&quot;, &quot;u&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_offset&quot;, &quot;ii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_reactive&quot;, &quot;3&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_parent_size&quot;, &quot;3ii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_parent_configure&quot;, &quot;3u&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+	{ &quot;destroy&quot;, &quot;&quot;, xdg_shell_types + 0 },
+	{ &quot;set_size&quot;, &quot;ii&quot;, xdg_shell_types + 0 },
+	{ &quot;set_anchor_rect&quot;, &quot;iiii&quot;, xdg_shell_types + 0 },
+	{ &quot;set_anchor&quot;, &quot;u&quot;, xdg_shell_types + 0 },
+	{ &quot;set_gravity&quot;, &quot;u&quot;, xdg_shell_types + 0 },
+	{ &quot;set_constraint_adjustment&quot;, &quot;u&quot;, xdg_shell_types + 0 },
+	{ &quot;set_offset&quot;, &quot;ii&quot;, xdg_shell_types + 0 },
+	{ &quot;set_reactive&quot;, &quot;3&quot;, xdg_shell_types + 0 },
+	{ &quot;set_parent_size&quot;, &quot;3ii&quot;, xdg_shell_types + 0 },
+	{ &quot;set_parent_configure&quot;, &quot;3u&quot;, xdg_shell_types + 0 },
 }</initializer>
         <briefdescription>
         </briefdescription>
@@ -285,7 +285,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="100" column="30" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="100" bodyend="111"/>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="94" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="100" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="xdg-shell-client-protocol_8c_1a822df53758e9616d29a1f8fade4108a2" prot="public" static="yes" mutable="no">
         <type>const struct wl_message</type>
@@ -293,11 +293,11 @@
         <argsstring>[]</argsstring>
         <name>xdg_surface_requests</name>
         <initializer>= {
-	{ &quot;destroy&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;get_toplevel&quot;, &quot;n&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 7 },
-	{ &quot;get_popup&quot;, &quot;n?oo&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 8 },
-	{ &quot;set_window_geometry&quot;, &quot;iiii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;ack_configure&quot;, &quot;u&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+	{ &quot;destroy&quot;, &quot;&quot;, xdg_shell_types + 0 },
+	{ &quot;get_toplevel&quot;, &quot;n&quot;, xdg_shell_types + 7 },
+	{ &quot;get_popup&quot;, &quot;n?oo&quot;, xdg_shell_types + 8 },
+	{ &quot;set_window_geometry&quot;, &quot;iiii&quot;, xdg_shell_types + 0 },
+	{ &quot;ack_configure&quot;, &quot;u&quot;, xdg_shell_types + 0 },
 }</initializer>
         <briefdescription>
         </briefdescription>
@@ -305,7 +305,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="119" column="30" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="119" bodyend="125"/>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="113" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="119" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="xdg-shell-client-protocol_8c_1a002ff434c94b3a9dd7a333d06a9df531" prot="public" static="yes" mutable="no">
         <type>const struct wl_message</type>
@@ -313,7 +313,7 @@
         <argsstring>[]</argsstring>
         <name>xdg_surface_events</name>
         <initializer>= {
-	{ &quot;configure&quot;, &quot;u&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+	{ &quot;configure&quot;, &quot;u&quot;, xdg_shell_types + 0 },
 }</initializer>
         <briefdescription>
         </briefdescription>
@@ -321,7 +321,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="127" column="30" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="127" bodyend="129"/>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="113" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="127" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="xdg-shell-client-protocol_8c_1ad5745b9472db2bfe53010f0a77e03e17" prot="public" static="yes" mutable="no">
         <type>const struct wl_message</type>
@@ -329,20 +329,20 @@
         <argsstring>[]</argsstring>
         <name>xdg_toplevel_requests</name>
         <initializer>= {
-	{ &quot;destroy&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_parent&quot;, &quot;?o&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 11 },
-	{ &quot;set_title&quot;, &quot;s&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_app_id&quot;, &quot;s&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;show_window_menu&quot;, &quot;ouii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 12 },
-	{ &quot;move&quot;, &quot;ou&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 16 },
-	{ &quot;resize&quot;, &quot;ouu&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 18 },
-	{ &quot;set_max_size&quot;, &quot;ii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_min_size&quot;, &quot;ii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_maximized&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;unset_maximized&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_fullscreen&quot;, &quot;?o&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 21 },
-	{ &quot;unset_fullscreen&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_minimized&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+	{ &quot;destroy&quot;, &quot;&quot;, xdg_shell_types + 0 },
+	{ &quot;set_parent&quot;, &quot;?o&quot;, xdg_shell_types + 11 },
+	{ &quot;set_title&quot;, &quot;s&quot;, xdg_shell_types + 0 },
+	{ &quot;set_app_id&quot;, &quot;s&quot;, xdg_shell_types + 0 },
+	{ &quot;show_window_menu&quot;, &quot;ouii&quot;, xdg_shell_types + 12 },
+	{ &quot;move&quot;, &quot;ou&quot;, xdg_shell_types + 16 },
+	{ &quot;resize&quot;, &quot;ouu&quot;, xdg_shell_types + 18 },
+	{ &quot;set_max_size&quot;, &quot;ii&quot;, xdg_shell_types + 0 },
+	{ &quot;set_min_size&quot;, &quot;ii&quot;, xdg_shell_types + 0 },
+	{ &quot;set_maximized&quot;, &quot;&quot;, xdg_shell_types + 0 },
+	{ &quot;unset_maximized&quot;, &quot;&quot;, xdg_shell_types + 0 },
+	{ &quot;set_fullscreen&quot;, &quot;?o&quot;, xdg_shell_types + 21 },
+	{ &quot;unset_fullscreen&quot;, &quot;&quot;, xdg_shell_types + 0 },
+	{ &quot;set_minimized&quot;, &quot;&quot;, xdg_shell_types + 0 },
 }</initializer>
         <briefdescription>
         </briefdescription>
@@ -350,7 +350,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="137" column="30" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="137" bodyend="152"/>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="131" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="137" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="xdg-shell-client-protocol_8c_1a438bc0a84d9f8032bc13b34feff2a3cd" prot="public" static="yes" mutable="no">
         <type>const struct wl_message</type>
@@ -358,10 +358,10 @@
         <argsstring>[]</argsstring>
         <name>xdg_toplevel_events</name>
         <initializer>= {
-	{ &quot;configure&quot;, &quot;iia&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;close&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;configure_bounds&quot;, &quot;4ii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;wm_capabilities&quot;, &quot;5a&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+	{ &quot;configure&quot;, &quot;iia&quot;, xdg_shell_types + 0 },
+	{ &quot;close&quot;, &quot;&quot;, xdg_shell_types + 0 },
+	{ &quot;configure_bounds&quot;, &quot;4ii&quot;, xdg_shell_types + 0 },
+	{ &quot;wm_capabilities&quot;, &quot;5a&quot;, xdg_shell_types + 0 },
 }</initializer>
         <briefdescription>
         </briefdescription>
@@ -369,7 +369,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="154" column="30" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="154" bodyend="159"/>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="131" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="154" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="xdg-shell-client-protocol_8c_1a3f4c4d0c81f6efddf1a337e488b3d999" prot="public" static="yes" mutable="no">
         <type>const struct wl_message</type>
@@ -377,9 +377,9 @@
         <argsstring>[]</argsstring>
         <name>xdg_popup_requests</name>
         <initializer>= {
-	{ &quot;destroy&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;grab&quot;, &quot;ou&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 22 },
-	{ &quot;reposition&quot;, &quot;3ou&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 24 },
+	{ &quot;destroy&quot;, &quot;&quot;, xdg_shell_types + 0 },
+	{ &quot;grab&quot;, &quot;ou&quot;, xdg_shell_types + 22 },
+	{ &quot;reposition&quot;, &quot;3ou&quot;, xdg_shell_types + 24 },
 }</initializer>
         <briefdescription>
         </briefdescription>
@@ -387,7 +387,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="167" column="30" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="167" bodyend="171"/>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="161" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="167" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="xdg-shell-client-protocol_8c_1afaf16d7a07b821dd9d76d83a28cc02e3" prot="public" static="yes" mutable="no">
         <type>const struct wl_message</type>
@@ -395,9 +395,9 @@
         <argsstring>[]</argsstring>
         <name>xdg_popup_events</name>
         <initializer>= {
-	{ &quot;configure&quot;, &quot;iiii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;popup_done&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;repositioned&quot;, &quot;3u&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+	{ &quot;configure&quot;, &quot;iiii&quot;, xdg_shell_types + 0 },
+	{ &quot;popup_done&quot;, &quot;&quot;, xdg_shell_types + 0 },
+	{ &quot;repositioned&quot;, &quot;3u&quot;, xdg_shell_types + 0 },
 }</initializer>
         <briefdescription>
         </briefdescription>
@@ -405,9 +405,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="173" column="30" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="173" bodyend="177"/>
+        <location file="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" line="161" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_protocols/xdg-shell-client-protocol.c" bodystart="173" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -453,7 +453,7 @@
 <codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal"></highlight></codeline>
 <codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>(__has_attribute(visibility)<sp/>||<sp/>defined(__GNUC__)<sp/>&amp;&amp;<sp/>__GNUC__<sp/>&gt;=<sp/>4)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WL_PRIVATE<sp/>__attribute__<sp/>((visibility(&quot;hidden&quot;)))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WL_PRIVATE<sp/>__attribute__<sp/>((visibility(&quot;hidden&quot;</highlight><highlight class="normal">)))</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="43" refid="xdg-shell-client-protocol_8c_1acc932c37426d4b9d57ab3766973f81f6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WL_PRIVATE</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
@@ -495,24 +495,24 @@
 <codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>NULL,</highlight></codeline>
 <codeline lineno="81"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"></highlight></codeline>
-<codeline lineno="83" refid="xdg-shell-client-protocol_8c_1af554e1eb2989ab3a59118e4d038fceb1" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_message<sp/><ref refid="xdg-shell-client-protocol_8c_1af554e1eb2989ab3a59118e4d038fceb1" kindref="member">xdg_wm_base_requests</ref>[]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_message<sp/><ref refid="xdg-shell-client-protocol_8c_1af554e1eb2989ab3a59118e4d038fceb1" kindref="member">xdg_wm_base_requests</ref>[]<sp/>=<sp/>{</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="stringliteral">&quot;destroy&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,<sp/><ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref><sp/>+<sp/>0<sp/>},</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="stringliteral">&quot;create_positioner&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;n&quot;</highlight><highlight class="normal">,<sp/><ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref><sp/>+<sp/>4<sp/>},</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="stringliteral">&quot;get_xdg_surface&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;no&quot;</highlight><highlight class="normal">,<sp/><ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref><sp/>+<sp/>5<sp/>},</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="stringliteral">&quot;pong&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;u&quot;</highlight><highlight class="normal">,<sp/><ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref><sp/>+<sp/>0<sp/>},</highlight></codeline>
 <codeline lineno="88"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"></highlight></codeline>
-<codeline lineno="90" refid="xdg-shell-client-protocol_8c_1a1f43f6e8f0a8519a6aeeb05080036d6d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_message<sp/><ref refid="xdg-shell-client-protocol_8c_1a1f43f6e8f0a8519a6aeeb05080036d6d" kindref="member">xdg_wm_base_events</ref>[]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_message<sp/><ref refid="xdg-shell-client-protocol_8c_1a1f43f6e8f0a8519a6aeeb05080036d6d" kindref="member">xdg_wm_base_events</ref>[]<sp/>=<sp/>{</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="stringliteral">&quot;ping&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;u&quot;</highlight><highlight class="normal">,<sp/><ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref><sp/>+<sp/>0<sp/>},</highlight></codeline>
 <codeline lineno="92"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"></highlight></codeline>
-<codeline lineno="94" refid="xdg-shell-client-protocol_8c_1a23c96730741064951b7a6c714ebb9403" refkind="member"><highlight class="normal"><ref refid="xdg-shell-client-protocol_8c_1acc932c37426d4b9d57ab3766973f81f6" kindref="member">WL_PRIVATE</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_interface<sp/><ref refid="xdg-shell-client-protocol_8c_1a23c96730741064951b7a6c714ebb9403" kindref="member">xdg_wm_base_interface</ref><sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="94" refid="xdg-shell-client-protocol_8c_1a74d60c715e45804abbfb69a9e0716e23" refkind="member"><highlight class="normal"><ref refid="xdg-shell-client-protocol_8c_1acc932c37426d4b9d57ab3766973f81f6" kindref="member">WL_PRIVATE</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_interface<sp/><ref refid="xdg-shell-client-protocol_8c_1a23c96730741064951b7a6c714ebb9403" kindref="member">xdg_wm_base_interface</ref><sp/>=<sp/>{</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;xdg_wm_base&quot;</highlight><highlight class="normal">,<sp/>7,</highlight></codeline>
 <codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>4,<sp/><ref refid="xdg-shell-client-protocol_8c_1af554e1eb2989ab3a59118e4d038fceb1" kindref="member">xdg_wm_base_requests</ref>,</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>1,<sp/><ref refid="xdg-shell-client-protocol_8c_1a1f43f6e8f0a8519a6aeeb05080036d6d" kindref="member">xdg_wm_base_events</ref>,</highlight></codeline>
 <codeline lineno="98"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="99"><highlight class="normal"></highlight></codeline>
-<codeline lineno="100" refid="xdg-shell-client-protocol_8c_1a74d60c715e45804abbfb69a9e0716e23" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_message<sp/><ref refid="xdg-shell-client-protocol_8c_1a74d60c715e45804abbfb69a9e0716e23" kindref="member">xdg_positioner_requests</ref>[]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_message<sp/><ref refid="xdg-shell-client-protocol_8c_1a74d60c715e45804abbfb69a9e0716e23" kindref="member">xdg_positioner_requests</ref>[]<sp/>=<sp/>{</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="stringliteral">&quot;destroy&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,<sp/><ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref><sp/>+<sp/>0<sp/>},</highlight></codeline>
 <codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="stringliteral">&quot;set_size&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;ii&quot;</highlight><highlight class="normal">,<sp/><ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref><sp/>+<sp/>0<sp/>},</highlight></codeline>
 <codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="stringliteral">&quot;set_anchor_rect&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;iiii&quot;</highlight><highlight class="normal">,<sp/><ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref><sp/>+<sp/>0<sp/>},</highlight></codeline>
@@ -531,7 +531,7 @@
 <codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>0,<sp/>NULL,</highlight></codeline>
 <codeline lineno="117"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="118"><highlight class="normal"></highlight></codeline>
-<codeline lineno="119" refid="xdg-shell-client-protocol_8c_1a822df53758e9616d29a1f8fade4108a2" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_message<sp/><ref refid="xdg-shell-client-protocol_8c_1a822df53758e9616d29a1f8fade4108a2" kindref="member">xdg_surface_requests</ref>[]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_message<sp/><ref refid="xdg-shell-client-protocol_8c_1a822df53758e9616d29a1f8fade4108a2" kindref="member">xdg_surface_requests</ref>[]<sp/>=<sp/>{</highlight></codeline>
 <codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="stringliteral">&quot;destroy&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,<sp/><ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref><sp/>+<sp/>0<sp/>},</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="stringliteral">&quot;get_toplevel&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;n&quot;</highlight><highlight class="normal">,<sp/><ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref><sp/>+<sp/>7<sp/>},</highlight></codeline>
 <codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="stringliteral">&quot;get_popup&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;n?oo&quot;</highlight><highlight class="normal">,<sp/><ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref><sp/>+<sp/>8<sp/>},</highlight></codeline>
@@ -539,7 +539,7 @@
 <codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="stringliteral">&quot;ack_configure&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;u&quot;</highlight><highlight class="normal">,<sp/><ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref><sp/>+<sp/>0<sp/>},</highlight></codeline>
 <codeline lineno="125"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="126"><highlight class="normal"></highlight></codeline>
-<codeline lineno="127" refid="xdg-shell-client-protocol_8c_1a002ff434c94b3a9dd7a333d06a9df531" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_message<sp/><ref refid="xdg-shell-client-protocol_8c_1a002ff434c94b3a9dd7a333d06a9df531" kindref="member">xdg_surface_events</ref>[]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_message<sp/><ref refid="xdg-shell-client-protocol_8c_1a002ff434c94b3a9dd7a333d06a9df531" kindref="member">xdg_surface_events</ref>[]<sp/>=<sp/>{</highlight></codeline>
 <codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="stringliteral">&quot;configure&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;u&quot;</highlight><highlight class="normal">,<sp/><ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref><sp/>+<sp/>0<sp/>},</highlight></codeline>
 <codeline lineno="129"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="130"><highlight class="normal"></highlight></codeline>
@@ -549,7 +549,7 @@
 <codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>1,<sp/><ref refid="xdg-shell-client-protocol_8c_1a002ff434c94b3a9dd7a333d06a9df531" kindref="member">xdg_surface_events</ref>,</highlight></codeline>
 <codeline lineno="135"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="136"><highlight class="normal"></highlight></codeline>
-<codeline lineno="137" refid="xdg-shell-client-protocol_8c_1ad5745b9472db2bfe53010f0a77e03e17" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_message<sp/><ref refid="xdg-shell-client-protocol_8c_1ad5745b9472db2bfe53010f0a77e03e17" kindref="member">xdg_toplevel_requests</ref>[]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_message<sp/><ref refid="xdg-shell-client-protocol_8c_1ad5745b9472db2bfe53010f0a77e03e17" kindref="member">xdg_toplevel_requests</ref>[]<sp/>=<sp/>{</highlight></codeline>
 <codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="stringliteral">&quot;destroy&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,<sp/><ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref><sp/>+<sp/>0<sp/>},</highlight></codeline>
 <codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="stringliteral">&quot;set_parent&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;?o&quot;</highlight><highlight class="normal">,<sp/><ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref><sp/>+<sp/>11<sp/>},</highlight></codeline>
 <codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="stringliteral">&quot;set_title&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;s&quot;</highlight><highlight class="normal">,<sp/><ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref><sp/>+<sp/>0<sp/>},</highlight></codeline>
@@ -566,26 +566,26 @@
 <codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="stringliteral">&quot;set_minimized&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,<sp/><ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref><sp/>+<sp/>0<sp/>},</highlight></codeline>
 <codeline lineno="152"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="153"><highlight class="normal"></highlight></codeline>
-<codeline lineno="154" refid="xdg-shell-client-protocol_8c_1a438bc0a84d9f8032bc13b34feff2a3cd" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_message<sp/><ref refid="xdg-shell-client-protocol_8c_1a438bc0a84d9f8032bc13b34feff2a3cd" kindref="member">xdg_toplevel_events</ref>[]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_message<sp/><ref refid="xdg-shell-client-protocol_8c_1a438bc0a84d9f8032bc13b34feff2a3cd" kindref="member">xdg_toplevel_events</ref>[]<sp/>=<sp/>{</highlight></codeline>
 <codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="stringliteral">&quot;configure&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;iia&quot;</highlight><highlight class="normal">,<sp/><ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref><sp/>+<sp/>0<sp/>},</highlight></codeline>
 <codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="stringliteral">&quot;close&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,<sp/><ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref><sp/>+<sp/>0<sp/>},</highlight></codeline>
 <codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="stringliteral">&quot;configure_bounds&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;4ii&quot;</highlight><highlight class="normal">,<sp/><ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref><sp/>+<sp/>0<sp/>},</highlight></codeline>
 <codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="stringliteral">&quot;wm_capabilities&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;5a&quot;</highlight><highlight class="normal">,<sp/><ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref><sp/>+<sp/>0<sp/>},</highlight></codeline>
 <codeline lineno="159"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="160"><highlight class="normal"></highlight></codeline>
-<codeline lineno="161" refid="xdg-shell-client-protocol_8c_1a41eaf1ac12f3ef225df8b9f2f6559326" refkind="member"><highlight class="normal"><ref refid="xdg-shell-client-protocol_8c_1acc932c37426d4b9d57ab3766973f81f6" kindref="member">WL_PRIVATE</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_interface<sp/><ref refid="xdg-shell-client-protocol_8c_1a41eaf1ac12f3ef225df8b9f2f6559326" kindref="member">xdg_toplevel_interface</ref><sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="161" refid="xdg-shell-client-protocol_8c_1afaf16d7a07b821dd9d76d83a28cc02e3" refkind="member"><highlight class="normal"><ref refid="xdg-shell-client-protocol_8c_1acc932c37426d4b9d57ab3766973f81f6" kindref="member">WL_PRIVATE</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_interface<sp/><ref refid="xdg-shell-client-protocol_8c_1a41eaf1ac12f3ef225df8b9f2f6559326" kindref="member">xdg_toplevel_interface</ref><sp/>=<sp/>{</highlight></codeline>
 <codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;xdg_toplevel&quot;</highlight><highlight class="normal">,<sp/>7,</highlight></codeline>
 <codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>14,<sp/><ref refid="xdg-shell-client-protocol_8c_1ad5745b9472db2bfe53010f0a77e03e17" kindref="member">xdg_toplevel_requests</ref>,</highlight></codeline>
 <codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>4,<sp/><ref refid="xdg-shell-client-protocol_8c_1a438bc0a84d9f8032bc13b34feff2a3cd" kindref="member">xdg_toplevel_events</ref>,</highlight></codeline>
 <codeline lineno="165"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="166"><highlight class="normal"></highlight></codeline>
-<codeline lineno="167" refid="xdg-shell-client-protocol_8c_1a3f4c4d0c81f6efddf1a337e488b3d999" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_message<sp/><ref refid="xdg-shell-client-protocol_8c_1a3f4c4d0c81f6efddf1a337e488b3d999" kindref="member">xdg_popup_requests</ref>[]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_message<sp/><ref refid="xdg-shell-client-protocol_8c_1a3f4c4d0c81f6efddf1a337e488b3d999" kindref="member">xdg_popup_requests</ref>[]<sp/>=<sp/>{</highlight></codeline>
 <codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="stringliteral">&quot;destroy&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,<sp/><ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref><sp/>+<sp/>0<sp/>},</highlight></codeline>
 <codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="stringliteral">&quot;grab&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;ou&quot;</highlight><highlight class="normal">,<sp/><ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref><sp/>+<sp/>22<sp/>},</highlight></codeline>
 <codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="stringliteral">&quot;reposition&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;3ou&quot;</highlight><highlight class="normal">,<sp/><ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref><sp/>+<sp/>24<sp/>},</highlight></codeline>
 <codeline lineno="171"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="172"><highlight class="normal"></highlight></codeline>
-<codeline lineno="173" refid="xdg-shell-client-protocol_8c_1afaf16d7a07b821dd9d76d83a28cc02e3" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_message<sp/><ref refid="xdg-shell-client-protocol_8c_1afaf16d7a07b821dd9d76d83a28cc02e3" kindref="member">xdg_popup_events</ref>[]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">wl_message<sp/><ref refid="xdg-shell-client-protocol_8c_1afaf16d7a07b821dd9d76d83a28cc02e3" kindref="member">xdg_popup_events</ref>[]<sp/>=<sp/>{</highlight></codeline>
 <codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="stringliteral">&quot;configure&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;iiii&quot;</highlight><highlight class="normal">,<sp/><ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref><sp/>+<sp/>0<sp/>},</highlight></codeline>
 <codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="stringliteral">&quot;popup_done&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,<sp/><ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref><sp/>+<sp/>0<sp/>},</highlight></codeline>
 <codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/></highlight><highlight class="stringliteral">&quot;repositioned&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;3u&quot;</highlight><highlight class="normal">,<sp/><ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref><sp/>+<sp/>0<sp/>},</highlight></codeline>

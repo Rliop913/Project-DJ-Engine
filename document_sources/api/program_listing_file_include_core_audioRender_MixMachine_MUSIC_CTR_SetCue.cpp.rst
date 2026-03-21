@@ -4,7 +4,7 @@
 Program Listing for File SetCue.cpp
 ===================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_audioRender_MixMachine_MUSIC_CTR_SetCue.cpp>` (``include\core\audioRender\MixMachine\MUSIC_CTR\SetCue.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_audioRender_MixMachine_MUSIC_CTR_SetCue.cpp>` (``include/core/audioRender/MixMachine/MUSIC_CTR/SetCue.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

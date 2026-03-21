@@ -4,7 +4,7 @@
 File PDJE_SYNC_CORE.hpp
 =======================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_global>` (``include\global``)
+|exhale_lsh| :ref:`Parent directory <dir_include_global>` (``include/global``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_SYNC_CORE.hpp
    :local:
    :backlinks: none
 
-Definition (``include\global\PDJE_SYNC_CORE.hpp``)
+Definition (``include/global/PDJE_SYNC_CORE.hpp``)
 --------------------------------------------------
 
 
@@ -55,5 +55,5 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structaudio_sync_data`
+- :ref:`exhale_struct_structaudioSyncData`
 

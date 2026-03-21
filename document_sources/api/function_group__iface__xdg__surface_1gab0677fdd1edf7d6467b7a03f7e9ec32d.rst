@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_surface_set_user_data()
+.. doxygenfunction:: xdg_surface_set_user_data(struct xdg_surface *, void *)
    :project: Project_DJ_Engine

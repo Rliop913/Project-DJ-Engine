@@ -4,7 +4,7 @@
 Program Listing for File PDJE_MIDI.cpp
 ======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_input_midi_PDJE_MIDI.cpp>` (``include\input\midi\PDJE_MIDI.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_input_midi_PDJE_MIDI.cpp>` (``include/input/midi/PDJE_MIDI.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

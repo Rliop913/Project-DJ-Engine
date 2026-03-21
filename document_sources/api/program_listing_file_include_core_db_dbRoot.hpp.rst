@@ -4,27 +4,22 @@
 Program Listing for File dbRoot.hpp
 ===================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_db_dbRoot.hpp>` (``include\core\db\dbRoot.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_db_dbRoot.hpp>` (``include/core/db/dbRoot.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 .. code-block:: cpp
 
    #pragma once
-   #include <optional>
-   #include <sqlite3.h>
-   #include <string>
-   #include <vector>
-   
-   #include <rocksdb/db.h>
-   #include <rocksdb/filter_policy.h>
-   #include <rocksdb/options.h>
-   #include <rocksdb/table.h>
-   
    #include "PDJE_EXPORT_SETTER.hpp"
    #include "musicDB.hpp"
    #include "trackDB.hpp"
    #include <filesystem>
+   #include <memory>
+   #include <optional>
+   #include <sqlite3.h>
+   #include <string>
+   #include <vector>
    
    namespace fs = std::filesystem;
    
@@ -34,17 +29,19 @@ Program Listing for File dbRoot.hpp
    using TRACK_VEC = std::vector<trackdata>;
    using MAYBE_TRACK_VEC = std::optional<TRACK_VEC>;
    
-   namespace RDB = ROCKSDB_NAMESPACE;
+   // namespace RDB = ROCKSDB_NAMESPACE;
+   class RDB;
    class PDJE_API litedb {
      private:
        fs::path ROOT_PATH;
        fs::path sqldbPath;
        fs::path kvdbPath;
        fs::path vectordbPath;
-       sqlite3          *sdb  = nullptr;
-       RDB::DB          *kvdb = nullptr;
-       RDB::WriteOptions wops;
-       RDB::ReadOptions  rops;
+       sqlite3             *sdb = nullptr;
+       std::unique_ptr<RDB> kvdb_impl;
+       // RDB::DB          *kvdb = nullptr;
+       // RDB::WriteOptions wops;
+       // RDB::ReadOptions  rops;
    
        bool
        CheckTables();

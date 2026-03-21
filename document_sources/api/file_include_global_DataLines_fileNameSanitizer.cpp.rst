@@ -4,7 +4,7 @@
 File fileNameSanitizer.cpp
 ==========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_global_DataLines>` (``include\global\DataLines``)
+|exhale_lsh| :ref:`Parent directory <dir_include_global_DataLines>` (``include/global/DataLines``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File fileNameSanitizer.cpp
    :local:
    :backlinks: none
 
-Definition (``include\global\DataLines\fileNameSanitizer.cpp``)
+Definition (``include/global/DataLines/fileNameSanitizer.cpp``)
 ---------------------------------------------------------------
 
 
@@ -30,11 +30,18 @@ Includes
 --------
 
 
-- ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_global_PDJE_LOG_SETTER.hpp`)
+- ``cppcodec/base64_default_url.hpp``
 
 - ``fileNameSanitizer.hpp`` (:ref:`file_include_global_DataLines_fileNameSanitizer.hpp`)
 
 
 
 
+
+
+Typedefs
+--------
+
+
+- :ref:`exhale_typedef_fileNameSanitizer_8cpp_1a60e6f3a42a8bab43c807f31be0e7aab1`
 

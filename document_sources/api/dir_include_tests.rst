@@ -10,7 +10,7 @@ Directory tests
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include\tests``
+*Directory path:* ``include/tests``
 
 Subdirectories
 --------------
@@ -31,5 +31,6 @@ Files
 - :ref:`file_include_tests_interfaceTest.cpp`
 - :ref:`file_include_tests_logTest.cpp`
 - :ref:`file_include_tests_manualAudioTest.cpp`
+- :ref:`file_include_tests_music_to_waveform_webp.cpp`
 
 

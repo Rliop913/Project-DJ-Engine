@@ -4,7 +4,7 @@
 File PDJE_Input_DataLine.hpp
 ============================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_global_DataLines>` (``include\global\DataLines``)
+|exhale_lsh| :ref:`Parent directory <dir_include_global_DataLines>` (``include/global/DataLines``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_Input_DataLine.hpp
    :local:
    :backlinks: none
 
-Definition (``include\global\DataLines\PDJE_Input_DataLine.hpp``)
+Definition (``include/global/DataLines/PDJE_Input_DataLine.hpp``)
 -----------------------------------------------------------------
 
 
@@ -73,14 +73,14 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_struct_p_d_j_e___i_n_p_u_t___d_a_t_a___l_i_n_e`
+- :ref:`exhale_struct_structPDJE__INPUT__DATA__LINE`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef__p_d_j_e___input___data_line_8hpp_1a73ea437825558867dcad305e6ab74cd9`
+- :ref:`exhale_typedef_PDJE__Input__DataLine_8hpp_1a73ea437825558867dcad305e6ab74cd9`
 
-- :ref:`exhale_typedef__p_d_j_e___input___data_line_8hpp_1ad2b191944fa7dd4314a1a49b2b243e62`
+- :ref:`exhale_typedef_PDJE__Input__DataLine_8hpp_1ad2b191944fa7dd4314a1a49b2b243e62`
 

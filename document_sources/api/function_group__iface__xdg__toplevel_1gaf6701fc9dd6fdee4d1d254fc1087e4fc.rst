@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_toplevel_show_window_menu()
+.. doxygenfunction:: xdg_toplevel_show_window_menu(struct xdg_toplevel *, struct wl_seat *, uint32_t, int32_t, int32_t)
    :project: Project_DJ_Engine

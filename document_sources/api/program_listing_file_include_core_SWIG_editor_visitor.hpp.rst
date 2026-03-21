@@ -4,7 +4,7 @@
 Program Listing for File SWIG_editor_visitor.hpp
 ================================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_SWIG_editor_visitor.hpp>` (``include\core\SWIG_editor_visitor.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_SWIG_editor_visitor.hpp>` (``include/core/SWIG_editor_visitor.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

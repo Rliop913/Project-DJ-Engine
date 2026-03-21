@@ -4,7 +4,7 @@
 File PDJE_Highres_Clock.hpp
 ===========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_global_Highres_Clock_Mac>` (``include\global\Highres_Clock\Mac``)
+|exhale_lsh| :ref:`Parent directory <dir_include_global_Highres_Clock_Mac>` (``include/global/Highres_Clock/Mac``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_Highres_Clock.hpp
    :local:
    :backlinks: none
 
-Definition (``include\global\Highres_Clock\Mac\PDJE_Highres_Clock.hpp``)
+Definition (``include/global/Highres_Clock/Mac/PDJE_Highres_Clock.hpp``)
 ------------------------------------------------------------------------
 
 
@@ -50,5 +50,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_p_d_j_e___h_i_g_h_r_e_s___c_l_o_c_k_1_1_c_l_o_c_k`
+- :ref:`exhale_class_classPDJE__HIGHRES__CLOCK_1_1CLOCK`
 

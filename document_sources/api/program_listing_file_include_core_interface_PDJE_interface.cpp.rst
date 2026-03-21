@@ -4,14 +4,57 @@
 Program Listing for File PDJE_interface.cpp
 ===========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_interface_PDJE_interface.cpp>` (``include\core\interface\PDJE_interface.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_interface_PDJE_interface.cpp>` (``include/core/interface/PDJE_interface.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 .. code-block:: cpp
 
    #include "PDJE_interface.hpp"
+   #include "Decoder.hpp"
    #include "PDJE_LOG_SETTER.hpp"
+   
+   #include <optional>
+   #include <stdexcept>
+   
+   namespace {
+   
+   std::optional<SANITIZED_ORNOT>
+   ResolveMusicKeyOrPath(litedb &db, const musdata &md)
+   {
+       if (!md.musicPath.empty()) {
+           return md.musicPath;
+       }
+   
+       const bool has_search_filter =
+           !md.title.empty() || !md.composer.empty() || md.bpm >= 0;
+       if (!has_search_filter) {
+           warnlog("cannot resolve music path from musdata without search clues. "
+                   "from PDJE GetPCMFromMusData");
+           return std::nullopt;
+       }
+   
+       musdata query     = md;
+       auto    searchRes = db << query;
+       if (!searchRes.has_value()) {
+           critlog("failed to search music from database. from PDJE "
+                   "GetPCMFromMusData");
+           return std::nullopt;
+       }
+       if (searchRes->empty()) {
+           warnlog("cannot find music from database. from PDJE GetPCMFromMusData");
+           return std::nullopt;
+       }
+       if (searchRes->front().musicPath.empty()) {
+           warnlog("resolved music entry has empty musicPath. from PDJE "
+                   "GetPCMFromMusData");
+           return std::nullopt;
+       }
+       return searchRes->front().musicPath;
+   }
+   
+   } // namespace
+   
    PDJE::PDJE(const DONT_SANITIZE &rootPath)
    {
        DBROOT = std::make_shared<litedb>();
@@ -68,26 +111,69 @@ Program Listing for File PDJE_interface.cpp
        }
    }
    
+   std::vector<float>
+   PDJE::GetPCMFromMusData(const musdata &md)
+   {
+       if (!DBROOT) {
+           critlog(
+               "database root is not initialized. from PDJE GetPCMFromMusData");
+           return {};
+       }
+   
+       auto keyOrPath = ResolveMusicKeyOrPath(*DBROOT, md);
+       if (!keyOrPath.has_value()) {
+           return {};
+       }
+   
+       Decoder decoder;
+       if (!decoder.init(*DBROOT, keyOrPath.value())) {
+           critlog("failed to initialize decoder. from PDJE GetPCMFromMusData");
+           return {};
+       }
+   
+       ma_uint64 frameCount = 0;
+       if (ma_decoder_get_available_frames(&decoder.dec, &frameCount) !=
+           MA_SUCCESS) {
+           critlog("failed to get available pcm frames. from PDJE "
+                   "GetPCMFromMusData");
+           return {};
+       }
+   
+       std::vector<float> pcm;
+       if (!decoder.getRange(static_cast<FRAME_POS>(frameCount), pcm)) {
+           critlog("failed to decode pcm frames. from PDJE GetPCMFromMusData");
+           return {};
+       }
+   
+       return pcm;
+   }
+   
    bool
    PDJE::InitPlayer(PLAY_MODE          mode,
                     trackdata         &td,
                     const unsigned int FrameBufferSize)
    {
-       switch (mode) {
-       case PLAY_MODE::FULL_PRE_RENDER:
-           player = std::make_shared<audioPlayer>(
-               (*DBROOT), td, FrameBufferSize, false);
-           break;
-       case PLAY_MODE::HYBRID_RENDER:
-           player =
-               std::make_shared<audioPlayer>((*DBROOT), td, FrameBufferSize, true);
-           break;
-       case PLAY_MODE::FULL_MANUAL_RENDER:
-           player = std::make_shared<audioPlayer>(FrameBufferSize);
-           break;
+       try {
+           switch (mode) {
+           case PLAY_MODE::FULL_PRE_RENDER:
+               player = std::make_shared<audioPlayer>(
+                   (*DBROOT), td, FrameBufferSize, false);
+               break;
+           case PLAY_MODE::HYBRID_RENDER:
+               player = std::make_shared<audioPlayer>(
+                   (*DBROOT), td, FrameBufferSize, true);
+               break;
+           case PLAY_MODE::FULL_MANUAL_RENDER:
+               player = std::make_shared<audioPlayer>(FrameBufferSize);
+               break;
    
-       default:
-           break;
+           default:
+               break;
+           }
+       } catch (const std::exception &e) {
+           critlog("failed to init player on PDJE initPlayer. why: ");
+           critlog(e.what());
+           return false;
        }
    
        if (!player) {
@@ -95,13 +181,6 @@ Program Listing for File PDJE_interface.cpp
            return false;
        } else {
            return true;
-           // if (player->STATUS != "OK") {
-           //     critlog("PDJE initPlayer failed. STATUS not OK. ErrStatus: ");
-           //     critlog(player->STATUS);
-           //     return false;
-           // } else {
-           //     return true;
-           // }
        }
    }
    

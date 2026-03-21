@@ -4,7 +4,7 @@
 Program Listing for File PDJE_Highres_Clock.hpp
 ===============================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_global_Highres_Clock_Windows_PDJE_Highres_Clock.hpp>` (``include\global\Highres_Clock\Windows\PDJE_Highres_Clock.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_global_Highres_Clock_Windows_PDJE_Highres_Clock.hpp>` (``include/global/Highres_Clock/Windows/PDJE_Highres_Clock.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -21,7 +21,7 @@ Program Listing for File PDJE_Highres_Clock.hpp
    #include <time.h>
    namespace PDJE_HIGHRES_CLOCK {
    
-   class PDJE_API CLOCK {
+   class CLOCK {
      private:
        struct timespec ts;
        uint64_t        qpc_freq;

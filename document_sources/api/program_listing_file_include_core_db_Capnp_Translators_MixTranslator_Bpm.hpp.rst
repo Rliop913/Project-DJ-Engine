@@ -4,7 +4,7 @@
 Program Listing for File Bpm.hpp
 ================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_db_Capnp_Translators_MixTranslator_Bpm.hpp>` (``include\core\db\Capnp\Translators\MixTranslator\Bpm.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_db_Capnp_Translators_MixTranslator_Bpm.hpp>` (``include/core/db/Capnp/Translators/MixTranslator/Bpm.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -20,7 +20,7 @@ Program Listing for File Bpm.hpp
    #include "FrameCalc.hpp"
    #include "Mix.hpp"
    #include "PDJE_EXPORT_SETTER.hpp"
-   class PDJE_API BPM {
+   class BPM {
      private:
        unsigned usable_threads;
    

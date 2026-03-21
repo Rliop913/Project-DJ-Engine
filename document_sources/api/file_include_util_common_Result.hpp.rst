@@ -4,7 +4,7 @@
 File Result.hpp
 ===============
 
-|exhale_lsh| :ref:`Parent directory <dir_include_util_common>` (``include\util\common``)
+|exhale_lsh| :ref:`Parent directory <dir_include_util_common>` (``include/util/common``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Result.hpp
    :local:
    :backlinks: none
 
-Definition (``include\util\common\Result.hpp``)
+Definition (``include/util/common/Result.hpp``)
 -----------------------------------------------
 
 
@@ -30,7 +30,7 @@ Includes
 --------
 
 
-- ``util/common/Status.hpp``
+- ``util/common/Status.hpp`` (:ref:`file_include_util_common_Status.hpp`)
 
 - ``utility``
 
@@ -39,8 +39,6 @@ Includes
 Included By
 -----------
 
-
-- :ref:`file_include_util_PDJE_Util.hpp`
 
 - :ref:`file_include_util_db_backends_AnnoyBackend.hpp`
 
@@ -56,9 +54,15 @@ Included By
 
 - :ref:`file_include_util_function_halide_GainBias.hpp`
 
+- :ref:`file_include_util_function_image_WaveformWebp.hpp`
+
+- :ref:`file_include_util_function_image_WebpWriter.hpp`
+
 - :ref:`file_include_util_function_scalar_Clamp.hpp`
 
 - :ref:`file_include_util_function_text_Slugify.hpp`
+
+- :ref:`file_include_util_PDJE_Util.hpp`
 
 
 
@@ -76,7 +80,7 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_p_d_j_e___u_t_i_l_1_1common_1_1_result`
+- :ref:`exhale_class_classPDJE__UTIL_1_1common_1_1Result`
 
-- :ref:`exhale_class_class_p_d_j_e___u_t_i_l_1_1common_1_1_result_3_01void_01_4`
+- :ref:`exhale_class_classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4`
 

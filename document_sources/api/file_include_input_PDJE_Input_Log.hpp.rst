@@ -4,7 +4,7 @@
 File PDJE_Input_Log.hpp
 =======================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input>` (``include\input``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input>` (``include/input``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_Input_Log.hpp
    :local:
    :backlinks: none
 
-Definition (``include\input\PDJE_Input_Log.hpp``)
+Definition (``include/input/PDJE_Input_Log.hpp``)
 -------------------------------------------------
 
 
@@ -42,6 +42,8 @@ Included By
 -----------
 
 
+- :ref:`file_include_input_CPDJE_Input.cpp`
+
 - :ref:`file_include_input_DefaultDevs_linux_wayland_things_WaylandInputCore.cpp`
 
 - :ref:`file_include_input_IPC_memory_linux_Input_Transfer.hpp`
@@ -55,5 +57,5 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_struct_p_d_j_e___input___log`
+- :ref:`exhale_struct_structPDJE__Input__Log`
 

@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_toplevel_set_fullscreen()
+.. doxygenfunction:: xdg_toplevel_set_fullscreen(struct xdg_toplevel *, struct wl_output *)
    :project: Project_DJ_Engine

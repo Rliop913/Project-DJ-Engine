@@ -4,7 +4,7 @@
 File musicDB.cpp
 ================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_db>` (``include\core\db``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_db>` (``include/core/db``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File musicDB.cpp
    :local:
    :backlinks: none
 
-Definition (``include\core\db\musicDB.cpp``)
+Definition (``include/core/db/musicDB.cpp``)
 --------------------------------------------
 
 
@@ -45,5 +45,5 @@ Defines
 -------
 
 
-- :ref:`exhale_define_music_d_b_8cpp_1a5090bcd20a9440df71fc228776cdeef3`
+- :ref:`exhale_define_musicDB_8cpp_1a5090bcd20a9440df71fc228776cdeef3`
 

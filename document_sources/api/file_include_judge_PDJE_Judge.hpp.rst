@@ -4,7 +4,7 @@
 File PDJE_Judge.hpp
 ===================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_judge>` (``include\judge``)
+|exhale_lsh| :ref:`Parent directory <dir_include_judge>` (``include/judge``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_Judge.hpp
    :local:
    :backlinks: none
 
-Definition (``include\judge\PDJE_Judge.hpp``)
+Definition (``include/judge/PDJE_Judge.hpp``)
 ---------------------------------------------
 
 
@@ -54,6 +54,8 @@ Included By
 -----------
 
 
+- :ref:`file_include_judge_CPDJE_Judge.cpp`
+
 - :ref:`file_include_judge_PDJE_Judge.cpp`
 
 - :ref:`file_include_tests_JUDGE_TESTS_judgeTest.cpp`
@@ -72,12 +74,12 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_p_d_j_e___j_u_d_g_e_1_1_j_u_d_g_e`
+- :ref:`exhale_class_classPDJE__JUDGE_1_1JUDGE`
 
 
 Enums
 -----
 
 
-- :ref:`exhale_enum_namespace_p_d_j_e___j_u_d_g_e_1afa6381f8f229ccd5c5f8dbae248cebb2`
+- :ref:`exhale_enum_namespacePDJE__JUDGE_1afa6381f8f229ccd5c5f8dbae248cebb2`
 

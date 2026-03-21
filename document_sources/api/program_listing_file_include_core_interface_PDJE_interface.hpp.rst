@@ -4,7 +4,7 @@
 Program Listing for File PDJE_interface.hpp
 ===========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_interface_PDJE_interface.hpp>` (``include\core\interface\PDJE_interface.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_interface_PDJE_interface.hpp>` (``include/core/interface/PDJE_interface.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -63,6 +63,8 @@ Program Listing for File PDJE_interface.hpp
                    const double       bpm = -1);
        TRACK_VEC
        SearchTrack(const UNSANITIZED &Title);
+       std::vector<float>
+       GetPCMFromMusData(const musdata &md);
        std::shared_ptr<audioPlayer>
        GetPlayerObject();
    

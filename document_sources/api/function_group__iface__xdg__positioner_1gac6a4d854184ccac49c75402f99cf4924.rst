@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_positioner_set_reactive()
+.. doxygenfunction:: xdg_positioner_set_reactive(struct xdg_positioner *)
    :project: Project_DJ_Engine

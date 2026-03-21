@@ -4,7 +4,7 @@
 File DefaultDevs.cpp
 ====================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_DefaultDevs_windows>` (``include\input\DefaultDevs\windows``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_DefaultDevs_windows>` (``include/input/DefaultDevs/windows``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File DefaultDevs.cpp
    :local:
    :backlinks: none
 
-Definition (``include\input\DefaultDevs\windows\DefaultDevs.cpp``)
+Definition (``include/input/DefaultDevs/windows/DefaultDevs.cpp``)
 ------------------------------------------------------------------
 
 

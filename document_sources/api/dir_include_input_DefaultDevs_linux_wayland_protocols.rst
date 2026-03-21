@@ -5,12 +5,12 @@ Directory wayland_protocols
 ===========================
 
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_DefaultDevs_linux>` (``include\input\DefaultDevs\linux``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_DefaultDevs_linux>` (``include/input/DefaultDevs/linux``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include\input\DefaultDevs\linux\wayland_protocols``
+*Directory path:* ``include/input/DefaultDevs/linux/wayland_protocols``
 
 
 Files

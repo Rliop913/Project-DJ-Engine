@@ -4,7 +4,7 @@
 Program Listing for File Status.hpp
 ===================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_util_common_Status.hpp>` (``include\util\common\Status.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_util_common_Status.hpp>` (``include/util/common/Status.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

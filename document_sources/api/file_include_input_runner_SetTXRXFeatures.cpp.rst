@@ -4,7 +4,7 @@
 File SetTXRXFeatures.cpp
 ========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_runner>` (``include\input\runner``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_runner>` (``include/input/runner``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File SetTXRXFeatures.cpp
    :local:
    :backlinks: none
 
-Definition (``include\input\runner\SetTXRXFeatures.cpp``)
+Definition (``include/input/runner/SetTXRXFeatures.cpp``)
 ---------------------------------------------------------
 
 

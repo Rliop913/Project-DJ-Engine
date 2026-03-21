@@ -5,12 +5,12 @@ Directory windows
 =================
 
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_runner>` (``include\input\runner``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_runner>` (``include/input/runner``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include\input\runner\windows``
+*Directory path:* ``include/input/runner/windows``
 
 
 Files

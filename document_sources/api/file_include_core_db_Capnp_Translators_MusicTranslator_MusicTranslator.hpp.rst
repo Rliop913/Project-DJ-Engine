@@ -4,7 +4,7 @@
 File MusicTranslator.hpp
 ========================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_db_Capnp_Translators_MusicTranslator>` (``include\core\db\Capnp\Translators\MusicTranslator``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_db_Capnp_Translators_MusicTranslator>` (``include/core/db/Capnp/Translators/MusicTranslator``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File MusicTranslator.hpp
    :local:
    :backlinks: none
 
-Definition (``include\core\db\Capnp\Translators\MusicTranslator\MusicTranslator.hpp``)
+Definition (``include/core/db/Capnp/Translators/MusicTranslator/MusicTranslator.hpp``)
 --------------------------------------------------------------------------------------
 
 
@@ -59,5 +59,5 @@ Classes
 -------
 
 
-- :ref:`exhale_class_class_music_translator`
+- :ref:`exhale_class_classMusicTranslator`
 

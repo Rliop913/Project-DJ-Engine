@@ -4,22 +4,20 @@
 Program Listing for File fileNameSanitizer.cpp
 ==============================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_global_DataLines_fileNameSanitizer.cpp>` (``include\global\DataLines\fileNameSanitizer.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_global_DataLines_fileNameSanitizer.cpp>` (``include/global/DataLines/fileNameSanitizer.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 .. code-block:: cpp
 
    #include "fileNameSanitizer.hpp"
-   #include "PDJE_LOG_SETTER.hpp"
+   #include <cppcodec/base64_default_url.hpp>
    
+   using cbase = cppcodec::base64_url;
    std::optional<SANITIZED>
    PDJE_Name_Sanitizer::sanitizeFileName(const std::string &fileName)
    {
        if (cbase::encoded_size(fileName.size()) >= 255) {
-           critlog("failed to sanitize filename. from PDJE_Name_Sanitizer "
-                   "sanitizeFileName. ErrfileName: ");
-           critlog(fileName);
            return std::nullopt;
        }
        return cbase::encode(fileName);

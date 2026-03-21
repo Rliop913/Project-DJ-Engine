@@ -4,7 +4,7 @@
 Program Listing for File Result.hpp
 ===================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_util_common_Result.hpp>` (``include\util\common\Result.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_util_common_Result.hpp>` (``include/util/common/Result.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

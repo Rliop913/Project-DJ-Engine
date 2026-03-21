@@ -4,7 +4,7 @@
 Program Listing for File SetFeatures.cpp
 ========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_input_DefaultDevs_windows_TXRX_SetFeatures.cpp>` (``include\input\DefaultDevs\windows\TXRX\SetFeatures.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_input_DefaultDevs_windows_TXRX_SetFeatures.cpp>` (``include/input/DefaultDevs/windows/TXRX/SetFeatures.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

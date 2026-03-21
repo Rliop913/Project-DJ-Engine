@@ -4,7 +4,7 @@
 Program Listing for File MixTranslator.hpp
 ==========================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_db_Capnp_Translators_MixTranslator_MixTranslator.hpp>` (``include\core\db\Capnp\Translators\MixTranslator\MixTranslator.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_db_Capnp_Translators_MixTranslator_MixTranslator.hpp>` (``include/core/db/Capnp/Translators/MixTranslator/MixTranslator.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -23,7 +23,7 @@ Program Listing for File MixTranslator.hpp
    #include "CapnpBinary.hpp"
    #include "Mix.hpp"
    #include "PDJE_EXPORT_SETTER.hpp"
-   class PDJE_API MixTranslator {
+   class MixTranslator {
      private:
        unsigned int usable_threads = 0;
    

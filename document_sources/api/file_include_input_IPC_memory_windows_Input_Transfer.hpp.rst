@@ -4,7 +4,7 @@
 File Input_Transfer.hpp
 =======================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_input_IPC_memory_windows>` (``include\input\IPC\memory\windows``)
+|exhale_lsh| :ref:`Parent directory <dir_include_input_IPC_memory_windows>` (``include/input/IPC/memory/windows``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Input_Transfer.hpp
    :local:
    :backlinks: none
 
-Definition (``include\input\IPC\memory\windows\Input_Transfer.hpp``)
+Definition (``include/input/IPC/memory/windows/Input_Transfer.hpp``)
 --------------------------------------------------------------------
 
 
@@ -80,7 +80,14 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_struct_p_d_j_e___i_p_c_1_1_input___transfer___metadata`
+- :ref:`exhale_struct_structPDJE__IPC_1_1Input__Transfer__Metadata`
 
-- :ref:`exhale_class_class_p_d_j_e___i_p_c_1_1_p_d_j_e___input___transfer`
+- :ref:`exhale_class_classPDJE__IPC_1_1PDJE__Input__Transfer`
+
+
+Typedefs
+--------
+
+
+- :ref:`exhale_typedef_windows_2Input__Transfer_8hpp_1a6c08a6bca89aa954d4bf90371a27dfa9`
 

@@ -17,9 +17,9 @@ Namespaces
 ----------
 
 
-- :ref:`namespace_PDJE_DEFAULT_DEVICES__@030254107376231321031133177111164347035062253114`
+- :ref:`namespace_PDJE_DEFAULT_DEVICES__@172`
 
-- :ref:`namespace_PDJE_DEFAULT_DEVICES__@356304012331063262065270374333340072052127321100`
+- :ref:`namespace_PDJE_DEFAULT_DEVICES__@188`
 
 - :ref:`namespace_PDJE_DEFAULT_DEVICES__LINUX_INPUT_CONTRACTS`
 
@@ -30,30 +30,30 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_struct_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs_1_1device__metadata`
+- :ref:`exhale_struct_structPDJE__DEFAULT__DEVICES_1_1DefaultDevs_1_1device__metadata`
 
-- :ref:`exhale_struct_struct_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_handle_closer`
+- :ref:`exhale_struct_structPDJE__DEFAULT__DEVICES_1_1HandleCloser`
 
-- :ref:`exhale_struct_struct_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_wayland_dyn_lib_ops`
+- :ref:`exhale_struct_structPDJE__DEFAULT__DEVICES_1_1WaylandDynLibOps`
 
-- :ref:`exhale_struct_struct_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_wayland_runtime_status`
+- :ref:`exhale_struct_structPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeStatus`
 
-- :ref:`exhale_class_class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_default_devs`
+- :ref:`exhale_class_classPDJE__DEFAULT__DEVICES_1_1DefaultDevs`
 
-- :ref:`exhale_class_class_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_wayland_runtime_loader`
+- :ref:`exhale_class_classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader`
 
 
 Enums
 -----
 
 
-- :ref:`exhale_enum_namespace_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1ae16689a3920d6ddb9a03e669033334b7`
+- :ref:`exhale_enum_namespacePDJE__DEFAULT__DEVICES_1ae16689a3920d6ddb9a03e669033334b7`
 
 
 Typedefs
 --------
 
 
-- :ref:`exhale_typedef_namespace_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1aa7e4ca976f3fb919792fb80a98ba5dc6`
+- :ref:`exhale_typedef_namespacePDJE__DEFAULT__DEVICES_1a1676dbcd931e8a4b52a2d1c5b052e128`
 
-- :ref:`exhale_typedef_namespace_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1a6874e9b2d750bcb78c3ed3ea925ee482`
+- :ref:`exhale_typedef_namespacePDJE__DEFAULT__DEVICES_1aae060e8f876384a80802cd5753643e96`

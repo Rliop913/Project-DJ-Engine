@@ -4,7 +4,7 @@
 Program Listing for File Index.hpp
 ==================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_util_db_nearest_Index.hpp>` (``include\util\db\nearest\Index.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_util_db_nearest_Index.hpp>` (``include/util/db/nearest/Index.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

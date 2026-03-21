@@ -4,7 +4,7 @@
 Program Listing for File Atomic_Double_Buffer.hpp
 =================================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_global_DataLines_Atomic_Double_Buffer.hpp>` (``include\global\DataLines\Atomic_Double_Buffer.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_global_DataLines_Atomic_Double_Buffer.hpp>` (``include/global/DataLines/Atomic_Double_Buffer.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

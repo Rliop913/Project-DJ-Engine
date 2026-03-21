@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="SqliteBackend_8hpp" kind="file" language="C++">
     <compoundname>SqliteBackend.hpp</compoundname>
     <includes refid="Result_8hpp" local="yes">util/common/Result.hpp</includes>
@@ -16,26 +16,6 @@
     <includes local="no">string_view</includes>
     <includes local="no">vector</includes>
     <incdepgraph>
-      <node id="2">
-        <label>util/common/Result.hpp</label>
-        <link refid="Result_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="3">
-        <label>util/common/Status.hpp</label>
-        <link refid="Status_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>util/common/StatusCode.hpp</label>
-        <link refid="StatusCode_8hpp"/>
-      </node>
       <node id="7">
         <label>util/db/DbTypes.hpp</label>
         <link refid="DbTypes_8hpp"/>
@@ -45,6 +25,68 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
+      </node>
+      <node id="19">
+        <label>filesystem</label>
+      </node>
+      <node id="11">
+        <label>cstdint</label>
+      </node>
+      <node id="15">
+        <label>variant</label>
+      </node>
+      <node id="13">
+        <label>stdexcept</label>
+      </node>
+      <node id="5">
+        <label>string</label>
+      </node>
+      <node id="2">
+        <label>util/common/Result.hpp</label>
+        <link refid="Result_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>sqlite3.h</label>
+      </node>
+      <node id="10">
+        <label>util/db/relational/Types.hpp</label>
+        <link refid="relational_2Types_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>string_view</label>
+      </node>
+      <node id="4">
+        <label>util/common/StatusCode.hpp</label>
+        <link refid="StatusCode_8hpp"/>
+      </node>
+      <node id="12">
+        <label>optional</label>
+      </node>
+      <node id="9">
+        <label>vector</label>
+      </node>
+      <node id="6">
+        <label>utility</label>
       </node>
       <node id="1">
         <label>include/util/db/backends/SqliteBackend.hpp</label>
@@ -76,64 +118,22 @@
         <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="10">
-        <label>util/db/relational/Types.hpp</label>
-        <link refid="relational_2Types_8hpp"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-      </node>
       <node id="17">
         <label>cctype</label>
       </node>
       <node id="8">
         <label>cstddef</label>
       </node>
-      <node id="11">
-        <label>cstdint</label>
+      <node id="3">
+        <label>util/common/Status.hpp</label>
+        <link refid="Status_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
       </node>
       <node id="18">
         <label>cstring</label>
-      </node>
-      <node id="19">
-        <label>filesystem</label>
-      </node>
-      <node id="12">
-        <label>optional</label>
-      </node>
-      <node id="16">
-        <label>sqlite3.h</label>
-      </node>
-      <node id="13">
-        <label>stdexcept</label>
-      </node>
-      <node id="5">
-        <label>string</label>
-      </node>
-      <node id="14">
-        <label>string_view</label>
-      </node>
-      <node id="6">
-        <label>utility</label>
-      </node>
-      <node id="15">
-        <label>variant</label>
-      </node>
-      <node id="9">
-        <label>vector</label>
       </node>
     </incdepgraph>
     <innerclass refid="structPDJE__UTIL_1_1db_1_1backends_1_1SqliteConfig" prot="public">PDJE_UTIL::db::backends::SqliteConfig</innerclass>
@@ -167,14 +167,14 @@
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
 <codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1db_1_1backends" kindref="compound">PDJE_UTIL::db::backends</ref><sp/>{</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail" kindref="compound">detail</ref><sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">detail<sp/>{</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>common::Status</highlight></codeline>
-<codeline lineno="24" refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a166b3d001864a2398a9c2f4819944a64" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a166b3d001864a2398a9c2f4819944a64" kindref="member">sqlite_make_status</ref>(sqlite3<sp/>*<ref refid="namespacePDJE__UTIL_1_1db" kindref="compound">db</ref>,<sp/><ref refid="namespacePDJE__UTIL_1_1common_1a3025dd440bc92023d950561cff3dfdb4" kindref="member">common::StatusCode</ref><sp/>code,<sp/>std::string_view<sp/>prefix)</highlight></codeline>
+<codeline lineno="24" refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a166b3d001864a2398a9c2f4819944a64" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a166b3d001864a2398a9c2f4819944a64" kindref="member">sqlite_make_status</ref>(sqlite3<sp/>*db,<sp/><ref refid="namespacePDJE__UTIL_1_1common_1a3025dd440bc92023d950561cff3dfdb4" kindref="member">common::StatusCode</ref><sp/>code,<sp/>std::string_view<sp/>prefix)</highlight></codeline>
 <codeline lineno="25"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>message(prefix);</highlight></codeline>
-<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespacePDJE__UTIL_1_1db" kindref="compound">db</ref><sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*sqlite_message<sp/>=<sp/>sqlite3_errmsg(<ref refid="namespacePDJE__UTIL_1_1db" kindref="compound">db</ref>);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(db<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*sqlite_message<sp/>=<sp/>sqlite3_errmsg(db);</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sqlite_message<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>message.append(</highlight><highlight class="stringliteral">&quot;:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>message.append(sqlite_message);</highlight></codeline>
@@ -183,22 +183,22 @@
 <codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{<sp/>code,<sp/>std::move(message)<sp/>};</highlight></codeline>
 <codeline lineno="35"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="38" refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1af944d8c1a1e8814576746fbaea325a0c" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1af944d8c1a1e8814576746fbaea325a0c" kindref="member">sqlite_prepare</ref>(sqlite3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="namespacePDJE__UTIL_1_1db" kindref="compound">db</ref>,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="38" refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a8f73b95f3739f1036ba25d7a997a533e" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a8f73b95f3739f1036ba25d7a997a533e" kindref="member">sqlite_prepare</ref>(sqlite3<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*db,</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/><sp/><sp/><sp/><sp/>sql,</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sqlite3_stmt<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>**<ref refid="structstmt" kindref="compound">stmt</ref>,</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/><sp/><sp/><sp/><sp/>context)</highlight></codeline>
 <codeline lineno="42"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sqlite3_prepare_v2(<ref refid="namespacePDJE__UTIL_1_1db" kindref="compound">db</ref>,<sp/>sql.data(),<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(sql.size()),<sp/><ref refid="structstmt" kindref="compound">stmt</ref>,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>!=</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sqlite3_prepare_v2(db,<sp/>sql.data(),<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(sql.size()),<sp/><ref refid="structstmt" kindref="compound">stmt</ref>,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>!=</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SQLITE_OK)<sp/>{</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a166b3d001864a2398a9c2f4819944a64" kindref="member">sqlite_make_status</ref>(<ref refid="namespacePDJE__UTIL_1_1db" kindref="compound">db</ref>,<sp/><ref refid="namespacePDJE__UTIL_1_1common_1a3025dd440bc92023d950561cff3dfdb4a16d66afab4306c18516ebaa8e9060ec7" kindref="member">common::StatusCode::backend_error</ref>,<sp/>context));</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a166b3d001864a2398a9c2f4819944a64" kindref="member">sqlite_make_status</ref>(db,<sp/><ref refid="namespacePDJE__UTIL_1_1common_1a3025dd440bc92023d950561cff3dfdb4a16d66afab4306c18516ebaa8e9060ec7" kindref="member">common::StatusCode::backend_error</ref>,<sp/>context));</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;void&gt;::success</ref>();</highlight></codeline>
 <codeline lineno="49"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="52" refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a5498e887d3bf9c94dd6a7c2248df139f" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a5498e887d3bf9c94dd6a7c2248df139f" kindref="member">sqlite_bind_value</ref>(sqlite3_stmt<sp/>*<ref refid="structstmt" kindref="compound">stmt</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1db_1_1relational_1_1Value" kindref="compound">relational::Value</ref><sp/>&amp;value)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="52" refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1af28f24d4d1cc9806f39ebe73b9b92227" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1af28f24d4d1cc9806f39ebe73b9b92227" kindref="member">sqlite_bind_value</ref>(sqlite3_stmt<sp/>*<ref refid="structstmt" kindref="compound">stmt</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1db_1_1relational_1_1Value" kindref="compound">relational::Value</ref><sp/>&amp;value)</highlight></codeline>
 <codeline lineno="53"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rc<sp/>=<sp/>SQLITE_OK;</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(value.<ref refid="structPDJE__UTIL_1_1db_1_1relational_1_1Value_1ad8801d6adf856f95feaf0ab96301841c" kindref="member">kind</ref>())<sp/>{</highlight></codeline>
@@ -239,8 +239,8 @@
 <codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;void&gt;::success</ref>();</highlight></codeline>
 <codeline lineno="91"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"></highlight></codeline>
-<codeline lineno="93"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="94" refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1af4c04c7cc6c27a4e898a7b46df8fc27a" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1af4c04c7cc6c27a4e898a7b46df8fc27a" kindref="member">sqlite_bind_params</ref>(sqlite3_stmt<sp/>*<ref refid="structstmt" kindref="compound">stmt</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1relational_1a03d7b850c6d4c14c870bb5548dd36873" kindref="member">relational::Params</ref><sp/>&amp;params)</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="94" refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a0cd35cb3f318e1e22b8358a1a8bc3b1f" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a0cd35cb3f318e1e22b8358a1a8bc3b1f" kindref="member">sqlite_bind_params</ref>(sqlite3_stmt<sp/>*<ref refid="structstmt" kindref="compound">stmt</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1relational_1a25c3a844b1c359a144811c497afdceec" kindref="member">relational::Params</ref><sp/>&amp;params)</highlight></codeline>
 <codeline lineno="95"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>expected<sp/>=<sp/>sqlite3_bind_parameter_count(<ref refid="structstmt" kindref="compound">stmt</ref>);</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(expected<sp/>!=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(params.size()))<sp/>{</highlight></codeline>
@@ -250,7 +250,7 @@
 <codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="102"><highlight class="normal"></highlight></codeline>
 <codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>expected;<sp/>++i)<sp/>{</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>bound<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a5498e887d3bf9c94dd6a7c2248df139f" kindref="member">sqlite_bind_value</ref>(<ref refid="structstmt" kindref="compound">stmt</ref>,<sp/>i<sp/>+<sp/>1,<sp/>params[</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(i)]);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>bound<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1af28f24d4d1cc9806f39ebe73b9b92227" kindref="member">sqlite_bind_value</ref>(<ref refid="structstmt" kindref="compound">stmt</ref>,<sp/>i<sp/>+<sp/>1,<sp/>params[</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(i)]);</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!bound.ok())<sp/>{</highlight></codeline>
 <codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>bound;</highlight></codeline>
 <codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -269,14 +269,14 @@
 <codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>SQLITE_TEXT:<sp/>{</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>*text<sp/>=<sp/>sqlite3_column_text(<ref refid="structstmt" kindref="compound">stmt</ref>,<sp/>column);</highlight></codeline>
 <codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/>size<sp/>=<sp/>sqlite3_column_bytes(<ref refid="structstmt" kindref="compound">stmt</ref>,<sp/>column);</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{<sp/><ref refid="namespacePDJE__UTIL_1_1db_1a89f870d3c2a028544646a9b95b827d28" kindref="member">Text</ref>(</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(text),</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{<sp/><ref refid="namespacePDJE__UTIL_1_1db_1a4478e16df2aec53b3378bfd6337246b6" kindref="member">Text</ref>(</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(text),</highlight></codeline>
 <codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(size))<sp/>};</highlight></codeline>
 <codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>SQLITE_BLOB:<sp/>{</highlight></codeline>
 <codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>*blob<sp/>=</highlight></codeline>
 <codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal">std::byte<sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(sqlite3_column_blob(<ref refid="structstmt" kindref="compound">stmt</ref>,<sp/>column));</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>size<sp/>=<sp/>sqlite3_column_bytes(<ref refid="structstmt" kindref="compound">stmt</ref>,<sp/>column);</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__UTIL_1_1db_1a2ef3b7d9e6089bee19f07baae2cdaa81" kindref="member">Bytes</ref><sp/><sp/><sp/><sp/><sp/>bytes(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(size));</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__UTIL_1_1db_1acfb13486a5f831dd08830ce1cc8c7ba3" kindref="member">Bytes</ref><sp/><sp/><sp/><sp/><sp/>bytes(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(size));</highlight></codeline>
 <codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(size<sp/>&gt;<sp/>0<sp/>&amp;&amp;<sp/>blob<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::memcpy(bytes.data(),<sp/>blob,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">std::size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(size));</highlight></codeline>
 <codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -319,10 +319,10 @@
 <codeline lineno="170"><highlight class="normal"></highlight></codeline>
 <codeline lineno="171" refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend" kindref="compound">SqliteBackend</ref><sp/>{</highlight></codeline>
 <codeline lineno="172"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="173" refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a76b224b3db35c1e89d9d3c2db3f058b5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a76b224b3db35c1e89d9d3c2db3f058b5" kindref="member">config_type</ref><sp/>=<sp/><ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1SqliteConfig" kindref="compound">SqliteConfig</ref>;</highlight></codeline>
+<codeline lineno="173" refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a76b224b3db35c1e89d9d3c2db3f058b5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1SqliteConfig" kindref="compound">config_type</ref><sp/>=<sp/><ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1SqliteConfig" kindref="compound">SqliteConfig</ref>;</highlight></codeline>
 <codeline lineno="174"><highlight class="normal"></highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="176" refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1ac9f02bdc9b1e72a92a840bdf94d2a4a8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1ac9f02bdc9b1e72a92a840bdf94d2a4a8" kindref="member">create</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a76b224b3db35c1e89d9d3c2db3f058b5" kindref="member">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="176" refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a210bcd85abeb8cb94ba408ed2062b9c4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a210bcd85abeb8cb94ba408ed2062b9c4" kindref="member">create</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1SqliteConfig" kindref="compound">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
 <codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cfg.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1SqliteConfig_1a45fcd40f6169364cc0a5aadfc029612d" kindref="member">path</ref>.empty())<sp/>{</highlight></codeline>
 <codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(</highlight></codeline>
@@ -339,27 +339,27 @@
 <codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="192"><highlight class="normal"></highlight></codeline>
-<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sqlite3<sp/>*<ref refid="namespacePDJE__UTIL_1_1db" kindref="compound">db</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sqlite3<sp/>*db<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rc<sp/>=</highlight></codeline>
 <codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sqlite3_open_v2(cfg.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1SqliteConfig_1a45fcd40f6169364cc0a5aadfc029612d" kindref="member">path</ref>.string().c_str(),</highlight></codeline>
-<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="namespacePDJE__UTIL_1_1db" kindref="compound">db</ref>,</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;db,</highlight></codeline>
 <codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SQLITE_OPEN_READWRITE<sp/>|<sp/>SQLITE_OPEN_CREATE<sp/>|<sp/>SQLITE_OPEN_NOMUTEX,</highlight></codeline>
 <codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rc<sp/>!=<sp/>SQLITE_OK)<sp/>{</highlight></codeline>
 <codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>status<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a166b3d001864a2398a9c2f4819944a64" kindref="member">detail::sqlite_make_status</ref>(</highlight></codeline>
-<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__UTIL_1_1db" kindref="compound">db</ref>,<sp/><ref refid="namespacePDJE__UTIL_1_1common_1a3025dd440bc92023d950561cff3dfdb4a16d66afab4306c18516ebaa8e9060ec7" kindref="member">common::StatusCode::backend_error</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>create<sp/>SQLite<sp/>database&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespacePDJE__UTIL_1_1db" kindref="compound">db</ref><sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sqlite3_close_v2(<ref refid="namespacePDJE__UTIL_1_1db" kindref="compound">db</ref>);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>db,<sp/><ref refid="namespacePDJE__UTIL_1_1common_1a3025dd440bc92023d950561cff3dfdb4a16d66afab4306c18516ebaa8e9060ec7" kindref="member">common::StatusCode::backend_error</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>create<sp/>SQLite<sp/>database&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(db<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sqlite3_close_v2(db);</highlight></codeline>
 <codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(std::move(status));</highlight></codeline>
 <codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="207"><highlight class="normal"></highlight></codeline>
-<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sqlite3_close_v2(<ref refid="namespacePDJE__UTIL_1_1db" kindref="compound">db</ref>);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sqlite3_close_v2(db);</highlight></codeline>
 <codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;void&gt;::success</ref>();</highlight></codeline>
 <codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="211"><highlight class="normal"></highlight></codeline>
-<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="213" refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1ab37f8b6516d3cb141f985261178566ce" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1ab37f8b6516d3cb141f985261178566ce" kindref="member">destroy</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a76b224b3db35c1e89d9d3c2db3f058b5" kindref="member">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="213" refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a01df17b318c581aa91dae5f458d47a7b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a01df17b318c581aa91dae5f458d47a7b" kindref="member">destroy</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1SqliteConfig" kindref="compound">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
 <codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cfg.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1SqliteConfig_1a45fcd40f6169364cc0a5aadfc029612d" kindref="member">path</ref>.empty())<sp/>{</highlight></codeline>
 <codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(</highlight></codeline>
@@ -373,7 +373,7 @@
 <codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><ref refid="namespacePDJE__UTIL_1_1common_1a3025dd440bc92023d950561cff3dfdb4acccc32f2a5f7dc7b87d2f85daea66789" kindref="member">common::StatusCode::io_error</ref>,<sp/>ec.message()<sp/>});</highlight></codeline>
 <codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="226"><highlight class="normal"></highlight></codeline>
-<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>std::string_view<sp/>suffixes[]<sp/>=<sp/>{<sp/></highlight><highlight class="stringliteral">&quot;-wal&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;-shm&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;-journal&quot;</highlight><highlight class="normal"><sp/>};</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/>std::string_view<sp/>suffixes[]<sp/>=<sp/>{<sp/></highlight><highlight class="stringliteral">&quot;-wal&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;-shm&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;-journal&quot;</highlight><highlight class="normal"><sp/>};</highlight></codeline>
 <codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>suffix<sp/>:<sp/>suffixes)<sp/>{</highlight></codeline>
 <codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ec.clear();</highlight></codeline>
 <codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::filesystem::remove(cfg.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1SqliteConfig_1a45fcd40f6169364cc0a5aadfc029612d" kindref="member">path</ref>.string()<sp/>+<sp/>std::string(suffix),<sp/>ec);</highlight></codeline>
@@ -382,8 +382,8 @@
 <codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;void&gt;::success</ref>();</highlight></codeline>
 <codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="235"><highlight class="normal"></highlight></codeline>
-<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="237" refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a0b480d46d4addc3726d0374d8d0b4a7f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a0b480d46d4addc3726d0374d8d0b4a7f" kindref="member">open</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a76b224b3db35c1e89d9d3c2db3f058b5" kindref="member">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="237" refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa5c0a6ae03568b318ba039bc31fd0cfd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa5c0a6ae03568b318ba039bc31fd0cfd" kindref="member">open</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1SqliteConfig" kindref="compound">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
 <codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa18566c27aa427475a6089dbf43e3f39" kindref="member">db_</ref><sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(</highlight></codeline>
@@ -402,17 +402,17 @@
 <codeline lineno="253"><highlight class="normal"></highlight></codeline>
 <codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa13cd249d5257c76b76053a35abaaad8" kindref="member">config_</ref><sp/>=<sp/>cfg;</highlight></codeline>
 <codeline lineno="255"><highlight class="normal"></highlight></codeline>
-<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa13cd249d5257c76b76053a35abaaad8" kindref="member">config_</ref>.open_options.truncate_if_exists)<sp/>{</highlight></codeline>
-<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>destroyed<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1ab37f8b6516d3cb141f985261178566ce" kindref="member">destroy</ref>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa13cd249d5257c76b76053a35abaaad8" kindref="member">config_</ref>);</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa13cd249d5257c76b76053a35abaaad8" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1SqliteConfig_1a7969f10459088e4c4f7e139a60761f88" kindref="member">open_options</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1OpenOptions_1ae17d7423fa68120e197b73e3318c979e" kindref="member">truncate_if_exists</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>destroyed<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a01df17b318c581aa91dae5f458d47a7b" kindref="member">destroy</ref>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa13cd249d5257c76b76053a35abaaad8" kindref="member">config_</ref>);</highlight></codeline>
 <codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!destroyed.ok())<sp/>{</highlight></codeline>
 <codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>destroyed;</highlight></codeline>
 <codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="262"><highlight class="normal"></highlight></codeline>
-<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>exists<sp/>=<sp/>std::filesystem::exists(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa13cd249d5257c76b76053a35abaaad8" kindref="member">config_</ref>.path);</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>exists<sp/>=<sp/>std::filesystem::exists(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa13cd249d5257c76b76053a35abaaad8" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1SqliteConfig_1a45fcd40f6169364cc0a5aadfc029612d" kindref="member">path</ref>);</highlight></codeline>
 <codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!exists)<sp/>{</highlight></codeline>
-<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa13cd249d5257c76b76053a35abaaad8" kindref="member">config_</ref>.open_options.create_if_missing)<sp/>{</highlight></codeline>
-<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>created<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1ac9f02bdc9b1e72a92a840bdf94d2a4a8" kindref="member">create</ref>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa13cd249d5257c76b76053a35abaaad8" kindref="member">config_</ref>);</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa13cd249d5257c76b76053a35abaaad8" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1SqliteConfig_1a7969f10459088e4c4f7e139a60761f88" kindref="member">open_options</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1OpenOptions_1af59ce4bcdfb2d4f5929ef2e700776d2e" kindref="member">create_if_missing</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>created<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a210bcd85abeb8cb94ba408ed2062b9c4" kindref="member">create</ref>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa13cd249d5257c76b76053a35abaaad8" kindref="member">config_</ref>);</highlight></codeline>
 <codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!created.ok())<sp/>{</highlight></codeline>
 <codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>created;</highlight></codeline>
 <codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -423,13 +423,13 @@
 <codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="275"><highlight class="normal"></highlight></codeline>
 <codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flags<sp/>=<sp/>SQLITE_OPEN_NOMUTEX;</highlight></codeline>
-<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>flags<sp/>|=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa13cd249d5257c76b76053a35abaaad8" kindref="member">config_</ref>.open_options.read_only<sp/>?<sp/>SQLITE_OPEN_READONLY</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>flags<sp/>|=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa13cd249d5257c76b76053a35abaaad8" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1SqliteConfig_1a7969f10459088e4c4f7e139a60761f88" kindref="member">open_options</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1OpenOptions_1a0a3190669f1f5d17b614c0511d802b66" kindref="member">read_only</ref><sp/>?<sp/>SQLITE_OPEN_READONLY</highlight></codeline>
 <codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>SQLITE_OPEN_READWRITE;</highlight></codeline>
-<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa13cd249d5257c76b76053a35abaaad8" kindref="member">config_</ref>.open_options.create_if_missing<sp/>&amp;&amp;<sp/>!<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa13cd249d5257c76b76053a35abaaad8" kindref="member">config_</ref>.open_options.read_only)<sp/>{</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa13cd249d5257c76b76053a35abaaad8" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1SqliteConfig_1a7969f10459088e4c4f7e139a60761f88" kindref="member">open_options</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1OpenOptions_1af59ce4bcdfb2d4f5929ef2e700776d2e" kindref="member">create_if_missing</ref><sp/>&amp;&amp;<sp/>!<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa13cd249d5257c76b76053a35abaaad8" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1SqliteConfig_1a7969f10459088e4c4f7e139a60761f88" kindref="member">open_options</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1OpenOptions_1a0a3190669f1f5d17b614c0511d802b66" kindref="member">read_only</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>flags<sp/>|=<sp/>SQLITE_OPEN_CREATE;</highlight></codeline>
 <codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="282"><highlight class="normal"></highlight></codeline>
-<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sqlite3_open_v2(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa13cd249d5257c76b76053a35abaaad8" kindref="member">config_</ref>.path.string().c_str(),<sp/>&amp;<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa18566c27aa427475a6089dbf43e3f39" kindref="member">db_</ref>,<sp/>flags,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>!=</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sqlite3_open_v2(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa13cd249d5257c76b76053a35abaaad8" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1SqliteConfig_1a45fcd40f6169364cc0a5aadfc029612d" kindref="member">path</ref>.string().c_str(),<sp/>&amp;<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa18566c27aa427475a6089dbf43e3f39" kindref="member">db_</ref>,<sp/>flags,<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>!=</highlight></codeline>
 <codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SQLITE_OK)<sp/>{</highlight></codeline>
 <codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>status<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a166b3d001864a2398a9c2f4819944a64" kindref="member">detail::sqlite_make_status</ref>(</highlight></codeline>
 <codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa18566c27aa427475a6089dbf43e3f39" kindref="member">db_</ref>,<sp/><ref refid="namespacePDJE__UTIL_1_1common_1a3025dd440bc92023d950561cff3dfdb4a16d66afab4306c18516ebaa8e9060ec7" kindref="member">common::StatusCode::backend_error</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>open<sp/>SQLite<sp/>database&quot;</highlight><highlight class="normal">);</highlight></codeline>
@@ -444,8 +444,8 @@
 <codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;void&gt;::success</ref>();</highlight></codeline>
 <codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="297"><highlight class="normal"></highlight></codeline>
-<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="299" refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1abad9772969ccb96a3bf507a8a22704e4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1abad9772969ccb96a3bf507a8a22704e4" kindref="member">close</ref>()</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="299" refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1ae881389ba1d22462e76e2a69804d9788" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1ae881389ba1d22462e76e2a69804d9788" kindref="member">close</ref>()</highlight></codeline>
 <codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa18566c27aa427475a6089dbf43e3f39" kindref="member">db_</ref><sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;void&gt;::success</ref>();</highlight></codeline>
@@ -459,7 +459,7 @@
 <codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="311"><highlight class="normal"></highlight></codeline>
 <codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;relational::ExecResult&gt;</ref></highlight></codeline>
-<codeline lineno="313" refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a3d05725c60f4df18f29cb94fc4fdeaa1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a3d05725c60f4df18f29cb94fc4fdeaa1" kindref="member">execute</ref>(std::string_view<sp/>sql,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1relational_1a03d7b850c6d4c14c870bb5548dd36873" kindref="member">relational::Params</ref><sp/>&amp;params)</highlight></codeline>
+<codeline lineno="313" refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1ade07eb15c2f192dea9a0e928404e0a22" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1ade07eb15c2f192dea9a0e928404e0a22" kindref="member">execute</ref>(std::string_view<sp/>sql,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1relational_1a25c3a844b1c359a144811c497afdceec" kindref="member">relational::Params</ref><sp/>&amp;params)</highlight></codeline>
 <codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>status<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a37793c9f48134e9439ca96773374dff5" kindref="member">require_open</ref>();<sp/>!status.<ref refid="structPDJE__UTIL_1_1common_1_1Status_1a422a0af607d3fc4c8cbdd441bbdbbbde" kindref="member">ok</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;relational::ExecResult&gt;::failure</ref>(status);</highlight></codeline>
@@ -467,12 +467,12 @@
 <codeline lineno="318"><highlight class="normal"></highlight></codeline>
 <codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sqlite3_stmt<sp/>*<ref refid="structstmt" kindref="compound">stmt</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>prepared<sp/>=</highlight></codeline>
-<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1af944d8c1a1e8814576746fbaea325a0c" kindref="member">detail::sqlite_prepare</ref>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa18566c27aa427475a6089dbf43e3f39" kindref="member">db_</ref>,<sp/>sql,<sp/>&amp;<ref refid="structstmt" kindref="compound">stmt</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>prepare<sp/>SQLite<sp/>statement&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a8f73b95f3739f1036ba25d7a997a533e" kindref="member">detail::sqlite_prepare</ref>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa18566c27aa427475a6089dbf43e3f39" kindref="member">db_</ref>,<sp/>sql,<sp/>&amp;<ref refid="structstmt" kindref="compound">stmt</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>prepare<sp/>SQLite<sp/>statement&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!prepared.ok())<sp/>{</highlight></codeline>
 <codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;relational::ExecResult&gt;::failure</ref>(prepared.status());</highlight></codeline>
 <codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="325"><highlight class="normal"></highlight></codeline>
-<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>bound<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1af4c04c7cc6c27a4e898a7b46df8fc27a" kindref="member">detail::sqlite_bind_params</ref>(<ref refid="structstmt" kindref="compound">stmt</ref>,<sp/>params);</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>bound<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a0cd35cb3f318e1e22b8358a1a8bc3b1f" kindref="member">detail::sqlite_bind_params</ref>(<ref refid="structstmt" kindref="compound">stmt</ref>,<sp/>params);</highlight></codeline>
 <codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!bound.ok())<sp/>{</highlight></codeline>
 <codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sqlite3_finalize(<ref refid="structstmt" kindref="compound">stmt</ref>);</highlight></codeline>
 <codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;relational::ExecResult&gt;::failure</ref>(bound.status());</highlight></codeline>
@@ -501,7 +501,7 @@
 <codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="353"><highlight class="normal"></highlight></codeline>
 <codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;relational::QueryResult&gt;</ref></highlight></codeline>
-<codeline lineno="355" refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa6ece242a32cf9759660c26ee17f838b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa6ece242a32cf9759660c26ee17f838b" kindref="member">query</ref>(std::string_view<sp/>sql,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1relational_1a03d7b850c6d4c14c870bb5548dd36873" kindref="member">relational::Params</ref><sp/>&amp;params)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="355" refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa7e787e5d819f14a83fd9bb9af08fcc6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa7e787e5d819f14a83fd9bb9af08fcc6" kindref="member">query</ref>(std::string_view<sp/>sql,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1relational_1a25c3a844b1c359a144811c497afdceec" kindref="member">relational::Params</ref><sp/>&amp;params)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="356"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>status<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a37793c9f48134e9439ca96773374dff5" kindref="member">require_open</ref>();<sp/>!status.<ref refid="structPDJE__UTIL_1_1common_1_1Status_1a422a0af607d3fc4c8cbdd441bbdbbbde" kindref="member">ok</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;relational::QueryResult&gt;::failure</ref>(status);</highlight></codeline>
@@ -509,12 +509,12 @@
 <codeline lineno="360"><highlight class="normal"></highlight></codeline>
 <codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sqlite3_stmt<sp/>*<ref refid="structstmt" kindref="compound">stmt</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>prepared<sp/>=</highlight></codeline>
-<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1af944d8c1a1e8814576746fbaea325a0c" kindref="member">detail::sqlite_prepare</ref>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa18566c27aa427475a6089dbf43e3f39" kindref="member">db_</ref>,<sp/>sql,<sp/>&amp;<ref refid="structstmt" kindref="compound">stmt</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>prepare<sp/>SQLite<sp/>query&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a8f73b95f3739f1036ba25d7a997a533e" kindref="member">detail::sqlite_prepare</ref>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa18566c27aa427475a6089dbf43e3f39" kindref="member">db_</ref>,<sp/>sql,<sp/>&amp;<ref refid="structstmt" kindref="compound">stmt</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>prepare<sp/>SQLite<sp/>query&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!prepared.ok())<sp/>{</highlight></codeline>
 <codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;relational::QueryResult&gt;::failure</ref>(prepared.status());</highlight></codeline>
 <codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="367"><highlight class="normal"></highlight></codeline>
-<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>bound<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1af4c04c7cc6c27a4e898a7b46df8fc27a" kindref="member">detail::sqlite_bind_params</ref>(<ref refid="structstmt" kindref="compound">stmt</ref>,<sp/>params);</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>bound<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a0cd35cb3f318e1e22b8358a1a8bc3b1f" kindref="member">detail::sqlite_bind_params</ref>(<ref refid="structstmt" kindref="compound">stmt</ref>,<sp/>params);</highlight></codeline>
 <codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!bound.ok())<sp/>{</highlight></codeline>
 <codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sqlite3_finalize(<ref refid="structstmt" kindref="compound">stmt</ref>);</highlight></codeline>
 <codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;relational::QueryResult&gt;::failure</ref>(bound.status());</highlight></codeline>
@@ -546,22 +546,22 @@
 <codeline lineno="397"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;relational::QueryResult&gt;::success</ref>(std::move(result));</highlight></codeline>
 <codeline lineno="398"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="399"><highlight class="normal"></highlight></codeline>
-<codeline lineno="400"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="401" refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1add1dff3eb7c8332eedb65e076187e1d1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1add1dff3eb7c8332eedb65e076187e1d1" kindref="member">begin_transaction</ref>()</highlight></codeline>
+<codeline lineno="400"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="401" refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a5068cd0e1e0977c722d6648c72a73678" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a5068cd0e1e0977c722d6648c72a73678" kindref="member">begin_transaction</ref>()</highlight></codeline>
 <codeline lineno="402"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="403"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1af37910d8d8aaec77691710bb20fd936a" kindref="member">exec_sqlite_command</ref>(</highlight><highlight class="stringliteral">&quot;BEGIN<sp/>TRANSACTION;&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>begin<sp/>SQLite<sp/>transaction&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="403"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a7f918e540f4da2bcb1636451edba313f" kindref="member">exec_sqlite_command</ref>(</highlight><highlight class="stringliteral">&quot;BEGIN<sp/>TRANSACTION;&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>begin<sp/>SQLite<sp/>transaction&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="404"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="405"><highlight class="normal"></highlight></codeline>
-<codeline lineno="406"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="407" refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a4cf9a4c0b15030cdb48fcec37564f5d7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a4cf9a4c0b15030cdb48fcec37564f5d7" kindref="member">commit</ref>()</highlight></codeline>
+<codeline lineno="406"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="407" refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a5bb7982dace4499081e51c2f55399aa0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a5bb7982dace4499081e51c2f55399aa0" kindref="member">commit</ref>()</highlight></codeline>
 <codeline lineno="408"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="409"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1af37910d8d8aaec77691710bb20fd936a" kindref="member">exec_sqlite_command</ref>(</highlight><highlight class="stringliteral">&quot;COMMIT;&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>commit<sp/>SQLite<sp/>transaction&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="409"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a7f918e540f4da2bcb1636451edba313f" kindref="member">exec_sqlite_command</ref>(</highlight><highlight class="stringliteral">&quot;COMMIT;&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>commit<sp/>SQLite<sp/>transaction&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="410"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="411"><highlight class="normal"></highlight></codeline>
-<codeline lineno="412"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="413" refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a30ae0a2775b973af4eeac6e1dbb10332" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a30ae0a2775b973af4eeac6e1dbb10332" kindref="member">rollback</ref>()</highlight></codeline>
+<codeline lineno="412"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="413" refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa8f1d2eac358fe9e55653f81d53b16af" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa8f1d2eac358fe9e55653f81d53b16af" kindref="member">rollback</ref>()</highlight></codeline>
 <codeline lineno="414"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="415"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1af37910d8d8aaec77691710bb20fd936a" kindref="member">exec_sqlite_command</ref>(</highlight><highlight class="stringliteral">&quot;ROLLBACK;&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>rollback<sp/>SQLite<sp/>transaction&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="415"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a7f918e540f4da2bcb1636451edba313f" kindref="member">exec_sqlite_command</ref>(</highlight><highlight class="stringliteral">&quot;ROLLBACK;&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>rollback<sp/>SQLite<sp/>transaction&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="416"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="417"><highlight class="normal"></highlight></codeline>
 <codeline lineno="418"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
@@ -574,8 +574,8 @@
 <codeline lineno="425"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{};</highlight></codeline>
 <codeline lineno="426"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="427"><highlight class="normal"></highlight></codeline>
-<codeline lineno="428"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="429" refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1af37910d8d8aaec77691710bb20fd936a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1af37910d8d8aaec77691710bb20fd936a" kindref="member">exec_sqlite_command</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*sql,<sp/>std::string_view<sp/>context)</highlight></codeline>
+<codeline lineno="428"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="429" refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a7f918e540f4da2bcb1636451edba313f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a7f918e540f4da2bcb1636451edba313f" kindref="member">exec_sqlite_command</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*sql,<sp/>std::string_view<sp/>context)</highlight></codeline>
 <codeline lineno="430"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="431"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>status<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a37793c9f48134e9439ca96773374dff5" kindref="member">require_open</ref>();<sp/>!status.<ref refid="structPDJE__UTIL_1_1common_1_1Status_1a422a0af607d3fc4c8cbdd441bbdbbbde" kindref="member">ok</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="432"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(status);</highlight></codeline>
@@ -589,7 +589,7 @@
 <codeline lineno="440"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;void&gt;::success</ref>();</highlight></codeline>
 <codeline lineno="441"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="442"><highlight class="normal"></highlight></codeline>
-<codeline lineno="443" refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa13cd249d5257c76b76053a35abaaad8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1a76b224b3db35c1e89d9d3c2db3f058b5" kindref="member">config_type</ref><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa13cd249d5257c76b76053a35abaaad8" kindref="member">config_</ref><sp/>{};</highlight></codeline>
+<codeline lineno="443" refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa13cd249d5257c76b76053a35abaaad8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1SqliteConfig" kindref="compound">config_type</ref><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa13cd249d5257c76b76053a35abaaad8" kindref="member">config_</ref><sp/>{};</highlight></codeline>
 <codeline lineno="444" refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa18566c27aa427475a6089dbf43e3f39" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>sqlite3<sp/><sp/><sp/><sp/>*<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1SqliteBackend_1aa18566c27aa427475a6089dbf43e3f39" kindref="member">db_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="445"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="446"><highlight class="normal"></highlight></codeline>

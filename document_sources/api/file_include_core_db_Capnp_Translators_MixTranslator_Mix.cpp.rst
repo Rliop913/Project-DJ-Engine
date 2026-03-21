@@ -4,7 +4,7 @@
 File Mix.cpp
 ============
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_db_Capnp_Translators_MixTranslator>` (``include\core\db\Capnp\Translators\MixTranslator``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_db_Capnp_Translators_MixTranslator>` (``include/core/db/Capnp/Translators/MixTranslator``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File Mix.cpp
    :local:
    :backlinks: none
 
-Definition (``include\core\db\Capnp\Translators\MixTranslator\Mix.cpp``)
+Definition (``include/core/db/Capnp/Translators/MixTranslator/Mix.cpp``)
 ------------------------------------------------------------------------
 
 
@@ -45,7 +45,7 @@ Functions
 ---------
 
 
-- :ref:`exhale_function__mix_8cpp_1a176aee2a79a1f05c60e3bc95dc48c6dd`
+- :ref:`exhale_function_Mix_8cpp_1a176aee2a79a1f05c60e3bc95dc48c6dd`
 
-- :ref:`exhale_function__mix_8cpp_1aabb7a68dd1aa8df2d9eaf189faf24527`
+- :ref:`exhale_function_Mix_8cpp_1aabb7a68dd1aa8df2d9eaf189faf24527`
 

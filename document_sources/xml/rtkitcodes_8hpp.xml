@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="rtkitcodes_8hpp" kind="file" language="C++">
     <compoundname>rtkitcodes.hpp</compoundname>
     <includes local="no">cerrno</includes>
@@ -9,8 +9,20 @@
     <includes local="no">sys/syscall.h</includes>
     <includes local="no">unistd.h</includes>
     <includes local="no">systemd/sd-bus.h</includes>
-    <includedby refid="_input_core_8cpp" local="yes">include/input/DefaultDevs/linux/InputCore.cpp</includedby>
+    <includedby refid="InputCore_8cpp" local="yes">include/input/DefaultDevs/linux/InputCore.cpp</includedby>
     <incdepgraph>
+      <node id="3">
+        <label>cstdint</label>
+      </node>
+      <node id="4">
+        <label>stdexcept</label>
+      </node>
+      <node id="5">
+        <label>string</label>
+      </node>
+      <node id="8">
+        <label>systemd/sd-bus.h</label>
+      </node>
       <node id="1">
         <label>include/input/DefaultDevs/linux/rtkitcodes.hpp</label>
         <link refid="rtkitcodes_8hpp"/>
@@ -29,38 +41,26 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
+      <node id="7">
+        <label>unistd.h</label>
+      </node>
       <node id="2">
         <label>cerrno</label>
-      </node>
-      <node id="3">
-        <label>cstdint</label>
-      </node>
-      <node id="4">
-        <label>stdexcept</label>
-      </node>
-      <node id="5">
-        <label>string</label>
       </node>
       <node id="6">
         <label>sys/syscall.h</label>
       </node>
-      <node id="8">
-        <label>systemd/sd-bus.h</label>
-      </node>
-      <node id="7">
-        <label>unistd.h</label>
-      </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="2">
-        <label>include/input/DefaultDevs/linux/InputCore.cpp</label>
-        <link refid="_input_core_8cpp"/>
-      </node>
       <node id="1">
         <label>include/input/DefaultDevs/linux/rtkitcodes.hpp</label>
         <link refid="rtkitcodes_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
+      </node>
+      <node id="2">
+        <label>include/input/DefaultDevs/linux/InputCore.cpp</label>
+        <link refid="InputCore_8cpp"/>
       </node>
     </invincdepgraph>
     <innernamespace refid="namespacertkit">rtkit</innernamespace>

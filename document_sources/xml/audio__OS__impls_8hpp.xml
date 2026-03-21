@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="audio__OS__impls_8hpp" kind="file" language="C++">
     <compoundname>audio_OS_impls.hpp</compoundname>
     <includes refid="PDJE__LOG__SETTER_8hpp" local="yes">PDJE_LOG_SETTER.hpp</includes>
@@ -14,6 +14,24 @@
     <includedby refid="audioPlayer_8cpp" local="yes">include/core/MainObjects/audioPlayer/audioPlayer.cpp</includedby>
     <includedby refid="audioPlayer_8hpp" local="yes">include/core/MainObjects/audioPlayer/audioPlayer.hpp</includedby>
     <incdepgraph>
+      <node id="14">
+        <label>functional</label>
+      </node>
+      <node id="13">
+        <label>cstdint</label>
+      </node>
+      <node id="6">
+        <label>stdint.h</label>
+      </node>
+      <node id="15">
+        <label>miniaudio.h</label>
+      </node>
+      <node id="9">
+        <label>exception</label>
+      </node>
+      <node id="5">
+        <label>stddef.h</label>
+      </node>
       <node id="1">
         <label>include/core/MainObjects/audioPlayer/audio_OS_impls.hpp</label>
         <link refid="audio__OS__impls_8hpp"/>
@@ -34,19 +52,8 @@
         <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="3">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
-      </node>
-      <node id="4">
-        <label>PDJE_LOG_RUNTIME_API.h</label>
-        <link refid="PDJE__LOG__RUNTIME__API_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
+      <node id="17">
+        <label>alsa/asoundlib.h</label>
       </node>
       <node id="2">
         <label>PDJE_LOG_SETTER.hpp</label>
@@ -66,66 +73,103 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="17">
-        <label>alsa/asoundlib.h</label>
-      </node>
-      <node id="12">
-        <label>cstddef</label>
-      </node>
-      <node id="13">
-        <label>cstdint</label>
-      </node>
-      <node id="9">
-        <label>exception</label>
-      </node>
-      <node id="14">
-        <label>functional</label>
-      </node>
-      <node id="15">
-        <label>miniaudio.h</label>
-      </node>
-      <node id="7">
-        <label>spdlog/fmt/fmt.h</label>
-      </node>
       <node id="8">
         <label>spdlog/spdlog.h</label>
-      </node>
-      <node id="5">
-        <label>stddef.h</label>
-      </node>
-      <node id="6">
-        <label>stdint.h</label>
       </node>
       <node id="10">
         <label>string_view</label>
       </node>
-      <node id="11">
-        <label>utility</label>
-      </node>
       <node id="16">
         <label>vector</label>
       </node>
-    </incdepgraph>
-    <invincdepgraph>
-      <node id="2">
-        <label>include/core/MainObjects/audioPlayer/audioCallbacks.cpp</label>
-        <link refid="audioCallbacks_8cpp"/>
+      <node id="7">
+        <label>spdlog/fmt/fmt.h</label>
+      </node>
+      <node id="11">
+        <label>utility</label>
+      </node>
+      <node id="12">
+        <label>cstddef</label>
       </node>
       <node id="3">
-        <label>include/core/MainObjects/audioPlayer/audioPlayer.cpp</label>
-        <link refid="audioPlayer_8cpp"/>
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
       </node>
       <node id="4">
-        <label>include/core/MainObjects/audioPlayer/audioPlayer.hpp</label>
-        <link refid="audioPlayer_8hpp"/>
+        <label>PDJE_LOG_RUNTIME_API.h</label>
+        <link refid="PDJE__LOG__RUNTIME__API_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>include/core/MainObjects/audioPlayer/audioPlayer.cpp</label>
+        <link refid="audioPlayer_8cpp"/>
+      </node>
+      <node id="18">
+        <label>include/core/MainObjects/editorObject/commonfunction.cpp</label>
+        <link refid="commonfunction_8cpp"/>
+      </node>
+      <node id="10">
+        <label>include/tests/editorTest.cpp</label>
+        <link refid="editorTest_8cpp"/>
+      </node>
+      <node id="22">
+        <label>include/core/MainObjects/editorObject/getdiff.cpp</label>
+        <link refid="getdiff_8cpp"/>
+      </node>
+      <node id="28">
+        <label>include/core/MainObjects/editorObject/updatelog.cpp</label>
+        <link refid="updatelog_8cpp"/>
+      </node>
+      <node id="30">
+        <label>include/tests/audioTest.cpp</label>
+        <link refid="audioTest_8cpp"/>
+      </node>
+      <node id="20">
+        <label>include/core/MainObjects/editorObject/editorObject.cpp</label>
+        <link refid="editorObject_8cpp"/>
+      </node>
+      <node id="13">
+        <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
+        <link refid="judgeTest_8cpp"/>
+      </node>
+      <node id="6">
+        <label>include/core/interface/CPDJE_interface.cpp</label>
+        <link refid="CPDJE__interface_8cpp"/>
+      </node>
+      <node id="17">
+        <label>include/core/MainObjects/editorObject/addline.cpp</label>
+        <link refid="addline_8cpp"/>
+      </node>
+      <node id="27">
+        <label>include/core/MainObjects/editorObject/undo.cpp</label>
+        <link refid="undo_8cpp"/>
+      </node>
+      <node id="4">
+        <label>include/core/MainObjects/audioPlayer/audioPlayer.hpp</label>
+        <link refid="audioPlayer_8hpp"/>
+        <childnode refid="5" relation="include">
         </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>include/core/MainObjects/editorObject/getall.cpp</label>
+        <link refid="getall_8cpp"/>
+      </node>
+      <node id="16">
+        <label>include/core/editor/TimeLine/JSONWrap/MusicJson.cpp</label>
+        <link refid="MusicJson_8cpp"/>
       </node>
       <node id="1">
         <label>include/core/MainObjects/audioPlayer/audio_OS_impls.hpp</label>
@@ -137,25 +181,87 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="6">
-        <label>include/core/MainObjects/editorObject/addline.cpp</label>
-        <link refid="addline_8cpp"/>
+      <node id="15">
+        <label>include/core/MainObjects/editorObject/editorObject.hpp</label>
+        <link refid="editorObject_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
       </node>
-      <node id="7">
-        <label>include/core/MainObjects/editorObject/commonfunction.cpp</label>
-        <link refid="commonfunction_8cpp"/>
+      <node id="2">
+        <label>include/core/MainObjects/audioPlayer/audioCallbacks.cpp</label>
+        <link refid="audioCallbacks_8cpp"/>
       </node>
-      <node id="8">
+      <node id="11">
+        <label>include/tests/gittest.cpp</label>
+        <link refid="gittest_8cpp"/>
+      </node>
+      <node id="24">
+        <label>include/core/MainObjects/editorObject/go.cpp</label>
+        <link refid="go_8cpp"/>
+      </node>
+      <node id="19">
         <label>include/core/MainObjects/editorObject/deleteline.cpp</label>
         <link refid="deleteline_8cpp"/>
       </node>
+      <node id="7">
+        <label>include/core/interface/PDJE_interface.cpp</label>
+        <link refid="PDJE__interface_8cpp"/>
+      </node>
+      <node id="14">
+        <label>include/tests/music_to_waveform_webp.cpp</label>
+        <link refid="music__to__waveform__webp_8cpp"/>
+      </node>
+      <node id="25">
+        <label>include/core/MainObjects/editorObject/redo.cpp</label>
+        <link refid="redo_8cpp"/>
+      </node>
       <node id="9">
-        <label>include/core/MainObjects/editorObject/editorObject.cpp</label>
-        <link refid="editorObject_8cpp"/>
+        <label>include/tests/dbTest.cpp</label>
+        <link refid="dbTest_8cpp"/>
+      </node>
+      <node id="26">
+        <label>include/core/MainObjects/editorObject/render.cpp</label>
+        <link refid="render_8cpp"/>
+      </node>
+      <node id="12">
+        <label>include/tests/interfaceTest.cpp</label>
+        <link refid="interfaceTest_8cpp"/>
+      </node>
+      <node id="23">
+        <label>include/core/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
+        <link refid="getlogwithjsongraph_8cpp"/>
       </node>
       <node id="5">
-        <label>include/core/MainObjects/editorObject/editorObject.hpp</label>
-        <link refid="editorObject_8hpp"/>
+        <label>include/core/interface/PDJE_interface.hpp</label>
+        <link refid="PDJE__interface_8hpp"/>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
@@ -174,108 +280,14 @@
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
       </node>
-      <node id="10">
-        <label>include/core/MainObjects/editorObject/getall.cpp</label>
-        <link refid="getall_8cpp"/>
-      </node>
-      <node id="11">
-        <label>include/core/MainObjects/editorObject/getdiff.cpp</label>
-        <link refid="getdiff_8cpp"/>
-      </node>
-      <node id="12">
-        <label>include/core/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
-        <link refid="getlogwithjsongraph_8cpp"/>
-      </node>
-      <node id="13">
-        <label>include/core/MainObjects/editorObject/go.cpp</label>
-        <link refid="go_8cpp"/>
-      </node>
-      <node id="14">
-        <label>include/core/MainObjects/editorObject/redo.cpp</label>
-        <link refid="redo_8cpp"/>
-      </node>
-      <node id="15">
-        <label>include/core/MainObjects/editorObject/render.cpp</label>
-        <link refid="render_8cpp"/>
-      </node>
-      <node id="16">
-        <label>include/core/MainObjects/editorObject/undo.cpp</label>
-        <link refid="undo_8cpp"/>
-      </node>
-      <node id="17">
-        <label>include/core/MainObjects/editorObject/updatelog.cpp</label>
-        <link refid="updatelog_8cpp"/>
-      </node>
-      <node id="18">
+      <node id="29">
         <label>include/core/SWIG_editor_visitor.hpp</label>
         <link refid="SWIG__editor__visitor_8hpp"/>
       </node>
-      <node id="19">
-        <label>include/core/editor/TimeLine/JSONWrap/MusicJson.cpp</label>
-        <link refid="MusicJson_8cpp"/>
-      </node>
-      <node id="21">
-        <label>include/core/interface/PDJE_interface.cpp</label>
-        <link refid="PDJE__interface_8cpp"/>
-      </node>
-      <node id="20">
-        <label>include/core/interface/PDJE_interface.hpp</label>
-        <link refid="PDJE__interface_8hpp"/>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-      </node>
-      <node id="22">
+      <node id="8">
         <label>include/core/interface/PDJE_polyglot_wraps.cpp</label>
         <link refid="PDJE__polyglot__wraps_8cpp"/>
-      </node>
-      <node id="23">
-        <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
-        <link refid="judgeTest_8cpp"/>
-      </node>
-      <node id="28">
-        <label>include/tests/audioTest.cpp</label>
-        <link refid="audioTest_8cpp"/>
-      </node>
-      <node id="24">
-        <label>include/tests/dbTest.cpp</label>
-        <link refid="dbTest_8cpp"/>
-      </node>
-      <node id="25">
-        <label>include/tests/editorTest.cpp</label>
-        <link refid="editorTest_8cpp"/>
-      </node>
-      <node id="26">
-        <label>include/tests/gittest.cpp</label>
-        <link refid="gittest_8cpp"/>
-      </node>
-      <node id="27">
-        <label>include/tests/interfaceTest.cpp</label>
-        <link refid="interfaceTest_8cpp"/>
       </node>
     </invincdepgraph>
     <innernamespace refid="namespaceOS__IMPL">OS_IMPL</innernamespace>
@@ -308,7 +320,7 @@
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>
 <codeline lineno="23" refid="namespaceOS__IMPL" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceOS__IMPL" kindref="compound">OS_IMPL</ref><sp/>{</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::vector&lt;ma_backend&gt;</highlight></codeline>
-<codeline lineno="25" refid="namespaceOS__IMPL_1a4c85164b54944146151f958a786e6b41" refkind="member"><highlight class="normal"><ref refid="namespaceOS__IMPL_1a4c85164b54944146151f958a786e6b41" kindref="member">get_backends</ref>()</highlight></codeline>
+<codeline lineno="25" refid="namespaceOS__IMPL_1ac097fd26e50bce9e02dc9880b41179cc" refkind="member"><highlight class="normal"><ref refid="namespaceOS__IMPL_1ac097fd26e50bce9e02dc9880b41179cc" kindref="member">get_backends</ref>()</highlight></codeline>
 <codeline lineno="26"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;ma_backend&gt;<sp/>backs;</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(_WIN32)</highlight><highlight class="normal"></highlight></codeline>
@@ -342,7 +354,7 @@
 <codeline lineno="56"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="57"><highlight class="normal"></highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::function&lt;uint32_t(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ma_ptr<sp/>&amp;)&gt;</highlight></codeline>
-<codeline lineno="59" refid="namespaceOS__IMPL_1a2d620c0237ea31902d7540d01e963810" refkind="member"><highlight class="normal"><ref refid="namespaceOS__IMPL_1a2d620c0237ea31902d7540d01e963810" kindref="member">set_unused_frame_function</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ma_device<sp/>&amp;dev)</highlight></codeline>
+<codeline lineno="59" refid="namespaceOS__IMPL_1a2d177d1dfb445e789e2d2ccfc1bd21ce" refkind="member"><highlight class="normal"><ref refid="namespaceOS__IMPL_1a2d177d1dfb445e789e2d2ccfc1bd21ce" kindref="member">set_unused_frame_function</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ma_device<sp/>&amp;dev)</highlight></codeline>
 <codeline lineno="60"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(_WIN32)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>[](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ma_ptr<sp/>&amp;ptr)<sp/>-&gt;<sp/>uint32_t<sp/>{</highlight></codeline>
@@ -377,7 +389,7 @@
 <codeline lineno="91"><highlight class="normal"></highlight></codeline>
 <codeline lineno="92"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="93"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="94"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>OS_IMPL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>OS_IMPL</highlight></codeline>
     </programlisting>
     <location file="include/core/MainObjects/audioPlayer/audio_OS_impls.hpp"/>
   </compounddef>

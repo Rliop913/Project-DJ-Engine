@@ -4,7 +4,7 @@
 File PDJE_interface.cpp
 =======================
 
-|exhale_lsh| :ref:`Parent directory <dir_include_core_interface>` (``include\core\interface``)
+|exhale_lsh| :ref:`Parent directory <dir_include_core_interface>` (``include/core/interface``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -13,7 +13,7 @@ File PDJE_interface.cpp
    :local:
    :backlinks: none
 
-Definition (``include\core\interface\PDJE_interface.cpp``)
+Definition (``include/core/interface/PDJE_interface.cpp``)
 ----------------------------------------------------------
 
 
@@ -30,9 +30,15 @@ Includes
 --------
 
 
+- ``Decoder.hpp`` (:ref:`file_include_core_audioRender_MixMachine_MiniaudioObjects_Decoder.hpp`)
+
 - ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_global_PDJE_LOG_SETTER.hpp`)
 
 - ``PDJE_interface.hpp`` (:ref:`file_include_core_interface_PDJE_interface.hpp`)
+
+- ``optional``
+
+- ``stdexcept``
 
 
 

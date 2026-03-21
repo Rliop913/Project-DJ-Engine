@@ -4,7 +4,7 @@
 Program Listing for File WaylandOwnedWindow.cpp
 ===============================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_input_DefaultDevs_linux_wayland_things_WaylandOwnedWindow.cpp>` (``include\input\DefaultDevs\linux\wayland_things\WaylandOwnedWindow.cpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_input_DefaultDevs_linux_wayland_things_WaylandOwnedWindow.cpp>` (``include/input/DefaultDevs/linux/wayland_things/WaylandOwnedWindow.cpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 

@@ -4,7 +4,7 @@
 Program Listing for File MUSIC_CTR.hpp
 ======================================
 
-|exhale_lsh| :ref:`Return to documentation for file <file_include_core_audioRender_MixMachine_MUSIC_CTR_MUSIC_CTR.hpp>` (``include\core\audioRender\MixMachine\MUSIC_CTR\MUSIC_CTR.hpp``)
+|exhale_lsh| :ref:`Return to documentation for file <file_include_core_audioRender_MixMachine_MUSIC_CTR_MUSIC_CTR.hpp>` (``include/core/audioRender/MixMachine/MUSIC_CTR/MUSIC_CTR.hpp``)
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
@@ -36,7 +36,7 @@ Program Listing for File MUSIC_CTR.hpp
        BPMCHANGE,
    };
    
-   struct PDJE_API PlayPosition {
+   struct PlayPosition {
        GLOBAL_POS Gidx;
        LOCAL_POS  Lidx;
        double     OriginBPM = -1;
@@ -44,7 +44,7 @@ Program Listing for File MUSIC_CTR.hpp
        MIXSTATE   status    = MIXSTATE::PLAY;
    };
    
-   struct PDJE_API Ingredients {
+   struct Ingredients {
      private:
        void
        SORT();

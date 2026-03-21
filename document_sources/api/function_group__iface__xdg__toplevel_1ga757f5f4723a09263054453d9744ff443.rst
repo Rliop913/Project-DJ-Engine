@@ -10,5 +10,5 @@ Function Documentation
 ----------------------
 
 
-.. doxygenfunction:: xdg_toplevel_resize()
+.. doxygenfunction:: xdg_toplevel_resize(struct xdg_toplevel *, struct wl_seat *, uint32_t, uint32_t)
    :project: Project_DJ_Engine

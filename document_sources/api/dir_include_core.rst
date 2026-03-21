@@ -10,7 +10,7 @@ Directory core
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
 
-*Directory path:* ``include\core``
+*Directory path:* ``include/core``
 
 Subdirectories
 --------------
