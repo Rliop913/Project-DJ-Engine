@@ -185,11 +185,16 @@
 <span class="w">    </span><span class="kt">void</span>
 <span class="w">    </span><span class="n">UpdateLog</span><span class="p">();</span>
 
-<span class="w">    </span><span class="c1">// template &lt;typename EDIT_ARG_TYPE&gt;</span>
-<span class="w">    </span><span class="c1">// DiffResult</span>
-<span class="w">    </span><span class="c1">// GetDiff(const gitwrap::commit &amp;oldTimeStamp,</span>
-<span class="w">    </span><span class="c1">//         const gitwrap::commit &amp;newTimeStamp);</span>
-<span class="w">    </span><span class="c1">// DEPRECATE DIFF For Now</span>
+<span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">EDIT_ARG_TYPE</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">PDJE_TIMELINE</span><span class="o">::</span><span class="n">TimeLineSemanticDiffResult</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="n">GetDiff</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">oldCommitOID</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">newCommitOID</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">EDIT_ARG_TYPE</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">PDJE_TIMELINE</span><span class="o">::</span><span class="n">TimeLineSemanticDiffResult</span><span class="o">&gt;</span>
+<span class="w">    </span><span class="n">GetDiff</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="w">   </span><span class="o">&amp;</span><span class="n">musicName</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">oldCommitOID</span><span class="p">,</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">newCommitOID</span><span class="p">);</span>
 <span class="w">    </span><span class="n">nj</span><span class="w"> </span><span class="o">&amp;</span>
 <span class="w">    </span><span class="k">operator</span><span class="p">[](</span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">key</span><span class="p">);</span>
 
@@ -265,24 +270,23 @@
 <span class="n">editorObject</span><span class="o">::</span><span class="n">getAll</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MUSIC</span><span class="o">&gt;</span><span class="p">(</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">EDIT_ARG_MUSIC</span><span class="w"> </span><span class="o">&amp;</span><span class="n">obj</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">jsonCallback</span><span class="p">);</span>
 
-<span class="c1">// template &lt;&gt;</span>
-<span class="c1">// PDJE_API DiffResult</span>
-<span class="c1">// editorObject::GetDiff&lt;EDIT_ARG_NOTE&gt;(const gitwrap::commit &amp;oldTimeStamp,</span>
-<span class="c1">//                                      const gitwrap::commit &amp;newTimeStamp);</span>
-<span class="c1">// template &lt;&gt;</span>
-<span class="c1">// PDJE_API DiffResult</span>
-<span class="c1">// editorObject::GetDiff&lt;EDIT_ARG_MIX&gt;(const gitwrap::commit &amp;oldTimeStamp,</span>
-<span class="c1">//                                     const gitwrap::commit &amp;newTimeStamp);</span>
-<span class="c1">// template &lt;&gt;</span>
-<span class="c1">// PDJE_API DiffResult</span>
-<span class="c1">// editorObject::GetDiff&lt;EDIT_ARG_KEY_VALUE&gt;(const gitwrap::commit</span>
-<span class="c1">// &amp;oldTimeStamp,</span>
-<span class="c1">//                                           const gitwrap::commit</span>
-<span class="c1">//                                           &amp;newTimeStamp);</span>
-<span class="c1">// template &lt;&gt;</span>
-<span class="c1">// PDJE_API DiffResult</span>
-<span class="c1">// editorObject::GetDiff&lt;EDIT_ARG_MUSIC&gt;(const gitwrap::commit &amp;oldTimeStamp,</span>
-<span class="c1">//                                       const gitwrap::commit &amp;newTimeStamp);</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
+<span class="n">PDJE_API</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">PDJE_TIMELINE</span><span class="o">::</span><span class="n">TimeLineSemanticDiffResult</span><span class="o">&gt;</span>
+<span class="w">         </span><span class="n">editorObject</span><span class="o">::</span><span class="n">GetDiff</span><span class="o">&lt;</span><span class="n">EDIT_ARG_NOTE</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">oldCommitOID</span><span class="p">,</span>
+<span class="w">                                     </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">newCommitOID</span><span class="p">);</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
+<span class="n">PDJE_API</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">PDJE_TIMELINE</span><span class="o">::</span><span class="n">TimeLineSemanticDiffResult</span><span class="o">&gt;</span>
+<span class="w">         </span><span class="n">editorObject</span><span class="o">::</span><span class="n">GetDiff</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MIX</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">oldCommitOID</span><span class="p">,</span>
+<span class="w">                                    </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">newCommitOID</span><span class="p">);</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
+<span class="n">PDJE_API</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">PDJE_TIMELINE</span><span class="o">::</span><span class="n">TimeLineSemanticDiffResult</span><span class="o">&gt;</span>
+<span class="n">editorObject</span><span class="o">::</span><span class="n">GetDiff</span><span class="o">&lt;</span><span class="n">EDIT_ARG_KEY_VALUE</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">oldCommitOID</span><span class="p">,</span>
+<span class="w">                                          </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">newCommitOID</span><span class="p">);</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
+<span class="n">PDJE_API</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">PDJE_TIMELINE</span><span class="o">::</span><span class="n">TimeLineSemanticDiffResult</span><span class="o">&gt;</span>
+<span class="w">         </span><span class="n">editorObject</span><span class="o">::</span><span class="n">GetDiff</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MUSIC</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="w">   </span><span class="o">&amp;</span><span class="n">musicName</span><span class="p">,</span>
+<span class="w">                                      </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">oldCommitOID</span><span class="p">,</span>
+<span class="w">                                      </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">newCommitOID</span><span class="p">);</span>
 
 <span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
 <span class="n">PDJE_API</span><span class="w"> </span><span class="n">DONT_SANITIZE</span>
@@ -322,7 +326,6 @@
 <span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
 <span class="n">PDJE_API</span><span class="w"> </span><span class="kt">bool</span>
 <span class="n">editorObject</span><span class="o">::</span><span class="n">Redo</span><span class="o">&lt;</span><span class="n">EDIT_ARG_MUSIC</span><span class="o">&gt;</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">musicName</span><span class="p">);</span>
-
 
 <span class="k">template</span><span class="w"> </span><span class="o">&lt;&gt;</span>
 <span class="n">PDJE_API</span><span class="w"> </span><span class="kt">void</span>

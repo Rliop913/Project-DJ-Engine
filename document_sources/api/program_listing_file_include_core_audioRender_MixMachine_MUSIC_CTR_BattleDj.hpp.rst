@@ -21,7 +21,7 @@ Program Listing for File BattleDj.hpp
    #include "MixTranslator.hpp"
    enum SoundTouchType { MASTER, RAW, PITCH };
    
-   struct PDJE_API DJ_JOBS {
+   struct DJ_JOBS {
        unsigned long  sourcePoint;
        unsigned long  attachIn;
        unsigned long  attachOut;

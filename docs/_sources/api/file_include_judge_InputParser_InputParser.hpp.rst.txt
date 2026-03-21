@@ -77,9 +77,9 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_namespace_p_d_j_e___j_u_d_g_e_1a1e9928aafb8a97a2cd5dde1c2179e218`
-
 - :ref:`exhale_function_namespace_p_d_j_e___j_u_d_g_e_1aa614512ba31f8521b7f0d2f648c52415`
+
+- :ref:`exhale_function_namespace_p_d_j_e___j_u_d_g_e_1a1e9928aafb8a97a2cd5dde1c2179e218`
 
 
 Typedefs

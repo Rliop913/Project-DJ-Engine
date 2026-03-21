@@ -1,0 +1,765 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Listing for File CPDJE_Input.cpp &mdash; Project_DJ_Engine  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
+      <script src="../_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Project_DJ_Engine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Project_DJ_Engine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Program Listing for File CPDJE_Input.cpp</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/program_listing_file_include_input_CPDJE_Input.cpp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-listing-for-file-cpdje-input-cpp">
+<span id="program-listing-file-include-input-cpdje-input-cpp"></span><h1>Program Listing for File CPDJE_Input.cpp<a class="headerlink" href="#program-listing-for-file-cpdje-input-cpp" title="Link to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="file_include_input_CPDJE_Input.cpp.html#file-include-input-cpdje-input-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include\input\CPDJE_Input.cpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;CPDJE_Input.h&quot;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_CAbi_Input_Private.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Input.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Input_Log.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_Input_StateLogic.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;algorithm&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstddef&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cstdint&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;exception&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">PDJE_InputSnapshotHandleV1</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w">                            </span><span class="n">has_input_stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w">                            </span><span class="n">has_midi_stream</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">PDJE_Input_Log</span><span class="o">&gt;</span><span class="w">     </span><span class="n">input_events</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">PDJE_MIDI</span><span class="o">::</span><span class="n">MIDI_EV</span><span class="o">&gt;</span><span class="w"> </span><span class="n">midi_events</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="p">{</span>
+
+<span class="n">PDJE_Input</span><span class="w"> </span><span class="o">*</span>
+<span class="nf">GetInput</span><span class="p">(</span><span class="n">PDJE_InputHandleV1</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">handle</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">PDJE_Input</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">handle</span><span class="o">-&gt;</span><span class="n">input</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">const</span><span class="w"> </span><span class="n">PDJE_Input</span><span class="w"> </span><span class="o">*</span>
+<span class="nf">GetInput</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PDJE_InputHandleV1</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">handle</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="k">const</span><span class="w"> </span><span class="n">PDJE_Input</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">handle</span><span class="o">-&gt;</span><span class="n">input</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span>
+<span class="nf">RefreshInputDataLineCache</span><span class="p">(</span><span class="n">PDJE_InputHandleV1</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">handle</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="o">*</span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetInput</span><span class="p">(</span><span class="n">handle</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">handle</span><span class="o">-&gt;</span><span class="n">input_arena</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">        </span><span class="n">handle</span><span class="o">-&gt;</span><span class="n">midi_datas</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="o">-&gt;</span><span class="n">PullOutDataLine</span><span class="p">();</span>
+<span class="w">    </span><span class="n">handle</span><span class="o">-&gt;</span><span class="n">input_arena</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">input_arena</span><span class="p">;</span>
+<span class="w">    </span><span class="n">handle</span><span class="o">-&gt;</span><span class="n">midi_datas</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">line</span><span class="p">.</span><span class="n">midi_datas</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">Fn</span><span class="o">&gt;</span><span class="w"> </span><span class="n">PDJE_InputResultV1</span>
+<span class="n">GuardInputAbi</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">Fn</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="n">fn</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">fn</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="w"> </span><span class="o">&amp;</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">());</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INTERNAL_ERROR_V1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(...)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">context</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INTERNAL_ERROR_V1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span><span class="w"> </span><span class="kt">bool</span>
+<span class="n">StructIsCompatible</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">*</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">value</span><span class="o">-&gt;</span><span class="n">struct_size</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">value</span><span class="o">-&gt;</span><span class="n">struct_size</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">T</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">PDJE_InputStringViewV1</span>
+<span class="n">MakeStringView</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_InputStringViewV1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">value</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span><span class="w"> </span><span class="n">value</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="p">};</span>
+<span class="p">}</span>
+
+<span class="n">PDJE_InputStringViewV1</span>
+<span class="n">MakeCountedStringView</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">value_size</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">value_size</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_InputStringViewV1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">value_size</span><span class="w"> </span><span class="p">};</span>
+<span class="p">}</span>
+
+<span class="n">PDJE_InputBytesViewV1</span>
+<span class="n">MakeBytesView</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">value_size</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">value_size</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_InputBytesViewV1</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">value_size</span><span class="w"> </span><span class="p">};</span>
+<span class="p">}</span>
+
+<span class="n">PDJE_InputDeviceTypeV1</span>
+<span class="n">ToCDeviceType</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PDJE_Dev_Type</span><span class="w"> </span><span class="n">type</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_Dev_Type</span><span class="o">::</span><span class="no">MOUSE</span><span class="p">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_DEVICE_MOUSE_V1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_Dev_Type</span><span class="o">::</span><span class="no">KEYBOARD</span><span class="p">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_DEVICE_KEYBOARD_V1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_DEVICE_UNKNOWN_V1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">PDJE_InputStateV1</span>
+<span class="n">ToCState</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE</span><span class="w"> </span><span class="n">state</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">state</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_INPUT_STATE</span><span class="o">::</span><span class="no">DEVICE_CONFIG_STATE</span><span class="p">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE_DEVICE_CONFIG_V1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_INPUT_STATE</span><span class="o">::</span><span class="no">INPUT_LOOP_READY</span><span class="p">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE_LOOP_READY_V1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">PDJE_INPUT_STATE</span><span class="o">::</span><span class="no">INPUT_LOOP_RUNNING</span><span class="p">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE_LOOP_RUNNING_V1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">default</span><span class="o">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE_DEAD_V1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span>
+<span class="n">CanEnumerate</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PDJE_InputHandleV1</span><span class="w"> </span><span class="o">*</span><span class="n">input</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="o">*</span><span class="n">input_obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetInput</span><span class="p">(</span><span class="k">const_cast</span><span class="o">&lt;</span><span class="n">PDJE_InputHandleV1</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">input</span><span class="p">));</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">input_obj</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">           </span><span class="k">const_cast</span><span class="o">&lt;</span><span class="n">PDJE_Input</span><span class="w"> </span><span class="o">&amp;&gt;</span><span class="p">(</span><span class="o">*</span><span class="n">input_obj</span><span class="p">).</span><span class="n">GetState</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">PDJE_INPUT_STATE</span><span class="o">::</span><span class="n">DEAD</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span>
+<span class="n">ResetDeviceView</span><span class="p">(</span><span class="n">PDJE_InputDeviceViewV1</span><span class="w"> </span><span class="o">*</span><span class="n">out_device</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">out_device</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">struct_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">out_device</span><span class="o">-&gt;</span><span class="n">struct_size</span><span class="p">;</span>
+<span class="w">    </span><span class="o">*</span><span class="n">out_device</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">    </span><span class="n">out_device</span><span class="o">-&gt;</span><span class="n">struct_size</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="n">struct_size</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">struct_size</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">out_device</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span>
+<span class="n">ResetMidiDeviceView</span><span class="p">(</span><span class="n">PDJE_MidiDeviceViewV1</span><span class="w"> </span><span class="o">*</span><span class="n">out_device</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">out_device</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">struct_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">out_device</span><span class="o">-&gt;</span><span class="n">struct_size</span><span class="p">;</span>
+<span class="w">    </span><span class="o">*</span><span class="n">out_device</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">    </span><span class="n">out_device</span><span class="o">-&gt;</span><span class="n">struct_size</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="n">struct_size</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">struct_size</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">out_device</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span>
+<span class="n">ResetInputEventView</span><span class="p">(</span><span class="n">PDJE_InputEventViewV1</span><span class="w"> </span><span class="o">*</span><span class="n">out_event</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">out_event</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">struct_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">out_event</span><span class="o">-&gt;</span><span class="n">struct_size</span><span class="p">;</span>
+<span class="w">    </span><span class="o">*</span><span class="n">out_event</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">    </span><span class="n">out_event</span><span class="o">-&gt;</span><span class="n">struct_size</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="n">struct_size</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">struct_size</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">out_event</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span>
+<span class="n">ResetMidiEventView</span><span class="p">(</span><span class="n">PDJE_MidiEventViewV1</span><span class="w"> </span><span class="o">*</span><span class="n">out_event</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">out_event</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">struct_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">out_event</span><span class="o">-&gt;</span><span class="n">struct_size</span><span class="p">;</span>
+<span class="w">    </span><span class="o">*</span><span class="n">out_event</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">    </span><span class="n">out_event</span><span class="o">-&gt;</span><span class="n">struct_size</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="n">struct_size</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">struct_size</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">out_event</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span>
+<span class="n">ResetSnapshotInfo</span><span class="p">(</span><span class="n">PDJE_InputSnapshotInfoV1</span><span class="w"> </span><span class="o">*</span><span class="n">out_info</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">out_info</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">struct_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">out_info</span><span class="o">-&gt;</span><span class="n">struct_size</span><span class="p">;</span>
+<span class="w">    </span><span class="o">*</span><span class="n">out_info</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">    </span><span class="n">out_info</span><span class="o">-&gt;</span><span class="n">struct_size</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="n">struct_size</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">struct_size</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">out_info</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">HandleT</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">ItemT</span><span class="o">&gt;</span><span class="w"> </span><span class="n">PDJE_InputResultV1</span>
+<span class="n">GatherSelectedItems</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">HandleT</span><span class="w">      </span><span class="o">*</span><span class="n">list</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w">  </span><span class="o">*</span><span class="n">indices</span><span class="p">,</span>
+<span class="w">                    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w">   </span><span class="n">index_count</span><span class="p">,</span>
+<span class="w">                    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">ItemT</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">out_items</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">out_items</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index_count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_OK_V1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">indices</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INVALID_ARGUMENT_V1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="w"> </span><span class="n">seen</span><span class="p">;</span>
+<span class="w">    </span><span class="n">seen</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="n">index_count</span><span class="p">);</span>
+<span class="w">    </span><span class="n">out_items</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="n">index_count</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">index_count</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">indices</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">idx</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">list</span><span class="o">-&gt;</span><span class="n">items</span><span class="p">.</span><span class="n">size</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_OUT_OF_RANGE_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">find</span><span class="p">(</span><span class="n">seen</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">seen</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">idx</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">seen</span><span class="p">.</span><span class="n">end</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">seen</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">idx</span><span class="p">);</span>
+<span class="w">        </span><span class="n">out_items</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">list</span><span class="o">-&gt;</span><span class="n">items</span><span class="p">[</span><span class="n">idx</span><span class="p">]);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_OK_V1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">}</span><span class="w"> </span><span class="c1">// namespace</span>
+
+<span class="n">PDJE_InputResultV1</span><span class="w"> </span><span class="n">PDJE_CALL</span>
+<span class="n">pdje_input_create_v1</span><span class="p">(</span><span class="n">PDJE_InputHandleV1</span><span class="w"> </span><span class="o">**</span><span class="n">out_input</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">GuardInputAbi</span><span class="p">(</span><span class="s">&quot;pdje_input_create_v1 failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">out_input</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INVALID_ARGUMENT_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PDJE_InputHandleV1</span><span class="p">();</span>
+<span class="w">        </span><span class="n">handle</span><span class="o">-&gt;</span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PDJE_Input</span><span class="p">();</span>
+<span class="w">        </span><span class="n">RefreshInputDataLineCache</span><span class="p">(</span><span class="n">handle</span><span class="p">);</span>
+<span class="w">        </span><span class="o">*</span><span class="n">out_input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">handle</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_OK_V1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">PDJE_CALL</span>
+<span class="n">pdje_input_destroy_v1</span><span class="p">(</span><span class="n">PDJE_InputHandleV1</span><span class="w"> </span><span class="o">*</span><span class="n">input</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">GetInput</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">input</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">PDJE_InputResultV1</span><span class="w"> </span><span class="n">PDJE_CALL</span>
+<span class="n">pdje_input_init_v1</span><span class="p">(</span><span class="n">PDJE_InputHandleV1</span><span class="w"> </span><span class="o">*</span><span class="n">input</span><span class="p">,</span>
+<span class="w">                   </span><span class="kt">void</span><span class="w">               </span><span class="o">*</span><span class="n">platform_ctx0</span><span class="p">,</span>
+<span class="w">                   </span><span class="kt">void</span><span class="w">               </span><span class="o">*</span><span class="n">platform_ctx1</span><span class="p">,</span>
+<span class="w">                   </span><span class="kt">int</span><span class="w">                 </span><span class="n">use_internal_window</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">GuardInputAbi</span><span class="p">(</span><span class="s">&quot;pdje_input_init_v1 failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INVALID_ARGUMENT_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="o">*</span><span class="n">input_obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetInput</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input_obj</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INTERNAL_ERROR_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">PDJE_INPUT_STATE_LOGIC</span><span class="o">::</span><span class="n">CanInit</span><span class="p">(</span><span class="n">input_obj</span><span class="o">-&gt;</span><span class="n">GetState</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INVALID_STATE_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">input_obj</span><span class="o">-&gt;</span><span class="n">Init</span><span class="p">(</span><span class="n">platform_ctx0</span><span class="p">,</span><span class="w"> </span><span class="n">platform_ctx1</span><span class="p">,</span><span class="w"> </span><span class="n">use_internal_window</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_OPERATION_FAILED_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">RefreshInputDataLineCache</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_OK_V1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="n">PDJE_InputResultV1</span><span class="w"> </span><span class="n">PDJE_CALL</span>
+<span class="n">pdje_input_kill_v1</span><span class="p">(</span><span class="n">PDJE_InputHandleV1</span><span class="w"> </span><span class="o">*</span><span class="n">input</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">GuardInputAbi</span><span class="p">(</span><span class="s">&quot;pdje_input_kill_v1 failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INVALID_ARGUMENT_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="o">*</span><span class="n">input_obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetInput</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input_obj</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INTERNAL_ERROR_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_obj</span><span class="o">-&gt;</span><span class="n">Kill</span><span class="p">();</span>
+<span class="w">        </span><span class="n">RefreshInputDataLineCache</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ok</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_OK_V1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_OPERATION_FAILED_V1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="n">PDJE_InputResultV1</span><span class="w"> </span><span class="n">PDJE_CALL</span>
+<span class="n">pdje_input_get_state_v1</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PDJE_InputHandleV1</span><span class="w"> </span><span class="o">*</span><span class="n">input</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">PDJE_InputStateV1</span><span class="w">        </span><span class="o">*</span><span class="n">out_state</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">GuardInputAbi</span><span class="p">(</span><span class="s">&quot;pdje_input_get_state_v1 failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">out_state</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INVALID_ARGUMENT_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="o">*</span><span class="n">input_obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetInput</span><span class="p">(</span><span class="k">const_cast</span><span class="o">&lt;</span><span class="n">PDJE_InputHandleV1</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">input</span><span class="p">));</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input_obj</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INTERNAL_ERROR_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="o">*</span><span class="n">out_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ToCState</span><span class="p">(</span><span class="k">const_cast</span><span class="o">&lt;</span><span class="n">PDJE_Input</span><span class="w"> </span><span class="o">&amp;&gt;</span><span class="p">(</span><span class="o">*</span><span class="n">input_obj</span><span class="p">).</span><span class="n">GetState</span><span class="p">());</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_OK_V1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="n">PDJE_InputResultV1</span><span class="w"> </span><span class="n">PDJE_CALL</span>
+<span class="n">pdje_input_get_backend_name_v1</span><span class="p">(</span><span class="n">PDJE_InputHandleV1</span><span class="w">     </span><span class="o">*</span><span class="n">input</span><span class="p">,</span>
+<span class="w">                               </span><span class="n">PDJE_InputStringViewV1</span><span class="w"> </span><span class="o">*</span><span class="n">out_backend</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">GuardInputAbi</span><span class="p">(</span><span class="s">&quot;pdje_input_get_backend_name_v1 failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">out_backend</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INVALID_ARGUMENT_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="o">*</span><span class="n">out_backend</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="o">*</span><span class="n">input_obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetInput</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input_obj</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INTERNAL_ERROR_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">input</span><span class="o">-&gt;</span><span class="n">backend_name_cache</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_obj</span><span class="o">-&gt;</span><span class="n">GetCurrentInputBackend</span><span class="p">();</span>
+<span class="w">        </span><span class="o">*</span><span class="n">out_backend</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="n">MakeStringView</span><span class="p">(</span><span class="n">input</span><span class="o">-&gt;</span><span class="n">backend_name_cache</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_OK_V1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="n">PDJE_InputResultV1</span><span class="w"> </span><span class="n">PDJE_CALL</span>
+<span class="n">pdje_input_list_devices_v1</span><span class="p">(</span><span class="n">PDJE_InputHandleV1</span><span class="w">           </span><span class="o">*</span><span class="n">input</span><span class="p">,</span>
+<span class="w">                           </span><span class="n">PDJE_InputDeviceListHandleV1</span><span class="w"> </span><span class="o">**</span><span class="n">out_list</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">GuardInputAbi</span><span class="p">(</span><span class="s">&quot;pdje_input_list_devices_v1 failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">out_list</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INVALID_ARGUMENT_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">CanEnumerate</span><span class="p">(</span><span class="n">input</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INVALID_STATE_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="o">*</span><span class="n">input_obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetInput</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input_obj</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INTERNAL_ERROR_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="o">*</span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PDJE_InputDeviceListHandleV1</span><span class="p">();</span>
+<span class="w">        </span><span class="n">list</span><span class="o">-&gt;</span><span class="n">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_obj</span><span class="o">-&gt;</span><span class="n">GetDevs</span><span class="p">();</span>
+<span class="w">        </span><span class="o">*</span><span class="n">out_list</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">list</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_OK_V1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kt">size_t</span><span class="w"> </span><span class="n">PDJE_CALL</span>
+<span class="n">pdje_input_device_list_size_v1</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PDJE_InputDeviceListHandleV1</span><span class="w"> </span><span class="o">*</span><span class="n">list</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">list</span><span class="o">-&gt;</span><span class="n">items</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">PDJE_InputResultV1</span><span class="w"> </span><span class="n">PDJE_CALL</span>
+<span class="n">pdje_input_device_list_get_v1</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PDJE_InputDeviceListHandleV1</span><span class="w"> </span><span class="o">*</span><span class="n">list</span><span class="p">,</span>
+<span class="w">                              </span><span class="kt">size_t</span><span class="w">                              </span><span class="n">index</span><span class="p">,</span>
+<span class="w">                              </span><span class="n">PDJE_InputDeviceViewV1</span><span class="w">            </span><span class="o">*</span><span class="n">out_device</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">GuardInputAbi</span><span class="p">(</span><span class="s">&quot;pdje_input_device_list_get_v1 failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="n">StructIsCompatible</span><span class="p">(</span><span class="n">out_device</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INVALID_ARGUMENT_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">list</span><span class="o">-&gt;</span><span class="n">items</span><span class="p">.</span><span class="n">size</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_OUT_OF_RANGE_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">ResetDeviceView</span><span class="p">(</span><span class="n">out_device</span><span class="p">);</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">item</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="n">list</span><span class="o">-&gt;</span><span class="n">items</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
+<span class="w">        </span><span class="n">out_device</span><span class="o">-&gt;</span><span class="n">type</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="n">ToCDeviceType</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">Type</span><span class="p">);</span>
+<span class="w">        </span><span class="n">out_device</span><span class="o">-&gt;</span><span class="n">name</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="n">MakeStringView</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
+<span class="w">        </span><span class="n">out_device</span><span class="o">-&gt;</span><span class="n">device_specific_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MakeStringView</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">device_specific_id</span><span class="p">);</span>
+<span class="w">        </span><span class="n">out_device</span><span class="o">-&gt;</span><span class="n">struct_size</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">out_device</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_OK_V1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">PDJE_CALL</span>
+<span class="n">pdje_input_device_list_destroy_v1</span><span class="p">(</span><span class="n">PDJE_InputDeviceListHandleV1</span><span class="w"> </span><span class="o">*</span><span class="n">list</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">list</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">PDJE_InputResultV1</span><span class="w"> </span><span class="n">PDJE_CALL</span>
+<span class="n">pdje_input_list_midi_devices_v1</span><span class="p">(</span><span class="n">PDJE_InputHandleV1</span><span class="w">          </span><span class="o">*</span><span class="n">input</span><span class="p">,</span>
+<span class="w">                                </span><span class="n">PDJE_MidiDeviceListHandleV1</span><span class="w"> </span><span class="o">**</span><span class="n">out_list</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">GuardInputAbi</span><span class="p">(</span><span class="s">&quot;pdje_input_list_midi_devices_v1 failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">out_list</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INVALID_ARGUMENT_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">CanEnumerate</span><span class="p">(</span><span class="n">input</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INVALID_STATE_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="o">*</span><span class="n">input_obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetInput</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input_obj</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INTERNAL_ERROR_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="o">*</span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PDJE_MidiDeviceListHandleV1</span><span class="p">();</span>
+<span class="w">        </span><span class="n">list</span><span class="o">-&gt;</span><span class="n">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_obj</span><span class="o">-&gt;</span><span class="n">GetMIDIDevs</span><span class="p">();</span>
+<span class="w">        </span><span class="o">*</span><span class="n">out_list</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">list</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_OK_V1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kt">size_t</span><span class="w"> </span><span class="n">PDJE_CALL</span>
+<span class="n">pdje_input_midi_device_list_size_v1</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PDJE_MidiDeviceListHandleV1</span><span class="w"> </span><span class="o">*</span><span class="n">list</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">list</span><span class="o">-&gt;</span><span class="n">items</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">PDJE_InputResultV1</span><span class="w"> </span><span class="n">PDJE_CALL</span>
+<span class="n">pdje_input_midi_device_list_get_v1</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PDJE_MidiDeviceListHandleV1</span><span class="w"> </span><span class="o">*</span><span class="n">list</span><span class="p">,</span>
+<span class="w">                                   </span><span class="kt">size_t</span><span class="w">                             </span><span class="n">index</span><span class="p">,</span>
+<span class="w">                                   </span><span class="n">PDJE_MidiDeviceViewV1</span><span class="w">            </span><span class="o">*</span><span class="n">out_device</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">GuardInputAbi</span><span class="p">(</span><span class="s">&quot;pdje_input_midi_device_list_get_v1 failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="n">StructIsCompatible</span><span class="p">(</span><span class="n">out_device</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INVALID_ARGUMENT_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">list</span><span class="o">-&gt;</span><span class="n">items</span><span class="p">.</span><span class="n">size</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_OUT_OF_RANGE_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">ResetMidiDeviceView</span><span class="p">(</span><span class="n">out_device</span><span class="p">);</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">item</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="n">list</span><span class="o">-&gt;</span><span class="n">items</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
+<span class="w">        </span><span class="n">out_device</span><span class="o">-&gt;</span><span class="n">manufacturer</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">MakeStringView</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">manufacturer</span><span class="p">);</span>
+<span class="w">        </span><span class="n">out_device</span><span class="o">-&gt;</span><span class="n">device_name</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">MakeStringView</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">device_name</span><span class="p">);</span>
+<span class="w">        </span><span class="n">out_device</span><span class="o">-&gt;</span><span class="n">port_name</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">MakeStringView</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">port_name</span><span class="p">);</span>
+<span class="w">        </span><span class="n">out_device</span><span class="o">-&gt;</span><span class="n">display_name</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">MakeStringView</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">display_name</span><span class="p">);</span>
+<span class="w">        </span><span class="n">out_device</span><span class="o">-&gt;</span><span class="n">client_handle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="n">client</span><span class="p">;</span>
+<span class="w">        </span><span class="n">out_device</span><span class="o">-&gt;</span><span class="n">port_handle</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="n">port</span><span class="p">;</span>
+<span class="w">        </span><span class="n">out_device</span><span class="o">-&gt;</span><span class="n">port_type</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint8_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">type</span><span class="p">);</span>
+<span class="w">        </span><span class="n">out_device</span><span class="o">-&gt;</span><span class="n">struct_size</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">out_device</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_OK_V1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">PDJE_CALL</span>
+<span class="n">pdje_input_midi_device_list_destroy_v1</span><span class="p">(</span><span class="n">PDJE_MidiDeviceListHandleV1</span><span class="w"> </span><span class="o">*</span><span class="n">list</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">list</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">PDJE_InputResultV1</span><span class="w"> </span><span class="n">PDJE_CALL</span>
+<span class="n">pdje_input_config_v1</span><span class="p">(</span><span class="n">PDJE_InputHandleV1</span><span class="w">                 </span><span class="o">*</span><span class="n">input</span><span class="p">,</span>
+<span class="w">                     </span><span class="k">const</span><span class="w"> </span><span class="n">PDJE_InputDeviceListHandleV1</span><span class="w"> </span><span class="o">*</span><span class="n">devices</span><span class="p">,</span>
+<span class="w">                     </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w">                  </span><span class="o">*</span><span class="n">device_indices</span><span class="p">,</span>
+<span class="w">                     </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w">                         </span><span class="n">device_index_count</span><span class="p">,</span>
+<span class="w">                     </span><span class="k">const</span><span class="w"> </span><span class="n">PDJE_MidiDeviceListHandleV1</span><span class="w">  </span><span class="o">*</span><span class="n">midi_devices</span><span class="p">,</span>
+<span class="w">                     </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w">                  </span><span class="o">*</span><span class="n">midi_indices</span><span class="p">,</span>
+<span class="w">                     </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w">                         </span><span class="n">midi_index_count</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">GuardInputAbi</span><span class="p">(</span><span class="s">&quot;pdje_input_config_v1 failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INVALID_ARGUMENT_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="o">*</span><span class="n">input_obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetInput</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input_obj</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INTERNAL_ERROR_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">PDJE_INPUT_STATE_LOGIC</span><span class="o">::</span><span class="n">CanConfig</span><span class="p">(</span><span class="n">input_obj</span><span class="o">-&gt;</span><span class="n">GetState</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INVALID_STATE_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">DeviceData</span><span class="o">&gt;</span><span class="w"> </span><span class="n">selected_devices</span><span class="p">;</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">device_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GatherSelectedItems</span><span class="p">(</span>
+<span class="w">            </span><span class="n">devices</span><span class="p">,</span><span class="w"> </span><span class="n">device_indices</span><span class="p">,</span><span class="w"> </span><span class="n">device_index_count</span><span class="p">,</span><span class="w"> </span><span class="n">selected_devices</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">device_result</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_OK_V1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">device_result</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">libremidi</span><span class="o">::</span><span class="n">input_port</span><span class="o">&gt;</span><span class="w"> </span><span class="n">selected_midi_devices</span><span class="p">;</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">midi_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GatherSelectedItems</span><span class="p">(</span>
+<span class="w">            </span><span class="n">midi_devices</span><span class="p">,</span><span class="w"> </span><span class="n">midi_indices</span><span class="p">,</span><span class="w"> </span><span class="n">midi_index_count</span><span class="p">,</span><span class="w"> </span><span class="n">selected_midi_devices</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">midi_result</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_OK_V1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">midi_result</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_obj</span><span class="o">-&gt;</span><span class="n">Config</span><span class="p">(</span><span class="n">selected_devices</span><span class="p">,</span><span class="w"> </span><span class="n">selected_midi_devices</span><span class="p">);</span>
+<span class="w">        </span><span class="n">RefreshInputDataLineCache</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ok</span>
+<span class="w">                   </span><span class="o">?</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_OK_V1</span>
+<span class="w">                   </span><span class="o">:</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_OPERATION_FAILED_V1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="n">PDJE_InputResultV1</span><span class="w"> </span><span class="n">PDJE_CALL</span>
+<span class="n">pdje_input_run_v1</span><span class="p">(</span><span class="n">PDJE_InputHandleV1</span><span class="w"> </span><span class="o">*</span><span class="n">input</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">GuardInputAbi</span><span class="p">(</span><span class="s">&quot;pdje_input_run_v1 failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INVALID_ARGUMENT_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="o">*</span><span class="n">input_obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetInput</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input_obj</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INTERNAL_ERROR_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">PDJE_INPUT_STATE_LOGIC</span><span class="o">::</span><span class="n">CanRun</span><span class="p">(</span><span class="n">input_obj</span><span class="o">-&gt;</span><span class="n">GetState</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INVALID_STATE_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_obj</span><span class="o">-&gt;</span><span class="n">Run</span><span class="p">();</span>
+<span class="w">        </span><span class="n">RefreshInputDataLineCache</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ok</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_OK_V1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_OPERATION_FAILED_V1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="n">PDJE_InputResultV1</span><span class="w"> </span><span class="n">PDJE_CALL</span>
+<span class="n">pdje_input_poll_snapshot_v1</span><span class="p">(</span><span class="n">PDJE_InputHandleV1</span><span class="w">         </span><span class="o">*</span><span class="n">input</span><span class="p">,</span>
+<span class="w">                            </span><span class="n">PDJE_InputSnapshotHandleV1</span><span class="w"> </span><span class="o">**</span><span class="n">out_snapshot</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">GuardInputAbi</span><span class="p">(</span><span class="s">&quot;pdje_input_poll_snapshot_v1 failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">out_snapshot</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INVALID_ARGUMENT_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="o">*</span><span class="n">snapshot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PDJE_InputSnapshotHandleV1</span><span class="p">();</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="o">*</span><span class="n">input_obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetInput</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input_obj</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INTERNAL_ERROR_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">RefreshInputDataLineCache</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+<span class="w">        </span><span class="n">snapshot</span><span class="o">-&gt;</span><span class="n">has_input_stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="o">-&gt;</span><span class="n">input_arena</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">        </span><span class="n">snapshot</span><span class="o">-&gt;</span><span class="n">has_midi_stream</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">input</span><span class="o">-&gt;</span><span class="n">midi_datas</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="o">-&gt;</span><span class="n">input_arena</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="o">*</span><span class="n">arena</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">PDJE_IPC</span><span class="o">::</span><span class="n">PDJE_Input_Transfer</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">input</span><span class="o">-&gt;</span><span class="n">input_arena</span><span class="p">);</span>
+<span class="w">            </span><span class="n">arena</span><span class="o">-&gt;</span><span class="n">Receive</span><span class="p">();</span>
+<span class="w">            </span><span class="n">snapshot</span><span class="o">-&gt;</span><span class="n">input_events</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">arena</span><span class="o">-&gt;</span><span class="n">datas</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="o">-&gt;</span><span class="n">midi_datas</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">auto</span><span class="w"> </span><span class="o">*</span><span class="n">midi_buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">Atomic_Double_Buffer</span><span class="o">&lt;</span><span class="n">PDJE_MIDI</span><span class="o">::</span><span class="n">MIDI_EV</span><span class="o">&gt;</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="n">input</span><span class="o">-&gt;</span><span class="n">midi_datas</span><span class="p">);</span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">*</span><span class="n">midi_events</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">midi_buffer</span><span class="o">-&gt;</span><span class="n">Get</span><span class="p">();</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">midi_events</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">snapshot</span><span class="o">-&gt;</span><span class="n">midi_events</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">midi_events</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="o">*</span><span class="n">out_snapshot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">snapshot</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_OK_V1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="n">PDJE_InputResultV1</span><span class="w"> </span><span class="n">PDJE_CALL</span>
+<span class="n">pdje_input_snapshot_describe_v1</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PDJE_InputSnapshotHandleV1</span><span class="w"> </span><span class="o">*</span><span class="n">snapshot</span><span class="p">,</span>
+<span class="w">                                </span><span class="n">PDJE_InputSnapshotInfoV1</span><span class="w">         </span><span class="o">*</span><span class="n">out_info</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">GuardInputAbi</span><span class="p">(</span><span class="s">&quot;pdje_input_snapshot_describe_v1 failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">snapshot</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="n">StructIsCompatible</span><span class="p">(</span><span class="n">out_info</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INVALID_ARGUMENT_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">ResetSnapshotInfo</span><span class="p">(</span><span class="n">out_info</span><span class="p">);</span>
+<span class="w">        </span><span class="n">out_info</span><span class="o">-&gt;</span><span class="n">has_input_stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">snapshot</span><span class="o">-&gt;</span><span class="n">has_input_stream</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">out_info</span><span class="o">-&gt;</span><span class="n">has_midi_stream</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">snapshot</span><span class="o">-&gt;</span><span class="n">has_midi_stream</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">out_info</span><span class="o">-&gt;</span><span class="n">input_event_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">snapshot</span><span class="o">-&gt;</span><span class="n">input_events</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="w">        </span><span class="n">out_info</span><span class="o">-&gt;</span><span class="n">midi_event_count</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">snapshot</span><span class="o">-&gt;</span><span class="n">midi_events</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="w">        </span><span class="n">out_info</span><span class="o">-&gt;</span><span class="n">struct_size</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">out_info</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_OK_V1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kt">size_t</span><span class="w"> </span><span class="n">PDJE_CALL</span>
+<span class="n">pdje_input_snapshot_input_size_v1</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PDJE_InputSnapshotHandleV1</span><span class="w"> </span><span class="o">*</span><span class="n">snapshot</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">snapshot</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">snapshot</span><span class="o">-&gt;</span><span class="n">input_events</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">PDJE_InputResultV1</span><span class="w"> </span><span class="n">PDJE_CALL</span>
+<span class="n">pdje_input_snapshot_input_get_v1</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PDJE_InputSnapshotHandleV1</span><span class="w"> </span><span class="o">*</span><span class="n">snapshot</span><span class="p">,</span>
+<span class="w">                                 </span><span class="kt">size_t</span><span class="w">                            </span><span class="n">index</span><span class="p">,</span>
+<span class="w">                                 </span><span class="n">PDJE_InputEventViewV1</span><span class="w">           </span><span class="o">*</span><span class="n">out_event</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">GuardInputAbi</span><span class="p">(</span><span class="s">&quot;pdje_input_snapshot_input_get_v1 failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">snapshot</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="n">StructIsCompatible</span><span class="p">(</span><span class="n">out_event</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INVALID_ARGUMENT_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">snapshot</span><span class="o">-&gt;</span><span class="n">input_events</span><span class="p">.</span><span class="n">size</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_OUT_OF_RANGE_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">ResetInputEventView</span><span class="p">(</span><span class="n">out_event</span><span class="p">);</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">snapshot</span><span class="o">-&gt;</span><span class="n">input_events</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
+<span class="w">        </span><span class="n">out_event</span><span class="o">-&gt;</span><span class="n">type</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">ToCDeviceType</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">type</span><span class="p">);</span>
+<span class="w">        </span><span class="n">out_event</span><span class="o">-&gt;</span><span class="n">id</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">MakeCountedStringView</span><span class="p">(</span>
+<span class="w">            </span><span class="n">item</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">id_len</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">id</span><span class="p">)));</span>
+<span class="w">        </span><span class="n">out_event</span><span class="o">-&gt;</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MakeCountedStringView</span><span class="p">(</span>
+<span class="w">            </span><span class="n">item</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">name_len</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">name</span><span class="p">)));</span>
+<span class="w">        </span><span class="n">out_event</span><span class="o">-&gt;</span><span class="n">microsecond</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="n">microSecond</span><span class="p">;</span>
+<span class="w">        </span><span class="n">out_event</span><span class="o">-&gt;</span><span class="n">keyboard</span><span class="p">.</span><span class="n">key_code</span><span class="w"> </span><span class="o">=</span>
+<span class="w">            </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">event</span><span class="p">.</span><span class="n">keyboard</span><span class="p">.</span><span class="n">k</span><span class="p">);</span>
+<span class="w">        </span><span class="n">out_event</span><span class="o">-&gt;</span><span class="n">keyboard</span><span class="p">.</span><span class="n">pressed</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="n">event</span><span class="p">.</span><span class="n">keyboard</span><span class="p">.</span><span class="n">pressed</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="n">out_event</span><span class="o">-&gt;</span><span class="n">mouse</span><span class="p">.</span><span class="n">button_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="n">event</span><span class="p">.</span><span class="n">mouse</span><span class="p">.</span><span class="n">button_type</span><span class="p">;</span>
+<span class="w">        </span><span class="n">out_event</span><span class="o">-&gt;</span><span class="n">mouse</span><span class="p">.</span><span class="n">wheel_move</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="n">event</span><span class="p">.</span><span class="n">mouse</span><span class="p">.</span><span class="n">wheel_move</span><span class="p">;</span>
+<span class="w">        </span><span class="n">out_event</span><span class="o">-&gt;</span><span class="n">mouse</span><span class="p">.</span><span class="n">axis_type</span><span class="w"> </span><span class="o">=</span>
+<span class="w">            </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">event</span><span class="p">.</span><span class="n">mouse</span><span class="p">.</span><span class="n">axis_type</span><span class="p">);</span>
+<span class="w">        </span><span class="n">out_event</span><span class="o">-&gt;</span><span class="n">mouse</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="n">event</span><span class="p">.</span><span class="n">mouse</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+<span class="w">        </span><span class="n">out_event</span><span class="o">-&gt;</span><span class="n">mouse</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="n">event</span><span class="p">.</span><span class="n">mouse</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+<span class="w">        </span><span class="n">out_event</span><span class="o">-&gt;</span><span class="n">hid_report</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MakeBytesView</span><span class="p">(</span>
+<span class="w">            </span><span class="n">item</span><span class="p">.</span><span class="n">hid_event</span><span class="p">.</span><span class="n">hid_buffer</span><span class="p">,</span>
+<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">(</span>
+<span class="w">                </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">hid_event</span><span class="p">.</span><span class="n">hid_byte_size</span><span class="p">),</span>
+<span class="w">                </span><span class="k">sizeof</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">hid_event</span><span class="p">.</span><span class="n">hid_buffer</span><span class="p">)));</span>
+<span class="w">        </span><span class="n">out_event</span><span class="o">-&gt;</span><span class="n">struct_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">out_event</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_OK_V1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kt">size_t</span><span class="w"> </span><span class="n">PDJE_CALL</span>
+<span class="n">pdje_input_snapshot_midi_size_v1</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PDJE_InputSnapshotHandleV1</span><span class="w"> </span><span class="o">*</span><span class="n">snapshot</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">snapshot</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">snapshot</span><span class="o">-&gt;</span><span class="n">midi_events</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">PDJE_InputResultV1</span><span class="w"> </span><span class="n">PDJE_CALL</span>
+<span class="n">pdje_input_snapshot_midi_get_v1</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">PDJE_InputSnapshotHandleV1</span><span class="w"> </span><span class="o">*</span><span class="n">snapshot</span><span class="p">,</span>
+<span class="w">                                </span><span class="kt">size_t</span><span class="w">                            </span><span class="n">index</span><span class="p">,</span>
+<span class="w">                                </span><span class="n">PDJE_MidiEventViewV1</span><span class="w">            </span><span class="o">*</span><span class="n">out_event</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">GuardInputAbi</span><span class="p">(</span><span class="s">&quot;pdje_input_snapshot_midi_get_v1 failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">&amp;</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">snapshot</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="n">StructIsCompatible</span><span class="p">(</span><span class="n">out_event</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_INVALID_ARGUMENT_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">snapshot</span><span class="o">-&gt;</span><span class="n">midi_events</span><span class="p">.</span><span class="n">size</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_OUT_OF_RANGE_V1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">ResetMidiEventView</span><span class="p">(</span><span class="n">out_event</span><span class="p">);</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">item</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">snapshot</span><span class="o">-&gt;</span><span class="n">midi_events</span><span class="p">[</span><span class="n">index</span><span class="p">];</span>
+<span class="w">        </span><span class="n">out_event</span><span class="o">-&gt;</span><span class="n">type</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="n">type</span><span class="p">;</span>
+<span class="w">        </span><span class="n">out_event</span><span class="o">-&gt;</span><span class="n">channel</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="n">ch</span><span class="p">;</span>
+<span class="w">        </span><span class="n">out_event</span><span class="o">-&gt;</span><span class="n">position</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="n">pos</span><span class="p">;</span>
+<span class="w">        </span><span class="n">out_event</span><span class="o">-&gt;</span><span class="n">value</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="n">value</span><span class="p">;</span>
+<span class="w">        </span><span class="n">out_event</span><span class="o">-&gt;</span><span class="n">highres_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="n">highres_time</span><span class="p">;</span>
+<span class="w">        </span><span class="n">out_event</span><span class="o">-&gt;</span><span class="n">port_name</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">MakeCountedStringView</span><span class="p">(</span>
+<span class="w">            </span><span class="n">item</span><span class="p">.</span><span class="n">port_name</span><span class="p">,</span>
+<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">port_name_len</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">item</span><span class="p">.</span><span class="n">port_name</span><span class="p">)));</span>
+<span class="w">        </span><span class="n">out_event</span><span class="o">-&gt;</span><span class="n">struct_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">out_event</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">PDJE_INPUT_RESULT_OK_V1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">PDJE_CALL</span>
+<span class="n">pdje_input_snapshot_destroy_v1</span><span class="p">(</span><span class="n">PDJE_InputSnapshotHandleV1</span><span class="w"> </span><span class="o">*</span><span class="n">snapshot</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">delete</span><span class="w"> </span><span class="n">snapshot</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, RLIOP913.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

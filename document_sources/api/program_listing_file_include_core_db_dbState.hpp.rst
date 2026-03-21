@@ -26,7 +26,7 @@ Program Listing for File dbState.hpp
    
    enum COL_TYPE { PDJE_INT, PDJE_DOUBLE, PDJE_TEXT, PDJE_BLOB };
    
-   struct PDJE_API stmt {
+   struct stmt {
      public:
        std::string placeHold;
    

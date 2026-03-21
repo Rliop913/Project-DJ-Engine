@@ -31,6 +31,6 @@ Functions
 
 - :ref:`exhale_function_namespace_p_d_j_e___l_o_g___d_e_t_a_i_l_1ae18d2bcca09be1d547f3697bd4c2c6af`
 
-- :ref:`exhale_function_namespace_p_d_j_e___l_o_g___d_e_t_a_i_l_1a8fbbbb6ecf4d5cf3365296b04d2c7636`
-
 - :ref:`exhale_function_namespace_p_d_j_e___l_o_g___d_e_t_a_i_l_1a7140251b9a3cfff2fa2f61000b80060d`
+
+- :ref:`exhale_function_namespace_p_d_j_e___l_o_g___d_e_t_a_i_l_1a8fbbbb6ecf4d5cf3365296b04d2c7636`

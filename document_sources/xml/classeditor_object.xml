@@ -817,6 +817,64 @@
         </inbodydescription>
         <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="221" column="5"/>
       </memberdef>
+      <memberdef kind="function" id="classeditor_object_1ab7cfe3ebc5201c658e7dbe1628f61c96" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename EDIT_ARG_TYPE</type>
+          </param>
+        </templateparamlist>
+        <type>std::optional&lt; <ref refid="struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_semantic_diff_result" kindref="compound">PDJE_TIMELINE::TimeLineSemanticDiffResult</ref> &gt;</type>
+        <definition>std::optional&lt; PDJE_TIMELINE::TimeLineSemanticDiffResult &gt; editorObject::GetDiff</definition>
+        <argsstring>(const DONT_SANITIZE &amp;oldCommitOID, const DONT_SANITIZE &amp;newCommitOID)</argsstring>
+        <name>GetDiff</name>
+        <qualifiedname>editorObject::GetDiff</qualifiedname>
+        <param>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <declname>oldCommitOID</declname>
+        </param>
+        <param>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <declname>newCommitOID</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="225" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classeditor_object_1acc80e586526067f5abdf0fde36c2e693" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename EDIT_ARG_TYPE</type>
+          </param>
+        </templateparamlist>
+        <type>std::optional&lt; <ref refid="struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_semantic_diff_result" kindref="compound">PDJE_TIMELINE::TimeLineSemanticDiffResult</ref> &gt;</type>
+        <definition>std::optional&lt; PDJE_TIMELINE::TimeLineSemanticDiffResult &gt; editorObject::GetDiff</definition>
+        <argsstring>(const UNSANITIZED &amp;musicName, const DONT_SANITIZE &amp;oldCommitOID, const DONT_SANITIZE &amp;newCommitOID)</argsstring>
+        <name>GetDiff</name>
+        <qualifiedname>editorObject::GetDiff</qualifiedname>
+        <param>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
+          <declname>musicName</declname>
+        </param>
+        <param>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <declname>oldCommitOID</declname>
+        </param>
+        <param>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <declname>newCommitOID</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="230" column="5"/>
+      </memberdef>
       <memberdef kind="function" id="classeditor_object_1aa664471474287d500e65d09f08f61001" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="json_wrapper_8hpp_1a6c08a6bca89aa954d4bf90371a27dfa9" kindref="member">nj</ref> &amp;</type>
         <definition>nj &amp; editorObject::operator[]</definition>
@@ -828,38 +886,10 @@
           <declname>key</declname>
         </param>
         <briefdescription>
-<para>Gets the diff between two timestamps. </para>
+<para>Provides access to the underlying JSON data for key-value pairs. </para>
         </briefdescription>
         <detaileddescription>
-<para><parameterlist kind="templateparam"><parameteritem>
-<parameternamelist>
-<parametername>EDIT_ARG_TYPE</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The type of data to get the diff for. </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>oldTimeStamp</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The old timestamp. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>newTimeStamp</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The new timestamp. </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>A <computeroutput>DiffResult</computeroutput> object containing the diff.</para>
-</simplesect>
-Provides access to the underlying JSON data for key-value pairs. <parameterlist kind="param"><parameteritem>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>key</parametername>
 </parameternamelist>
@@ -874,7 +904,7 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="241" column="5"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="239" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a9e14b13d0a93115510856587e3d0b597" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref></type>
@@ -894,7 +924,7 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="249" column="5" bodyfile="include/core/MainObjects/editorObject/editorObject.cpp" bodystart="80" bodyend="98"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="247" column="5" bodyfile="include/core/MainObjects/editorObject/editorObject.cpp" bodystart="80" bodyend="98"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a3ec9d3ccf73457ee3067cd3f47ac23c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -962,7 +992,7 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="260" column="5" bodyfile="include/core/MainObjects/editorObject/editorObject.cpp" bodystart="101" bodyend="143"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="258" column="5" bodyfile="include/core/MainObjects/editorObject/editorObject.cpp" bodystart="101" bodyend="143"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1aa921e7a13cc65917ae9efe90646878c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -1001,7 +1031,7 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="272" column="5" bodyfile="include/core/MainObjects/editorObject/editorObject.cpp" bodystart="146" bodyend="156"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="270" column="5" bodyfile="include/core/MainObjects/editorObject/editorObject.cpp" bodystart="146" bodyend="156"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a41cc92239f89ac3688cad722aea1c3ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -1016,7 +1046,7 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="279" column="5"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="277" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1ae5c4229489a3b798968960d7806a96a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -1030,7 +1060,7 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="281" column="5"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="279" column="5"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1ad3274f4153e7e8845a5c5d048f037901" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1186,7 +1216,7 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="285" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="283" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1ab4d9fad40219f8d0abf61d62fe6148ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1202,7 +1232,7 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="288" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="286" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1ab4d9fad40219f8d0abf61d62fe6148ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1218,7 +1248,7 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="291" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="289" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a789f87b8ed201e8e08b22ba6bc3311b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1238,7 +1268,7 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="294" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="292" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1aa6a8bd9998b64a8ee9bc46cd185b518f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1258,7 +1288,7 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="298" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="296" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a85dd1bfab830dc51fd12f6f27956ec19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1278,7 +1308,7 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="301" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="299" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a307c57aa6a231f6394d82be67a1d94ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1298,7 +1328,7 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="304" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="302" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1ad3274f4153e7e8845a5c5d048f037901" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1318,7 +1348,7 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="307" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="305" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a1470c80235c92292a246fa3f9ce15865" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1338,7 +1368,7 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="311" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="309" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a0d5200a4e92a2faee32536810298f590" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1358,7 +1388,7 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="314" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="312" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a6ab0f93838db62d7e61e9d4f97838e2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1378,7 +1408,7 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="317" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="315" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a77db8c854567b251bec9cebd5e91c662" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1398,7 +1428,7 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="321" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="319" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a16ef00ce6ae7569f39a60ff8f382bd1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1418,7 +1448,7 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="325" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="323" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a479985c5e13f1986c6b88ceac67924c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1438,7 +1468,7 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="329" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="327" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a5fff7bdde5101a29d10a25989c8e248d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1458,7 +1488,123 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="333" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="331" column="2"/>
+      </memberdef>
+      <memberdef kind="function" id="classeditor_object_1a20552dde76eedca8829a07d2a11aef73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>std::optional&lt; <ref refid="struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_semantic_diff_result" kindref="compound">PDJE_TIMELINE::TimeLineSemanticDiffResult</ref> &gt;</type>
+        <definition>std::optional&lt; PDJE_TIMELINE::TimeLineSemanticDiffResult &gt; editorObject::GetDiff</definition>
+        <argsstring>(const DONT_SANITIZE &amp;oldCommitOID, const DONT_SANITIZE &amp;newCommitOID)</argsstring>
+        <name>GetDiff</name>
+        <qualifiedname>editorObject::GetDiff</qualifiedname>
+        <param>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <declname>oldCommitOID</declname>
+        </param>
+        <param>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <declname>newCommitOID</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="331" column="2"/>
+      </memberdef>
+      <memberdef kind="function" id="classeditor_object_1a20552dde76eedca8829a07d2a11aef73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>std::optional&lt; <ref refid="struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_semantic_diff_result" kindref="compound">PDJE_TIMELINE::TimeLineSemanticDiffResult</ref> &gt;</type>
+        <definition>std::optional&lt; PDJE_TIMELINE::TimeLineSemanticDiffResult &gt; editorObject::GetDiff</definition>
+        <argsstring>(const DONT_SANITIZE &amp;oldCommitOID, const DONT_SANITIZE &amp;newCommitOID)</argsstring>
+        <name>GetDiff</name>
+        <qualifiedname>editorObject::GetDiff</qualifiedname>
+        <param>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <declname>oldCommitOID</declname>
+        </param>
+        <param>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <declname>newCommitOID</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="331" column="2"/>
+      </memberdef>
+      <memberdef kind="function" id="classeditor_object_1a20552dde76eedca8829a07d2a11aef73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>std::optional&lt; <ref refid="struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_semantic_diff_result" kindref="compound">PDJE_TIMELINE::TimeLineSemanticDiffResult</ref> &gt;</type>
+        <definition>std::optional&lt; PDJE_TIMELINE::TimeLineSemanticDiffResult &gt; editorObject::GetDiff</definition>
+        <argsstring>(const DONT_SANITIZE &amp;oldCommitOID, const DONT_SANITIZE &amp;newCommitOID)</argsstring>
+        <name>GetDiff</name>
+        <qualifiedname>editorObject::GetDiff</qualifiedname>
+        <param>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <declname>oldCommitOID</declname>
+        </param>
+        <param>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <declname>newCommitOID</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="331" column="2"/>
+      </memberdef>
+      <memberdef kind="function" id="classeditor_object_1a15f67cc9ed45c0965a86b9aac899458a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>std::optional&lt; <ref refid="struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_semantic_diff_result" kindref="compound">PDJE_TIMELINE::TimeLineSemanticDiffResult</ref> &gt;</type>
+        <definition>std::optional&lt; PDJE_TIMELINE::TimeLineSemanticDiffResult &gt; editorObject::GetDiff</definition>
+        <argsstring>(const UNSANITIZED &amp;musicName, const DONT_SANITIZE &amp;oldCommitOID, const DONT_SANITIZE &amp;newCommitOID)</argsstring>
+        <name>GetDiff</name>
+        <qualifiedname>editorObject::GetDiff</qualifiedname>
+        <param>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
+          <declname>musicName</declname>
+        </param>
+        <param>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <declname>oldCommitOID</declname>
+        </param>
+        <param>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <declname>newCommitOID</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="331" column="2"/>
+      </memberdef>
+      <memberdef kind="function" id="classeditor_object_1af2cfb77e5f312a23c61c34d3f9a04b51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type><ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref></type>
+        <definition>DONT_SANITIZE editorObject::GetLogWithJSONGraph</definition>
+        <argsstring>()</argsstring>
+        <name>GetLogWithJSONGraph</name>
+        <qualifiedname>editorObject::GetLogWithJSONGraph</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="354" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1af2cfb77e5f312a23c61c34d3f9a04b51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1508,21 +1654,25 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </inbodydescription>
         <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="363" column="2"/>
       </memberdef>
-      <memberdef kind="function" id="classeditor_object_1af2cfb77e5f312a23c61c34d3f9a04b51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classeditor_object_1aeacc46b214a74d7e16114b907a14bb51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
-        <type><ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref></type>
-        <definition>DONT_SANITIZE editorObject::GetLogWithJSONGraph</definition>
-        <argsstring>()</argsstring>
-        <name>GetLogWithJSONGraph</name>
-        <qualifiedname>editorObject::GetLogWithJSONGraph</qualifiedname>
+        <type>bool</type>
+        <definition>bool editorObject::Go</definition>
+        <argsstring>(const DONT_SANITIZE &amp;commitOID)</argsstring>
+        <name>Go</name>
+        <qualifiedname>editorObject::Go</qualifiedname>
+        <param>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <declname>commitOID</declname>
+        </param>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="366" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="367" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1aeacc46b214a74d7e16114b907a14bb51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1584,25 +1734,21 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </inbodydescription>
         <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="376" column="2"/>
       </memberdef>
-      <memberdef kind="function" id="classeditor_object_1aeacc46b214a74d7e16114b907a14bb51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classeditor_object_1aefa353d96fd225e77138f1ebb482f2a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
         <type>bool</type>
-        <definition>bool editorObject::Go</definition>
-        <argsstring>(const DONT_SANITIZE &amp;commitOID)</argsstring>
-        <name>Go</name>
-        <qualifiedname>editorObject::Go</qualifiedname>
-        <param>
-          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
-          <declname>commitOID</declname>
-        </param>
+        <definition>bool editorObject::Redo</definition>
+        <argsstring>()</argsstring>
+        <name>Redo</name>
+        <qualifiedname>editorObject::Redo</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="379" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="380" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1aefa353d96fd225e77138f1ebb482f2a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1636,22 +1782,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </inbodydescription>
         <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="386" column="2"/>
       </memberdef>
-      <memberdef kind="function" id="classeditor_object_1aefa353d96fd225e77138f1ebb482f2a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type>bool</type>
-        <definition>bool editorObject::Redo</definition>
-        <argsstring>()</argsstring>
-        <name>Redo</name>
-        <qualifiedname>editorObject::Redo</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="389" column="2"/>
-      </memberdef>
       <memberdef kind="function" id="classeditor_object_1a6c4c8c3a96ae891026202464c3117f5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
         </templateparamlist>
@@ -1670,7 +1800,23 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="392" column="2"/>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="389" column="2"/>
+      </memberdef>
+      <memberdef kind="function" id="classeditor_object_1a3d4bd6f4505ba026347dd885002648b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void editorObject::UpdateLog</definition>
+        <argsstring>()</argsstring>
+        <name>UpdateLog</name>
+        <qualifiedname>editorObject::UpdateLog</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="393" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a3d4bd6f4505ba026347dd885002648b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1719,22 +1865,6 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <inbodydescription>
         </inbodydescription>
         <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="405" column="2"/>
-      </memberdef>
-      <memberdef kind="function" id="classeditor_object_1a3d4bd6f4505ba026347dd885002648b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <templateparamlist>
-        </templateparamlist>
-        <type>void</type>
-        <definition>void editorObject::UpdateLog</definition>
-        <argsstring>()</argsstring>
-        <name>UpdateLog</name>
-        <qualifiedname>editorObject::UpdateLog</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="409" column="2"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1a479985c5e13f1986c6b88ceac67924c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -1815,6 +1945,106 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         <inbodydescription>
         </inbodydescription>
         <location file="include/core/MainObjects/editorObject/getall.cpp" line="27" column="1" bodyfile="include/core/MainObjects/editorObject/getall.cpp" bodystart="27" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classeditor_object_1a20552dde76eedca8829a07d2a11aef73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>std::optional&lt; <ref refid="struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_semantic_diff_result" kindref="compound">PDJE_TIMELINE::TimeLineSemanticDiffResult</ref> &gt;</type>
+        <definition>std::optional&lt; PDJE_TIMELINE::TimeLineSemanticDiffResult &gt; editorObject::GetDiff</definition>
+        <argsstring>(const DONT_SANITIZE &amp;oldCommitOID, const DONT_SANITIZE &amp;newCommitOID)</argsstring>
+        <name>GetDiff</name>
+        <qualifiedname>editorObject::GetDiff</qualifiedname>
+        <param>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <declname>oldCommitOID</declname>
+        </param>
+        <param>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <declname>newCommitOID</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/MainObjects/editorObject/getdiff.cpp" line="1" column="0" bodyfile="include/core/MainObjects/editorObject/getdiff.cpp" bodystart="44" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classeditor_object_1a20552dde76eedca8829a07d2a11aef73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>std::optional&lt; <ref refid="struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_semantic_diff_result" kindref="compound">PDJE_TIMELINE::TimeLineSemanticDiffResult</ref> &gt;</type>
+        <definition>std::optional&lt; PDJE_TIMELINE::TimeLineSemanticDiffResult &gt; editorObject::GetDiff</definition>
+        <argsstring>(const DONT_SANITIZE &amp;oldCommitOID, const DONT_SANITIZE &amp;newCommitOID)</argsstring>
+        <name>GetDiff</name>
+        <qualifiedname>editorObject::GetDiff</qualifiedname>
+        <param>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <declname>oldCommitOID</declname>
+        </param>
+        <param>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <declname>newCommitOID</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/MainObjects/editorObject/getdiff.cpp" line="1" column="0" bodyfile="include/core/MainObjects/editorObject/getdiff.cpp" bodystart="55" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classeditor_object_1a20552dde76eedca8829a07d2a11aef73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>std::optional&lt; <ref refid="struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_semantic_diff_result" kindref="compound">PDJE_TIMELINE::TimeLineSemanticDiffResult</ref> &gt;</type>
+        <definition>std::optional&lt; PDJE_TIMELINE::TimeLineSemanticDiffResult &gt; editorObject::GetDiff</definition>
+        <argsstring>(const DONT_SANITIZE &amp;oldCommitOID, const DONT_SANITIZE &amp;newCommitOID)</argsstring>
+        <name>GetDiff</name>
+        <qualifiedname>editorObject::GetDiff</qualifiedname>
+        <param>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <declname>oldCommitOID</declname>
+        </param>
+        <param>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <declname>newCommitOID</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/MainObjects/editorObject/getdiff.cpp" line="1" column="0" bodyfile="include/core/MainObjects/editorObject/getdiff.cpp" bodystart="66" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classeditor_object_1a15f67cc9ed45c0965a86b9aac899458a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+        </templateparamlist>
+        <type>std::optional&lt; <ref refid="struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_semantic_diff_result" kindref="compound">PDJE_TIMELINE::TimeLineSemanticDiffResult</ref> &gt;</type>
+        <definition>std::optional&lt; PDJE_TIMELINE::TimeLineSemanticDiffResult &gt; editorObject::GetDiff</definition>
+        <argsstring>(const UNSANITIZED &amp;musicName, const DONT_SANITIZE &amp;oldCommitOID, const DONT_SANITIZE &amp;newCommitOID)</argsstring>
+        <name>GetDiff</name>
+        <qualifiedname>editorObject::GetDiff</qualifiedname>
+        <param>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kindref="member">UNSANITIZED</ref> &amp;</type>
+          <declname>musicName</declname>
+        </param>
+        <param>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <declname>oldCommitOID</declname>
+        </param>
+        <param>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <declname>newCommitOID</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/core/MainObjects/editorObject/getdiff.cpp" line="1" column="0" bodyfile="include/core/MainObjects/editorObject/getdiff.cpp" bodystart="77" bodyend="127"/>
       </memberdef>
       <memberdef kind="function" id="classeditor_object_1af2cfb77e5f312a23c61c34d3f9a04b51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
@@ -2410,7 +2640,7 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="41" column="1" bodyfile="include/core/MainObjects/editorObject/editorObject.hpp" bodystart="41" bodyend="282"/>
+    <location file="include/core/MainObjects/editorObject/editorObject.hpp" line="41" column="1" bodyfile="include/core/MainObjects/editorObject/editorObject.hpp" bodystart="41" bodyend="280"/>
     <listofallmembers>
       <member refid="classeditor_object_1a77eaf52d8c470aadb9af3f3140e6beee" prot="public" virt="non-virtual"><scope>editorObject</scope><name>AddLine</name></member>
       <member refid="classeditor_object_1a9162179d7a90217496e990ed631a79e7" prot="public" virt="non-virtual"><scope>editorObject</scope><name>AddLine</name></member>
@@ -2444,6 +2674,16 @@ Provides access to the underlying JSON data for key-value pairs. <parameterlist 
       <member refid="classeditor_object_1a16ef00ce6ae7569f39a60ff8f382bd1c" prot="public" virt="non-virtual"><scope>editorObject</scope><name>getAll</name></member>
       <member refid="classeditor_object_1a77db8c854567b251bec9cebd5e91c662" prot="public" virt="non-virtual"><scope>editorObject</scope><name>getAll</name></member>
       <member refid="classeditor_object_1a5fff7bdde5101a29d10a25989c8e248d" prot="public" virt="non-virtual"><scope>editorObject</scope><name>getAll</name></member>
+      <member refid="classeditor_object_1ab7cfe3ebc5201c658e7dbe1628f61c96" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetDiff</name></member>
+      <member refid="classeditor_object_1acc80e586526067f5abdf0fde36c2e693" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetDiff</name></member>
+      <member refid="classeditor_object_1a20552dde76eedca8829a07d2a11aef73" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetDiff</name></member>
+      <member refid="classeditor_object_1a20552dde76eedca8829a07d2a11aef73" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetDiff</name></member>
+      <member refid="classeditor_object_1a20552dde76eedca8829a07d2a11aef73" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetDiff</name></member>
+      <member refid="classeditor_object_1a15f67cc9ed45c0965a86b9aac899458a" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetDiff</name></member>
+      <member refid="classeditor_object_1a20552dde76eedca8829a07d2a11aef73" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetDiff</name></member>
+      <member refid="classeditor_object_1a20552dde76eedca8829a07d2a11aef73" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetDiff</name></member>
+      <member refid="classeditor_object_1a20552dde76eedca8829a07d2a11aef73" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetDiff</name></member>
+      <member refid="classeditor_object_1a15f67cc9ed45c0965a86b9aac899458a" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetDiff</name></member>
       <member refid="classeditor_object_1a360e0000f965db643a0127f7240a425a" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetLogWithJSONGraph</name></member>
       <member refid="classeditor_object_1a994b27da4e10c21758c374d77b638cad" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetLogWithJSONGraph</name></member>
       <member refid="classeditor_object_1af2cfb77e5f312a23c61c34d3f9a04b51" prot="public" virt="non-virtual"><scope>editorObject</scope><name>GetLogWithJSONGraph</name></member>

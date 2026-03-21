@@ -81,20 +81,15 @@
 <span id="program-listing-file-include-core-db-dbroot-hpp"></span><h1>Program Listing for File dbRoot.hpp<a class="headerlink" href="#program-listing-for-file-dbroot-hpp" title="Link to this heading"></a></h1>
 <p>↰ <a class="reference internal" href="file_include_core_db_dbRoot.hpp.html#file-include-core-db-dbroot-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include\core\db\dbRoot.hpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;optional&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sqlite3.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
-
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;rocksdb/db.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;rocksdb/filter_policy.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;rocksdb/options.h&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;rocksdb/table.h&gt;</span>
-
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_EXPORT_SETTER.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;musicDB.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;trackDB.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;filesystem&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;memory&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;optional&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sqlite3.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
 
 <span class="k">namespace</span><span class="w"> </span><span class="nn">fs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">filesystem</span><span class="p">;</span>
 
@@ -104,17 +99,19 @@
 <span class="k">using</span><span class="w"> </span><span class="n">TRACK_VEC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">trackdata</span><span class="o">&gt;</span><span class="p">;</span>
 <span class="k">using</span><span class="w"> </span><span class="n">MAYBE_TRACK_VEC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">TRACK_VEC</span><span class="o">&gt;</span><span class="p">;</span>
 
-<span class="k">namespace</span><span class="w"> </span><span class="nn">RDB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">ROCKSDB_NAMESPACE</span><span class="p">;</span>
+<span class="c1">// namespace RDB = ROCKSDB_NAMESPACE;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">RDB</span><span class="p">;</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">litedb</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="n">ROOT_PATH</span><span class="p">;</span>
 <span class="w">    </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="n">sqldbPath</span><span class="p">;</span>
 <span class="w">    </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="n">kvdbPath</span><span class="p">;</span>
 <span class="w">    </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="n">vectordbPath</span><span class="p">;</span>
-<span class="w">    </span><span class="n">sqlite3</span><span class="w">          </span><span class="o">*</span><span class="n">sdb</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
-<span class="w">    </span><span class="n">RDB</span><span class="o">::</span><span class="n">DB</span><span class="w">          </span><span class="o">*</span><span class="n">kvdb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
-<span class="w">    </span><span class="n">RDB</span><span class="o">::</span><span class="n">WriteOptions</span><span class="w"> </span><span class="n">wops</span><span class="p">;</span>
-<span class="w">    </span><span class="n">RDB</span><span class="o">::</span><span class="n">ReadOptions</span><span class="w">  </span><span class="n">rops</span><span class="p">;</span>
+<span class="w">    </span><span class="n">sqlite3</span><span class="w">             </span><span class="o">*</span><span class="n">sdb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">RDB</span><span class="o">&gt;</span><span class="w"> </span><span class="n">kvdb_impl</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// RDB::DB          *kvdb = nullptr;</span>
+<span class="w">    </span><span class="c1">// RDB::WriteOptions wops;</span>
+<span class="w">    </span><span class="c1">// RDB::ReadOptions  rops;</span>
 
 <span class="w">    </span><span class="kt">bool</span>
 <span class="w">    </span><span class="nf">CheckTables</span><span class="p">();</span>

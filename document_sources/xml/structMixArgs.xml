@@ -1,16 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structMixArgs" kind="struct" language="C++" prot="public">
     <compoundname>MixArgs</compoundname>
     <includes refid="EditorArgs_8hpp" local="no">EditorArgs.hpp</includes>
-    <sectiondef kind="public-attrib">
+      <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structMixArgs_1a3cd6a521f30228bc707e10c2174d0e80" prot="public" static="no" mutable="no">
         <type><ref refid="namespacecapnp_1_1schemas_1a1422df7eaf2c604e792649afd941e322" kindref="member">TypeEnum</ref></type>
         <definition>TypeEnum MixArgs::type</definition>
         <argsstring></argsstring>
         <name>type</name>
-        <qualifiedname>MixArgs::type</qualifiedname>
-        <initializer>= TypeEnum::EQ</initializer>
+        <initializer>= <ref refid="ManualMix_8hpp_1ae8d2b13e6207a0b5d8195a3775e3e1c3a9efdc855f3c1477957fb50affec07f8f" kindref="member">TypeEnum::EQ</ref></initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -24,7 +23,6 @@
         <definition>DetailEnum MixArgs::details</definition>
         <argsstring></argsstring>
         <name>details</name>
-        <qualifiedname>MixArgs::details</qualifiedname>
         <initializer>= DetailEnum::HIGH</initializer>
         <briefdescription>
         </briefdescription>
@@ -39,7 +37,6 @@
         <definition>int MixArgs::ID</definition>
         <argsstring></argsstring>
         <name>ID</name>
-        <qualifiedname>MixArgs::ID</qualifiedname>
         <initializer>= -1</initializer>
         <briefdescription>
         </briefdescription>
@@ -54,7 +51,6 @@
         <definition>SANITIZED_ORNOT MixArgs::first</definition>
         <argsstring></argsstring>
         <name>first</name>
-        <qualifiedname>MixArgs::first</qualifiedname>
         <initializer>= &quot;&quot;</initializer>
         <briefdescription>
         </briefdescription>
@@ -69,7 +65,6 @@
         <definition>SANITIZED_ORNOT MixArgs::second</definition>
         <argsstring></argsstring>
         <name>second</name>
-        <qualifiedname>MixArgs::second</qualifiedname>
         <initializer>= &quot;&quot;</initializer>
         <briefdescription>
         </briefdescription>
@@ -84,7 +79,6 @@
         <definition>SANITIZED_ORNOT MixArgs::third</definition>
         <argsstring></argsstring>
         <name>third</name>
-        <qualifiedname>MixArgs::third</qualifiedname>
         <initializer>= &quot;&quot;</initializer>
         <briefdescription>
         </briefdescription>
@@ -99,7 +93,6 @@
         <definition>uint64_t MixArgs::beat</definition>
         <argsstring></argsstring>
         <name>beat</name>
-        <qualifiedname>MixArgs::beat</qualifiedname>
         <initializer>= 0</initializer>
         <briefdescription>
         </briefdescription>
@@ -114,7 +107,6 @@
         <definition>uint64_t MixArgs::subBeat</definition>
         <argsstring></argsstring>
         <name>subBeat</name>
-        <qualifiedname>MixArgs::subBeat</qualifiedname>
         <initializer>= 0</initializer>
         <briefdescription>
         </briefdescription>
@@ -129,7 +121,6 @@
         <definition>uint64_t MixArgs::separate</definition>
         <argsstring></argsstring>
         <name>separate</name>
-        <qualifiedname>MixArgs::separate</qualifiedname>
         <initializer>= 0</initializer>
         <briefdescription>
         </briefdescription>
@@ -144,7 +135,6 @@
         <definition>uint64_t MixArgs::Ebeat</definition>
         <argsstring></argsstring>
         <name>Ebeat</name>
-        <qualifiedname>MixArgs::Ebeat</qualifiedname>
         <initializer>= 0</initializer>
         <briefdescription>
         </briefdescription>
@@ -159,7 +149,6 @@
         <definition>uint64_t MixArgs::EsubBeat</definition>
         <argsstring></argsstring>
         <name>EsubBeat</name>
-        <qualifiedname>MixArgs::EsubBeat</qualifiedname>
         <initializer>= 0</initializer>
         <briefdescription>
         </briefdescription>
@@ -174,7 +163,6 @@
         <definition>uint64_t MixArgs::Eseparate</definition>
         <argsstring></argsstring>
         <name>Eseparate</name>
-        <qualifiedname>MixArgs::Eseparate</qualifiedname>
         <initializer>= 0</initializer>
         <briefdescription>
         </briefdescription>
@@ -184,13 +172,16 @@
         </inbodydescription>
         <location file="include/core/editor/TimeLine/JSONWrap/EditorArgs.hpp" line="20" column="21" bodyfile="include/core/editor/TimeLine/JSONWrap/EditorArgs.hpp" bodystart="20" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
 <para>Arguments describing a mix entry. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
+      <node id="3">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
       <node id="1">
         <label>MixArgs</label>
         <link refid="structMixArgs"/>
@@ -199,9 +190,6 @@
           <edgelabel>second</edgelabel>
           <edgelabel>third</edgelabel>
         </childnode>
-      </node>
-      <node id="3">
-        <label>std::basic_string&lt; Char &gt;</label>
       </node>
       <node id="2">
         <label>std::string</label>

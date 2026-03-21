@@ -24,6 +24,8 @@ Subdirectories
 Files
 -----
 
+- :ref:`file_include_input_CPDJE_Input.cpp`
+- :ref:`file_include_input_CPDJE_Input.h`
 - :ref:`file_include_input_PDJE_Input.cpp`
 - :ref:`file_include_input_PDJE_Input.hpp`
 - :ref:`file_include_input_PDJE_Input_Log.hpp`

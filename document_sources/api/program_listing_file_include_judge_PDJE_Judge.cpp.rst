@@ -55,11 +55,11 @@ Program Listing for File PDJE_Judge.cpp
        }
        inits.note_objects->Sort();
    
+       loop_obj.emplace(inits);
+       loop_obj->loop_switch = true;
+       loop_obj->StartEventLoop();
        loop.emplace([this]() {
-           loop_obj.emplace(inits);
-           loop_obj->loop_switch = true;
            try {
-               loop_obj->StartEventLoop();
                loop_obj->loop();
            } catch (const std::exception &e) {
                critlog("loop has exceptions. What: ");
@@ -72,11 +72,15 @@ Program Listing for File PDJE_Judge.cpp
    void
    JUDGE::End()
    {
-       loop_obj->loop_switch = false;
-       loop_obj->EndEventLoop();
-       if (loop->joinable()) {
+       if (loop_obj.has_value()) {
+           loop_obj->loop_switch = false;
+           loop_obj->EndEventLoop();
+       }
+       if (loop.has_value() && loop->joinable()) {
            loop->join();
        }
+       loop.reset();
+       loop_obj.reset();
        inits.coreline.reset();
        inits.inputline.reset();
        inits.note_objects.reset();

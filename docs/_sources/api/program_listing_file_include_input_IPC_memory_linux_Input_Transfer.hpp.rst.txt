@@ -17,7 +17,7 @@ Program Listing for File Input_Transfer.hpp
    using nj = nlohmann::json;
    
    namespace PDJE_IPC {
-   class PDJE_API PDJE_Input_Transfer {
+   class PDJE_Input_Transfer {
      private:
      public:
        std::vector<PDJE_Input_Log>          datas;

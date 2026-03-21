@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="WaylandOwnedWindow_8cpp" kind="file" language="C++">
     <compoundname>WaylandOwnedWindow.cpp</compoundname>
     <includes refid="WaylandOwnedWindow_8hpp" local="yes">WaylandOwnedWindow.hpp</includes>
@@ -17,6 +17,15 @@
     <includes local="no">unistd.h</includes>
     <includes local="no">wayland-client.h</includes>
     <incdepgraph>
+      <node id="18">
+        <label>sys/stat.h</label>
+      </node>
+      <node id="5">
+        <label>atomic</label>
+      </node>
+      <node id="4">
+        <label>cstdint</label>
+      </node>
       <node id="7">
         <label>wayland_protocols/xdg-shell-client-protocol.h</label>
         <link refid="xdg-shell-client-protocol_8h"/>
@@ -26,6 +35,45 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
+      </node>
+      <node id="8">
+        <label>stdint.h</label>
+      </node>
+      <node id="17">
+        <label>sys/mman.h</label>
+      </node>
+      <node id="10">
+        <label>wayland-client.h</label>
+      </node>
+      <node id="15">
+        <label>fcntl.h</label>
+      </node>
+      <node id="6">
+        <label>string</label>
+      </node>
+      <node id="9">
+        <label>stddef.h</label>
+      </node>
+      <node id="2">
+        <label>WaylandOwnedWindow.hpp</label>
+        <link refid="WaylandOwnedWindow_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>sys/types.h</label>
+      </node>
+      <node id="20">
+        <label>unistd.h</label>
+      </node>
+      <node id="16">
+        <label>utility</label>
       </node>
       <node id="1">
         <label>include/input/DefaultDevs/linux/wayland_things/WaylandOwnedWindow.cpp</label>
@@ -59,68 +107,20 @@
         <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="2">
-        <label>WaylandOwnedWindow.hpp</label>
-        <link refid="WaylandOwnedWindow_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="11">
-        <label>algorithm</label>
-      </node>
-      <node id="5">
-        <label>atomic</label>
-      </node>
       <node id="12">
         <label>cerrno</label>
-      </node>
-      <node id="3">
-        <label>cstddef</label>
-      </node>
-      <node id="4">
-        <label>cstdint</label>
       </node>
       <node id="13">
         <label>cstdlib</label>
       </node>
+      <node id="3">
+        <label>cstddef</label>
+      </node>
+      <node id="11">
+        <label>algorithm</label>
+      </node>
       <node id="14">
         <label>cstring</label>
-      </node>
-      <node id="15">
-        <label>fcntl.h</label>
-      </node>
-      <node id="9">
-        <label>stddef.h</label>
-      </node>
-      <node id="8">
-        <label>stdint.h</label>
-      </node>
-      <node id="6">
-        <label>string</label>
-      </node>
-      <node id="17">
-        <label>sys/mman.h</label>
-      </node>
-      <node id="18">
-        <label>sys/stat.h</label>
-      </node>
-      <node id="19">
-        <label>sys/types.h</label>
-      </node>
-      <node id="20">
-        <label>unistd.h</label>
-      </node>
-      <node id="16">
-        <label>utility</label>
-      </node>
-      <node id="10">
-        <label>wayland-client.h</label>
       </node>
     </incdepgraph>
     <briefdescription>
@@ -169,7 +169,7 @@
 <codeline lineno="39"><highlight class="normal"></highlight></codeline>
 <codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal">ProxyDestroy(<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref><sp/>*&amp;proxy)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal">ProxyDestroy(<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref><sp/>*&amp;proxy)<sp/>noexcept</highlight></codeline>
 <codeline lineno="43"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(proxy<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wl_proxy_destroy(</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">wl_proxy<sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(proxy));</highlight></codeline>
@@ -178,7 +178,7 @@
 <codeline lineno="48"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
 <codeline lineno="50"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal">ReleaseSeatCompat(wl_seat<sp/>*&amp;seat)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal">ReleaseSeatCompat(wl_seat<sp/>*&amp;seat)<sp/>noexcept</highlight></codeline>
 <codeline lineno="52"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(seat<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
@@ -211,15 +211,15 @@
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><sp/>*interface,</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/><sp/><sp/><sp/><sp/>version)</highlight></codeline>
 <codeline lineno="83"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>*self<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classWaylandOwnedWindow_1ae26c21b2e1702cdb47ffa919fd198c59" kindref="member">WaylandOwnedWindow</ref><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(data);</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(self<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>||<sp/>interface<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classWaylandOwnedWindow" kindref="compound">WaylandOwnedWindow</ref><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(data);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>||<sp/>interface<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"></highlight></codeline>
 <codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::strcmp(interface,<sp/>wl_compositor_interface.name)<sp/>==<sp/>0)<sp/>{</highlight></codeline>
 <codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(self-&gt;compositor_<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/>bind_version<sp/>=<sp/>std::min&lt;uint32_t&gt;(version,<sp/>4);</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self-&gt;compositor_<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">wl_compositor<sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">-&gt;compositor_<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">wl_compositor<sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wl_registry_bind(registry,</highlight></codeline>
 <codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>name,</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;wl_compositor_interface,</highlight></codeline>
@@ -230,7 +230,7 @@
 <codeline lineno="100"><highlight class="normal"></highlight></codeline>
 <codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::strcmp(interface,<sp/>wl_shm_interface.name)<sp/>==<sp/>0)<sp/>{</highlight></codeline>
 <codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(self-&gt;shm_<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self-&gt;shm_<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">wl_shm<sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">-&gt;shm_<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">wl_shm<sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight></codeline>
 <codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wl_registry_bind(registry,<sp/>name,<sp/>&amp;wl_shm_interface,<sp/>1));</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
@@ -239,14 +239,14 @@
 <codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::strcmp(interface,<sp/><ref refid="xdg-shell-client-protocol_8c_1abaec16e5d3db301ad4c2f3430c218239" kindref="member">wl_seat_interface</ref>.name)<sp/>==<sp/>0)<sp/>{</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(self-&gt;seat_<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint32_t<sp/>bind_version<sp/>=<sp/>std::min&lt;uint32_t&gt;(version,<sp/>5);</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self-&gt;seat_<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">wl_seat<sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">-&gt;seat_<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">wl_seat<sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight></codeline>
 <codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wl_registry_bind(registry,<sp/>name,<sp/>&amp;<ref refid="xdg-shell-client-protocol_8c_1abaec16e5d3db301ad4c2f3430c218239" kindref="member">wl_seat_interface</ref>,<sp/>bind_version));</highlight></codeline>
 <codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(self-&gt;seat_<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>wl_seat_listener<sp/>kSeatListener<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/>wl_seat_listener<sp/>kSeatListener<sp/>=<sp/>{</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.capabilities<sp/>=<sp/>&amp;<ref refid="classWaylandOwnedWindow_1a923a378e347a695d862f3ab4d3b2b275" kindref="member">WaylandOwnedWindow::OnSeatCapabilities</ref>,</highlight></codeline>
 <codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.name<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>&amp;<ref refid="classWaylandOwnedWindow_1ab225b86954646bd2f729ca7cc70340b9" kindref="member">WaylandOwnedWindow::OnSeatName</ref>,</highlight></codeline>
 <codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wl_seat_add_listener(self-&gt;seat_,<sp/>&amp;kSeatListener,<sp/>self);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wl_seat_add_listener(self-&gt;seat_,<sp/>&amp;kSeatListener,<sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
@@ -254,7 +254,7 @@
 <codeline lineno="124"><highlight class="normal"></highlight></codeline>
 <codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::strcmp(interface,<sp/><ref refid="xdg-shell-client-protocol_8c_1a23c96730741064951b7a6c714ebb9403" kindref="member">xdg_wm_base_interface</ref>.name)<sp/>==<sp/>0)<sp/>{</highlight></codeline>
 <codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(self-&gt;wm_base_<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self-&gt;wm_base_<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">xdg_wm_base<sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">-&gt;wm_base_<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">xdg_wm_base<sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight></codeline>
 <codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wl_registry_bind(registry,<sp/>name,<sp/>&amp;<ref refid="xdg-shell-client-protocol_8c_1a23c96730741064951b7a6c714ebb9403" kindref="member">xdg_wm_base_interface</ref>,<sp/>1));</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -278,12 +278,12 @@
 <codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>xdg_surface<sp/>*surface,</highlight></codeline>
 <codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/><sp/><sp/><sp/><sp/>serial)</highlight></codeline>
 <codeline lineno="150"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>*self<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classWaylandOwnedWindow_1ae26c21b2e1702cdb47ffa919fd198c59" kindref="member">WaylandOwnedWindow</ref><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(data);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classWaylandOwnedWindow" kindref="compound">WaylandOwnedWindow</ref><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(data);</highlight></codeline>
 <codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(surface<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__iface__xdg__surface_1gaf50b9a8584e30e1a5650543e4ecf86fa" kindref="member">xdg_surface_ack_configure</ref>(surface,<sp/>serial);</highlight></codeline>
 <codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(self<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self-&gt;configured_<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">-&gt;configured_<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="158"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="159"><highlight class="normal"></highlight></codeline>
@@ -299,9 +299,9 @@
 <codeline lineno="169"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="170" refid="classWaylandOwnedWindow_1a03c4282c51a6cddf83321c477adb0f2a" refkind="member"><highlight class="normal"><ref refid="classWaylandOwnedWindow_1a03c4282c51a6cddf83321c477adb0f2a" kindref="member">WaylandOwnedWindow::OnToplevelClose</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*data,<sp/>xdg_toplevel<sp/>*)</highlight></codeline>
 <codeline lineno="171"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>*self<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classWaylandOwnedWindow_1ae26c21b2e1702cdb47ffa919fd198c59" kindref="member">WaylandOwnedWindow</ref><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(data);</highlight></codeline>
-<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(self<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>self-&gt;closed_.store(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classWaylandOwnedWindow" kindref="compound">WaylandOwnedWindow</ref><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(data);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">-&gt;<ref refid="classWaylandOwnedWindow_1aa57891af29ddf525c5648498ba2e3ee4" kindref="member">closed_</ref>.store(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="176"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="177"><highlight class="normal"></highlight></codeline>
@@ -315,12 +315,12 @@
 <codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wl_seat<sp/><sp/>*,</highlight></codeline>
 <codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/><sp/>capabilities)</highlight></codeline>
 <codeline lineno="187"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>*self<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classWaylandOwnedWindow_1ae26c21b2e1702cdb47ffa919fd198c59" kindref="member">WaylandOwnedWindow</ref><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(data);</highlight></codeline>
-<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(self<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classWaylandOwnedWindow" kindref="compound">WaylandOwnedWindow</ref><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(data);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">self</highlight><highlight class="normal"><sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>self-&gt;seat_caps_<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>capabilities;</highlight></codeline>
-<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>self-&gt;seat_caps_known_<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">-&gt;<ref refid="classWaylandOwnedWindow_1ae4d8486d815fac31c5f5c3c8b214f0c9" kindref="member">seat_caps_</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>capabilities;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">self</highlight><highlight class="normal">-&gt;seat_caps_known_<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="194"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="195"><highlight class="normal"></highlight></codeline>
 <codeline lineno="196"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
@@ -339,8 +339,8 @@
 <codeline lineno="209"><highlight class="normal"></highlight></codeline>
 <codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1a8a2daaedfdaafcf888968d88d5cacf10" kindref="member">DestroyShmBuffer</ref>();</highlight></codeline>
 <codeline lineno="211"><highlight class="normal"></highlight></codeline>
-<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>bytes_per_pixel<sp/>=<sp/>4;</highlight></codeline>
-<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stride<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="classWaylandOwnedWindow_1aa3eed7845cca022cb959b7a5dca5c72c" kindref="member">width_</ref><sp/>*<sp/>bytes_per_pixel;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a3a31613d496c7314738b0a541aee4ebc" kindref="member">bytes_per_pixel</ref><sp/>=<sp/>4;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>stride<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="classWaylandOwnedWindow_1aa3eed7845cca022cb959b7a5dca5c72c" kindref="member">width_</ref><sp/>*<sp/><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a3a31613d496c7314738b0a541aee4ebc" kindref="member">bytes_per_pixel</ref>;</highlight></codeline>
 <codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classWaylandOwnedWindow_1aa3eed7845cca022cb959b7a5dca5c72c" kindref="member">width_</ref><sp/>&lt;=<sp/>0<sp/>||<sp/><ref refid="classWaylandOwnedWindow_1a37acb7d387d7bad0a551ddcec493b774" kindref="member">height_</ref><sp/>&lt;=<sp/>0<sp/>||<sp/>stride<sp/>&lt;=<sp/>0)<sp/>{</highlight></codeline>
 <codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1aa1b61b558a9cbd6ceac2c8b32a1fce26" kindref="member">SetError</ref>(</highlight><highlight class="stringliteral">&quot;invalid<sp/>internal<sp/>Wayland<sp/>window<sp/>dimensions&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
@@ -384,7 +384,7 @@
 <codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="256"><highlight class="normal"></highlight></codeline>
-<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>wl_buffer_listener<sp/>kBufferListener<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/>wl_buffer_listener<sp/>kBufferListener<sp/>=<sp/>{</highlight></codeline>
 <codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.release<sp/>=<sp/>&amp;<ref refid="classWaylandOwnedWindow_1a09450efd8a77f4e4d0c9e7f1e56765f8" kindref="member">WaylandOwnedWindow::OnBufferRelease</ref>,</highlight></codeline>
 <codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/>wl_buffer_add_listener(<ref refid="classWaylandOwnedWindow_1aac5b19281f89b3f9ab41e3f7d6f6376a" kindref="member">buffer_</ref>,<sp/>&amp;kBufferListener,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
@@ -466,7 +466,7 @@
 <codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="338"><highlight class="normal"></highlight></codeline>
-<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>wl_registry_listener<sp/>kRegistryListener<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/>wl_registry_listener<sp/>kRegistryListener<sp/>=<sp/>{</highlight></codeline>
 <codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.global<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>&amp;<ref refid="classWaylandOwnedWindow_1adba52ba8bb1c0b343586d2a52dadfe6e" kindref="member">WaylandOwnedWindow::OnRegistryGlobal</ref>,</highlight></codeline>
 <codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.global_remove<sp/>=<sp/>&amp;<ref refid="classWaylandOwnedWindow_1a68a6efd14c33ce4d6809bb068725858f" kindref="member">WaylandOwnedWindow::OnRegistryGlobalRemove</ref>,</highlight></codeline>
 <codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
@@ -479,8 +479,8 @@
 <codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="350"><highlight class="normal"></highlight></codeline>
 <codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classWaylandOwnedWindow_1ab01771642c9058392f0f6fe9d2825f66" kindref="member">wm_base_</ref><sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="structxdg__wm__base__listener" kindref="compound">xdg_wm_base_listener</ref><sp/>kWmBaseListener<sp/>=<sp/>{</highlight></codeline>
-<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.ping<sp/>=<sp/>&amp;<ref refid="classWaylandOwnedWindow_1acdc62737bad2a18e8a23351dd3e91987" kindref="member">WaylandOwnedWindow::OnWmBasePing</ref>,</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/><ref refid="structxdg__wm__base__listener" kindref="compound">xdg_wm_base_listener</ref><sp/>kWmBaseListener<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.<ref refid="structxdg__wm__base__listener_1a4c735d844e84443304b37d917ec847d0" kindref="member">ping</ref><sp/>=<sp/>&amp;<ref refid="classWaylandOwnedWindow_1acdc62737bad2a18e8a23351dd3e91987" kindref="member">WaylandOwnedWindow::OnWmBasePing</ref>,</highlight></codeline>
 <codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__iface__xdg__wm__base_1ga8f46ae46604ede327e8f69869875449f" kindref="member">xdg_wm_base_add_listener</ref>(<ref refid="classWaylandOwnedWindow_1ab01771642c9058392f0f6fe9d2825f66" kindref="member">wm_base_</ref>,<sp/>&amp;kWmBaseListener,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -498,27 +498,27 @@
 <codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="370"><highlight class="normal"></highlight></codeline>
-<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1a7ffd6a8c712fe03bef3c55ed82ec4f64" kindref="member">xdg_surface_</ref><sp/>=<sp/><ref refid="group__iface__xdg__wm__base_1gae59d1896c5fb50124ebd8421aa967782" kindref="member">xdg_wm_base_get_xdg_surface</ref>(<ref refid="classWaylandOwnedWindow_1ab01771642c9058392f0f6fe9d2825f66" kindref="member">wm_base_</ref>,<sp/><ref refid="classWaylandOwnedWindow_1a42cdbe29e91799f6267eddfdfdc136c6" kindref="member">surface_</ref>);</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1a7ffd6a8c712fe03bef3c55ed82ec4f64" kindref="member">xdg_surface_</ref><sp/>=<sp/><ref refid="group__iface__xdg__wm__base_1ga6e9508d587e48bd1008c2d6ba981dd5b" kindref="member">xdg_wm_base_get_xdg_surface</ref>(<ref refid="classWaylandOwnedWindow_1ab01771642c9058392f0f6fe9d2825f66" kindref="member">wm_base_</ref>,<sp/><ref refid="classWaylandOwnedWindow_1a42cdbe29e91799f6267eddfdfdc136c6" kindref="member">surface_</ref>);</highlight></codeline>
 <codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classWaylandOwnedWindow_1a7ffd6a8c712fe03bef3c55ed82ec4f64" kindref="member">xdg_surface_</ref><sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1aa1b61b558a9cbd6ceac2c8b32a1fce26" kindref="member">SetError</ref>(</highlight><highlight class="stringliteral">&quot;xdg_wm_base_get_xdg_surface<sp/>failed&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1a75747eb6e0f7e98180c650f139b7e1e9" kindref="member">Destroy</ref>();</highlight></codeline>
 <codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="377"><highlight class="normal"></highlight></codeline>
-<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="structxdg__surface__listener" kindref="compound">xdg_surface_listener</ref><sp/>kXdgSurfaceListener<sp/>=<sp/>{</highlight></codeline>
-<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.configure<sp/>=<sp/>&amp;<ref refid="classWaylandOwnedWindow_1a61013f55235bc8915c44dd6c3a29b59d" kindref="member">WaylandOwnedWindow::OnXdgSurfaceConfigure</ref>,</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/><ref refid="structxdg__surface__listener" kindref="compound">xdg_surface_listener</ref><sp/>kXdgSurfaceListener<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.<ref refid="structxdg__surface__listener_1a1c4263d4ac5abb74a2fa8aa9bdd093b0" kindref="member">configure</ref><sp/>=<sp/>&amp;<ref refid="classWaylandOwnedWindow_1a61013f55235bc8915c44dd6c3a29b59d" kindref="member">WaylandOwnedWindow::OnXdgSurfaceConfigure</ref>,</highlight></codeline>
 <codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
 <codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__iface__xdg__surface_1ga041b2f2f2118d8a3ac5edef277361ad9" kindref="member">xdg_surface_add_listener</ref>(<ref refid="classWaylandOwnedWindow_1a7ffd6a8c712fe03bef3c55ed82ec4f64" kindref="member">xdg_surface_</ref>,<sp/>&amp;kXdgSurfaceListener,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="382"><highlight class="normal"></highlight></codeline>
-<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1a61a8fee60afcb2306341b60ee4762fe5" kindref="member">toplevel_</ref><sp/>=<sp/><ref refid="group__iface__xdg__surface_1ga85ae329154f5cc3b8de8d2870e1bc8e0" kindref="member">xdg_surface_get_toplevel</ref>(<ref refid="classWaylandOwnedWindow_1a7ffd6a8c712fe03bef3c55ed82ec4f64" kindref="member">xdg_surface_</ref>);</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1a61a8fee60afcb2306341b60ee4762fe5" kindref="member">toplevel_</ref><sp/>=<sp/><ref refid="group__iface__xdg__surface_1ga86408dc891224abcf7c28ca86dda3765" kindref="member">xdg_surface_get_toplevel</ref>(<ref refid="classWaylandOwnedWindow_1a7ffd6a8c712fe03bef3c55ed82ec4f64" kindref="member">xdg_surface_</ref>);</highlight></codeline>
 <codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classWaylandOwnedWindow_1a61a8fee60afcb2306341b60ee4762fe5" kindref="member">toplevel_</ref><sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1aa1b61b558a9cbd6ceac2c8b32a1fce26" kindref="member">SetError</ref>(</highlight><highlight class="stringliteral">&quot;xdg_surface_get_toplevel<sp/>failed&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="386"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classWaylandOwnedWindow_1a75747eb6e0f7e98180c650f139b7e1e9" kindref="member">Destroy</ref>();</highlight></codeline>
 <codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="389"><highlight class="normal"></highlight></codeline>
-<codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="structxdg__toplevel__listener" kindref="compound">xdg_toplevel_listener</ref><sp/>kToplevelListener<sp/>=<sp/>{</highlight></codeline>
-<codeline lineno="391"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.configure<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>&amp;<ref refid="classWaylandOwnedWindow_1ac20ee19f65d19e44f8824d58702fcb9c" kindref="member">WaylandOwnedWindow::OnToplevelConfigure</ref>,</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/><ref refid="structxdg__toplevel__listener" kindref="compound">xdg_toplevel_listener</ref><sp/>kToplevelListener<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="391"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.<ref refid="structxdg__toplevel__listener_1a8884ee61ecc055f927c54a5f068edaed" kindref="member">configure</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>&amp;<ref refid="classWaylandOwnedWindow_1ac20ee19f65d19e44f8824d58702fcb9c" kindref="member">WaylandOwnedWindow::OnToplevelConfigure</ref>,</highlight></codeline>
 <codeline lineno="392"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.close<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>&amp;<ref refid="classWaylandOwnedWindow_1a03c4282c51a6cddf83321c477adb0f2a" kindref="member">WaylandOwnedWindow::OnToplevelClose</ref>,</highlight></codeline>
 <codeline lineno="393"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.configure_bounds<sp/><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.wm_capabilities<sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,</highlight></codeline>

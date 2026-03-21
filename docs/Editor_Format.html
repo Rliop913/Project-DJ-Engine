@@ -162,6 +162,30 @@ side of the editor. It records a BPM value plus a beat-position tuple.</p>
 <li><p><cite>noteBinary</cite></p></li>
 <li><p><cite>cachedMixList</cite></p></li>
 </ul>
+<p>The root-database column layout for tracks is:</p>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Track Data Format</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><cite>TrackTitle</cite></p></th>
+<th class="head"><p><cite>MixBinary</cite></p></th>
+<th class="head"><p><cite>NoteBinary</cite></p></th>
+<th class="head"><p><cite>CachedMixList</cite></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Text</p></td>
+<td><p>Binary (Cap’n Proto)</p></td>
+<td><p>Binary (Cap’n Proto)</p></td>
+<td><p>Text (CSV)</p></td>
+</tr>
+</tbody>
+</table>
 <p><cite>musdata</cite> stores:</p>
 <ul class="simple">
 <li><p><cite>title</cite></p></li>
@@ -171,6 +195,36 @@ side of the editor. It records a BPM value plus a beat-position tuple.</p>
 <li><p><cite>bpm</cite></p></li>
 <li><p><cite>firstBeat</cite></p></li>
 </ul>
+<p>The root-database column layout for music metadata is:</p>
+<table class="docutils align-default" id="id2">
+<caption><span class="caption-text">Music Meta Data Format</span><a class="headerlink" href="#id2" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 18.2%" />
+<col style="width: 18.2%" />
+<col style="width: 18.2%" />
+<col style="width: 13.6%" />
+<col style="width: 18.2%" />
+<col style="width: 13.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><cite>Title</cite></p></th>
+<th class="head"><p><cite>Composer</cite></p></th>
+<th class="head"><p><cite>MusicPath</cite></p></th>
+<th class="head"><p><cite>Bpm</cite></p></th>
+<th class="head"><p><cite>BpmBinary</cite></p></th>
+<th class="head"><p><cite>FirstBeat</cite></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Text</p></td>
+<td><p>Text</p></td>
+<td><p>Text</p></td>
+<td><p>Double</p></td>
+<td><p>Binary (Cap’n Proto)</p></td>
+<td><p>TEXT</p></td>
+</tr>
+</tbody>
+</table>
 <p>The binary fields are produced by the editor translation layer and then written
 into the root database. They are not intended to be edited by hand.</p>
 <p><cite>firstBeat</cite> is important operationally: in the current source it is used as the
@@ -208,6 +262,282 @@ one note row with note type/detail, arguments, start/end position, and
 <li><p><cite>MusicArgs</cite>
 music timing metadata used by the music BPM editor flow</p></li>
 </ul>
+<p>The older editor reference docs also included compact field tables that are
+still useful when authoring or reviewing raw data rows.</p>
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-text">Mix Data Format</span><a class="headerlink" href="#id3" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 10.7%" />
+<col style="width: 10.7%" />
+<col style="width: 7.1%" />
+<col style="width: 8.6%" />
+<col style="width: 8.6%" />
+<col style="width: 8.6%" />
+<col style="width: 7.1%" />
+<col style="width: 7.1%" />
+<col style="width: 8.6%" />
+<col style="width: 7.1%" />
+<col style="width: 7.1%" />
+<col style="width: 8.6%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><cite>type</cite></p></th>
+<th class="head"><p><cite>details</cite></p></th>
+<th class="head"><p><cite>ID</cite></p></th>
+<th class="head"><p><cite>first</cite></p></th>
+<th class="head"><p><cite>second</cite></p></th>
+<th class="head"><p><cite>third</cite></p></th>
+<th class="head"><p><cite>beat</cite></p></th>
+<th class="head"><p><cite>subBeat</cite></p></th>
+<th class="head"><p><cite>separate</cite></p></th>
+<th class="head"><p><cite>Ebeat</cite></p></th>
+<th class="head"><p><cite>EsubBeat</cite></p></th>
+<th class="head"><p><cite>Eseparate</cite></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><cite>TYPE_ENUM</cite></p></td>
+<td><p><cite>DETAIL_ENUM</cite></p></td>
+<td><p>int</p></td>
+<td><p>TEXT</p></td>
+<td><p>TEXT</p></td>
+<td><p>TEXT</p></td>
+<td><p>long</p></td>
+<td><p>long</p></td>
+<td><p>long</p></td>
+<td><p>long</p></td>
+<td><p>long</p></td>
+<td><p>long</p></td>
+</tr>
+</tbody>
+</table>
+<p>The table below preserves the older author-facing labels because it captures
+how <cite>first</cite>, <cite>second</cite>, and <cite>third</cite> are interpreted for each mix type. Current
+source names such as <cite>BPM_CONTROL</cite> and <cite>OSC_FILTER</cite> map to the older
+<cite>bpmControl</cite> and <cite>OCS_Filter</cite> spellings shown here.</p>
+<table class="docutils align-default" id="id4">
+<caption><span class="caption-text">Mix Data Table</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 6.7%" />
+<col style="width: 23.3%" />
+<col style="width: 13.3%" />
+<col style="width: 13.3%" />
+<col style="width: 20.0%" />
+<col style="width: 13.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>type</p></th>
+<th class="head"><p>ID</p></th>
+<th class="head"><p>details</p></th>
+<th class="head"><p>first</p></th>
+<th class="head"><p>second</p></th>
+<th class="head"><p>third</p></th>
+<th class="head"><p>Interpolated Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>FILTER(0)</p></td>
+<td><p>ID</p></td>
+<td><p>HIGH(0)/LOW(2)</p></td>
+<td><p>ITPL</p></td>
+<td><p>8PointValues</p></td>
+<td><p>NONE</p></td>
+<td><p>filter Frequency</p></td>
+</tr>
+<tr class="row-odd"><td><p>EQ(1)</p></td>
+<td><p>ID</p></td>
+<td><p>HIGH(0)/MID(1)/LOW(2)</p></td>
+<td><p>ITPL</p></td>
+<td><p>8PointValues</p></td>
+<td><p>NONE</p></td>
+<td><p>eq value</p></td>
+</tr>
+<tr class="row-even"><td><p>DISTORTION(2)</p></td>
+<td><p>ID</p></td>
+<td><p>0</p></td>
+<td><p>ITPL</p></td>
+<td><p>8PointValues</p></td>
+<td><p>NONE</p></td>
+<td><p>drive value</p></td>
+</tr>
+<tr class="row-odd"><td><p>CONTROL(3)</p></td>
+<td><p>ID</p></td>
+<td><p>PAUSE(3)/CUE(4)</p></td>
+<td><p>approx_loc</p></td>
+<td><p>X</p></td>
+<td><p>NONE</p></td>
+<td><p>NONE</p></td>
+</tr>
+<tr class="row-even"><td><p>VOL(4)</p></td>
+<td><p>ID</p></td>
+<td><p>TRIM(5)/FADER(6)</p></td>
+<td><p>ITPL</p></td>
+<td><p>8PointValues</p></td>
+<td><p>NONE</p></td>
+<td><p>volume</p></td>
+</tr>
+<tr class="row-odd"><td><p>LOAD(5)</p></td>
+<td><p>ID</p></td>
+<td><p>0</p></td>
+<td><p>title</p></td>
+<td><p>composer</p></td>
+<td><p>bpm</p></td>
+<td><p>NONE</p></td>
+</tr>
+<tr class="row-even"><td><p>UNLOAD(6)</p></td>
+<td><p>ID</p></td>
+<td><p>0</p></td>
+<td><p>X</p></td>
+<td><p>X</p></td>
+<td><p>NONE</p></td>
+<td><p>NONE</p></td>
+</tr>
+<tr class="row-odd"><td><p>bpmControl(7)</p></td>
+<td><p>ID</p></td>
+<td><p>timeStretch(7)</p></td>
+<td><p>BPM(double)</p></td>
+<td><p>NONE</p></td>
+<td><p>NONE</p></td>
+<td><p>NONE</p></td>
+</tr>
+<tr class="row-even"><td><p>ECHO(8)</p></td>
+<td><p>ID</p></td>
+<td><p>0</p></td>
+<td><p>ITPL</p></td>
+<td><p>8PointValues</p></td>
+<td><p>BPM, feedback</p></td>
+<td><p>Wet amount</p></td>
+</tr>
+<tr class="row-odd"><td><p>OCS_Filter(9)</p></td>
+<td><p>ID</p></td>
+<td><p>HIGH(0)/LOW(2)</p></td>
+<td><p>ITPL</p></td>
+<td><p>8PointValues</p></td>
+<td><p>BPM, MiddleFreq, RangeHalfFreq</p></td>
+<td><p>Wet amount</p></td>
+</tr>
+<tr class="row-even"><td><p>FLANGER(10)</p></td>
+<td><p>ID</p></td>
+<td><p>0</p></td>
+<td><p>ITPL</p></td>
+<td><p>8PointValues</p></td>
+<td><p>BPM</p></td>
+<td><p>Wet amount</p></td>
+</tr>
+<tr class="row-odd"><td><p>PHASER(11)</p></td>
+<td><p>ID</p></td>
+<td><p>0</p></td>
+<td><p>ITPL</p></td>
+<td><p>8PointValues</p></td>
+<td><p>BPM</p></td>
+<td><p>Wet amount</p></td>
+</tr>
+<tr class="row-even"><td><p>TRANCE(12)</p></td>
+<td><p>ID</p></td>
+<td><p>0</p></td>
+<td><p>ITPL</p></td>
+<td><p>8PointValues</p></td>
+<td><p>BPM, GAIN</p></td>
+<td><p>Wet amount</p></td>
+</tr>
+<tr class="row-odd"><td><p>PANNER(13)</p></td>
+<td><p>ID</p></td>
+<td><p>0</p></td>
+<td><p>ITPL</p></td>
+<td><p>8PointValues</p></td>
+<td><p>BPM, GAIN</p></td>
+<td><p>Wet amount</p></td>
+</tr>
+<tr class="row-even"><td><p>BATTLE_DJ(14)</p></td>
+<td><p>ID</p></td>
+<td><p>SPIN(8)/PITCH(9)/REV(10)</p></td>
+<td><p>SPEED</p></td>
+<td><p>NONE</p></td>
+<td><p>NONE</p></td>
+<td><p>NONE</p></td>
+</tr>
+<tr class="row-odd"><td><p>BATTLE_DJ(14)</p></td>
+<td><p>ID</p></td>
+<td><p>SCRATCH(11)</p></td>
+<td><p>StartPosition</p></td>
+<td><p>SPEED</p></td>
+<td><p>NONE</p></td>
+<td><p>NONE</p></td>
+</tr>
+<tr class="row-even"><td><p>ROLL(15)</p></td>
+<td><p>ID</p></td>
+<td><p>0</p></td>
+<td><p>ITPL</p></td>
+<td><p>8PointValues</p></td>
+<td><p>BPM</p></td>
+<td><p>Wet amount</p></td>
+</tr>
+<tr class="row-odd"><td><p>COMPRESSOR(16)</p></td>
+<td><p>ID</p></td>
+<td><p>0</p></td>
+<td><p>Strength</p></td>
+<td><p>Thresh, Knee</p></td>
+<td><p>ATT, REL</p></td>
+<td><p>NONE</p></td>
+</tr>
+<tr class="row-even"><td><p>ROBOT(17)</p></td>
+<td><p>ID</p></td>
+<td><p>0</p></td>
+<td><p>ITPL</p></td>
+<td><p>8PointValues</p></td>
+<td><p>ocsFreq</p></td>
+<td><p>Wet amount</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id5">
+<caption><span class="caption-text">Note Data Format</span><a class="headerlink" href="#id5" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 9.1%" />
+<col style="width: 12.2%" />
+<col style="width: 9.1%" />
+<col style="width: 9.1%" />
+<col style="width: 9.1%" />
+<col style="width: 7.3%" />
+<col style="width: 7.3%" />
+<col style="width: 7.3%" />
+<col style="width: 7.3%" />
+<col style="width: 7.3%" />
+<col style="width: 7.3%" />
+<col style="width: 7.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><cite>Note_Type</cite></p></th>
+<th class="head"><p><cite>Note_Detail</cite></p></th>
+<th class="head"><p><cite>first</cite></p></th>
+<th class="head"><p><cite>second</cite></p></th>
+<th class="head"><p><cite>third</cite></p></th>
+<th class="head"><p><cite>beat</cite></p></th>
+<th class="head"><p><cite>subBeat</cite></p></th>
+<th class="head"><p><cite>separate</cite></p></th>
+<th class="head"><p><cite>Ebeat</cite></p></th>
+<th class="head"><p><cite>EsubBeat</cite></p></th>
+<th class="head"><p><cite>Eseparate</cite></p></th>
+<th class="head"><p><cite>RailID</cite></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TEXT</p></td>
+<td><p>uint16</p></td>
+<td><p>TEXT</p></td>
+<td><p>TEXT</p></td>
+<td><p>TEXT</p></td>
+<td><p>long</p></td>
+<td><p>long</p></td>
+<td><p>long</p></td>
+<td><p>long</p></td>
+<td><p>long</p></td>
+<td><p>long</p></td>
+<td><p>uint64</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="time-and-position-model">
 <h2>Time And Position Model<a class="headerlink" href="#time-and-position-model" title="Link to this heading"></a></h2>
@@ -254,6 +584,26 @@ between the start and end positions</p></li>
 <li><p><cite>ITPL_CUBIC</cite></p></li>
 <li><p><cite>ITPL_FLAT</cite></p></li>
 </ul>
+<table class="docutils align-default" id="id6">
+<caption><span class="caption-text">Interpolation Keywords</span><a class="headerlink" href="#id6" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Keyword</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><cite>ITPL</cite></p></td>
+<td><p>Choose the interpolator type (<cite>linear</cite>, <cite>cosine</cite>, <cite>cubic</cite>, or <cite>flat</cite>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>8PointValues</cite></p></td>
+<td><p>Eight data points that define the waveform used by the interpolator</p></td>
+</tr>
+</tbody>
+</table>
 <p>Example control string:</p>
 <div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">points</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;5000,1000,2000,3000,4000,5000,5500,6000&quot;</span><span class="p">;</span>
 </pre></div>

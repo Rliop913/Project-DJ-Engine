@@ -62,6 +62,8 @@ Included By
 
 - :ref:`file_include_core_audioRender_MixMachine_MixMachine.hpp`
 
+- :ref:`file_include_core_interface_PDJE_interface.cpp`
+
 
 
 

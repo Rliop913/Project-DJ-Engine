@@ -50,6 +50,8 @@ Included By
 -----------
 
 
+- :ref:`file_include_core_interface_CPDJE_interface.cpp`
+
 - :ref:`file_include_core_interface_PDJE_interface.cpp`
 
 - :ref:`file_include_core_interface_PDJE_polyglot_wraps.cpp`
@@ -63,6 +65,8 @@ Included By
 - :ref:`file_include_tests_gittest.cpp`
 
 - :ref:`file_include_tests_interfaceTest.cpp`
+
+- :ref:`file_include_tests_music_to_waveform_webp.cpp`
 
 
 

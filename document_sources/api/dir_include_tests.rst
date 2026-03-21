@@ -31,5 +31,6 @@ Files
 - :ref:`file_include_tests_interfaceTest.cpp`
 - :ref:`file_include_tests_logTest.cpp`
 - :ref:`file_include_tests_manualAudioTest.cpp`
+- :ref:`file_include_tests_music_to_waveform_webp.cpp`
 
 

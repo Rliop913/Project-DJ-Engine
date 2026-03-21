@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classPDJE__TIMELINE_1_1TimeLineDiffMachineCore" kind="class" language="C++" prot="public">
     <compoundname>PDJE_TIMELINE::TimeLineDiffMachineCore</compoundname>
     <derivedcompoundref refid="classPDJE__TIMELINE_1_1TimeLineDiffMachine" prot="private" virt="non-virtual">PDJE_TIMELINE::TimeLineDiffMachine&lt; CapnpType &gt;</derivedcompoundref>
@@ -15,11 +15,10 @@
     <innerclass refid="structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1RecoveredFragment" prot="public">PDJE_TIMELINE::TimeLineDiffMachineCore::RecoveredFragment</innerclass>
     <innerclass refid="structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1SideHunkKey" prot="private">PDJE_TIMELINE::TimeLineDiffMachineCore::SideHunkKey</innerclass>
     <innerclass refid="structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1TypeHooks" prot="protected">PDJE_TIMELINE::TimeLineDiffMachineCore::TypeHooks</innerclass>
-    <sectiondef kind="public-type">
+      <sectiondef kind="public-type">
       <memberdef kind="enum" id="classPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1a18972419d60deb4c453b03efbdbeed53" prot="public" static="no" strong="yes">
         <type></type>
         <name>DiffSide</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::DiffSide</qualifiedname>
         <enumvalue id="classPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1a18972419d60deb4c453b03efbdbeed53a3edf8ca26a1ec14dd6e91dd277ae1de6" prot="public">
           <name>Origin</name>
           <briefdescription>
@@ -45,7 +44,6 @@
       <memberdef kind="enum" id="classPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1ad90e8c51303b19e5c895302ae816eebf" prot="public" static="no" strong="yes">
         <type></type>
         <name>RecoveryMode</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::RecoveryMode</qualifiedname>
         <enumvalue id="classPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1ad90e8c51303b19e5c895302ae816eebfa497031794414a552435f90151ac3b54b" prot="public">
           <name>Object</name>
           <briefdescription>
@@ -71,7 +69,6 @@
       <memberdef kind="enum" id="classPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1a687c70c4eb16161caf7f5d69f1a184f5" prot="public" static="no" strong="yes">
         <type></type>
         <name>ParseMode</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::ParseMode</qualifiedname>
         <enumvalue id="classPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1a687c70c4eb16161caf7f5d69f1a184f5a898063c24fcf97d5bac529e6c252bf24" prot="public">
           <name>DirectObject</name>
           <briefdescription>
@@ -97,7 +94,6 @@
       <memberdef kind="enum" id="classPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1ade015e472a03acef7252fec4e8846b12" prot="public" static="no" strong="yes">
         <type></type>
         <name>RegionKindGuess</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::RegionKindGuess</qualifiedname>
         <enumvalue id="classPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1ade015e472a03acef7252fec4e8846b12a6b14bfa83a9561caf81f517f5386fbb7" prot="public">
           <name>MixRow</name>
           <briefdescription>
@@ -141,14 +137,13 @@
         </inbodydescription>
         <location file="include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp" line="19" column="5" bodyfile="include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp" bodystart="19" bodyend="25"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="private-static-attrib">
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
       <memberdef kind="variable" id="classPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1a4a15aa3679c6620817b9ceb38fbd225a" prot="private" static="yes" constexpr="yes" mutable="no">
-        <type>int</type>
-        <definition>int PDJE_TIMELINE::TimeLineDiffMachineCore::kRecoveryMaxExpandLines</definition>
+        <type>constexpr int</type>
+        <definition>constexpr int PDJE_TIMELINE::TimeLineDiffMachineCore::kRecoveryMaxExpandLines</definition>
         <argsstring></argsstring>
         <name>kRecoveryMaxExpandLines</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::kRecoveryMaxExpandLines</qualifiedname>
         <initializer>= 256</initializer>
         <briefdescription>
         </briefdescription>
@@ -159,11 +154,10 @@
         <location file="include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp" line="136" column="26" bodyfile="include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp" bodystart="136" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1ae4665a1b69e9bed7028231b795191f07" prot="private" static="yes" constexpr="yes" mutable="no">
-        <type>int</type>
-        <definition>int PDJE_TIMELINE::TimeLineDiffMachineCore::kHunkRetryPadding</definition>
+        <type>constexpr int</type>
+        <definition>constexpr int PDJE_TIMELINE::TimeLineDiffMachineCore::kHunkRetryPadding</definition>
         <argsstring></argsstring>
         <name>kHunkRetryPadding</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::kHunkRetryPadding</qualifiedname>
         <initializer>= 1</initializer>
         <briefdescription>
         </briefdescription>
@@ -173,14 +167,13 @@
         </inbodydescription>
         <location file="include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp" line="137" column="26" bodyfile="include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp" bodystart="137" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="private-attrib">
+      </sectiondef>
+      <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1a86b143e9c3ab0c1dd0b71ba409f74b7f" prot="private" static="no" mutable="no">
         <type>git_repository *</type>
         <definition>git_repository* PDJE_TIMELINE::TimeLineDiffMachineCore::repo</definition>
         <argsstring></argsstring>
         <name>repo</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::repo</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -194,7 +187,6 @@
         <definition>std::string PDJE_TIMELINE::TimeLineDiffMachineCore::target_file</definition>
         <argsstring></argsstring>
         <name>target_file</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::target_file</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -204,11 +196,10 @@
         <location file="include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp" line="140" column="21" bodyfile="include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp" bodystart="140" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1afd1f51ff9cb239cf2d9d18d6698dae43" prot="private" static="no" mutable="no">
-        <type><ref refid="namespacePDJE__TIMELINE_1a7f3a24ec3f3f8e7cf279712367924ce3" kindref="member">OID</ref></type>
+        <type><ref refid="namespacePDJE__TIMELINE_1a332091bad520025c963254deb9de8b35" kindref="member">OID</ref></type>
         <definition>OID PDJE_TIMELINE::TimeLineDiffMachineCore::origin</definition>
         <argsstring></argsstring>
         <name>origin</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::origin</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -218,11 +209,10 @@
         <location file="include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp" line="141" column="21" bodyfile="include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp" bodystart="141" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1acfc193896e36cade1e0c0e4df0b72071" prot="private" static="no" mutable="no">
-        <type><ref refid="namespacePDJE__TIMELINE_1a7f3a24ec3f3f8e7cf279712367924ce3" kindref="member">OID</ref></type>
+        <type><ref refid="namespacePDJE__TIMELINE_1a332091bad520025c963254deb9de8b35" kindref="member">OID</ref></type>
         <definition>OID PDJE_TIMELINE::TimeLineDiffMachineCore::compare</definition>
         <argsstring></argsstring>
         <name>compare</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::compare</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -231,14 +221,13 @@
         </inbodydescription>
         <location file="include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp" line="142" column="21" bodyfile="include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp" bodystart="142" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="protected-func">
+      </sectiondef>
+      <sectiondef kind="protected-func">
       <memberdef kind="function" id="classPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1a7ad41ebbf0da93481c43ed367a09da6e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>PDJE_TIMELINE::TimeLineDiffMachineCore::TimeLineDiffMachineCore</definition>
         <argsstring>(git_repository *repo, const std::string &amp;target_file, const OID &amp;origin, const OID &amp;compare)</argsstring>
         <name>TimeLineDiffMachineCore</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::TimeLineDiffMachineCore</qualifiedname>
         <param>
           <type>git_repository *</type>
           <declname>repo</declname>
@@ -248,11 +237,11 @@
           <declname>target_file</declname>
         </param>
         <param>
-          <type>const <ref refid="namespacePDJE__TIMELINE_1a7f3a24ec3f3f8e7cf279712367924ce3" kindref="member">OID</ref> &amp;</type>
+          <type>const <ref refid="namespacePDJE__TIMELINE_1a332091bad520025c963254deb9de8b35" kindref="member">OID</ref> &amp;</type>
           <declname>origin</declname>
         </param>
         <param>
-          <type>const <ref refid="namespacePDJE__TIMELINE_1a7f3a24ec3f3f8e7cf279712367924ce3" kindref="member">OID</ref> &amp;</type>
+          <type>const <ref refid="namespacePDJE__TIMELINE_1a332091bad520025c963254deb9de8b35" kindref="member">OID</ref> &amp;</type>
           <declname>compare</declname>
         </param>
         <briefdescription>
@@ -268,7 +257,6 @@
         <definition>std::optional&lt; TimeLineSemanticDiffResult &gt; PDJE_TIMELINE::TimeLineDiffMachineCore::RunPipelineCore</definition>
         <argsstring>(TimeLineDiffKind kind, const TypeHooks &amp;hooks)</argsstring>
         <name>RunPipelineCore</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::RunPipelineCore</qualifiedname>
         <param>
           <type><ref refid="namespacePDJE__TIMELINE_1aab72ba929c50c7e6ab8c88f46105b96d" kindref="member">TimeLineDiffKind</ref></type>
           <declname>kind</declname>
@@ -285,14 +273,13 @@
         </inbodydescription>
         <location file="include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp" line="120" column="5" bodyfile="include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.cpp" bodystart="104" bodyend="172"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="private-static-func">
+      </sectiondef>
+      <sectiondef kind="private-static-func">
       <memberdef kind="function" id="classPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1ae36b59878d5300af1fbff80ce8902003" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool PDJE_TIMELINE::TimeLineDiffMachineCore::HasGitErr</definition>
         <argsstring>()</argsstring>
         <name>HasGitErr</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::HasGitErr</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -306,7 +293,6 @@
         <definition>void PDJE_TIMELINE::TimeLineDiffMachineCore::LogGitErr</definition>
         <argsstring>(const char *prefix)</argsstring>
         <name>LogGitErr</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::LogGitErr</qualifiedname>
         <param>
           <type>const char *</type>
           <declname>prefix</declname>
@@ -324,7 +310,6 @@
         <definition>std::string PDJE_TIMELINE::TimeLineDiffMachineCore::TrimCopy</definition>
         <argsstring>(std::string_view sv)</argsstring>
         <name>TrimCopy</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::TrimCopy</qualifiedname>
         <param>
           <type>std::string_view</type>
           <declname>sv</declname>
@@ -342,7 +327,6 @@
         <definition>std::string PDJE_TIMELINE::TimeLineDiffMachineCore::TrimTrailingComma</definition>
         <argsstring>(std::string_view sv)</argsstring>
         <name>TrimTrailingComma</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::TrimTrailingComma</qualifiedname>
         <param>
           <type>std::string_view</type>
           <declname>sv</declname>
@@ -360,7 +344,6 @@
         <definition>std::string PDJE_TIMELINE::TimeLineDiffMachineCore::Preview</definition>
         <argsstring>(const std::string &amp;s, std::size_t max_len=160)</argsstring>
         <name>Preview</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::Preview</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>s</declname>
@@ -383,7 +366,6 @@
         <definition>TimeLineDiffMachineCore::LineIndex PDJE_TIMELINE::TimeLineDiffMachineCore::BuildLineIndex</definition>
         <argsstring>(const std::string &amp;text)</argsstring>
         <name>BuildLineIndex</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::BuildLineIndex</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>text</declname>
@@ -401,7 +383,6 @@
         <definition>bool PDJE_TIMELINE::TimeLineDiffMachineCore::HasLine</definition>
         <argsstring>(const LineIndex &amp;idx, int line)</argsstring>
         <name>HasLine</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::HasLine</qualifiedname>
         <param>
           <type>const <ref refid="structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1LineIndex" kindref="compound">LineIndex</ref> &amp;</type>
           <declname>idx</declname>
@@ -423,7 +404,6 @@
         <definition>int PDJE_TIMELINE::TimeLineDiffMachineCore::ClampLine</definition>
         <argsstring>(const LineIndex &amp;idx, int line)</argsstring>
         <name>ClampLine</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::ClampLine</qualifiedname>
         <param>
           <type>const <ref refid="structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1LineIndex" kindref="compound">LineIndex</ref> &amp;</type>
           <declname>idx</declname>
@@ -445,7 +425,6 @@
         <definition>std::size_t PDJE_TIMELINE::TimeLineDiffMachineCore::LineStartOffset</definition>
         <argsstring>(const LineIndex &amp;idx, int line)</argsstring>
         <name>LineStartOffset</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::LineStartOffset</qualifiedname>
         <param>
           <type>const <ref refid="structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1LineIndex" kindref="compound">LineIndex</ref> &amp;</type>
           <declname>idx</declname>
@@ -467,7 +446,6 @@
         <definition>std::size_t PDJE_TIMELINE::TimeLineDiffMachineCore::LineEndOffsetExclusive</definition>
         <argsstring>(const LineIndex &amp;idx, const std::string &amp;text, int line)</argsstring>
         <name>LineEndOffsetExclusive</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::LineEndOffsetExclusive</qualifiedname>
         <param>
           <type>const <ref refid="structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1LineIndex" kindref="compound">LineIndex</ref> &amp;</type>
           <declname>idx</declname>
@@ -493,7 +471,6 @@
         <definition>int PDJE_TIMELINE::TimeLineDiffMachineCore::OffsetToLine</definition>
         <argsstring>(const LineIndex &amp;idx, std::size_t offset)</argsstring>
         <name>OffsetToLine</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::OffsetToLine</qualifiedname>
         <param>
           <type>const <ref refid="structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1LineIndex" kindref="compound">LineIndex</ref> &amp;</type>
           <declname>idx</declname>
@@ -515,7 +492,6 @@
         <definition>std::string_view PDJE_TIMELINE::TimeLineDiffMachineCore::SliceByOffsets</definition>
         <argsstring>(const std::string &amp;text, std::size_t start, std::size_t end_exclusive)</argsstring>
         <name>SliceByOffsets</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::SliceByOffsets</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>text</declname>
@@ -541,7 +517,6 @@
         <definition>std::optional&lt; std::size_t &gt; PDJE_TIMELINE::TimeLineDiffMachineCore::FindEnclosingObjectStart</definition>
         <argsstring>(const std::string &amp;text, std::size_t probe_offset)</argsstring>
         <name>FindEnclosingObjectStart</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::FindEnclosingObjectStart</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>text</declname>
@@ -563,7 +538,6 @@
         <definition>std::optional&lt; std::size_t &gt; PDJE_TIMELINE::TimeLineDiffMachineCore::FindMatchingObjectEnd</definition>
         <argsstring>(const std::string &amp;text, std::size_t object_start)</argsstring>
         <name>FindMatchingObjectEnd</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::FindMatchingObjectEnd</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>text</declname>
@@ -585,7 +559,6 @@
         <definition>std::optional&lt; TimeLineDiffMachineCore::CandidateOffsets &gt; PDJE_TIMELINE::TimeLineDiffMachineCore::RecoverObjectOffsetsAtLine</definition>
         <argsstring>(const BlobText &amp;blob, int seed_line)</argsstring>
         <name>RecoverObjectOffsetsAtLine</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::RecoverObjectOffsetsAtLine</qualifiedname>
         <param>
           <type>const <ref refid="structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1BlobText" kindref="compound">BlobText</ref> &amp;</type>
           <declname>blob</declname>
@@ -607,7 +580,6 @@
         <definition>std::optional&lt; TimeLineDiffMachineCore::CandidateOffsets &gt; PDJE_TIMELINE::TimeLineDiffMachineCore::RecoverTopLevelFieldOffsetsAtLine</definition>
         <argsstring>(const BlobText &amp;blob, int seed_line)</argsstring>
         <name>RecoverTopLevelFieldOffsetsAtLine</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::RecoverTopLevelFieldOffsetsAtLine</qualifiedname>
         <param>
           <type>const <ref refid="structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1BlobText" kindref="compound">BlobText</ref> &amp;</type>
           <declname>blob</declname>
@@ -629,7 +601,6 @@
         <definition>TimeLineDiffMachineCore::BlobText PDJE_TIMELINE::TimeLineDiffMachineCore::MakeBlobText</definition>
         <argsstring>(std::string text)</argsstring>
         <name>MakeBlobText</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::MakeBlobText</qualifiedname>
         <param>
           <type>std::string</type>
           <declname>text</declname>
@@ -647,7 +618,6 @@
         <definition>int PDJE_TIMELINE::TimeLineDiffMachineCore::DiffHunkCb</definition>
         <argsstring>(const git_diff_delta *, const git_diff_hunk *hunk, void *payload_ptr)</argsstring>
         <name>DiffHunkCb</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::DiffHunkCb</qualifiedname>
         <param>
           <type>const git_diff_delta *</type>
         </param>
@@ -672,7 +642,6 @@
         <definition>int PDJE_TIMELINE::TimeLineDiffMachineCore::DiffLineCb</definition>
         <argsstring>(const git_diff_delta *, const git_diff_hunk *, const git_diff_line *line, void *payload_ptr)</argsstring>
         <name>DiffLineCb</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::DiffLineCb</qualifiedname>
         <param>
           <type>const git_diff_delta *</type>
         </param>
@@ -700,7 +669,6 @@
         <definition>std::vector&lt; TimeLineDiffMachineCore::FinalizedRegion &gt; PDJE_TIMELINE::TimeLineDiffMachineCore::FinalizeRecoveredFragments</definition>
         <argsstring>(const std::vector&lt; RecoveredFragment &gt; &amp;fragments)</argsstring>
         <name>FinalizeRecoveredFragments</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::FinalizeRecoveredFragments</qualifiedname>
         <param>
           <type>const std::vector&lt; <ref refid="structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1RecoveredFragment" kindref="compound">RecoveredFragment</ref> &gt; &amp;</type>
           <declname>fragments</declname>
@@ -718,7 +686,6 @@
         <definition>std::optional&lt; std::vector&lt; TimeLineDiffMachineCore::JsonizedRegion &gt; &gt; PDJE_TIMELINE::TimeLineDiffMachineCore::JsonizeRegions</definition>
         <argsstring>(const std::vector&lt; FinalizedRegion &gt; &amp;regions)</argsstring>
         <name>JsonizeRegions</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::JsonizeRegions</qualifiedname>
         <param>
           <type>const std::vector&lt; <ref refid="structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1FinalizedRegion" kindref="compound">FinalizedRegion</ref> &gt; &amp;</type>
           <declname>regions</declname>
@@ -731,14 +698,13 @@
         </inbodydescription>
         <location file="include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp" line="217" column="5" bodyfile="include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.cpp" bodystart="872" bodyend="913"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="private-func">
+      </sectiondef>
+      <sectiondef kind="private-func">
       <memberdef kind="function" id="classPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1a74c2b1271bbaddf2db92ca81fd79783c" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; <ref refid="structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1RecoveredFragment" kindref="compound">RecoveredFragment</ref> &gt;</type>
         <definition>std::optional&lt; TimeLineDiffMachineCore::RecoveredFragment &gt; PDJE_TIMELINE::TimeLineDiffMachineCore::TryRecoverFromSeedLine</definition>
         <argsstring>(const TypeHooks &amp;hooks, DiffSide side, const BlobText &amp;blob, const ChangedLineRef &amp;line_ref, int seed_line) const</argsstring>
         <name>TryRecoverFromSeedLine</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::TryRecoverFromSeedLine</qualifiedname>
         <param>
           <type>const <ref refid="structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1TypeHooks" kindref="compound">TypeHooks</ref> &amp;</type>
           <declname>hooks</declname>
@@ -772,9 +738,8 @@
         <definition>std::optional&lt; std::string &gt; PDJE_TIMELINE::TimeLineDiffMachineCore::LoadBlobTextFromCommit</definition>
         <argsstring>(const OID &amp;oid) const</argsstring>
         <name>LoadBlobTextFromCommit</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::LoadBlobTextFromCommit</qualifiedname>
         <param>
-          <type>const <ref refid="namespacePDJE__TIMELINE_1a7f3a24ec3f3f8e7cf279712367924ce3" kindref="member">OID</ref> &amp;</type>
+          <type>const <ref refid="namespacePDJE__TIMELINE_1a332091bad520025c963254deb9de8b35" kindref="member">OID</ref> &amp;</type>
           <declname>oid</declname>
         </param>
         <briefdescription>
@@ -790,9 +755,8 @@
         <definition>bool PDJE_TIMELINE::TimeLineDiffMachineCore::LoadTreeForOid</definition>
         <argsstring>(const OID &amp;oid, GIT_RAII::tree &amp;tree_out) const</argsstring>
         <name>LoadTreeForOid</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::LoadTreeForOid</qualifiedname>
         <param>
-          <type>const <ref refid="namespacePDJE__TIMELINE_1a7f3a24ec3f3f8e7cf279712367924ce3" kindref="member">OID</ref> &amp;</type>
+          <type>const <ref refid="namespacePDJE__TIMELINE_1a332091bad520025c963254deb9de8b35" kindref="member">OID</ref> &amp;</type>
           <declname>oid</declname>
         </param>
         <param>
@@ -812,7 +776,6 @@
         <definition>std::optional&lt; TimeLineDiffMachineCore::DiffCollectPayload &gt; PDJE_TIMELINE::TimeLineDiffMachineCore::CollectChangedLines</definition>
         <argsstring>() const</argsstring>
         <name>CollectChangedLines</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::CollectChangedLines</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -826,7 +789,6 @@
         <definition>std::vector&lt; TimeLineDiffMachineCore::RecoveredFragment &gt; PDJE_TIMELINE::TimeLineDiffMachineCore::RecoverFragmentsFromChangedLines</definition>
         <argsstring>(const TypeHooks &amp;hooks, const BlobText &amp;origin_blob, const BlobText &amp;compare_blob, const std::vector&lt; ChangedLineRef &gt; &amp;changed_lines, const std::unordered_map&lt; int, HunkRange &gt; &amp;hunks) const</argsstring>
         <name>RecoverFragmentsFromChangedLines</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::RecoverFragmentsFromChangedLines</qualifiedname>
         <param>
           <type>const <ref refid="structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1TypeHooks" kindref="compound">TypeHooks</ref> &amp;</type>
           <declname>hooks</declname>
@@ -855,21 +817,21 @@
         </inbodydescription>
         <location file="include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp" line="209" column="5" bodyfile="include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.cpp" bodystart="718" bodyend="781"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
+      <node id="1">
+        <label>PDJE_TIMELINE::TimeLineDiffMachineCore</label>
+        <link refid="classPDJE__TIMELINE_1_1TimeLineDiffMachineCore"/>
+      </node>
       <node id="2">
         <label>PDJE_TIMELINE::TimeLineDiffMachine&lt; CapnpType &gt;</label>
         <link refid="classPDJE__TIMELINE_1_1TimeLineDiffMachine"/>
         <childnode refid="1" relation="private-inheritance">
         </childnode>
-      </node>
-      <node id="1">
-        <label>PDJE_TIMELINE::TimeLineDiffMachineCore</label>
-        <link refid="classPDJE__TIMELINE_1_1TimeLineDiffMachineCore"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>

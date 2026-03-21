@@ -47,18 +47,9 @@ Includes
 
 
 
-Namespaces
-----------
-
-
-- :ref:`namespace_FrameCalc`
-
-
 Functions
 ---------
 
-
-- :ref:`exhale_function_namespace_frame_calc_1aed991cda2f4549b15a01ad2e71019d69`
 
 - :ref:`exhale_function__frame_calc_8cpp_1a9cdb1949d4582c32a77bdd45679bcb7e`
 

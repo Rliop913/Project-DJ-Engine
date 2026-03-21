@@ -17,6 +17,7 @@ Files
 -----
 
 - :ref:`file_include_util_db_backends_AnnoyBackend.hpp`
+- :ref:`file_include_util_db_backends_RocksDbBackend.cpp`
 - :ref:`file_include_util_db_backends_RocksDbBackend.hpp`
 - :ref:`file_include_util_db_backends_SqliteBackend.hpp`
 

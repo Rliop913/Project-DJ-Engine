@@ -24,7 +24,7 @@ Program Listing for File NoteTranslator.hpp
    #include "PDJE_OBJ_SETTER.hpp"
    #include <functional>
    
-   class PDJE_API NoteTranslator {
+   class NoteTranslator {
      private:
        BpmStruct noteBpms;
    

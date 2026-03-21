@@ -13,10 +13,10 @@ Program Listing for File FrameCalcCore.hpp
    #pragma once
    
    #include "PDJE_EXPORT_SETTER.hpp"
-   
+   #include "PDJE_LOG_SETTER.hpp"
+   #include <cmath>
    #include <cstdint>
    #include <vector>
-   
    #define CHANNEL 2
    #define SAMPLERATE 48000
    #define DSAMPLERATE 48000.0
@@ -27,17 +27,34 @@ Program Listing for File FrameCalcCore.hpp
            (static_cast<TYPE>(SUBBEAT) / static_cast<TYPE>(SEP))
    
    namespace FrameCalc {
-   extern uint64_t
+   
+   static inline uint64_t
    CountFrame(uint64_t Sbeat,
               uint64_t SsubBeat,
               uint64_t Sseparate,
               uint64_t Ebeat,
               uint64_t EsubBeat,
               uint64_t Eseparate,
-              double   bpm);
+              double   bpm)
+   {
+       Sseparate   = Sseparate > 0 ? Sseparate : 1;
+       Eseparate   = Eseparate > 0 ? Eseparate : 1;
+       bpm         = bpm > 0 ? bpm : 1;
+       auto Sapprx = APPRX(double, Sbeat, SsubBeat, Sseparate);
+       auto Eapprx = APPRX(double, Ebeat, EsubBeat, Eseparate);
+       if (Sapprx > Eapprx) {
+           critlog("Failed to Count Frame. Start apprx position is bigger than "
+                   "End apprx position. Start apprx: ");
+           critlog(Sapprx);
+           critlog("End apprx: ");
+           critlog(Eapprx);
+       }
+       return static_cast<unsigned long>(
+           std::round((Eapprx - Sapprx) * (DMINUTE / bpm) * DSAMPLERATE));
+   }
    }; // namespace FrameCalc
    
-   struct PDJE_API BpmFragment {
+   struct BpmFragment {
        uint64_t beat          = 0;
        uint64_t subBeat       = 0;
        uint64_t separate      = 0;
@@ -45,7 +62,7 @@ Program Listing for File FrameCalcCore.hpp
        double   bpm           = 0;
    };
    
-   struct PDJE_API BpmStruct {
+   struct BpmStruct {
        std::vector<BpmFragment> fragments;
    
        void

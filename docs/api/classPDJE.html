@@ -239,6 +239,21 @@
 </dd></dl>
 
 <dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N4PDJE17GetPCMFromMusDataERK7musdata">
+<span id="_CPPv3N4PDJE17GetPCMFromMusDataERK7musdata"></span><span id="_CPPv2N4PDJE17GetPCMFromMusDataERK7musdata"></span><span id="PDJE::GetPCMFromMusData__musdataCR"></span><span class="target" id="class_p_d_j_e_1a99f295a8927a9908f5d1db43b9838f68"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">float</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetPCMFromMusData</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><a class="reference internal" href="../Editor_Format.html#_CPPv47musdata" title="musdata"><span class="n"><span class="pre">musdata</span></span></a><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">md</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N4PDJE17GetPCMFromMusDataERK7musdata" title="Link to this definition"></a><br /></dt>
+<dd><p>Decodes a music entry into interleaved stereo PCM samples. </p>
+<p>If <code class="docutils literal notranslate"><span class="pre">md.musicPath</span></code> is empty, this method searches the root database with the provided metadata and decodes the first matching result.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>md</strong> – Music metadata or search clue. </p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>std::vector&lt;float&gt; Interleaved PCM samples. Empty on failure. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="cpp function">
 <dt class="sig sig-object cpp" id="_CPPv4N4PDJE15GetPlayerObjectEv">
 <span id="_CPPv3N4PDJE15GetPlayerObjectEv"></span><span id="_CPPv2N4PDJE15GetPlayerObjectEv"></span><span id="PDJE::GetPlayerObject"></span><span class="target" id="class_p_d_j_e_1aea68b7f5b26bf7a204bdb173938fd430"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">shared_ptr</span></span><span class="p"><span class="pre">&lt;</span></span><a class="reference internal" href="classaudioPlayer.html#_CPPv411audioPlayer" title="audioPlayer"><span class="n"><span class="pre">audioPlayer</span></span></a><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">GetPlayerObject</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><br /></dt>
 <dd><p>music handler getter api for binded codes. this function gives you a music handler. you can access player directly in cpp, but not in binded languages. so this function exists. </p>

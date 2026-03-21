@@ -43,7 +43,7 @@ Program Listing for File MixMachine.hpp
    enum InterpolateType { LINEAR, COSINE, CUBIC, FLAT };
    
    using ID = long;
-   struct PDJE_API EightPointValues {
+   struct EightPointValues {
        float vals[8] = {
            0,
        };
@@ -67,7 +67,7 @@ Program Listing for File MixMachine.hpp
    
    #define FLAG_ALL_IS_OK -99
    
-   class PDJE_API MixMachine {
+   class MixMachine {
      private:
        // FRAME_POS getMixSize(FRAME_POS frames);
      public:

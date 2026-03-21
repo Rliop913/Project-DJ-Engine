@@ -30,9 +30,15 @@ Includes
 --------
 
 
+- ``Decoder.hpp`` (:ref:`file_include_core_audioRender_MixMachine_MiniaudioObjects_Decoder.hpp`)
+
 - ``PDJE_LOG_SETTER.hpp`` (:ref:`file_include_global_PDJE_LOG_SETTER.hpp`)
 
 - ``PDJE_interface.hpp`` (:ref:`file_include_core_interface_PDJE_interface.hpp`)
+
+- ``optional``
+
+- ``stdexcept``
 
 
 

@@ -84,7 +84,7 @@
     <member refid="structaudio_engine_data_struct_1a993ef28e30d1588f0518c6d5a209325d" kind="variable"><name>cacheSync</name></member>
     <member refid="structaudio_engine_data_struct_1a7f40a0b02a4ff37f86191b9691f968de" kind="variable"><name>highres_clock</name></member>
     <member refid="structaudio_engine_data_struct_1af93ef65131c82aaa444119863f37ab3b" kind="variable"><name>backend_ptr</name></member>
-    <member refid="structaudio_engine_data_struct_1a51f564c58ff14e36320e6167eeaf4196" kind="variable"><name>get_unused_frames</name></member>
+    <member refid="structaudio_engine_data_struct_1af3a4f8b98bc0996d5905a6ea399ee678" kind="variable"><name>get_unused_frames</name></member>
     <member refid="structaudio_engine_data_struct_1a5458ea6743868149c4fd47af1c96197b" kind="function"><name>getNowfPointer</name></member>
     <member refid="structaudio_engine_data_struct_1acfbc94880ac9ca5289ed34fef118f561" kind="function"><name>CountUp</name></member>
     <member refid="structaudio_engine_data_struct_1aa66ef36888faee74e89b103ebfae4b9e" kind="function"><name>GetAfterManFX</name></member>
@@ -419,6 +419,8 @@
     <member refid="classeditor_object_1a360e0000f965db643a0127f7240a425a" kind="function"><name>GetLogWithJSONGraph</name></member>
     <member refid="classeditor_object_1a994b27da4e10c21758c374d77b638cad" kind="function"><name>GetLogWithJSONGraph</name></member>
     <member refid="classeditor_object_1a9ec91b5c9aec96545b0b129146b09efd" kind="function"><name>UpdateLog</name></member>
+    <member refid="classeditor_object_1ab7cfe3ebc5201c658e7dbe1628f61c96" kind="function"><name>GetDiff</name></member>
+    <member refid="classeditor_object_1acc80e586526067f5abdf0fde36c2e693" kind="function"><name>GetDiff</name></member>
     <member refid="classeditor_object_1aa664471474287d500e65d09f08f61001" kind="function"><name>operator[]</name></member>
     <member refid="classeditor_object_1a9e14b13d0a93115510856587e3d0b597" kind="function"><name>DESTROY_PROJECT</name></member>
     <member refid="classeditor_object_1a3ec9d3ccf73457ee3067cd3f47ac23c1" kind="function"><name>ConfigNewMusic</name></member>
@@ -447,6 +449,10 @@
     <member refid="classeditor_object_1a16ef00ce6ae7569f39a60ff8f382bd1c" kind="function"><name>getAll</name></member>
     <member refid="classeditor_object_1a479985c5e13f1986c6b88ceac67924c6" kind="function"><name>getAll</name></member>
     <member refid="classeditor_object_1a5fff7bdde5101a29d10a25989c8e248d" kind="function"><name>getAll</name></member>
+    <member refid="classeditor_object_1a20552dde76eedca8829a07d2a11aef73" kind="function"><name>GetDiff</name></member>
+    <member refid="classeditor_object_1a20552dde76eedca8829a07d2a11aef73" kind="function"><name>GetDiff</name></member>
+    <member refid="classeditor_object_1a20552dde76eedca8829a07d2a11aef73" kind="function"><name>GetDiff</name></member>
+    <member refid="classeditor_object_1a15f67cc9ed45c0965a86b9aac899458a" kind="function"><name>GetDiff</name></member>
     <member refid="classeditor_object_1af2cfb77e5f312a23c61c34d3f9a04b51" kind="function"><name>GetLogWithJSONGraph</name></member>
     <member refid="classeditor_object_1af2cfb77e5f312a23c61c34d3f9a04b51" kind="function"><name>GetLogWithJSONGraph</name></member>
     <member refid="classeditor_object_1af2cfb77e5f312a23c61c34d3f9a04b51" kind="function"><name>GetLogWithJSONGraph</name></member>
@@ -467,6 +473,10 @@
     <member refid="classeditor_object_1a16ef00ce6ae7569f39a60ff8f382bd1c" kind="function"><name>getAll</name></member>
     <member refid="classeditor_object_1a77db8c854567b251bec9cebd5e91c662" kind="function"><name>getAll</name></member>
     <member refid="classeditor_object_1a5fff7bdde5101a29d10a25989c8e248d" kind="function"><name>getAll</name></member>
+    <member refid="classeditor_object_1a20552dde76eedca8829a07d2a11aef73" kind="function"><name>GetDiff</name></member>
+    <member refid="classeditor_object_1a20552dde76eedca8829a07d2a11aef73" kind="function"><name>GetDiff</name></member>
+    <member refid="classeditor_object_1a20552dde76eedca8829a07d2a11aef73" kind="function"><name>GetDiff</name></member>
+    <member refid="classeditor_object_1a15f67cc9ed45c0965a86b9aac899458a" kind="function"><name>GetDiff</name></member>
     <member refid="classeditor_object_1af2cfb77e5f312a23c61c34d3f9a04b51" kind="function"><name>GetLogWithJSONGraph</name></member>
     <member refid="classeditor_object_1af2cfb77e5f312a23c61c34d3f9a04b51" kind="function"><name>GetLogWithJSONGraph</name></member>
     <member refid="classeditor_object_1af2cfb77e5f312a23c61c34d3f9a04b51" kind="function"><name>GetLogWithJSONGraph</name></member>
@@ -491,6 +501,19 @@
   <compound refid="struct_eight_point_values" kind="struct"><name>EightPointValues</name>
     <member refid="struct_eight_point_values_1a3550757b6366b0f7752f6ca58673ad5e" kind="variable"><name>vals</name></member>
     <member refid="struct_eight_point_values_1a518cc95d6d94ef623f2619efcbf2a43f" kind="function"><name>EightPointValues</name></member>
+  </compound>
+  <compound refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1_encode_waveform_webp_args" kind="struct"><name>PDJE_UTIL::function::image::EncodeWaveformWebpArgs</name>
+    <member refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1_encode_waveform_webp_args_1abb0373de5a0413b8a0c3042f134810b8" kind="variable"><name>pcm</name></member>
+    <member refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1_encode_waveform_webp_args_1af87e636810ce3c636d3173f636aac591" kind="variable"><name>channel_count</name></member>
+    <member refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1_encode_waveform_webp_args_1a08a78274c3e72a5beb95bdd57d13c84b" kind="variable"><name>y_pixels</name></member>
+    <member refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1_encode_waveform_webp_args_1a32602d2b479977a4a939dfcae8738dda" kind="variable"><name>pcm_per_pixel</name></member>
+    <member refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1_encode_waveform_webp_args_1a05c6ef3498049671b4b13857c42103b1" kind="variable"><name>x_pixels_per_image</name></member>
+    <member refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1_encode_waveform_webp_args_1a6ea845f49a87ec84a082031b7889c011" kind="variable"><name>compression_level</name></member>
+    <member refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1_encode_waveform_webp_args_1ad66ef9490f80402b6c0c51fcd37db233" kind="variable"><name>worker_thread_count</name></member>
+  </compound>
+  <compound refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1_encode_webp_args" kind="struct"><name>PDJE_UTIL::function::image::EncodeWebpArgs</name>
+    <member refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1_encode_webp_args_1ac9f84b767e41f919c9288904882eb048" kind="variable"><name>image</name></member>
+    <member refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1_encode_webp_args_1a47401590716ae26efce5d2590acb4777" kind="variable"><name>compression_level</name></member>
   </compound>
   <compound refid="class_e_q___p_d_j_e" kind="class"><name>EQ_PDJE</name>
     <member refid="class_e_q___p_d_j_e_1a1da26e96ebca042366be1afbd3332b7b" kind="variable"><name>EQSelect</name></member>
@@ -711,6 +734,30 @@
     <member refid="struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_diff_machine_core_1_1_hunk_range_1ab53b3d901463519193de994cc4655996" kind="variable"><name>new_start</name></member>
     <member refid="struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_diff_machine_core_1_1_hunk_range_1abaf73dd67b3bb13c190ee2d655141c0e" kind="variable"><name>new_lines</name></member>
   </compound>
+  <compound refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1_1_image_layout" kind="struct"><name>PDJE_UTIL::function::image::detail::ImageLayout</name>
+    <member refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1_1_image_layout_1a09a99e622cd7e4cf46c99d779c7a150a" kind="variable"><name>row_bytes</name></member>
+    <member refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1_1_image_layout_1a62058dffe0a41e22f41a8b68a2a44c1c" kind="variable"><name>effective_stride</name></member>
+  </compound>
+  <compound refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1_1_impl" kind="class"><name>PDJE_UTIL::db::backends::RocksDbBackend::Impl</name>
+    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1_1_impl_1a39c493c5b15c984e7a8c22ade457a8b1" kind="variable"><name>config_</name></member>
+    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1_1_impl_1af7d08c7dc2ca7b138265fc7f7e1383d0" kind="variable"><name>db_options_</name></member>
+    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1_1_impl_1ab51adcc0291125384bbc562a2ca52977" kind="variable"><name>read_options_</name></member>
+    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1_1_impl_1a20ef455b3e478e6816a57a3c6155a6a4" kind="variable"><name>write_options_</name></member>
+    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1_1_impl_1ab70ef984d2d1c045904997f66a36035f" kind="variable"><name>db_</name></member>
+    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1_1_impl_1a160edc0611adb6327d0fd82c452eabae" kind="function"><name>~Impl</name></member>
+    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1_1_impl_1abb2a0e4d02f0fc7165a09b3ac7062920" kind="function"><name>open</name></member>
+    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1_1_impl_1a89874824d2cdb58fd4e286533cd27a85" kind="function"><name>close</name></member>
+    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1_1_impl_1a2a4c1955abf63e38fe7bde2655f51ecd" kind="function"><name>contains</name></member>
+    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1_1_impl_1ad57e9b6f3b3c05b11a33299afa20f5b0" kind="function"><name>get_text</name></member>
+    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1_1_impl_1a04e7a087f25a3086825911cb0418d9e3" kind="function"><name>get_bytes</name></member>
+    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1_1_impl_1a9b022d30ea46372b174c74312f3647db" kind="function"><name>put_text</name></member>
+    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1_1_impl_1afc2f445cc4bdac45e684cf41a32ddc20" kind="function"><name>put_bytes</name></member>
+    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1_1_impl_1a53bfbbb4c15af386c1fe6a4eca684a6b" kind="function"><name>erase</name></member>
+    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1_1_impl_1a5c2b61f23f6e912552ad34df98ecab51" kind="function"><name>list_keys</name></member>
+    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1_1_impl_1a558f8cba0c1194e98d6d2ed0971e7797" kind="function"><name>require_open</name></member>
+    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1_1_impl_1a5a496ca60ff7289748204ff7f3191c15" kind="function"><name>require_writable</name></member>
+    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1_1_impl_1ae27cbfc4be2ad3edf65cf1e692f01a39" kind="function"><name>get_raw</name></member>
+  </compound>
   <compound refid="struct_ingredients" kind="struct"><name>Ingredients</name>
     <member refid="struct_ingredients_1a7e4785fdee02fc7bbd011d90923c621b" kind="variable"><name>pos</name></member>
     <member refid="struct_ingredients_1ae41e97f65aee799e5714b33b8f78f78f" kind="function"><name>SORT</name></member>
@@ -850,9 +897,7 @@
     <member refid="classlitedb_1a690e69d7f293b7ecbfc2d32be3cbca19" kind="variable"><name>kvdbPath</name></member>
     <member refid="classlitedb_1a6e6152c6612760ef978a5d505323519a" kind="variable"><name>vectordbPath</name></member>
     <member refid="classlitedb_1a485ddae6aed9c0c213612434b0eb24e4" kind="variable"><name>sdb</name></member>
-    <member refid="classlitedb_1a5d6de7dee58fadfa03b125be11ac7696" kind="variable"><name>kvdb</name></member>
-    <member refid="classlitedb_1ab91ee89041471eaa2bc56988bedb7c10" kind="variable"><name>wops</name></member>
-    <member refid="classlitedb_1a4d3a774674b1bd24f1269791ae8be880" kind="variable"><name>rops</name></member>
+    <member refid="classlitedb_1a88078f4a247f192b057c715b3c898e90" kind="variable"><name>kvdb_impl</name></member>
     <member refid="classlitedb_1ac516f0ac3215ae1f81a733037ae1cd67" kind="function"><name>CheckTables</name></member>
     <member refid="classlitedb_1ad34e34703f0871c6f7ac4eb1c3242a1b" kind="function"><name>operator&lt;&lt;</name></member>
     <member refid="classlitedb_1ad2789c301c55befe5e85284f272bb46d" kind="function"><name>operator&lt;=</name></member>
@@ -1242,14 +1287,34 @@
     <member refid="class_p_d_j_e_1a14f12cabddceb731d57b608530053587" kind="function"><name>GetNoteObjects</name></member>
     <member refid="class_p_d_j_e_1a2639f4ed0f7ac3770f5eb3b6c86ae800" kind="function"><name>SearchMusic</name></member>
     <member refid="class_p_d_j_e_1a322160409e9c02e4700e966623bfd4d7" kind="function"><name>SearchTrack</name></member>
+    <member refid="class_p_d_j_e_1a99f295a8927a9908f5d1db43b9838f68" kind="function"><name>GetPCMFromMusData</name></member>
     <member refid="class_p_d_j_e_1aea68b7f5b26bf7a204bdb173938fd430" kind="function"><name>GetPlayerObject</name></member>
     <member refid="class_p_d_j_e_1afc08d1de925ce319492f0e57ed788321" kind="function"><name>GetEditorObject</name></member>
+  </compound>
+  <compound refid="struct_p_d_j_e___audio_sync_snapshot_v1" kind="struct"><name>PDJE_AudioSyncSnapshotV1</name>
+    <member refid="struct_p_d_j_e___audio_sync_snapshot_v1_1a622bbfece42f5984f6b29a22b257733d" kind="variable"><name>consumed_frames</name></member>
+    <member refid="struct_p_d_j_e___audio_sync_snapshot_v1_1a28d4101eae1e05b28183858f9a3ed220" kind="variable"><name>pre_calculated_unused_frames</name></member>
+    <member refid="struct_p_d_j_e___audio_sync_snapshot_v1_1aea412b5d395e777fc09500f77712edda" kind="variable"><name>microsecond</name></member>
+  </compound>
+  <compound refid="struct_p_d_j_e___bytes_view_v1" kind="struct"><name>PDJE_BytesViewV1</name>
+    <member refid="struct_p_d_j_e___bytes_view_v1_1a4172d685b4c3e1cb45752c2ccf182aa8" kind="variable"><name>data</name></member>
+    <member refid="struct_p_d_j_e___bytes_view_v1_1a6601c31346a479e5cbace8773f61660a" kind="variable"><name>size</name></member>
   </compound>
   <compound refid="struct_p_d_j_e___c_o_r_e___d_a_t_a___l_i_n_e" kind="struct"><name>PDJE_CORE_DATA_LINE</name>
     <member refid="struct_p_d_j_e___c_o_r_e___d_a_t_a___l_i_n_e_1a6f4a3b68d7529669518aac2323a934ca" kind="variable"><name>nowCursor</name></member>
     <member refid="struct_p_d_j_e___c_o_r_e___d_a_t_a___l_i_n_e_1a16f98f5d8805be6f536a19939c8a6481" kind="variable"><name>maxCursor</name></member>
     <member refid="struct_p_d_j_e___c_o_r_e___d_a_t_a___l_i_n_e_1a1a05b5925c47c070a74434a10a0992ab" kind="variable"><name>preRenderedData</name></member>
     <member refid="struct_p_d_j_e___c_o_r_e___d_a_t_a___l_i_n_e_1a42df6f89471d474f97448e10dc8c6331" kind="variable"><name>syncD</name></member>
+  </compound>
+  <compound refid="struct_p_d_j_e___core_data_line_snapshot_v1" kind="struct"><name>PDJE_CoreDataLineSnapshotV1</name>
+    <member refid="struct_p_d_j_e___core_data_line_snapshot_v1_1aa637f23abc0e1ba9852e4a1b92c0edaa" kind="variable"><name>struct_size</name></member>
+    <member refid="struct_p_d_j_e___core_data_line_snapshot_v1_1acf48c2661c0ce46316a4ca0ea7f12e4c" kind="variable"><name>has_player</name></member>
+    <member refid="struct_p_d_j_e___core_data_line_snapshot_v1_1a30e709ba1464965dc4c6f596580fa38a" kind="variable"><name>now_cursor</name></member>
+    <member refid="struct_p_d_j_e___core_data_line_snapshot_v1_1a4edc5aaa5f48535cec106adb7585d85f" kind="variable"><name>max_cursor</name></member>
+    <member refid="struct_p_d_j_e___core_data_line_snapshot_v1_1af45d25e577beb4a3d83e6b610dd0222b" kind="variable"><name>pre_rendered_data</name></member>
+    <member refid="struct_p_d_j_e___core_data_line_snapshot_v1_1aef5f82ae06ff949e06ccd723548012f3" kind="variable"><name>has_pre_rendered_data</name></member>
+    <member refid="struct_p_d_j_e___core_data_line_snapshot_v1_1aca4ad17aad46ff5713caab9a459ae682" kind="variable"><name>has_sync</name></member>
+    <member refid="struct_p_d_j_e___core_data_line_snapshot_v1_1a37303eab07f1d6749f9d9df82d4e8094" kind="variable"><name>sync</name></member>
   </compound>
   <compound refid="class_p_d_j_e___editor" kind="class"><name>PDJE_Editor</name>
     <member refid="class_p_d_j_e___editor_1a3f0dad32adc184ab2e8c2833b5f2163a" kind="variable"><name>pt</name></member>
@@ -1337,6 +1402,54 @@
     <member refid="class_p_d_j_e___i_p_c_1_1_p_d_j_e___input___transfer_1aebdfdb92b9da0f6227467500d7631bad" kind="function"><name>VerifyHmac</name></member>
     <member refid="class_p_d_j_e___i_p_c_1_1_p_d_j_e___input___transfer_1a3d27af32d554402e0b1367fe7f9f0537" kind="function"><name>Send</name></member>
   </compound>
+  <compound refid="struct_p_d_j_e___input_bytes_view_v1" kind="struct"><name>PDJE_InputBytesViewV1</name>
+    <member refid="struct_p_d_j_e___input_bytes_view_v1_1a08834107c2c7157d60b2f222e3010f81" kind="variable"><name>data</name></member>
+    <member refid="struct_p_d_j_e___input_bytes_view_v1_1a96cfd3529e43ad027d4e6f3160e2f3ab" kind="variable"><name>size</name></member>
+  </compound>
+  <compound refid="struct_p_d_j_e___input_device_view_v1" kind="struct"><name>PDJE_InputDeviceViewV1</name>
+    <member refid="struct_p_d_j_e___input_device_view_v1_1a1f4b26aff82e6ab35717a66b175c24b4" kind="variable"><name>struct_size</name></member>
+    <member refid="struct_p_d_j_e___input_device_view_v1_1afefdf7fee11385a4cc46ad435c68cf4a" kind="variable"><name>type</name></member>
+    <member refid="struct_p_d_j_e___input_device_view_v1_1a9748e105de3aa136fca7b54da1db4931" kind="variable"><name>name</name></member>
+    <member refid="struct_p_d_j_e___input_device_view_v1_1a89a266248e8b15df664d0ae5d59d3733" kind="variable"><name>device_specific_id</name></member>
+  </compound>
+  <compound refid="struct_p_d_j_e___input_event_view_v1" kind="struct"><name>PDJE_InputEventViewV1</name>
+    <member refid="struct_p_d_j_e___input_event_view_v1_1a048dbe958b92872efec8fb370f1db972" kind="variable"><name>struct_size</name></member>
+    <member refid="struct_p_d_j_e___input_event_view_v1_1a2aa6de5f700e26999b2f1a61e244498e" kind="variable"><name>type</name></member>
+    <member refid="struct_p_d_j_e___input_event_view_v1_1af7dd99646ebbc5201de81402864b2fa8" kind="variable"><name>id</name></member>
+    <member refid="struct_p_d_j_e___input_event_view_v1_1a342ef57e20e826a08f52a63e2de48408" kind="variable"><name>name</name></member>
+    <member refid="struct_p_d_j_e___input_event_view_v1_1a349d85a257f65973fff70b48b0fdc4a6" kind="variable"><name>microsecond</name></member>
+    <member refid="struct_p_d_j_e___input_event_view_v1_1a66a82a72ff9098faaa19dee574d5d454" kind="variable"><name>keyboard</name></member>
+    <member refid="struct_p_d_j_e___input_event_view_v1_1afdf65387985193d841c59aa6a2441465" kind="variable"><name>mouse</name></member>
+    <member refid="struct_p_d_j_e___input_event_view_v1_1abe1aeef79f14ba62215c7088479eb277" kind="variable"><name>hid_report</name></member>
+  </compound>
+  <compound refid="struct_p_d_j_e___input_keyboard_event_v1" kind="struct"><name>PDJE_InputKeyboardEventV1</name>
+    <member refid="struct_p_d_j_e___input_keyboard_event_v1_1a17e207a19e9313a0b92d3c2e136708b3" kind="variable"><name>key_code</name></member>
+    <member refid="struct_p_d_j_e___input_keyboard_event_v1_1a463a38ace57fbd45d29e580aca619d62" kind="variable"><name>pressed</name></member>
+  </compound>
+  <compound refid="struct_p_d_j_e___input_mouse_event_v1" kind="struct"><name>PDJE_InputMouseEventV1</name>
+    <member refid="struct_p_d_j_e___input_mouse_event_v1_1abc5caf91142d54bfd6d1aff59a7bfa9e" kind="variable"><name>button_type</name></member>
+    <member refid="struct_p_d_j_e___input_mouse_event_v1_1a189c89b907e94925207bf34a73d124d0" kind="variable"><name>wheel_move</name></member>
+    <member refid="struct_p_d_j_e___input_mouse_event_v1_1a45fe2b71a466d069be38937a46176f83" kind="variable"><name>axis_type</name></member>
+    <member refid="struct_p_d_j_e___input_mouse_event_v1_1a605f34d197c35255673dc0b264db9fe4" kind="variable"><name>x</name></member>
+    <member refid="struct_p_d_j_e___input_mouse_event_v1_1ab1dc52e24db8ce97f8dce4dd7bf9b4ef" kind="variable"><name>y</name></member>
+  </compound>
+  <compound refid="struct_p_d_j_e___input_snapshot_handle_v1" kind="struct"><name>PDJE_InputSnapshotHandleV1</name>
+    <member refid="struct_p_d_j_e___input_snapshot_handle_v1_1a8165344c1ecdc86ff8e8cbb377b8c6f5" kind="variable"><name>has_input_stream</name></member>
+    <member refid="struct_p_d_j_e___input_snapshot_handle_v1_1a4830bbda9f5139065182512e5d5521b5" kind="variable"><name>has_midi_stream</name></member>
+    <member refid="struct_p_d_j_e___input_snapshot_handle_v1_1af622572fac3bd69b4b474a578fdae1f4" kind="variable"><name>input_events</name></member>
+    <member refid="struct_p_d_j_e___input_snapshot_handle_v1_1ac114853af8a17a25ccdbc5b8caa1a5f8" kind="variable"><name>midi_events</name></member>
+  </compound>
+  <compound refid="struct_p_d_j_e___input_snapshot_info_v1" kind="struct"><name>PDJE_InputSnapshotInfoV1</name>
+    <member refid="struct_p_d_j_e___input_snapshot_info_v1_1a2ac21df1384bb1890c201f5e8c01f7bc" kind="variable"><name>struct_size</name></member>
+    <member refid="struct_p_d_j_e___input_snapshot_info_v1_1ac9b01034f4505bf54637acecd05c1b77" kind="variable"><name>has_input_stream</name></member>
+    <member refid="struct_p_d_j_e___input_snapshot_info_v1_1a260fc8f0262f83eed1a04b2e0d40c9e6" kind="variable"><name>has_midi_stream</name></member>
+    <member refid="struct_p_d_j_e___input_snapshot_info_v1_1a4f175ae85f96b40007152abbeec5824f" kind="variable"><name>input_event_count</name></member>
+    <member refid="struct_p_d_j_e___input_snapshot_info_v1_1a760891f8094b4c2441f33d8e661dbf64" kind="variable"><name>midi_event_count</name></member>
+  </compound>
+  <compound refid="struct_p_d_j_e___input_string_view_v1" kind="struct"><name>PDJE_InputStringViewV1</name>
+    <member refid="struct_p_d_j_e___input_string_view_v1_1a88d9b1781036c95ebd3aa87426bb5855" kind="variable"><name>data</name></member>
+    <member refid="struct_p_d_j_e___input_string_view_v1_1af892164ab059f369119b695408505aa7" kind="variable"><name>size</name></member>
+  </compound>
   <compound refid="class_p_d_j_e___j_s_o_n_handler" kind="class"><name>PDJE_JSONHandler</name>
     <member refid="class_p_d_j_e___j_s_o_n_handler_1a715fb610427c271c0a8e44e798e4d6d1" kind="variable"><name>ROOT</name></member>
     <member refid="class_p_d_j_e___j_s_o_n_handler_1ac0eae34433759047ad2fa123be2470f7" kind="function"><name>render</name></member>
@@ -1373,6 +1486,39 @@
     <member refid="class_p_d_j_e___j_s_o_n_handler_1ac9abd82d3716a90c1190d0f924ac4bc3" kind="function"><name>render</name></member>
     <member refid="class_p_d_j_e___j_s_o_n_handler_1aefaf5789899fe9ee6bf78ca157460277" kind="function"><name>load</name></member>
   </compound>
+  <compound refid="struct_p_d_j_e___judge_handle_v1" kind="struct"><name>PDJE_JudgeHandleV1</name>
+    <member refid="struct_p_d_j_e___judge_handle_v1_1ac5409c5f4693685044176b3c036f927b" kind="variable"><name>judge</name></member>
+    <member refid="struct_p_d_j_e___judge_handle_v1_1a6b0f35ab33ff2eb7d3ea560c07ffdd0e" kind="variable"><name>attached_engine</name></member>
+    <member refid="struct_p_d_j_e___judge_handle_v1_1aa4334f7d8edea07eb07f654afe415899" kind="variable"><name>attached_input</name></member>
+    <member refid="struct_p_d_j_e___judge_handle_v1_1a2e1acf8dddba4650bb334e47860c1cf9" kind="variable"><name>used_callback</name></member>
+    <member refid="struct_p_d_j_e___judge_handle_v1_1a2e53d247ca6814fd31b7fac4b474d68e" kind="variable"><name>used_user_data</name></member>
+    <member refid="struct_p_d_j_e___judge_handle_v1_1ae1439f8db8ec50e885febc6b8516dd00" kind="variable"><name>missed_callback</name></member>
+    <member refid="struct_p_d_j_e___judge_handle_v1_1a86921bba722f150cd6ca856f69e6a15d" kind="variable"><name>missed_user_data</name></member>
+    <member refid="struct_p_d_j_e___judge_handle_v1_1a2c8e574feed3e35a65f78fffec42f449" kind="variable"><name>used_sleep</name></member>
+    <member refid="struct_p_d_j_e___judge_handle_v1_1a1cc6926192adcf35a4a99173d658b0c5" kind="variable"><name>missed_sleep</name></member>
+    <member refid="struct_p_d_j_e___judge_handle_v1_1a331ed760cbf92fb7694edb7606b142f5" kind="variable"><name>running</name></member>
+  </compound>
+  <compound refid="struct_p_d_j_e___judge_missed_note_v1" kind="struct"><name>PDJE_JudgeMissedNoteV1</name>
+    <member refid="struct_p_d_j_e___judge_missed_note_v1_1aebd6c007a7e2b3ddaed630239a4e32cf" kind="variable"><name>rail_id</name></member>
+    <member refid="struct_p_d_j_e___judge_missed_note_v1_1ad2122c681bfb2f729bbed74a5bc8781e" kind="variable"><name>type</name></member>
+    <member refid="struct_p_d_j_e___judge_missed_note_v1_1a0c3b6083dc2b25ed4adc2650f1136c17" kind="variable"><name>detail</name></member>
+    <member refid="struct_p_d_j_e___judge_missed_note_v1_1aa569017415e151bffc74e7eb680f2cb6" kind="variable"><name>first</name></member>
+    <member refid="struct_p_d_j_e___judge_missed_note_v1_1aa7320fb718f228fcd3279ab0327e1307" kind="variable"><name>second</name></member>
+    <member refid="struct_p_d_j_e___judge_missed_note_v1_1ae792d0248f1214d393b23c0719d73386" kind="variable"><name>third</name></member>
+    <member refid="struct_p_d_j_e___judge_missed_note_v1_1adf76dee777a337aec02593b03eea3d12" kind="variable"><name>microsecond</name></member>
+    <member refid="struct_p_d_j_e___judge_missed_note_v1_1a93ae909e309834a9cb1b7c224c849aa9" kind="variable"><name>used</name></member>
+    <member refid="struct_p_d_j_e___judge_missed_note_v1_1ae0ebeae99b6ffe59e3bec3d78e2af1d3" kind="variable"><name>is_down</name></member>
+  </compound>
+  <compound refid="struct_p_d_j_e___judge_string_view_v1" kind="struct"><name>PDJE_JudgeStringViewV1</name>
+    <member refid="struct_p_d_j_e___judge_string_view_v1_1a0caf4242ef1aa165a12e627214588741" kind="variable"><name>data</name></member>
+    <member refid="struct_p_d_j_e___judge_string_view_v1_1a676f62055825f941ddea686d517a2f73" kind="variable"><name>size</name></member>
+  </compound>
+  <compound refid="struct_p_d_j_e___judge_used_event_v1" kind="struct"><name>PDJE_JudgeUsedEventV1</name>
+    <member refid="struct_p_d_j_e___judge_used_event_v1_1a4ad25f0bc9988a88d557cfb9dfe2967a" kind="variable"><name>rail_id</name></member>
+    <member refid="struct_p_d_j_e___judge_used_event_v1_1ab9bf5df20080a4d653109c2cc9e7c0d2" kind="variable"><name>pressed</name></member>
+    <member refid="struct_p_d_j_e___judge_used_event_v1_1a0e391fdb781f9e6f1783faab47446e77" kind="variable"><name>is_late</name></member>
+    <member refid="struct_p_d_j_e___judge_used_event_v1_1acc715fa32e79e70eda113f8ea03a1626" kind="variable"><name>diff_microsecond</name></member>
+  </compound>
   <compound refid="struct_p_d_j_e___keyboard___event" kind="struct"><name>PDJE_Keyboard_Event</name>
     <member refid="struct_p_d_j_e___keyboard___event_1a1b408a0d1716613a9f0e81142b06574e" kind="variable"><name>k</name></member>
     <member refid="struct_p_d_j_e___keyboard___event_1a9b876596da025316eb8180d50a8e7f05" kind="variable"><name>pressed</name></member>
@@ -1394,6 +1540,25 @@
     <member refid="struct_p_d_j_e___log_host_sink_v1_1a7383b7def7bc2033fd4480bfbaaf3121" kind="variable"><name>write</name></member>
     <member refid="struct_p_d_j_e___log_host_sink_v1_1a9c71643ab5e4b59cbfb3d30824d37b27" kind="variable"><name>user_data</name></member>
   </compound>
+  <compound refid="struct_p_d_j_e___midi_device_view_v1" kind="struct"><name>PDJE_MidiDeviceViewV1</name>
+    <member refid="struct_p_d_j_e___midi_device_view_v1_1aa4975fea2ee6d79da425231f43d74b60" kind="variable"><name>struct_size</name></member>
+    <member refid="struct_p_d_j_e___midi_device_view_v1_1a95527c50fb18d3c4fe3dce806af6c3b4" kind="variable"><name>manufacturer</name></member>
+    <member refid="struct_p_d_j_e___midi_device_view_v1_1a9d70869542bd8f3d3ea2020f8f1fba7c" kind="variable"><name>device_name</name></member>
+    <member refid="struct_p_d_j_e___midi_device_view_v1_1aca517914694afa25b2fed8891c0fd30c" kind="variable"><name>port_name</name></member>
+    <member refid="struct_p_d_j_e___midi_device_view_v1_1a69c62b3badf60039cea4cc71305440e9" kind="variable"><name>display_name</name></member>
+    <member refid="struct_p_d_j_e___midi_device_view_v1_1ac97b24d7b6e9fef08cb39ded6a19e743" kind="variable"><name>client_handle</name></member>
+    <member refid="struct_p_d_j_e___midi_device_view_v1_1ab59c8a7bcfb2fc4f34d3a1d7245015b2" kind="variable"><name>port_handle</name></member>
+    <member refid="struct_p_d_j_e___midi_device_view_v1_1adc426078ec67681e49d20a32285162ad" kind="variable"><name>port_type</name></member>
+  </compound>
+  <compound refid="struct_p_d_j_e___midi_event_view_v1" kind="struct"><name>PDJE_MidiEventViewV1</name>
+    <member refid="struct_p_d_j_e___midi_event_view_v1_1ab3073a505df94a3de0d1605c4800cb40" kind="variable"><name>struct_size</name></member>
+    <member refid="struct_p_d_j_e___midi_event_view_v1_1a2fee9252ae1d05465fefdcb44cd3dcf6" kind="variable"><name>type</name></member>
+    <member refid="struct_p_d_j_e___midi_event_view_v1_1ac8f660e9a2fd8d90517b862a1d16a8fd" kind="variable"><name>channel</name></member>
+    <member refid="struct_p_d_j_e___midi_event_view_v1_1a821ae9ba712e5a22343f32bb44087d96" kind="variable"><name>position</name></member>
+    <member refid="struct_p_d_j_e___midi_event_view_v1_1a4772606ece8a0d8d55230d11c32d56d1" kind="variable"><name>value</name></member>
+    <member refid="struct_p_d_j_e___midi_event_view_v1_1a4f3394d5ad6580f382c1420cd100a3f9" kind="variable"><name>highres_time</name></member>
+    <member refid="struct_p_d_j_e___midi_event_view_v1_1a7836014a8ffe632cf18b98fd6cfc3123" kind="variable"><name>port_name</name></member>
+  </compound>
   <compound refid="struct_p_d_j_e___mouse___event" kind="struct"><name>PDJE_Mouse_Event</name>
     <member refid="struct_p_d_j_e___mouse___event_1ac4ea4bd8d902c54ff7dc9ba62dbad482" kind="variable"><name>button_type</name></member>
     <member refid="struct_p_d_j_e___mouse___event_1a64a5d462f17c9f64cf4944315ce094a0" kind="variable"><name>wheel_move</name></member>
@@ -1401,13 +1566,42 @@
     <member refid="struct_p_d_j_e___mouse___event_1af7262260704bc09b85ecf8dda0bf3aa9" kind="variable"><name>x</name></member>
     <member refid="struct_p_d_j_e___mouse___event_1afd88f5bb8052a707e0e208ad5307683e" kind="variable"><name>y</name></member>
   </compound>
+  <compound refid="struct_p_d_j_e___music_list_handle_v1" kind="struct"><name>PDJE_MusicListHandleV1</name>
+    <member refid="struct_p_d_j_e___music_list_handle_v1_1a90d94b352190de6b4e7aaa37f26b5341" kind="variable"><name>items</name></member>
+  </compound>
+  <compound refid="struct_p_d_j_e___music_view_v1" kind="struct"><name>PDJE_MusicViewV1</name>
+    <member refid="struct_p_d_j_e___music_view_v1_1a4a08c709ba2becb3dde2a361bf8e1f04" kind="variable"><name>struct_size</name></member>
+    <member refid="struct_p_d_j_e___music_view_v1_1ad6d576ae12c559eb799da8c378113b6d" kind="variable"><name>title</name></member>
+    <member refid="struct_p_d_j_e___music_view_v1_1aae378b45c41c42be12b009c0a31e6c34" kind="variable"><name>composer</name></member>
+    <member refid="struct_p_d_j_e___music_view_v1_1ab9644e81b69092a8aad5de973fa50c07" kind="variable"><name>music_path</name></member>
+    <member refid="struct_p_d_j_e___music_view_v1_1a18872193f964fbfc210e8c7a339a1b25" kind="variable"><name>bpm_binary</name></member>
+    <member refid="struct_p_d_j_e___music_view_v1_1ad57432748bc9476bcd5d1b67b01c7e5e" kind="variable"><name>bpm</name></member>
+    <member refid="struct_p_d_j_e___music_view_v1_1aeb26e76ac74e9042771c0f7423f9941e" kind="variable"><name>first_beat</name></member>
+  </compound>
   <compound refid="class_p_d_j_e___name___sanitizer" kind="class"><name>PDJE_Name_Sanitizer</name>
     <member refid="class_p_d_j_e___name___sanitizer_1a0ee9b4d2a5beff9d4d82fa72dab4ccfe" kind="function"><name>sanitizeFileName</name></member>
     <member refid="class_p_d_j_e___name___sanitizer_1af67eaa02761870480e60b4a22e558fe6" kind="function"><name>getFileName</name></member>
     <member refid="class_p_d_j_e___name___sanitizer_1ab140c48c375c3287f623d9c6c1f4b0ac" kind="function"><name>PDJE_Name_Sanitizer</name></member>
     <member refid="class_p_d_j_e___name___sanitizer_1ab336046cda451b24dc8511b6d93873c1" kind="function"><name>~PDJE_Name_Sanitizer</name></member>
   </compound>
+  <compound refid="struct_p_d_j_e___pcm_buffer_handle_v1" kind="struct"><name>PDJE_PcmBufferHandleV1</name>
+    <member refid="struct_p_d_j_e___pcm_buffer_handle_v1_1a5c7ff54be652dd1a2d19ee1c8ca560ed" kind="variable"><name>samples</name></member>
+  </compound>
   <compound refid="class_p_d_j_e___secured___transmission___buffer" kind="class"><name>PDJE_Secured_Transmission_Buffer</name>
+  </compound>
+  <compound refid="struct_p_d_j_e___string_view_v1" kind="struct"><name>PDJE_StringViewV1</name>
+    <member refid="struct_p_d_j_e___string_view_v1_1a56672512ba579171f7447b8dc60bd891" kind="variable"><name>data</name></member>
+    <member refid="struct_p_d_j_e___string_view_v1_1a4dde67a06140615a56c0190bdd35ee27" kind="variable"><name>size</name></member>
+  </compound>
+  <compound refid="struct_p_d_j_e___track_list_handle_v1" kind="struct"><name>PDJE_TrackListHandleV1</name>
+    <member refid="struct_p_d_j_e___track_list_handle_v1_1a5f398f54fb6220265846483923f12223" kind="variable"><name>items</name></member>
+  </compound>
+  <compound refid="struct_p_d_j_e___track_view_v1" kind="struct"><name>PDJE_TrackViewV1</name>
+    <member refid="struct_p_d_j_e___track_view_v1_1ae62cac3111af6f7ef2b07b920a6e972d" kind="variable"><name>struct_size</name></member>
+    <member refid="struct_p_d_j_e___track_view_v1_1ae1069fae2d9102acf23f0f83e2c6a88f" kind="variable"><name>track_title</name></member>
+    <member refid="struct_p_d_j_e___track_view_v1_1a4504fbfda2c029b9c98f7470f2e8bec6" kind="variable"><name>mix_binary</name></member>
+    <member refid="struct_p_d_j_e___track_view_v1_1a32824c2a3f44cc8e1c313f0088e12c4a" kind="variable"><name>note_binary</name></member>
+    <member refid="struct_p_d_j_e___track_view_v1_1ae230001b3c43f99816671c61e3f95aea" kind="variable"><name>cached_mix_list</name></member>
   </compound>
   <compound refid="class_phaser___p_d_j_e" kind="class"><name>Phaser_PDJE</name>
     <member refid="class_phaser___p_d_j_e_1ae310a30872101bd00c78faf30ba79c41" kind="variable"><name>bps</name></member>
@@ -1533,9 +1727,21 @@
     <member refid="class_p_d_j_e___c_r_y_p_t_o_1_1_r_a_n_d_o_m___g_e_n_1ad6b20772a28f5ef5b86a0a6852fb9841" kind="function"><name>RANDOM_GEN</name></member>
     <member refid="class_p_d_j_e___c_r_y_p_t_o_1_1_r_a_n_d_o_m___g_e_n_1a848fd638beeabdd7f98a98c5f6549da3" kind="function"><name>Gen</name></member>
   </compound>
+  <compound refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1_raster_image_view" kind="struct"><name>PDJE_UTIL::function::image::RasterImageView</name>
+    <member refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1_raster_image_view_1a89cf5a00e28344fcdbfe501d14d197ca" kind="variable"><name>pixels</name></member>
+    <member refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1_raster_image_view_1a0bf353b8a2873dbff42bf6fe32f0007d" kind="variable"><name>width</name></member>
+    <member refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1_raster_image_view_1a0d302f2da25940f467adfe53ee3e3c9b" kind="variable"><name>height</name></member>
+    <member refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1_raster_image_view_1a2d0256687eaa2aa65ca5e947559477b5" kind="variable"><name>stride</name></member>
+    <member refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1_raster_image_view_1a4aeab18ddac552fa0a27a85b4f53965e" kind="variable"><name>pixel_format</name></member>
+  </compound>
   <compound refid="struct_p_d_j_e___i_p_c_1_1_raw_device_data" kind="struct"><name>PDJE_IPC::RawDeviceData</name>
     <member refid="struct_p_d_j_e___i_p_c_1_1_raw_device_data_1a6c34a1b789a5a5fc618899296f6ac2d2" kind="variable"><name>info</name></member>
     <member refid="struct_p_d_j_e___i_p_c_1_1_raw_device_data_1a59030c7cf836cc6811e768f87c077ecf" kind="variable"><name>deviceHIDPath</name></member>
+  </compound>
+  <compound refid="class_r_d_b" kind="class"><name>RDB</name>
+    <member refid="class_r_d_b_1a17baeec3c262d49b835fc1858d5d8e49" kind="variable"><name>kvdb</name></member>
+    <member refid="class_r_d_b_1a79908b6908733c434bea4075b77a4395" kind="variable"><name>wops</name></member>
+    <member refid="class_r_d_b_1a76190d2e80a5fd019e6d3dca5c2d9055" kind="variable"><name>rops</name></member>
   </compound>
   <compound refid="struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_diff_machine_core_1_1_recovered_fragment" kind="struct"><name>PDJE_TIMELINE::TimeLineDiffMachineCore::RecoveredFragment</name>
     <member refid="struct_p_d_j_e___t_i_m_e_l_i_n_e_1_1_time_line_diff_machine_core_1_1_recovered_fragment_1a4ee969f27eb19354d453380062e019a8" kind="variable"><name>side</name></member>
@@ -1611,12 +1817,13 @@
   </compound>
   <compound refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend" kind="class"><name>PDJE_UTIL::db::backends::RocksDbBackend</name>
     <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1aab2831e1ecf74688e63164d7d1a22739" kind="typedef"><name>config_type</name></member>
-    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1adb93f0874fa88a3f2b8c4fcdf21487df" kind="variable"><name>config_</name></member>
-    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1a1dca0525cade972742e49e2a3f811f0c" kind="variable"><name>db_</name></member>
-    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1a4478fd24912273b158011bb0ebc240a8" kind="variable"><name>read_options_</name></member>
-    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1a3ce3323a75a57a46ec5cb8b552e588d9" kind="variable"><name>write_options_</name></member>
-    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1a7cb3c979c74a74496d18b09b680ec0dc" kind="function"><name>create</name></member>
-    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1af0478545c7bc11591aba7ed93d12527e" kind="function"><name>destroy</name></member>
+    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1a26be8e5a480a0cdbd9054986727fb2e5" kind="variable"><name>impl_</name></member>
+    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1a7efbe9d1b5aa7804d913ac0924b2d5ca" kind="function"><name>RocksDbBackend</name></member>
+    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1ad709d4c36e312c53599ff45e1d78cb2c" kind="function"><name>~RocksDbBackend</name></member>
+    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1ac6ca580cb03b8bac8eb9d1dba1177b5e" kind="function"><name>RocksDbBackend</name></member>
+    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1a0e0f1a50cb1ddfe7818e26d4371417dd" kind="function"><name>operator=</name></member>
+    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1a57af40025e03935bcfedd94fbae27833" kind="function"><name>RocksDbBackend</name></member>
+    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1a369af23eeeb2deb2b25f8f6f70831052" kind="function"><name>operator=</name></member>
     <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1a0d90d2a61dcc96c6f84a413da82aff96" kind="function"><name>open</name></member>
     <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1a651d24e1d4d28af06f4c246ffbfa3ceb" kind="function"><name>close</name></member>
     <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1a6d69b421bc1b21dd0a9bb3e4ce3ff18e" kind="function"><name>contains</name></member>
@@ -1626,17 +1833,12 @@
     <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1a4219f699275815e48bff7dfa428fa597" kind="function"><name>put_bytes</name></member>
     <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1a55fb000344a0fb233538944e3a2226e2" kind="function"><name>erase</name></member>
     <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1afc254b6c0fd83de1cb16f5a790323997" kind="function"><name>list_keys</name></member>
-    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1af6b1037b7ff5bfde9fff4a8348394f24" kind="function"><name>slice_of</name></member>
-    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1a7495ef393b569806e86bc68368cd55f8" kind="function"><name>require_open</name></member>
-    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1ad5f26460e72b02899ce3666a02af84ca" kind="function"><name>require_writable</name></member>
-    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1a512373b0afb30a57914f09dccb174b94" kind="function"><name>get_raw</name></member>
+    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1aa5492a7ac19ced1ea16f8fa27d0b0ae5" kind="function"><name>create</name></member>
+    <member refid="class_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_backend_1aa9159e03ef48c10653a7b8e874dd123c" kind="function"><name>destroy</name></member>
   </compound>
   <compound refid="struct_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_config" kind="struct"><name>PDJE_UTIL::db::backends::RocksDbConfig</name>
     <member refid="struct_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_config_1a67a0fa6895e1cf0d91ad8afedcc072b0" kind="variable"><name>path</name></member>
     <member refid="struct_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_config_1af5560eaae8f3d0acfa62edb871ec0c97" kind="variable"><name>open_options</name></member>
-    <member refid="struct_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_config_1a40fdedf74f876df1be265b7f38ab74bc" kind="variable"><name>db_options</name></member>
-    <member refid="struct_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_config_1ac832b44e604143118a31d2753942a858" kind="variable"><name>read_options</name></member>
-    <member refid="struct_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_rocks_db_config_1ae9b662f79ea96a895f3fb72c312fa6cf" kind="variable"><name>write_options</name></member>
   </compound>
   <compound refid="class_roll___p_d_j_e" kind="class"><name>Roll_PDJE</name>
     <member refid="class_roll___p_d_j_e_1adb964c6b7a2e787d8fdb10b455e801fe" kind="variable"><name>RollBpm</name></member>
@@ -1686,6 +1888,16 @@
   <compound refid="struct_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_search_options" kind="struct"><name>PDJE_UTIL::db::nearest::SearchOptions</name>
     <member refid="struct_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_search_options_1a72a81c94923be6e6d1239327365303fc" kind="variable"><name>limit</name></member>
     <member refid="struct_p_d_j_e___u_t_i_l_1_1db_1_1nearest_1_1_search_options_1aaaebe7162145730c2f98a7cc47663efe" kind="variable"><name>search_k</name></member>
+  </compound>
+  <compound refid="class_section_timer" kind="class"><name>SectionTimer</name>
+    <member refid="class_section_timer_1aef1cbfeba22360257181d2ecb52996e8" kind="typedef"><name>Clock</name></member>
+    <member refid="class_section_timer_1aa5d7a7bf27b82347d4acd1f5cd83c6e8" kind="typedef"><name>TimePoint</name></member>
+    <member refid="class_section_timer_1ae0b855ca26d5b8652a54794a44dafc79" kind="typedef"><name>Duration</name></member>
+    <member refid="class_section_timer_1a83e819f7e5950b88b42cac924af15f97" kind="variable"><name>name_</name></member>
+    <member refid="class_section_timer_1a4e77b1ffbb5295190df475b5ccead243" kind="variable"><name>start_</name></member>
+    <member refid="class_section_timer_1ad137811ae3aeb455c8e1fcac97ab5f59" kind="function"><name>SectionTimer</name></member>
+    <member refid="class_section_timer_1ac0a47bf26817de7499e271ad02ad6dce" kind="function"><name>~SectionTimer</name></member>
+    <member refid="class_section_timer_1ac30f3d8f9a19e717b05ac8538ba15f54" kind="function"><name>elapsed_ms</name></member>
   </compound>
   <compound refid="struct_p_d_j_e___c_r_y_p_t_o_1_1secured__buffer" kind="struct"><name>PDJE_CRYPTO::secured_buffer</name>
     <member refid="struct_p_d_j_e___c_r_y_p_t_o_1_1secured__buffer_1a7a2fdcbce9e8dd4deb98bb1d2e66b622" kind="variable"><name>hmac_engine</name></member>
@@ -1951,6 +2163,13 @@
     <member refid="class_vol_man_1a9ebe8a729a26956f068d262bdeef6161" kind="variable"><name>VolPower</name></member>
     <member refid="class_vol_man_1a93ffc757b06c39447e11eaca0d3325b7" kind="function"><name>makeArgSetter</name></member>
   </compound>
+  <compound refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1_1_waveform_job" kind="struct"><name>PDJE_UTIL::function::image::detail::WaveformJob</name>
+    <member refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1_1_waveform_job_1a55a3be545186a5598b3995c30742eb11" kind="variable"><name>samples</name></member>
+    <member refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1_1_waveform_job_1ad7c6c0e00e1af10288498acf1032db81" kind="variable"><name>sample_count</name></member>
+    <member refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1_1_waveform_job_1a116a1756cd16bf2a1c9ae9e6e8dd8938" kind="variable"><name>channel_index</name></member>
+    <member refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1_1_waveform_job_1a6c71cb05a99f73c7ab39757971606682" kind="variable"><name>image_index</name></member>
+    <member refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1_1_waveform_job_1ac7ea0388707dc378cb77e2a40c9301f2" kind="variable"><name>output_slot</name></member>
+  </compound>
   <compound refid="struct_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_wayland_dyn_lib_ops" kind="struct"><name>PDJE_DEFAULT_DEVICES::WaylandDynLibOps</name>
   </compound>
   <compound refid="class_wayland_input_core" kind="class"><name>WaylandInputCore</name>
@@ -2093,6 +2312,16 @@
     <member refid="struct_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_wayland_runtime_status_1afb5b40bfa9f9150862d0d5d05ee407dd" kind="variable"><name>wayland_error</name></member>
     <member refid="struct_p_d_j_e___d_e_f_a_u_l_t___d_e_v_i_c_e_s_1_1_wayland_runtime_status_1a5d7baec509fa6476bfec7c1a0a6806b2" kind="variable"><name>xkb_error</name></member>
   </compound>
+  <compound refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1_1_worker_scratch" kind="struct"><name>PDJE_UTIL::function::image::detail::WorkerScratch</name>
+    <member refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1_1_worker_scratch_1a3cf3037c431030c3e3e609d54d512122" kind="variable"><name>column_mins</name></member>
+    <member refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1_1_worker_scratch_1a83cb8ca970b45cf518e8fc511060d4d0" kind="variable"><name>column_maxs</name></member>
+    <member refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1_1_worker_scratch_1af42efeac35cc43114dd2758eb5408dbc" kind="variable"><name>rgba</name></member>
+  </compound>
+  <compound refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1_write_webp_args" kind="struct"><name>PDJE_UTIL::function::image::WriteWebpArgs</name>
+    <member refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1_write_webp_args_1a2989bb523fa617cd103ebc5ac35e67b9" kind="variable"><name>image</name></member>
+    <member refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1_write_webp_args_1a162b9568538f0f631dc27e953b23f834" kind="variable"><name>output_path</name></member>
+    <member refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1_write_webp_args_1acaee73c9c1dadf9166f86e10a36885b8" kind="variable"><name>compression_level</name></member>
+  </compound>
   <compound refid="structxdg__popup__listener" kind="struct"><name>xdg_popup_listener</name>
     <member refid="structxdg__popup__listener_1a36e98cf6e6e4137ee2896a43f1c10730" kind="variable"><name>configure</name></member>
     <member refid="structxdg__popup__listener_1af62aceff9bcec24ac9e5243107db53a2" kind="variable"><name>popup_done</name></member>
@@ -2122,14 +2351,26 @@
   </compound>
   <compound refid="namespace_0d130024226000003240101124044352375123352136010371" kind="namespace"><name>@130024226000003240101124044352375123352136010371</name>
   </compound>
+  <compound refid="namespace_0d137032356342255030243067335057213237235154270123" kind="namespace"><name>@137032356342255030243067335057213237235154270123</name>
+  </compound>
+  <compound refid="namespace_0d150256274134106074076140217122147116344333072135" kind="namespace"><name>@150256274134106074076140217122147116344333072135</name>
+  </compound>
   <compound refid="namespace_0d262021227071007152037033276276146051311265173357" kind="namespace"><name>@262021227071007152037033276276146051311265173357</name>
     <member refid="namespace_0d262021227071007152037033276276146051311265173357_1aa136b12377dfe95dd6a335f9659c4924" kind="enum"><name>PDJE_LogBackendKindInternal</name></member>
     <member refid="namespace_0d262021227071007152037033276276146051311265173357_1aa136b12377dfe95dd6a335f9659c4924ac3269a859ee285e2fb5c325bf9758786" kind="enumvalue"><name>kInternalSpdlog</name></member>
     <member refid="namespace_0d262021227071007152037033276276146051311265173357_1aa136b12377dfe95dd6a335f9659c4924a95d24278ab94e2c01f13ae2b406c7e13" kind="enumvalue"><name>kHostCallback</name></member>
   </compound>
+  <compound refid="namespace_0d305071230262020130152235007017172040132071223116" kind="namespace"><name>@305071230262020130152235007017172040132071223116</name>
+  </compound>
   <compound refid="namespace_0d312312365122326241264335072047127026140315053120" kind="namespace"><name>@312312365122326241264335072047127026140315053120</name>
   </compound>
   <compound refid="namespace_0d341326200254367160135164126057361031114036124275" kind="namespace"><name>@341326200254367160135164126057361031114036124275</name>
+  </compound>
+  <compound refid="namespace_0d342266320027034140325064316164264160177175062116" kind="namespace"><name>@342266320027034140325064316164264160177175062116</name>
+  </compound>
+  <compound refid="namespace_0d363356370165053370235375267304300073002317164117" kind="namespace"><name>@363356370165053370235375267304300073002317164117</name>
+  </compound>
+  <compound refid="namespace_0d375375255206132061271253243337125065367114216330" kind="namespace"><name>@375375255206132061271253243337125065367114216330</name>
   </compound>
   <compound refid="namespacecapnp" kind="namespace"><name>capnp</name>
   </compound>
@@ -2171,7 +2412,7 @@
     <member refid="namespacecapnp_1_1schemas_1a28016f8cf19daee7e05b37b539124533" kind="typedef"><name>DetailEnum</name></member>
   </compound>
   <compound refid="namespace_frame_calc" kind="namespace"><name>FrameCalc</name>
-    <member refid="namespace_frame_calc_1aed991cda2f4549b15a01ad2e71019d69" kind="function"><name>CountFrame</name></member>
+    <member refid="namespace_frame_calc_1a65ae10119a1939c98d5e6fc981772b7c" kind="function"><name>CountFrame</name></member>
   </compound>
   <compound refid="namespace_g_i_t___r_a_i_i" kind="namespace"><name>GIT_RAII</name>
     <member refid="namespace_g_i_t___r_a_i_i_1ae9f5018a36b209676af787d453948570" kind="typedef"><name>OID</name></member>
@@ -2181,6 +2422,7 @@
   <compound refid="namespace_h_w_y___n_a_m_e_s_p_a_c_e" kind="namespace"><name>HWY_NAMESPACE</name>
     <member refid="namespace_h_w_y___n_a_m_e_s_p_a_c_e_1ad074d697d201fc9b6c258e128a4ef91e" kind="function"><name>GetPCMFramesSIMD</name></member>
     <member refid="namespace_h_w_y___n_a_m_e_s_p_a_c_e_1af0a22093ab08dd742f914c113783bec3" kind="function"><name>INTEGRATE_PCM_SIMD</name></member>
+    <member refid="namespace_h_w_y___n_a_m_e_s_p_a_c_e_1ab6efc652b6b232a50217bc7c55417f15" kind="function"><name>ComputeWaveformColumnExtremaSIMD</name></member>
   </compound>
   <compound refid="namespace_o_s___i_m_p_l" kind="namespace"><name>OS_IMPL</name>
     <member refid="namespace_o_s___i_m_p_l_1a4c85164b54944146151f958a786e6b41" kind="function"><name>get_backends</name></member>
@@ -2400,6 +2642,8 @@
   </compound>
   <compound refid="namespace_p_d_j_e___u_t_i_l_1_1db_1_1backends" kind="namespace"><name>PDJE_UTIL::db::backends</name>
   </compound>
+  <compound refid="namespace_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1_0d324203207233005122353332060165136074233332340107" kind="namespace"><name>PDJE_UTIL::db::backends::@324203207233005122353332060165136074233332340107</name>
+  </compound>
   <compound refid="namespace_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1detail" kind="namespace"><name>PDJE_UTIL::db::backends::detail</name>
     <member refid="namespace_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1detail_1a766c7e77eb3fe1873001af578f4a495c" kind="function"><name>hex_encode</name></member>
     <member refid="namespace_p_d_j_e___u_t_i_l_1_1db_1_1backends_1_1detail_1a258536e6b909618ebc9dfbf7dbdfcfc0" kind="function"><name>hex_encode_bytes</name></member>
@@ -2439,6 +2683,38 @@
   </compound>
   <compound refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1halide" kind="namespace"><name>PDJE_UTIL::function::halide</name>
     <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1halide_1a5c7356e55195cf9a0b0c9126ea5beffa" kind="function"><name>apply_gain_bias</name></member>
+  </compound>
+  <compound refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image" kind="namespace"><name>PDJE_UTIL::function::image</name>
+    <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1ab4c8fbb42e3638e97e48402b4ee04f52" kind="enum"><name>RasterPixelFormat</name></member>
+    <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1ab4c8fbb42e3638e97e48402b4ee04f52ac7df3adc4fea0d4738ffd89746eb9d81" kind="enumvalue"><name>gray8</name></member>
+    <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1ab4c8fbb42e3638e97e48402b4ee04f52a745dc745cf05d4e0cfac10facf200f99" kind="enumvalue"><name>gray_alpha8</name></member>
+    <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1ab4c8fbb42e3638e97e48402b4ee04f52a0d16d8a03c4a015e24dca17617722c4a" kind="enumvalue"><name>rgb8</name></member>
+    <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1ab4c8fbb42e3638e97e48402b4ee04f52aaffcf7617521c42b49e1e2929a725e6a" kind="enumvalue"><name>rgba8</name></member>
+    <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1a7b998cfb499fad07c17f416c6035ea7f" kind="typedef"><name>EncodedWebpBytes</name></member>
+    <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1a794580f56b2f5675f2e9974d93fb206d" kind="typedef"><name>ChannelWaveformWebps</name></member>
+    <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1a781408e2b5312c618656f07675d378f8" kind="typedef"><name>WaveformWebpBatch</name></member>
+    <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1ab6f8c1c9d220d513fef72978c82ef5a8" kind="function"><name>encode_waveform_webps</name></member>
+    <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1ad73f20df717bb3b8336c40b1e2c9a3e1" kind="function"><name>encode_webp</name></member>
+    <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1abd56cd8a8dac271664c6520fddf556b2" kind="function"><name>write_webp</name></member>
+  </compound>
+  <compound refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail" kind="namespace"><name>PDJE_UTIL::function::image::detail</name>
+    <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1aeb82b041fb95e166b0d7afe692789620" kind="function"><name>validate_waveform_args</name></member>
+    <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1a2512b6afddc3704d1fb7f3ba1e692d76" kind="function"><name>checked_multiply_waveform</name></member>
+    <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1ae9252e37707d8839dbb8457ccb7c33bb" kind="function"><name>checked_add_waveform</name></member>
+    <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1a38905f16ec7c48cd26b5fbf899566557" kind="function"><name>compute_chunk_sample_count</name></member>
+    <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1a36599b82a8b95b511745669571ad7772" kind="function"><name>clamp_pcm_sample</name></member>
+    <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1a7b412d1090073e89f325137a83a26f54" kind="function"><name>map_sample_to_row_floor</name></member>
+    <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1a32ac59c22af8c17e1a9b1256ab334eb1" kind="function"><name>map_sample_to_row_ceil</name></member>
+    <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1add2bc02a8ef8dbe60e99cd831801036c" kind="function"><name>split_channels</name></member>
+    <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1adfc6107833827f152c158e37cc6948bc" kind="function"><name>wrap_job_status</name></member>
+    <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1a9ce48d7dd6f1b6f99751de8f45e35587" kind="function"><name>resolve_worker_thread_count</name></member>
+    <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1a1e643fd02cb35f6630787616535b0d26" kind="function"><name>compute_column_extrema_dispatch</name></member>
+    <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1af63e394b87d5b59595a7125249367b63" kind="function"><name>encode_waveform_job</name></member>
+    <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1aec0114ba732cee21dc7096f6e8a8436c" kind="function"><name>checked_multiply</name></member>
+    <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1a21d5295505b90a398cb969e0d34e8586" kind="function"><name>checked_add</name></member>
+    <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1a3a31613d496c7314738b0a541aee4ebc" kind="function"><name>bytes_per_pixel</name></member>
+    <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1a92f8700e88f1217817e48969e8be1804" kind="function"><name>validate_image</name></member>
+    <member refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail_1a8e1fd0fe3e2f3ad530383043535f693d" kind="function"><name>pack_rgba</name></member>
   </compound>
   <compound refid="namespacertkit" kind="namespace"><name>rtkit</name>
     <member refid="namespacertkit_1aaf4a1da7704c6ff0151f63cf52206130" kind="function"><name>get_tid</name></member>
@@ -2827,6 +3103,71 @@
     <member refid="_f_a_k_e___c_a_p_n_p___e_n_u_m_s___f_o_r___s_w_i_g_8hpp_1a426bf923434a718991540850f58c7770" kind="typedef"><name>TypeEnum</name></member>
     <member refid="_f_a_k_e___c_a_p_n_p___e_n_u_m_s___f_o_r___s_w_i_g_8hpp_1ae50979e132c26fb0cc19b6f957ff51a9" kind="typedef"><name>DetailEnum</name></member>
   </compound>
+  <compound refid="_c_p_d_j_e__interface_8cpp" kind="file"><name>CPDJE_interface.cpp</name>
+    <member refid="_c_p_d_j_e__interface_8cpp_1a8f0943b3a9623ed98509a5f41bccf0e2" kind="function"><name>pdje_engine_create_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8cpp_1a659bc2a2278bd5203ff9728c1f91f54f" kind="function"><name>pdje_engine_destroy_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8cpp_1a36d6a508e3277cb24cef11402d0b5606" kind="function"><name>pdje_engine_search_music_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8cpp_1a04accca32361a5b1a65b318e01ccf929" kind="function"><name>pdje_music_list_size_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8cpp_1a50f45dc218f67596a34f34ae7b39b235" kind="function"><name>pdje_music_list_get_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8cpp_1a6e1061a27c81ea4024ed3d04ed4af952" kind="function"><name>pdje_music_list_destroy_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8cpp_1a7da792ac1b337dcdde982f968aa155db" kind="function"><name>pdje_engine_search_track_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8cpp_1ae3fc117adb842d4b7deb793d6fb3babc" kind="function"><name>pdje_track_list_size_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8cpp_1a6c5e1fe5eb7948762aa492bbffea4ffe" kind="function"><name>pdje_track_list_get_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8cpp_1a20eb719b3319a940ca5b6ddc6cf56dce" kind="function"><name>pdje_track_list_destroy_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8cpp_1a39031c9cc0ca2237fd1c9429d2b27ea6" kind="function"><name>pdje_engine_init_player_from_track_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8cpp_1ad990d7b9859cbb4bbc08c8737c26519b" kind="function"><name>pdje_engine_init_player_manual_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8cpp_1a0dbf6295e996db8b8ea645c38bcd9cde" kind="function"><name>pdje_engine_reset_player_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8cpp_1a5b2f944d2b82387c7afeb1372433d848" kind="function"><name>pdje_engine_init_editor_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8cpp_1abd52c30b25a04ffeba3856e9f76f4f47" kind="function"><name>pdje_engine_close_editor_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8cpp_1ae2046589254219955d99088ad76578f6" kind="function"><name>pdje_engine_get_pcm_from_music_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8cpp_1a9bc5b7dffbf6926c11a9d4b90a737c52" kind="function"><name>pdje_pcm_buffer_size_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8cpp_1a822a41b989c0d08142cc9eafceb390bb" kind="function"><name>pdje_pcm_buffer_data_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8cpp_1a28357695e21aac78d0df204f06a45176" kind="function"><name>pdje_pcm_buffer_destroy_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8cpp_1a73558e0bd70854a3666635510cf04c98" kind="function"><name>pdje_engine_pull_core_dataline_v1</name></member>
+  </compound>
+  <compound refid="_c_p_d_j_e__interface_8h" kind="file"><name>CPDJE_interface.h</name>
+    <member refid="_c_p_d_j_e__interface_8h_1a7edc58c2e6c2b0661a9ff8d1dbc43e86" kind="enum"><name>PDJE_ResultV1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1a7edc58c2e6c2b0661a9ff8d1dbc43e86a6b8049ad6c8faf41bd165fca4e7bbc31" kind="enumvalue"><name>PDJE_RESULT_OK_V1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1a7edc58c2e6c2b0661a9ff8d1dbc43e86a7100854fcbada9ddcaab481ff10cd398" kind="enumvalue"><name>PDJE_RESULT_INVALID_ARGUMENT_V1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1a7edc58c2e6c2b0661a9ff8d1dbc43e86aa30d4d79b97daab181b16f152c7890f2" kind="enumvalue"><name>PDJE_RESULT_OUT_OF_RANGE_V1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1a7edc58c2e6c2b0661a9ff8d1dbc43e86a0a1bb45606286e78d8b85a160641a4de" kind="enumvalue"><name>PDJE_RESULT_INTERNAL_ERROR_V1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1a0bce82db6ee61cf6dd1ae00f316c607a" kind="enum"><name>PDJE_PlayModeV1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1a0bce82db6ee61cf6dd1ae00f316c607aa6230e6708a482bcdfd135ba4b7b96113" kind="enumvalue"><name>PDJE_PLAY_MODE_FULL_PRE_RENDER_V1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1a0bce82db6ee61cf6dd1ae00f316c607aaac834ed29810d567496f11c57b654c38" kind="enumvalue"><name>PDJE_PLAY_MODE_HYBRID_RENDER_V1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1a0bce82db6ee61cf6dd1ae00f316c607aa313cc7768a44b7a9dd7f12658f36e50e" kind="enumvalue"><name>PDJE_PLAY_MODE_FULL_MANUAL_RENDER_V1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1a6a78dec8a7e61ef25f18df093ff1e356" kind="typedef"><name>PDJE_EngineHandleV1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1a5f3925803bc60a6e4b18fc968522dd96" kind="typedef"><name>PDJE_MusicListHandleV1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1a525278226b5417d7433e62e4da6f52b4" kind="typedef"><name>PDJE_TrackListHandleV1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1aa99284143eeabc55b718f820936b2cae" kind="typedef"><name>PDJE_PcmBufferHandleV1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1a762ba1a0634f56ac1ef834bbc01da92c" kind="typedef"><name>PDJE_ResultV1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1aa5a1690ea4507f27343138210618fb36" kind="typedef"><name>PDJE_PlayModeV1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1ad1be61b5deeef177e844aeb88c31e3af" kind="typedef"><name>PDJE_StringViewV1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1aece1492bf1e2269c8d20bd0ccf800c9d" kind="typedef"><name>PDJE_BytesViewV1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1ac1c6d11592924434ee970316c9d1eb58" kind="typedef"><name>PDJE_MusicViewV1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1aaef118ba925280a1291e0be7a868e5d5" kind="typedef"><name>PDJE_TrackViewV1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1ae5e75daa8bcd76059392e95d6a2b416e" kind="typedef"><name>PDJE_AudioSyncSnapshotV1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1aab86b38cb48fa27e9ead3e83be9a0939" kind="typedef"><name>PDJE_CoreDataLineSnapshotV1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1a8f0943b3a9623ed98509a5f41bccf0e2" kind="function"><name>pdje_engine_create_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1a659bc2a2278bd5203ff9728c1f91f54f" kind="function"><name>pdje_engine_destroy_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1a36d6a508e3277cb24cef11402d0b5606" kind="function"><name>pdje_engine_search_music_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1a04accca32361a5b1a65b318e01ccf929" kind="function"><name>pdje_music_list_size_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1a50f45dc218f67596a34f34ae7b39b235" kind="function"><name>pdje_music_list_get_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1a6e1061a27c81ea4024ed3d04ed4af952" kind="function"><name>pdje_music_list_destroy_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1a7da792ac1b337dcdde982f968aa155db" kind="function"><name>pdje_engine_search_track_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1ae3fc117adb842d4b7deb793d6fb3babc" kind="function"><name>pdje_track_list_size_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1a6c5e1fe5eb7948762aa492bbffea4ffe" kind="function"><name>pdje_track_list_get_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1a20eb719b3319a940ca5b6ddc6cf56dce" kind="function"><name>pdje_track_list_destroy_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1a39031c9cc0ca2237fd1c9429d2b27ea6" kind="function"><name>pdje_engine_init_player_from_track_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1ad990d7b9859cbb4bbc08c8737c26519b" kind="function"><name>pdje_engine_init_player_manual_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1a0dbf6295e996db8b8ea645c38bcd9cde" kind="function"><name>pdje_engine_reset_player_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1a5b2f944d2b82387c7afeb1372433d848" kind="function"><name>pdje_engine_init_editor_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1abd52c30b25a04ffeba3856e9f76f4f47" kind="function"><name>pdje_engine_close_editor_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1ae2046589254219955d99088ad76578f6" kind="function"><name>pdje_engine_get_pcm_from_music_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1a9bc5b7dffbf6926c11a9d4b90a737c52" kind="function"><name>pdje_pcm_buffer_size_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1a822a41b989c0d08142cc9eafceb390bb" kind="function"><name>pdje_pcm_buffer_data_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1a28357695e21aac78d0df204f06a45176" kind="function"><name>pdje_pcm_buffer_destroy_v1</name></member>
+    <member refid="_c_p_d_j_e__interface_8h_1a73558e0bd70854a3666635510cf04c98" kind="function"><name>pdje_engine_pull_core_dataline_v1</name></member>
+  </compound>
   <compound refid="_p_d_j_e__interface_8cpp" kind="file"><name>PDJE_interface.cpp</name>
   </compound>
   <compound refid="_p_d_j_e__interface_8hpp" kind="file"><name>PDJE_interface.hpp</name>
@@ -2908,13 +3249,13 @@
   <compound refid="_atomic___double___buffer_8hpp" kind="file"><name>Atomic_Double_Buffer.hpp</name>
   </compound>
   <compound refid="file_name_sanitizer_8cpp" kind="file"><name>fileNameSanitizer.cpp</name>
+    <member refid="file_name_sanitizer_8cpp_1a60e6f3a42a8bab43c807f31be0e7aab1" kind="typedef"><name>cbase</name></member>
   </compound>
   <compound refid="file_name_sanitizer_8hpp" kind="file"><name>fileNameSanitizer.hpp</name>
     <member refid="file_name_sanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kind="typedef"><name>SANITIZED</name></member>
     <member refid="file_name_sanitizer_8hpp_1a3dbfced66c4bb073515956060fd59604" kind="typedef"><name>UNSANITIZED</name></member>
     <member refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kind="typedef"><name>DONT_SANITIZE</name></member>
     <member refid="file_name_sanitizer_8hpp_1a0662da7f5befd667eac83e4e3566cd47" kind="typedef"><name>SANITIZED_ORNOT</name></member>
-    <member refid="file_name_sanitizer_8hpp_1a60e6f3a42a8bab43c807f31be0e7aab1" kind="typedef"><name>cbase</name></member>
   </compound>
   <compound refid="_input___state_8hpp" kind="file"><name>Input_State.hpp</name>
     <member refid="_input___state_8hpp_1af7586f410ce5333bcf76fb8cae134ffd" kind="define"><name>PDJE_MOUSE_L_BTN_DOWN</name></member>
@@ -3071,6 +3412,12 @@
   <compound refid="_p_d_j_e___benchmark_8hpp" kind="file"><name>PDJE_Benchmark.hpp</name>
     <member refid="_p_d_j_e___benchmark_8hpp_1a9473ba1d9968d8422eab2dd9077c062d" kind="define"><name>WBCH</name></member>
   </compound>
+  <compound refid="_p_d_j_e___c_abi___core___private_8hpp" kind="file"><name>PDJE_CAbi_Core_Private.hpp</name>
+  </compound>
+  <compound refid="_p_d_j_e___c_abi___input___private_8hpp" kind="file"><name>PDJE_CAbi_Input_Private.hpp</name>
+  </compound>
+  <compound refid="_p_d_j_e___c_abi___private_8hpp" kind="file"><name>PDJE_CAbi_Private.hpp</name>
+  </compound>
   <compound refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp" kind="file"><name>PDJE_EXPORT_SETTER.hpp</name>
     <member refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp_1a7741270cebaf37c6127114855d3a00e1" kind="define"><name>PDJE_CALL</name></member>
     <member refid="_p_d_j_e___e_x_p_o_r_t___s_e_t_t_e_r_8hpp_1a881b531a2da9c72650a79edb575b6c8c" kind="define"><name>PDJE_API</name></member>
@@ -3132,6 +3479,100 @@
   <compound refid="_p_d_j_e___r_a_i_i___w_r_a_p_8hpp" kind="file"><name>PDJE_RAII_WRAP.hpp</name>
   </compound>
   <compound refid="_p_d_j_e___s_y_n_c___c_o_r_e_8hpp" kind="file"><name>PDJE_SYNC_CORE.hpp</name>
+  </compound>
+  <compound refid="_c_p_d_j_e___input_8cpp" kind="file"><name>CPDJE_Input.cpp</name>
+    <member refid="_c_p_d_j_e___input_8cpp_1aeb856e50d831c6dbcb4978bc049de2d3" kind="function"><name>pdje_input_create_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8cpp_1a00c725685e46d2901a98806d9761f605" kind="function"><name>pdje_input_destroy_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8cpp_1a3b7d55da752a1bb54b938215a8499cf0" kind="function"><name>pdje_input_init_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8cpp_1acbccb140b70786e7107b74081df52e8a" kind="function"><name>pdje_input_kill_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8cpp_1afc463ef86e09b86ee76e61c2c40a8c31" kind="function"><name>pdje_input_get_state_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8cpp_1adced61b01fa8702da2d55b6e89c1c1aa" kind="function"><name>pdje_input_get_backend_name_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8cpp_1a1bcab5e49c28a223aa7f0335d425ced3" kind="function"><name>pdje_input_list_devices_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8cpp_1a70036c44fa5d72c43a15af64436d1ebd" kind="function"><name>pdje_input_device_list_size_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8cpp_1a2f8a7004cd36971d4b25101bbae0b78f" kind="function"><name>pdje_input_device_list_get_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8cpp_1aa68b002c8e13f63752cdd8803acfb8a6" kind="function"><name>pdje_input_device_list_destroy_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8cpp_1a77dafa24bc95b2d423616e3d363bf050" kind="function"><name>pdje_input_list_midi_devices_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8cpp_1aebaba237f0a50160f07a0a0617b3042f" kind="function"><name>pdje_input_midi_device_list_size_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8cpp_1a4cd751f6aa99765d23efdfd5049b0769" kind="function"><name>pdje_input_midi_device_list_get_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8cpp_1afc6268e2c23549a5f0ced2770c915e7c" kind="function"><name>pdje_input_midi_device_list_destroy_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8cpp_1a1a7b89606dd4203ba4bc14c79a4995dc" kind="function"><name>pdje_input_config_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8cpp_1ad4773b1d81e3343f45b98a1d512ae854" kind="function"><name>pdje_input_run_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8cpp_1ac1a459a4a2267aa2a511d32d6819fd1a" kind="function"><name>pdje_input_poll_snapshot_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8cpp_1af1d578fef252fea1b04b3df55ae95b59" kind="function"><name>pdje_input_snapshot_describe_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8cpp_1a6a5a1d7067f10de50f70dae9112f9994" kind="function"><name>pdje_input_snapshot_input_size_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8cpp_1a21ab3c806e38048aa496105c85dcde8a" kind="function"><name>pdje_input_snapshot_input_get_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8cpp_1a63d3cac861b2886731ee6097dcc0695f" kind="function"><name>pdje_input_snapshot_midi_size_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8cpp_1a7cdd082a946051e9f77a1a5c5148a40c" kind="function"><name>pdje_input_snapshot_midi_get_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8cpp_1a4c9184c5c56bad395a4a33d2f83e0259" kind="function"><name>pdje_input_snapshot_destroy_v1</name></member>
+  </compound>
+  <compound refid="_c_p_d_j_e___input_8h" kind="file"><name>CPDJE_Input.h</name>
+    <member refid="_c_p_d_j_e___input_8h_1af7586f410ce5333bcf76fb8cae134ffd" kind="define"><name>PDJE_MOUSE_L_BTN_DOWN</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1acdb937bd2193bcddde688cae1d926c5f" kind="define"><name>PDJE_MOUSE_L_BTN_UP</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a81120971482c7ad20820dbb20d470e11" kind="define"><name>PDJE_MOUSE_R_BTN_DOWN</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a74db0959bac6041d5b6e65e22de4641e" kind="define"><name>PDJE_MOUSE_R_BTN_UP</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1ab9055847fbd4a2cd39ea69035fa2bd14" kind="define"><name>PDJE_MOUSE_M_BTN_DOWN</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a29d804cf0835d1a8affcbe6e09cfff7a" kind="define"><name>PDJE_MOUSE_M_BTN_UP</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1afac9556f444d78e35bc6cb186e772abc" kind="define"><name>PDJE_MOUSE_SIDE_BTN_DOWN</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1acd3802791bed4a2414fa2d7b381ac06f" kind="define"><name>PDJE_MOUSE_SIDE_BTN_UP</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a9c9ffdfa31c19bc779a484b66e79fcde" kind="define"><name>PDJE_MOUSE_EX_BTN_DOWN</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a4defe0cbf2218a93a0f5d3c7c302a6cc" kind="define"><name>PDJE_MOUSE_EX_BTN_UP</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a0e21e913c078608aaec0577624781c0c" kind="define"><name>PDJE_MOUSE_YWHEEL</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a20b91215de82755052db3f4e57f607a3" kind="define"><name>PDJE_MOUSE_XWHEEL</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a9eba3eb722dc97d2839c20ae60ceb7b7" kind="enum"><name>PDJE_InputResultV1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a9eba3eb722dc97d2839c20ae60ceb7b7a415a6002ba5709b3cf66862fe319e32d" kind="enumvalue"><name>PDJE_INPUT_RESULT_OK_V1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a9eba3eb722dc97d2839c20ae60ceb7b7ab07df4f77d109b3e648bb79b0ac165b0" kind="enumvalue"><name>PDJE_INPUT_RESULT_INVALID_ARGUMENT_V1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a9eba3eb722dc97d2839c20ae60ceb7b7ab75c7f8def27a250e61e8e9361415739" kind="enumvalue"><name>PDJE_INPUT_RESULT_OUT_OF_RANGE_V1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a9eba3eb722dc97d2839c20ae60ceb7b7af80fcef90a153a9814a90302f8024e5f" kind="enumvalue"><name>PDJE_INPUT_RESULT_INVALID_STATE_V1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a9eba3eb722dc97d2839c20ae60ceb7b7a67c8272d5c37660f5997904cf11130f2" kind="enumvalue"><name>PDJE_INPUT_RESULT_OPERATION_FAILED_V1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a9eba3eb722dc97d2839c20ae60ceb7b7ada1f65c936c950c543b97e327bc4edc1" kind="enumvalue"><name>PDJE_INPUT_RESULT_INTERNAL_ERROR_V1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1acb773402f5dee1def7c5450142ce7e05" kind="enum"><name>PDJE_InputStateV1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1acb773402f5dee1def7c5450142ce7e05acdabf92f56d3227d6c29b4d58348a5c6" kind="enumvalue"><name>PDJE_INPUT_STATE_DEVICE_CONFIG_V1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1acb773402f5dee1def7c5450142ce7e05ae167441b9db78375339f7bbe2780b769" kind="enumvalue"><name>PDJE_INPUT_STATE_LOOP_READY_V1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1acb773402f5dee1def7c5450142ce7e05aed76602819dc7315113dbd9f082d7c7e" kind="enumvalue"><name>PDJE_INPUT_STATE_LOOP_RUNNING_V1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1acb773402f5dee1def7c5450142ce7e05ae6c013e4afb87bac8aff84b456699c6f" kind="enumvalue"><name>PDJE_INPUT_STATE_DEAD_V1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a8af31924fe4ee3e493feb633dcc67725" kind="enum"><name>PDJE_InputDeviceTypeV1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a8af31924fe4ee3e493feb633dcc67725a4af09d80722e3965d6d97c014a74e548" kind="enumvalue"><name>PDJE_INPUT_DEVICE_MOUSE_V1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a8af31924fe4ee3e493feb633dcc67725ae864b365139059eb2afab5eb65feb821" kind="enumvalue"><name>PDJE_INPUT_DEVICE_KEYBOARD_V1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a8af31924fe4ee3e493feb633dcc67725ad773b3cf0b32cb1a86cb064ee966fc9b" kind="enumvalue"><name>PDJE_INPUT_DEVICE_UNKNOWN_V1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1afea23fa318408d43b65823cc9ac3fc13" kind="typedef"><name>PDJE_InputHandleV1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a0d8a39f66db95a5c018256ceca4cfbfc" kind="typedef"><name>PDJE_InputDeviceListHandleV1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1aca717fdd92e2522439643ca06ed0d0aa" kind="typedef"><name>PDJE_MidiDeviceListHandleV1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a46a6f30b3db0b4a8b3de5078b2648f98" kind="typedef"><name>PDJE_InputSnapshotHandleV1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a3b798b56901c51cf5cd01238679c50c9" kind="typedef"><name>PDJE_InputResultV1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a650bce9146da3c135dbfd34ed3a0759e" kind="typedef"><name>PDJE_InputStateV1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a7bd2d2b51a831940dc5d00ae7f657e95" kind="typedef"><name>PDJE_InputDeviceTypeV1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a6567af3da0fd0aa8fbce97c4dbaea596" kind="typedef"><name>PDJE_InputStringViewV1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a2164ae88e9f68d1f4682bea60bb4e72e" kind="typedef"><name>PDJE_InputBytesViewV1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a48bedb308a45f25fa612e5edd1b0eedb" kind="typedef"><name>PDJE_InputDeviceViewV1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a063b9f76c662bc15657d41f3684c864c" kind="typedef"><name>PDJE_MidiDeviceViewV1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a062f357fbb3ad23821c940c77ab58b81" kind="typedef"><name>PDJE_InputKeyboardEventV1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a51e2e6a2ad9065fef44b31aa63966ac1" kind="typedef"><name>PDJE_InputMouseEventV1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a03df890ab32018033c23363d49bc1197" kind="typedef"><name>PDJE_InputEventViewV1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1ae5ec1cf4f7d3facb677805650ea65273" kind="typedef"><name>PDJE_MidiEventViewV1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a1f51c8657df70a4a90458c953c876c7e" kind="typedef"><name>PDJE_InputSnapshotInfoV1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1aeb856e50d831c6dbcb4978bc049de2d3" kind="function"><name>pdje_input_create_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a00c725685e46d2901a98806d9761f605" kind="function"><name>pdje_input_destroy_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a3b7d55da752a1bb54b938215a8499cf0" kind="function"><name>pdje_input_init_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1acbccb140b70786e7107b74081df52e8a" kind="function"><name>pdje_input_kill_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1afc463ef86e09b86ee76e61c2c40a8c31" kind="function"><name>pdje_input_get_state_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1adced61b01fa8702da2d55b6e89c1c1aa" kind="function"><name>pdje_input_get_backend_name_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a1bcab5e49c28a223aa7f0335d425ced3" kind="function"><name>pdje_input_list_devices_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a70036c44fa5d72c43a15af64436d1ebd" kind="function"><name>pdje_input_device_list_size_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a2f8a7004cd36971d4b25101bbae0b78f" kind="function"><name>pdje_input_device_list_get_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1aa68b002c8e13f63752cdd8803acfb8a6" kind="function"><name>pdje_input_device_list_destroy_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a77dafa24bc95b2d423616e3d363bf050" kind="function"><name>pdje_input_list_midi_devices_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1aebaba237f0a50160f07a0a0617b3042f" kind="function"><name>pdje_input_midi_device_list_size_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a4cd751f6aa99765d23efdfd5049b0769" kind="function"><name>pdje_input_midi_device_list_get_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1afc6268e2c23549a5f0ced2770c915e7c" kind="function"><name>pdje_input_midi_device_list_destroy_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1adf107d0b9406758989a50194a7120e90" kind="function"><name>pdje_input_config_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1ad4773b1d81e3343f45b98a1d512ae854" kind="function"><name>pdje_input_run_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1ac1a459a4a2267aa2a511d32d6819fd1a" kind="function"><name>pdje_input_poll_snapshot_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1af1d578fef252fea1b04b3df55ae95b59" kind="function"><name>pdje_input_snapshot_describe_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a6a5a1d7067f10de50f70dae9112f9994" kind="function"><name>pdje_input_snapshot_input_size_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a21ab3c806e38048aa496105c85dcde8a" kind="function"><name>pdje_input_snapshot_input_get_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a63d3cac861b2886731ee6097dcc0695f" kind="function"><name>pdje_input_snapshot_midi_size_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a7cdd082a946051e9f77a1a5c5148a40c" kind="function"><name>pdje_input_snapshot_midi_get_v1</name></member>
+    <member refid="_c_p_d_j_e___input_8h_1a4c9184c5c56bad395a4a33d2f83e0259" kind="function"><name>pdje_input_snapshot_destroy_v1</name></member>
   </compound>
   <compound refid="linux_2_default_devs_8cpp" kind="file"><name>DefaultDevs.cpp</name>
   </compound>
@@ -3481,6 +3922,57 @@
   </compound>
   <compound refid="_axis_model_8hpp" kind="file"><name>AxisModel.hpp</name>
   </compound>
+  <compound refid="_c_p_d_j_e___judge_8cpp" kind="file"><name>CPDJE_Judge.cpp</name>
+    <member refid="_c_p_d_j_e___judge_8cpp_1a2ce317403e75a304d12343ee048af8d5" kind="function"><name>pdje_judge_create_v1</name></member>
+    <member refid="_c_p_d_j_e___judge_8cpp_1a66c22297ad7353c75b81568476efe116" kind="function"><name>pdje_judge_destroy_v1</name></member>
+    <member refid="_c_p_d_j_e___judge_8cpp_1ae33af546d55ea5a18aaa5b1c96fae597" kind="function"><name>pdje_judge_attach_engine_v1</name></member>
+    <member refid="_c_p_d_j_e___judge_8cpp_1ab4e59b24bba3c41bc604096ce7255ae1" kind="function"><name>pdje_judge_attach_input_v1</name></member>
+    <member refid="_c_p_d_j_e___judge_8cpp_1a37b223a3808c568437c9bacffcb300a6" kind="function"><name>pdje_judge_set_event_rule_v1</name></member>
+    <member refid="_c_p_d_j_e___judge_8cpp_1a133dcd7b3ddf583fff220155e462ecbe" kind="function"><name>pdje_judge_add_input_rail_v1</name></member>
+    <member refid="_c_p_d_j_e___judge_8cpp_1a47ade31823625e2bff7894d4c6fde873" kind="function"><name>pdje_judge_add_midi_rail_v1</name></member>
+    <member refid="_c_p_d_j_e___judge_8cpp_1ae65ca6b7a36fa6eeb988943f4ad1b95e" kind="function"><name>pdje_judge_add_note_object_v1</name></member>
+    <member refid="_c_p_d_j_e___judge_8cpp_1a4920326d62b0c6538363e9b7c11e1f7a" kind="function"><name>pdje_judge_set_used_callback_v1</name></member>
+    <member refid="_c_p_d_j_e___judge_8cpp_1a686a36fec7c1be500c96963b9fdc149c" kind="function"><name>pdje_judge_set_missed_callback_v1</name></member>
+    <member refid="_c_p_d_j_e___judge_8cpp_1ae4d55fe634340f25122dec6acb72c176" kind="function"><name>pdje_judge_set_callback_intervals_v1</name></member>
+    <member refid="_c_p_d_j_e___judge_8cpp_1adfee83023788ebf0d26efd4e7ddb2ed3" kind="function"><name>pdje_judge_start_v1</name></member>
+    <member refid="_c_p_d_j_e___judge_8cpp_1a37aab09c5a85f5b9bc09d12bf8a4e889" kind="function"><name>pdje_judge_end_v1</name></member>
+  </compound>
+  <compound refid="_c_p_d_j_e___judge_8h" kind="file"><name>CPDJE_Judge.h</name>
+    <member refid="_c_p_d_j_e___judge_8h_1ad5a696d019e475939e72d25c3f4c5af5" kind="enum"><name>PDJE_JudgeResultV1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1ad5a696d019e475939e72d25c3f4c5af5a8f0c99117cdc104d2e6a31fbf60729c5" kind="enumvalue"><name>PDJE_JUDGE_RESULT_OK_V1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1ad5a696d019e475939e72d25c3f4c5af5a725c6c37c4f44aaf8b4294f0a2b50972" kind="enumvalue"><name>PDJE_JUDGE_RESULT_INVALID_ARGUMENT_V1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1ad5a696d019e475939e72d25c3f4c5af5a8a609a390dd7e0b579d0ab7deabc1664" kind="enumvalue"><name>PDJE_JUDGE_RESULT_INVALID_STATE_V1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1ad5a696d019e475939e72d25c3f4c5af5afebf820a0bb1a59401c1d4ec78d08eca" kind="enumvalue"><name>PDJE_JUDGE_RESULT_OUT_OF_RANGE_V1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1ad5a696d019e475939e72d25c3f4c5af5aa5000d1d40786741442ee6a9fe7f18fd" kind="enumvalue"><name>PDJE_JUDGE_RESULT_INTERNAL_ERROR_V1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1a8cd3c3f81837cad1c1f881a213f37ab5" kind="enum"><name>PDJE_JudgeStartStatusV1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1a8cd3c3f81837cad1c1f881a213f37ab5af1f20e2151dcf8f36151dd6bd14b6e51" kind="enumvalue"><name>PDJE_JUDGE_START_STATUS_OK_V1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1a8cd3c3f81837cad1c1f881a213f37ab5adf32a166e73f42ad042ed989048bbd79" kind="enumvalue"><name>PDJE_JUDGE_START_STATUS_CORE_LINE_MISSING_V1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1a8cd3c3f81837cad1c1f881a213f37ab5a53e9aa81593f2ce337f9580a9c4cbe8a" kind="enumvalue"><name>PDJE_JUDGE_START_STATUS_INPUT_LINE_MISSING_V1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1a8cd3c3f81837cad1c1f881a213f37ab5acd3b15276b83b63d4551fcb39bc07fa1" kind="enumvalue"><name>PDJE_JUDGE_START_STATUS_EVENT_RULE_EMPTY_V1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1a8cd3c3f81837cad1c1f881a213f37ab5a6fc786c4f96d432909b900658a9f8512" kind="enumvalue"><name>PDJE_JUDGE_START_STATUS_INPUT_RULE_EMPTY_V1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1a8cd3c3f81837cad1c1f881a213f37ab5a027007dced2d090157067496fa6c2ed0" kind="enumvalue"><name>PDJE_JUDGE_START_STATUS_NOTE_OBJECT_MISSING_V1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1aa44d21c084d805119e05d0c9e1b55f9d" kind="typedef"><name>PDJE_JudgeHandleV1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1a6c3feb80419acd5c2107627c25a8cbb1" kind="typedef"><name>PDJE_JudgeResultV1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1a45463e567e60c6d5c00ec56df31350b1" kind="typedef"><name>PDJE_JudgeStartStatusV1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1a85a930d977ba7141202609df3b9271c5" kind="typedef"><name>PDJE_JudgeStringViewV1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1a5000ca2369b31aa261628e7d80037739" kind="typedef"><name>PDJE_JudgeUsedEventV1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1a00f95fb8aeb7a2fc3c7969d013f87a29" kind="typedef"><name>PDJE_JudgeMissedNoteV1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1a82b6e998183fbbe668ff90dfab8c176c" kind="typedef"><name>PDJE_JudgeUsedCallbackV1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1a9eab0ae88b366c16ab1a260b8628a367" kind="typedef"><name>PDJE_JudgeMissedCallbackV1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1a2ce317403e75a304d12343ee048af8d5" kind="function"><name>pdje_judge_create_v1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1a66c22297ad7353c75b81568476efe116" kind="function"><name>pdje_judge_destroy_v1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1ae33af546d55ea5a18aaa5b1c96fae597" kind="function"><name>pdje_judge_attach_engine_v1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1ab4e59b24bba3c41bc604096ce7255ae1" kind="function"><name>pdje_judge_attach_input_v1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1a37b223a3808c568437c9bacffcb300a6" kind="function"><name>pdje_judge_set_event_rule_v1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1a133dcd7b3ddf583fff220155e462ecbe" kind="function"><name>pdje_judge_add_input_rail_v1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1a47ade31823625e2bff7894d4c6fde873" kind="function"><name>pdje_judge_add_midi_rail_v1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1ae65ca6b7a36fa6eeb988943f4ad1b95e" kind="function"><name>pdje_judge_add_note_object_v1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1a4920326d62b0c6538363e9b7c11e1f7a" kind="function"><name>pdje_judge_set_used_callback_v1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1a686a36fec7c1be500c96963b9fdc149c" kind="function"><name>pdje_judge_set_missed_callback_v1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1ae4d55fe634340f25122dec6acb72c176" kind="function"><name>pdje_judge_set_callback_intervals_v1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1adfee83023788ebf0d26efd4e7ddb2ed3" kind="function"><name>pdje_judge_start_v1</name></member>
+    <member refid="_c_p_d_j_e___judge_8h_1a37aab09c5a85f5b9bc09d12bf8a4e889" kind="function"><name>pdje_judge_end_v1</name></member>
+  </compound>
   <compound refid="_p_d_j_e___judge___init_8cpp" kind="file"><name>PDJE_Judge_Init.cpp</name>
   </compound>
   <compound refid="_p_d_j_e___judge___init_8hpp" kind="file"><name>PDJE_Judge_Init.hpp</name>
@@ -3581,6 +4073,10 @@
     <member refid="manual_audio_test_8cpp_1a4450494f995f5d36a0fa8f5774bcb503" kind="function"><name>idle_callback</name></member>
     <member refid="manual_audio_test_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kind="function"><name>main</name></member>
   </compound>
+  <compound refid="music__to__waveform__webp_8cpp" kind="file"><name>music_to_waveform_webp.cpp</name>
+    <member refid="music__to__waveform__webp_8cpp_1a7fec21bfd112b3ef08674dc13948d70f" kind="function"><name>print_timing_summary</name></member>
+    <member refid="music__to__waveform__webp_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>
+  </compound>
   <compound refid="_a_i_8hpp" kind="file"><name>AI.hpp</name>
   </compound>
   <compound refid="_result_8hpp" kind="file"><name>Result.hpp</name>
@@ -3598,6 +4094,8 @@
   <compound refid="relational_2_backend_concept_8hpp" kind="file"><name>BackendConcept.hpp</name>
   </compound>
   <compound refid="_annoy_backend_8hpp" kind="file"><name>AnnoyBackend.hpp</name>
+  </compound>
+  <compound refid="_rocks_db_backend_8cpp" kind="file"><name>RocksDbBackend.cpp</name>
   </compound>
   <compound refid="_rocks_db_backend_8hpp" kind="file"><name>RocksDbBackend.hpp</name>
   </compound>
@@ -3620,6 +4118,16 @@
   <compound refid="_function_context_8hpp" kind="file"><name>FunctionContext.hpp</name>
   </compound>
   <compound refid="_gain_bias_8hpp" kind="file"><name>GainBias.hpp</name>
+  </compound>
+  <compound refid="_waveform_webp_8cpp" kind="file"><name>WaveformWebp.cpp</name>
+    <member refid="_waveform_webp_8cpp_1ac3180678ac3d8e17a9fb79bb9b7a6785" kind="function"><name>HWY_EXPORT</name></member>
+  </compound>
+  <compound refid="_waveform_webp_8hpp" kind="file"><name>WaveformWebp.hpp</name>
+  </compound>
+  <compound refid="_waveform_webp_highway-inl_8h" kind="file"><name>WaveformWebpHighway-inl.h</name>
+    <member refid="_waveform_webp_highway-inl_8h_1a1929b8491aa4123269baabf05fa21d8e" kind="define"><name>HWY_TARGET_INCLUDE</name></member>
+  </compound>
+  <compound refid="_webp_writer_8hpp" kind="file"><name>WebpWriter.hpp</name>
   </compound>
   <compound refid="_clamp_8hpp" kind="file"><name>Clamp.hpp</name>
   </compound>
@@ -3842,6 +4350,8 @@
   <compound refid="dir_ab24d0c81647c9b16268d1b91bd67ec4" kind="dir"><name>include/util/Halide_Codes</name>
   </compound>
   <compound refid="dir_17668bf6ddeb2b4f6cc5c25966f2c7e6" kind="dir"><name>include/global/Highres_Clock</name>
+  </compound>
+  <compound refid="dir_fdf12f0bed87f5c02617a6813d32411d" kind="dir"><name>include/util/function/image</name>
   </compound>
   <compound refid="dir_d44c64559bbebec7f509842c48db8b23" kind="dir"><name>include</name>
   </compound>

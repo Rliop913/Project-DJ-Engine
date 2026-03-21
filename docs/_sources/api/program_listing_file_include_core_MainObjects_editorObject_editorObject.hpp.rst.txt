@@ -116,11 +116,16 @@ Program Listing for File editorObject.hpp
        void
        UpdateLog();
    
-       // template <typename EDIT_ARG_TYPE>
-       // DiffResult
-       // GetDiff(const gitwrap::commit &oldTimeStamp,
-       //         const gitwrap::commit &newTimeStamp);
-       // DEPRECATE DIFF For Now
+       template <typename EDIT_ARG_TYPE>
+       std::optional<PDJE_TIMELINE::TimeLineSemanticDiffResult>
+       GetDiff(const DONT_SANITIZE &oldCommitOID,
+               const DONT_SANITIZE &newCommitOID);
+   
+       template <typename EDIT_ARG_TYPE>
+       std::optional<PDJE_TIMELINE::TimeLineSemanticDiffResult>
+       GetDiff(const UNSANITIZED   &musicName,
+               const DONT_SANITIZE &oldCommitOID,
+               const DONT_SANITIZE &newCommitOID);
        nj &
        operator[](const DONT_SANITIZE &key);
    
@@ -196,24 +201,23 @@ Program Listing for File editorObject.hpp
    editorObject::getAll<EDIT_ARG_MUSIC>(
        std::function<void(const EDIT_ARG_MUSIC &obj)> jsonCallback);
    
-   // template <>
-   // PDJE_API DiffResult
-   // editorObject::GetDiff<EDIT_ARG_NOTE>(const gitwrap::commit &oldTimeStamp,
-   //                                      const gitwrap::commit &newTimeStamp);
-   // template <>
-   // PDJE_API DiffResult
-   // editorObject::GetDiff<EDIT_ARG_MIX>(const gitwrap::commit &oldTimeStamp,
-   //                                     const gitwrap::commit &newTimeStamp);
-   // template <>
-   // PDJE_API DiffResult
-   // editorObject::GetDiff<EDIT_ARG_KEY_VALUE>(const gitwrap::commit
-   // &oldTimeStamp,
-   //                                           const gitwrap::commit
-   //                                           &newTimeStamp);
-   // template <>
-   // PDJE_API DiffResult
-   // editorObject::GetDiff<EDIT_ARG_MUSIC>(const gitwrap::commit &oldTimeStamp,
-   //                                       const gitwrap::commit &newTimeStamp);
+   template <>
+   PDJE_API std::optional<PDJE_TIMELINE::TimeLineSemanticDiffResult>
+            editorObject::GetDiff<EDIT_ARG_NOTE>(const DONT_SANITIZE &oldCommitOID,
+                                        const DONT_SANITIZE &newCommitOID);
+   template <>
+   PDJE_API std::optional<PDJE_TIMELINE::TimeLineSemanticDiffResult>
+            editorObject::GetDiff<EDIT_ARG_MIX>(const DONT_SANITIZE &oldCommitOID,
+                                       const DONT_SANITIZE &newCommitOID);
+   template <>
+   PDJE_API std::optional<PDJE_TIMELINE::TimeLineSemanticDiffResult>
+   editorObject::GetDiff<EDIT_ARG_KEY_VALUE>(const DONT_SANITIZE &oldCommitOID,
+                                             const DONT_SANITIZE &newCommitOID);
+   template <>
+   PDJE_API std::optional<PDJE_TIMELINE::TimeLineSemanticDiffResult>
+            editorObject::GetDiff<EDIT_ARG_MUSIC>(const UNSANITIZED   &musicName,
+                                         const DONT_SANITIZE &oldCommitOID,
+                                         const DONT_SANITIZE &newCommitOID);
    
    template <>
    PDJE_API DONT_SANITIZE
@@ -253,7 +257,6 @@ Program Listing for File editorObject.hpp
    template <>
    PDJE_API bool
    editorObject::Redo<EDIT_ARG_MUSIC>(const UNSANITIZED &musicName);
-   
    
    template <>
    PDJE_API void

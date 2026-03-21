@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="JsonDiffFriendlyIO_8hpp" kind="file" language="C++">
     <compoundname>JsonDiffFriendlyIO.hpp</compoundname>
     <includes local="no">filesystem</includes>
@@ -10,6 +10,24 @@
     <includes local="no">nlohmann/json.hpp</includes>
     <includedby refid="jsonWrapper_8hpp" local="yes">include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp</includedby>
     <incdepgraph>
+      <node id="2">
+        <label>filesystem</label>
+      </node>
+      <node id="6">
+        <label>string</label>
+      </node>
+      <node id="3">
+        <label>fstream</label>
+      </node>
+      <node id="4">
+        <label>ostream</label>
+      </node>
+      <node id="5">
+        <label>sstream</label>
+      </node>
+      <node id="7">
+        <label>nlohmann/json.hpp</label>
+      </node>
       <node id="1">
         <label>include/core/editor/TimeLine/JSONWrap/JsonDiffFriendlyIO.hpp</label>
         <link refid="JsonDiffFriendlyIO_8hpp"/>
@@ -26,53 +44,251 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="2">
-        <label>filesystem</label>
-      </node>
-      <node id="3">
-        <label>fstream</label>
-      </node>
-      <node id="7">
-        <label>nlohmann/json.hpp</label>
-      </node>
-      <node id="4">
-        <label>ostream</label>
-      </node>
-      <node id="5">
-        <label>sstream</label>
-      </node>
-      <node id="6">
-        <label>string</label>
-      </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="8">
-        <label>include/core/MainObjects/editorObject/addline.cpp</label>
-        <link refid="addline_8cpp"/>
-      </node>
-      <node id="9">
+      <node id="21">
         <label>include/core/MainObjects/editorObject/commonfunction.cpp</label>
         <link refid="commonfunction_8cpp"/>
       </node>
-      <node id="10">
-        <label>include/core/MainObjects/editorObject/deleteline.cpp</label>
-        <link refid="deleteline_8cpp"/>
+      <node id="15">
+        <label>include/tests/editorTest.cpp</label>
+        <link refid="editorTest_8cpp"/>
       </node>
-      <node id="6">
+      <node id="37">
+        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-KV.cpp</label>
+        <link refid="TimeLineDiffMachine-KV_8cpp"/>
+      </node>
+      <node id="45">
+        <label>include/core/editor/TimeLine/JSONWrap/MusicJsonHelper.hpp</label>
+        <link refid="MusicJsonHelper_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>include/core/MainObjects/editorObject/getdiff.cpp</label>
+        <link refid="getdiff_8cpp"/>
+      </node>
+      <node id="30">
+        <label>include/core/MainObjects/editorObject/updatelog.cpp</label>
+        <link refid="updatelog_8cpp"/>
+      </node>
+      <node id="34">
+        <label>include/core/editor/TimeLine/LineVersion/LineVersion.hpp</label>
+        <link refid="LineVersion_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
         <label>include/core/MainObjects/editorObject/editorObject.cpp</label>
         <link refid="editorObject_8cpp"/>
       </node>
-      <node id="7">
+      <node id="39">
+        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-MUSIC.cpp</label>
+        <link refid="TimeLineDiffMachine-MUSIC_8cpp"/>
+      </node>
+      <node id="40">
+        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-NOTE.cpp</label>
+        <link refid="TimeLineDiffMachine-NOTE_8cpp"/>
+      </node>
+      <node id="18">
+        <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
+        <link refid="judgeTest_8cpp"/>
+      </node>
+      <node id="11">
+        <label>include/core/interface/CPDJE_interface.cpp</label>
+        <link refid="CPDJE__interface_8cpp"/>
+      </node>
+      <node id="41">
+        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.cpp</label>
+        <link refid="TimeLineDiffMachine_8cpp"/>
+      </node>
+      <node id="20">
+        <label>include/core/MainObjects/editorObject/addline.cpp</label>
+        <link refid="addline_8cpp"/>
+      </node>
+      <node id="29">
+        <label>include/core/MainObjects/editorObject/undo.cpp</label>
+        <link refid="undo_8cpp"/>
+      </node>
+      <node id="23">
+        <label>include/core/MainObjects/editorObject/getall.cpp</label>
+        <link refid="getall_8cpp"/>
+      </node>
+      <node id="9">
+        <label>include/core/editor/TimeLine/JSONWrap/MusicJson.cpp</label>
+        <link refid="MusicJson_8cpp"/>
+      </node>
+      <node id="33">
+        <label>include/core/editor/TimeLine/LineVersion/LineVersion.cpp</label>
+        <link refid="LineVersion_8cpp"/>
+      </node>
+      <node id="8">
         <label>include/core/MainObjects/editorObject/editorObject.hpp</label>
         <link refid="editorObject_8hpp"/>
-        <childnode refid="8" relation="include">
-        </childnode>
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>include/core/editor/editor.hpp</label>
+        <link refid="editor_8hpp"/>
         <childnode refid="6" relation="include">
         </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>include/tests/gittest.cpp</label>
+        <link refid="gittest_8cpp"/>
+      </node>
+      <node id="26">
+        <label>include/core/MainObjects/editorObject/go.cpp</label>
+        <link refid="go_8cpp"/>
+      </node>
+      <node id="43">
+        <label>include/core/editor/TimeLine/JSONWrap/KVJson.cpp</label>
+        <link refid="KVJson_8cpp"/>
+      </node>
+      <node id="2">
+        <label>include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp</label>
+        <link refid="jsonWrapper_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>include/core/editor/TimeLine/TimeLineDiffTypes.hpp</label>
+        <link refid="TimeLineDiffTypes_8hpp"/>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="22">
+        <label>include/core/MainObjects/editorObject/deleteline.cpp</label>
+        <link refid="deleteline_8cpp"/>
+      </node>
+      <node id="12">
+        <label>include/core/interface/PDJE_interface.cpp</label>
+        <link refid="PDJE__interface_8cpp"/>
+      </node>
+      <node id="38">
+        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-MIX.cpp</label>
+        <link refid="TimeLineDiffMachine-MIX_8cpp"/>
+      </node>
+      <node id="42">
+        <label>include/core/editor/TimeLine/TimeLine.cpp</label>
+        <link refid="TimeLine_8cpp"/>
+      </node>
+      <node id="44">
+        <label>include/core/editor/TimeLine/JSONWrap/MixJson.cpp</label>
+        <link refid="MixJson_8cpp"/>
+      </node>
+      <node id="6">
+        <label>include/core/editor/editor.cpp</label>
+        <link refid="editor_8cpp"/>
+      </node>
+      <node id="19">
+        <label>include/tests/music_to_waveform_webp.cpp</label>
+        <link refid="music__to__waveform__webp_8cpp"/>
+      </node>
+      <node id="27">
+        <label>include/core/MainObjects/editorObject/redo.cpp</label>
+        <link refid="redo_8cpp"/>
+      </node>
+      <node id="14">
+        <label>include/tests/dbTest.cpp</label>
+        <link refid="dbTest_8cpp"/>
+      </node>
+      <node id="28">
+        <label>include/core/MainObjects/editorObject/render.cpp</label>
+        <link refid="render_8cpp"/>
+      </node>
+      <node id="32">
+        <label>include/core/editor/TimeLine/GitDataPack/GitDatas.hpp</label>
+        <link refid="GitDatas_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>include/tests/interfaceTest.cpp</label>
+        <link refid="interfaceTest_8cpp"/>
+      </node>
+      <node id="25">
+        <label>include/core/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
+        <link refid="getlogwithjsongraph_8cpp"/>
+      </node>
+      <node id="10">
+        <label>include/core/interface/PDJE_interface.hpp</label>
+        <link refid="PDJE__interface_8hpp"/>
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
@@ -91,82 +307,14 @@
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
       </node>
-      <node id="11">
-        <label>include/core/MainObjects/editorObject/getall.cpp</label>
-        <link refid="getall_8cpp"/>
-      </node>
-      <node id="12">
-        <label>include/core/MainObjects/editorObject/getdiff.cpp</label>
-        <link refid="getdiff_8cpp"/>
-      </node>
-      <node id="13">
-        <label>include/core/MainObjects/editorObject/getlogwithjsongraph.cpp</label>
-        <link refid="getlogwithjsongraph_8cpp"/>
-      </node>
-      <node id="14">
-        <label>include/core/MainObjects/editorObject/go.cpp</label>
-        <link refid="go_8cpp"/>
-      </node>
-      <node id="15">
-        <label>include/core/MainObjects/editorObject/redo.cpp</label>
-        <link refid="redo_8cpp"/>
-      </node>
-      <node id="16">
-        <label>include/core/MainObjects/editorObject/render.cpp</label>
-        <link refid="render_8cpp"/>
-      </node>
-      <node id="17">
-        <label>include/core/MainObjects/editorObject/undo.cpp</label>
-        <link refid="undo_8cpp"/>
-      </node>
-      <node id="18">
-        <label>include/core/MainObjects/editorObject/updatelog.cpp</label>
-        <link refid="updatelog_8cpp"/>
-      </node>
-      <node id="19">
+      <node id="31">
         <label>include/core/SWIG_editor_visitor.hpp</label>
         <link refid="SWIG__editor__visitor_8hpp"/>
       </node>
-      <node id="35">
-        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-KV.cpp</label>
-        <link refid="TimeLineDiffMachine-KV_8cpp"/>
-      </node>
-      <node id="36">
-        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-MIX.cpp</label>
-        <link refid="TimeLineDiffMachine-MIX_8cpp"/>
-      </node>
-      <node id="37">
-        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-MUSIC.cpp</label>
-        <link refid="TimeLineDiffMachine-MUSIC_8cpp"/>
-      </node>
-      <node id="38">
-        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine-NOTE.cpp</label>
-        <link refid="TimeLineDiffMachine-NOTE_8cpp"/>
-      </node>
-      <node id="39">
-        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.cpp</label>
-        <link refid="TimeLineDiffMachine_8cpp"/>
-      </node>
-      <node id="34">
-        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp</label>
-        <link refid="TimeLineDiffMachine_8hpp"/>
-        <childnode refid="35" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
-        </childnode>
-        <childnode refid="37" relation="include">
-        </childnode>
-        <childnode refid="38" relation="include">
-        </childnode>
-        <childnode refid="39" relation="include">
-        </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
+      <node id="46">
+        <label>include/core/editor/TimeLine/JSONWrap/NoteJson.cpp</label>
+        <link refid="NoteJson_8cpp"/>
       </node>
       <node id="3">
         <label>include/core/editor/TimeLine/EventMarker/EventMarker.hpp</label>
@@ -174,18 +322,10 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="30">
-        <label>include/core/editor/TimeLine/GitDataPack/GitDatas.hpp</label>
-        <link refid="GitDatas_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
+      <node id="4">
+        <label>include/core/editor/TimeLine/TimeLine.hpp</label>
+        <link refid="TimeLine_8hpp"/>
+        <childnode refid="5" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -194,151 +334,25 @@
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="41">
-        <label>include/core/editor/TimeLine/JSONWrap/KVJson.cpp</label>
-        <link refid="KVJson_8cpp"/>
-      </node>
-      <node id="42">
-        <label>include/core/editor/TimeLine/JSONWrap/MixJson.cpp</label>
-        <link refid="MixJson_8cpp"/>
-      </node>
-      <node id="20">
-        <label>include/core/editor/TimeLine/JSONWrap/MusicJson.cpp</label>
-        <link refid="MusicJson_8cpp"/>
-      </node>
-      <node id="43">
-        <label>include/core/editor/TimeLine/JSONWrap/MusicJsonHelper.hpp</label>
-        <link refid="MusicJsonHelper_8hpp"/>
-        <childnode refid="8" relation="include">
+      <node id="36">
+        <label>include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp</label>
+        <link refid="TimeLineDiffMachine_8hpp"/>
+        <childnode refid="37" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="44">
-        <label>include/core/editor/TimeLine/JSONWrap/NoteJson.cpp</label>
-        <link refid="NoteJson_8cpp"/>
-      </node>
-      <node id="2">
-        <label>include/core/editor/TimeLine/JSONWrap/jsonWrapper.hpp</label>
-        <link refid="jsonWrapper_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="42" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="43" relation="include">
-        </childnode>
-        <childnode refid="44" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
       </node>
-      <node id="31">
-        <label>include/core/editor/TimeLine/LineVersion/LineVersion.cpp</label>
-        <link refid="LineVersion_8cpp"/>
-      </node>
-      <node id="32">
-        <label>include/core/editor/TimeLine/LineVersion/LineVersion.hpp</label>
-        <link refid="LineVersion_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="40">
-        <label>include/core/editor/TimeLine/TimeLine.cpp</label>
-        <link refid="TimeLine_8cpp"/>
-      </node>
-      <node id="4">
-        <label>include/core/editor/TimeLine/TimeLine.hpp</label>
-        <link refid="TimeLine_8hpp"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="33">
-        <label>include/core/editor/TimeLine/TimeLineDiffTypes.hpp</label>
-        <link refid="TimeLineDiffTypes_8hpp"/>
-        <childnode refid="34" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="29">
-        <label>include/core/editor/editor.cpp</label>
-        <link refid="editor_8cpp"/>
-      </node>
-      <node id="5">
-        <label>include/core/editor/editor.hpp</label>
-        <link refid="editor_8hpp"/>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-      </node>
-      <node id="22">
-        <label>include/core/interface/PDJE_interface.cpp</label>
-        <link refid="PDJE__interface_8cpp"/>
-      </node>
-      <node id="21">
-        <label>include/core/interface/PDJE_interface.hpp</label>
-        <link refid="PDJE__interface_8hpp"/>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-      </node>
-      <node id="23">
+      <node id="13">
         <label>include/core/interface/PDJE_polyglot_wraps.cpp</label>
         <link refid="PDJE__polyglot__wraps_8cpp"/>
-      </node>
-      <node id="24">
-        <label>include/tests/JUDGE_TESTS/judgeTest.cpp</label>
-        <link refid="judgeTest_8cpp"/>
-      </node>
-      <node id="25">
-        <label>include/tests/dbTest.cpp</label>
-        <link refid="dbTest_8cpp"/>
-      </node>
-      <node id="26">
-        <label>include/tests/editorTest.cpp</label>
-        <link refid="editorTest_8cpp"/>
-      </node>
-      <node id="27">
-        <label>include/tests/gittest.cpp</label>
-        <link refid="gittest_8cpp"/>
-      </node>
-      <node id="28">
-        <label>include/tests/interfaceTest.cpp</label>
-        <link refid="interfaceTest_8cpp"/>
       </node>
     </invincdepgraph>
     <innernamespace refid="namespacePDJE__JSON__IO__DETAIL">PDJE_JSON_IO_DETAIL</innernamespace>

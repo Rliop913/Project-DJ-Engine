@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="Slugify_8hpp" kind="file" language="C++">
     <compoundname>Slugify.hpp</compoundname>
     <includes refid="Result_8hpp" local="yes">util/common/Result.hpp</includes>
@@ -8,6 +8,9 @@
     <includes local="no">string</includes>
     <includedby refid="PDJE__Util_8hpp" local="yes">include/util/PDJE_Util.hpp</includedby>
     <incdepgraph>
+      <node id="5">
+        <label>string</label>
+      </node>
       <node id="2">
         <label>util/common/Result.hpp</label>
         <link refid="Result_8hpp"/>
@@ -16,6 +19,20 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
+      <node id="4">
+        <label>util/common/StatusCode.hpp</label>
+        <link refid="StatusCode_8hpp"/>
+      </node>
+      <node id="6">
+        <label>utility</label>
+      </node>
+      <node id="7">
+        <label>util/function/FunctionContext.hpp</label>
+        <link refid="FunctionContext_8hpp"/>
+      </node>
+      <node id="8">
+        <label>cctype</label>
+      </node>
       <node id="3">
         <label>util/common/Status.hpp</label>
         <link refid="Status_8hpp"/>
@@ -23,14 +40,6 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-      </node>
-      <node id="4">
-        <label>util/common/StatusCode.hpp</label>
-        <link refid="StatusCode_8hpp"/>
-      </node>
-      <node id="7">
-        <label>util/function/FunctionContext.hpp</label>
-        <link refid="FunctionContext_8hpp"/>
       </node>
       <node id="1">
         <label>include/util/function/text/Slugify.hpp</label>
@@ -43,15 +52,6 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-      </node>
-      <node id="8">
-        <label>cctype</label>
-      </node>
-      <node id="5">
-        <label>string</label>
-      </node>
-      <node id="6">
-        <label>utility</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
@@ -91,7 +91,7 @@
 <codeline lineno="15"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;std::string&gt;</ref></highlight></codeline>
-<codeline lineno="18" refid="namespacePDJE__UTIL_1_1function_1a8a09a492f8131bd4439eea47ffc0ccd5" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1a8a09a492f8131bd4439eea47ffc0ccd5" kindref="member">slugify</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1function_1_1SlugifyArgs" kindref="compound">SlugifyArgs</ref><sp/>&amp;args,<sp/><ref refid="structPDJE__UTIL_1_1function_1_1EvalOptions" kindref="compound">EvalOptions</ref><sp/>options<sp/>=<sp/>{})</highlight></codeline>
+<codeline lineno="18" refid="namespacePDJE__UTIL_1_1function_1a900a69cb6f55c58b08fa7887a206f450" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1a900a69cb6f55c58b08fa7887a206f450" kindref="member">slugify</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1function_1_1SlugifyArgs" kindref="compound">SlugifyArgs</ref><sp/>&amp;args,<sp/><ref refid="structPDJE__UTIL_1_1function_1_1EvalOptions" kindref="compound">EvalOptions</ref><sp/>options<sp/>=<sp/>{})</highlight></codeline>
 <codeline lineno="19"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)options;</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"></highlight></codeline>

@@ -48,6 +48,8 @@ Included By
 
 - :ref:`file_include_core_MainObjects_editorObject_deleteline.cpp`
 
+- :ref:`file_include_core_MainObjects_editorObject_getdiff.cpp`
+
 - :ref:`file_include_core_MainObjects_editorObject_render.cpp`
 
 - :ref:`file_include_core_MainObjects_editorObject_undo.cpp`

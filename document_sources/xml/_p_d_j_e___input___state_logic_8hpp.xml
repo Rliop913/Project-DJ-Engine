@@ -5,6 +5,7 @@
     <includes refid="_input___state_8hpp" local="yes">Input_State.hpp</includes>
     <includes refid="_p_d_j_e___input___device___data_8hpp" local="yes">PDJE_Input_Device_Data.hpp</includes>
     <includes local="no">vector</includes>
+    <includedby refid="_c_p_d_j_e___input_8cpp" local="yes">include/input/CPDJE_Input.cpp</includedby>
     <includedby refid="_p_d_j_e___input_8cpp" local="yes">include/input/PDJE_Input.cpp</includedby>
     <incdepgraph>
       <node id="2">
@@ -71,6 +72,10 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="2">
+        <label>include/input/CPDJE_Input.cpp</label>
+        <link refid="_c_p_d_j_e___input_8cpp"/>
+      </node>
+      <node id="3">
         <label>include/input/PDJE_Input.cpp</label>
         <link refid="_p_d_j_e___input_8cpp"/>
       </node>
@@ -78,6 +83,8 @@
         <label>include/input/PDJE_Input_StateLogic.hpp</label>
         <link refid="_p_d_j_e___input___state_logic_8hpp"/>
         <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
         </childnode>
       </node>
     </invincdepgraph>

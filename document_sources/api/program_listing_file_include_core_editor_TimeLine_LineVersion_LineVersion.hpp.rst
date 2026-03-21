@@ -13,6 +13,7 @@ Program Listing for File LineVersion.hpp
    #pragma once
    #include "GitDatas.hpp"
    #include "GitRAII.hpp"
+   #include "PDJE_EXPORT_SETTER.hpp"
    #include <git2/commit.h>
    #include <git2/oid.h>
    namespace PDJE_TIMELINE {

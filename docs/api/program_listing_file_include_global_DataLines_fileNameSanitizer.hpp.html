@@ -82,11 +82,8 @@
 <p>↰ <a class="reference internal" href="file_include_global_DataLines_fileNameSanitizer.hpp.html#file-include-global-datalines-filenamesanitizer-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include\global\DataLines\fileNameSanitizer.hpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_EXPORT_SETTER.hpp&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cppcodec/base64_default_url.hpp&gt;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;filesystem&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;optional&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
-<span class="k">namespace</span><span class="w"> </span><span class="nn">fs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">std</span><span class="o">::</span><span class="nn">filesystem</span><span class="p">;</span>
 
 <span class="k">using</span><span class="w"> </span><span class="n">SANITIZED</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">;</span>
 
@@ -95,8 +92,6 @@
 <span class="k">using</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">;</span>
 
 <span class="k">using</span><span class="w"> </span><span class="n">SANITIZED_ORNOT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">;</span>
-
-<span class="k">using</span><span class="w"> </span><span class="n">cbase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cppcodec</span><span class="o">::</span><span class="n">base64_url</span><span class="p">;</span>
 
 <span class="k">class</span><span class="w"> </span><span class="nc">PDJE_API</span><span class="w"> </span><span class="n">PDJE_Name_Sanitizer</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">public</span><span class="o">:</span>

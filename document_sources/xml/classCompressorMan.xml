@@ -1,15 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classCompressorMan" kind="class" language="C++" prot="public">
     <compoundname>CompressorMan</compoundname>
     <includes refid="compressorMan_8hpp" local="no">compressorMan.hpp</includes>
-    <sectiondef kind="public-attrib">
+      <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="classCompressorMan_1a0991af6cc3821d24bfb8ff63f9d80e45" prot="public" static="no" mutable="no">
         <type>float</type>
         <definition>float CompressorMan::strength</definition>
         <argsstring></argsstring>
         <name>strength</name>
-        <qualifiedname>CompressorMan::strength</qualifiedname>
         <briefdescription>
 <para>The compression ratio. </para>
         </briefdescription>
@@ -24,7 +23,6 @@
         <definition>int CompressorMan::threshDB</definition>
         <argsstring></argsstring>
         <name>threshDB</name>
-        <qualifiedname>CompressorMan::threshDB</qualifiedname>
         <briefdescription>
 <para>The threshold in decibels. </para>
         </briefdescription>
@@ -39,7 +37,6 @@
         <definition>int CompressorMan::attackMS</definition>
         <argsstring></argsstring>
         <name>attackMS</name>
-        <qualifiedname>CompressorMan::attackMS</qualifiedname>
         <briefdescription>
 <para>The attack time in milliseconds. </para>
         </briefdescription>
@@ -54,7 +51,6 @@
         <definition>int CompressorMan::releaseMS</definition>
         <argsstring></argsstring>
         <name>releaseMS</name>
-        <qualifiedname>CompressorMan::releaseMS</qualifiedname>
         <briefdescription>
 <para>The release time in milliseconds. </para>
         </briefdescription>
@@ -69,7 +65,6 @@
         <definition>int CompressorMan::kneeDB</definition>
         <argsstring></argsstring>
         <name>kneeDB</name>
-        <qualifiedname>CompressorMan::kneeDB</qualifiedname>
         <briefdescription>
 <para>The knee width in decibels. </para>
         </briefdescription>
@@ -79,19 +74,18 @@
         </inbodydescription>
         <location file="include/core/audioRender/ManualMix/ManualFausts/compressorMan.hpp" line="17" column="11" bodyfile="include/core/audioRender/ManualMix/ManualFausts/compressorMan.hpp" bodystart="17" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-func">
+      </sectiondef>
+      <sectiondef kind="public-func">
       <memberdef kind="function" id="classCompressorMan_1aa629d5092ac65d1bf82c55d975ee7f1c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="DeckData_8hpp_1a678187c26c21fa39643ad237d950bf15" kindref="member">ARGSETTER</ref></type>
         <definition>ARGSETTER CompressorMan::makeArgSetter</definition>
         <argsstring>()</argsstring>
         <name>makeArgSetter</name>
-        <qualifiedname>CompressorMan::makeArgSetter</qualifiedname>
         <briefdescription>
 <para>Creates a map of argument setters for the compressor effect. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>An <ref refid="DeckData_8hpp_1a678187c26c21fa39643ad237d950bf15" kindref="member">ARGSETTER</ref> map for configuring the compressor. </para>
+<para><simplesect kind="return"><para>An ARGSETTER map for configuring the compressor. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -99,7 +93,7 @@
         </inbodydescription>
         <location file="include/core/audioRender/ManualMix/ManualFausts/compressorMan.hpp" line="24" column="5" bodyfile="include/core/audioRender/ManualMix/ManualFausts/compressorMan.hpp" bodystart="24" bodyend="45"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
 <para>Manages compressor effect settings. </para>
     </briefdescription>

@@ -36,7 +36,7 @@ Program Listing for File MUSIC_CTR.hpp
        BPMCHANGE,
    };
    
-   struct PDJE_API PlayPosition {
+   struct PlayPosition {
        GLOBAL_POS Gidx;
        LOCAL_POS  Lidx;
        double     OriginBPM = -1;
@@ -44,7 +44,7 @@ Program Listing for File MUSIC_CTR.hpp
        MIXSTATE   status    = MIXSTATE::PLAY;
    };
    
-   struct PDJE_API Ingredients {
+   struct Ingredients {
      private:
        void
        SORT();

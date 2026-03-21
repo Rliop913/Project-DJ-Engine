@@ -125,11 +125,11 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">inits</span><span class="p">.</span><span class="n">note_objects</span><span class="o">-&gt;</span><span class="n">Sort</span><span class="p">();</span>
 
+<span class="w">    </span><span class="n">loop_obj</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">inits</span><span class="p">);</span>
+<span class="w">    </span><span class="n">loop_obj</span><span class="o">-&gt;</span><span class="n">loop_switch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="n">loop_obj</span><span class="o">-&gt;</span><span class="n">StartEventLoop</span><span class="p">();</span>
 <span class="w">    </span><span class="n">loop</span><span class="p">.</span><span class="n">emplace</span><span class="p">([</span><span class="k">this</span><span class="p">]()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">loop_obj</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">inits</span><span class="p">);</span>
-<span class="w">        </span><span class="n">loop_obj</span><span class="o">-&gt;</span><span class="n">loop_switch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="n">loop_obj</span><span class="o">-&gt;</span><span class="n">StartEventLoop</span><span class="p">();</span>
 <span class="w">            </span><span class="n">loop_obj</span><span class="o">-&gt;</span><span class="n">loop</span><span class="p">();</span>
 <span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="w"> </span><span class="o">&amp;</span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;loop has exceptions. What: &quot;</span><span class="p">);</span>
@@ -142,11 +142,15 @@
 <span class="kt">void</span>
 <span class="n">JUDGE</span><span class="o">::</span><span class="n">End</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="n">loop_obj</span><span class="o">-&gt;</span><span class="n">loop_switch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<span class="w">    </span><span class="n">loop_obj</span><span class="o">-&gt;</span><span class="n">EndEventLoop</span><span class="p">();</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">loop</span><span class="o">-&gt;</span><span class="n">joinable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">loop_obj</span><span class="p">.</span><span class="n">has_value</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">loop_obj</span><span class="o">-&gt;</span><span class="n">loop_switch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">        </span><span class="n">loop_obj</span><span class="o">-&gt;</span><span class="n">EndEventLoop</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">loop</span><span class="p">.</span><span class="n">has_value</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">loop</span><span class="o">-&gt;</span><span class="n">joinable</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">loop</span><span class="o">-&gt;</span><span class="n">join</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">loop</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+<span class="w">    </span><span class="n">loop_obj</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
 <span class="w">    </span><span class="n">inits</span><span class="p">.</span><span class="n">coreline</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
 <span class="w">    </span><span class="n">inits</span><span class="p">.</span><span class="n">inputline</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
 <span class="w">    </span><span class="n">inits</span><span class="p">.</span><span class="n">note_objects</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>

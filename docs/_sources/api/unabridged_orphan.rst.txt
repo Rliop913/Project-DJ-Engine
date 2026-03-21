@@ -406,6 +406,11 @@ Directories
 .. toctree::
    :maxdepth: 5
 
+   dir_include_util_function_image.rst
+
+.. toctree::
+   :maxdepth: 5
+
    dir_include_util_function_scalar.rst
 
 .. toctree::
@@ -556,6 +561,36 @@ Files
    :maxdepth: 5
 
    file_include_core_audioRender_ManualMix_ManualFausts_compressorMan.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_CPDJE_Input.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_input_CPDJE_Input.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_core_interface_CPDJE_interface.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_core_interface_CPDJE_interface.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_judge_CPDJE_Judge.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_judge_CPDJE_Judge.h.rst
 
 .. toctree::
    :maxdepth: 5
@@ -1070,6 +1105,11 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_tests_music_to_waveform_webp.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_core_audioRender_ManualMix_MusicControlPanel-inl.h.rst
 
 .. toctree::
@@ -1196,6 +1236,21 @@ Files
    :maxdepth: 5
 
    file_include_global_DataLines_PDJE_Buffer.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_global_PDJE_CAbi_Core_Private.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_global_PDJE_CAbi_Input_Private.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_global_PDJE_CAbi_Private.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -1505,6 +1560,11 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_util_db_backends_RocksDbBackend.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_util_db_backends_RocksDbBackend.hpp.rst
 
 .. toctree::
@@ -1770,6 +1830,21 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_util_function_image_WaveformWebp.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_function_image_WaveformWebp.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_function_image_WaveformWebpHighway-inl.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_input_DefaultDevs_linux_wayland_things_WaylandInputCore.cpp.rst
 
 .. toctree::
@@ -1796,6 +1871,11 @@ Files
    :maxdepth: 5
 
    file_include_input_DefaultDevs_linux_wayland_things_WaylandRuntimeLoader.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_function_image_WebpWriter.hpp.rst
 
 .. toctree::
    :maxdepth: 5

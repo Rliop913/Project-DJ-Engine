@@ -63,6 +63,8 @@ Program Listing for File PDJE_interface.hpp
                    const double       bpm = -1);
        TRACK_VEC
        SearchTrack(const UNSANITIZED &Title);
+       std::vector<float>
+       GetPCMFromMusData(const musdata &md);
        std::shared_ptr<audioPlayer>
        GetPlayerObject();
    

@@ -89,6 +89,8 @@ Included By
 
 - :ref:`file_include_core_db_Capnp_Translators_FrameCalc.cpp`
 
+- :ref:`file_include_core_db_Capnp_Translators_FrameCalcCore.hpp`
+
 - :ref:`file_include_core_db_Capnp_Translators_MixTranslator_Mix.cpp`
 
 - :ref:`file_include_core_db_Capnp_Translators_MixTranslator_MixTranslator.cpp`
@@ -125,6 +127,8 @@ Included By
 
 - :ref:`file_include_core_editor_editor.hpp`
 
+- :ref:`file_include_core_interface_CPDJE_interface.cpp`
+
 - :ref:`file_include_core_interface_PDJE_interface.cpp`
 
 - :ref:`file_include_core_interface_PDJE_interface.hpp`
@@ -135,11 +139,11 @@ Included By
 
 - :ref:`file_include_global_Crypto_PSKPipe.hpp`
 
-- :ref:`file_include_global_DataLines_fileNameSanitizer.cpp`
-
 - :ref:`file_include_global_PDJE_LOG_SETTER.cpp`
 
 - :ref:`file_include_global_PDJE_RAII_WRAP.hpp`
+
+- :ref:`file_include_input_CPDJE_Input.cpp`
 
 - :ref:`file_include_input_DefaultDevs_linux_DefaultDevs.hpp`
 
@@ -158,6 +162,8 @@ Included By
 - :ref:`file_include_input_PDJE_Input.cpp`
 
 - :ref:`file_include_input_midi_PDJE_MIDI.hpp`
+
+- :ref:`file_include_judge_CPDJE_Judge.cpp`
 
 - :ref:`file_include_judge_Loop_PDJE_Judge_Loop.cpp`
 
@@ -191,9 +197,9 @@ Functions
 
 - :ref:`exhale_function_namespace_p_d_j_e___l_o_g___d_e_t_a_i_l_1ae18d2bcca09be1d547f3697bd4c2c6af`
 
-- :ref:`exhale_function_namespace_p_d_j_e___l_o_g___d_e_t_a_i_l_1a8fbbbb6ecf4d5cf3365296b04d2c7636`
-
 - :ref:`exhale_function_namespace_p_d_j_e___l_o_g___d_e_t_a_i_l_1a7140251b9a3cfff2fa2f61000b80060d`
+
+- :ref:`exhale_function_namespace_p_d_j_e___l_o_g___d_e_t_a_i_l_1a8fbbbb6ecf4d5cf3365296b04d2c7636`
 
 - :ref:`exhale_function__p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1aa34453b30c474e0e23518fdfe3e57a3d`
 

@@ -16,6 +16,8 @@ Directory interface
 Files
 -----
 
+- :ref:`file_include_core_interface_CPDJE_interface.cpp`
+- :ref:`file_include_core_interface_CPDJE_interface.h`
 - :ref:`file_include_core_interface_PDJE_interface.cpp`
 - :ref:`file_include_core_interface_PDJE_interface.hpp`
 - :ref:`file_include_core_interface_PDJE_polyglot_wraps.cpp`

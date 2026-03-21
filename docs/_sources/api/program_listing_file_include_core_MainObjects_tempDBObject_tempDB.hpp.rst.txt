@@ -18,7 +18,7 @@ Program Listing for File tempDB.hpp
    #include "PDJE_EXPORT_SETTER.hpp"
    #include "dbRoot.hpp"
    
-   class PDJE_API tempDB {
+   class tempDB {
      private:
        std::optional<litedb> tempROOT;
    

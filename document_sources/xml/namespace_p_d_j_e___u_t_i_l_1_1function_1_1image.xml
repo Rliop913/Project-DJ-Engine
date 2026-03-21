@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image" kind="namespace" language="C++">
+    <compoundname>PDJE_UTIL::function::image</compoundname>
+    <innerclass refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1_encode_waveform_webp_args" prot="public">PDJE_UTIL::function::image::EncodeWaveformWebpArgs</innerclass>
+    <innerclass refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1_encode_webp_args" prot="public">PDJE_UTIL::function::image::EncodeWebpArgs</innerclass>
+    <innerclass refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1_raster_image_view" prot="public">PDJE_UTIL::function::image::RasterImageView</innerclass>
+    <innerclass refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1_write_webp_args" prot="public">PDJE_UTIL::function::image::WriteWebpArgs</innerclass>
+    <innernamespace refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1detail">PDJE_UTIL::function::image::detail</innernamespace>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1ab4c8fbb42e3638e97e48402b4ee04f52" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>RasterPixelFormat</name>
+        <qualifiedname>PDJE_UTIL::function::image::RasterPixelFormat</qualifiedname>
+        <enumvalue id="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1ab4c8fbb42e3638e97e48402b4ee04f52ac7df3adc4fea0d4738ffd89746eb9d81" prot="public">
+          <name>gray8</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1ab4c8fbb42e3638e97e48402b4ee04f52a745dc745cf05d4e0cfac10facf200f99" prot="public">
+          <name>gray_alpha8</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1ab4c8fbb42e3638e97e48402b4ee04f52a0d16d8a03c4a015e24dca17617722c4a" prot="public">
+          <name>rgb8</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1ab4c8fbb42e3638e97e48402b4ee04f52aaffcf7617521c42b49e1e2929a725e6a" prot="public">
+          <name>rgba8</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/image/WebpWriter.hpp" line="21" column="1" bodyfile="include/util/function/image/WebpWriter.hpp" bodystart="21" bodyend="21"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1a7b998cfb499fad07c17f416c6035ea7f" prot="public" static="no">
+        <type>std::vector&lt; std::uint8_t &gt;</type>
+        <definition>using PDJE_UTIL::function::image::EncodedWebpBytes =  std::vector&lt;std::uint8_t&gt;</definition>
+        <argsstring></argsstring>
+        <name>EncodedWebpBytes</name>
+        <qualifiedname>PDJE_UTIL::function::image::EncodedWebpBytes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/image/WaveformWebp.hpp" line="13" column="1" bodyfile="include/util/function/image/WaveformWebp.hpp" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1a794580f56b2f5675f2e9974d93fb206d" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1a7b998cfb499fad07c17f416c6035ea7f" kindref="member">EncodedWebpBytes</ref> &gt;</type>
+        <definition>using PDJE_UTIL::function::image::ChannelWaveformWebps =  std::vector&lt;EncodedWebpBytes&gt;</definition>
+        <argsstring></argsstring>
+        <name>ChannelWaveformWebps</name>
+        <qualifiedname>PDJE_UTIL::function::image::ChannelWaveformWebps</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/image/WaveformWebp.hpp" line="14" column="1" bodyfile="include/util/function/image/WaveformWebp.hpp" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1a781408e2b5312c618656f07675d378f8" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1a794580f56b2f5675f2e9974d93fb206d" kindref="member">ChannelWaveformWebps</ref> &gt;</type>
+        <definition>using PDJE_UTIL::function::image::WaveformWebpBatch =  std::vector&lt;ChannelWaveformWebps&gt;</definition>
+        <argsstring></argsstring>
+        <name>WaveformWebpBatch</name>
+        <qualifiedname>PDJE_UTIL::function::image::WaveformWebpBatch</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/image/WaveformWebp.hpp" line="15" column="1" bodyfile="include/util/function/image/WaveformWebp.hpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1ab6f8c1c9d220d513fef72978c82ef5a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_p_d_j_e___u_t_i_l_1_1common_1_1_result" kindref="compound">common::Result</ref>&lt; <ref refid="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1a781408e2b5312c618656f07675d378f8" kindref="member">WaveformWebpBatch</ref> &gt;</type>
+        <definition>common::Result&lt; WaveformWebpBatch &gt; PDJE_UTIL::function::image::encode_waveform_webps</definition>
+        <argsstring>(const EncodeWaveformWebpArgs &amp;args, function::EvalOptions options)</argsstring>
+        <name>encode_waveform_webps</name>
+        <qualifiedname>PDJE_UTIL::function::image::encode_waveform_webps</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1_encode_waveform_webp_args" kindref="compound">EncodeWaveformWebpArgs</ref> &amp;</type>
+          <declname>args</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1_eval_options" kindref="compound">function::EvalOptions</ref></type>
+          <declname>options</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/image/WaveformWebp.cpp" line="318" column="1" bodyfile="include/util/function/image/WaveformWebp.cpp" bodystart="318" bodyend="479" declfile="include/util/function/image/WaveformWebp.hpp" declline="28" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1ad73f20df717bb3b8336c40b1e2c9a3e1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_p_d_j_e___u_t_i_l_1_1common_1_1_result" kindref="compound">common::Result</ref>&lt; std::vector&lt; std::uint8_t &gt; &gt;</type>
+        <definition>common::Result&lt; std::vector&lt; std::uint8_t &gt; &gt; PDJE_UTIL::function::image::encode_webp</definition>
+        <argsstring>(const EncodeWebpArgs &amp;args, function::EvalOptions options={})</argsstring>
+        <name>encode_webp</name>
+        <qualifiedname>PDJE_UTIL::function::image::encode_webp</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1_encode_webp_args" kindref="compound">EncodeWebpArgs</ref> &amp;</type>
+          <declname>args</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1_eval_options" kindref="compound">function::EvalOptions</ref></type>
+          <declname>options</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/image/WebpWriter.hpp" line="207" column="1" bodyfile="include/util/function/image/WebpWriter.hpp" bodystart="207" bodyend="247"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_p_d_j_e___u_t_i_l_1_1function_1_1image_1abd56cd8a8dac271664c6520fddf556b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_p_d_j_e___u_t_i_l_1_1common_1_1_result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
+        <definition>common::Result&lt; void &gt; PDJE_UTIL::function::image::write_webp</definition>
+        <argsstring>(const WriteWebpArgs &amp;args, function::EvalOptions options={})</argsstring>
+        <name>write_webp</name>
+        <qualifiedname>PDJE_UTIL::function::image::write_webp</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1image_1_1_write_webp_args" kindref="compound">WriteWebpArgs</ref> &amp;</type>
+          <declname>args</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_p_d_j_e___u_t_i_l_1_1function_1_1_eval_options" kindref="compound">function::EvalOptions</ref></type>
+          <declname>options</declname>
+          <defval>{}</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/image/WebpWriter.hpp" line="250" column="1" bodyfile="include/util/function/image/WebpWriter.hpp" bodystart="250" bodyend="283"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/util/function/image/WaveformWebp.cpp" line="21" column="1"/>
+  </compounddef>
+</doxygen>

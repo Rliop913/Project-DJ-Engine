@@ -1,15 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1BlobText" kind="struct" language="C++" prot="public">
     <compoundname>PDJE_TIMELINE::TimeLineDiffMachineCore::BlobText</compoundname>
     <includes refid="TimeLineDiffMachine_8hpp" local="no">TimeLineDiffMachine.hpp</includes>
-    <sectiondef kind="public-attrib">
+      <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1BlobText_1ad74e4e942936fe08f465eb7c16114af0" prot="public" static="no" mutable="no">
         <type>std::string</type>
         <definition>std::string PDJE_TIMELINE::TimeLineDiffMachineCore::BlobText::text</definition>
         <argsstring></argsstring>
         <name>text</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::BlobText::text</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -23,7 +22,6 @@
         <definition>LineIndex PDJE_TIMELINE::TimeLineDiffMachineCore::BlobText::index</definition>
         <argsstring></argsstring>
         <name>index</name>
-        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::BlobText::index</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -32,12 +30,19 @@
         </inbodydescription>
         <location file="include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp" line="64" column="21" bodyfile="include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
+      <node id="4">
+        <label>PDJE_TIMELINE::TimeLineDiffMachineCore::LineIndex</label>
+        <link refid="structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1LineIndex"/>
+        <childnode refid="5" relation="usage">
+          <edgelabel>line_starts</edgelabel>
+        </childnode>
+      </node>
       <node id="1">
         <label>PDJE_TIMELINE::TimeLineDiffMachineCore::BlobText</label>
         <link refid="structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1BlobText"/>
@@ -48,23 +53,16 @@
           <edgelabel>index</edgelabel>
         </childnode>
       </node>
-      <node id="4">
-        <label>PDJE_TIMELINE::TimeLineDiffMachineCore::LineIndex</label>
-        <link refid="structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1LineIndex"/>
-        <childnode refid="5" relation="usage">
-          <edgelabel>line_starts</edgelabel>
-        </childnode>
-      </node>
       <node id="3">
         <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="5">
+        <label>std::vector&lt; std::size_t &gt;</label>
       </node>
       <node id="2">
         <label>std::string</label>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
-      </node>
-      <node id="5">
-        <label>std::vector&lt; std::size_t &gt;</label>
       </node>
     </collaborationgraph>
     <location file="include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp" line="62" column="5" bodyfile="include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp" bodystart="62" bodyend="65"/>

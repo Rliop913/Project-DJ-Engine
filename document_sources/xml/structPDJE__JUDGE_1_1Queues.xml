@@ -1,15 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="structPDJE__JUDGE_1_1Queues" kind="struct" language="C++" prot="public">
     <compoundname>PDJE_JUDGE::Queues</compoundname>
     <includes refid="PDJE__Judge__Loop__Structs_8hpp" local="no">PDJE_Judge_Loop_Structs.hpp</includes>
-    <sectiondef kind="public-attrib">
+      <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structPDJE__JUDGE_1_1Queues_1adbffb2cefb71848b50bba8f2eeca4b8c" prot="public" static="no" mutable="no">
-        <type><ref refid="classAtomic__Double__Buffer" kindref="compound">Atomic_Double_Buffer</ref>&lt; std::unordered_map&lt; uint64_t, <ref refid="namespacePDJE__JUDGE_1ad8c8d340702b0759a8cecb53091de1e0" kindref="member">NOTE_VEC</ref> &gt; &gt;</type>
+        <type><ref refid="classAtomic__Double__Buffer" kindref="compound">Atomic_Double_Buffer</ref>&lt; std::unordered_map&lt; uint64_t, <ref refid="namespacePDJE__JUDGE_1abfffd249b5c6ec7c96166be8da7e1b14" kindref="member">NOTE_VEC</ref> &gt; &gt;</type>
         <definition>Atomic_Double_Buffer&lt;std::unordered_map&lt;uint64_t, NOTE_VEC&gt; &gt; PDJE_JUDGE::Queues::miss_queue</definition>
         <argsstring></argsstring>
         <name>miss_queue</name>
-        <qualifiedname>PDJE_JUDGE::Queues::miss_queue</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -23,7 +22,6 @@
         <definition>Atomic_Double_Buffer&lt;useDatas&gt; PDJE_JUDGE::Queues::use_queue</definition>
         <argsstring></argsstring>
         <name>use_queue</name>
-        <qualifiedname>PDJE_JUDGE::Queues::use_queue</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -32,14 +30,13 @@
         </inbodydescription>
         <location file="include/judge/Loop/PDJE_Judge_Loop_Structs.hpp" line="35" column="56" bodyfile="include/judge/Loop/PDJE_Judge_Loop_Structs.hpp" bodystart="35" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-func">
+      </sectiondef>
+      <sectiondef kind="public-func">
       <memberdef kind="function" id="structPDJE__JUDGE_1_1Queues_1a660b5683ba058df750212851c13ba2e4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>PDJE_JUDGE::Queues::Queues</definition>
         <argsstring>()</argsstring>
         <name>Queues</name>
-        <qualifiedname>PDJE_JUDGE::Queues::Queues</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -48,63 +45,30 @@
         </inbodydescription>
         <location file="include/judge/Loop/PDJE_Judge_Loop_Structs.hpp" line="36" column="5" bodyfile="include/judge/Loop/PDJE_Judge_Loop_Structs.hpp" bodystart="36" bodyend="38"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
 <para>Buffered queues for miss/use events. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="6">
-        <label>Atomic_Double_Buffer&lt; PDJE_JUDGE::useDatas &gt;</label>
-        <link refid="classAtomic__Double__Buffer"/>
-        <childnode refid="7" relation="usage">
-          <edgelabel>first</edgelabel>
-          <edgelabel>second</edgelabel>
-        </childnode>
-      </node>
-      <node id="2">
-        <label>Atomic_Double_Buffer&lt; std::unordered_map&lt; uint64_t, NOTE_VEC &gt; &gt;</label>
-        <link refid="classAtomic__Double__Buffer"/>
-        <childnode refid="3" relation="usage">
-          <edgelabel>first</edgelabel>
-          <edgelabel>second</edgelabel>
-        </childnode>
-      </node>
       <node id="1">
         <label>PDJE_JUDGE::Queues</label>
         <link refid="structPDJE__JUDGE_1_1Queues"/>
         <childnode refid="2" relation="usage">
-          <edgelabel>miss_queue</edgelabel>
-        </childnode>
-        <childnode refid="6" relation="usage">
           <edgelabel>use_queue</edgelabel>
         </childnode>
-      </node>
-      <node id="8">
-        <label>PDJE_JUDGE::useDatas</label>
-        <link refid="structPDJE__JUDGE_1_1useDatas"/>
-      </node>
-      <node id="4">
-        <label>std::unordered_map&lt; uint64_t, NOTE_VEC &gt;</label>
-        <childnode refid="5" relation="usage">
-          <edgelabel>elements</edgelabel>
+        <childnode refid="3" relation="usage">
+          <edgelabel>miss_queue</edgelabel>
         </childnode>
       </node>
-      <node id="5">
-        <label>std::vector&lt; NOTE &gt;</label>
-      </node>
-      <node id="7">
-        <label>std::vector&lt; PDJE_JUDGE::useDatas &gt;</label>
-        <childnode refid="8" relation="usage">
-          <edgelabel>elements</edgelabel>
-        </childnode>
+      <node id="2">
+        <label>Atomic_Double_Buffer&lt; PDJE_JUDGE::useDatas &gt;</label>
+        <link refid="classAtomic__Double__Buffer"/>
       </node>
       <node id="3">
-        <label>std::vector&lt; std::unordered_map&lt; uint64_t, NOTE_VEC &gt; &gt;</label>
-        <childnode refid="4" relation="usage">
-          <edgelabel>elements</edgelabel>
-        </childnode>
+        <label>Atomic_Double_Buffer&lt; std::unordered_map&lt; uint64_t, NOTE_VEC &gt; &gt;</label>
+        <link refid="classAtomic__Double__Buffer"/>
       </node>
     </collaborationgraph>
     <location file="include/judge/Loop/PDJE_Judge_Loop_Structs.hpp" line="33" column="1" bodyfile="include/judge/Loop/PDJE_Judge_Loop_Structs.hpp" bodystart="33" bodyend="39"/>

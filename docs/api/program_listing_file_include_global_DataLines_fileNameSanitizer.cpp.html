@@ -81,15 +81,13 @@
 <span id="program-listing-file-include-global-datalines-filenamesanitizer-cpp"></span><h1>Program Listing for File fileNameSanitizer.cpp<a class="headerlink" href="#program-listing-for-file-filenamesanitizer-cpp" title="Link to this heading"></a></h1>
 <p>↰ <a class="reference internal" href="file_include_global_DataLines_fileNameSanitizer.cpp.html#file-include-global-datalines-filenamesanitizer-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include\global\DataLines\fileNameSanitizer.cpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;fileNameSanitizer.hpp&quot;</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cppcodec/base64_default_url.hpp&gt;</span>
 
+<span class="k">using</span><span class="w"> </span><span class="n">cbase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cppcodec</span><span class="o">::</span><span class="n">base64_url</span><span class="p">;</span>
 <span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">SANITIZED</span><span class="o">&gt;</span>
 <span class="n">PDJE_Name_Sanitizer</span><span class="o">::</span><span class="n">sanitizeFileName</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">fileName</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cbase</span><span class="o">::</span><span class="n">encoded_size</span><span class="p">(</span><span class="n">fileName</span><span class="p">.</span><span class="n">size</span><span class="p">())</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to sanitize filename. from PDJE_Name_Sanitizer &quot;</span>
-<span class="w">                </span><span class="s">&quot;sanitizeFileName. ErrfileName: &quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">fileName</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">nullopt</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">cbase</span><span class="o">::</span><span class="n">encode</span><span class="p">(</span><span class="n">fileName</span><span class="p">);</span>

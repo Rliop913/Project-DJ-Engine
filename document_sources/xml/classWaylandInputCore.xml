@@ -1,13 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="classWaylandInputCore" kind="class" language="C++" prot="public">
     <compoundname>WaylandInputCore</compoundname>
     <includes refid="WaylandInputCore_8hpp" local="no">WaylandInputCore.hpp</includes>
-    <sectiondef kind="private-type">
+      <sectiondef kind="private-type">
       <memberdef kind="enum" id="classWaylandInputCore_1adda32472a12053996baafa391b2c384a" prot="private" static="no" strong="yes">
         <type></type>
         <name>SourceMode</name>
-        <qualifiedname>WaylandInputCore::SourceMode</qualifiedname>
         <enumvalue id="classWaylandInputCore_1adda32472a12053996baafa391b2c384aa6adf97f83acf6453d4a6a4b1070f3754" prot="private">
           <name>None</name>
           <briefdescription>
@@ -37,14 +36,13 @@
         </inbodydescription>
         <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="24" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="24" bodyend="24"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="private-attrib">
+      </sectiondef>
+      <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classWaylandInputCore_1a87c453f1cc7570292495e98d24355c63" prot="private" static="no" mutable="no">
         <type><ref refid="classPDJE__IPC_1_1PDJE__Input__Transfer" kindref="compound">PDJE_IPC::PDJE_Input_Transfer</ref> *</type>
         <definition>PDJE_IPC::PDJE_Input_Transfer* WaylandInputCore::out</definition>
         <argsstring></argsstring>
         <name>out</name>
-        <qualifiedname>WaylandInputCore::out</qualifiedname>
         <initializer>= nullptr</initializer>
         <briefdescription>
         </briefdescription>
@@ -59,7 +57,6 @@
         <definition>std::optional&lt;WaylandOwnedWindow&gt; WaylandInputCore::owned_window</definition>
         <argsstring></argsstring>
         <name>owned_window</name>
-        <qualifiedname>WaylandInputCore::owned_window</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -73,7 +70,6 @@
         <definition>SourceMode WaylandInputCore::source_mode</definition>
         <argsstring></argsstring>
         <name>source_mode</name>
-        <qualifiedname>WaylandInputCore::source_mode</qualifiedname>
         <initializer>= <ref refid="classWaylandInputCore_1adda32472a12053996baafa391b2c384aa6adf97f83acf6453d4a6a4b1070f3754" kindref="member">SourceMode::None</ref></initializer>
         <briefdescription>
         </briefdescription>
@@ -88,7 +84,6 @@
         <definition>wl_display* WaylandInputCore::display</definition>
         <argsstring></argsstring>
         <name>display</name>
-        <qualifiedname>WaylandInputCore::display</qualifiedname>
         <initializer>= nullptr</initializer>
         <briefdescription>
         </briefdescription>
@@ -103,7 +98,6 @@
         <definition>wl_surface* WaylandInputCore::target_surface</definition>
         <argsstring></argsstring>
         <name>target_surface</name>
-        <qualifiedname>WaylandInputCore::target_surface</qualifiedname>
         <initializer>= nullptr</initializer>
         <briefdescription>
         </briefdescription>
@@ -118,7 +112,6 @@
         <definition>wl_registry* WaylandInputCore::host_registry</definition>
         <argsstring></argsstring>
         <name>host_registry</name>
-        <qualifiedname>WaylandInputCore::host_registry</qualifiedname>
         <initializer>= nullptr</initializer>
         <briefdescription>
         </briefdescription>
@@ -133,7 +126,6 @@
         <definition>wl_seat* WaylandInputCore::seat</definition>
         <argsstring></argsstring>
         <name>seat</name>
-        <qualifiedname>WaylandInputCore::seat</qualifiedname>
         <initializer>= nullptr</initializer>
         <briefdescription>
         </briefdescription>
@@ -148,7 +140,6 @@
         <definition>wl_keyboard* WaylandInputCore::keyboard</definition>
         <argsstring></argsstring>
         <name>keyboard</name>
-        <qualifiedname>WaylandInputCore::keyboard</qualifiedname>
         <initializer>= nullptr</initializer>
         <briefdescription>
         </briefdescription>
@@ -163,7 +154,6 @@
         <definition>wl_pointer* WaylandInputCore::pointer</definition>
         <argsstring></argsstring>
         <name>pointer</name>
-        <qualifiedname>WaylandInputCore::pointer</qualifiedname>
         <initializer>= nullptr</initializer>
         <briefdescription>
         </briefdescription>
@@ -178,7 +168,6 @@
         <definition>bool WaylandInputCore::wants_keyboard</definition>
         <argsstring></argsstring>
         <name>wants_keyboard</name>
-        <qualifiedname>WaylandInputCore::wants_keyboard</qualifiedname>
         <initializer>= false</initializer>
         <briefdescription>
         </briefdescription>
@@ -193,7 +182,6 @@
         <definition>bool WaylandInputCore::wants_pointer</definition>
         <argsstring></argsstring>
         <name>wants_pointer</name>
-        <qualifiedname>WaylandInputCore::wants_pointer</qualifiedname>
         <initializer>= false</initializer>
         <briefdescription>
         </briefdescription>
@@ -208,7 +196,6 @@
         <definition>bool WaylandInputCore::keyboard_focused</definition>
         <argsstring></argsstring>
         <name>keyboard_focused</name>
-        <qualifiedname>WaylandInputCore::keyboard_focused</qualifiedname>
         <initializer>= false</initializer>
         <briefdescription>
         </briefdescription>
@@ -223,7 +210,6 @@
         <definition>bool WaylandInputCore::pointer_focused</definition>
         <argsstring></argsstring>
         <name>pointer_focused</name>
-        <qualifiedname>WaylandInputCore::pointer_focused</qualifiedname>
         <initializer>= false</initializer>
         <briefdescription>
         </briefdescription>
@@ -238,7 +224,6 @@
         <definition>std::bitset&lt;102&gt; WaylandInputCore::key_pressed</definition>
         <argsstring></argsstring>
         <name>key_pressed</name>
-        <qualifiedname>WaylandInputCore::key_pressed</qualifiedname>
         <initializer>{}</initializer>
         <briefdescription>
         </briefdescription>
@@ -246,14 +231,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="43" column="17" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="43" bodyend="43"/>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="43" column="17" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classWaylandInputCore_1a2b24df235d9a14c3c0a1684b7b543990" prot="private" static="no" mutable="no">
         <type>std::string</type>
         <definition>std::string WaylandInputCore::keyboard_name</definition>
         <argsstring></argsstring>
         <name>keyboard_name</name>
-        <qualifiedname>WaylandInputCore::keyboard_name</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -267,7 +251,6 @@
         <definition>std::string WaylandInputCore::pointer_name</definition>
         <argsstring></argsstring>
         <name>pointer_name</name>
-        <qualifiedname>WaylandInputCore::pointer_name</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -281,7 +264,6 @@
         <definition>std::string WaylandInputCore::last_error</definition>
         <argsstring></argsstring>
         <name>last_error</name>
-        <qualifiedname>WaylandInputCore::last_error</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -295,7 +277,6 @@
         <definition>std::atomic&lt;bool&gt; WaylandInputCore::stop_requested</definition>
         <argsstring></argsstring>
         <name>stop_requested</name>
-        <qualifiedname>WaylandInputCore::stop_requested</qualifiedname>
         <initializer>{ false }</initializer>
         <briefdescription>
         </briefdescription>
@@ -303,14 +284,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="48" column="17" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="48" bodyend="48"/>
+        <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="48" column="17" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classWaylandInputCore_1aa8932150c1301c6411f34077232cdfcb" prot="private" static="no" mutable="no">
         <type>bool</type>
         <definition>bool WaylandInputCore::warned_host_dispatch</definition>
         <argsstring></argsstring>
         <name>warned_host_dispatch</name>
-        <qualifiedname>WaylandInputCore::warned_host_dispatch</qualifiedname>
         <initializer>= false</initializer>
         <briefdescription>
         </briefdescription>
@@ -320,14 +300,13 @@
         </inbodydescription>
         <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="49" column="10" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="49" bodyend="-1"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="private-func">
+      </sectiondef>
+      <sectiondef kind="private-func">
       <memberdef kind="function" id="classWaylandInputCore_1a7a4a5b1512754fb4c8516367a6f820f9" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void WaylandInputCore::SetError</definition>
         <argsstring>(std::string msg)</argsstring>
         <name>SetError</name>
-        <qualifiedname>WaylandInputCore::SetError</qualifiedname>
         <param>
           <type>std::string</type>
           <declname>msg</declname>
@@ -345,7 +324,6 @@
         <definition>void WaylandInputCore::ClearSelectionState</definition>
         <argsstring>()</argsstring>
         <name>ClearSelectionState</name>
-        <qualifiedname>WaylandInputCore::ClearSelectionState</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -359,7 +337,6 @@
         <definition>void WaylandInputCore::WriteKeyboardEvent</definition>
         <argsstring>(uint32_t time_ms, uint32_t key, bool pressed)</argsstring>
         <name>WriteKeyboardEvent</name>
-        <qualifiedname>WaylandInputCore::WriteKeyboardEvent</qualifiedname>
         <param>
           <type>uint32_t</type>
           <declname>time_ms</declname>
@@ -385,7 +362,6 @@
         <definition>void WaylandInputCore::WritePointerMotion</definition>
         <argsstring>(uint32_t time_ms, int x, int y)</argsstring>
         <name>WritePointerMotion</name>
-        <qualifiedname>WaylandInputCore::WritePointerMotion</qualifiedname>
         <param>
           <type>uint32_t</type>
           <declname>time_ms</declname>
@@ -411,7 +387,6 @@
         <definition>void WaylandInputCore::WritePointerButton</definition>
         <argsstring>(uint32_t time_ms, uint32_t button, bool pressed)</argsstring>
         <name>WritePointerButton</name>
-        <qualifiedname>WaylandInputCore::WritePointerButton</qualifiedname>
         <param>
           <type>uint32_t</type>
           <declname>time_ms</declname>
@@ -437,7 +412,6 @@
         <definition>void WaylandInputCore::WritePointerAxis</definition>
         <argsstring>(uint32_t time_ms, uint32_t axis, int wheel_delta)</argsstring>
         <name>WritePointerAxis</name>
-        <qualifiedname>WaylandInputCore::WritePointerAxis</qualifiedname>
         <param>
           <type>uint32_t</type>
           <declname>time_ms</declname>
@@ -463,7 +437,6 @@
         <definition>void WaylandInputCore::AttachSeatListeners</definition>
         <argsstring>()</argsstring>
         <name>AttachSeatListeners</name>
-        <qualifiedname>WaylandInputCore::AttachSeatListeners</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -477,7 +450,6 @@
         <definition>bool WaylandInputCore::ConfigureHostHandles</definition>
         <argsstring>(void *wl_display_ptr, void *wl_surface_ptr)</argsstring>
         <name>ConfigureHostHandles</name>
-        <qualifiedname>WaylandInputCore::ConfigureHostHandles</qualifiedname>
         <param>
           <type>void *</type>
           <declname>wl_display_ptr</declname>
@@ -499,7 +471,6 @@
         <definition>bool WaylandInputCore::ConfigureInternalWindow</definition>
         <argsstring>()</argsstring>
         <name>ConfigureInternalWindow</name>
-        <qualifiedname>WaylandInputCore::ConfigureInternalWindow</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -508,14 +479,13 @@
         </inbodydescription>
         <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="68" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="595" bodyend="647"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="private-static-func">
+      </sectiondef>
+      <sectiondef kind="private-static-func">
       <memberdef kind="function" id="classWaylandInputCore_1ad82c2609a50734b873825bd97f672f6c" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void WaylandInputCore::OnHostRegistryGlobal</definition>
         <argsstring>(void *data, wl_registry *registry, uint32_t name, const char *interface, uint32_t version)</argsstring>
         <name>OnHostRegistryGlobal</name>
-        <qualifiedname>WaylandInputCore::OnHostRegistryGlobal</qualifiedname>
         <param>
           <type>void *</type>
           <declname>data</declname>
@@ -549,7 +519,6 @@
         <definition>void WaylandInputCore::OnHostRegistryGlobalRemove</definition>
         <argsstring>(void *, wl_registry *, uint32_t)</argsstring>
         <name>OnHostRegistryGlobalRemove</name>
-        <qualifiedname>WaylandInputCore::OnHostRegistryGlobalRemove</qualifiedname>
         <param>
           <type>void *</type>
         </param>
@@ -572,7 +541,6 @@
         <definition>void WaylandInputCore::OnSeatCapabilities</definition>
         <argsstring>(void *data, wl_seat *seat, uint32_t capabilities)</argsstring>
         <name>OnSeatCapabilities</name>
-        <qualifiedname>WaylandInputCore::OnSeatCapabilities</qualifiedname>
         <param>
           <type>void *</type>
           <declname>data</declname>
@@ -598,7 +566,6 @@
         <definition>void WaylandInputCore::OnSeatName</definition>
         <argsstring>(void *, wl_seat *, const char *)</argsstring>
         <name>OnSeatName</name>
-        <qualifiedname>WaylandInputCore::OnSeatName</qualifiedname>
         <param>
           <type>void *</type>
         </param>
@@ -621,7 +588,6 @@
         <definition>void WaylandInputCore::OnKeyboardKeymap</definition>
         <argsstring>(void *data, wl_keyboard *, uint32_t format, int32_t fd, uint32_t size)</argsstring>
         <name>OnKeyboardKeymap</name>
-        <qualifiedname>WaylandInputCore::OnKeyboardKeymap</qualifiedname>
         <param>
           <type>void *</type>
           <declname>data</declname>
@@ -654,7 +620,6 @@
         <definition>void WaylandInputCore::OnKeyboardEnter</definition>
         <argsstring>(void *data, wl_keyboard *, uint32_t serial, wl_surface *surface, struct wl_array *keys)</argsstring>
         <name>OnKeyboardEnter</name>
-        <qualifiedname>WaylandInputCore::OnKeyboardEnter</qualifiedname>
         <param>
           <type>void *</type>
           <declname>data</declname>
@@ -687,7 +652,6 @@
         <definition>void WaylandInputCore::OnKeyboardLeave</definition>
         <argsstring>(void *data, wl_keyboard *, uint32_t serial, wl_surface *surface)</argsstring>
         <name>OnKeyboardLeave</name>
-        <qualifiedname>WaylandInputCore::OnKeyboardLeave</qualifiedname>
         <param>
           <type>void *</type>
           <declname>data</declname>
@@ -716,7 +680,6 @@
         <definition>void WaylandInputCore::OnKeyboardKey</definition>
         <argsstring>(void *data, wl_keyboard *, uint32_t serial, uint32_t time, uint32_t key, uint32_t state)</argsstring>
         <name>OnKeyboardKey</name>
-        <qualifiedname>WaylandInputCore::OnKeyboardKey</qualifiedname>
         <param>
           <type>void *</type>
           <declname>data</declname>
@@ -753,7 +716,6 @@
         <definition>void WaylandInputCore::OnKeyboardModifiers</definition>
         <argsstring>(void *, wl_keyboard *, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t)</argsstring>
         <name>OnKeyboardModifiers</name>
-        <qualifiedname>WaylandInputCore::OnKeyboardModifiers</qualifiedname>
         <param>
           <type>void *</type>
         </param>
@@ -788,7 +750,6 @@
         <definition>void WaylandInputCore::OnKeyboardRepeatInfo</definition>
         <argsstring>(void *, wl_keyboard *, int32_t, int32_t)</argsstring>
         <name>OnKeyboardRepeatInfo</name>
-        <qualifiedname>WaylandInputCore::OnKeyboardRepeatInfo</qualifiedname>
         <param>
           <type>void *</type>
         </param>
@@ -814,7 +775,6 @@
         <definition>void WaylandInputCore::OnPointerEnter</definition>
         <argsstring>(void *data, wl_pointer *, uint32_t serial, wl_surface *surface, wl_fixed_t surface_x, wl_fixed_t surface_y)</argsstring>
         <name>OnPointerEnter</name>
-        <qualifiedname>WaylandInputCore::OnPointerEnter</qualifiedname>
         <param>
           <type>void *</type>
           <declname>data</declname>
@@ -851,7 +811,6 @@
         <definition>void WaylandInputCore::OnPointerLeave</definition>
         <argsstring>(void *data, wl_pointer *, uint32_t serial, wl_surface *surface)</argsstring>
         <name>OnPointerLeave</name>
-        <qualifiedname>WaylandInputCore::OnPointerLeave</qualifiedname>
         <param>
           <type>void *</type>
           <declname>data</declname>
@@ -880,7 +839,6 @@
         <definition>void WaylandInputCore::OnPointerMotion</definition>
         <argsstring>(void *data, wl_pointer *, uint32_t time, wl_fixed_t surface_x, wl_fixed_t surface_y)</argsstring>
         <name>OnPointerMotion</name>
-        <qualifiedname>WaylandInputCore::OnPointerMotion</qualifiedname>
         <param>
           <type>void *</type>
           <declname>data</declname>
@@ -913,7 +871,6 @@
         <definition>void WaylandInputCore::OnPointerButton</definition>
         <argsstring>(void *data, wl_pointer *, uint32_t serial, uint32_t time, uint32_t button, uint32_t state)</argsstring>
         <name>OnPointerButton</name>
-        <qualifiedname>WaylandInputCore::OnPointerButton</qualifiedname>
         <param>
           <type>void *</type>
           <declname>data</declname>
@@ -950,7 +907,6 @@
         <definition>void WaylandInputCore::OnPointerAxis</definition>
         <argsstring>(void *data, wl_pointer *, uint32_t time, uint32_t axis, wl_fixed_t value)</argsstring>
         <name>OnPointerAxis</name>
-        <qualifiedname>WaylandInputCore::OnPointerAxis</qualifiedname>
         <param>
           <type>void *</type>
           <declname>data</declname>
@@ -983,7 +939,6 @@
         <definition>void WaylandInputCore::OnPointerFrame</definition>
         <argsstring>(void *, wl_pointer *)</argsstring>
         <name>OnPointerFrame</name>
-        <qualifiedname>WaylandInputCore::OnPointerFrame</qualifiedname>
         <param>
           <type>void *</type>
         </param>
@@ -1003,7 +958,6 @@
         <definition>void WaylandInputCore::OnPointerAxisSource</definition>
         <argsstring>(void *, wl_pointer *, uint32_t)</argsstring>
         <name>OnPointerAxisSource</name>
-        <qualifiedname>WaylandInputCore::OnPointerAxisSource</qualifiedname>
         <param>
           <type>void *</type>
         </param>
@@ -1026,7 +980,6 @@
         <definition>void WaylandInputCore::OnPointerAxisStop</definition>
         <argsstring>(void *, wl_pointer *, uint32_t, uint32_t)</argsstring>
         <name>OnPointerAxisStop</name>
-        <qualifiedname>WaylandInputCore::OnPointerAxisStop</qualifiedname>
         <param>
           <type>void *</type>
         </param>
@@ -1052,7 +1005,6 @@
         <definition>void WaylandInputCore::OnPointerAxisDiscrete</definition>
         <argsstring>(void *data, wl_pointer *, uint32_t axis, int32_t discrete)</argsstring>
         <name>OnPointerAxisDiscrete</name>
-        <qualifiedname>WaylandInputCore::OnPointerAxisDiscrete</qualifiedname>
         <param>
           <type>void *</type>
           <declname>data</declname>
@@ -1081,7 +1033,6 @@
         <definition>void WaylandInputCore::OnPointerAxisValue120</definition>
         <argsstring>(void *data, wl_pointer *, uint32_t axis, int32_t value120)</argsstring>
         <name>OnPointerAxisValue120</name>
-        <qualifiedname>WaylandInputCore::OnPointerAxisValue120</qualifiedname>
         <param>
           <type>void *</type>
           <declname>data</declname>
@@ -1110,7 +1061,6 @@
         <definition>void WaylandInputCore::OnPointerAxisRelativeDirection</definition>
         <argsstring>(void *, wl_pointer *, uint32_t, uint32_t)</argsstring>
         <name>OnPointerAxisRelativeDirection</name>
-        <qualifiedname>WaylandInputCore::OnPointerAxisRelativeDirection</qualifiedname>
         <param>
           <type>void *</type>
         </param>
@@ -1131,14 +1081,13 @@
         </inbodydescription>
         <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="163" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp" bodystart="529" bodyend="534"/>
       </memberdef>
-    </sectiondef>
-    <sectiondef kind="public-func">
+      </sectiondef>
+      <sectiondef kind="public-func">
       <memberdef kind="function" id="classWaylandInputCore_1a844f9a76dfe46bc5d83c2c24bdd36dd2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void WaylandInputCore::set_Input_Transfer</definition>
         <argsstring>(PDJE_IPC::PDJE_Input_Transfer *input_trsf)</argsstring>
         <name>set_Input_Transfer</name>
-        <qualifiedname>WaylandInputCore::set_Input_Transfer</qualifiedname>
         <param>
           <type><ref refid="classPDJE__IPC_1_1PDJE__Input__Transfer" kindref="compound">PDJE_IPC::PDJE_Input_Transfer</ref> *</type>
           <declname>input_trsf</declname>
@@ -1156,7 +1105,6 @@
         <definition>bool WaylandInputCore::Configure</definition>
         <argsstring>(void *wl_display_ptr, void *wl_surface_ptr, const std::vector&lt; DeviceData &gt; &amp;devs, bool allow_internal_window)</argsstring>
         <name>Configure</name>
-        <qualifiedname>WaylandInputCore::Configure</qualifiedname>
         <param>
           <type>void *</type>
           <declname>wl_display_ptr</declname>
@@ -1186,7 +1134,6 @@
         <definition>void WaylandInputCore::Trig</definition>
         <argsstring>()</argsstring>
         <name>Trig</name>
-        <qualifiedname>WaylandInputCore::Trig</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1200,7 +1147,6 @@
         <definition>void WaylandInputCore::Stop</definition>
         <argsstring>()</argsstring>
         <name>Stop</name>
-        <qualifiedname>WaylandInputCore::Stop</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1214,7 +1160,6 @@
         <definition>void WaylandInputCore::Reset</definition>
         <argsstring>()</argsstring>
         <name>Reset</name>
-        <qualifiedname>WaylandInputCore::Reset</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1228,7 +1173,6 @@
         <definition>bool WaylandInputCore::UsingInternalWindow</definition>
         <argsstring>() const noexcept</argsstring>
         <name>UsingInternalWindow</name>
-        <qualifiedname>WaylandInputCore::UsingInternalWindow</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1242,7 +1186,6 @@
         <definition>bool WaylandInputCore::HasConfiguredDevice</definition>
         <argsstring>() const noexcept</argsstring>
         <name>HasConfiguredDevice</name>
-        <qualifiedname>WaylandInputCore::HasConfiguredDevice</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1251,12 +1194,11 @@
         </inbodydescription>
         <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="193" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="193" bodyend="196"/>
       </memberdef>
-      <memberdef kind="function" id="classWaylandInputCore_1ae4faf633ddfbb988149f92b04b5f2b16" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="classWaylandInputCore_1a3a1fa5e94b7a0259e244272980f20fba" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const std::string &amp;</type>
-        <definition>const std::string &amp; WaylandInputCore::LastError</definition>
+        <definition>const std::string&amp; WaylandInputCore::LastError</definition>
         <argsstring>() const noexcept</argsstring>
         <name>LastError</name>
-        <qualifiedname>WaylandInputCore::LastError</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -1265,161 +1207,157 @@
         </inbodydescription>
         <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="198" column="5" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="198" bodyend="201"/>
       </memberdef>
-    </sectiondef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="4">
-        <label>Atomic_Double_Buffer&lt; PDJE_Input_Log &gt;</label>
-        <link refid="classAtomic__Double__Buffer"/>
-        <childnode refid="3" relation="usage">
-          <edgelabel>first</edgelabel>
-          <edgelabel>second</edgelabel>
+      <node id="5">
+        <label>std::vector&lt; PDJE_Input_Log &gt;</label>
+        <childnode refid="6" relation="usage">
+          <edgelabel>elements</edgelabel>
         </childnode>
       </node>
       <node id="20">
+        <label>PDJE_IPC::SharedMem&lt; PDJE_Input_Log, PDJE_IPC_RW &gt;</label>
+        <link refid="classPDJE__IPC_1_1SharedMem"/>
+      </node>
+      <node id="10">
+        <label>PDJE_Mouse_Event</label>
+        <link refid="structPDJE__Mouse__Event"/>
+      </node>
+      <node id="21">
+        <label>std::bitset&lt; 102 &gt;</label>
+      </node>
+      <node id="16">
         <label>PDJE_CRYPTO::PSK</label>
         <link refid="classPDJE__CRYPTO_1_1PSK"/>
       </node>
-      <node id="11">
-        <label>PDJE_HID_Event</label>
-        <link refid="structPDJE__HID__Event"/>
-      </node>
-      <node id="13">
+      <node id="12">
         <label>PDJE_IPC::EVENT</label>
         <link refid="classPDJE__IPC_1_1EVENT"/>
-        <childnode refid="14" relation="usage">
+        <childnode refid="13" relation="usage">
           <edgelabel>name_cache</edgelabel>
         </childnode>
       </node>
-      <node id="19">
-        <label>PDJE_IPC::Input_Transfer_Metadata</label>
-        <link refid="structPDJE__IPC_1_1Input__Transfer__Metadata"/>
-        <childnode refid="20" relation="usage">
-          <edgelabel>psk</edgelabel>
-        </childnode>
-      </node>
-      <node id="2">
-        <label>PDJE_IPC::PDJE_Input_Transfer</label>
-        <link refid="classPDJE__IPC_1_1PDJE__Input__Transfer"/>
-        <childnode refid="3" relation="usage">
-          <edgelabel>datas</edgelabel>
-          <edgelabel>subBuffer</edgelabel>
-        </childnode>
-        <childnode refid="4" relation="usage">
-          <edgelabel>adbf</edgelabel>
-        </childnode>
-        <childnode refid="5" relation="usage">
-          <edgelabel>length</edgelabel>
-        </childnode>
-        <childnode refid="6" relation="usage">
-          <edgelabel>body</edgelabel>
-        </childnode>
-        <childnode refid="12" relation="usage">
-          <edgelabel>hmac</edgelabel>
-        </childnode>
-        <childnode refid="13" relation="usage">
-          <edgelabel>req_event</edgelabel>
-          <edgelabel>stored_event</edgelabel>
-        </childnode>
-        <childnode refid="16" relation="usage">
-          <edgelabel>sendworker_switch</edgelabel>
-        </childnode>
-        <childnode refid="17" relation="usage">
-          <edgelabel>local_locker</edgelabel>
-        </childnode>
-        <childnode refid="18" relation="usage">
-          <edgelabel>hmacEngine</edgelabel>
-        </childnode>
-        <childnode refid="19" relation="usage">
-          <edgelabel>metadata</edgelabel>
-        </childnode>
-      </node>
-      <node id="6">
-        <label>PDJE_IPC::SharedMem&lt; PDJE_Input_Log, PDJE_IPC_RW &gt;</label>
-        <link refid="classPDJE__IPC_1_1SharedMem"/>
-        <childnode refid="7" relation="usage">
-          <edgelabel>ptr</edgelabel>
-        </childnode>
-      </node>
-      <node id="5">
+      <node id="4">
         <label>PDJE_IPC::SharedMem&lt; uint64_t, PDJE_IPC_RW &gt;</label>
         <link refid="classPDJE__IPC_1_1SharedMem"/>
       </node>
-      <node id="12">
+      <node id="14">
+        <label>std::basic_string&lt; Char &gt;</label>
+      </node>
+      <node id="15">
+        <label>PDJE_IPC::Input_Transfer_Metadata</label>
+        <link refid="structPDJE__IPC_1_1Input__Transfer__Metadata"/>
+        <childnode refid="16" relation="usage">
+          <edgelabel>psk</edgelabel>
+        </childnode>
+      </node>
+      <node id="18">
         <label>PDJE_IPC::SharedMem&lt; uint8_t, PDJE_IPC_RW &gt;</label>
         <link refid="classPDJE__IPC_1_1SharedMem"/>
+      </node>
+      <node id="6">
+        <label>PDJE_Input_Log</label>
+        <link refid="structPDJE__Input__Log"/>
+        <childnode refid="7" relation="usage">
+          <edgelabel>hid_event</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>event</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::atomic&lt; bool &gt;</label>
       </node>
       <node id="8">
         <label>PDJE_Input_Event</label>
         <link refid="unionPDJE__Input__Event"/>
         <childnode refid="9" relation="usage">
-          <edgelabel>mouse</edgelabel>
-        </childnode>
-        <childnode refid="10" relation="usage">
           <edgelabel>keyboard</edgelabel>
         </childnode>
-      </node>
-      <node id="7">
-        <label>PDJE_Input_Log</label>
-        <link refid="structPDJE__Input__Log"/>
-        <childnode refid="8" relation="usage">
-          <edgelabel>event</edgelabel>
+        <childnode refid="10" relation="usage">
+          <edgelabel>mouse</edgelabel>
         </childnode>
-        <childnode refid="11" relation="usage">
-          <edgelabel>hid_event</edgelabel>
-        </childnode>
-      </node>
-      <node id="10">
-        <label>PDJE_Keyboard_Event</label>
-        <link refid="structPDJE__Keyboard__Event"/>
-      </node>
-      <node id="9">
-        <label>PDJE_Mouse_Event</label>
-        <link refid="structPDJE__Mouse__Event"/>
       </node>
       <node id="1">
         <label>WaylandInputCore</label>
         <link refid="classWaylandInputCore"/>
         <childnode refid="2" relation="usage">
+          <edgelabel>stop_requested</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
           <edgelabel>out</edgelabel>
         </childnode>
-        <childnode refid="21" relation="usage">
-          <edgelabel>key_pressed</edgelabel>
-        </childnode>
-        <childnode refid="14" relation="usage">
+        <childnode refid="13" relation="usage">
           <edgelabel>keyboard_name</edgelabel>
           <edgelabel>last_error</edgelabel>
           <edgelabel>pointer_name</edgelabel>
         </childnode>
-        <childnode refid="16" relation="usage">
-          <edgelabel>stop_requested</edgelabel>
+        <childnode refid="21" relation="usage">
+          <edgelabel>key_pressed</edgelabel>
         </childnode>
       </node>
-      <node id="16">
-        <label>std::atomic&lt; bool &gt;</label>
+      <node id="7">
+        <label>PDJE_HID_Event</label>
+        <link refid="structPDJE__HID__Event"/>
       </node>
-      <node id="15">
-        <label>std::basic_string&lt; Char &gt;</label>
-      </node>
-      <node id="21">
-        <label>std::bitset&lt; 102 &gt;</label>
-      </node>
-      <node id="17">
+      <node id="11">
         <label>std::mutex</label>
       </node>
-      <node id="14">
-        <label>std::string</label>
-        <childnode refid="15" relation="public-inheritance">
+      <node id="3">
+        <label>PDJE_IPC::PDJE_Input_Transfer</label>
+        <link refid="classPDJE__IPC_1_1PDJE__Input__Transfer"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>sendworker_switch</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>length</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>datas</edgelabel>
+          <edgelabel>subBuffer</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>local_locker</edgelabel>
+        </childnode>
+        <childnode refid="12" relation="usage">
+          <edgelabel>req_event</edgelabel>
+          <edgelabel>stored_event</edgelabel>
+        </childnode>
+        <childnode refid="15" relation="usage">
+          <edgelabel>metadata</edgelabel>
+        </childnode>
+        <childnode refid="17" relation="usage">
+          <edgelabel>hmacEngine</edgelabel>
+        </childnode>
+        <childnode refid="18" relation="usage">
+          <edgelabel>hmac</edgelabel>
+        </childnode>
+        <childnode refid="19" relation="usage">
+          <edgelabel>adbf</edgelabel>
+        </childnode>
+        <childnode refid="20" relation="usage">
+          <edgelabel>body</edgelabel>
         </childnode>
       </node>
-      <node id="18">
+      <node id="9">
+        <label>PDJE_Keyboard_Event</label>
+        <link refid="structPDJE__Keyboard__Event"/>
+      </node>
+      <node id="19">
+        <label>Atomic_Double_Buffer&lt; PDJE_Input_Log &gt;</label>
+        <link refid="classAtomic__Double__Buffer"/>
+      </node>
+      <node id="17">
         <label>std::unique_ptr&lt; Botan::MessageAuthenticationCode &gt;</label>
       </node>
-      <node id="3">
-        <label>std::vector&lt; PDJE_Input_Log &gt;</label>
+      <node id="13">
+        <label>std::string</label>
+        <childnode refid="14" relation="public-inheritance">
+        </childnode>
       </node>
     </collaborationgraph>
     <location file="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" line="22" column="1" bodyfile="include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.hpp" bodystart="22" bodyend="202"/>
@@ -1437,7 +1375,7 @@
       <member refid="classWaylandInputCore_1a18cad75a5e774a9349ccbec42d23eee6" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>keyboard_focused</name></member>
       <member refid="classWaylandInputCore_1a2b24df235d9a14c3c0a1684b7b543990" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>keyboard_name</name></member>
       <member refid="classWaylandInputCore_1acc1fb14d9515487917b8fc3ea26a5a37" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>last_error</name></member>
-      <member refid="classWaylandInputCore_1ae4faf633ddfbb988149f92b04b5f2b16" prot="public" virt="non-virtual"><scope>WaylandInputCore</scope><name>LastError</name></member>
+      <member refid="classWaylandInputCore_1a3a1fa5e94b7a0259e244272980f20fba" prot="public" virt="non-virtual"><scope>WaylandInputCore</scope><name>LastError</name></member>
       <member refid="classWaylandInputCore_1ad82c2609a50734b873825bd97f672f6c" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>OnHostRegistryGlobal</name></member>
       <member refid="classWaylandInputCore_1a9edb581a55c4b46f4192142f95dca2e6" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>OnHostRegistryGlobalRemove</name></member>
       <member refid="classWaylandInputCore_1ac887d71c842a0a2b65fac617bfcfeb7c" prot="private" virt="non-virtual"><scope>WaylandInputCore</scope><name>OnKeyboardEnter</name></member>
