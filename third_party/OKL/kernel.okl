@@ -1,0 +1,355 @@
+#ifndef KERNEL_GUARD
+#define KERNEL_GUARD
+
+#ifdef __NEED_PI
+#include <math.h>
+#endif
+
+
+#define BPOW(DATA, N) DATA << N
+#define BDIV(DATA, N) DATA >> N
+#define BREMAIN(DATA, N) (DATA & (N - 1))
+
+typedef struct complex_t{
+    float real;
+    float imag;
+}complex;
+
+typedef struct pairs_t{
+    unsigned int first;
+    unsigned int second;
+}pairs;
+
+
+inline
+float 
+window_func(const int index, const int window_size) {
+    float normalized_index = (float)index;
+    normalized_index /= ((float)(window_size - 1));
+    float angle = 2.0f * M_PI * normalized_index;
+    return 0.5f * (1.0f - cos(angle));
+}
+
+inline
+float
+hanning_window(const int index, const int windowSize)
+{
+    float angle = 2.0 * M_PI * index / ((float)(windowSize - 1));
+    return  0.5 * (1.0 - cos(angle));
+}
+
+inline
+float
+hamming_window(const int index, const int windowSize)
+{
+    float angle = 2.0 * M_PI * index / ((float)(windowSize - 1));
+    return  0.54 - (0.46 * cos(angle));
+}
+
+inline
+float
+blackman_window(const int index, const int windowSize)
+{
+    float Fangle = 2.0 * M_PI * index / ((float)(windowSize));
+    float Sangle = Fangle * 2.0;
+    return 0.42 - 0.5 * cos(Fangle) + 0.08 * cos(Sangle);
+}
+
+inline
+float
+nuttall_window(const int index, const int windowSize)
+{
+    float Fangle = 2.0 * M_PI * index / ((float)(windowSize));
+    float Sangle = Fangle * 2.0;
+    float Tangle = Fangle * 3.0;
+    return 0.355768 
+        - 0.487396 * cos(Fangle) 
+        + 0.144232 * cos(Sangle) 
+        - 0.012604 * cos(Tangle);
+
+}
+
+inline
+float
+blackman_nuttall_window(const int index, const int windowSize)
+{
+    float Fangle = 2.0 * M_PI * index / ((float)(windowSize));
+    float Sangle = Fangle * 2.0;
+    float Tangle = Fangle * 3.0;
+    return
+        0.3635819
+        - 0.4891775 * cos(Fangle)
+        + 0.1365995 * cos(Sangle)
+        - 0.0106411 * cos(Tangle);
+}
+
+inline
+float
+blackman_harris_window(const int index, const int windowSize)
+{
+    float Fangle = 2.0 * M_PI * index / ((float)(windowSize));
+    float Sangle = Fangle * 2.0;
+    float Tangle = Fangle * 3.0;
+    return
+        0.35875
+        - 0.48829 * cos(Fangle)
+        + 0.14128 * cos(Sangle)
+        - 0.01168 * cos(Tangle);
+}
+
+inline
+float
+flatTop_window(const int index, const int windowSize)
+{
+    float Fangle = 2.0 * M_PI * index / ((float)(windowSize));
+    float Sangle = Fangle * 2.0;
+    float Tangle = Fangle * 3.0;
+    float FFangle= Fangle * 4.0;
+
+    return
+        0.21557895
+        - 0.41663158 * cos(Fangle)
+        + 0.277263158 * cos(Sangle)
+        - 0.083578947 * cos(Tangle)
+        + 0.006947368 * cos(FFangle);
+}
+
+inline
+float
+gaussian_window(const int index, const int windowSize, const float sigma)
+{
+    
+    const int HWinSize = BDIV(windowSize, 1);
+    float angle = ((float)(index - HWinSize)) / ((float)(HWinSize * sigma));
+    angle *= angle;
+    angle *= -0.5;
+    return exp(angle);
+}
+
+
+pairs 
+indexer(const unsigned int firstMaximumID, const int powed_stage)
+{
+    pairs temp;
+    temp.first = firstMaximumID + (firstMaximumID & (~(powed_stage - 1)));
+    temp.second = temp.first + powed_stage;
+    return temp;
+}
+
+
+
+inline
+int 
+segmentK(const int lsave, const int segmentSize, const int HwindowSize)
+{
+    return ((lsave % segmentSize) * HwindowSize) / segmentSize;
+}
+
+complex 
+twiddle(int k, int windowSize)
+{
+    complex temp;
+    float angle = -2.0 * M_PI * ((float)k / (float)windowSize);
+    temp.real = cos(angle);
+    temp.imag = sin(angle);
+    return temp;
+}
+
+inline
+float
+RMult(const float Ra, const float Rb, const float Ia, const float Ib)
+{
+    return (Ra * Rb) - (Ia * Ib);
+}
+inline
+float
+IMult(const float Ra, const float Rb, const float Ia, const float Ib)
+{
+    return (Ra * Ib) + (Ia * Rb);
+}
+
+#define DaCAdd(i_itr, Half, windowAdded)\
+unsigned int inRange = i_itr < Half;\
+float Dpoint = windowAdded[i_itr];\
+float Apoint = windowAdded[i_itr + (Half * inRange)];\
+windowAdded[i_itr] = (Dpoint + Apoint) * inRange;
+
+
+@kernel void toPower(   float* out,
+                        float* Real,
+                        float* Imag,
+                        const unsigned int OFullSize)
+{
+    for(unsigned int o_itr = 0; o_itr < OFullSize; o_itr += 64; @outer)
+    {
+        for(int i_itr = 0; i_itr < 64; ++i_itr; @inner)
+        {
+            const unsigned int GID = o_itr + i_itr;
+            float R = Real[GID];
+            float I = Imag[GID];
+            out[GID] = sqrt(R * R + I * I);
+        }
+    }
+    return;
+}
+
+@kernel void toHalfComplexFormat(   complex* out, 
+                                    float* Real, 
+                                    float* Imag, 
+                                    const unsigned int OHalfSize, 
+                                    const int windowRadix)
+{
+    for(unsigned int o_itr = 0; o_itr < OHalfSize; o_itr += 32; @outer)
+    {
+        for(unsigned int i_itr = 0; i_itr < 32; ++i_itr; @inner)
+        {
+            const unsigned int GID = o_itr + i_itr;
+            const unsigned int Mradix = windowRadix - 1;
+            const unsigned int HwindowSize = BPOW(1, Mradix);
+            const unsigned int windowItr = GID % (HwindowSize);
+            const unsigned int FwindowedLoc = BDIV(GID, Mradix);
+
+            const unsigned int ReadIdx = FwindowedLoc * HwindowSize + windowItr;
+            out[GID].real = Real[ReadIdx];
+            out[GID].imag = Imag[ReadIdx];
+        }
+    }
+    return;
+}
+
+
+
+
+#define G2FDIT(windowRadix_M1, HWindowSize, FWindowSize)\
+            unsigned int Gidx = o_itr + i_itr;\
+            unsigned int GlobalItr = BDIV(Gidx, windowRadix_M1);\
+            unsigned int GlobalIndex = BREMAIN(Gidx, HWindowSize);\
+            Gidx = GlobalItr * FWindowSize + GlobalIndex;\
+            float LeftReal = Rout[Gidx];\
+            float LeftImag = 0;\
+            float RightReal= Rout[Gidx + HWindowSize];\
+            float RightImag= 0;\
+            unsigned int LeftStoreIdx = i_itr * 2;\
+            unsigned int RightStoreIdx = LeftStoreIdx + 1;\
+\
+            complex tw = twiddle(\
+                segmentK(\
+                    i_itr,\
+                    1,\
+                    HWindowSize),\
+                FWindowSize);\
+            float RTwid = RMult(RightReal, tw.real, RightImag, tw.imag);\
+            float ITwid = IMult(RightReal, tw.real, RightImag, tw.imag);\
+\
+            FRBank[LeftStoreIdx] = LeftReal + RTwid;\
+            FIBank[LeftStoreIdx] = LeftImag + ITwid;\
+            FRBank[RightStoreIdx] = LeftReal - RTwid;\
+            FIBank[RightStoreIdx] = LeftImag - ITwid;
+            
+
+#define F2SDIT(segmentSize, DsegmentSize, segmentRadix, HwindowSize, FwindowSize)\
+    float LeftReal = FRBank[i_itr];\
+    float LeftImag = FIBank[i_itr];\
+    float RightReal= FRBank[i_itr + HwindowSize];\
+    float RightImag= FIBank[i_itr + HwindowSize];\
+\
+    unsigned int segmentItr = BDIV(i_itr, segmentRadix);\
+    unsigned int segmentIndex = BREMAIN(i_itr, segmentSize);\
+    unsigned int LeftStoreIdx = segmentItr * DsegmentSize + segmentIndex;\
+\
+    unsigned int RightStoreIdx = LeftStoreIdx + segmentSize;\
+\
+    complex tw = twiddle(\
+        segmentK(\
+            i_itr,\
+            segmentSize,\
+            HwindowSize),\
+        FwindowSize);\
+    float RTwid = RMult(RightReal, tw.real, RightImag, tw.imag);\
+    float ITwid = IMult(RightReal, tw.real, RightImag, tw.imag);\
+\
+    SRBank[LeftStoreIdx] = LeftReal + RTwid;\
+    SIBank[LeftStoreIdx] = LeftImag + ITwid;\
+    SRBank[RightStoreIdx] = LeftReal - RTwid;\
+    SIBank[RightStoreIdx] = LeftImag - ITwid;
+
+
+#define S2FDIT(segmentSize, DsegmentSize, segmentRadix, HwindowSize, FwindowSize)\
+    float LeftReal = SRBank[i_itr];\
+    float LeftImag = SIBank[i_itr];\
+    float RightReal= SRBank[i_itr + HwindowSize];\
+    float RightImag= SIBank[i_itr + HwindowSize];\
+\
+    unsigned int segmentItr = BDIV(i_itr, segmentRadix);\
+    unsigned int segmentIndex = BREMAIN(i_itr, segmentSize);\
+    unsigned int LeftStoreIdx = segmentItr * DsegmentSize + segmentIndex;\
+\
+    unsigned int RightStoreIdx = LeftStoreIdx + segmentSize;\
+\
+    complex tw = twiddle(\
+        segmentK(\
+            i_itr,\
+            segmentSize,\
+            HwindowSize),\
+        FwindowSize);\
+    float RTwid = RMult(RightReal, tw.real, RightImag, tw.imag);\
+    float ITwid = IMult(RightReal, tw.real, RightImag, tw.imag);\
+\
+    FRBank[LeftStoreIdx] = LeftReal + RTwid;\
+    FIBank[LeftStoreIdx] = LeftImag + ITwid;\
+    FRBank[RightStoreIdx] = LeftReal - RTwid;\
+    FIBank[RightStoreIdx] = LeftImag - ITwid;
+
+
+#define F2GDIT(windowRadix_M1, HWindowSize, FWindowSize)\
+            unsigned int Gidx = o_itr + i_itr;\
+            unsigned int GlobalItr = BDIV(Gidx, windowRadix_M1);\
+            float LeftReal = FRBank[i_itr];\
+            float LeftImag = FIBank[i_itr];\
+            float RightReal= FRBank[i_itr + HWindowSize];\
+            float RightImag= FIBank[i_itr + HWindowSize];\
+            unsigned int LeftStoreIdx = i_itr + GlobalItr * FWindowSize;\
+\
+            unsigned int RightStoreIdx = LeftStoreIdx + HWindowSize;\
+\
+            complex tw = twiddle(\
+                segmentK(\
+                    i_itr,\
+                    HWindowSize,\
+                    HWindowSize),\
+                FWindowSize);\
+            float RTwid = RMult(RightReal, tw.real, RightImag, tw.imag);\
+            float ITwid = IMult(RightReal, tw.real, RightImag, tw.imag);\
+\
+            Rout[LeftStoreIdx] = LeftReal + RTwid;\
+            Iout[LeftStoreIdx] = LeftImag + ITwid;\
+            Rout[RightStoreIdx] = LeftReal - RTwid;\
+            Iout[RightStoreIdx] = LeftImag - ITwid;
+
+#define S2GDIT(windowRadix_M1, HWindowSize, FWindowSize)\
+            unsigned int Gidx = o_itr + i_itr;\
+            unsigned int GlobalItr = BDIV(Gidx, windowRadix_M1);\
+            float LeftReal = SRBank[i_itr];\
+            float LeftImag = SIBank[i_itr];\
+            float RightReal= SRBank[i_itr + HWindowSize];\
+            float RightImag= SIBank[i_itr + HWindowSize];\
+            unsigned int LeftStoreIdx = i_itr + GlobalItr * FWindowSize;\
+\
+            unsigned int RightStoreIdx = LeftStoreIdx + HWindowSize;\
+\
+            complex tw = twiddle(\
+                segmentK(\
+                    i_itr,\
+                    HWindowSize,\
+                    HWindowSize),\
+                FWindowSize);\
+            float RTwid = RMult(RightReal, tw.real, RightImag, tw.imag);\
+            float ITwid = IMult(RightReal, tw.real, RightImag, tw.imag);\
+\
+            Rout[LeftStoreIdx] = LeftReal + RTwid;\
+            Iout[LeftStoreIdx] = LeftImag + ITwid;\
+            Rout[RightStoreIdx] = LeftReal - RTwid;\
+            Iout[RightStoreIdx] = LeftImag - ITwid;
+
+
+#endif
