@@ -212,8 +212,6 @@ static_assert(PDJE_UTIL::db::relational::RelationalBackendConcept<DummyRelationa
 static_assert(PDJE_UTIL::db::nearest::NearestNeighborBackendConcept<DummyNearestBackend>);
 static_assert(!std::is_member_function_pointer_v<decltype(&PDJE_UTIL::function::clamp)>);
 static_assert(!std::is_member_function_pointer_v<decltype(&PDJE_UTIL::function::slugify)>);
-static_assert(
-    !std::is_member_function_pointer_v<decltype(&PDJE_UTIL::function::halide::apply_gain_bias)>);
 
 } // namespace
 

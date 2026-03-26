@@ -11,6 +11,5 @@
 #include "util/db/nearest/Index.hpp"
 #include "util/db/relational/Database.hpp"
 #include "util/function/FunctionContext.hpp"
-#include "util/function/halide/GainBias.hpp"
 #include "util/function/scalar/Clamp.hpp"
 #include "util/function/text/Slugify.hpp"

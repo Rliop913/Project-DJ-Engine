@@ -10,6 +10,9 @@ ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/main_doctest.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/public_headers.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/webp_writer.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/waveform_webp.test.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/stft_parallel.test.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/opencl_clhpp_probe.test.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/opencl_runtime_shim.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/db_relational_sqlite.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/db_keyvalue_rocksdb.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/db_nearest_annoy.test.cpp
@@ -26,9 +29,16 @@ target_link_libraries(pdje_unit_util PRIVATE PDJE_UTIL)
 target_link_libraries(pdje_unit_util PRIVATE PDJE_UTIL_IMAGE_WEBP)
 target_link_libraries(pdje_unit_util PRIVATE PDJE_UTIL_IMAGE_WAVEFORM)
 target_link_libraries(pdje_unit_util PRIVATE PDJE_UTIL_DB)
+setOpenCLCppReqLib(pdje_unit_util)
+setOpenCLRuntimeShimReqLib(pdje_unit_util)
 
 
 target_compile_definitions(pdje_unit_util PRIVATE PDJE_UNIT_TESTING)
+target_compile_definitions(
+  pdje_unit_util
+  PRIVATE
+    PDJE_OPENCL_CLHPP_SUPPORTS_NO_PROTOTYPES=$<BOOL:${PDJE_OPENCL_CLHPP_SUPPORTS_NO_PROTOTYPES}>
+    PDJE_OPENCL_CLHPP_SUPPORTS_NO_CORE_PROTOTYPES=$<BOOL:${PDJE_OPENCL_CLHPP_SUPPORTS_NO_CORE_PROTOTYPES}>)
 
 # AddDynamicDef(pdje_unit_util)
 # setCoreReqs(pdje_unit_util)

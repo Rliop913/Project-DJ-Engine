@@ -14,7 +14,7 @@ function(setJudgeReqs targetName)
   target_link_libraries(${targetName} PUBLIC IPC_INCLUDE)
   setSpdlogReqLib(${targetName})
   setCapnpReqLib(${targetName})
-  pdje_halide_attach_to_target(${targetName})
+  
   setBotanReqLib(${targetName})
   LinuxSetAtomic(${targetName})
   SET_PROPERTIES(${targetName})

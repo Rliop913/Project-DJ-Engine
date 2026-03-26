@@ -88,7 +88,7 @@ function(setCoreReqs targetName)
   setCapnpReqLib(${targetName})
   setLibgit2ReqLib(${targetName})
   setHighwayReqLib(${targetName})
-  pdje_halide_attach_to_target(${targetName})
+  
   LinuxSetAtomic(${targetName})
   LinuxSetAudioLibs(${targetName})
   PDJE_COMPILE_OPTION(${targetName})
