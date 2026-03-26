@@ -1,0 +1,245 @@
+#ifndef ROOTISBASH  
+#include "../OKL/kernel.okl"
+#else
+#include "./kernel.okl"
+#endif
+
+@kernel void Overlap_Common(
+    float* inData,
+    const unsigned int OFullSize,
+    const unsigned int fullSize,
+    const unsigned int windowRadix,
+    const unsigned int OMove,
+    float* outReal)
+{
+    for(unsigned int o_itr=0; o_itr < OFullSize; o_itr += 64; @outer)
+    {
+        for(unsigned int i_itr=0; i_itr < 64; ++i_itr; @inner)
+        {
+            const unsigned int overlapIdx = o_itr + i_itr;
+            const unsigned int windowIdx = (overlapIdx >> windowRadix);
+            const unsigned int windowLocalIdx = overlapIdx & ((1 << windowRadix) - 1);
+            const unsigned int originIdx = windowIdx * OMove + windowLocalIdx;
+            const unsigned int exceeded = originIdx < fullSize;
+            outReal[overlapIdx] = inData[originIdx * exceeded] * exceeded;
+        }
+    }
+}
+
+@kernel void Window_Hanning(
+    float* outReal,
+    const unsigned int OFullSize,
+    const unsigned int windowSize)
+{
+    for(unsigned int o_itr=0; o_itr < OFullSize; o_itr += 64; @outer)
+    {
+        for(unsigned int i_itr=0; i_itr < 64; ++i_itr; @inner)
+        {
+            const unsigned int Gidx = o_itr + i_itr;
+            outReal[Gidx] *= hanning_window(BREMAIN(Gidx, windowSize), windowSize);
+        }
+    }
+}
+
+@kernel void Window_Hamming(
+    float* outReal,
+    const unsigned int OFullSize,
+    const unsigned int windowSize)
+{
+    for(unsigned int o_itr=0; o_itr < OFullSize; o_itr += 64; @outer)
+    {
+        for(unsigned int i_itr=0; i_itr < 64; ++i_itr; @inner)
+        {
+            unsigned int Gidx = o_itr + i_itr;
+            outReal[Gidx] *= hamming_window(BREMAIN(Gidx, windowSize), windowSize);
+        }
+    }
+}
+
+@kernel void Window_Blackman(
+    float* outReal,
+    const unsigned int OFullSize,
+    const unsigned int windowSize)
+{
+    for(unsigned int o_itr=0; o_itr < OFullSize; o_itr += 64; @outer)
+    {
+        for(unsigned int i_itr=0; i_itr < 64; ++i_itr; @inner)
+        {
+            unsigned int Gidx = o_itr + i_itr;
+            outReal[Gidx] *= blackman_window(BREMAIN(Gidx, windowSize), windowSize);
+        }
+    }
+}
+
+@kernel void Window_Nuttall(
+    float* outReal,
+    const unsigned int OFullSize,
+    const unsigned int windowSize)
+{
+    for(unsigned int o_itr=0; o_itr < OFullSize; o_itr += 64; @outer)
+    {
+        for(unsigned int i_itr=0; i_itr < 64; ++i_itr; @inner)
+        {
+            unsigned int Gidx = o_itr + i_itr;
+            outReal[Gidx] *= nuttall_window(BREMAIN(Gidx, windowSize), windowSize);
+        }
+    }
+}
+
+@kernel void Window_Blackman_Nuttall(
+    float* outReal,
+    const unsigned int OFullSize,
+    const unsigned int windowSize)
+{
+    for(unsigned int o_itr=0; o_itr < OFullSize; o_itr += 64; @outer)
+    {
+        for(unsigned int i_itr=0; i_itr < 64; ++i_itr; @inner)
+        {
+            unsigned int Gidx = o_itr + i_itr;
+            outReal[Gidx] *= blackman_nuttall_window(BREMAIN(Gidx, windowSize), windowSize);
+        }
+    }
+}
+
+@kernel void Window_Blackman_harris(
+    float* outReal,
+    const unsigned int OFullSize,
+    const unsigned int windowSize)
+{
+    for(unsigned int o_itr=0; o_itr < OFullSize; o_itr += 64; @outer)
+    {
+        for(unsigned int i_itr=0; i_itr < 64; ++i_itr; @inner)
+        {
+            unsigned int Gidx = o_itr + i_itr;
+            outReal[Gidx] *= blackman_harris_window(BREMAIN(Gidx, windowSize), windowSize);
+        }
+    }
+}
+
+@kernel void Window_FlatTop(
+    float* outReal,
+    const unsigned int OFullSize,
+    const unsigned int windowSize)
+{
+    for(unsigned int o_itr=0; o_itr < OFullSize; o_itr += 64; @outer)
+    {
+        for(unsigned int i_itr=0; i_itr < 64; ++i_itr; @inner)
+        {
+            unsigned int Gidx = o_itr + i_itr;
+            outReal[Gidx] *= flatTop_window(BREMAIN(Gidx, windowSize), windowSize);
+        }
+    }
+}
+
+@kernel void Window_Gaussian(
+    float* outReal,
+    const unsigned int OFullSize,
+    const unsigned int windowSize,
+    const float sigma)
+{
+    for(unsigned int o_itr=0; o_itr < OFullSize; o_itr += 64; @outer)
+    {
+        for(unsigned int i_itr=0; i_itr < 64; ++i_itr; @inner)
+        {
+            unsigned int Gidx = o_itr + i_itr;
+            outReal[Gidx] *= gaussian_window(BREMAIN(Gidx, windowSize), windowSize, sigma);
+        }
+    }
+}
+
+
+@kernel void DCRemove_Common(
+    float* outReal,
+    const unsigned int OFullSize,
+    const unsigned int windowSize)
+{
+    for(unsigned int o_itr=0; o_itr < OFullSize; o_itr += windowSize; @outer)
+    {
+        @shared float added[128];//for removing DC
+        for(unsigned int inititr=0; inititr < 64; ++inititr; @inner)
+        {
+            added[inititr] = 0;
+        }
+        for(unsigned int windowItr=0; windowItr < windowSize; windowItr+= 64)
+        {
+            for(unsigned int i_itr=0; i_itr < 64; ++i_itr; @inner)//load to right
+            {
+                added[i_itr + 64] = outReal[o_itr + windowItr + i_itr];
+            }
+            for(unsigned int i_itr=0; i_itr < 64; ++i_itr; @inner)//add left, right
+            {
+                added[i_itr] += added[i_itr + 64];
+            }
+        }
+        for(unsigned int segment = 32; segment > 0; segment >>= 1)
+        {
+            for(unsigned int i_itr=0; i_itr < 64; ++i_itr; @inner)
+            {
+                unsigned int inSegment = i_itr < segment;
+                float left = added[i_itr];
+                float right= added[i_itr + segment];
+                added[i_itr] = (left + right) * inSegment;
+            }
+        }
+        for(unsigned int windowItr=0; windowItr < windowSize; windowItr+= 64)
+        {
+            for(unsigned int i_itr=0; i_itr < 64; ++i_itr; @inner)//load to right
+            {
+                outReal[o_itr + windowItr + i_itr] -= (added[0] / (float)windowSize);
+            }
+        }
+    }
+}
+
+@kernel void StockHamCommon(
+    float* inReal,
+    float* inImag,
+    float* outReal,
+    float* outImag,
+    const unsigned int HwindowSize,
+    const unsigned int stageRadix,
+    const unsigned int OHalfSize,
+    const unsigned int radixData)
+{
+    for(unsigned int o_itr=0; o_itr < OHalfSize; o_itr+=256; @outer)
+    {
+        for(unsigned int i_itr=0; i_itr < 256; ++i_itr; @inner)
+        {
+            unsigned int OIdx = o_itr + i_itr;
+            unsigned int FwindowSize = BPOW(HwindowSize, 1);
+            unsigned int GlobalItr = BDIV(OIdx, (radixData - 1));
+            unsigned int GlobalIndex = BREMAIN(OIdx, HwindowSize);
+            OIdx = GlobalItr * FwindowSize + GlobalIndex;
+            float LeftReal = inReal[OIdx];
+            float LeftImag = inImag[OIdx];
+            float RightReal= inReal[OIdx + HwindowSize];
+            float RightImag= inImag[OIdx + HwindowSize];
+
+            unsigned int segmentSize = BPOW(1, stageRadix);
+            unsigned int segmentItr = BDIV(GlobalIndex, stageRadix);
+            unsigned int segmentIndex = BREMAIN(GlobalIndex, segmentSize);//OIdx & (segmentSize - 1);
+            unsigned int LeftStoreIdx
+            = segmentItr * (BPOW(segmentSize, 1)) + segmentIndex + GlobalItr * FwindowSize;
+
+            unsigned int RightStoreIdx = LeftStoreIdx + segmentSize;
+            
+            complex tw 
+            = twiddle(
+                segmentK(
+                        OIdx,
+                        segmentSize,
+                        HwindowSize
+                    ),
+                FwindowSize
+            );
+
+            float RTwid = RMult(RightReal, tw.real, RightImag, tw.imag);
+            float ITwid = IMult(RightReal, tw.real, RightImag, tw.imag);
+
+            outReal[LeftStoreIdx] = LeftReal + RTwid;
+            outImag[LeftStoreIdx] = LeftImag + ITwid;
+            outReal[RightStoreIdx] = LeftReal - RTwid;
+            outImag[RightStoreIdx] = LeftImag - ITwid;
+        }
+    }
+}

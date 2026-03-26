@@ -24,6 +24,7 @@ file(WRITE "${RT_HASH_HEADER}" "${genhash_template}")
 Include(FetchContent)
 include(cmakes/findPackages.cmake)
 
+
 if(WIN32)
   add_compile_definitions(__WINDOWS__)
   add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
