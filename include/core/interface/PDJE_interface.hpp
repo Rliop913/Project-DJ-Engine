@@ -7,6 +7,8 @@
 #include "audioPlayer.hpp"
 #include "dbRoot.hpp"
 #include "editorObject.hpp"
+#include "musicDB.hpp"
+#include "trackDB.hpp"
 /**
  * @brief the play mode
  * you can use this to initialize the player(music handler)
@@ -147,6 +149,13 @@ class PDJE_API PDJE {
      */
     TRACK_VEC
     SearchTrack(const UNSANITIZED &Title);
+
+    bool
+    DeleteMusic(const musdata &target);
+
+    bool
+    DeleteTrack(const trackdata &target);
+
     /**
      * @brief Decodes a music entry into interleaved stereo PCM samples.
      *
