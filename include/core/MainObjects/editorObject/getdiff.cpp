@@ -41,7 +41,7 @@ FindMatchingMusicHandles(PDJE_Editor *edit_core, const SANITIZED &musicTitle)
 
 template <>
 std::optional<PDJE_TIMELINE::TimeLineSemanticDiffResult>
-         editorObject::GetDiff<EDIT_ARG_MIX>(const DONT_SANITIZE &oldCommitOID,
+editorObject::GetDiff<EDIT_ARG_MIX>(const DONT_SANITIZE &oldCommitOID,
                                     const DONT_SANITIZE &newCommitOID)
 {
     return DiffFromHandle(edit_core ? edit_core->mixHandle.get() : nullptr,
@@ -52,7 +52,7 @@ std::optional<PDJE_TIMELINE::TimeLineSemanticDiffResult>
 
 template <>
 std::optional<PDJE_TIMELINE::TimeLineSemanticDiffResult>
-         editorObject::GetDiff<EDIT_ARG_NOTE>(const DONT_SANITIZE &oldCommitOID,
+editorObject::GetDiff<EDIT_ARG_NOTE>(const DONT_SANITIZE &oldCommitOID,
                                      const DONT_SANITIZE &newCommitOID)
 {
     return DiffFromHandle(edit_core ? edit_core->noteHandle.get() : nullptr,
@@ -74,7 +74,7 @@ editorObject::GetDiff<EDIT_ARG_KEY_VALUE>(const DONT_SANITIZE &oldCommitOID,
 
 template <>
 std::optional<PDJE_TIMELINE::TimeLineSemanticDiffResult>
-         editorObject::GetDiff<EDIT_ARG_MUSIC>(const UNSANITIZED   &musicName,
+editorObject::GetDiff<EDIT_ARG_MUSIC>(const UNSANITIZED   &musicName,
                                       const DONT_SANITIZE &oldCommitOID,
                                       const DONT_SANITIZE &newCommitOID)
 {

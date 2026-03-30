@@ -230,14 +230,14 @@ PDJE::PullOutDataLine()
 }
 
 bool
-PDJE::DeleteMusic(const musdata &target)
+PDJE::DeleteMusic(musdata &target)
 {
 
     return DBROOT->DeleteData(target);
 }
 
 bool
-PDJE::DeleteTrack(const trackdata &target)
+PDJE::DeleteTrack(trackdata &target)
 {
     return DBROOT->DeleteData(target);
 }

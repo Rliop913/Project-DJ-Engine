@@ -151,10 +151,10 @@ class PDJE_API PDJE {
     SearchTrack(const UNSANITIZED &Title);
 
     bool
-    DeleteMusic(const musdata &target);
+    DeleteMusic(musdata &target);
 
     bool
-    DeleteTrack(const trackdata &target);
+    DeleteTrack(trackdata &target);
 
     /**
      * @brief Decodes a music entry into interleaved stereo PCM samples.
