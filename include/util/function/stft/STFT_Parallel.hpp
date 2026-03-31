@@ -1,9 +1,12 @@
 #pragma once
+#include "CL/opencl.hpp"
 #include "PDJE_Parallel_Runtime_Loader.hpp"
+#include "Parallel_Args.hpp"
 
+#include "STFT_args.hpp"
+#include <optional>
 #include <utility>
 #include <vector>
-
 namespace PDJE_PARALLEL {
 
 inline int
@@ -24,38 +27,35 @@ enum WINDOW_LIST {
     NUTTALL,
     FLATTOP,
     GAUSSIAN,
-    HAMMING
+    HAMMING,
+    NONE
 };
 
 class STFT {
   private:
-    struct StftArgs {
-        unsigned int FullSize;
-        int          windowSize;
-        int          qtConst;
-        unsigned int OFullSize;
-        unsigned int OHalfSize;
-        unsigned int OMove;
-    };
-
     StftArgs
     GenArgs(const std::vector<float> &inputVec,
             const int                 windowSizeEXP,
-            const float               overlapRatio)
-    {
-        StftArgs arglist;
-        arglist.FullSize   = static_cast<unsigned int>(inputVec.size());
-        arglist.windowSize = 1 << windowSizeEXP;
-        arglist.qtConst =
-            toQuot(arglist.FullSize, overlapRatio, arglist.windowSize);
-        arglist.OFullSize = arglist.qtConst * arglist.windowSize;
-        arglist.OHalfSize = arglist.OFullSize / 2;
-        arglist.OMove     = arglist.windowSize * (1.0f - overlapRatio);
-        return arglist;
-    }
+            const float               overlapRatio);
+
+    // bool
+    // CheckFusable(const WINDOW_LIST target_window, const int windowSizeEXP);
+
+    bool
+    ReadyBackend();
+
+    bool
+    PreProcess();
+
+    bool
+    Butterfly_Stage();
+
+    bool
+    PostProcess();
 
   public:
-    Backend backendinfo;
+    Backend   backendinfo;
+    BACKEND_T backend_now = BACKEND_T::OPENMP;
     STFT();
 
     std::pair<std::vector<float>, std::vector<float>>

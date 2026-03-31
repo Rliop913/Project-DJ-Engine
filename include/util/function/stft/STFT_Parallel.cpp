@@ -1,9 +1,14 @@
 #include "STFT_Parallel.hpp"
 
+#include "PDJE_Parallel_Runtime_Loader.hpp"
+#include "Parallel_Args.hpp"
 #include "opencl_compiled.hpp"
 #include "openmp_compiled.hpp"
 
+#include <CL/cl.h>
 #include <vector>
+
+#include <CL/opencl.hpp>
 
 namespace PDJE_PARALLEL {
 
@@ -16,6 +21,10 @@ constexpr float kDefaultGaussianSigma = 0.4f;
 STFT::STFT()
 {
     backendinfo.LoadBackend();
+
+    if (backendinfo.PrintBackendType() == BACKEND_T::OPENCL) {
+        ; // impl here
+    }
 }
 
 STFT::~STFT() = default;
