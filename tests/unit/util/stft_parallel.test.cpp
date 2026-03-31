@@ -123,6 +123,20 @@ ReferenceDftStft(const std::vector<float> &pcm,
     return std::pair(std::move(realOut), std::move(imagOut));
 }
 
+std::vector<float>
+ReferenceMagnitude(const std::vector<float> &realOut,
+                   const std::vector<float> &imagOut)
+{
+    std::vector<float> magnitude(realOut.size(), 0.0f);
+
+    for (std::size_t idx = 0; idx < realOut.size(); ++idx) {
+        magnitude[idx] =
+            std::sqrt(realOut[idx] * realOut[idx] + imagOut[idx] * imagOut[idx]);
+    }
+
+    return magnitude;
+}
+
 } // namespace
 
 TEST_CASE("stft parallel calculate uses generated OpenMP path")
@@ -135,6 +149,7 @@ TEST_CASE("stft parallel calculate uses generated OpenMP path")
     }
 
     PDJE_PARALLEL::STFT stft;
+    stft.backend_now = PDJE_PARALLEL::BACKEND_T::OPENMP;
     auto [realOut, imagOut] =
         stft.calculate(pcm, PDJE_PARALLEL::WINDOW_LIST::HANNING, 6, 0.5f);
     auto [referenceReal, referenceImag] = ReferenceDftStft(pcm, 6, 0.5f);
@@ -154,14 +169,47 @@ TEST_CASE("stft parallel calculate uses generated OpenMP path")
     }
 }
 
+TEST_CASE("stft parallel calculate returns magnitude when toPower is enabled")
+{
+    std::vector<float> pcm(128, 0.0f);
+    constexpr std::size_t expectedOutputSize = 320;
+
+    for (std::size_t idx = 0; idx < pcm.size(); ++idx) {
+        pcm[idx] = std::sin(static_cast<float>(idx) * 0.1f);
+    }
+
+    PDJE_PARALLEL::STFT stft;
+    stft.backend_now = PDJE_PARALLEL::BACKEND_T::OPENMP;
+
+    auto [magnitudeOut, imagOut] =
+        stft.calculate(pcm, PDJE_PARALLEL::WINDOW_LIST::HANNING, 6, 0.5f, true);
+    auto [referenceReal, referenceImag] = ReferenceDftStft(pcm, 6, 0.5f);
+    auto referenceMagnitude = ReferenceMagnitude(referenceReal, referenceImag);
+
+    REQUIRE(magnitudeOut.size() == expectedOutputSize);
+    REQUIRE(referenceMagnitude.size() == expectedOutputSize);
+    CHECK(imagOut.empty());
+
+    for (std::size_t idx = 0; idx < magnitudeOut.size(); ++idx) {
+        CHECK(std::isfinite(magnitudeOut[idx]));
+        CHECK(std::fabs(magnitudeOut[idx] - referenceMagnitude[idx]) <
+              kReferenceTolerance);
+    }
+}
+
 TEST_CASE("stft parallel calculate rejects unsupported window sizes")
 {
     std::vector<float> pcm(128, 1.0f);
     PDJE_PARALLEL::STFT stft;
+    stft.backend_now = PDJE_PARALLEL::BACKEND_T::OPENMP;
 
     auto [realOut, imagOut] =
         stft.calculate(pcm, PDJE_PARALLEL::WINDOW_LIST::HANNING, 5, 0.5f);
+    auto [powerOut, powerImagOut] =
+        stft.calculate(pcm, PDJE_PARALLEL::WINDOW_LIST::HANNING, 5, 0.5f, true);
 
     CHECK(realOut.empty());
     CHECK(imagOut.empty());
+    CHECK(powerOut.empty());
+    CHECK(powerImagOut.empty());
 }

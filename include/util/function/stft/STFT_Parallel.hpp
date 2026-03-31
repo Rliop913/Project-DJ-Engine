@@ -4,10 +4,12 @@
 #include "Parallel_Args.hpp"
 
 #include "STFT_args.hpp"
-#include <optional>
+#include <memory>
 #include <utility>
 #include <vector>
 namespace PDJE_PARALLEL {
+
+class OPENCL_STFT;
 
 inline int
 toQuot(float fullSize, float overlapRatio, float windowSize)
@@ -38,20 +40,7 @@ class STFT {
             const int                 windowSizeEXP,
             const float               overlapRatio);
 
-    // bool
-    // CheckFusable(const WINDOW_LIST target_window, const int windowSizeEXP);
-
-    bool
-    ReadyBackend();
-
-    bool
-    PreProcess();
-
-    bool
-    Butterfly_Stage();
-
-    bool
-    PostProcess();
+    std::unique_ptr<OPENCL_STFT> opencl_backend;
 
   public:
     Backend   backendinfo;
@@ -62,7 +51,8 @@ class STFT {
     calculate(std::vector<float> &PCMdata,
               const WINDOW_LIST   target_window = WINDOW_LIST::HANNING,
               const int           windowSizeEXP = 10,
-              const float         overlapRatio  = 0.5);
+              const float         overlapRatio  = 0.5,
+              const bool          toPower       = false);
     ~STFT();
 };
 }; // namespace PDJE_PARALLEL

@@ -46,8 +46,12 @@ TEST_CASE("util: opencl clhpp fetchcontent import exposes headers")
 {
     CHECK(CL_HPP_TARGET_OPENCL_VERSION == 300);
     CHECK(CL_TARGET_OPENCL_VERSION == 300);
-    CHECK(kHasInitExtFcnPtrMacro);
-    CHECK(kHasInitExtFcnPtrPlatformMacro);
+}
+
+TEST_CASE("util: opencl clhpp helper macros are not exported after include")
+{
+    CHECK_FALSE(kHasInitExtFcnPtrMacro);
+    CHECK_FALSE(kHasInitExtFcnPtrPlatformMacro);
 }
 
 TEST_CASE("util: opencl clhpp probe records api wrapper macro state")

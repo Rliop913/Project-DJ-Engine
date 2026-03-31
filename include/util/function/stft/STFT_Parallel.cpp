@@ -1,11 +1,15 @@
 #include "STFT_Parallel.hpp"
 
+#include "OpenclBackend.hpp"
 #include "PDJE_Parallel_Runtime_Loader.hpp"
 #include "Parallel_Args.hpp"
 #include "opencl_compiled.hpp"
 #include "openmp_compiled.hpp"
 
 #include <CL/cl.h>
+#include <exception>
+#include <memory>
+#include <utility>
 #include <vector>
 
 #include <CL/opencl.hpp>
@@ -16,32 +20,13 @@ namespace {
 
 constexpr float kDefaultGaussianSigma = 0.4f;
 
-} // namespace
-
-STFT::STFT()
-{
-    backendinfo.LoadBackend();
-
-    if (backendinfo.PrintBackendType() == BACKEND_T::OPENCL) {
-        ; // impl here
-    }
-}
-
-STFT::~STFT() = default;
-
 std::pair<std::vector<float>, std::vector<float>>
-STFT::calculate(std::vector<float> &PCMdata,
-                const WINDOW_LIST   target_window,
-                const int           windowSizeEXP,
-                const float         overlapRatio)
+RunOpenMpStft(std::vector<float> &PCMdata,
+              const WINDOW_LIST   target_window,
+              const int           windowSizeEXP,
+              const bool          toPower,
+              const StftArgs     &gargs)
 {
-    if (PCMdata.empty() || overlapRatio < 0 || overlapRatio >= 1.0 ||
-        windowSizeEXP < 6) {
-        return {};
-    }
-
-    auto gargs = GenArgs(PCMdata, windowSizeEXP, overlapRatio);
-
     std::vector<float> realVec(gargs.OFullSize, 0.0f);
     std::vector<float> imagVec(gargs.OFullSize, 0.0f);
 
@@ -110,7 +95,8 @@ STFT::calculate(std::vector<float> &PCMdata,
         std::vector<float> subrealVec(gargs.OFullSize, 0.0f);
         std::vector<float> subimagVec(gargs.OFullSize, 0.0f);
         const unsigned int HWindowSize = gargs.windowSize >> 1;
-        for (unsigned int stage = 0; stage < windowSizeEXP; ++stage) {
+        for (unsigned int stage = 0; stage < static_cast<unsigned int>(windowSizeEXP);
+             ++stage) {
             if (stage % 2 == 0) {
                 StockHamCommon(realVec.data(),
                                imagVec.data(),
@@ -138,6 +124,62 @@ STFT::calculate(std::vector<float> &PCMdata,
     }
     }
 
+    if (toPower) {
+        std::vector<float> powerVec(gargs.OFullSize, 0.0f);
+        ::toPower(powerVec.data(), realVec.data(), imagVec.data(), gargs.OFullSize);
+        return std::pair(std::move(powerVec), std::vector<float> {});
+    }
+
     return std::pair(std::move(realVec), std::move(imagVec));
+}
+
+} // namespace
+
+STFT::STFT()
+{
+    backendinfo.LoadBackend();
+    backend_now = backendinfo.PrintBackendType();
+
+    if (backend_now == BACKEND_T::OPENCL) {
+        try {
+            opencl_backend = std::make_unique<OPENCL_STFT>();
+        } catch (const std::exception &) {
+            opencl_backend.reset();
+            backend_now = BACKEND_T::OPENMP;
+        }
+    }
+}
+
+STFT::~STFT() = default;
+
+std::pair<std::vector<float>, std::vector<float>>
+STFT::calculate(std::vector<float> &PCMdata,
+                const WINDOW_LIST   target_window,
+                const int           windowSizeEXP,
+                const float         overlapRatio,
+                const bool          toPower)
+{
+    if (PCMdata.empty() || overlapRatio < 0 || overlapRatio >= 1.0 ||
+        windowSizeEXP < 6) {
+        return {};
+    }
+
+    auto gargs = GenArgs(PCMdata, windowSizeEXP, overlapRatio);
+
+    if (backend_now == BACKEND_T::OPENCL && opencl_backend) {
+        try {
+            return opencl_backend->Enque(PCMdata,
+                                         target_window,
+                                         true,
+                                         toPower,
+                                         static_cast<unsigned int>(windowSizeEXP),
+                                         gargs);
+        } catch (const std::exception &) {
+            opencl_backend.reset();
+            backend_now = BACKEND_T::OPENMP;
+        }
+    }
+
+    return RunOpenMpStft(PCMdata, target_window, windowSizeEXP, toPower, gargs);
 }
 }; // namespace PDJE_PARALLEL
