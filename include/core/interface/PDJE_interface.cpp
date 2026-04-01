@@ -1,6 +1,7 @@
 #include "PDJE_interface.hpp"
 #include "Decoder.hpp"
 #include "PDJE_LOG_SETTER.hpp"
+#include "musicDB.hpp"
 
 #include <optional>
 #include <stdexcept>
@@ -226,4 +227,17 @@ PDJE::PullOutDataLine()
         PDJE_CORE_DATA_LINE errline;
         return errline;
     }
+}
+
+bool
+PDJE::DeleteMusic(musdata &target)
+{
+
+    return DBROOT->DeleteData(target);
+}
+
+bool
+PDJE::DeleteTrack(trackdata &target)
+{
+    return DBROOT->DeleteData(target);
 }

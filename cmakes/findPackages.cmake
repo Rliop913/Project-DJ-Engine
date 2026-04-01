@@ -49,6 +49,27 @@ FetchContent_Declare(
 )
 
 FetchContent_Declare(
+  opencl_headers
+  GIT_REPOSITORY https://github.com/KhronosGroup/OpenCL-Headers.git
+  GIT_TAG v2024.10.24
+  GIT_SHALLOW TRUE
+)
+
+FetchContent_Declare(
+  opencl_clhpp
+  GIT_REPOSITORY https://github.com/KhronosGroup/OpenCL-CLHPP.git
+  GIT_TAG v2024.10.24
+  GIT_SHALLOW TRUE
+)
+
+FetchContent_Declare(
+  cmrc
+  GIT_REPOSITORY https://github.com/vector-of-bool/cmrc.git
+  GIT_TAG 2.0.1
+  GIT_SHALLOW TRUE
+)
+
+FetchContent_Declare(
   sql_amalgam
   URL https://www.sqlite.org/2024/sqlite-amalgamation-3450000.zip
 )
@@ -143,12 +164,6 @@ function(setBotanReqLib targetName)
 endfunction()
 
 
-# FetchContent_Declare(
-#   cppHttp
-#   GIT_REPOSITORY https://github.com/yhirose/cpp-httplib.git
-#   GIT_TAG v0.27.0
-# ) #DEPRECATED
-
 find_package(Annoy CONFIG REQUIRED)
 
 function(setAnnoyReqLib targetName)
@@ -215,8 +230,66 @@ find_package(OpenSSL REQUIRED)
 link_libraries(${OPENSSL_LIBRARIES})
 
 
+
+
+
+FetchContent_MakeAvailable(opencl_headers)
+FetchContent_MakeAvailable(cmrc)
+
+function(setCmrcReqLib targetName)
+  target_link_libraries(${targetName} PRIVATE PDJE::util_okl_resources)
+endfunction()
+
+
+cmrc_add_resource_library(
+  PDJE_UTIL_OKL_RESOURCES
+  ALIAS PDJE::util_okl_resources
+  NAMESPACE pdje_okl
+  WHENCE ${CMAKE_CURRENT_SOURCE_DIR}/GenCodes/OKL/GenOut/OpenCL
+  ${CMAKE_CURRENT_SOURCE_DIR}/GenCodes/OKL/GenOut/OpenCL/STFT_MAIN.cl
+)
+if(NOT COMMAND cmrc_add_resource_library)
+  include("${cmrc_SOURCE_DIR}/CMakeRC.cmake")
+endif()
+
+
 FetchContent_MakeAvailable(miniaudio)
 FetchContent_MakeAvailable(NHJson)
+if(DEFINED CMAKE_CXX_STANDARD)
+  set(_pdje_saved_cxx_standard "${CMAKE_CXX_STANDARD}")
+  set(_pdje_had_cxx_standard TRUE)
+endif()
+if(DEFINED CMAKE_CXX_STANDARD_REQUIRED)
+  set(_pdje_saved_cxx_standard_required "${CMAKE_CXX_STANDARD_REQUIRED}")
+  set(_pdje_had_cxx_standard_required TRUE)
+endif()
+if(DEFINED BUILD_DOCS)
+  set(_pdje_saved_build_docs "${BUILD_DOCS}")
+  set(_pdje_had_build_docs TRUE)
+endif()
+if(DEFINED BUILD_EXAMPLES)
+  set(_pdje_saved_build_examples "${BUILD_EXAMPLES}")
+  set(_pdje_had_build_examples TRUE)
+endif()
+set(BUILD_DOCS OFF CACHE BOOL "" FORCE)
+set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(opencl_clhpp)
+if(_pdje_had_cxx_standard)
+  set(CMAKE_CXX_STANDARD "${_pdje_saved_cxx_standard}")
+endif()
+if(_pdje_had_cxx_standard_required)
+  set(CMAKE_CXX_STANDARD_REQUIRED "${_pdje_saved_cxx_standard_required}")
+endif()
+if(_pdje_had_build_docs)
+  set(BUILD_DOCS "${_pdje_saved_build_docs}" CACHE BOOL "" FORCE)
+else()
+  unset(BUILD_DOCS CACHE)
+endif()
+if(_pdje_had_build_examples)
+  set(BUILD_EXAMPLES "${_pdje_saved_build_examples}" CACHE BOOL "" FORCE)
+else()
+  unset(BUILD_EXAMPLES CACHE)
+endif()
 FetchContent_MakeAvailable(sql_amalgam)
 FetchContent_MakeAvailable(cppCodec)
 FetchContent_MakeAvailable(libremidi)
@@ -241,6 +314,74 @@ function(setSqliteReqLib targetName)
     target_include_directories(${targetName} PRIVATE ${sql_amalgam_SOURCE_DIR})
   endif()
 endfunction(setSqliteReqLib)
+
+set(PDJE_OPENCL_CPP_INCLUDE_DIR
+    "${opencl_clhpp_SOURCE_DIR}/include"
+    CACHE INTERNAL "FetchContent-provided OpenCL C++ header include directory")
+
+include(CheckCXXSourceCompiles)
+
+set(_pdje_saved_required_includes "${CMAKE_REQUIRED_INCLUDES}")
+set(CMAKE_REQUIRED_INCLUDES
+    "${PDJE_OPENCL_CPP_INCLUDE_DIR};${OPENCL_INCLUDE_DIR}")
+
+check_cxx_source_compiles(
+  "
+  #define CL_HPP_TARGET_OPENCL_VERSION 300
+  #define CL_TARGET_OPENCL_VERSION 300
+  #define CL_NO_PROTOTYPES
+  #include <CL/opencl.hpp>
+  int main() { return 0; }
+  "
+  PDJE_OPENCL_CLHPP_SUPPORTS_NO_PROTOTYPES)
+
+check_cxx_source_compiles(
+  "
+  #define CL_HPP_TARGET_OPENCL_VERSION 300
+  #define CL_TARGET_OPENCL_VERSION 300
+  #define CL_NO_CORE_PROTOTYPES
+  #include <CL/opencl.hpp>
+  int main() { return 0; }
+  "
+  PDJE_OPENCL_CLHPP_SUPPORTS_NO_CORE_PROTOTYPES)
+
+set(CMAKE_REQUIRED_INCLUDES "${_pdje_saved_required_includes}")
+
+function(setOpenCLCppReqLib targetName)
+  get_target_property(_pdje_target_type ${targetName} TYPE)
+  if("${_pdje_target_type}" STREQUAL "INTERFACE_LIBRARY")
+    set(_pdje_opencl_scope INTERFACE)
+  else()
+    set(_pdje_opencl_scope PRIVATE)
+  endif()
+
+  if(TARGET OpenCL::Headers)
+    target_link_libraries(${targetName} ${_pdje_opencl_scope} OpenCL::Headers)
+  endif()
+
+  if(TARGET OpenCL::HeadersCpp)
+    target_link_libraries(${targetName} ${_pdje_opencl_scope} OpenCL::HeadersCpp)
+  endif()
+
+  target_include_directories(${targetName}
+                             ${_pdje_opencl_scope}
+                             ${PDJE_OPENCL_CPP_INCLUDE_DIR})
+endfunction(setOpenCLCppReqLib)
+
+function(setOpenCLRuntimeShimReqLib targetName)
+  get_target_property(_pdje_target_type ${targetName} TYPE)
+  if("${_pdje_target_type}" STREQUAL "INTERFACE_LIBRARY")
+    set(_pdje_opencl_runtime_scope INTERFACE)
+  else()
+    set(_pdje_opencl_runtime_scope PRIVATE)
+  endif()
+
+  if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    target_link_libraries(${targetName}
+                          ${_pdje_opencl_runtime_scope}
+                          ${CMAKE_DL_LIBS})
+  endif()
+endfunction(setOpenCLRuntimeShimReqLib)
 
 
 # get_cmake_property(_vars VARIABLES)

@@ -11,6 +11,7 @@
 #include <stdexcept>
 
 #include "PDJE_LOG_SETTER.hpp"
+#include "fileNameSanitizer.hpp"
 namespace ROCK_DB = ROCKSDB_NAMESPACE;
 class RDB {
   public:
@@ -178,12 +179,25 @@ litedb::KVGet(const SANITIZED &K, DONT_SANITIZE &V)
 bool
 litedb::KVPut(const SANITIZED &K, const DONT_SANITIZE &V)
 {
-
     auto putRes = kvdb_impl->kvdb->Put(kvdb_impl->wops, K, V);
     if (!putRes.ok()) {
         critlog("failed to put new datas to database. from litedb KVPut. "
                 "rocksdbErr: ");
         std::string resErr = putRes.ToString();
+        critlog(resErr);
+        return false;
+    }
+    return true;
+}
+
+bool
+litedb::KVDelete(const SANITIZED &K)
+{
+    auto deleteRes = kvdb_impl->kvdb->Delete(kvdb_impl->wops, K);
+    if (!deleteRes.ok()) {
+        critlog("failed to delete datas from kv database. litedb::KVDelete.  "
+                "rocksdbErr: ");
+        auto resErr = deleteRes.ToString();
         critlog(resErr);
         return false;
     }

@@ -1,5 +1,6 @@
 #pragma once
 #include "PDJE_EXPORT_SETTER.hpp"
+#include "fileNameSanitizer.hpp"
 #include "musicDB.hpp"
 #include "trackDB.hpp"
 #include <filesystem>
@@ -37,9 +38,6 @@ class PDJE_API litedb {
     /// sqlite pointer
     sqlite3             *sdb = nullptr;
     std::unique_ptr<RDB> kvdb_impl;
-    // RDB::DB          *kvdb = nullptr;
-    // RDB::WriteOptions wops;
-    // RDB::ReadOptions  rops;
 
     /// @brief checkes tables.
     /// @return OK / Not OK
@@ -91,7 +89,7 @@ class PDJE_API litedb {
      */
     template <typename DBType>
     bool
-    EditData(DBType &searchObject, DBType &editObject); // to-do impl
+    EditData(DBType &searchObject, DBType &editObject);
 
     /**
      * @brief Retrieves a value from the key-value store.
@@ -112,6 +110,9 @@ class PDJE_API litedb {
      */
     bool
     KVPut(const SANITIZED &K, const DONT_SANITIZE &V);
+
+    bool
+    KVDelete(const SANITIZED &K);
 
     /**
      * @brief opens the Root Database and initialize.

@@ -29,5 +29,5 @@ target_compile_definitions(pdje_unit_core PRIVATE PDJE_UNIT_TESTING)
 PDJE_COMPILE_OPTION(pdje_unit_core)
 SET_PROPERTIES(pdje_unit_core)
 
-
+pdje_copy_zlib_runtime(pdje_unit_core)
 pdje_discover_unit_tests(pdje_unit_core core)

@@ -24,6 +24,7 @@ file(WRITE "${RT_HASH_HEADER}" "${genhash_template}")
 Include(FetchContent)
 include(cmakes/findPackages.cmake)
 
+
 if(WIN32)
   add_compile_definitions(__WINDOWS__)
   add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
@@ -90,7 +91,7 @@ function(LinuxSetAudioLibs targetName)
   endif()
 endfunction(LinuxSetAudioLibs )
 
-include(cmakes/HalideSupport.cmake)
+
 
 
 include(cmakes/BuildLog.cmake)
@@ -180,7 +181,6 @@ setRocksDBReqLib(CPDJE)
 setLibgit2ReqLib(CPDJE)
 setHighwayReqLib(CPDJE)
 setCapnpReqLib(CPDJE)
-pdje_halide_attach_to_target(CPDJE)
 LinuxSetAtomic(CPDJE)
 LinuxSetAudioLibs(CPDJE)
 PDJE_COMPILE_OPTION(CPDJE)
@@ -291,7 +291,6 @@ endif()
 
 include(GNUInstallDirs)
 
-pdje_halide_install_generated_targets()
 
 
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/  DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}

@@ -1,0 +1,56 @@
+#ifndef ROOTISBASH  
+#include "../OKL/kernel.okl"
+#else
+#include "./kernel.okl"
+#endif
+
+
+@kernel void Stockhoptimized8(
+    float* Rout, 
+    float* Iout,
+    const unsigned int OHalfSize)
+{
+    for(unsigned int o_itr = 0; o_itr < OHalfSize; o_itr += 128; @outer)
+    {
+        @shared float FRBank[256];
+        @shared float FIBank[256];
+        @shared float SRBank[256];
+        @shared float SIBank[256];
+        
+        for(int i_itr = 0; i_itr < 128; ++i_itr; @inner)
+        {
+            G2FDIT(7, 128, 256);
+        }
+
+        for(int i_itr = 0; i_itr < 128; ++i_itr; @inner)
+        {
+            F2SDIT(2, 4, 1, 128, 256);
+        }
+
+        for(int i_itr = 0; i_itr < 128; ++i_itr; @inner)
+        {
+            S2FDIT(4, 8, 2, 128, 256);
+        }
+
+        for(int i_itr = 0; i_itr < 128; ++i_itr; @inner)
+        {
+            F2SDIT(8, 16, 3, 128, 256);
+        }
+        for(int i_itr = 0; i_itr < 128; ++i_itr; @inner)
+        {
+            S2FDIT(16, 32, 4, 128, 256);
+        }
+        for(int i_itr = 0; i_itr < 128; ++i_itr; @inner)
+        {
+            F2SDIT(32, 64, 5, 128, 256);
+        }
+        for(int i_itr = 0; i_itr < 128; ++i_itr; @inner)
+        {
+            S2FDIT(64, 128, 6, 128, 256);
+        }
+        for(int i_itr = 0; i_itr < 128; ++i_itr; @inner)
+        {
+            F2GDIT(7, 128, 256);
+        }
+    }
+}

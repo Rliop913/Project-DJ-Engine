@@ -11,7 +11,7 @@ function(setInputReqs targetName)
   # ${PDJE_INCLUDE_INPUT_MAINPROC} )
   setBotanReqLib(${targetName})
   PDJE_INPUT_LINK_LIB(${targetName})
-  pdje_halide_attach_to_target(${targetName})
+  
   LinuxSetAtomic(${targetName})
   setSpdlogReqLib(${targetName})
   SET_PROPERTIES(${targetName})
