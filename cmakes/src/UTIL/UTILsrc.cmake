@@ -14,6 +14,7 @@ add_library(PDJE_UTIL_IMAGE_WEBP INTERFACE)
 target_link_libraries(PDJE_UTIL_IMAGE_WEBP INTERFACE PDJE_UTIL)
 setWebpReqLib(PDJE_UTIL_IMAGE_WEBP)
 
+
 add_library(PDJE_UTIL_IMAGE_WAVEFORM
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/image/WaveformWebp.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/stft/STFT_Parallel.cpp
@@ -31,6 +32,7 @@ add_library(PDJE_UTIL_IMAGE_WAVEFORM
 
 setOpenCLCppReqLib(PDJE_UTIL_IMAGE_WAVEFORM)
 setOpenCLRuntimeShimReqLib(PDJE_UTIL_IMAGE_WAVEFORM)
+setCmrcReqLib(PDJE_UTIL_IMAGE_WAVEFORM)
 setOpenMPReqLib(PDJE_UTIL_IMAGE_WAVEFORM)
 setHighwayReqLib(PDJE_UTIL_IMAGE_WAVEFORM)
 setCapnpReqLib(PDJE_UTIL_IMAGE_WAVEFORM)

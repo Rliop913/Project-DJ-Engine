@@ -49,9 +49,23 @@ FetchContent_Declare(
 )
 
 FetchContent_Declare(
+  opencl_headers
+  GIT_REPOSITORY https://github.com/KhronosGroup/OpenCL-Headers.git
+  GIT_TAG v2024.10.24
+  GIT_SHALLOW TRUE
+)
+
+FetchContent_Declare(
   opencl_clhpp
   GIT_REPOSITORY https://github.com/KhronosGroup/OpenCL-CLHPP.git
   GIT_TAG v2024.10.24
+  GIT_SHALLOW TRUE
+)
+
+FetchContent_Declare(
+  cmrc
+  GIT_REPOSITORY https://github.com/vector-of-bool/cmrc.git
+  GIT_TAG 2.0.1
   GIT_SHALLOW TRUE
 )
 
@@ -150,12 +164,6 @@ function(setBotanReqLib targetName)
 endfunction()
 
 
-# FetchContent_Declare(
-#   cppHttp
-#   GIT_REPOSITORY https://github.com/yhirose/cpp-httplib.git
-#   GIT_TAG v0.27.0
-# ) #DEPRECATED
-
 find_package(Annoy CONFIG REQUIRED)
 
 function(setAnnoyReqLib targetName)
@@ -222,20 +230,38 @@ find_package(OpenSSL REQUIRED)
 link_libraries(${OPENSSL_LIBRARIES})
 
 
-find_package(OpenMP REQUIRED)
-function(setOpenMPReqLib targetName)
-  target_link_libraries(${targetName} PRIVATE OpenMP::OpenMP_CXX)
+if(MSVC)
+  function(setOpenMPReqLib targetName)
+    target_compile_options(${targetName} PRIVATE /openmp:llvm)
+  endfunction()
+else()
+  find_package(OpenMP REQUIRED)
+  function(setOpenMPReqLib targetName)
+    target_link_libraries(${targetName} PRIVATE OpenMP::OpenMP_CXX)
+  endfunction()
+endif()
+
+
+
+FetchContent_MakeAvailable(opencl_headers)
+FetchContent_MakeAvailable(cmrc)
+
+function(setCmrcReqLib targetName)
+  target_link_libraries(${targetName} PRIVATE PDJE::util_okl_resources)
 endfunction()
 
-if(UNIX AND EXISTS "/usr/include/CL/opencl.h")
-  set(OPENCL_INCLUDE_DIR "/usr/include" CACHE PATH "" FORCE)
-  set(OPENCL_CLHPP_HEADERS_DIR "/usr/include" CACHE PATH "" FORCE)
-  if(NOT TARGET OpenCL::Headers)
-    add_library(OpenCL::Headers INTERFACE IMPORTED GLOBAL)
-    set_target_properties(OpenCL::Headers PROPERTIES
-                          INTERFACE_INCLUDE_DIRECTORIES "/usr/include")
-  endif()
+
+cmrc_add_resource_library(
+  PDJE_UTIL_OKL_RESOURCES
+  ALIAS PDJE::util_okl_resources
+  NAMESPACE pdje_okl
+  WHENCE ${CMAKE_CURRENT_SOURCE_DIR}/GenCodes/OKL/resources
+  ${CMAKE_CURRENT_SOURCE_DIR}/GenCodes/OKL/resources/tempfile.txt
+)
+if(NOT COMMAND cmrc_add_resource_library)
+  include("${cmrc_SOURCE_DIR}/CMakeRC.cmake")
 endif()
+
 
 FetchContent_MakeAvailable(miniaudio)
 FetchContent_MakeAvailable(NHJson)
@@ -337,6 +363,10 @@ function(setOpenCLCppReqLib targetName)
     set(_pdje_opencl_scope INTERFACE)
   else()
     set(_pdje_opencl_scope PRIVATE)
+  endif()
+
+  if(TARGET OpenCL::Headers)
+    target_link_libraries(${targetName} ${_pdje_opencl_scope} OpenCL::Headers)
   endif()
 
   if(TARGET OpenCL::HeadersCpp)

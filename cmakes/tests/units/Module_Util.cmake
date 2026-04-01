@@ -5,7 +5,7 @@ endif()
 
 
 add_executable(
-pdje_unit_util
+  pdje_unit_util
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/main_doctest.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/public_headers.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/webp_writer.test.cpp
@@ -64,3 +64,11 @@ setLibgit2ReqLib(pdje_unit_util)
 PDJE_COMPILE_OPTION(pdje_unit_util)
 SET_PROPERTIES(pdje_unit_util)
 pdje_discover_unit_tests(pdje_unit_util core)
+
+add_executable(
+  pdje_util_cmrc_probe
+  ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/cmrc_resource_probe.cpp)
+setCmrcReqLib(pdje_util_cmrc_probe)
+PDJE_COMPILE_OPTION(pdje_util_cmrc_probe)
+SET_PROPERTIES(pdje_util_cmrc_probe)
+add_test(NAME unit.util::cmrc_resource_probe COMMAND pdje_util_cmrc_probe)
