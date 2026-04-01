@@ -3,7 +3,7 @@
 #include "OpenclBackend.hpp"
 #include "PDJE_Parallel_Runtime_Loader.hpp"
 #include "Parallel_Args.hpp"
-#include "opencl_compiled.hpp"
+
 #include "openmp_compiled.hpp"
 
 #include <CL/cl.h>
@@ -95,7 +95,8 @@ RunOpenMpStft(std::vector<float> &PCMdata,
         std::vector<float> subrealVec(gargs.OFullSize, 0.0f);
         std::vector<float> subimagVec(gargs.OFullSize, 0.0f);
         const unsigned int HWindowSize = gargs.windowSize >> 1;
-        for (unsigned int stage = 0; stage < static_cast<unsigned int>(windowSizeEXP);
+        for (unsigned int stage = 0;
+             stage < static_cast<unsigned int>(windowSizeEXP);
              ++stage) {
             if (stage % 2 == 0) {
                 StockHamCommon(realVec.data(),
@@ -126,8 +127,9 @@ RunOpenMpStft(std::vector<float> &PCMdata,
 
     if (toPower) {
         std::vector<float> powerVec(gargs.OFullSize, 0.0f);
-        ::toPower(powerVec.data(), realVec.data(), imagVec.data(), gargs.OFullSize);
-        return std::pair(std::move(powerVec), std::vector<float> {});
+        ::toPower(
+            powerVec.data(), realVec.data(), imagVec.data(), gargs.OFullSize);
+        return std::pair(std::move(powerVec), std::vector<float>{});
     }
 
     return std::pair(std::move(realVec), std::move(imagVec));
@@ -168,12 +170,13 @@ STFT::calculate(std::vector<float> &PCMdata,
 
     if (backend_now == BACKEND_T::OPENCL && opencl_backend) {
         try {
-            return opencl_backend->Enque(PCMdata,
-                                         target_window,
-                                         true,
-                                         toPower,
-                                         static_cast<unsigned int>(windowSizeEXP),
-                                         gargs);
+            return opencl_backend->Enque(
+                PCMdata,
+                target_window,
+                true,
+                toPower,
+                static_cast<unsigned int>(windowSizeEXP),
+                gargs);
         } catch (const std::exception &) {
             opencl_backend.reset();
             backend_now = BACKEND_T::OPENMP;

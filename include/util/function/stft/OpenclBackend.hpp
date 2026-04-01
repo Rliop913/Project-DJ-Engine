@@ -2,14 +2,18 @@
 
 #include "STFT_Parallel.hpp"
 #include "STFT_args.hpp"
-#include "opencl_compiled.hpp"
 #include <CL/cl.h>
 #include <CL/opencl.hpp>
+#include <cmrc/cmrc.hpp>
+#include <cstddef>
 #include <cstdint>
 #include <exception>
 #include <optional>
 #include <stdexcept>
+#include <string_view>
 #include <utility>
+
+CMRC_DECLARE(pdje_okl);
 
 namespace PDJE_PARALLEL {
 
@@ -61,7 +65,6 @@ class OPENCL_STFT {
     std::optional<cl::Context>      gpu_ctxt;
     std::optional<cl::Program>      gpu_codes;
 
-    okl_embed okl;
     bool
     SetMemory(const uint32_t     origin_cpu_memory_sz,
               const unsigned int OFullSize,
@@ -113,7 +116,11 @@ class OPENCL_STFT {
         } else {
             gpu_ctxt = cl::Context(gpu.value());
         }
-        gpu_codes.emplace(gpu_ctxt.value(), okl.opencl_code);
+        auto fs   = cmrc::pdje_okl::get_filesystem();
+        auto file = fs.open("STFT_MAIN.cl");
+
+        std::string cl_codes(file.begin(), file.end());
+        gpu_codes.emplace(gpu_ctxt.value(), cl_codes);
         if (gpu_codes->build(gpu.value()) != CL_SUCCESS) {
             throw std::runtime_error("failed to build cl kernel codes.");
         }

@@ -1,8 +1,4 @@
-#pragma once
-class okl_embed {
- public:
- const char* opencl_code = 
- R"(#pragma OPENCL EXTENSION cl_khr_fp64 : enable
+#pragma OPENCL EXTENSION cl_khr_fp64 : enable
 
 typedef struct complex_t {
   float real, imag;
@@ -2630,4 +2626,3 @@ __kernel __attribute__((reqd_work_group_size(256,1,1)))
   }
 }
 
-    )";};

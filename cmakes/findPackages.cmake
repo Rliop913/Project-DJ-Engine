@@ -255,8 +255,8 @@ cmrc_add_resource_library(
   PDJE_UTIL_OKL_RESOURCES
   ALIAS PDJE::util_okl_resources
   NAMESPACE pdje_okl
-  WHENCE ${CMAKE_CURRENT_SOURCE_DIR}/GenCodes/OKL/resources
-  ${CMAKE_CURRENT_SOURCE_DIR}/GenCodes/OKL/resources/tempfile.txt
+  WHENCE ${CMAKE_CURRENT_SOURCE_DIR}/GenCodes/OKL/GenOut/OpenCL
+  ${CMAKE_CURRENT_SOURCE_DIR}/GenCodes/OKL/GenOut/OpenCL/STFT_MAIN.cl
 )
 if(NOT COMMAND cmrc_add_resource_library)
   include("${cmrc_SOURCE_DIR}/CMakeRC.cmake")
