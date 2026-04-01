@@ -128,7 +128,6 @@ extern "C" void toPower(float * out,
                         float * Real,
                         float * Imag,
                         const unsigned int & OFullSize) {
-#pragma omp parallel for
   for (unsigned int o_itr = 0; o_itr < OFullSize; o_itr += 64) {
     for (int i_itr = 0; i_itr < 64; ++i_itr) {
       const unsigned int GID = o_itr + i_itr;
@@ -145,7 +144,6 @@ extern "C" void toHalfComplexFormat(complex * out,
                                     float * Imag,
                                     const unsigned int & OHalfSize,
                                     const int & windowRadix) {
-#pragma omp parallel for
   for (unsigned int o_itr = 0; o_itr < OHalfSize; o_itr += 32) {
     for (unsigned int i_itr = 0; i_itr < 32; ++i_itr) {
       const unsigned int GID = o_itr + i_itr;
@@ -164,7 +162,6 @@ extern "C" void toHalfComplexFormat(complex * out,
 extern "C" void Stockhoptimized6(float * Rout,
                                  float * Iout,
                                  const unsigned int & OHalfSize) {
-#pragma omp parallel for
   for (unsigned int o_itr = 0; o_itr < OHalfSize; o_itr += 32) {
     float FRBank[64];
     float FIBank[64];
@@ -286,7 +283,6 @@ extern "C" void Stockhoptimized6(float * Rout,
 extern "C" void Stockhoptimized7(float * Rout,
                                  float * Iout,
                                  const unsigned int & OHalfSize) {
-#pragma omp parallel for
   for (unsigned int o_itr = 0; o_itr < OHalfSize; o_itr += 64) {
     float FRBank[128];
     float FIBank[128];
@@ -426,7 +422,6 @@ extern "C" void Stockhoptimized7(float * Rout,
 extern "C" void Stockhoptimized8(float * Rout,
                                  float * Iout,
                                  const unsigned int & OHalfSize) {
-#pragma omp parallel for
   for (unsigned int o_itr = 0; o_itr < OHalfSize; o_itr += 128) {
     float FRBank[256];
     float FIBank[256];
@@ -584,7 +579,6 @@ extern "C" void Stockhoptimized8(float * Rout,
 extern "C" void Stockhoptimized9(float * Rout,
                                  float * Iout,
                                  const unsigned int & OHalfSize) {
-#pragma omp parallel for
   for (unsigned int o_itr = 0; o_itr < OHalfSize; o_itr += 256) {
     float FRBank[512];
     float FIBank[512];
@@ -764,7 +758,6 @@ extern "C" void preprocessed_ODW10_STH_STFT(float * inData,
                                             const unsigned int & OHalfSize,
                                             float * Rout,
                                             float * Iout) {
-#pragma omp parallel for
   for (unsigned int o_itr = 0; o_itr < OHalfSize; o_itr += 512) {
     float FRBank[1024];
     float FIBank[1024];
@@ -1046,7 +1039,6 @@ extern "C" void preprocesses_ODW_10(float * inData,
                                     const unsigned int & fullSize,
                                     const unsigned int & OMove,
                                     float * Rout) {
-#pragma omp parallel for
   for (unsigned int o_itr = 0; o_itr < qtConst; ++o_itr) {
     float wr[1024];
     float windowAdded[512];
@@ -1145,7 +1137,6 @@ extern "C" void preprocesses_ODW_10(float * inData,
 extern "C" void Stockhoptimized10(float * Rout,
                                   float * Iout,
                                   const unsigned int & OHalfSize) {
-#pragma omp parallel for
   for (unsigned int o_itr = 0; o_itr < OHalfSize; o_itr += 512) {
     float FRBank[1024];
     float FIBank[1024];
@@ -1341,7 +1332,6 @@ extern "C" void preprocesses_ODW_11(float * inData,
                                     const unsigned int & fullSize,
                                     const unsigned int & OMove,
                                     float * Rout) {
-#pragma omp parallel for
   for (unsigned int o_itr = 0; o_itr < qtConst; ++o_itr) {
     float wr[2048];
     float windowAdded[1024];
@@ -1448,7 +1438,6 @@ extern "C" void preprocesses_ODW_11(float * inData,
 extern "C" void Stockhoptimized11(float * Rout,
                                   float * Iout,
                                   const unsigned int & OHalfSize) {
-#pragma omp parallel for
   for (unsigned int o_itr = 0; o_itr < OHalfSize; o_itr += 1024) {
     float FRBank[2048];
     float FIBank[2048];
@@ -1664,7 +1653,6 @@ extern "C" void preprocessed_ODW11_STH_STFT(float * inData,
                                             const unsigned int & OHalfSize,
                                             float * Rout,
                                             float * Iout) {
-#pragma omp parallel for
   for (unsigned int o_itr = 0; o_itr < OHalfSize; o_itr += 1024) {
     float FRBank[2048];
     float FIBank[2048];
@@ -1972,7 +1960,6 @@ extern "C" void Overlap_Common(float * inData,
                                const unsigned int & windowRadix,
                                const unsigned int & OMove,
                                float * outReal) {
-#pragma omp parallel for
   for (unsigned int o_itr = 0; o_itr < OFullSize; o_itr += 64) {
     for (unsigned int i_itr = 0; i_itr < 64; ++i_itr) {
       const unsigned int overlapIdx = o_itr + i_itr;
@@ -1988,7 +1975,6 @@ extern "C" void Overlap_Common(float * inData,
 extern "C" void Window_Hanning(float * outReal,
                                const unsigned int & OFullSize,
                                const unsigned int & windowSize) {
-#pragma omp parallel for
   for (unsigned int o_itr = 0; o_itr < OFullSize; o_itr += 64) {
     for (unsigned int i_itr = 0; i_itr < 64; ++i_itr) {
       const unsigned int Gidx = o_itr + i_itr;
@@ -2000,7 +1986,6 @@ extern "C" void Window_Hanning(float * outReal,
 extern "C" void Window_Hamming(float * outReal,
                                const unsigned int & OFullSize,
                                const unsigned int & windowSize) {
-#pragma omp parallel for
   for (unsigned int o_itr = 0; o_itr < OFullSize; o_itr += 64) {
     for (unsigned int i_itr = 0; i_itr < 64; ++i_itr) {
       unsigned int Gidx = o_itr + i_itr;
@@ -2012,7 +1997,6 @@ extern "C" void Window_Hamming(float * outReal,
 extern "C" void Window_Blackman(float * outReal,
                                 const unsigned int & OFullSize,
                                 const unsigned int & windowSize) {
-#pragma omp parallel for
   for (unsigned int o_itr = 0; o_itr < OFullSize; o_itr += 64) {
     for (unsigned int i_itr = 0; i_itr < 64; ++i_itr) {
       unsigned int Gidx = o_itr + i_itr;
@@ -2024,7 +2008,6 @@ extern "C" void Window_Blackman(float * outReal,
 extern "C" void Window_Nuttall(float * outReal,
                                const unsigned int & OFullSize,
                                const unsigned int & windowSize) {
-#pragma omp parallel for
   for (unsigned int o_itr = 0; o_itr < OFullSize; o_itr += 64) {
     for (unsigned int i_itr = 0; i_itr < 64; ++i_itr) {
       unsigned int Gidx = o_itr + i_itr;
@@ -2036,7 +2019,6 @@ extern "C" void Window_Nuttall(float * outReal,
 extern "C" void Window_Blackman_Nuttall(float * outReal,
                                         const unsigned int & OFullSize,
                                         const unsigned int & windowSize) {
-#pragma omp parallel for
   for (unsigned int o_itr = 0; o_itr < OFullSize; o_itr += 64) {
     for (unsigned int i_itr = 0; i_itr < 64; ++i_itr) {
       unsigned int Gidx = o_itr + i_itr;
@@ -2051,7 +2033,6 @@ extern "C" void Window_Blackman_Nuttall(float * outReal,
 extern "C" void Window_Blackman_harris(float * outReal,
                                        const unsigned int & OFullSize,
                                        const unsigned int & windowSize) {
-#pragma omp parallel for
   for (unsigned int o_itr = 0; o_itr < OFullSize; o_itr += 64) {
     for (unsigned int i_itr = 0; i_itr < 64; ++i_itr) {
       unsigned int Gidx = o_itr + i_itr;
@@ -2063,7 +2044,6 @@ extern "C" void Window_Blackman_harris(float * outReal,
 extern "C" void Window_FlatTop(float * outReal,
                                const unsigned int & OFullSize,
                                const unsigned int & windowSize) {
-#pragma omp parallel for
   for (unsigned int o_itr = 0; o_itr < OFullSize; o_itr += 64) {
     for (unsigned int i_itr = 0; i_itr < 64; ++i_itr) {
       unsigned int Gidx = o_itr + i_itr;
@@ -2076,7 +2056,6 @@ extern "C" void Window_Gaussian(float * outReal,
                                 const unsigned int & OFullSize,
                                 const unsigned int & windowSize,
                                 const float & sigma) {
-#pragma omp parallel for
   for (unsigned int o_itr = 0; o_itr < OFullSize; o_itr += 64) {
     for (unsigned int i_itr = 0; i_itr < 64; ++i_itr) {
       unsigned int Gidx = o_itr + i_itr;
@@ -2088,7 +2067,6 @@ extern "C" void Window_Gaussian(float * outReal,
 extern "C" void DCRemove_Common(float * outReal,
                                 const unsigned int & OFullSize,
                                 const unsigned int & windowSize) {
-#pragma omp parallel for
   for (unsigned int o_itr = 0; o_itr < OFullSize; o_itr += windowSize) {
     float added[128];
     //for removing DC
@@ -2127,7 +2105,6 @@ extern "C" void StockHamCommon(float * inReal,
                                const unsigned int & stageRadix,
                                const unsigned int & OHalfSize,
                                const unsigned int & radixData) {
-#pragma omp parallel for
   for (unsigned int o_itr = 0; o_itr < OHalfSize; o_itr += 256) {
     for (unsigned int i_itr = 0; i_itr < 256; ++i_itr) {
       unsigned int OIdx = o_itr + i_itr;

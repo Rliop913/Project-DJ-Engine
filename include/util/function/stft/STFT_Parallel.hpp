@@ -44,7 +44,7 @@ class STFT {
 
   public:
     Backend   backendinfo;
-    BACKEND_T backend_now = BACKEND_T::OPENMP;
+    BACKEND_T backend_now = BACKEND_T::SERIAL;
     STFT();
 
     std::pair<std::vector<float>, std::vector<float>>

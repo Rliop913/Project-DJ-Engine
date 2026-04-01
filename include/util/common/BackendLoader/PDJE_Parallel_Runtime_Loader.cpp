@@ -3,7 +3,7 @@
 
 namespace PDJE_PARALLEL {
 
-Backend::Backend() : backend_now(BACKEND_T::OPENMP)
+Backend::Backend() : backend_now(BACKEND_T::SERIAL)
 {
 }
 
@@ -19,7 +19,7 @@ bool
 Backend::LoadBackend()
 {
     backend_now =
-        EnsureOpenCLRuntimeLoaded() ? BACKEND_T::OPENCL : BACKEND_T::OPENMP;
+        EnsureOpenCLRuntimeLoaded() ? BACKEND_T::OPENCL : BACKEND_T::SERIAL;
     return true;
 }
 

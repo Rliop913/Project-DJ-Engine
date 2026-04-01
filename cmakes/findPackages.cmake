@@ -230,16 +230,6 @@ find_package(OpenSSL REQUIRED)
 link_libraries(${OPENSSL_LIBRARIES})
 
 
-if(MSVC)
-  function(setOpenMPReqLib targetName)
-    target_compile_options(${targetName} PRIVATE /openmp:llvm)
-  endfunction()
-else()
-  find_package(OpenMP REQUIRED)
-  function(setOpenMPReqLib targetName)
-    target_link_libraries(${targetName} PRIVATE OpenMP::OpenMP_CXX)
-  endfunction()
-endif()
 
 
 

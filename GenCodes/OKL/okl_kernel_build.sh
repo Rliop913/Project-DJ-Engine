@@ -3,12 +3,12 @@ OCCA_PATH=$1
 INPUT_OKL="./STFT_MAIN.okl"
 OUTPUT_DIR="./GenOut"
 TARGET_OPENCL_DIR="./GenOut/OpenCL"
-TARGET_OPENMP_DIR="./GenOut/OpenMP"
+TARGET_SERIAL_DIR="./GenOut/SERIAL"
 TARGET_METAL_DIR="./GenOut/METAL"
 
 mkdir -p $OUTPUT_DIR
 mkdir -p $TARGET_OPENCL_DIR
-mkdir -p $TARGET_OPENMP_DIR
+mkdir -p $TARGET_SERIAL_DIR
 mkdir -p $TARGET_METAL_DIR
 
 
@@ -17,10 +17,10 @@ $OCCA_PATH translate -D ROOTISBASH -m opencl $INPUT_OKL \
 
 {
     echo "#define _USE_MATH_DEFINES";
-    $OCCA_PATH translate -D __NEED_PI -D ROOTISBASH -m openmp $INPUT_OKL 
-}> ./${TARGET_OPENMP_DIR}/openmp_compiled.hpp
+    $OCCA_PATH translate -D __NEED_PI -D ROOTISBASH -m serial $INPUT_OKL 
+}> ./${TARGET_SERIAL_DIR}/STFT_MAIN_SERIAL.hpp
 
 {
     echo "#define _USE_MATH_DEFINES";
     $OCCA_PATH translate -D __NEED_PI -D ROOTISBASH -m metal $INPUT_OKL 
-}> ${TARGET_METAL_DIR}/metal_compiled.hpp
+}> ${TARGET_METAL_DIR}/STFT_MAIN_METAL.hpp

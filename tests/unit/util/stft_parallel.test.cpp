@@ -8,7 +8,7 @@
 
 namespace {
 
-constexpr float kPi = 3.14159265358979323846f;
+constexpr float kPi                 = 3.14159265358979323846f;
 constexpr float kReferenceTolerance = 1.0e-3f;
 
 unsigned int
@@ -20,8 +20,8 @@ ReferenceToQuot(const std::size_t fullSize,
         return static_cast<unsigned int>(fullSize / windowSize) + 1;
     }
 
-    return static_cast<unsigned int>(
-               fullSize / (windowSize * (1.0f - overlapRatio))) +
+    return static_cast<unsigned int>(fullSize /
+                                     (windowSize * (1.0f - overlapRatio))) +
            1;
 }
 
@@ -32,7 +32,8 @@ BuildReferenceOverlap(const std::vector<float> &pcm,
 {
     const unsigned int windowSize = 1u << windowSizeExp;
     const unsigned int outputSize =
-        ReferenceToQuot(pcm.size(), overlapRatio, static_cast<int>(windowSize)) *
+        ReferenceToQuot(
+            pcm.size(), overlapRatio, static_cast<int>(windowSize)) *
         windowSize;
     const unsigned int moveSize =
         static_cast<unsigned int>(windowSize * (1.0f - overlapRatio));
@@ -41,7 +42,7 @@ BuildReferenceOverlap(const std::vector<float> &pcm,
 
     for (unsigned int idx = 0; idx < outputSize; ++idx) {
         const unsigned int windowIdx = idx >> windowSizeExp;
-        const unsigned int localIdx = idx & (windowSize - 1u);
+        const unsigned int localIdx  = idx & (windowSize - 1u);
         const unsigned int originIdx = windowIdx * moveSize + localIdx;
 
         if (originIdx < pcm.size()) {
@@ -74,9 +75,8 @@ ApplyReferenceDcRemove(std::vector<float> &data, const unsigned int windowSize)
 float
 ReferenceHanning(const unsigned int index, const unsigned int windowSize)
 {
-    const float angle =
-        2.0f * kPi * static_cast<float>(index) /
-        static_cast<float>(windowSize - 1u);
+    const float angle = 2.0f * kPi * static_cast<float>(index) /
+                        static_cast<float>(windowSize - 1u);
     return 0.5f * (1.0f - std::cos(angle));
 }
 
@@ -109,8 +109,8 @@ ReferenceDftStft(const std::vector<float> &pcm,
 
             for (unsigned int n = 0; n < windowSize; ++n) {
                 const float sample = overlapped[frameBase + n];
-                const float angle = -2.0f * kPi * static_cast<float>(k * n) /
-                                    static_cast<float>(windowSize);
+                const float angle  = -2.0f * kPi * static_cast<float>(k * n) /
+                                     static_cast<float>(windowSize);
                 realSum += sample * std::cos(angle);
                 imagSum += sample * std::sin(angle);
             }
@@ -130,8 +130,8 @@ ReferenceMagnitude(const std::vector<float> &realOut,
     std::vector<float> magnitude(realOut.size(), 0.0f);
 
     for (std::size_t idx = 0; idx < realOut.size(); ++idx) {
-        magnitude[idx] =
-            std::sqrt(realOut[idx] * realOut[idx] + imagOut[idx] * imagOut[idx]);
+        magnitude[idx] = std::sqrt(realOut[idx] * realOut[idx] +
+                                   imagOut[idx] * imagOut[idx]);
     }
 
     return magnitude;
@@ -139,9 +139,9 @@ ReferenceMagnitude(const std::vector<float> &realOut,
 
 } // namespace
 
-TEST_CASE("stft parallel calculate uses generated OpenMP path")
+TEST_CASE("stft parallel calculate uses generated Serial path")
 {
-    std::vector<float> pcm(128, 0.0f);
+    std::vector<float>    pcm(128, 0.0f);
     constexpr std::size_t expectedOutputSize = 320;
 
     for (std::size_t idx = 0; idx < pcm.size(); ++idx) {
@@ -149,7 +149,7 @@ TEST_CASE("stft parallel calculate uses generated OpenMP path")
     }
 
     PDJE_PARALLEL::STFT stft;
-    stft.backend_now = PDJE_PARALLEL::BACKEND_T::OPENMP;
+    stft.backend_now = PDJE_PARALLEL::BACKEND_T::SERIAL;
     auto [realOut, imagOut] =
         stft.calculate(pcm, PDJE_PARALLEL::WINDOW_LIST::HANNING, 6, 0.5f);
     auto [referenceReal, referenceImag] = ReferenceDftStft(pcm, 6, 0.5f);
@@ -171,7 +171,7 @@ TEST_CASE("stft parallel calculate uses generated OpenMP path")
 
 TEST_CASE("stft parallel calculate returns magnitude when toPower is enabled")
 {
-    std::vector<float> pcm(128, 0.0f);
+    std::vector<float>    pcm(128, 0.0f);
     constexpr std::size_t expectedOutputSize = 320;
 
     for (std::size_t idx = 0; idx < pcm.size(); ++idx) {
@@ -179,7 +179,7 @@ TEST_CASE("stft parallel calculate returns magnitude when toPower is enabled")
     }
 
     PDJE_PARALLEL::STFT stft;
-    stft.backend_now = PDJE_PARALLEL::BACKEND_T::OPENMP;
+    stft.backend_now = PDJE_PARALLEL::BACKEND_T::SERIAL;
 
     auto [magnitudeOut, imagOut] =
         stft.calculate(pcm, PDJE_PARALLEL::WINDOW_LIST::HANNING, 6, 0.5f, true);
@@ -199,9 +199,9 @@ TEST_CASE("stft parallel calculate returns magnitude when toPower is enabled")
 
 TEST_CASE("stft parallel calculate rejects unsupported window sizes")
 {
-    std::vector<float> pcm(128, 1.0f);
+    std::vector<float>  pcm(128, 1.0f);
     PDJE_PARALLEL::STFT stft;
-    stft.backend_now = PDJE_PARALLEL::BACKEND_T::OPENMP;
+    stft.backend_now = PDJE_PARALLEL::BACKEND_T::SERIAL;
 
     auto [realOut, imagOut] =
         stft.calculate(pcm, PDJE_PARALLEL::WINDOW_LIST::HANNING, 5, 0.5f);

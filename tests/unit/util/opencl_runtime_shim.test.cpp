@@ -11,7 +11,7 @@
 
 TEST_CASE("util: opencl runtime shim caches readiness and selects backend")
 {
-    const bool firstLoadResult = PDJE_PARALLEL::EnsureOpenCLRuntimeLoaded();
+    const bool firstLoadResult  = PDJE_PARALLEL::EnsureOpenCLRuntimeLoaded();
     const bool secondLoadResult = PDJE_PARALLEL::EnsureOpenCLRuntimeLoaded();
 
     CHECK(firstLoadResult == secondLoadResult);
@@ -20,7 +20,7 @@ TEST_CASE("util: opencl runtime shim caches readiness and selects backend")
     CHECK(backend.LoadBackend());
     CHECK(backend.PrintBackendType() ==
           (firstLoadResult ? PDJE_PARALLEL::BACKEND_T::OPENCL
-                           : PDJE_PARALLEL::BACKEND_T::OPENMP));
+                           : PDJE_PARALLEL::BACKEND_T::SERIAL));
 
     cl_uint platformCount = 0;
 

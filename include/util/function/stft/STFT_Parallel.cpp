@@ -4,7 +4,7 @@
 #include "PDJE_Parallel_Runtime_Loader.hpp"
 #include "Parallel_Args.hpp"
 
-#include "openmp_compiled.hpp"
+#include "STFT_MAIN_SERIAL.hpp"
 
 #include <CL/cl.h>
 #include <exception>
@@ -21,7 +21,7 @@ namespace {
 constexpr float kDefaultGaussianSigma = 0.4f;
 
 std::pair<std::vector<float>, std::vector<float>>
-RunOpenMpStft(std::vector<float> &PCMdata,
+RunSerialStft(std::vector<float> &PCMdata,
               const WINDOW_LIST   target_window,
               const int           windowSizeEXP,
               const bool          toPower,
@@ -147,7 +147,7 @@ STFT::STFT()
             opencl_backend = std::make_unique<OPENCL_STFT>();
         } catch (const std::exception &) {
             opencl_backend.reset();
-            backend_now = BACKEND_T::OPENMP;
+            backend_now = BACKEND_T::SERIAL;
         }
     }
 }
@@ -179,10 +179,10 @@ STFT::calculate(std::vector<float> &PCMdata,
                 gargs);
         } catch (const std::exception &) {
             opencl_backend.reset();
-            backend_now = BACKEND_T::OPENMP;
+            backend_now = BACKEND_T::SERIAL;
         }
     }
 
-    return RunOpenMpStft(PCMdata, target_window, windowSizeEXP, toPower, gargs);
+    return RunSerialStft(PCMdata, target_window, windowSizeEXP, toPower, gargs);
 }
 }; // namespace PDJE_PARALLEL

@@ -18,11 +18,4 @@ STFT::GenArgs(const std::vector<float> &inputVec,
     return arglist;
 }
 
-// bool
-// STFT::CheckFusable(const WINDOW_LIST target_window, const int windowSizeEXP)
-// {
-//     return target_window == WINDOW_LIST::HANNING &&
-//            (windowSizeEXP == 10 || windowSizeEXP == 11);
-// }
-
 } // namespace PDJE_PARALLEL
