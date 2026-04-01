@@ -18,7 +18,7 @@ using LOCAL_TIME  = int64_t;
 /** @brief Judgable note metadata stored in buffers. */
 struct NOTE {
     std::string type;
-    uint16_t    detail;
+    uint16_t    detail = 0;
     std::string first;
     std::string second;
     std::string third;

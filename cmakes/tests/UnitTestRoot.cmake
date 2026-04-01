@@ -9,6 +9,20 @@ else()
     set(PDJE_TEST_PLATFORM_LABEL "linux")
 endif()
 
+function(pdje_copy_zlib_runtime targetName)
+    if(NOT WIN32)
+        return()
+    endif()
+
+    add_custom_command(
+        TARGET ${targetName}
+        POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "$<$<CONFIG:Debug>:${zlib_BIN_DIRS_DEBUG}/zlib1.dll>$<$<OR:$<CONFIG:Release>,$<CONFIG:RelWithDebInfo>,$<CONFIG:MinSizeRel>>:${zlib_BIN_DIRS_RELEASE}/zlib1.dll>"
+                $<TARGET_FILE_DIR:${targetName}>
+        VERBATIM)
+endfunction()
+
 function(pdje_discover_unit_tests targetName moduleLabel)
     set(_pdje_test_list_var "${targetName}_TESTS")
     set(_pdje_dollar "$")

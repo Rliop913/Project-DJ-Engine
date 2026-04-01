@@ -42,17 +42,6 @@ target_compile_definitions(
 
 # AddDynamicDef(pdje_unit_util)
 # setCoreReqs(pdje_unit_util)
-if(WIN32)
-set(_pdje_unit_util_zlib_runtime
-    "$<$<CONFIG:Debug>:${zlib_BIN_DIRS_DEBUG}/zlib1.dll>$<$<CONFIG:Release>:${zlib_BIN_DIRS_RELEASE}/zlib1.dll>$<$<CONFIG:RelWithDebInfo>:${zlib_BIN_DIRS_RELEASE}/zlib1.dll>$<$<CONFIG:MinSizeRel>:${zlib_BIN_DIRS_RELEASE}/zlib1.dll>")
-add_custom_command(
-    TARGET pdje_unit_util
-    POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-    "${_pdje_unit_util_zlib_runtime}"
-    $<TARGET_FILE_DIR:pdje_unit_util>
-    VERBATIM)
-endif()
 target_link_libraries(pdje_unit_util PRIVATE PDJE_LOG_RUNTIME)
 
 setCoreReqs(pdje_unit_util)
@@ -63,6 +52,7 @@ setCapnpReqLib(pdje_unit_util)
 setLibgit2ReqLib(pdje_unit_util)
 PDJE_COMPILE_OPTION(pdje_unit_util)
 SET_PROPERTIES(pdje_unit_util)
+pdje_copy_zlib_runtime(pdje_unit_util)
 pdje_discover_unit_tests(pdje_unit_util core)
 
 add_executable(
