@@ -217,7 +217,7 @@ kernel void _occa_MelScale_0(device float * out [[buffer(0)]],
         const unsigned int FILTER_BASE = MEL_BIN_IDX * fftBins;
         float sum = 0.0f;
         for (unsigned int BIN_INTERNAL_IDX = 0; BIN_INTERNAL_IDX < fftBins; ++BIN_INTERNAL_IDX) {
-          sum += Real[FRAME_BASE + binIdx] * MelFilterBank[FILTER_BASE + binIdx];
+          sum += Real[FRAME_BASE + BIN_INTERNAL_IDX] * MelFilterBank[FILTER_BASE + BIN_INTERNAL_IDX];
         }
         out[GID] = sum;
       }
@@ -245,7 +245,7 @@ kernel void _occa_MelDBChain_0(device float * out [[buffer(0)]],
         const unsigned int FILTER_BASE = MEL_BIN_IDX * fftBins;
         float sum = 0.0f;
         for (unsigned int BIN_INTERNAL_IDX = 0; BIN_INTERNAL_IDX < fftBins; ++BIN_INTERNAL_IDX) {
-          sum += Real[FRAME_BASE + binIdx] * MelFilterBank[FILTER_BASE + binIdx];
+          sum += Real[FRAME_BASE + BIN_INTERNAL_IDX] * MelFilterBank[FILTER_BASE + BIN_INTERNAL_IDX];
         }
         sum = log10(fabs(sum));
         out[GID] = sum;
