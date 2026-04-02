@@ -133,7 +133,116 @@ extern "C" void toPower(float * out,
       const unsigned int GID = o_itr + i_itr;
       float R = Real[GID];
       float I = Imag[GID];
-      out[GID] = sqrt(R * R + I * I);
+      out[GID] = R * R + I * I;
+    }
+  }
+  return;
+}
+
+extern "C" void toBinOnly(float * Real,
+                          float * Imag,
+                          float * outReal,
+                          float * outImag,
+                          const unsigned int & bin_size,
+                          const unsigned int & fft_size,
+                          const unsigned int & BinOnlyFullSize) {
+  for (unsigned int o_itr = 0; o_itr < BinOnlyFullSize; o_itr += 64) {
+    for (int i_itr = 0; i_itr < 64; ++i_itr) {
+      const unsigned int GID = o_itr + i_itr;
+      if (GID < BinOnlyFullSize) {
+        const unsigned int BIN_WINDOW_IDX = GID / bin_size;
+        const unsigned int BIN_INTERNAL_WINDOW_IDX = GID % bin_size;
+        const unsigned int FFT_GIDX = BIN_WINDOW_IDX * fft_size + BIN_INTERNAL_WINDOW_IDX;
+        outReal[GID] = Real[FFT_GIDX];
+        outImag[GID] = Imag[FFT_GIDX];
+      }
+    }
+  }
+  return;
+}
+
+extern "C" void BinPowerChain(float * Real,
+                              float * Imag,
+                              float * out,
+                              const unsigned int & bin_size,
+                              const unsigned int & fft_size,
+                              const unsigned int & BinOnlyFullSize) {
+  for (unsigned int o_itr = 0; o_itr < BinOnlyFullSize; o_itr += 64) {
+    for (int i_itr = 0; i_itr < 64; ++i_itr) {
+      const unsigned int GID = o_itr + i_itr;
+      if (GID < BinOnlyFullSize) {
+        const unsigned int BIN_WINDOW_IDX = GID / bin_size;
+        const unsigned int BIN_INTERNAL_WINDOW_IDX = GID % bin_size;
+        const unsigned int FFT_GIDX = BIN_WINDOW_IDX * fft_size + BIN_INTERNAL_WINDOW_IDX;
+        float R = Real[FFT_GIDX];
+        float I = Imag[FFT_GIDX];
+        out[GID] = R * R + I * I;
+      }
+    }
+  }
+  return;
+}
+
+extern "C" void MelScale(float * out,
+                         float * Real,
+                         float * MelFilterBank,
+                         const unsigned int & MelFullSize,
+                         const unsigned int & fftBins,
+                         const unsigned int & melBins) {
+  for (unsigned int o_itr = 0; o_itr < MelFullSize; o_itr += 64) {
+    for (int i_itr = 0; i_itr < 64; ++i_itr) {
+      const unsigned int GID = o_itr + i_itr;
+      if (GID < MelFullSize) {
+        const unsigned int FRAME_IDX = GID / melBins;
+        const unsigned int MEL_BIN_IDX = GID % melBins;
+        const unsigned int FRAME_BASE = FRAME_IDX * fftBins;
+        const unsigned int FILTER_BASE = MEL_BIN_IDX * fftBins;
+        float sum = 0.0f;
+        for (unsigned int BIN_INTERNAL_IDX = 0; BIN_INTERNAL_IDX < fftBins; ++BIN_INTERNAL_IDX) {
+          sum += Real[FRAME_BASE + BIN_INTERNAL_IDX] * MelFilterBank[FILTER_BASE + BIN_INTERNAL_IDX];
+        }
+        out[GID] = sum;
+      }
+    }
+  }
+  return;
+}
+
+extern "C" void MelDBChain(float * out,
+                           float * Real,
+                           float * MelFilterBank,
+                           const unsigned int & MelFullSize,
+                           const unsigned int & fftBins,
+                           const unsigned int & melBins) {
+  for (unsigned int o_itr = 0; o_itr < MelFullSize; o_itr += 64) {
+    for (int i_itr = 0; i_itr < 64; ++i_itr) {
+      const unsigned int GID = o_itr + i_itr;
+      if (GID < MelFullSize) {
+        const unsigned int FRAME_IDX = GID / melBins;
+        const unsigned int MEL_BIN_IDX = GID % melBins;
+        const unsigned int FRAME_BASE = FRAME_IDX * fftBins;
+        const unsigned int FILTER_BASE = MEL_BIN_IDX * fftBins;
+        float sum = 0.0f;
+        for (unsigned int BIN_INTERNAL_IDX = 0; BIN_INTERNAL_IDX < fftBins; ++BIN_INTERNAL_IDX) {
+          sum += Real[FRAME_BASE + BIN_INTERNAL_IDX] * MelFilterBank[FILTER_BASE + BIN_INTERNAL_IDX];
+        }
+        sum = log10(fabs(sum));
+        out[GID] = sum;
+      }
+    }
+  }
+  return;
+}
+
+extern "C" void toDB(float * Real,
+                     const unsigned int & DSize) {
+  for (unsigned int o_itr = 0; o_itr < DSize; o_itr += 64) {
+    for (int i_itr = 0; i_itr < 64; ++i_itr) {
+      const unsigned int GID = o_itr + i_itr;
+      if (GID < DSize) {
+        const float R = log10(fabs(Real[GID]));
+        Real[GID] = R;
+      }
     }
   }
   return;

@@ -19,6 +19,7 @@ add_library(PDJE_UTIL_IMAGE_WAVEFORM
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/image/WaveformWebp.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/stft/STFT_Parallel.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/stft/BackendLess.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/stft/SerialBackend.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/stft/OpenclBackend.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/common/BackendLoader/OpenCL_Loader.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/common/BackendLoader/PDJE_Parallel_Runtime_Loader.cpp

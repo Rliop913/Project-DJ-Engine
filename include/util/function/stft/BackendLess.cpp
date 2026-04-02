@@ -14,8 +14,11 @@ STFT::GenArgs(const std::vector<float> &inputVec,
         toQuot(arglist.FullSize, overlapRatio, arglist.windowSize);
     arglist.OFullSize = arglist.qtConst * arglist.windowSize;
     arglist.OHalfSize = arglist.OFullSize / 2;
-    arglist.OMove     = arglist.windowSize * (1.0f - overlapRatio);
+    arglist.OMove =
+        static_cast<unsigned int>(arglist.windowSize * (1.0f - overlapRatio));
     return arglist;
 }
+
+
 
 } // namespace PDJE_PARALLEL
