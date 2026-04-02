@@ -67,8 +67,9 @@ RunSerialStft(std::vector<float> &PCMdata,
         Window_Hamming(realVec.data(), gargs.OFullSize, gargs.windowSize);
         break;
     case WINDOW_LIST::HANNING:
-    default:
         Window_Hanning(realVec.data(), gargs.OFullSize, gargs.windowSize);
+        break;
+    default:
         break;
     }
 
@@ -165,7 +166,7 @@ STFT::calculate(std::vector<float> &PCMdata,
                 const POST_PROCESS  post_process)
 {
     if (PCMdata.empty() || overlapRatio < 0 || overlapRatio >= 1.0 ||
-        windowSizeEXP < 6) {
+        windowSizeEXP < 6 || windowSizeEXP >= 31) {
         return {};
     }
 
