@@ -142,7 +142,131 @@ kernel void _occa_toPower_0(device float * out [[buffer(0)]],
       const unsigned int GID = o_itr + i_itr;
       float R = Real[GID];
       float I = Imag[GID];
-      out[GID] = sqrt(R * R + I * I);
+      out[GID] = R * R + I * I;
+    }
+  }
+}
+
+kernel void _occa_toBinOnly_0(device float * Real [[buffer(0)]],
+                              device float * Imag [[buffer(1)]],
+                              device float * outReal [[buffer(2)]],
+                              device float * outImag [[buffer(3)]],
+                              constant unsigned int & bin_size [[buffer(4)]],
+                              constant unsigned int & fft_size [[buffer(5)]],
+                              constant unsigned int & BinOnlyFullSize [[buffer(6)]],
+                              uint3 _occa_group_position [[threadgroup_position_in_grid]],
+                              uint3 _occa_thread_position [[thread_position_in_threadgroup]]) {
+  {
+    unsigned int o_itr = 0 + (64 * _occa_group_position.x);
+    {
+      int i_itr = 0 + _occa_thread_position.x;
+      const unsigned int GID = o_itr + i_itr;
+      if (GID < BinOnlyFullSize) {
+        const unsigned int BIN_WINDOW_IDX = GID / bin_size;
+        const unsigned int BIN_INTERNAL_WINDOW_IDX = GID % bin_size;
+        const unsigned int FFT_GIDX = BIN_WINDOW_IDX * fft_size + BIN_INTERNAL_WINDOW_IDX;
+        outReal[GID] = Real[FFT_GIDX];
+        outImag[GID] = Imag[FFT_GIDX];
+      }
+    }
+  }
+}
+
+kernel void _occa_BinPowerChain_0(device float * Real [[buffer(0)]],
+                                  device float * Imag [[buffer(1)]],
+                                  device float * out [[buffer(2)]],
+                                  constant unsigned int & bin_size [[buffer(3)]],
+                                  constant unsigned int & fft_size [[buffer(4)]],
+                                  constant unsigned int & BinOnlyFullSize [[buffer(5)]],
+                                  uint3 _occa_group_position [[threadgroup_position_in_grid]],
+                                  uint3 _occa_thread_position [[thread_position_in_threadgroup]]) {
+  {
+    unsigned int o_itr = 0 + (64 * _occa_group_position.x);
+    {
+      int i_itr = 0 + _occa_thread_position.x;
+      const unsigned int GID = o_itr + i_itr;
+      if (GID < BinOnlyFullSize) {
+        const unsigned int BIN_WINDOW_IDX = GID / bin_size;
+        const unsigned int BIN_INTERNAL_WINDOW_IDX = GID % bin_size;
+        const unsigned int FFT_GIDX = BIN_WINDOW_IDX * fft_size + BIN_INTERNAL_WINDOW_IDX;
+        float R = Real[FFT_GIDX];
+        float I = Imag[FFT_GIDX];
+        out[GID] = R * R + I * I;
+      }
+    }
+  }
+}
+
+kernel void _occa_MelScale_0(device float * out [[buffer(0)]],
+                             device float * Real [[buffer(1)]],
+                             device float * MelFilterBank [[buffer(2)]],
+                             constant unsigned int & MelFullSize [[buffer(3)]],
+                             constant unsigned int & fftBins [[buffer(4)]],
+                             constant unsigned int & melBins [[buffer(5)]],
+                             uint3 _occa_group_position [[threadgroup_position_in_grid]],
+                             uint3 _occa_thread_position [[thread_position_in_threadgroup]]) {
+  {
+    unsigned int o_itr = 0 + (64 * _occa_group_position.x);
+    {
+      int i_itr = 0 + _occa_thread_position.x;
+      const unsigned int GID = o_itr + i_itr;
+      if (GID < MelFullSize) {
+        const unsigned int FRAME_IDX = GID / melBins;
+        const unsigned int MEL_BIN_IDX = GID % melBins;
+        const unsigned int FRAME_BASE = FRAME_IDX * fftBins;
+        const unsigned int FILTER_BASE = MEL_BIN_IDX * fftBins;
+        float sum = 0.0f;
+        for (unsigned int BIN_INTERNAL_IDX = 0; BIN_INTERNAL_IDX < fftBins; ++BIN_INTERNAL_IDX) {
+          sum += Real[FRAME_BASE + binIdx] * MelFilterBank[FILTER_BASE + binIdx];
+        }
+        out[GID] = sum;
+      }
+    }
+  }
+}
+
+kernel void _occa_MelDBChain_0(device float * out [[buffer(0)]],
+                               device float * Real [[buffer(1)]],
+                               device float * MelFilterBank [[buffer(2)]],
+                               constant unsigned int & MelFullSize [[buffer(3)]],
+                               constant unsigned int & fftBins [[buffer(4)]],
+                               constant unsigned int & melBins [[buffer(5)]],
+                               uint3 _occa_group_position [[threadgroup_position_in_grid]],
+                               uint3 _occa_thread_position [[thread_position_in_threadgroup]]) {
+  {
+    unsigned int o_itr = 0 + (64 * _occa_group_position.x);
+    {
+      int i_itr = 0 + _occa_thread_position.x;
+      const unsigned int GID = o_itr + i_itr;
+      if (GID < MelFullSize) {
+        const unsigned int FRAME_IDX = GID / melBins;
+        const unsigned int MEL_BIN_IDX = GID % melBins;
+        const unsigned int FRAME_BASE = FRAME_IDX * fftBins;
+        const unsigned int FILTER_BASE = MEL_BIN_IDX * fftBins;
+        float sum = 0.0f;
+        for (unsigned int BIN_INTERNAL_IDX = 0; BIN_INTERNAL_IDX < fftBins; ++BIN_INTERNAL_IDX) {
+          sum += Real[FRAME_BASE + binIdx] * MelFilterBank[FILTER_BASE + binIdx];
+        }
+        sum = log10(fabs(sum));
+        out[GID] = sum;
+      }
+    }
+  }
+}
+
+kernel void _occa_toDB_0(device float * Real [[buffer(0)]],
+                         constant unsigned int & DSize [[buffer(1)]],
+                         uint3 _occa_group_position [[threadgroup_position_in_grid]],
+                         uint3 _occa_thread_position [[thread_position_in_threadgroup]]) {
+  {
+    unsigned int o_itr = 0 + (64 * _occa_group_position.x);
+    {
+      int i_itr = 0 + _occa_thread_position.x;
+      const unsigned int GID = o_itr + i_itr;
+      if (GID < DSize) {
+        const float R = log10(fabs(Real[GID]));
+        Real[GID] = R;
+      }
     }
   }
 }

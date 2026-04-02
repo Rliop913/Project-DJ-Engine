@@ -189,7 +189,163 @@ __kernel __attribute__((reqd_work_group_size(64,1,1)))
       const unsigned int GID = o_itr + i_itr;
       float R = Real[GID];
       float I = Imag[GID];
-      out[GID] = sqrt(R * R + I * I);
+      out[GID] = R * R + I * I;
+    }
+  }
+}
+
+__kernel __attribute__((reqd_work_group_size(64,1,1)))
+ void _occa_toBinOnly_0(__global float * Real,
+                        __global float * Imag,
+                        __global float * outReal,
+                        __global float * outImag,
+                        const unsigned int bin_size,
+                        const unsigned int fft_size,
+                        const unsigned int BinOnlyFullSize);
+
+__kernel __attribute__((reqd_work_group_size(64,1,1)))
+ void _occa_toBinOnly_0(__global float * Real,
+                        __global float * Imag,
+                        __global float * outReal,
+                        __global float * outImag,
+                        const unsigned int bin_size,
+                        const unsigned int fft_size,
+                        const unsigned int BinOnlyFullSize) {
+  {
+    unsigned int o_itr = 0 + (64 * get_group_id(0));
+    {
+      int i_itr = 0 + get_local_id(0);
+      const unsigned int GID = o_itr + i_itr;
+      if (GID < BinOnlyFullSize) {
+        const unsigned int BIN_WINDOW_IDX = GID / bin_size;
+        const unsigned int BIN_INTERNAL_WINDOW_IDX = GID % bin_size;
+        const unsigned int FFT_GIDX = BIN_WINDOW_IDX * fft_size + BIN_INTERNAL_WINDOW_IDX;
+        outReal[GID] = Real[FFT_GIDX];
+        outImag[GID] = Imag[FFT_GIDX];
+      }
+    }
+  }
+}
+
+__kernel __attribute__((reqd_work_group_size(64,1,1)))
+ void _occa_BinPowerChain_0(__global float * Real,
+                            __global float * Imag,
+                            __global float * out,
+                            const unsigned int bin_size,
+                            const unsigned int fft_size,
+                            const unsigned int BinOnlyFullSize);
+
+__kernel __attribute__((reqd_work_group_size(64,1,1)))
+ void _occa_BinPowerChain_0(__global float * Real,
+                            __global float * Imag,
+                            __global float * out,
+                            const unsigned int bin_size,
+                            const unsigned int fft_size,
+                            const unsigned int BinOnlyFullSize) {
+  {
+    unsigned int o_itr = 0 + (64 * get_group_id(0));
+    {
+      int i_itr = 0 + get_local_id(0);
+      const unsigned int GID = o_itr + i_itr;
+      if (GID < BinOnlyFullSize) {
+        const unsigned int BIN_WINDOW_IDX = GID / bin_size;
+        const unsigned int BIN_INTERNAL_WINDOW_IDX = GID % bin_size;
+        const unsigned int FFT_GIDX = BIN_WINDOW_IDX * fft_size + BIN_INTERNAL_WINDOW_IDX;
+        float R = Real[FFT_GIDX];
+        float I = Imag[FFT_GIDX];
+        out[GID] = R * R + I * I;
+      }
+    }
+  }
+}
+
+__kernel __attribute__((reqd_work_group_size(64,1,1)))
+ void _occa_MelScale_0(__global float * out,
+                       __global float * Real,
+                       __global float * MelFilterBank,
+                       const unsigned int MelFullSize,
+                       const unsigned int fftBins,
+                       const unsigned int melBins);
+
+__kernel __attribute__((reqd_work_group_size(64,1,1)))
+ void _occa_MelScale_0(__global float * out,
+                       __global float * Real,
+                       __global float * MelFilterBank,
+                       const unsigned int MelFullSize,
+                       const unsigned int fftBins,
+                       const unsigned int melBins) {
+  {
+    unsigned int o_itr = 0 + (64 * get_group_id(0));
+    {
+      int i_itr = 0 + get_local_id(0);
+      const unsigned int GID = o_itr + i_itr;
+      if (GID < MelFullSize) {
+        const unsigned int FRAME_IDX = GID / melBins;
+        const unsigned int MEL_BIN_IDX = GID % melBins;
+        const unsigned int FRAME_BASE = FRAME_IDX * fftBins;
+        const unsigned int FILTER_BASE = MEL_BIN_IDX * fftBins;
+        float sum = 0.0f;
+        for (unsigned int BIN_INTERNAL_IDX = 0; BIN_INTERNAL_IDX < fftBins; ++BIN_INTERNAL_IDX) {
+          sum += Real[FRAME_BASE + binIdx] * MelFilterBank[FILTER_BASE + binIdx];
+        }
+        out[GID] = sum;
+      }
+    }
+  }
+}
+
+__kernel __attribute__((reqd_work_group_size(64,1,1)))
+ void _occa_MelDBChain_0(__global float * out,
+                         __global float * Real,
+                         __global float * MelFilterBank,
+                         const unsigned int MelFullSize,
+                         const unsigned int fftBins,
+                         const unsigned int melBins);
+
+__kernel __attribute__((reqd_work_group_size(64,1,1)))
+ void _occa_MelDBChain_0(__global float * out,
+                         __global float * Real,
+                         __global float * MelFilterBank,
+                         const unsigned int MelFullSize,
+                         const unsigned int fftBins,
+                         const unsigned int melBins) {
+  {
+    unsigned int o_itr = 0 + (64 * get_group_id(0));
+    {
+      int i_itr = 0 + get_local_id(0);
+      const unsigned int GID = o_itr + i_itr;
+      if (GID < MelFullSize) {
+        const unsigned int FRAME_IDX = GID / melBins;
+        const unsigned int MEL_BIN_IDX = GID % melBins;
+        const unsigned int FRAME_BASE = FRAME_IDX * fftBins;
+        const unsigned int FILTER_BASE = MEL_BIN_IDX * fftBins;
+        float sum = 0.0f;
+        for (unsigned int BIN_INTERNAL_IDX = 0; BIN_INTERNAL_IDX < fftBins; ++BIN_INTERNAL_IDX) {
+          sum += Real[FRAME_BASE + binIdx] * MelFilterBank[FILTER_BASE + binIdx];
+        }
+        sum = log10(fabs(sum));
+        out[GID] = sum;
+      }
+    }
+  }
+}
+
+__kernel __attribute__((reqd_work_group_size(64,1,1)))
+ void _occa_toDB_0(__global float * Real,
+                   const unsigned int DSize);
+
+__kernel __attribute__((reqd_work_group_size(64,1,1)))
+ void _occa_toDB_0(__global float * Real,
+                   const unsigned int DSize) {
+  {
+    unsigned int o_itr = 0 + (64 * get_group_id(0));
+    {
+      int i_itr = 0 + get_local_id(0);
+      const unsigned int GID = o_itr + i_itr;
+      if (GID < DSize) {
+        const float R = log10(fabs(Real[GID]));
+        Real[GID] = R;
+      }
     }
   }
 }
