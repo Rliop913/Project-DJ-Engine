@@ -1,7 +1,6 @@
 #pragma once
 
 #include "STFT_Parallel.hpp"
-#include "STFT_args.hpp"
 #include <CL/cl.h>
 #include <CL/opencl.hpp>
 #include <cmrc/cmrc.hpp>
@@ -21,7 +20,7 @@ using namespace cl;
 using REAL_VEC = std::vector<float>;
 using IMAG_VEC = std::vector<float>;
 
-class OPENCL_STFT {
+class OPENCL_STFT final : public IStftBackend {
 
   private:
     uint32_t prev_origin_size                = 0;
@@ -83,13 +82,12 @@ class OPENCL_STFT {
     }
 
   public:
-    std::pair<REAL_VEC, IMAG_VEC>
-    Enque(REAL_VEC          &origin_cpu_memory,
-          const WINDOW_LIST  window,
-          const bool         removeDC,
-          const POST_PROCESS post_process,
-          const unsigned int win_expsz,
-          const StftArgs    &args);
+    StftResult
+    Execute(REAL_VEC         &origin_cpu_memory,
+            WINDOW_LIST       window,
+            POST_PROCESS      post_process,
+            unsigned int      win_expsz,
+            const StftArgs   &args) override;
     OPENCL_STFT()
     {
 
@@ -126,7 +124,7 @@ class OPENCL_STFT {
         }
         CQ.emplace(gpu_ctxt.value(), gpu.value());
     }
-    ~OPENCL_STFT();
+    ~OPENCL_STFT() override;
 };
 
 } // namespace PDJE_PARALLEL

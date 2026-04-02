@@ -1,195 +1,93 @@
 #include "STFT_Parallel.hpp"
 
 #include "OpenclBackend.hpp"
-#include "PDJE_Parallel_Runtime_Loader.hpp"
-#include "Parallel_Args.hpp"
+#include "SerialBackend.hpp"
 
-#include "STFT_MAIN_SERIAL.hpp"
-
-#include <CL/cl.h>
 #include <exception>
 #include <memory>
 #include <utility>
 #include <vector>
 
-#include <CL/opencl.hpp>
-
 namespace PDJE_PARALLEL {
 
-namespace {
-
-constexpr float kDefaultGaussianSigma = 0.4f;
-
-std::pair<std::vector<float>, std::vector<float>>
-RunSerialStft(std::vector<float> &PCMdata,
-              const WINDOW_LIST   target_window,
-              const int           windowSizeEXP,
-              const POST_PROCESS  post_process,
-              const StftArgs     &gargs)
-{
-    std::vector<float> realVec(gargs.OFullSize, 0.0f);
-    std::vector<float> imagVec(gargs.OFullSize, 0.0f);
-
-    Overlap_Common(PCMdata.data(),
-                   gargs.OFullSize,
-                   gargs.FullSize,
-                   windowSizeEXP,
-                   gargs.OMove,
-                   realVec.data());
-
-    DCRemove_Common(realVec.data(), gargs.OFullSize, gargs.windowSize);
-
-    switch (target_window) {
-    case WINDOW_LIST::BLACKMAN:
-        Window_Blackman(realVec.data(), gargs.OFullSize, gargs.windowSize);
-        break;
-    case WINDOW_LIST::BLACKMAN_HARRIS:
-        Window_Blackman_harris(
-            realVec.data(), gargs.OFullSize, gargs.windowSize);
-        break;
-    case WINDOW_LIST::BLACKMAN_NUTTALL:
-        Window_Blackman_Nuttall(
-            realVec.data(), gargs.OFullSize, gargs.windowSize);
-        break;
-    case WINDOW_LIST::NUTTALL:
-        Window_Nuttall(realVec.data(), gargs.OFullSize, gargs.windowSize);
-        break;
-    case WINDOW_LIST::FLATTOP:
-        Window_FlatTop(realVec.data(), gargs.OFullSize, gargs.windowSize);
-        break;
-    case WINDOW_LIST::GAUSSIAN:
-        Window_Gaussian(realVec.data(),
-                        gargs.OFullSize,
-                        gargs.windowSize,
-                        kDefaultGaussianSigma);
-        break;
-    case WINDOW_LIST::HAMMING:
-        Window_Hamming(realVec.data(), gargs.OFullSize, gargs.windowSize);
-        break;
-    case WINDOW_LIST::HANNING:
-        Window_Hanning(realVec.data(), gargs.OFullSize, gargs.windowSize);
-        break;
-    default:
-        break;
-    }
-
-    switch (windowSizeEXP) {
-    case 6:
-        Stockhoptimized6(realVec.data(), imagVec.data(), gargs.OHalfSize);
-        break;
-    case 7:
-        Stockhoptimized7(realVec.data(), imagVec.data(), gargs.OHalfSize);
-        break;
-    case 8:
-        Stockhoptimized8(realVec.data(), imagVec.data(), gargs.OHalfSize);
-        break;
-    case 9:
-        Stockhoptimized9(realVec.data(), imagVec.data(), gargs.OHalfSize);
-        break;
-    case 10:
-        Stockhoptimized10(realVec.data(), imagVec.data(), gargs.OHalfSize);
-        break;
-    case 11:
-        Stockhoptimized11(realVec.data(), imagVec.data(), gargs.OHalfSize);
-        break;
-    default: {
-        std::vector<float> subrealVec(gargs.OFullSize, 0.0f);
-        std::vector<float> subimagVec(gargs.OFullSize, 0.0f);
-        const unsigned int HWindowSize = gargs.windowSize >> 1;
-        for (unsigned int stage = 0;
-             stage < static_cast<unsigned int>(windowSizeEXP);
-             ++stage) {
-            if (stage % 2 == 0) {
-                StockHamCommon(realVec.data(),
-                               imagVec.data(),
-                               subrealVec.data(),
-                               subimagVec.data(),
-                               HWindowSize,
-                               stage,
-                               gargs.OHalfSize,
-                               windowSizeEXP);
-            } else {
-                StockHamCommon(subrealVec.data(),
-                               subimagVec.data(),
-                               realVec.data(),
-                               imagVec.data(),
-                               HWindowSize,
-                               stage,
-                               gargs.OHalfSize,
-                               windowSizeEXP);
-            }
-        }
-        if (windowSizeEXP % 2 != 0) {
-            realVec = std::move(subrealVec);
-            imagVec = std::move(subimagVec);
-        }
-    }
-    }
-
-    switch (post_process) {
-    case POST_PROCESS::POWER: {
-        std::vector<float> powerVec(gargs.OFullSize, 0.0f);
-        ::toPower(
-            powerVec.data(), realVec.data(), imagVec.data(), gargs.OFullSize);
-        return std::pair(std::move(powerVec), std::vector<float>{});
-    }
-    case POST_PROCESS::NONE:
-    default:
-        return std::pair(std::move(realVec), std::move(imagVec));
-    }
-}
-
-} // namespace
-
-STFT::STFT()
+STFT::STFT() : serial_backend(std::make_unique<SERIAL_STFT>())
 {
     backendinfo.LoadBackend();
     backend_now = backendinfo.PrintBackendType();
 
-    if (backend_now == BACKEND_T::OPENCL) {
-        try {
-            opencl_backend = std::make_unique<OPENCL_STFT>();
-        } catch (const std::exception &) {
-            opencl_backend.reset();
-            backend_now = BACKEND_T::SERIAL;
-        }
+    if (backend_now != BACKEND_T::OPENCL) {
+        return;
+    }
+
+    try {
+        opencl_backend = std::make_unique<OPENCL_STFT>();
+    } catch (const std::exception &) {
+        opencl_backend.reset();
+        backend_now = BACKEND_T::SERIAL;
     }
 }
 
 STFT::~STFT() = default;
 
-std::pair<std::vector<float>, std::vector<float>>
+StftResult
 STFT::calculate(std::vector<float> &PCMdata,
                 const WINDOW_LIST   target_window,
                 const int           windowSizeEXP,
                 const float         overlapRatio,
-                const POST_PROCESS  post_process)
+                POST_PROCESS        post_process)
 {
-    if (PCMdata.empty() || overlapRatio < 0 || overlapRatio >= 1.0 ||
+    if (PCMdata.empty() || overlapRatio < 0.0f || overlapRatio >= 1.0f ||
         windowSizeEXP < 6 || windowSizeEXP >= 31) {
         return {};
     }
 
-    const POST_PROCESS effective_post_process =
-        NormalizePostProcess(post_process);
-    auto gargs = GenArgs(PCMdata, windowSizeEXP, overlapRatio);
+    const auto gargs = GenArgs(PCMdata, windowSizeEXP, overlapRatio);
 
     if (backend_now == BACKEND_T::OPENCL && opencl_backend) {
         try {
-            return opencl_backend->Enque(
+            auto result = opencl_backend->Execute(
                 PCMdata,
                 target_window,
-                true,
-                effective_post_process,
+                post_process,
                 static_cast<unsigned int>(windowSizeEXP),
                 gargs);
+            if (!result.first.empty() || !result.second.empty()) {
+                return result;
+            }
         } catch (const std::exception &) {
-            opencl_backend.reset();
-            backend_now = BACKEND_T::SERIAL;
         }
+
+        opencl_backend.reset();
+        backend_now = BACKEND_T::SERIAL;
     }
 
-    return RunSerialStft(
-        PCMdata, target_window, windowSizeEXP, effective_post_process, gargs);
+    if (!serial_backend) {
+        return {};
+    }
+
+    return serial_backend->Execute(PCMdata,
+                                   target_window,
+                                   post_process,
+                                   static_cast<unsigned int>(windowSizeEXP),
+                                   gargs);
 }
-}; // namespace PDJE_PARALLEL
+
+void
+STFT::SetBackendForTesting(const BACKEND_T                 backend_type,
+                           std::unique_ptr<IStftBackend> backend)
+{
+    switch (backend_type) {
+    case BACKEND_T::OPENCL:
+        opencl_backend = std::move(backend);
+        backend_now    = BACKEND_T::OPENCL;
+        break;
+    case BACKEND_T::SERIAL:
+        serial_backend = std::move(backend);
+        backend_now    = BACKEND_T::SERIAL;
+        break;
+    default:
+        break;
+    }
+}
+
+} // namespace PDJE_PARALLEL

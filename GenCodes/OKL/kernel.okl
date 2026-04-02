@@ -236,8 +236,8 @@ MelScale(float             *out,           // MelFullSize
                 for (unsigned int BIN_INTERNAL_IDX = 0;
                      BIN_INTERNAL_IDX < fftBins;
                      ++BIN_INTERNAL_IDX) {
-                    sum += Real[FRAME_BASE + binIdx] *
-                           MelFilterBank[FILTER_BASE + binIdx];
+                    sum += Real[FRAME_BASE + BIN_INTERNAL_IDX] *
+                           MelFilterBank[FILTER_BASE + BIN_INTERNAL_IDX];
                 }
                 out[GID] = sum;
             }
@@ -267,8 +267,8 @@ MelDBChain(float             *out,           // MelFullSize
                 for (unsigned int BIN_INTERNAL_IDX = 0;
                      BIN_INTERNAL_IDX < fftBins;
                      ++BIN_INTERNAL_IDX) {
-                    sum += Real[FRAME_BASE + binIdx] *
-                           MelFilterBank[FILTER_BASE + binIdx];
+                    sum += Real[FRAME_BASE + BIN_INTERNAL_IDX] *
+                           MelFilterBank[FILTER_BASE + BIN_INTERNAL_IDX];
                 }
                 sum      = log10(fabs(sum));
                 out[GID] = sum;
