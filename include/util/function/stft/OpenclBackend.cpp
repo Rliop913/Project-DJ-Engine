@@ -18,13 +18,15 @@ std::pair<REAL_VEC, IMAG_VEC>
 OPENCL_STFT::Enque(REAL_VEC          &origin_cpu_memory,
                    const WINDOW_LIST  window,
                    const bool         removeDC,
-                   const bool         toPower,
+                   const POST_PROCESS post_process,
                    const unsigned int win_expsz,
                    const StftArgs    &args)
 {
     if (win_expsz < 6) {
         return {};
     }
+    const POST_PROCESS effective_post_process =
+        NormalizePostProcess(post_process);
     bool IsNeedSubBuffer = win_expsz > 11;
     if (!SetMemory(origin_cpu_memory.size(), args.OFullSize, IsNeedSubBuffer)) {
         throw std::runtime_error("Failed to Init Gpu Memory.");
@@ -207,7 +209,8 @@ OPENCL_STFT::Enque(REAL_VEC          &origin_cpu_memory,
         resultImag = &memories.subimag.value();
     }
 
-    if (toPower) {
+    switch (effective_post_process) {
+    case POST_PROCESS::POWER:
         buildKernel(built_kernels.toPower, "_occa_toPower_0");
         if (!memories.power) {
             memories.power.emplace(gpu_ctxt.value(),
@@ -220,18 +223,25 @@ OPENCL_STFT::Enque(REAL_VEC          &origin_cpu_memory,
                      *resultImag,
                      args.OFullSize,
                      args.OFullSize,
-                     64);
+                       64);
+        break;
+    case POST_PROCESS::NONE:
+    default:
+        break;
     }
     REAL_VEC rout;
     IMAG_VEC iout;
-    if (toPower) {
+    switch (effective_post_process) {
+    case POST_PROCESS::POWER:
         rout.resize(args.OFullSize);
         CQ->enqueueReadBuffer(memories.power.value(),
                               CL_FALSE,
                               0,
                               sizeof(float) * args.OFullSize,
                               rout.data());
-    } else {
+        break;
+    case POST_PROCESS::NONE:
+    default:
         rout.resize(args.OFullSize);
         iout.resize(args.OFullSize);
         CQ->enqueueReadBuffer(*resultReal,
@@ -244,6 +254,7 @@ OPENCL_STFT::Enque(REAL_VEC          &origin_cpu_memory,
                               0,
                               sizeof(float) * args.OFullSize,
                               iout.data());
+        break;
     }
     if (GetResult()) {
         return std::pair(rout, iout);

@@ -87,7 +87,7 @@ class OPENCL_STFT {
     Enque(REAL_VEC          &origin_cpu_memory,
           const WINDOW_LIST  window,
           const bool         removeDC,
-          const bool         toPower,
+          const POST_PROCESS post_process,
           const unsigned int win_expsz,
           const StftArgs    &args);
     OPENCL_STFT()

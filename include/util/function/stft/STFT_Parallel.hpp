@@ -33,6 +33,29 @@ enum WINDOW_LIST {
     NONE
 };
 
+enum class POST_PROCESS{
+    POWER = 0,
+    TO_DB,
+    MEL_SCALE,
+    KERNEL_CHAIN__POWER_MEL_DB,
+    NONE
+};
+
+static inline POST_PROCESS
+NormalizePostProcess(const POST_PROCESS post_process)
+{
+    switch (post_process) {
+    case POST_PROCESS::POWER:
+    case POST_PROCESS::NONE:
+        return post_process;
+    case POST_PROCESS::TO_DB:
+    case POST_PROCESS::MEL_SCALE:
+    case POST_PROCESS::KERNEL_CHAIN__POWER_MEL_DB:
+    default:
+        return POST_PROCESS::NONE;
+    }
+}
+
 class STFT {
   private:
     StftArgs
@@ -41,6 +64,10 @@ class STFT {
             const float               overlapRatio);
 
     std::unique_ptr<OPENCL_STFT> opencl_backend;
+
+    std::vector<float> mel_filter_matrix;
+    void
+    GenMelFilter(const uint32_t window_exp_sz);
 
   public:
     Backend   backendinfo;
@@ -52,7 +79,7 @@ class STFT {
               const WINDOW_LIST   target_window = WINDOW_LIST::HANNING,
               const int           windowSizeEXP = 10,
               const float         overlapRatio  = 0.5,
-              const bool          toPower       = false);
+              const POST_PROCESS  post_process  = POST_PROCESS::NONE);
     ~STFT();
 };
 }; // namespace PDJE_PARALLEL

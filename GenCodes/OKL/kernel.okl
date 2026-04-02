@@ -1,6 +1,6 @@
 #ifndef KERNEL_GUARD
 #define KERNEL_GUARD
-
+#define __NEED_PI // dbg 
 #ifdef __NEED_PI
 #include <math.h>
 #endif
@@ -192,6 +192,23 @@ windowAdded[i_itr] = (Dpoint + Apoint) * inRange;
     }
     return;
 }
+
+
+@kernel void toDB(  float* Real,
+                    const unsigned int OFullSize)
+{
+    for(unsigned int o_itr = 0; o_itr < OFullSize; o_itr += 64; @outer)
+    {
+        for(int i_itr = 0; i_itr < 64; ++i_itr; @inner)
+        {
+            const unsigned int GID = o_itr + i_itr;
+            const float R = log10f(fabs(Real[GID]));
+            Real[GID] = R;
+        }
+    }
+    return;
+}
+
 
 @kernel void toHalfComplexFormat(   complex* out, 
                                     float* Real, 

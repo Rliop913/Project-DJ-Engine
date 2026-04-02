@@ -24,7 +24,7 @@ std::pair<std::vector<float>, std::vector<float>>
 RunSerialStft(std::vector<float> &PCMdata,
               const WINDOW_LIST   target_window,
               const int           windowSizeEXP,
-              const bool          toPower,
+              const POST_PROCESS  post_process,
               const StftArgs     &gargs)
 {
     std::vector<float> realVec(gargs.OFullSize, 0.0f);
@@ -125,14 +125,17 @@ RunSerialStft(std::vector<float> &PCMdata,
     }
     }
 
-    if (toPower) {
+    switch (post_process) {
+    case POST_PROCESS::POWER: {
         std::vector<float> powerVec(gargs.OFullSize, 0.0f);
         ::toPower(
             powerVec.data(), realVec.data(), imagVec.data(), gargs.OFullSize);
         return std::pair(std::move(powerVec), std::vector<float>{});
     }
-
-    return std::pair(std::move(realVec), std::move(imagVec));
+    case POST_PROCESS::NONE:
+    default:
+        return std::pair(std::move(realVec), std::move(imagVec));
+    }
 }
 
 } // namespace
@@ -159,13 +162,15 @@ STFT::calculate(std::vector<float> &PCMdata,
                 const WINDOW_LIST   target_window,
                 const int           windowSizeEXP,
                 const float         overlapRatio,
-                const bool          toPower)
+                const POST_PROCESS  post_process)
 {
     if (PCMdata.empty() || overlapRatio < 0 || overlapRatio >= 1.0 ||
         windowSizeEXP < 6) {
         return {};
     }
 
+    const POST_PROCESS effective_post_process =
+        NormalizePostProcess(post_process);
     auto gargs = GenArgs(PCMdata, windowSizeEXP, overlapRatio);
 
     if (backend_now == BACKEND_T::OPENCL && opencl_backend) {
@@ -174,7 +179,7 @@ STFT::calculate(std::vector<float> &PCMdata,
                 PCMdata,
                 target_window,
                 true,
-                toPower,
+                effective_post_process,
                 static_cast<unsigned int>(windowSizeEXP),
                 gargs);
         } catch (const std::exception &) {
@@ -183,6 +188,7 @@ STFT::calculate(std::vector<float> &PCMdata,
         }
     }
 
-    return RunSerialStft(PCMdata, target_window, windowSizeEXP, toPower, gargs);
+    return RunSerialStft(
+        PCMdata, target_window, windowSizeEXP, effective_post_process, gargs);
 }
 }; // namespace PDJE_PARALLEL
