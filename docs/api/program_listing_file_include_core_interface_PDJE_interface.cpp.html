@@ -83,6 +83,7 @@
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_interface.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;Decoder.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;musicDB.hpp&quot;</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;optional&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdexcept&gt;</span>
@@ -182,7 +183,7 @@
 <span class="p">}</span>
 
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span>
-<span class="n">PDJE</span><span class="o">::</span><span class="n">GetPCMFromMusData</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">musdata</span><span class="w"> </span><span class="o">&amp;</span><span class="n">md</span><span class="p">)</span>
+<span class="n">PDJE</span><span class="o">::</span><span class="n">GetPCMFromMusData</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">musdata</span><span class="w"> </span><span class="o">&amp;</span><span class="n">md</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">chSZ</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">DBROOT</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span>
@@ -196,7 +197,7 @@
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="n">Decoder</span><span class="w"> </span><span class="n">decoder</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">decoder</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="o">*</span><span class="n">DBROOT</span><span class="p">,</span><span class="w"> </span><span class="n">keyOrPath</span><span class="p">.</span><span class="n">value</span><span class="p">()))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">decoder</span><span class="p">.</span><span class="n">init</span><span class="p">(</span><span class="o">*</span><span class="n">DBROOT</span><span class="p">,</span><span class="w"> </span><span class="n">keyOrPath</span><span class="p">.</span><span class="n">value</span><span class="p">(),</span><span class="w"> </span><span class="n">chSZ</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to initialize decoder. from PDJE GetPCMFromMusData&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span>
 <span class="w">    </span><span class="p">}</span>
@@ -210,7 +211,7 @@
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="w"> </span><span class="n">pcm</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">decoder</span><span class="p">.</span><span class="n">getRange</span><span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">FRAME_POS</span><span class="o">&gt;</span><span class="p">(</span><span class="n">frameCount</span><span class="p">),</span><span class="w"> </span><span class="n">pcm</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">decoder</span><span class="p">.</span><span class="n">getRange</span><span class="p">(</span><span class="k">static_cast</span><span class="o">&lt;</span><span class="n">FRAME_POS</span><span class="o">&gt;</span><span class="p">(</span><span class="n">frameCount</span><span class="p">),</span><span class="w"> </span><span class="n">pcm</span><span class="p">,</span><span class="w"> </span><span class="n">chSZ</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to decode pcm frames. from PDJE GetPCMFromMusData&quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{};</span>
 <span class="w">    </span><span class="p">}</span>
@@ -308,6 +309,19 @@
 <span class="w">        </span><span class="n">PDJE_CORE_DATA_LINE</span><span class="w"> </span><span class="n">errline</span><span class="p">;</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">errline</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span>
+<span class="n">PDJE</span><span class="o">::</span><span class="n">DeleteMusic</span><span class="p">(</span><span class="n">musdata</span><span class="w"> </span><span class="o">&amp;</span><span class="n">target</span><span class="p">)</span>
+<span class="p">{</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">DBROOT</span><span class="o">-&gt;</span><span class="n">DeleteData</span><span class="p">(</span><span class="n">target</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span>
+<span class="n">PDJE</span><span class="o">::</span><span class="n">DeleteTrack</span><span class="p">(</span><span class="n">trackdata</span><span class="w"> </span><span class="o">&amp;</span><span class="n">target</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">DBROOT</span><span class="o">-&gt;</span><span class="n">DeleteData</span><span class="p">(</span><span class="n">target</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>

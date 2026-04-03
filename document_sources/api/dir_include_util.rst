@@ -19,7 +19,6 @@ Subdirectories
 - :ref:`dir_include_util_common`
 - :ref:`dir_include_util_db`
 - :ref:`dir_include_util_function`
-- :ref:`dir_include_util_Halide_Codes`
 
 
 Files

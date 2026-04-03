@@ -55,6 +55,10 @@ Included By
 
 - :ref:`file_include_core_audioRender_MixMachine_MiniaudioObjects_Decoder.hpp`
 
+- :ref:`file_include_core_db_dbRoot.cpp`
+
+- :ref:`file_include_core_db_dbRoot.hpp`
+
 - :ref:`file_include_core_db_dbState.hpp`
 
 - :ref:`file_include_core_db_musicDB.hpp`

@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="_parallel___args_8hpp" kind="file" language="C++">
+    <compoundname>Parallel_Args.hpp</compoundname>
+    <includedby refid="_p_d_j_e___parallel___runtime___loader_8hpp" local="yes">include/util/common/BackendLoader/PDJE_Parallel_Runtime_Loader.hpp</includedby>
+    <includedby refid="_backend_less_8cpp" local="yes">include/util/function/stft/BackendLess.cpp</includedby>
+    <includedby refid="_s_t_f_t___parallel_8hpp" local="yes">include/util/function/stft/STFT_Parallel.hpp</includedby>
+    <invincdepgraph>
+      <node id="3">
+        <label>include/util/common/BackendLoader/PDJE_Parallel_Runtime_Loader.cpp</label>
+        <link refid="_p_d_j_e___parallel___runtime___loader_8cpp"/>
+      </node>
+      <node id="2">
+        <label>include/util/common/BackendLoader/PDJE_Parallel_Runtime_Loader.hpp</label>
+        <link refid="_p_d_j_e___parallel___runtime___loader_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/util/common/BackendLoader/Parallel_Args.hpp</label>
+        <link refid="_parallel___args_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>include/util/function/stft/BackendLess.cpp</label>
+        <link refid="_backend_less_8cpp"/>
+      </node>
+      <node id="6">
+        <label>include/util/function/stft/OpenclBackend.cpp</label>
+        <link refid="_opencl_backend_8cpp"/>
+      </node>
+      <node id="7">
+        <label>include/util/function/stft/OpenclBackend.hpp</label>
+        <link refid="_opencl_backend_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>include/util/function/stft/STFT_Parallel.cpp</label>
+        <link refid="_s_t_f_t___parallel_8cpp"/>
+      </node>
+      <node id="4">
+        <label>include/util/function/stft/STFT_Parallel.hpp</label>
+        <link refid="_s_t_f_t___parallel_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>include/util/function/stft/SerialBackend.cpp</label>
+        <link refid="_serial_backend_8cpp"/>
+      </node>
+      <node id="9">
+        <label>include/util/function/stft/SerialBackend.hpp</label>
+        <link refid="_serial_backend_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespace_p_d_j_e___p_a_r_a_l_l_e_l">PDJE_PARALLEL</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_p_d_j_e___p_a_r_a_l_l_e_l" kindref="compound">PDJE_PARALLEL</ref><sp/>{</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4" refid="namespace_p_d_j_e___p_a_r_a_l_l_e_l_1a44ecf37f16838a705092d2e3d9ab7a75" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="namespace_p_d_j_e___p_a_r_a_l_l_e_l_1a44ecf37f16838a705092d2e3d9ab7a75" kindref="member">BACKEND_T</ref><sp/>{<sp/><ref refid="namespace_p_d_j_e___p_a_r_a_l_l_e_l_1a44ecf37f16838a705092d2e3d9ab7a75a542f952490e2db695a1d544338a70cda" kindref="member">OPENCL</ref>,<sp/><ref refid="namespace_p_d_j_e___p_a_r_a_l_l_e_l_1a44ecf37f16838a705092d2e3d9ab7a75a74108a89672c573afee1fae6de8e4e0b" kindref="member">METAL</ref>,<sp/><ref refid="namespace_p_d_j_e___p_a_r_a_l_l_e_l_1a44ecf37f16838a705092d2e3d9ab7a75a7b804a28d6154ab8007287532037f1d0" kindref="member">SERIAL</ref><sp/>};</highlight></codeline>
+<codeline lineno="5"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="include/util/common/BackendLoader/Parallel_Args.hpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,826 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Listing for File OpenCL_Loader.cpp &mdash; Project_DJ_Engine  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
+      <script src="../_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Project_DJ_Engine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Project_DJ_Engine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Program Listing for File OpenCL_Loader.cpp</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/program_listing_file_include_util_common_BackendLoader_OpenCL_Loader.cpp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-listing-for-file-opencl-loader-cpp">
+<span id="program-listing-file-include-util-common-backendloader-opencl-loader-cpp"></span><h1>Program Listing for File OpenCL_Loader.cpp<a class="headerlink" href="#program-listing-for-file-opencl-loader-cpp" title="Link to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="file_include_util_common_BackendLoader_OpenCL_Loader.cpp.html#file-include-util-common-backendloader-opencl-loader-cpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include\util\common\BackendLoader\OpenCL_Loader.cpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#define CL_TARGET_OPENCL_VERSION 300</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;OpenCL_Loader.hpp&quot;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;CL/opencl.h&gt;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;atomic&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mutex&gt;</span>
+
+<span class="cp">#if defined(_WIN32)</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;windows.h&gt;</span>
+<span class="cp">#elif defined(__linux__)</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;dlfcn.h&gt;</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#ifndef CL_PLATFORM_NOT_FOUND_KHR</span>
+<span class="cp">#define CL_PLATFORM_NOT_FOUND_KHR -1001</span>
+<span class="cp">#endif</span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="p">{</span>
+
+<span class="cp">#define PDJE_OPENCL_RUNTIME_SYMBOLS(X)                                      \</span>
+<span class="cp">    X(clGetPlatformIDs)                                                     \</span>
+<span class="cp">    X(clGetPlatformInfo)                                                    \</span>
+<span class="cp">    X(clGetDeviceIDs)                                                       \</span>
+<span class="cp">    X(clGetDeviceInfo)                                                      \</span>
+<span class="cp">    X(clRetainDevice)                                                       \</span>
+<span class="cp">    X(clReleaseDevice)                                                      \</span>
+<span class="cp">    X(clCreateContext)                                                      \</span>
+<span class="cp">    X(clCreateContextFromType)                                              \</span>
+<span class="cp">    X(clGetContextInfo)                                                     \</span>
+<span class="cp">    X(clRetainContext)                                                      \</span>
+<span class="cp">    X(clReleaseContext)                                                     \</span>
+<span class="cp">    X(clCreateCommandQueue)                                                 \</span>
+<span class="cp">    X(clCreateCommandQueueWithProperties)                                   \</span>
+<span class="cp">    X(clGetCommandQueueInfo)                                                \</span>
+<span class="cp">    X(clRetainCommandQueue)                                                 \</span>
+<span class="cp">    X(clReleaseCommandQueue)                                                \</span>
+<span class="cp">    X(clFlush)                                                              \</span>
+<span class="cp">    X(clFinish)                                                             \</span>
+<span class="cp">    X(clCreateProgramWithSource)                                            \</span>
+<span class="cp">    X(clBuildProgram)                                                       \</span>
+<span class="cp">    X(clGetProgramInfo)                                                     \</span>
+<span class="cp">    X(clGetProgramBuildInfo)                                                \</span>
+<span class="cp">    X(clRetainProgram)                                                      \</span>
+<span class="cp">    X(clReleaseProgram)                                                     \</span>
+<span class="cp">    X(clCreateKernel)                                                       \</span>
+<span class="cp">    X(clSetKernelArg)                                                       \</span>
+<span class="cp">    X(clGetKernelInfo)                                                      \</span>
+<span class="cp">    X(clGetKernelWorkGroupInfo)                                             \</span>
+<span class="cp">    X(clRetainKernel)                                                       \</span>
+<span class="cp">    X(clReleaseKernel)                                                      \</span>
+<span class="cp">    X(clCreateBuffer)                                                       \</span>
+<span class="cp">    X(clCreateBufferWithProperties)                                         \</span>
+<span class="cp">    X(clGetMemObjectInfo)                                                   \</span>
+<span class="cp">    X(clRetainMemObject)                                                    \</span>
+<span class="cp">    X(clReleaseMemObject)                                                   \</span>
+<span class="cp">    X(clEnqueueReadBuffer)                                                  \</span>
+<span class="cp">    X(clEnqueueWriteBuffer)                                                 \</span>
+<span class="cp">    X(clEnqueueNDRangeKernel)                                               \</span>
+<span class="cp">    X(clWaitForEvents)                                                      \</span>
+<span class="cp">    X(clGetEventInfo)                                                       \</span>
+<span class="cp">    X(clRetainEvent)                                                        \</span>
+<span class="cp">    X(clReleaseEvent)                                                       \</span>
+<span class="cp">    X(clGetExtensionFunctionAddress)                                        \</span>
+<span class="cp">    X(clGetExtensionFunctionAddressForPlatform)</span>
+
+<span class="cp">#if defined(_WIN32)</span>
+<span class="k">using</span><span class="w"> </span><span class="n">OpenCLLibraryHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HMODULE</span><span class="p">;</span>
+<span class="cp">#else</span>
+<span class="k">using</span><span class="w"> </span><span class="n">OpenCLLibraryHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">;</span>
+<span class="cp">#endif</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">OpenCLRuntimeDispatch</span><span class="w"> </span><span class="p">{</span>
+<span class="cp">#define PDJE_DECLARE_DISPATCH_MEMBER(name) decltype(&amp;::name) name = nullptr;</span>
+<span class="w">    </span><span class="n">PDJE_OPENCL_RUNTIME_SYMBOLS</span><span class="p">(</span><span class="n">PDJE_DECLARE_DISPATCH_MEMBER</span><span class="p">)</span>
+<span class="cp">#undef PDJE_DECLARE_DISPATCH_MEMBER</span>
+<span class="p">};</span>
+
+<span class="n">OpenCLRuntimeDispatch</span><span class="w"> </span><span class="n">gOpenCLDispatch</span><span class="p">{};</span>
+<span class="n">OpenCLLibraryHandle</span><span class="w">   </span><span class="n">gOpenCLLibraryHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">once_flag</span><span class="w">        </span><span class="n">gOpenCLRuntimeInitOnce</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">atomic</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w">     </span><span class="n">gOpenCLRuntimeReady</span><span class="p">{</span><span class="w"> </span><span class="nb">false</span><span class="w"> </span><span class="p">};</span>
+
+<span class="cp">#if defined(_WIN32)</span>
+<span class="n">OpenCLLibraryHandle</span>
+<span class="nf">OpenCLibraryOpen</span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">::</span><span class="n">LoadLibraryA</span><span class="p">(</span><span class="s">&quot;OpenCL.dll&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="o">*</span>
+<span class="nf">OpenCLibrarySymbol</span><span class="p">(</span><span class="n">OpenCLLibraryHandle</span><span class="w"> </span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                   </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w">         </span><span class="o">*</span><span class="n">symbolName</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">handle</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">symbolName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">reinterpret_cast</span><span class="o">&lt;</span><span class="kt">void</span><span class="w"> </span><span class="o">*&gt;</span><span class="p">(</span><span class="o">::</span><span class="n">GetProcAddress</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">symbolName</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="kt">void</span>
+<span class="nf">OpenCLibraryClose</span><span class="p">(</span><span class="n">OpenCLLibraryHandle</span><span class="w"> </span><span class="n">handle</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">handle</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">::</span><span class="n">FreeLibrary</span><span class="p">(</span><span class="n">handle</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">#elif defined(__linux__)</span>
+<span class="n">OpenCLLibraryHandle</span>
+<span class="nf">OpenCLibraryOpen</span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">OpenCLLibraryHandle</span><span class="w"> </span><span class="n">handle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">::</span><span class="n">dlopen</span><span class="p">(</span><span class="s">&quot;libOpenCL.so.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">RTLD_NOW</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">RTLD_LOCAL</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">handle</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">handle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">::</span><span class="n">dlopen</span><span class="p">(</span><span class="s">&quot;libOpenCL.so&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">RTLD_NOW</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">RTLD_LOCAL</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">handle</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="o">*</span>
+<span class="nf">OpenCLibrarySymbol</span><span class="p">(</span><span class="n">OpenCLLibraryHandle</span><span class="w"> </span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                   </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w">         </span><span class="o">*</span><span class="n">symbolName</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">handle</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">symbolName</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">::</span><span class="n">dlsym</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">symbolName</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span>
+<span class="nf">OpenCLibraryClose</span><span class="p">(</span><span class="n">OpenCLLibraryHandle</span><span class="w"> </span><span class="n">handle</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">handle</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="o">::</span><span class="n">dlclose</span><span class="p">(</span><span class="n">handle</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">#else</span>
+<span class="n">OpenCLLibraryHandle</span>
+<span class="nf">OpenCLibraryOpen</span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="o">*</span>
+<span class="nf">OpenCLibrarySymbol</span><span class="p">(</span><span class="n">OpenCLLibraryHandle</span><span class="p">,</span>
+<span class="w">                   </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span>
+<span class="nf">OpenCLibraryClose</span><span class="p">(</span><span class="n">OpenCLLibraryHandle</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{}</span>
+<span class="cp">#endif</span>
+
+<span class="kt">bool</span>
+<span class="nf">ResolveOpenCLRuntimeSymbols</span><span class="p">(</span><span class="n">OpenCLLibraryHandle</span><span class="w">  </span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                            </span><span class="n">OpenCLRuntimeDispatch</span><span class="w"> </span><span class="o">&amp;</span><span class="n">dispatch</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="cp">#define PDJE_RESOLVE_DISPATCH_SYMBOL(name)                                  \</span>
+<span class="cp">    dispatch.name = reinterpret_cast&lt;decltype(dispatch.name)&gt;(              \</span>
+<span class="cp">        OpenCLibrarySymbol(handle, #name));                                 \</span>
+<span class="cp">    if (dispatch.name == nullptr) {                                         \</span>
+<span class="cp">        return false;                                                       \</span>
+<span class="cp">    }</span>
+
+<span class="w">    </span><span class="n">PDJE_OPENCL_RUNTIME_SYMBOLS</span><span class="p">(</span><span class="n">PDJE_RESOLVE_DISPATCH_SYMBOL</span><span class="p">)</span>
+
+<span class="cp">#undef PDJE_RESOLVE_DISPATCH_SYMBOL</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span>
+<span class="nf">SmokeProbeOpenCLPlatforms</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">OpenCLRuntimeDispatch</span><span class="w"> </span><span class="o">&amp;</span><span class="n">dispatch</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">cl_uint</span><span class="w"> </span><span class="n">platformCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">cl_int</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dispatch</span><span class="p">.</span><span class="n">clGetPlatformIDs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">platformCount</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">err</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">CL_SUCCESS</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">platformCount</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span>
+<span class="nf">InitializeOpenCLRuntime</span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="cp">#if !defined(_WIN32) &amp;&amp; !defined(__linux__)</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="cp">#else</span>
+<span class="w">    </span><span class="n">OpenCLRuntimeDispatch</span><span class="w"> </span><span class="n">dispatch</span><span class="p">;</span>
+<span class="w">    </span><span class="n">OpenCLLibraryHandle</span><span class="w">   </span><span class="n">handle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OpenCLibraryOpen</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">handle</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">ResolveOpenCLRuntimeSymbols</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">dispatch</span><span class="p">)</span><span class="w"> </span><span class="o">||</span>
+<span class="w">        </span><span class="o">!</span><span class="n">SmokeProbeOpenCLPlatforms</span><span class="p">(</span><span class="n">dispatch</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">OpenCLibraryClose</span><span class="p">(</span><span class="n">handle</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">gOpenCLDispatch</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">dispatch</span><span class="p">;</span>
+<span class="w">    </span><span class="n">gOpenCLLibraryHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">handle</span><span class="p">;</span>
+<span class="w">    </span><span class="n">gOpenCLRuntimeReady</span><span class="p">.</span><span class="n">store</span><span class="p">(</span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">memory_order_release</span><span class="p">);</span>
+<span class="cp">#endif</span>
+<span class="p">}</span>
+
+<span class="k">const</span><span class="w"> </span><span class="n">OpenCLRuntimeDispatch</span><span class="w"> </span><span class="o">*</span>
+<span class="nf">GetOpenCLRuntimeDispatch</span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">gOpenCLRuntimeReady</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">memory_order_acquire</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gOpenCLDispatch</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">cl_int</span>
+<span class="nf">GetUnavailableOpenCLError</span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">CL_INVALID_OPERATION</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">cl_int</span>
+<span class="nf">GetUnavailablePlatformError</span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">CL_PLATFORM_NOT_FOUND_KHR</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">#define PDJE_OPENCL_INT_WRAPPER(name, signature, arguments, failureCode)    \</span>
+<span class="cp">    extern &quot;C&quot; CL_API_ENTRY cl_int CL_API_CALL                               \</span>
+<span class="cp">    name signature                                                           \</span>
+<span class="cp">    {                                                                        \</span>
+<span class="cp">        const auto *dispatch = GetOpenCLRuntimeDispatch();                   \</span>
+<span class="cp">        if (dispatch == nullptr || dispatch-&gt;name == nullptr) {              \</span>
+<span class="cp">            return failureCode;                                              \</span>
+<span class="cp">        }                                                                    \</span>
+<span class="cp">        return dispatch-&gt;name arguments;                                     \</span>
+<span class="cp">    }</span>
+
+<span class="cp">#define PDJE_OPENCL_HANDLE_WRAPPER(returnType, name, signature, arguments,   \</span>
+<span class="cp">                                   errcode_ret_name)                         \</span>
+<span class="cp">    extern &quot;C&quot; CL_API_ENTRY returnType CL_API_CALL                           \</span>
+<span class="cp">    name signature                                                           \</span>
+<span class="cp">    {                                                                        \</span>
+<span class="cp">        const auto *dispatch = GetOpenCLRuntimeDispatch();                   \</span>
+<span class="cp">        if (dispatch == nullptr || dispatch-&gt;name == nullptr) {              \</span>
+<span class="cp">            if (errcode_ret_name != nullptr) {                               \</span>
+<span class="cp">                *errcode_ret_name = GetUnavailableOpenCLError();             \</span>
+<span class="cp">            }                                                                \</span>
+<span class="cp">            return nullptr;                                                  \</span>
+<span class="cp">        }                                                                    \</span>
+<span class="cp">        return dispatch-&gt;name arguments;                                     \</span>
+<span class="cp">    }</span>
+
+<span class="cp">#define PDJE_OPENCL_VOIDPTR_WRAPPER(name, signature, arguments)              \</span>
+<span class="cp">    extern &quot;C&quot; CL_API_ENTRY void * CL_API_CALL                               \</span>
+<span class="cp">    name signature                                                           \</span>
+<span class="cp">    {                                                                        \</span>
+<span class="cp">        const auto *dispatch = GetOpenCLRuntimeDispatch();                   \</span>
+<span class="cp">        if (dispatch == nullptr || dispatch-&gt;name == nullptr) {              \</span>
+<span class="cp">            return nullptr;                                                  \</span>
+<span class="cp">        }                                                                    \</span>
+<span class="cp">        return dispatch-&gt;name arguments;                                     \</span>
+<span class="cp">    }</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clGetPlatformIDs</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_uint</span><span class="w">          </span><span class="n">num_entries</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">cl_platform_id</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">platforms</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">cl_uint</span><span class="w"> </span><span class="o">*</span><span class="w">        </span><span class="n">num_platforms</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">num_entries</span><span class="p">,</span><span class="w"> </span><span class="n">platforms</span><span class="p">,</span><span class="w"> </span><span class="n">num_platforms</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailablePlatformError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clGetPlatformInfo</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_platform_id</span><span class="w">   </span><span class="n">platform</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">cl_platform_info</span><span class="w"> </span><span class="n">param_name</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">size_t</span><span class="w">           </span><span class="n">param_value_size</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w">           </span><span class="n">param_value</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">size_t</span><span class="w"> </span><span class="o">*</span><span class="w">         </span><span class="n">param_value_size_ret</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">platform</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_name</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_value_size</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_value</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_value_size_ret</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clGetDeviceIDs</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_platform_id</span><span class="w"> </span><span class="n">platform</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">cl_device_type</span><span class="w"> </span><span class="n">device_type</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">cl_uint</span><span class="w">        </span><span class="n">num_entries</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">cl_device_id</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">devices</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">cl_uint</span><span class="w"> </span><span class="o">*</span><span class="w">      </span><span class="n">num_devices</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">platform</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">device_type</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">num_entries</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">devices</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">num_devices</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clGetDeviceInfo</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_device_id</span><span class="w">   </span><span class="n">device</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">cl_device_info</span><span class="w"> </span><span class="n">param_name</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">size_t</span><span class="w">         </span><span class="n">param_value_size</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w">         </span><span class="n">param_value</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">size_t</span><span class="w"> </span><span class="o">*</span><span class="w">       </span><span class="n">param_value_size_ret</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">device</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_name</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_value_size</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_value</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_value_size_ret</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clRetainDevice</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_device_id</span><span class="w"> </span><span class="n">device</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">device</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clReleaseDevice</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_device_id</span><span class="w"> </span><span class="n">device</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">device</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_HANDLE_WRAPPER</span><span class="p">(</span>
+<span class="w">    </span><span class="n">cl_context</span><span class="p">,</span>
+<span class="w">    </span><span class="n">clCreateContext</span><span class="p">,</span>
+<span class="w">    </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">cl_context_properties</span><span class="w"> </span><span class="o">*</span><span class="n">properties</span><span class="p">,</span>
+<span class="w">     </span><span class="n">cl_uint</span><span class="w">                      </span><span class="n">num_devices</span><span class="p">,</span>
+<span class="w">     </span><span class="k">const</span><span class="w"> </span><span class="n">cl_device_id</span><span class="w">          </span><span class="o">*</span><span class="n">devices</span><span class="p">,</span>
+<span class="w">     </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="n">CL_CALLBACK</span><span class="w"> </span><span class="o">*</span><span class="n">pfn_notify</span><span class="p">)(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">errinfo</span><span class="p">,</span>
+<span class="w">                                    </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">private_info</span><span class="p">,</span>
+<span class="w">                                    </span><span class="kt">size_t</span><span class="w">      </span><span class="n">cb</span><span class="p">,</span>
+<span class="w">                                    </span><span class="kt">void</span><span class="w">       </span><span class="o">*</span><span class="n">user_data</span><span class="p">),</span>
+<span class="w">     </span><span class="kt">void</span><span class="w">                        </span><span class="o">*</span><span class="n">user_data</span><span class="p">,</span>
+<span class="w">     </span><span class="n">cl_int</span><span class="w">                      </span><span class="o">*</span><span class="n">errcode_ret</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">properties</span><span class="p">,</span><span class="w"> </span><span class="n">num_devices</span><span class="p">,</span><span class="w"> </span><span class="n">devices</span><span class="p">,</span><span class="w"> </span><span class="n">pfn_notify</span><span class="p">,</span><span class="w"> </span><span class="n">user_data</span><span class="p">,</span><span class="w"> </span><span class="n">errcode_ret</span><span class="p">),</span>
+<span class="w">    </span><span class="n">errcode_ret</span><span class="p">)</span>
+
+<span class="n">PDJE_OPENCL_HANDLE_WRAPPER</span><span class="p">(</span>
+<span class="w">    </span><span class="n">cl_context</span><span class="p">,</span>
+<span class="w">    </span><span class="n">clCreateContextFromType</span><span class="p">,</span>
+<span class="w">    </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">cl_context_properties</span><span class="w"> </span><span class="o">*</span><span class="n">properties</span><span class="p">,</span>
+<span class="w">     </span><span class="n">cl_device_type</span><span class="w">               </span><span class="n">device_type</span><span class="p">,</span>
+<span class="w">     </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="n">CL_CALLBACK</span><span class="w"> </span><span class="o">*</span><span class="n">pfn_notify</span><span class="p">)(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">errinfo</span><span class="p">,</span>
+<span class="w">                                    </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">private_info</span><span class="p">,</span>
+<span class="w">                                    </span><span class="kt">size_t</span><span class="w">      </span><span class="n">cb</span><span class="p">,</span>
+<span class="w">                                    </span><span class="kt">void</span><span class="w">       </span><span class="o">*</span><span class="n">user_data</span><span class="p">),</span>
+<span class="w">     </span><span class="kt">void</span><span class="w">                        </span><span class="o">*</span><span class="n">user_data</span><span class="p">,</span>
+<span class="w">     </span><span class="n">cl_int</span><span class="w">                      </span><span class="o">*</span><span class="n">errcode_ret</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">properties</span><span class="p">,</span><span class="w"> </span><span class="n">device_type</span><span class="p">,</span><span class="w"> </span><span class="n">pfn_notify</span><span class="p">,</span><span class="w"> </span><span class="n">user_data</span><span class="p">,</span><span class="w"> </span><span class="n">errcode_ret</span><span class="p">),</span>
+<span class="w">    </span><span class="n">errcode_ret</span><span class="p">)</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clGetContextInfo</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_context</span><span class="w">      </span><span class="n">context</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">cl_context_info</span><span class="w"> </span><span class="n">param_name</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">size_t</span><span class="w">          </span><span class="n">param_value_size</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w">          </span><span class="n">param_value</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">size_t</span><span class="w"> </span><span class="o">*</span><span class="w">        </span><span class="n">param_value_size_ret</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">context</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_name</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_value_size</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_value</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_value_size_ret</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clRetainContext</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_context</span><span class="w"> </span><span class="n">context</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">context</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clReleaseContext</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_context</span><span class="w"> </span><span class="n">context</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">context</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_HANDLE_WRAPPER</span><span class="p">(</span>
+<span class="w">    </span><span class="n">cl_command_queue</span><span class="p">,</span>
+<span class="w">    </span><span class="n">clCreateCommandQueue</span><span class="p">,</span>
+<span class="w">    </span><span class="p">(</span><span class="n">cl_context</span><span class="w">                     </span><span class="n">context</span><span class="p">,</span>
+<span class="w">     </span><span class="n">cl_device_id</span><span class="w">                   </span><span class="n">device</span><span class="p">,</span>
+<span class="w">     </span><span class="n">cl_command_queue_properties</span><span class="w">    </span><span class="n">properties</span><span class="p">,</span>
+<span class="w">     </span><span class="n">cl_int</span><span class="w">                        </span><span class="o">*</span><span class="n">errcode_ret</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">device</span><span class="p">,</span><span class="w"> </span><span class="n">properties</span><span class="p">,</span><span class="w"> </span><span class="n">errcode_ret</span><span class="p">),</span>
+<span class="w">    </span><span class="n">errcode_ret</span><span class="p">)</span>
+
+<span class="n">PDJE_OPENCL_HANDLE_WRAPPER</span><span class="p">(</span>
+<span class="w">    </span><span class="n">cl_command_queue</span><span class="p">,</span>
+<span class="w">    </span><span class="n">clCreateCommandQueueWithProperties</span><span class="p">,</span>
+<span class="w">    </span><span class="p">(</span><span class="n">cl_context</span><span class="w">                </span><span class="n">context</span><span class="p">,</span>
+<span class="w">     </span><span class="n">cl_device_id</span><span class="w">              </span><span class="n">device</span><span class="p">,</span>
+<span class="w">     </span><span class="k">const</span><span class="w"> </span><span class="n">cl_queue_properties</span><span class="w"> </span><span class="o">*</span><span class="n">properties</span><span class="p">,</span>
+<span class="w">     </span><span class="n">cl_int</span><span class="w">                   </span><span class="o">*</span><span class="n">errcode_ret</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">device</span><span class="p">,</span><span class="w"> </span><span class="n">properties</span><span class="p">,</span><span class="w"> </span><span class="n">errcode_ret</span><span class="p">),</span>
+<span class="w">    </span><span class="n">errcode_ret</span><span class="p">)</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clGetCommandQueueInfo</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_command_queue</span><span class="w">      </span><span class="n">command_queue</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">cl_command_queue_info</span><span class="w"> </span><span class="n">param_name</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">size_t</span><span class="w">                </span><span class="n">param_value_size</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w">                </span><span class="n">param_value</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">size_t</span><span class="w"> </span><span class="o">*</span><span class="w">              </span><span class="n">param_value_size_ret</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">command_queue</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_name</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_value_size</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_value</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_value_size_ret</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clRetainCommandQueue</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_command_queue</span><span class="w"> </span><span class="n">command_queue</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">command_queue</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clReleaseCommandQueue</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_command_queue</span><span class="w"> </span><span class="n">command_queue</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">command_queue</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clFlush</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_command_queue</span><span class="w"> </span><span class="n">command_queue</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">command_queue</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clFinish</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_command_queue</span><span class="w"> </span><span class="n">command_queue</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">command_queue</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_HANDLE_WRAPPER</span><span class="p">(</span>
+<span class="w">    </span><span class="n">cl_program</span><span class="p">,</span>
+<span class="w">    </span><span class="n">clCreateProgramWithSource</span><span class="p">,</span>
+<span class="w">    </span><span class="p">(</span><span class="n">cl_context</span><span class="w">         </span><span class="n">context</span><span class="p">,</span>
+<span class="w">     </span><span class="n">cl_uint</span><span class="w">            </span><span class="n">count</span><span class="p">,</span>
+<span class="w">     </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w">       </span><span class="o">**</span><span class="n">strings</span><span class="p">,</span>
+<span class="w">     </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w">      </span><span class="o">*</span><span class="n">lengths</span><span class="p">,</span>
+<span class="w">     </span><span class="n">cl_int</span><span class="w">            </span><span class="o">*</span><span class="n">errcode_ret</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="n">strings</span><span class="p">,</span><span class="w"> </span><span class="n">lengths</span><span class="p">,</span><span class="w"> </span><span class="n">errcode_ret</span><span class="p">),</span>
+<span class="w">    </span><span class="n">errcode_ret</span><span class="p">)</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span>
+<span class="w">    </span><span class="n">clBuildProgram</span><span class="p">,</span>
+<span class="w">    </span><span class="p">(</span><span class="n">cl_program</span><span class="w">           </span><span class="n">program</span><span class="p">,</span>
+<span class="w">     </span><span class="n">cl_uint</span><span class="w">              </span><span class="n">num_devices</span><span class="p">,</span>
+<span class="w">     </span><span class="k">const</span><span class="w"> </span><span class="n">cl_device_id</span><span class="w">  </span><span class="o">*</span><span class="n">device_list</span><span class="p">,</span>
+<span class="w">     </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w">          </span><span class="o">*</span><span class="n">options</span><span class="p">,</span>
+<span class="w">     </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="n">CL_CALLBACK</span><span class="w"> </span><span class="o">*</span><span class="n">pfn_notify</span><span class="p">)(</span><span class="n">cl_program</span><span class="w"> </span><span class="n">program</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">user_data</span><span class="p">),</span>
+<span class="w">     </span><span class="kt">void</span><span class="w">                </span><span class="o">*</span><span class="n">user_data</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">program</span><span class="p">,</span><span class="w"> </span><span class="n">num_devices</span><span class="p">,</span><span class="w"> </span><span class="n">device_list</span><span class="p">,</span><span class="w"> </span><span class="n">options</span><span class="p">,</span><span class="w"> </span><span class="n">pfn_notify</span><span class="p">,</span><span class="w"> </span><span class="n">user_data</span><span class="p">),</span>
+<span class="w">    </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clGetProgramInfo</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_program</span><span class="w">      </span><span class="n">program</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">cl_program_info</span><span class="w"> </span><span class="n">param_name</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">size_t</span><span class="w">          </span><span class="n">param_value_size</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w">          </span><span class="n">param_value</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">size_t</span><span class="w"> </span><span class="o">*</span><span class="w">        </span><span class="n">param_value_size_ret</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">program</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_name</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_value_size</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_value</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_value_size_ret</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span>
+<span class="w">    </span><span class="n">clGetProgramBuildInfo</span><span class="p">,</span>
+<span class="w">    </span><span class="p">(</span><span class="n">cl_program</span><span class="w">            </span><span class="n">program</span><span class="p">,</span>
+<span class="w">     </span><span class="n">cl_device_id</span><span class="w">          </span><span class="n">device</span><span class="p">,</span>
+<span class="w">     </span><span class="n">cl_program_build_info</span><span class="w"> </span><span class="n">param_name</span><span class="p">,</span>
+<span class="w">     </span><span class="kt">size_t</span><span class="w">                </span><span class="n">param_value_size</span><span class="p">,</span>
+<span class="w">     </span><span class="kt">void</span><span class="w">                 </span><span class="o">*</span><span class="n">param_value</span><span class="p">,</span>
+<span class="w">     </span><span class="kt">size_t</span><span class="w">               </span><span class="o">*</span><span class="n">param_value_size_ret</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">program</span><span class="p">,</span>
+<span class="w">     </span><span class="n">device</span><span class="p">,</span>
+<span class="w">     </span><span class="n">param_name</span><span class="p">,</span>
+<span class="w">     </span><span class="n">param_value_size</span><span class="p">,</span>
+<span class="w">     </span><span class="n">param_value</span><span class="p">,</span>
+<span class="w">     </span><span class="n">param_value_size_ret</span><span class="p">),</span>
+<span class="w">    </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clRetainProgram</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_program</span><span class="w"> </span><span class="n">program</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">program</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clReleaseProgram</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_program</span><span class="w"> </span><span class="n">program</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">program</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_HANDLE_WRAPPER</span><span class="p">(</span><span class="n">cl_kernel</span><span class="p">,</span>
+<span class="w">                           </span><span class="n">clCreateKernel</span><span class="p">,</span>
+<span class="w">                           </span><span class="p">(</span><span class="n">cl_program</span><span class="w">   </span><span class="n">program</span><span class="p">,</span>
+<span class="w">                            </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w">  </span><span class="o">*</span><span class="n">kernel_name</span><span class="p">,</span>
+<span class="w">                            </span><span class="n">cl_int</span><span class="w">      </span><span class="o">*</span><span class="n">errcode_ret</span><span class="p">),</span>
+<span class="w">                           </span><span class="p">(</span><span class="n">program</span><span class="p">,</span><span class="w"> </span><span class="n">kernel_name</span><span class="p">,</span><span class="w"> </span><span class="n">errcode_ret</span><span class="p">),</span>
+<span class="w">                           </span><span class="n">errcode_ret</span><span class="p">)</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clSetKernelArg</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_kernel</span><span class="w">    </span><span class="n">kernel</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">cl_uint</span><span class="w">      </span><span class="n">arg_index</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">size_t</span><span class="w">       </span><span class="n">arg_size</span><span class="p">,</span>
+<span class="w">                         </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">arg_value</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">kernel</span><span class="p">,</span><span class="w"> </span><span class="n">arg_index</span><span class="p">,</span><span class="w"> </span><span class="n">arg_size</span><span class="p">,</span><span class="w"> </span><span class="n">arg_value</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clGetKernelInfo</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_kernel</span><span class="w">       </span><span class="n">kernel</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">cl_kernel_info</span><span class="w">  </span><span class="n">param_name</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">size_t</span><span class="w">          </span><span class="n">param_value_size</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w">          </span><span class="n">param_value</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">size_t</span><span class="w"> </span><span class="o">*</span><span class="w">        </span><span class="n">param_value_size_ret</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">kernel</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_name</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_value_size</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_value</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_value_size_ret</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span>
+<span class="w">    </span><span class="n">clGetKernelWorkGroupInfo</span><span class="p">,</span>
+<span class="w">    </span><span class="p">(</span><span class="n">cl_kernel</span><span class="w">                 </span><span class="n">kernel</span><span class="p">,</span>
+<span class="w">     </span><span class="n">cl_device_id</span><span class="w">              </span><span class="n">device</span><span class="p">,</span>
+<span class="w">     </span><span class="n">cl_kernel_work_group_info</span><span class="w"> </span><span class="n">param_name</span><span class="p">,</span>
+<span class="w">     </span><span class="kt">size_t</span><span class="w">                    </span><span class="n">param_value_size</span><span class="p">,</span>
+<span class="w">     </span><span class="kt">void</span><span class="w">                     </span><span class="o">*</span><span class="n">param_value</span><span class="p">,</span>
+<span class="w">     </span><span class="kt">size_t</span><span class="w">                   </span><span class="o">*</span><span class="n">param_value_size_ret</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">kernel</span><span class="p">,</span>
+<span class="w">     </span><span class="n">device</span><span class="p">,</span>
+<span class="w">     </span><span class="n">param_name</span><span class="p">,</span>
+<span class="w">     </span><span class="n">param_value_size</span><span class="p">,</span>
+<span class="w">     </span><span class="n">param_value</span><span class="p">,</span>
+<span class="w">     </span><span class="n">param_value_size_ret</span><span class="p">),</span>
+<span class="w">    </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clRetainKernel</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_kernel</span><span class="w"> </span><span class="n">kernel</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">kernel</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clReleaseKernel</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_kernel</span><span class="w"> </span><span class="n">kernel</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">kernel</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_HANDLE_WRAPPER</span><span class="p">(</span><span class="n">cl_mem</span><span class="p">,</span>
+<span class="w">                           </span><span class="n">clCreateBuffer</span><span class="p">,</span>
+<span class="w">                           </span><span class="p">(</span><span class="n">cl_context</span><span class="w">  </span><span class="n">context</span><span class="p">,</span>
+<span class="w">                            </span><span class="n">cl_mem_flags</span><span class="w"> </span><span class="n">flags</span><span class="p">,</span>
+<span class="w">                            </span><span class="kt">size_t</span><span class="w">       </span><span class="n">size</span><span class="p">,</span>
+<span class="w">                            </span><span class="kt">void</span><span class="w">        </span><span class="o">*</span><span class="n">host_ptr</span><span class="p">,</span>
+<span class="w">                            </span><span class="n">cl_int</span><span class="w">      </span><span class="o">*</span><span class="n">errcode_ret</span><span class="p">),</span>
+<span class="w">                           </span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">flags</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">host_ptr</span><span class="p">,</span><span class="w"> </span><span class="n">errcode_ret</span><span class="p">),</span>
+<span class="w">                           </span><span class="n">errcode_ret</span><span class="p">)</span>
+
+<span class="n">PDJE_OPENCL_HANDLE_WRAPPER</span><span class="p">(</span>
+<span class="w">    </span><span class="n">cl_mem</span><span class="p">,</span>
+<span class="w">    </span><span class="n">clCreateBufferWithProperties</span><span class="p">,</span>
+<span class="w">    </span><span class="p">(</span><span class="n">cl_context</span><span class="w">                   </span><span class="n">context</span><span class="p">,</span>
+<span class="w">     </span><span class="k">const</span><span class="w"> </span><span class="n">cl_mem_properties</span><span class="w">     </span><span class="o">*</span><span class="n">properties</span><span class="p">,</span>
+<span class="w">     </span><span class="n">cl_mem_flags</span><span class="w">                 </span><span class="n">flags</span><span class="p">,</span>
+<span class="w">     </span><span class="kt">size_t</span><span class="w">                       </span><span class="n">size</span><span class="p">,</span>
+<span class="w">     </span><span class="kt">void</span><span class="w">                        </span><span class="o">*</span><span class="n">host_ptr</span><span class="p">,</span>
+<span class="w">     </span><span class="n">cl_int</span><span class="w">                      </span><span class="o">*</span><span class="n">errcode_ret</span><span class="p">),</span>
+<span class="w">    </span><span class="p">(</span><span class="n">context</span><span class="p">,</span><span class="w"> </span><span class="n">properties</span><span class="p">,</span><span class="w"> </span><span class="n">flags</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">host_ptr</span><span class="p">,</span><span class="w"> </span><span class="n">errcode_ret</span><span class="p">),</span>
+<span class="w">    </span><span class="n">errcode_ret</span><span class="p">)</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clGetMemObjectInfo</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_mem</span><span class="w">       </span><span class="n">memobj</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">cl_mem_info</span><span class="w">  </span><span class="n">param_name</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">size_t</span><span class="w">       </span><span class="n">param_value_size</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w">       </span><span class="n">param_value</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">size_t</span><span class="w"> </span><span class="o">*</span><span class="w">     </span><span class="n">param_value_size_ret</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">memobj</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_name</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_value_size</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_value</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_value_size_ret</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clRetainMemObject</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_mem</span><span class="w"> </span><span class="n">memobj</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">memobj</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clReleaseMemObject</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_mem</span><span class="w"> </span><span class="n">memobj</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">memobj</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clEnqueueReadBuffer</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_command_queue</span><span class="w"> </span><span class="n">command_queue</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">cl_mem</span><span class="w">           </span><span class="n">buffer</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">cl_bool</span><span class="w">          </span><span class="n">blocking_read</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">size_t</span><span class="w">           </span><span class="n">offset</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">size_t</span><span class="w">           </span><span class="n">size</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w">           </span><span class="n">ptr</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">cl_uint</span><span class="w">          </span><span class="n">num_events_in_wait_list</span><span class="p">,</span>
+<span class="w">                         </span><span class="k">const</span><span class="w"> </span><span class="n">cl_event</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">event_wait_list</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">cl_event</span><span class="w"> </span><span class="o">*</span><span class="w">       </span><span class="n">event</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">command_queue</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">buffer</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">blocking_read</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">offset</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">size</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">ptr</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">num_events_in_wait_list</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">event_wait_list</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">event</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clEnqueueWriteBuffer</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_command_queue</span><span class="w"> </span><span class="n">command_queue</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">cl_mem</span><span class="w">           </span><span class="n">buffer</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">cl_bool</span><span class="w">          </span><span class="n">blocking_write</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">size_t</span><span class="w">           </span><span class="n">offset</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">size_t</span><span class="w">           </span><span class="n">size</span><span class="p">,</span>
+<span class="w">                         </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w">     </span><span class="n">ptr</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">cl_uint</span><span class="w">          </span><span class="n">num_events_in_wait_list</span><span class="p">,</span>
+<span class="w">                         </span><span class="k">const</span><span class="w"> </span><span class="n">cl_event</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">event_wait_list</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">cl_event</span><span class="w"> </span><span class="o">*</span><span class="w">       </span><span class="n">event</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">command_queue</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">buffer</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">blocking_write</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">offset</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">size</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">ptr</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">num_events_in_wait_list</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">event_wait_list</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">event</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clEnqueueNDRangeKernel</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_command_queue</span><span class="w"> </span><span class="n">command_queue</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">cl_kernel</span><span class="w">        </span><span class="n">kernel</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">cl_uint</span><span class="w">          </span><span class="n">work_dim</span><span class="p">,</span>
+<span class="w">                         </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="o">*</span><span class="w">   </span><span class="n">global_work_offset</span><span class="p">,</span>
+<span class="w">                         </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="o">*</span><span class="w">   </span><span class="n">global_work_size</span><span class="p">,</span>
+<span class="w">                         </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="o">*</span><span class="w">   </span><span class="n">local_work_size</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">cl_uint</span><span class="w">          </span><span class="n">num_events_in_wait_list</span><span class="p">,</span>
+<span class="w">                         </span><span class="k">const</span><span class="w"> </span><span class="n">cl_event</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">event_wait_list</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">cl_event</span><span class="w"> </span><span class="o">*</span><span class="w">       </span><span class="n">event</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">command_queue</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">kernel</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">work_dim</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">global_work_offset</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">global_work_size</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">local_work_size</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">num_events_in_wait_list</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">event_wait_list</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">event</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clWaitForEvents</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_uint</span><span class="w">          </span><span class="n">num_events</span><span class="p">,</span>
+<span class="w">                         </span><span class="k">const</span><span class="w"> </span><span class="n">cl_event</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">event_list</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">num_events</span><span class="p">,</span><span class="w"> </span><span class="n">event_list</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clGetEventInfo</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_event</span><span class="w">      </span><span class="n">event</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">cl_event_info</span><span class="w"> </span><span class="n">param_name</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">size_t</span><span class="w">        </span><span class="n">param_value_size</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w">        </span><span class="n">param_value</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">size_t</span><span class="w"> </span><span class="o">*</span><span class="w">      </span><span class="n">param_value_size_ret</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">event</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_name</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_value_size</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_value</span><span class="p">,</span>
+<span class="w">                         </span><span class="n">param_value_size_ret</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clRetainEvent</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_event</span><span class="w"> </span><span class="n">event</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">event</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_INT_WRAPPER</span><span class="p">(</span><span class="n">clReleaseEvent</span><span class="p">,</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">cl_event</span><span class="w"> </span><span class="n">event</span><span class="p">),</span>
+<span class="w">                        </span><span class="p">(</span><span class="n">event</span><span class="p">),</span>
+<span class="w">                        </span><span class="n">GetUnavailableOpenCLError</span><span class="p">())</span>
+
+<span class="n">PDJE_OPENCL_VOIDPTR_WRAPPER</span><span class="p">(</span><span class="n">clGetExtensionFunctionAddress</span><span class="p">,</span>
+<span class="w">                            </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">func_name</span><span class="p">),</span>
+<span class="w">                            </span><span class="p">(</span><span class="n">func_name</span><span class="p">))</span>
+
+<span class="n">PDJE_OPENCL_VOIDPTR_WRAPPER</span><span class="p">(</span><span class="n">clGetExtensionFunctionAddressForPlatform</span><span class="p">,</span>
+<span class="w">                            </span><span class="p">(</span><span class="n">cl_platform_id</span><span class="w"> </span><span class="n">platform</span><span class="p">,</span>
+<span class="w">                             </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w">   </span><span class="n">func_name</span><span class="p">),</span>
+<span class="w">                            </span><span class="p">(</span><span class="n">platform</span><span class="p">,</span><span class="w"> </span><span class="n">func_name</span><span class="p">))</span>
+
+<span class="cp">#undef PDJE_OPENCL_INT_WRAPPER</span>
+<span class="cp">#undef PDJE_OPENCL_HANDLE_WRAPPER</span>
+<span class="cp">#undef PDJE_OPENCL_VOIDPTR_WRAPPER</span>
+<span class="cp">#undef PDJE_OPENCL_RUNTIME_SYMBOLS</span>
+
+<span class="p">}</span><span class="w"> </span><span class="c1">// namespace</span>
+
+<span class="k">namespace</span><span class="w"> </span><span class="nn">PDJE_PARALLEL</span><span class="w"> </span><span class="p">{</span>
+
+<span class="kt">bool</span>
+<span class="nf">EnsureOpenCLRuntimeLoaded</span><span class="p">()</span><span class="w"> </span><span class="k">noexcept</span>
+<span class="p">{</span>
+<span class="cp">#if !defined(_WIN32) &amp;&amp; !defined(__linux__)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="cp">#else</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">call_once</span><span class="p">(</span><span class="n">gOpenCLRuntimeInitOnce</span><span class="p">,</span><span class="w"> </span><span class="n">InitializeOpenCLRuntime</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">gOpenCLRuntimeReady</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">memory_order_acquire</span><span class="p">);</span>
+<span class="cp">#endif</span>
+<span class="p">}</span>
+
+<span class="p">}</span><span class="w"> </span><span class="c1">// namespace PDJE_PARALLEL</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, RLIOP913.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

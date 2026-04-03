@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="AnnoyBackend_8hpp" kind="file" language="C++">
     <compoundname>AnnoyBackend.hpp</compoundname>
     <includes refid="Result_8hpp" local="yes">util/common/Result.hpp</includes>
@@ -24,25 +24,6 @@
     <includes local="no">utility</includes>
     <includes local="no">vector</includes>
     <incdepgraph>
-      <node id="7">
-        <label>util/db/DbTypes.hpp</label>
-        <link refid="DbTypes_8hpp"/>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-      </node>
-      <node id="17">
-        <label>filesystem</label>
-      </node>
-      <node id="13">
-        <label>annoy/kissrandom.h</label>
-      </node>
-      <node id="5">
-        <label>string</label>
-      </node>
       <node id="2">
         <label>util/common/Result.hpp</label>
         <link refid="Result_8hpp"/>
@@ -51,15 +32,24 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="19">
-        <label>map</label>
-      </node>
-      <node id="10">
-        <label>util/db/nearest/Types.hpp</label>
-        <link refid="nearest_2Types_8hpp"/>
-        <childnode refid="7" relation="include">
+      <node id="3">
+        <label>util/common/Status.hpp</label>
+        <link refid="Status_8hpp"/>
+        <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>util/common/StatusCode.hpp</label>
+        <link refid="StatusCode_8hpp"/>
+      </node>
+      <node id="7">
+        <label>util/db/DbTypes.hpp</label>
+        <link refid="DbTypes_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
@@ -110,59 +100,69 @@
         <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="12">
-        <label>annoy/annoylib.h</label>
-      </node>
-      <node id="18">
-        <label>fstream</label>
-      </node>
-      <node id="23">
-        <label>string_view</label>
-      </node>
-      <node id="4">
-        <label>util/common/StatusCode.hpp</label>
-        <link refid="StatusCode_8hpp"/>
-      </node>
-      <node id="11">
-        <label>optional</label>
-      </node>
-      <node id="9">
-        <label>vector</label>
-      </node>
-      <node id="6">
-        <label>utility</label>
-      </node>
-      <node id="22">
-        <label>sstream</label>
-      </node>
-      <node id="15">
-        <label>cstdlib</label>
-      </node>
-      <node id="8">
-        <label>cstddef</label>
-      </node>
-      <node id="24">
-        <label>unordered_map</label>
-      </node>
-      <node id="3">
-        <label>util/common/Status.hpp</label>
-        <link refid="Status_8hpp"/>
-        <childnode refid="4" relation="include">
+      <node id="10">
+        <label>util/db/nearest/Types.hpp</label>
+        <link refid="nearest_2Types_8hpp"/>
+        <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
-      </node>
-      <node id="21">
-        <label>span</label>
+        <childnode refid="9" relation="include">
+        </childnode>
       </node>
       <node id="14">
         <label>algorithm</label>
       </node>
+      <node id="12">
+        <label>annoy/annoylib.h</label>
+      </node>
+      <node id="13">
+        <label>annoy/kissrandom.h</label>
+      </node>
+      <node id="8">
+        <label>cstddef</label>
+      </node>
+      <node id="15">
+        <label>cstdlib</label>
+      </node>
       <node id="16">
         <label>cstring</label>
       </node>
+      <node id="17">
+        <label>filesystem</label>
+      </node>
+      <node id="18">
+        <label>fstream</label>
+      </node>
+      <node id="19">
+        <label>map</label>
+      </node>
       <node id="20">
         <label>memory</label>
+      </node>
+      <node id="11">
+        <label>optional</label>
+      </node>
+      <node id="21">
+        <label>span</label>
+      </node>
+      <node id="22">
+        <label>sstream</label>
+      </node>
+      <node id="5">
+        <label>string</label>
+      </node>
+      <node id="23">
+        <label>string_view</label>
+      </node>
+      <node id="24">
+        <label>unordered_map</label>
+      </node>
+      <node id="6">
+        <label>utility</label>
+      </node>
+      <node id="9">
+        <label>vector</label>
       </node>
     </incdepgraph>
     <innerclass refid="structPDJE__UTIL_1_1db_1_1backends_1_1AnnoyConfig" prot="public">PDJE_UTIL::db::backends::AnnoyConfig</innerclass>
@@ -204,12 +204,12 @@
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>
 <codeline lineno="27" refid="namespacePDJE__UTIL_1_1db_1_1backends" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1db_1_1backends" kindref="compound">PDJE_UTIL::db::backends</ref><sp/>{</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
-<codeline lineno="29" refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">detail<sp/>{</highlight></codeline>
+<codeline lineno="29" refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail" kindref="compound">detail</ref><sp/>{</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::string</highlight></codeline>
 <codeline lineno="32" refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a766c7e77eb3fe1873001af578f4a495c" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a766c7e77eb3fe1873001af578f4a495c" kindref="member">hex_encode</ref>(std::string_view<sp/>input)</highlight></codeline>
 <codeline lineno="33"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>hex_digits[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;0123456789abcdef&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>hex_digits[]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;0123456789abcdef&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>encoded;</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>encoded.reserve(input.size()<sp/>*<sp/>2);</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>ch<sp/>:<sp/>input)<sp/>{</highlight></codeline>
@@ -230,7 +230,7 @@
 <codeline lineno="52"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"></highlight></codeline>
 <codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::optional&lt;std::vector&lt;std::byte&gt;&gt;</highlight></codeline>
-<codeline lineno="55" refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a0182747311ae00f0253e418317029be3" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a0182747311ae00f0253e418317029be3" kindref="member">hex_decode_bytes</ref>(std::string_view<sp/>input)</highlight></codeline>
+<codeline lineno="55" refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a5bbfa57cdab8dbe4b7e223f56fe00909" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a5bbfa57cdab8dbe4b7e223f56fe00909" kindref="member">hex_decode_bytes</ref>(std::string_view<sp/>input)</highlight></codeline>
 <codeline lineno="56"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((input.size()<sp/>%<sp/>2)<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;</highlight></codeline>
@@ -263,9 +263,9 @@
 <codeline lineno="85"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"></highlight></codeline>
 <codeline lineno="87"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::optional&lt;std::string&gt;</highlight></codeline>
-<codeline lineno="88" refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a1c24eaa3cde05d744cd175bc7564fb30" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a1c24eaa3cde05d744cd175bc7564fb30" kindref="member">hex_decode_text</ref>(std::string_view<sp/>input)</highlight></codeline>
+<codeline lineno="88" refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1aa3c012afe7fe73bd9cfaa224930f13ab" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1aa3c012afe7fe73bd9cfaa224930f13ab" kindref="member">hex_decode_text</ref>(std::string_view<sp/>input)</highlight></codeline>
 <codeline lineno="89"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>bytes<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a0182747311ae00f0253e418317029be3" kindref="member">hex_decode_bytes</ref>(input);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>bytes<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a5bbfa57cdab8dbe4b7e223f56fe00909" kindref="member">hex_decode_bytes</ref>(input);</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!bytes.has_value())<sp/>{</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -287,9 +287,9 @@
 <codeline lineno="109"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"></highlight></codeline>
 <codeline lineno="111"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::optional&lt;nearest::Embedding&gt;</highlight></codeline>
-<codeline lineno="112" refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a0c4366e3a53a130192824e38de23eaee" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a0c4366e3a53a130192824e38de23eaee" kindref="member">decode_embedding</ref>(std::string_view<sp/>input,<sp/>std::size_t<sp/>expected_dimension)</highlight></codeline>
+<codeline lineno="112" refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a46fd237b3317763d682518b5ea010887" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a46fd237b3317763d682518b5ea010887" kindref="member">decode_embedding</ref>(std::string_view<sp/>input,<sp/>std::size_t<sp/>expected_dimension)</highlight></codeline>
 <codeline lineno="113"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>bytes<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a0182747311ae00f0253e418317029be3" kindref="member">hex_decode_bytes</ref>(input);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>bytes<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a5bbfa57cdab8dbe4b7e223f56fe00909" kindref="member">hex_decode_bytes</ref>(input);</highlight></codeline>
 <codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!bytes.has_value())<sp/>{</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;</highlight></codeline>
 <codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -297,7 +297,7 @@
 <codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::nullopt;</highlight></codeline>
 <codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"></highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1nearest_1a0cae0a740c071c4c732a342bb27041f1" kindref="member">nearest::Embedding</ref><sp/>embedding(bytes-&gt;size()<sp/>/<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1nearest_1a7a11d5866d55b0da3b669e1e0a316463" kindref="member">nearest::Embedding</ref><sp/>embedding(bytes-&gt;size()<sp/>/<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">));</highlight></codeline>
 <codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!bytes-&gt;empty())<sp/>{</highlight></codeline>
 <codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::memcpy(embedding.data(),<sp/>bytes-&gt;data(),<sp/>bytes-&gt;size());</highlight></codeline>
 <codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -328,7 +328,7 @@
 <codeline lineno="150"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="151"><highlight class="normal"></highlight></codeline>
 <codeline lineno="152"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;</highlight></codeline>
-<codeline lineno="153" refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1aff83ceeb15d3b25e7eb9df37ab52dd94" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1aff83ceeb15d3b25e7eb9df37ab52dd94" kindref="member">split_tsv_line</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;line)</highlight></codeline>
+<codeline lineno="153" refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1aa3b64e3dd0aa4978f1fbf064347081eb" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1aa3b64e3dd0aa4978f1fbf064347081eb" kindref="member">split_tsv_line</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;line)</highlight></codeline>
 <codeline lineno="154"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>fields;</highlight></codeline>
 <codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>std::istringstream<sp/><sp/><sp/><sp/><sp/><sp/><sp/>stream(line);</highlight></codeline>
@@ -354,16 +354,16 @@
 <codeline lineno="176"><highlight class="normal"></highlight></codeline>
 <codeline lineno="177" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend" kindref="compound">AnnoyBackend</ref><sp/>{</highlight></codeline>
 <codeline lineno="178"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="179" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a4339e49ba438eb485993f578423f2664" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1AnnoyConfig" kindref="compound">config_type</ref><sp/>=<sp/><ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1AnnoyConfig" kindref="compound">AnnoyConfig</ref>;</highlight></codeline>
-<codeline lineno="180" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1ad785786b2c0ff68a9f6d66787668c732" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1ad785786b2c0ff68a9f6d66787668c732" kindref="member">IndexType</ref><sp/>=</highlight></codeline>
+<codeline lineno="179" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a4339e49ba438eb485993f578423f2664" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a4339e49ba438eb485993f578423f2664" kindref="member">config_type</ref><sp/>=<sp/><ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1AnnoyConfig" kindref="compound">AnnoyConfig</ref>;</highlight></codeline>
+<codeline lineno="180" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a4f574edbe4a56fb63b5ee053df6b2693" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a4f574edbe4a56fb63b5ee053df6b2693" kindref="member">IndexType</ref><sp/>=</highlight></codeline>
 <codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Annoy::AnnoyIndex&lt;int,</highlight></codeline>
 <codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float,</highlight></codeline>
 <codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Annoy::Angular,</highlight></codeline>
 <codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Annoy::Kiss32Random,</highlight></codeline>
 <codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Annoy::AnnoyIndexSingleThreadedBuildPolicy&gt;;</highlight></codeline>
 <codeline lineno="186"><highlight class="normal"></highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="188" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a91aa3669c1142e4a3c631283da159a06" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a91aa3669c1142e4a3c631283da159a06" kindref="member">create</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1AnnoyConfig" kindref="compound">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="188" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1aab3e381ea959f83fd6698d2edc903e31" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1aab3e381ea959f83fd6698d2edc903e31" kindref="member">create</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a4339e49ba438eb485993f578423f2664" kindref="member">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
 <codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cfg.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1AnnoyConfig_1ab69cd62689eac85c6c1c5fcb3bc161fa" kindref="member">root_path</ref>.empty())<sp/>{</highlight></codeline>
 <codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(</highlight></codeline>
@@ -385,8 +385,8 @@
 <codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;void&gt;::success</ref>();</highlight></codeline>
 <codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="209"><highlight class="normal"></highlight></codeline>
-<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="211" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a86908f741834722e8fb5f715b32a86d5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a86908f741834722e8fb5f715b32a86d5" kindref="member">destroy</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1AnnoyConfig" kindref="compound">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="211" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1af266afd470e448a7f8dfca1b938c9e4a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1af266afd470e448a7f8dfca1b938c9e4a" kindref="member">destroy</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a4339e49ba438eb485993f578423f2664" kindref="member">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
 <codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cfg.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1AnnoyConfig_1ab69cd62689eac85c6c1c5fcb3bc161fa" kindref="member">root_path</ref>.empty())<sp/>{</highlight></codeline>
 <codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(</highlight></codeline>
@@ -403,8 +403,8 @@
 <codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;void&gt;::success</ref>();</highlight></codeline>
 <codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="227"><highlight class="normal"></highlight></codeline>
-<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="229" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a32e769a4986c94f4fe4a9f4f4f261f52" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a32e769a4986c94f4fe4a9f4f4f261f52" kindref="member">open</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1AnnoyConfig" kindref="compound">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="229" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1abb1a130a136fa8b0b62c2df76b13beef" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1abb1a130a136fa8b0b62c2df76b13beef" kindref="member">open</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a4339e49ba438eb485993f578423f2664" kindref="member">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
 <codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a2c53918d594dc0ab3e35d138aecf0a13" kindref="member">is_open_</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(</highlight></codeline>
@@ -428,17 +428,17 @@
 <codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="251"><highlight class="normal"></highlight></codeline>
 <codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref><sp/>=<sp/>cfg;</highlight></codeline>
-<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1AnnoyConfig_1acb34f876d7c97cb585aa2a90979ae2c6" kindref="member">open_options</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1OpenOptions_1ae17d7423fa68120e197b73e3318c979e" kindref="member">truncate_if_exists</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>destroyed<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a86908f741834722e8fb5f715b32a86d5" kindref="member">destroy</ref>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>);</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.open_options.truncate_if_exists)<sp/>{</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>destroyed<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1af266afd470e448a7f8dfca1b938c9e4a" kindref="member">destroy</ref>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>);</highlight></codeline>
 <codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!destroyed.ok())<sp/>{</highlight></codeline>
 <codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>destroyed;</highlight></codeline>
 <codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="259"><highlight class="normal"></highlight></codeline>
-<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>exists<sp/>=<sp/>std::filesystem::exists(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1AnnoyConfig_1ab69cd62689eac85c6c1c5fcb3bc161fa" kindref="member">root_path</ref>);</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>exists<sp/>=<sp/>std::filesystem::exists(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.root_path);</highlight></codeline>
 <codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!exists)<sp/>{</highlight></codeline>
-<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1AnnoyConfig_1acb34f876d7c97cb585aa2a90979ae2c6" kindref="member">open_options</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1OpenOptions_1af59ce4bcdfb2d4f5929ef2e700776d2e" kindref="member">create_if_missing</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>created<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a91aa3669c1142e4a3c631283da159a06" kindref="member">create</ref>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>);</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.open_options.create_if_missing)<sp/>{</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>created<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1aab3e381ea959f83fd6698d2edc903e31" kindref="member">create</ref>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>);</highlight></codeline>
 <codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!created.ok())<sp/>{</highlight></codeline>
 <codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>created;</highlight></codeline>
 <codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -456,9 +456,9 @@
 <codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a88f21b0c758ab15391f275cd257df51d" kindref="member">index_dirty_</ref><sp/><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a2c53918d594dc0ab3e35d138aecf0a13" kindref="member">is_open_</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="280"><highlight class="normal"></highlight></codeline>
-<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>manifest_path<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a3eb8babb813a8c10dcc81d3de5604d89" kindref="member">detail::annoy_manifest_path</ref>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1AnnoyConfig_1ab69cd62689eac85c6c1c5fcb3bc161fa" kindref="member">root_path</ref>);</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>manifest_path<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a3eb8babb813a8c10dcc81d3de5604d89" kindref="member">detail::annoy_manifest_path</ref>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.root_path);</highlight></codeline>
 <codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(std::filesystem::exists(manifest_path))<sp/>{</highlight></codeline>
-<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>loaded<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a90a8a9a57e88e08bbcc5936a2b332635" kindref="member">load_manifest</ref>(manifest_path);</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>loaded<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a50e7db22935917d24c08abb9681cc045" kindref="member">load_manifest</ref>(manifest_path);</highlight></codeline>
 <codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!loaded.ok())<sp/>{</highlight></codeline>
 <codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1aba74dee7b1e9106a396468ef1d4adb71" kindref="member">reset_runtime_state</ref>();</highlight></codeline>
 <codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>loaded;</highlight></codeline>
@@ -468,16 +468,16 @@
 <codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;void&gt;::success</ref>();</highlight></codeline>
 <codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="292"><highlight class="normal"></highlight></codeline>
-<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="294" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a0e3bf57db51c9175c47bfdfb86d25a2c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a0e3bf57db51c9175c47bfdfb86d25a2c" kindref="member">close</ref>()</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="294" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1aefdd59e85e0a40f784b76cb286920f75" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1aefdd59e85e0a40f784b76cb286920f75" kindref="member">close</ref>()</highlight></codeline>
 <codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a2c53918d594dc0ab3e35d138aecf0a13" kindref="member">is_open_</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;void&gt;::success</ref>();</highlight></codeline>
 <codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="299"><highlight class="normal"></highlight></codeline>
-<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref><sp/>result<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;void&gt;::success</ref>();</highlight></codeline>
-<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1AnnoyConfig_1acb34f876d7c97cb585aa2a90979ae2c6" kindref="member">open_options</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1OpenOptions_1a0a3190669f1f5d17b614c0511d802b66" kindref="member">read_only</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a837dbc2f5488b1bfa8935b8aca4d1abb" kindref="member">persist</ref>();</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref><sp/>result<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;void&gt;::success</ref>();</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.open_options.read_only)<sp/>{</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a8598ebee3e2daffe7fbfa8bed6642160" kindref="member">persist</ref>();</highlight></codeline>
 <codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="304"><highlight class="normal"></highlight></codeline>
 <codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1aba74dee7b1e9106a396468ef1d4adb71" kindref="member">reset_runtime_state</ref>();</highlight></codeline>
@@ -485,7 +485,7 @@
 <codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="308"><highlight class="normal"></highlight></codeline>
 <codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;bool&gt;</ref></highlight></codeline>
-<codeline lineno="310" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1aa7d8bee45d5b523ba8c7f42b5db6d381" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1aa7d8bee45d5b523ba8c7f42b5db6d381" kindref="member">contains</ref>(std::string_view<sp/>key)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="310" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a154bfbb1aa287c1075c55f97404b6688" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a154bfbb1aa287c1075c55f97404b6688" kindref="member">contains</ref>(std::string_view<sp/>key)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="311"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>status<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a7fb9144446e1d3df247b87e29122c8ae" kindref="member">require_open</ref>();<sp/>!status.<ref refid="structPDJE__UTIL_1_1common_1_1Status_1a422a0af607d3fc4c8cbdd441bbdbbbde" kindref="member">ok</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;bool&gt;::failure</ref>(status);</highlight></codeline>
@@ -494,7 +494,7 @@
 <codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="317"><highlight class="normal"></highlight></codeline>
 <codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;nearest::Item&gt;</ref></highlight></codeline>
-<codeline lineno="319" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a71739c993561b4d18ec82dc33ee26ca3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a71739c993561b4d18ec82dc33ee26ca3" kindref="member">get_item</ref>(std::string_view<sp/>key)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="319" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a15ccc9ba1327359840a22631aad60d18" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a15ccc9ba1327359840a22631aad60d18" kindref="member">get_item</ref>(std::string_view<sp/>key)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="320"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>status<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a7fb9144446e1d3df247b87e29122c8ae" kindref="member">require_open</ref>();<sp/>!status.<ref refid="structPDJE__UTIL_1_1common_1_1Status_1a422a0af607d3fc4c8cbdd441bbdbbbde" kindref="member">ok</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;nearest::Item&gt;::failure</ref>(status);</highlight></codeline>
@@ -508,8 +508,8 @@
 <codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;nearest::Item&gt;::success</ref>(found-&gt;second);</highlight></codeline>
 <codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="332"><highlight class="normal"></highlight></codeline>
-<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="334" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1ace0fd42604a27ac7c11d994f667cefb5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1ace0fd42604a27ac7c11d994f667cefb5" kindref="member">upsert_item</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1db_1_1nearest_1_1Item" kindref="compound">nearest::Item</ref><sp/>&amp;item)</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="334" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1ad8e00c6514ca192185bbea671aa80198" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1ad8e00c6514ca192185bbea671aa80198" kindref="member">upsert_item</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1db_1_1nearest_1_1Item" kindref="compound">nearest::Item</ref><sp/>&amp;item)</highlight></codeline>
 <codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>status<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1af22af711ae09491c704d3c35d6be7e17" kindref="member">require_writable</ref>();<sp/>!status.<ref refid="structPDJE__UTIL_1_1common_1_1Status_1a422a0af607d3fc4c8cbdd441bbdbbbde" kindref="member">ok</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(status);</highlight></codeline>
@@ -518,7 +518,7 @@
 <codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(</highlight></codeline>
 <codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><ref refid="namespacePDJE__UTIL_1_1common_1a3025dd440bc92023d950561cff3dfdb4ae55d43eabeefe5a8271b4a3c898bd18f" kindref="member">common::StatusCode::invalid_argument</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Annoy<sp/>item<sp/>id<sp/>must<sp/>not<sp/>be<sp/>empty.&quot;</highlight><highlight class="normal"><sp/>});</highlight></codeline>
 <codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(item.<ref refid="structPDJE__UTIL_1_1db_1_1nearest_1_1Item_1a1e4e3ca079b8c8b7fb8757d7b8cc79fb" kindref="member">embedding</ref>.size()<sp/>!=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1AnnoyConfig_1a33bfe9027c43c111bd4a07612fa21c48" kindref="member">dimension</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(item.<ref refid="structPDJE__UTIL_1_1db_1_1nearest_1_1Item_1a1e4e3ca079b8c8b7fb8757d7b8cc79fb" kindref="member">embedding</ref>.size()<sp/>!=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.dimension)<sp/>{</highlight></codeline>
 <codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(</highlight></codeline>
 <codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><ref refid="namespacePDJE__UTIL_1_1common_1a3025dd440bc92023d950561cff3dfdb4ae55d43eabeefe5a8271b4a3c898bd18f" kindref="member">common::StatusCode::invalid_argument</ref>,</highlight></codeline>
 <codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Annoy<sp/>item<sp/>embedding<sp/>size<sp/>must<sp/>match<sp/>the<sp/>configured<sp/>dimension.&quot;</highlight><highlight class="normal"><sp/>});</highlight></codeline>
@@ -529,8 +529,8 @@
 <codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;void&gt;::success</ref>();</highlight></codeline>
 <codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="353"><highlight class="normal"></highlight></codeline>
-<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="355" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a09536a46aa4bcdbe554c6db0ee9a76a0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a09536a46aa4bcdbe554c6db0ee9a76a0" kindref="member">erase_item</ref>(std::string_view<sp/>key)</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="355" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a7ad22336c3cc585f89e571bbf6640ee6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a7ad22336c3cc585f89e571bbf6640ee6" kindref="member">erase_item</ref>(std::string_view<sp/>key)</highlight></codeline>
 <codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>status<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1af22af711ae09491c704d3c35d6be7e17" kindref="member">require_writable</ref>();<sp/>!status.<ref refid="structPDJE__UTIL_1_1common_1_1Status_1a422a0af607d3fc4c8cbdd441bbdbbbde" kindref="member">ok</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(status);</highlight></codeline>
@@ -542,12 +542,12 @@
 <codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="365"><highlight class="normal"></highlight></codeline>
 <codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;std::vector&lt;nearest::SearchHit&gt;</ref>&gt;</highlight></codeline>
-<codeline lineno="367" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a5041204cba57d600abf6179b37aac42b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a5041204cba57d600abf6179b37aac42b" kindref="member">search</ref>(std::span&lt;const<sp/>float&gt;<sp/>query,<sp/><ref refid="structPDJE__UTIL_1_1db_1_1nearest_1_1SearchOptions" kindref="compound">nearest::SearchOptions</ref><sp/>options)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="367" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1afb9fe9e2ae2cf94cf4a33c3486ee5d10" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1afb9fe9e2ae2cf94cf4a33c3486ee5d10" kindref="member">search</ref>(std::span&lt;const<sp/>float&gt;<sp/>query,<sp/><ref refid="structPDJE__UTIL_1_1db_1_1nearest_1_1SearchOptions" kindref="compound">nearest::SearchOptions</ref><sp/>options)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="368"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>status<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a7fb9144446e1d3df247b87e29122c8ae" kindref="member">require_open</ref>();<sp/>!status.<ref refid="structPDJE__UTIL_1_1common_1_1Status_1a422a0af607d3fc4c8cbdd441bbdbbbde" kindref="member">ok</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;std::vector&lt;nearest::SearchHit&gt;</ref>&gt;::failure(status);</highlight></codeline>
 <codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(query.size()<sp/>!=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1AnnoyConfig_1a33bfe9027c43c111bd4a07612fa21c48" kindref="member">dimension</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(query.size()<sp/>!=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.dimension)<sp/>{</highlight></codeline>
 <codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;std::vector&lt;nearest::SearchHit&gt;</ref>&gt;::failure(</highlight></codeline>
 <codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><ref refid="namespacePDJE__UTIL_1_1common_1a3025dd440bc92023d950561cff3dfdb4ae55d43eabeefe5a8271b4a3c898bd18f" kindref="member">common::StatusCode::invalid_argument</ref>,</highlight></codeline>
 <codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Annoy<sp/>query<sp/>vector<sp/>size<sp/>must<sp/>match<sp/>the<sp/>configured<sp/>dimension.&quot;</highlight><highlight class="normal"><sp/>});</highlight></codeline>
@@ -556,7 +556,7 @@
 <codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;std::vector&lt;nearest::SearchHit&gt;</ref>&gt;::success({});</highlight></codeline>
 <codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="380"><highlight class="normal"></highlight></codeline>
-<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>rebuilt<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a29545c3863f591b00cd0257742366a1b" kindref="member">rebuild_index</ref>();</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>rebuilt<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1add18d3f176260aac9d9c42e2c917b958" kindref="member">rebuild_index</ref>();</highlight></codeline>
 <codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!rebuilt.ok())<sp/>{</highlight></codeline>
 <codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;std::vector&lt;nearest::SearchHit&gt;</ref>&gt;::failure(rebuilt.status());</highlight></codeline>
 <codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -592,7 +592,7 @@
 <codeline lineno="414"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="415"><highlight class="normal"></highlight></codeline>
 <codeline lineno="416"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;std::vector&lt;Key&gt;</ref>&gt;</highlight></codeline>
-<codeline lineno="417" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1accd12ad78ee00ed1c26f94056aa7e34d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1accd12ad78ee00ed1c26f94056aa7e34d" kindref="member">list_keys</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="417" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a92c5214f55f3f1232b3d5cc68c9a0fc7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a92c5214f55f3f1232b3d5cc68c9a0fc7" kindref="member">list_keys</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="418"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="419"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>status<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a7fb9144446e1d3df247b87e29122c8ae" kindref="member">require_open</ref>();<sp/>!status.<ref refid="structPDJE__UTIL_1_1common_1_1Status_1a422a0af607d3fc4c8cbdd441bbdbbbde" kindref="member">ok</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="420"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;std::vector&lt;Key&gt;</ref>&gt;::failure(status);</highlight></codeline>
@@ -623,14 +623,14 @@
 <codeline lineno="445"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>status<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a7fb9144446e1d3df247b87e29122c8ae" kindref="member">require_open</ref>();<sp/>!status.<ref refid="structPDJE__UTIL_1_1common_1_1Status_1a422a0af607d3fc4c8cbdd441bbdbbbde" kindref="member">ok</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="446"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
 <codeline lineno="447"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="448"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1AnnoyConfig_1acb34f876d7c97cb585aa2a90979ae2c6" kindref="member">open_options</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1OpenOptions_1a0a3190669f1f5d17b614c0511d802b66" kindref="member">read_only</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="448"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.open_options.read_only)<sp/>{</highlight></codeline>
 <codeline lineno="449"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{<sp/><ref refid="namespacePDJE__UTIL_1_1common_1a3025dd440bc92023d950561cff3dfdb4a723c25877a86786664edc4b643c08a6f" kindref="member">common::StatusCode::unsupported</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Annoy<sp/>backend<sp/>is<sp/>opened<sp/>read-only.&quot;</highlight><highlight class="normal"><sp/>};</highlight></codeline>
 <codeline lineno="450"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="451"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{};</highlight></codeline>
 <codeline lineno="452"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="453"><highlight class="normal"></highlight></codeline>
-<codeline lineno="454"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="455" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a29545c3863f591b00cd0257742366a1b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a29545c3863f591b00cd0257742366a1b" kindref="member">rebuild_index</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="454"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="455" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1add18d3f176260aac9d9c42e2c917b958" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1add18d3f176260aac9d9c42e2c917b958" kindref="member">rebuild_index</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="456"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="457"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a2c53918d594dc0ab3e35d138aecf0a13" kindref="member">is_open_</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="458"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(</highlight></codeline>
@@ -640,12 +640,12 @@
 <codeline lineno="462"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;void&gt;::success</ref>();</highlight></codeline>
 <codeline lineno="463"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="464"><highlight class="normal"></highlight></codeline>
-<codeline lineno="465"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a1a0906ec4e6cfab6b622b2c3d1cbe780" kindref="member">index_</ref><sp/>=<sp/>std::make_unique&lt;IndexType&gt;(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1AnnoyConfig_1a33bfe9027c43c111bd4a07612fa21c48" kindref="member">dimension</ref>));</highlight></codeline>
+<codeline lineno="465"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a1a0906ec4e6cfab6b622b2c3d1cbe780" kindref="member">index_</ref><sp/>=<sp/>std::make_unique&lt;IndexType&gt;(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.dimension));</highlight></codeline>
 <codeline lineno="466"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a7a3ab389edbb257f736ae35b2e3300a7" kindref="member">id_to_key_</ref>.clear();</highlight></codeline>
 <codeline lineno="467"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1ae63f3e8398c786e972a58bb446f0d170" kindref="member">next_item_id_</ref><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="468"><highlight class="normal"></highlight></codeline>
 <codeline lineno="469"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>&amp;[key,<sp/>item]<sp/>:<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a6880f606012cccb5c893ff5ddcf50eb9" kindref="member">records_</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="470"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(item.embedding.size()<sp/>!=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1AnnoyConfig_1a33bfe9027c43c111bd4a07612fa21c48" kindref="member">dimension</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="470"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(item.embedding.size()<sp/>!=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.dimension)<sp/>{</highlight></codeline>
 <codeline lineno="471"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(</highlight></codeline>
 <codeline lineno="472"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><ref refid="namespacePDJE__UTIL_1_1common_1a3025dd440bc92023d950561cff3dfdb4a16d66afab4306c18516ebaa8e9060ec7" kindref="member">common::StatusCode::backend_error</ref>,</highlight></codeline>
 <codeline lineno="473"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Annoy<sp/>manifest<sp/>contains<sp/>an<sp/>embedding<sp/>with<sp/>the<sp/>wrong<sp/>dimension.&quot;</highlight><highlight class="normal"><sp/>});</highlight></codeline>
@@ -664,7 +664,7 @@
 <codeline lineno="486"><highlight class="normal"></highlight></codeline>
 <codeline lineno="487"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a6880f606012cccb5c893ff5ddcf50eb9" kindref="member">records_</ref>.empty())<sp/>{</highlight></codeline>
 <codeline lineno="488"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*error<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="489"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a1a0906ec4e6cfab6b622b2c3d1cbe780" kindref="member">index_</ref>-&gt;build(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1AnnoyConfig_1ae75b28115325d69c2f6119ed42929f0f" kindref="member">trees</ref>,<sp/>-1,<sp/>&amp;error))<sp/>{</highlight></codeline>
+<codeline lineno="489"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a1a0906ec4e6cfab6b622b2c3d1cbe780" kindref="member">index_</ref>-&gt;build(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.trees,<sp/>-1,<sp/>&amp;error))<sp/>{</highlight></codeline>
 <codeline lineno="490"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>message<sp/>=<sp/>error<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>?<sp/>error<sp/>:<sp/></highlight><highlight class="stringliteral">&quot;Annoy<sp/>build<sp/>failed.&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="491"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a24391d1532342679ea43f9ac33ec702b" kindref="member">detail::free_annoy_error</ref>(error);</highlight></codeline>
 <codeline lineno="492"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(</highlight></codeline>
@@ -676,8 +676,8 @@
 <codeline lineno="498"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;void&gt;::success</ref>();</highlight></codeline>
 <codeline lineno="499"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="500"><highlight class="normal"></highlight></codeline>
-<codeline lineno="501"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="502" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a90a8a9a57e88e08bbcc5936a2b332635" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a90a8a9a57e88e08bbcc5936a2b332635" kindref="member">load_manifest</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::filesystem::path<sp/>&amp;manifest_path)</highlight></codeline>
+<codeline lineno="501"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="502" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a50e7db22935917d24c08abb9681cc045" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a50e7db22935917d24c08abb9681cc045" kindref="member">load_manifest</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::filesystem::path<sp/>&amp;manifest_path)</highlight></codeline>
 <codeline lineno="503"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="504"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::ifstream<sp/>input(manifest_path);</highlight></codeline>
 <codeline lineno="505"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!input)<sp/>{</highlight></codeline>
@@ -691,14 +691,14 @@
 <codeline lineno="513"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="514"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="515"><highlight class="normal"></highlight></codeline>
-<codeline lineno="516"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>fields<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1aff83ceeb15d3b25e7eb9df37ab52dd94" kindref="member">detail::split_tsv_line</ref>(line);</highlight></codeline>
+<codeline lineno="516"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>fields<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1aa3b64e3dd0aa4978f1fbf064347081eb" kindref="member">detail::split_tsv_line</ref>(line);</highlight></codeline>
 <codeline lineno="517"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fields.size()<sp/>!=<sp/>6)<sp/>{</highlight></codeline>
 <codeline lineno="518"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(</highlight></codeline>
 <codeline lineno="519"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><ref refid="namespacePDJE__UTIL_1_1common_1a3025dd440bc92023d950561cff3dfdb4a16d66afab4306c18516ebaa8e9060ec7" kindref="member">common::StatusCode::backend_error</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Annoy<sp/>manifest<sp/>is<sp/>malformed.&quot;</highlight><highlight class="normal"><sp/>});</highlight></codeline>
 <codeline lineno="520"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="521"><highlight class="normal"></highlight></codeline>
-<codeline lineno="522"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a1c24eaa3cde05d744cd175bc7564fb30" kindref="member">detail::hex_decode_text</ref>(fields[0]);</highlight></codeline>
-<codeline lineno="523"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>embedding<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a0c4366e3a53a130192824e38de23eaee" kindref="member">detail::decode_embedding</ref>(fields[1],<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1AnnoyConfig_1a33bfe9027c43c111bd4a07612fa21c48" kindref="member">dimension</ref>);</highlight></codeline>
+<codeline lineno="522"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1aa3c012afe7fe73bd9cfaa224930f13ab" kindref="member">detail::hex_decode_text</ref>(fields[0]);</highlight></codeline>
+<codeline lineno="523"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>embedding<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a46fd237b3317763d682518b5ea010887" kindref="member">detail::decode_embedding</ref>(fields[1],<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.dimension);</highlight></codeline>
 <codeline lineno="524"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">.has_value()<sp/>||<sp/>!embedding.has_value())<sp/>{</highlight></codeline>
 <codeline lineno="525"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(</highlight></codeline>
 <codeline lineno="526"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><ref refid="namespacePDJE__UTIL_1_1common_1a3025dd440bc92023d950561cff3dfdb4a16d66afab4306c18516ebaa8e9060ec7" kindref="member">common::StatusCode::backend_error</ref>,</highlight></codeline>
@@ -710,7 +710,7 @@
 <codeline lineno="532"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>item.<ref refid="structPDJE__UTIL_1_1db_1_1nearest_1_1Item_1a1e4e3ca079b8c8b7fb8757d7b8cc79fb" kindref="member">embedding</ref><sp/>=<sp/>std::move(*embedding);</highlight></codeline>
 <codeline lineno="533"><highlight class="normal"></highlight></codeline>
 <codeline lineno="534"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fields[2]<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;1&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="535"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>text_payload<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a1c24eaa3cde05d744cd175bc7564fb30" kindref="member">detail::hex_decode_text</ref>(fields[3]);</highlight></codeline>
+<codeline lineno="535"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>text_payload<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1aa3c012afe7fe73bd9cfaa224930f13ab" kindref="member">detail::hex_decode_text</ref>(fields[3]);</highlight></codeline>
 <codeline lineno="536"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!text_payload.has_value())<sp/>{</highlight></codeline>
 <codeline lineno="537"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(</highlight></codeline>
 <codeline lineno="538"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><ref refid="namespacePDJE__UTIL_1_1common_1a3025dd440bc92023d950561cff3dfdb4a16d66afab4306c18516ebaa8e9060ec7" kindref="member">common::StatusCode::backend_error</ref>,</highlight></codeline>
@@ -724,7 +724,7 @@
 <codeline lineno="546"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="547"><highlight class="normal"></highlight></codeline>
 <codeline lineno="548"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fields[4]<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;1&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="549"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>bytes_payload<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a0182747311ae00f0253e418317029be3" kindref="member">detail::hex_decode_bytes</ref>(fields[5]);</highlight></codeline>
+<codeline lineno="549"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>bytes_payload<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a5bbfa57cdab8dbe4b7e223f56fe00909" kindref="member">detail::hex_decode_bytes</ref>(fields[5]);</highlight></codeline>
 <codeline lineno="550"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!bytes_payload.has_value())<sp/>{</highlight></codeline>
 <codeline lineno="551"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(</highlight></codeline>
 <codeline lineno="552"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><ref refid="namespacePDJE__UTIL_1_1common_1a3025dd440bc92023d950561cff3dfdb4a16d66afab4306c18516ebaa8e9060ec7" kindref="member">common::StatusCode::backend_error</ref>,</highlight></codeline>
@@ -743,29 +743,29 @@
 <codeline lineno="565"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;void&gt;::success</ref>();</highlight></codeline>
 <codeline lineno="566"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="567"><highlight class="normal"></highlight></codeline>
-<codeline lineno="568"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="569" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a837dbc2f5488b1bfa8935b8aca4d1abb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a837dbc2f5488b1bfa8935b8aca4d1abb" kindref="member">persist</ref>()</highlight></codeline>
+<codeline lineno="568"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="569" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a8598ebee3e2daffe7fbfa8bed6642160" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a8598ebee3e2daffe7fbfa8bed6642160" kindref="member">persist</ref>()</highlight></codeline>
 <codeline lineno="570"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="571"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>rebuilt<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a29545c3863f591b00cd0257742366a1b" kindref="member">rebuild_index</ref>();</highlight></codeline>
+<codeline lineno="571"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>rebuilt<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1add18d3f176260aac9d9c42e2c917b958" kindref="member">rebuild_index</ref>();</highlight></codeline>
 <codeline lineno="572"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!rebuilt.ok())<sp/>{</highlight></codeline>
 <codeline lineno="573"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>rebuilt;</highlight></codeline>
 <codeline lineno="574"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="575"><highlight class="normal"></highlight></codeline>
 <codeline lineno="576"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::error_code<sp/>ec;</highlight></codeline>
-<codeline lineno="577"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::filesystem::create_directories(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1AnnoyConfig_1ab69cd62689eac85c6c1c5fcb3bc161fa" kindref="member">root_path</ref>,<sp/>ec);</highlight></codeline>
+<codeline lineno="577"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::filesystem::create_directories(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.root_path,<sp/>ec);</highlight></codeline>
 <codeline lineno="578"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ec)<sp/>{</highlight></codeline>
 <codeline lineno="579"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(</highlight></codeline>
 <codeline lineno="580"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><ref refid="namespacePDJE__UTIL_1_1common_1a3025dd440bc92023d950561cff3dfdb4acccc32f2a5f7dc7b87d2f85daea66789" kindref="member">common::StatusCode::io_error</ref>,<sp/>ec.message()<sp/>});</highlight></codeline>
 <codeline lineno="581"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="582"><highlight class="normal"></highlight></codeline>
-<codeline lineno="583"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>manifest_path<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a3eb8babb813a8c10dcc81d3de5604d89" kindref="member">detail::annoy_manifest_path</ref>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1AnnoyConfig_1ab69cd62689eac85c6c1c5fcb3bc161fa" kindref="member">root_path</ref>);</highlight></codeline>
+<codeline lineno="583"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>manifest_path<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a3eb8babb813a8c10dcc81d3de5604d89" kindref="member">detail::annoy_manifest_path</ref>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.root_path);</highlight></codeline>
 <codeline lineno="584"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::ofstream<sp/>output(manifest_path,<sp/>std::ios::trunc);</highlight></codeline>
 <codeline lineno="585"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!output)<sp/>{</highlight></codeline>
 <codeline lineno="586"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(</highlight></codeline>
 <codeline lineno="587"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><ref refid="namespacePDJE__UTIL_1_1common_1a3025dd440bc92023d950561cff3dfdb4acccc32f2a5f7dc7b87d2f85daea66789" kindref="member">common::StatusCode::io_error</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>write<sp/>Annoy<sp/>manifest<sp/>file.&quot;</highlight><highlight class="normal"><sp/>});</highlight></codeline>
 <codeline lineno="588"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="589"><highlight class="normal"></highlight></codeline>
-<codeline lineno="590"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>keys_result<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1accd12ad78ee00ed1c26f94056aa7e34d" kindref="member">list_keys</ref>();</highlight></codeline>
+<codeline lineno="590"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>keys_result<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a92c5214f55f3f1232b3d5cc68c9a0fc7" kindref="member">list_keys</ref>();</highlight></codeline>
 <codeline lineno="591"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!keys_result.ok())<sp/>{</highlight></codeline>
 <codeline lineno="592"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(keys_result.status());</highlight></codeline>
 <codeline lineno="593"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -786,14 +786,14 @@
 <codeline lineno="608"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="609"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>output.close();</highlight></codeline>
 <codeline lineno="610"><highlight class="normal"></highlight></codeline>
-<codeline lineno="611"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>index_path<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1aef1ee84a30c8dbe94ad687eec41feca0" kindref="member">detail::annoy_index_path</ref>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1AnnoyConfig_1ab69cd62689eac85c6c1c5fcb3bc161fa" kindref="member">root_path</ref>);</highlight></codeline>
+<codeline lineno="611"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>index_path<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1aef1ee84a30c8dbe94ad687eec41feca0" kindref="member">detail::annoy_index_path</ref>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.root_path);</highlight></codeline>
 <codeline lineno="612"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a6880f606012cccb5c893ff5ddcf50eb9" kindref="member">records_</ref>.empty())<sp/>{</highlight></codeline>
 <codeline lineno="613"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::filesystem::remove(index_path,<sp/>ec);</highlight></codeline>
 <codeline lineno="614"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;void&gt;::success</ref>();</highlight></codeline>
 <codeline lineno="615"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="616"><highlight class="normal"></highlight></codeline>
 <codeline lineno="617"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*error<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="618"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a1a0906ec4e6cfab6b622b2c3d1cbe780" kindref="member">index_</ref>-&gt;save(index_path.string().c_str(),<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1AnnoyConfig_1a368244f492e5a802f2f8238c2924bee2" kindref="member">prefault</ref>,<sp/>&amp;error))<sp/>{</highlight></codeline>
+<codeline lineno="618"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a1a0906ec4e6cfab6b622b2c3d1cbe780" kindref="member">index_</ref>-&gt;save(index_path.string().c_str(),<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref>.prefault,<sp/>&amp;error))<sp/>{</highlight></codeline>
 <codeline lineno="619"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>message<sp/>=<sp/>error<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>?<sp/>error<sp/>:<sp/></highlight><highlight class="stringliteral">&quot;Annoy<sp/>save<sp/>failed.&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="620"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a24391d1532342679ea43f9ac33ec702b" kindref="member">detail::free_annoy_error</ref>(error);</highlight></codeline>
 <codeline lineno="621"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(</highlight></codeline>
@@ -814,7 +814,7 @@
 <codeline lineno="636"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a2c53918d594dc0ab3e35d138aecf0a13" kindref="member">is_open_</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="637"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="638"><highlight class="normal"></highlight></codeline>
-<codeline lineno="639" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1AnnoyConfig" kindref="compound">config_type</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref><sp/>{};</highlight></codeline>
+<codeline lineno="639" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a4339e49ba438eb485993f578423f2664" kindref="member">config_type</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a9847244d5d9a5fce9c33ba20c661af5f" kindref="member">config_</ref><sp/>{};</highlight></codeline>
 <codeline lineno="640" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a2c53918d594dc0ab3e35d138aecf0a13" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a2c53918d594dc0ab3e35d138aecf0a13" kindref="member">is_open_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="641" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a88f21b0c758ab15391f275cd257df51d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1a88f21b0c758ab15391f275cd257df51d" kindref="member">index_dirty_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="642" refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1ae63f3e8398c786e972a58bb446f0d170" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1AnnoyBackend_1ae63f3e8398c786e972a58bb446f0d170" kindref="member">next_item_id_</ref><sp/>=<sp/>0;</highlight></codeline>

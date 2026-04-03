@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1DiffCollectPayload" kind="struct" language="C++" prot="public">
     <compoundname>PDJE_TIMELINE::TimeLineDiffMachineCore::DiffCollectPayload</compoundname>
     <includes refid="TimeLineDiffMachine_8hpp" local="no">TimeLineDiffMachine.hpp</includes>
-      <sectiondef kind="public-attrib">
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1DiffCollectPayload_1a418a5e038fe95e1366733336597bc98b" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1ChangedLineRef" kindref="compound">ChangedLineRef</ref> &gt;</type>
         <definition>std::vector&lt;ChangedLineRef&gt; PDJE_TIMELINE::TimeLineDiffMachineCore::DiffCollectPayload::lines</definition>
         <argsstring></argsstring>
         <name>lines</name>
+        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::DiffCollectPayload::lines</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -22,6 +23,7 @@
         <definition>std::unordered_map&lt;int, HunkRange&gt; PDJE_TIMELINE::TimeLineDiffMachineCore::DiffCollectPayload::hunks</definition>
         <argsstring></argsstring>
         <name>hunks</name>
+        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::DiffCollectPayload::hunks</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -35,6 +37,7 @@
         <definition>HunkRange PDJE_TIMELINE::TimeLineDiffMachineCore::DiffCollectPayload::current_hunk</definition>
         <argsstring></argsstring>
         <name>current_hunk</name>
+        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::DiffCollectPayload::current_hunk</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -48,6 +51,7 @@
         <definition>int PDJE_TIMELINE::TimeLineDiffMachineCore::DiffCollectPayload::next_hunk_id</definition>
         <argsstring></argsstring>
         <name>next_hunk_id</name>
+        <qualifiedname>PDJE_TIMELINE::TimeLineDiffMachineCore::DiffCollectPayload::next_hunk_id</qualifiedname>
         <initializer>= 0</initializer>
         <briefdescription>
         </briefdescription>
@@ -57,44 +61,44 @@
         </inbodydescription>
         <location file="include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp" line="50" column="41" bodyfile="include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp" bodystart="50" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="5">
+      <node id="3">
         <label>PDJE_TIMELINE::TimeLineDiffMachineCore::ChangedLineRef</label>
         <link refid="structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1ChangedLineRef"/>
-      </node>
-      <node id="4">
-        <label>std::vector&lt; PDJE_TIMELINE::TimeLineDiffMachineCore::ChangedLineRef &gt;</label>
-        <childnode refid="5" relation="usage">
-          <edgelabel>elements</edgelabel>
-        </childnode>
       </node>
       <node id="1">
         <label>PDJE_TIMELINE::TimeLineDiffMachineCore::DiffCollectPayload</label>
         <link refid="structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1DiffCollectPayload"/>
         <childnode refid="2" relation="usage">
-          <edgelabel>current_hunk</edgelabel>
-        </childnode>
-        <childnode refid="3" relation="usage">
-          <edgelabel>hunks</edgelabel>
-        </childnode>
-        <childnode refid="4" relation="usage">
           <edgelabel>lines</edgelabel>
         </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>hunks</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>current_hunk</edgelabel>
+        </childnode>
       </node>
-      <node id="3">
+      <node id="5">
+        <label>PDJE_TIMELINE::TimeLineDiffMachineCore::HunkRange</label>
+        <link refid="structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1HunkRange"/>
+      </node>
+      <node id="4">
         <label>std::unordered_map&lt; int, PDJE_TIMELINE::TimeLineDiffMachineCore::HunkRange &gt;</label>
-        <childnode refid="2" relation="usage">
+        <childnode refid="5" relation="usage">
           <edgelabel>elements</edgelabel>
         </childnode>
       </node>
       <node id="2">
-        <label>PDJE_TIMELINE::TimeLineDiffMachineCore::HunkRange</label>
-        <link refid="structPDJE__TIMELINE_1_1TimeLineDiffMachineCore_1_1HunkRange"/>
+        <label>std::vector&lt; PDJE_TIMELINE::TimeLineDiffMachineCore::ChangedLineRef &gt;</label>
+        <childnode refid="3" relation="usage">
+          <edgelabel>elements</edgelabel>
+        </childnode>
       </node>
     </collaborationgraph>
     <location file="include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp" line="46" column="5" bodyfile="include/core/editor/TimeLine/DiffMachine/TimeLineDiffMachine.hpp" bodystart="46" bodyend="51"/>

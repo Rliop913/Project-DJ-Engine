@@ -17,13 +17,13 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_namespace_p_d_j_e___l_o_g___d_e_t_a_i_l_1ac993d88cb68b0496900c3aff1707c5be`
-
 - :ref:`exhale_function_namespace_p_d_j_e___l_o_g___d_e_t_a_i_l_1a1d5e43c742f9573b552e5af26ddb2d75`
 
-- :ref:`exhale_function_namespace_p_d_j_e___l_o_g___d_e_t_a_i_l_1a37d3b462e363785e8639714b1c346bec`
+- :ref:`exhale_function_namespace_p_d_j_e___l_o_g___d_e_t_a_i_l_1ac993d88cb68b0496900c3aff1707c5be`
 
 - :ref:`exhale_function_namespace_p_d_j_e___l_o_g___d_e_t_a_i_l_1a0ac70731f5d92b0059a07ed2544ed876`
+
+- :ref:`exhale_function_namespace_p_d_j_e___l_o_g___d_e_t_a_i_l_1a37d3b462e363785e8639714b1c346bec`
 
 - :ref:`exhale_function_namespace_p_d_j_e___l_o_g___d_e_t_a_i_l_1a8cf6dc50e37344e1113e4112bd5f9ea3`
 

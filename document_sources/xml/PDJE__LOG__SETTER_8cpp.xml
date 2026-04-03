@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="PDJE__LOG__SETTER_8cpp" kind="file" language="C++">
     <compoundname>PDJE_LOG_SETTER.cpp</compoundname>
     <includes refid="PDJE__LOG__SETTER_8hpp" local="yes">PDJE_LOG_SETTER.hpp</includes>
@@ -12,8 +12,19 @@
     <includes local="no">utility</includes>
     <includes local="no">vector</includes>
     <incdepgraph>
-      <node id="14">
-        <label>filesystem</label>
+      <node id="3">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
+      </node>
+      <node id="4">
+        <label>PDJE_LOG_RUNTIME_API.h</label>
+        <link refid="PDJE__LOG__RUNTIME__API_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
       </node>
       <node id="1">
         <label>include/global/PDJE_LOG_SETTER.cpp</label>
@@ -37,21 +48,6 @@
         <childnode refid="18" relation="include">
         </childnode>
       </node>
-      <node id="6">
-        <label>stdint.h</label>
-      </node>
-      <node id="17">
-        <label>string</label>
-      </node>
-      <node id="12">
-        <label>spdlog/sinks/basic_file_sink.h</label>
-      </node>
-      <node id="9">
-        <label>exception</label>
-      </node>
-      <node id="5">
-        <label>stddef.h</label>
-      </node>
       <node id="2">
         <label>PDJE_LOG_SETTER.hpp</label>
         <link refid="PDJE__LOG__SETTER_8hpp"/>
@@ -70,46 +66,50 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="8">
-        <label>spdlog/spdlog.h</label>
-      </node>
-      <node id="10">
-        <label>string_view</label>
-      </node>
       <node id="13">
         <label>cstdio</label>
       </node>
-      <node id="18">
-        <label>vector</label>
+      <node id="9">
+        <label>exception</label>
       </node>
-      <node id="7">
-        <label>spdlog/fmt/fmt.h</label>
-      </node>
-      <node id="11">
-        <label>utility</label>
-      </node>
-      <node id="16">
-        <label>mutex</label>
-      </node>
-      <node id="3">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
-      </node>
-      <node id="4">
-        <label>PDJE_LOG_RUNTIME_API.h</label>
-        <link refid="PDJE__LOG__RUNTIME__API_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
+      <node id="14">
+        <label>filesystem</label>
       </node>
       <node id="15">
         <label>memory</label>
       </node>
+      <node id="16">
+        <label>mutex</label>
+      </node>
+      <node id="7">
+        <label>spdlog/fmt/fmt.h</label>
+      </node>
+      <node id="12">
+        <label>spdlog/sinks/basic_file_sink.h</label>
+      </node>
+      <node id="8">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="5">
+        <label>stddef.h</label>
+      </node>
+      <node id="6">
+        <label>stdint.h</label>
+      </node>
+      <node id="17">
+        <label>string</label>
+      </node>
+      <node id="10">
+        <label>string_view</label>
+      </node>
+      <node id="11">
+        <label>utility</label>
+      </node>
+      <node id="18">
+        <label>vector</label>
+      </node>
     </incdepgraph>
-      <sectiondef kind="func">
+    <sectiondef kind="func">
       <memberdef kind="function" id="PDJE__LOG__SETTER_8cpp_1afd260616f3218eeb5b140e3d9205b012" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int <ref refid="PDJE__EXPORT__SETTER_8hpp_1a7741270cebaf37c6127114855d3a00e1" kindref="member">PDJE_CALL</ref></type>
         <definition>int PDJE_CALL pdje_logging_init_v1</definition>
@@ -193,7 +193,7 @@
 <para>Initializes the logging system. </para>
         </briefdescription>
         <detaileddescription>
-<para>This compatibility shim initializes the default <ref refid="classPDJE" kindref="compound">PDJE</ref> file logger backend. Host applications loading multiple DSOs should prefer <computeroutput>pdje_logging_init_v1</computeroutput> during startup and <computeroutput>pdje_logging_shutdown_v1</computeroutput> during shutdown/unload. </para>
+<para>This compatibility shim initializes the default <ref refid="classPDJE" kindref="compound">PDJE</ref> file logger backend. Host applications loading multiple DSOs should prefer <computeroutput><ref refid="PDJE__LOG__RUNTIME__API_8h_1afd260616f3218eeb5b140e3d9205b012" kindref="member">pdje_logging_init_v1</ref></computeroutput> during startup and <computeroutput><ref refid="PDJE__LOG__RUNTIME__API_8h_1a989dbdbef006e678455b128b63f4f35f" kindref="member">pdje_logging_shutdown_v1</ref></computeroutput> during shutdown/unload. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -214,7 +214,7 @@
         </inbodydescription>
         <location file="include/global/PDJE_LOG_SETTER.cpp" line="419" column="1" bodyfile="include/global/PDJE_LOG_SETTER.cpp" bodystart="419" bodyend="422"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -244,7 +244,7 @@
 <codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>initialized<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>PDJE_LogBackendKindInternal<sp/><sp/><sp/><sp/><sp/>backend_kind<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PDJE_LogBackendKindInternal::kInternalSpdlog;</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structPDJE__LogHostSinkV1" kindref="compound">PDJE_LogHostSinkV1</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>host_sink<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__RUNTIME__API_8h_1a79fd3f96534408274a40b324bc72691e" kindref="member">PDJE_LogHostSinkV1</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>host_sink<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>{};</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>min_level<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="PDJE__LOG__RUNTIME__API_8h_1a9e6da84f7a656758c0ae2891ba6ba02ca9f2966b6513f65ffb4b1cd2d115521d4" kindref="member">PDJE_LOG_LEVEL_INFO_V1</ref>;</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>autoinit_enabled<sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>internal_spdlog_owner<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
@@ -252,7 +252,7 @@
 <codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>file_path<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;logs/pdjeLog.txt&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="31"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal">constexpr<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*PDJE_LOGGER_NAME<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;global_logger&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*PDJE_LOGGER_NAME<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;global_logger&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal">PDJE_LoggingState<sp/>&amp;</highlight></codeline>
 <codeline lineno="36"><highlight class="normal">GetLoggingState()</highlight></codeline>
@@ -309,13 +309,13 @@
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="PDJE__LOG__RUNTIME__API_8h_1a9e6da84f7a656758c0ae2891ba6ba02ca95464c7c9e53d4af31e166d635a4ac30" kindref="member">PDJE_LOG_LEVEL_DEBUG_V1</ref>:</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>spdlog::level::debug;</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="PDJE__LOG__RUNTIME__API_8h_1a9e6da84f7a656758c0ae2891ba6ba02ca9f2966b6513f65ffb4b1cd2d115521d4" kindref="member">PDJE_LOG_LEVEL_INFO_V1</ref>:</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__LOG__DETAIL_1a37d3b462e363785e8639714b1c346bec" kindref="member">spdlog::level::info</ref>;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>spdlog::level::info;</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="PDJE__LOG__RUNTIME__API_8h_1a9e6da84f7a656758c0ae2891ba6ba02ca32075dfbecfcf55e16122d0cdbe77c3b" kindref="member">PDJE_LOG_LEVEL_WARN_V1</ref>:</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__LOG__DETAIL_1a8fbbbb6ecf4d5cf3365296b04d2c7636" kindref="member">spdlog::level::warn</ref>;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>spdlog::level::warn;</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="PDJE__LOG__RUNTIME__API_8h_1a9e6da84f7a656758c0ae2891ba6ba02ca487ee41d3634633eeb17144458874faa" kindref="member">PDJE_LOG_LEVEL_ERROR_V1</ref>:</highlight></codeline>
 <codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>spdlog::level::err;</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="PDJE__LOG__RUNTIME__API_8h_1a9e6da84f7a656758c0ae2891ba6ba02ca1a238dc5392740d426e4008b90586bc7" kindref="member">PDJE_LOG_LEVEL_CRITICAL_V1</ref>:</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__LOG__DETAIL_1a1d5e43c742f9573b552e5af26ddb2d75" kindref="member">spdlog::level::critical</ref>;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>spdlog::level::critical;</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="PDJE__LOG__RUNTIME__API_8h_1a9e6da84f7a656758c0ae2891ba6ba02cadd4c49383ceca05ce0849ae60517d41d" kindref="member">PDJE_LOG_LEVEL_OFF_V1</ref>:</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>spdlog::level::off;</highlight></codeline>
@@ -362,7 +362,7 @@
 <codeline lineno="140"><highlight class="normal"></highlight></codeline>
 <codeline lineno="141"><highlight class="normal"><ref refid="PDJE__LOG__RUNTIME__API_8h_1adeb748d1568c50645c7d90f14fb36123" kindref="member">PDJE_LogInitResultV1</ref></highlight></codeline>
 <codeline lineno="142"><highlight class="normal">InitInternalSpdlogLocked(PDJE_LoggingState<sp/><sp/><sp/><sp/><sp/><sp/>&amp;state,</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__LogConfigV1" kindref="compound">PDJE_LogConfigV1</ref><sp/>*cfg)<sp/>noexcept</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__LogConfigV1" kindref="compound">PDJE_LogConfigV1</ref><sp/>*cfg)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="144"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>log_path<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;logs/pdjeLog.txt&quot;</highlight><highlight class="normal">;</highlight></codeline>
@@ -404,7 +404,7 @@
 <codeline lineno="182"><highlight class="normal"></highlight></codeline>
 <codeline lineno="183"><highlight class="normal"><ref refid="PDJE__LOG__RUNTIME__API_8h_1adeb748d1568c50645c7d90f14fb36123" kindref="member">PDJE_LogInitResultV1</ref></highlight></codeline>
 <codeline lineno="184"><highlight class="normal">InitHostCallbackLocked(PDJE_LoggingState<sp/><sp/><sp/><sp/><sp/><sp/>&amp;state,</highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__LogConfigV1" kindref="compound">PDJE_LogConfigV1</ref><sp/>*cfg)<sp/>noexcept</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__LogConfigV1" kindref="compound">PDJE_LogConfigV1</ref><sp/>*cfg)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="186"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cfg<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>||<sp/>cfg-&gt;<ref refid="structPDJE__LogConfigV1_1ace2d3a9ca9ae8212e517191279f97396" kindref="member">host_sink</ref>.<ref refid="structPDJE__LogHostSinkV1_1a7383b7def7bc2033fd4480bfbaaf3121" kindref="member">write</ref><sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="PDJE__LOG__RUNTIME__API_8h_1adeb748d1568c50645c7d90f14fb36123a84394c52d9deb03a46e487f057da04dc" kindref="member">PDJE_LOG_INIT_INVALID_ARGUMENT_V1</ref>;</highlight></codeline>
@@ -419,7 +419,7 @@
 <codeline lineno="197"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="198"><highlight class="normal"></highlight></codeline>
 <codeline lineno="199"><highlight class="normal"><ref refid="PDJE__LOG__RUNTIME__API_8h_1adeb748d1568c50645c7d90f14fb36123" kindref="member">PDJE_LogInitResultV1</ref></highlight></codeline>
-<codeline lineno="200"><highlight class="normal">InitLocked(PDJE_LoggingState<sp/>&amp;state,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__LogConfigV1" kindref="compound">PDJE_LogConfigV1</ref><sp/>*cfg)<sp/>noexcept</highlight></codeline>
+<codeline lineno="200"><highlight class="normal">InitLocked(PDJE_LoggingState<sp/>&amp;state,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__LogConfigV1" kindref="compound">PDJE_LogConfigV1</ref><sp/>*cfg)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="201"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>state.min_level<sp/>=<sp/>DefaultMinLevel();</highlight></codeline>
 <codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cfg<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
@@ -458,7 +458,7 @@
 <codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PDJE_LogBackendKindInternal::kInternalSpdlog;</highlight></codeline>
 <codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>min_level<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="PDJE__LOG__RUNTIME__API_8h_1a9e6da84f7a656758c0ae2891ba6ba02ca9f2966b6513f65ffb4b1cd2d115521d4" kindref="member">PDJE_LOG_LEVEL_INFO_V1</ref>;</highlight></codeline>
 <codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>autoinit<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structPDJE__LogHostSinkV1" kindref="compound">PDJE_LogHostSinkV1</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>host_sink<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__RUNTIME__API_8h_1a79fd3f96534408274a40b324bc72691e" kindref="member">PDJE_LogHostSinkV1</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>host_sink<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>{};</highlight></codeline>
 <codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;spdlog::logger&gt;<sp/>logger;</highlight></codeline>
 <codeline lineno="241"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="242"><highlight class="normal"></highlight></codeline>
@@ -503,7 +503,7 @@
 <codeline lineno="281"><highlight class="normal">DispatchLog(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>PDJE_LogDispatchSnapshot<sp/>&amp;snapshot,</highlight></codeline>
 <codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>level,</highlight></codeline>
 <codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*message,</highlight></codeline>
-<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>message_len)<sp/>noexcept</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>message_len)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="285"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!snapshot.initialized)<sp/>{</highlight></codeline>
 <codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
@@ -515,16 +515,16 @@
 <codeline lineno="293"><highlight class="normal"></highlight></codeline>
 <codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><sp/>*safe_message<sp/>=<sp/>message<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>?<sp/>message<sp/>:<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>safe_len<sp/>=</highlight></codeline>
-<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(safe_message<sp/>==<sp/>message)<sp/>?<sp/>message_len<sp/>:<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(0);</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(safe_message<sp/>==<sp/>message)<sp/>?<sp/>message_len<sp/>:<sp/>static_cast&lt;size_t&gt;(0);</highlight></codeline>
 <codeline lineno="297"><highlight class="normal"></highlight></codeline>
 <codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(snapshot.backend_kind<sp/>==<sp/>PDJE_LogBackendKindInternal::kHostCallback)<sp/>{</highlight></codeline>
-<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(snapshot.host_sink.write<sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
-<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>snapshot.host_sink.write(</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(snapshot.host_sink.<ref refid="structPDJE__LogHostSinkV1_1a7383b7def7bc2033fd4480bfbaaf3121" kindref="member">write</ref><sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>snapshot.host_sink.<ref refid="structPDJE__LogHostSinkV1_1a7383b7def7bc2033fd4480bfbaaf3121" kindref="member">write</ref>(</highlight></codeline>
 <codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NormalizeLevel(level),</highlight></codeline>
 <codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>safe_message,</highlight></codeline>
 <codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>safe_len,</highlight></codeline>
-<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>snapshot.host_sink.user_data);</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>snapshot.host_sink.<ref refid="structPDJE__LogHostSinkV1_1a9c71643ab5e4b59cbfb3d30824d37b27" kindref="member">user_data</ref>);</highlight></codeline>
 <codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>

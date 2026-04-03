@@ -1,17 +1,19 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="namespacePDJE__UTIL_1_1db_1_1nearest" kind="namespace" language="C++">
     <compoundname>PDJE_UTIL::db::nearest</compoundname>
     <innerclass refid="classPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborIndex" prot="public">PDJE_UTIL::db::nearest::NearestNeighborIndex</innerclass>
     <innerclass refid="structPDJE__UTIL_1_1db_1_1nearest_1_1Item" prot="public">PDJE_UTIL::db::nearest::Item</innerclass>
     <innerclass refid="structPDJE__UTIL_1_1db_1_1nearest_1_1SearchOptions" prot="public">PDJE_UTIL::db::nearest::SearchOptions</innerclass>
     <innerclass refid="structPDJE__UTIL_1_1db_1_1nearest_1_1SearchHit" prot="public">PDJE_UTIL::db::nearest::SearchHit</innerclass>
-      <sectiondef kind="typedef">
-      <memberdef kind="typedef" id="namespacePDJE__UTIL_1_1db_1_1nearest_1a0cae0a740c071c4c732a342bb27041f1" prot="public" static="no">
+    <innerconcept refid="conceptPDJE__UTIL_1_1db_1_1nearest_1_1NearestNeighborBackendConcept">PDJE_UTIL::db::nearest::NearestNeighborBackendConcept</innerconcept>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespacePDJE__UTIL_1_1db_1_1nearest_1a7a11d5866d55b0da3b669e1e0a316463" prot="public" static="no">
         <type>std::vector&lt; float &gt;</type>
-        <definition>using PDJE_UTIL::db::nearest::Embedding = typedef std::vector&lt;float&gt;</definition>
+        <definition>using PDJE_UTIL::db::nearest::Embedding = std::vector&lt;float&gt;</definition>
         <argsstring></argsstring>
         <name>Embedding</name>
+        <qualifiedname>PDJE_UTIL::db::nearest::Embedding</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -20,50 +22,7 @@
         </inbodydescription>
         <location file="include/util/db/nearest/Types.hpp" line="10" column="1" bodyfile="include/util/db/nearest/Types.hpp" bodystart="10" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="var">
-      <memberdef kind="variable" id="namespacePDJE__UTIL_1_1db_1_1nearest_1a3b329ace73fe72e0496c10e3c393fadc" prot="public" static="no" mutable="no">
-        <templateparamlist>
-          <param>
-            <type>class Backend</type>
-          </param>
-        </templateparamlist>
-        <type>concept</type>
-        <definition>concept PDJE_UTIL::db::nearest::NearestNeighborBackendConcept</definition>
-        <argsstring></argsstring>
-        <name>NearestNeighborBackendConcept</name>
-        <initializer>=
-    requires(typename Backend::config_type cfg,
-             Backend                      backend,
-             std::string_view             key,
-             const <ref refid="structPDJE__UTIL_1_1db_1_1nearest_1_1Item" kindref="compound">Item</ref>                  &amp;item,
-             std::span&lt;const float&gt;       query,
-             <ref refid="structPDJE__UTIL_1_1db_1_1nearest_1_1SearchOptions" kindref="compound">SearchOptions</ref>                options) {
-        typename Backend::config_type;
-
-        { Backend::create(cfg) } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;void&gt;&gt;;
-        { Backend::destroy(cfg) } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;void&gt;&gt;;
-
-        { backend.open(cfg) } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;void&gt;&gt;;
-        { backend.close() } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;void&gt;&gt;;
-
-        { backend.contains(key) } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;bool&gt;&gt;;
-        { backend.get_item(key) } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;<ref refid="structPDJE__UTIL_1_1db_1_1nearest_1_1Item" kindref="compound">Item</ref>&gt;&gt;;
-        { backend.upsert_item(item) } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;void&gt;&gt;;
-        { backend.erase_item(key) } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;void&gt;&gt;;
-        { backend.search(query, options) }
-        -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;std::vector&lt;<ref refid="structPDJE__UTIL_1_1db_1_1nearest_1_1SearchHit" kindref="compound">SearchHit</ref>&gt;&gt;&gt;;
-        { backend.list_keys() } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;std::vector&lt;<ref refid="namespacePDJE__UTIL_1_1db_1aaa69bb1e1ba3230da8fb606c82d3ebc7" kindref="member">Key</ref>&gt;&gt;&gt;;
-    }</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/util/db/nearest/BackendConcept.hpp" line="14" column="9" bodyfile="include/util/db/nearest/BackendConcept.hpp" bodystart="14" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

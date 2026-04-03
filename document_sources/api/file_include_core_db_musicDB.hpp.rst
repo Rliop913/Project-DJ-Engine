@@ -54,6 +54,10 @@ Included By
 
 - :ref:`file_include_core_db_musicDB.cpp`
 
+- :ref:`file_include_core_interface_PDJE_interface.cpp`
+
+- :ref:`file_include_core_interface_PDJE_interface.hpp`
+
 
 
 

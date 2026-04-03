@@ -19,6 +19,8 @@ Program Listing for File PDJE_interface.hpp
    #include "audioPlayer.hpp"
    #include "dbRoot.hpp"
    #include "editorObject.hpp"
+   #include "musicDB.hpp"
+   #include "trackDB.hpp"
    enum PLAY_MODE { FULL_PRE_RENDER, HYBRID_RENDER, FULL_MANUAL_RENDER };
    class PDJE_API PDJE {
      private:
@@ -63,8 +65,15 @@ Program Listing for File PDJE_interface.hpp
                    const double       bpm = -1);
        TRACK_VEC
        SearchTrack(const UNSANITIZED &Title);
+   
+       bool
+       DeleteMusic(musdata &target);
+   
+       bool
+       DeleteTrack(trackdata &target);
+   
        std::vector<float>
-       GetPCMFromMusData(const musdata &md);
+       GetPCMFromMusData(const musdata &md, const int chSZ = 2);
        std::shared_ptr<audioPlayer>
        GetPlayerObject();
    

@@ -1,25 +1,21 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="Result_8hpp" kind="file" language="C++">
     <compoundname>Result.hpp</compoundname>
     <includes refid="Status_8hpp" local="yes">util/common/Status.hpp</includes>
     <includes local="no">utility</includes>
+    <includedby refid="PDJE__Util_8hpp" local="yes">include/util/PDJE_Util.hpp</includedby>
     <includedby refid="AnnoyBackend_8hpp" local="yes">include/util/db/backends/AnnoyBackend.hpp</includedby>
     <includedby refid="RocksDbBackend_8hpp" local="yes">include/util/db/backends/RocksDbBackend.hpp</includedby>
     <includedby refid="SqliteBackend_8hpp" local="yes">include/util/db/backends/SqliteBackend.hpp</includedby>
     <includedby refid="keyvalue_2BackendConcept_8hpp" local="yes">include/util/db/keyvalue/BackendConcept.hpp</includedby>
     <includedby refid="nearest_2BackendConcept_8hpp" local="yes">include/util/db/nearest/BackendConcept.hpp</includedby>
     <includedby refid="relational_2BackendConcept_8hpp" local="yes">include/util/db/relational/BackendConcept.hpp</includedby>
-    <includedby refid="GainBias_8hpp" local="yes">include/util/function/halide/GainBias.hpp</includedby>
     <includedby refid="WaveformWebp_8hpp" local="yes">include/util/function/image/WaveformWebp.hpp</includedby>
     <includedby refid="WebpWriter_8hpp" local="yes">include/util/function/image/WebpWriter.hpp</includedby>
     <includedby refid="Clamp_8hpp" local="yes">include/util/function/scalar/Clamp.hpp</includedby>
     <includedby refid="Slugify_8hpp" local="yes">include/util/function/text/Slugify.hpp</includedby>
-    <includedby refid="PDJE__Util_8hpp" local="yes">include/util/PDJE_Util.hpp</includedby>
     <incdepgraph>
-      <node id="4">
-        <label>string</label>
-      </node>
       <node id="1">
         <label>include/util/common/Result.hpp</label>
         <link refid="Result_8hpp"/>
@@ -27,13 +23,6 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-      </node>
-      <node id="3">
-        <label>util/common/StatusCode.hpp</label>
-        <link refid="StatusCode_8hpp"/>
-      </node>
-      <node id="5">
-        <label>utility</label>
       </node>
       <node id="2">
         <label>util/common/Status.hpp</label>
@@ -43,27 +32,25 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-    </incdepgraph>
-    <invincdepgraph>
-      <node id="11">
-        <label>include/util/db/nearest/BackendConcept.hpp</label>
-        <link refid="nearest_2BackendConcept_8hpp"/>
-        <childnode refid="12" relation="include">
-        </childnode>
-      </node>
-      <node id="18">
-        <label>include/util/function/image/WaveformWebp.cpp</label>
-        <link refid="WaveformWebp_8cpp"/>
+      <node id="3">
+        <label>util/common/StatusCode.hpp</label>
+        <link refid="StatusCode_8hpp"/>
       </node>
       <node id="4">
-        <label>include/util/db/backends/RocksDbBackend.cpp</label>
-        <link refid="RocksDbBackend_8cpp"/>
+        <label>string</label>
       </node>
-      <node id="10">
-        <label>include/util/db/Database.hpp</label>
-        <link refid="Database_8hpp"/>
-        <childnode refid="8" relation="include">
-        </childnode>
+      <node id="5">
+        <label>utility</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="16">
+        <label>include/tests/music_to_waveform_webp.cpp</label>
+        <link refid="music__to__waveform__webp_8cpp"/>
+      </node>
+      <node id="2">
+        <label>include/util/PDJE_Util.hpp</label>
+        <link refid="PDJE__Util_8hpp"/>
       </node>
       <node id="1">
         <label>include/util/common/Result.hpp</label>
@@ -72,9 +59,11 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
@@ -82,65 +71,69 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
       </node>
-      <node id="7">
+      <node id="8">
         <label>include/util/db/BackendConcept.hpp</label>
         <link refid="BackendConcept_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>include/util/db/Database.hpp</label>
+        <link refid="Database_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>include/util/db/backends/AnnoyBackend.hpp</label>
+        <link refid="AnnoyBackend_8hpp"/>
+      </node>
+      <node id="5">
+        <label>include/util/db/backends/RocksDbBackend.cpp</label>
+        <link refid="RocksDbBackend_8cpp"/>
+      </node>
+      <node id="4">
+        <label>include/util/db/backends/RocksDbBackend.hpp</label>
+        <link refid="RocksDbBackend_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>include/util/db/backends/SqliteBackend.hpp</label>
+        <link refid="SqliteBackend_8hpp"/>
+      </node>
+      <node id="7">
+        <label>include/util/db/keyvalue/BackendConcept.hpp</label>
+        <link refid="keyvalue_2BackendConcept_8hpp"/>
         <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
         </childnode>
       </node>
       <node id="9">
         <label>include/util/db/keyvalue/Database.hpp</label>
         <link refid="keyvalue_2Database_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
       </node>
-      <node id="2">
-        <label>include/util/db/backends/AnnoyBackend.hpp</label>
-        <link refid="AnnoyBackend_8hpp"/>
-      </node>
-      <node id="20">
-        <label>include/util/function/scalar/Clamp.hpp</label>
-        <link refid="Clamp_8hpp"/>
-        <childnode refid="8" relation="include">
-        </childnode>
-      </node>
-      <node id="3">
-        <label>include/util/db/backends/RocksDbBackend.hpp</label>
-        <link refid="RocksDbBackend_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>include/util/db/keyvalue/BackendConcept.hpp</label>
-        <link refid="keyvalue_2BackendConcept_8hpp"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-      </node>
-      <node id="19">
-        <label>include/util/function/image/WebpWriter.hpp</label>
-        <link refid="WebpWriter_8hpp"/>
-        <childnode refid="18" relation="include">
+      <node id="11">
+        <label>include/util/db/nearest/BackendConcept.hpp</label>
+        <link refid="nearest_2BackendConcept_8hpp"/>
+        <childnode refid="12" relation="include">
         </childnode>
       </node>
       <node id="12">
         <label>include/util/db/nearest/Index.hpp</label>
         <link refid="Index_8hpp"/>
-        <childnode refid="8" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
       </node>
       <node id="13">
@@ -149,42 +142,40 @@
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="17">
-        <label>include/tests/music_to_waveform_webp.cpp</label>
-        <link refid="music__to__waveform__webp_8cpp"/>
-      </node>
-      <node id="8">
-        <label>include/util/PDJE_Util.hpp</label>
-        <link refid="PDJE__Util_8hpp"/>
-      </node>
-      <node id="5">
-        <label>include/util/db/backends/SqliteBackend.hpp</label>
-        <link refid="SqliteBackend_8hpp"/>
-      </node>
-      <node id="16">
-        <label>include/util/function/image/WaveformWebp.hpp</label>
-        <link refid="WaveformWebp_8hpp"/>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-      </node>
-      <node id="15">
-        <label>include/util/function/halide/GainBias.hpp</label>
-        <link refid="GainBias_8hpp"/>
-        <childnode refid="8" relation="include">
-        </childnode>
-      </node>
-      <node id="21">
-        <label>include/util/function/text/Slugify.hpp</label>
-        <link refid="Slugify_8hpp"/>
-        <childnode refid="8" relation="include">
-        </childnode>
-      </node>
       <node id="14">
         <label>include/util/db/relational/Database.hpp</label>
         <link refid="relational_2Database_8hpp"/>
-        <childnode refid="8" relation="include">
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>include/util/function/image/WaveformWebp.cpp</label>
+        <link refid="WaveformWebp_8cpp"/>
+      </node>
+      <node id="15">
+        <label>include/util/function/image/WaveformWebp.hpp</label>
+        <link refid="WaveformWebp_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>include/util/function/image/WebpWriter.hpp</label>
+        <link refid="WebpWriter_8hpp"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>include/util/function/scalar/Clamp.hpp</label>
+        <link refid="Clamp_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>include/util/function/text/Slugify.hpp</label>
+        <link refid="Slugify_8hpp"/>
+        <childnode refid="2" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -205,90 +196,90 @@
 <codeline lineno="6"><highlight class="normal"></highlight></codeline>
 <codeline lineno="7" refid="namespacePDJE__UTIL_1_1common" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1common" kindref="compound">PDJE_UTIL::common</ref><sp/>{</highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight></codeline>
-<codeline lineno="9" refid="classPDJE__UTIL_1_1common_1_1Result" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>T&gt;<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">Result</ref><sp/>{</highlight></codeline>
+<codeline lineno="9" refid="classPDJE__UTIL_1_1common_1_1Result" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>T&gt;<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a6bdf2e4cbfc396f901b4590511513d15" kindref="member">Result</ref><sp/>{</highlight></codeline>
 <codeline lineno="10"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">Result</ref></highlight></codeline>
-<codeline lineno="12" refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">success</ref>(<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1abecec39c4b9a59eb1e01d8421447241c" kindref="member">value</ref>)</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a6bdf2e4cbfc396f901b4590511513d15" kindref="member">Result</ref></highlight></codeline>
+<codeline lineno="12" refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">success</ref>(<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a76239b4313a8cbbe871617ff5002a2bd" kindref="member">value</ref>)</highlight></codeline>
 <codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a6bdf2e4cbfc396f901b4590511513d15" kindref="member">Result</ref>(std::move(<ref refid="classPDJE__UTIL_1_1common_1_1Result_1abecec39c4b9a59eb1e01d8421447241c" kindref="member">value</ref>),<sp/>{});</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a6bdf2e4cbfc396f901b4590511513d15" kindref="member">Result</ref>(std::move(<ref refid="classPDJE__UTIL_1_1common_1_1Result_1a76239b4313a8cbbe871617ff5002a2bd" kindref="member">value</ref>),<sp/>{});</highlight></codeline>
 <codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">Result</ref></highlight></codeline>
-<codeline lineno="18" refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">failure</ref>(<ref refid="structPDJE__UTIL_1_1common_1_1Status" kindref="compound">Status</ref><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a7f246f3652583765dd298bc293081d11" kindref="member">status</ref>)</highlight></codeline>
+<codeline lineno="18" refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">failure</ref>(<ref refid="structPDJE__UTIL_1_1common_1_1Status" kindref="compound">Status</ref><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1ae4b2179be385c9e0cb3f5906ea774b3f" kindref="member">status</ref>)</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a6bdf2e4cbfc396f901b4590511513d15" kindref="member">Result</ref>(std::move(<ref refid="classPDJE__UTIL_1_1common_1_1Result_1a7f246f3652583765dd298bc293081d11" kindref="member">status</ref>));</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a6bdf2e4cbfc396f901b4590511513d15" kindref="member">Result</ref>(std::move(<ref refid="classPDJE__UTIL_1_1common_1_1Result_1ae4b2179be385c9e0cb3f5906ea774b3f" kindref="member">status</ref>));</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"></highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="24" refid="classPDJE__UTIL_1_1common_1_1Result_1a8ebc2c1421c1f1ae3d969094d3dbfb57" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a8ebc2c1421c1f1ae3d969094d3dbfb57" kindref="member">ok</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a78b6e99569a8cebec620c836b0e5047e" kindref="member">status_</ref>.<ref refid="structPDJE__UTIL_1_1common_1_1Status_1a422a0af607d3fc4c8cbdd441bbdbbbde" kindref="member">ok</ref>();</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a78b6e99569a8cebec620c836b0e5047e" kindref="member">status_</ref>.ok();</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref><sp/>&amp;</highlight></codeline>
-<codeline lineno="30" refid="classPDJE__UTIL_1_1common_1_1Result_1abecec39c4b9a59eb1e01d8421447241c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1abecec39c4b9a59eb1e01d8421447241c" kindref="member">value</ref>()<sp/>const<sp/>&amp;</highlight></codeline>
+<codeline lineno="30" refid="classPDJE__UTIL_1_1common_1_1Result_1a76239b4313a8cbbe871617ff5002a2bd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a76239b4313a8cbbe871617ff5002a2bd" kindref="member">value</ref>()<sp/>const<sp/>&amp;</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1ab667bdf8448122debce43e6a0abd7c7b" kindref="member">value_</ref>;</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref><sp/>&amp;</highlight></codeline>
-<codeline lineno="36" refid="classPDJE__UTIL_1_1common_1_1Result_1ae9b93b16510293fc8b26820bd203ae87" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1ae9b93b16510293fc8b26820bd203ae87" kindref="member">value</ref>()<sp/>&amp;</highlight></codeline>
+<codeline lineno="36" refid="classPDJE__UTIL_1_1common_1_1Result_1a435b6e8f013261d9db8a9662cb256978" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a435b6e8f013261d9db8a9662cb256978" kindref="member">value</ref>()<sp/>&amp;</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1ab667bdf8448122debce43e6a0abd7c7b" kindref="member">value_</ref>;</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="40"><highlight class="normal"></highlight></codeline>
 <codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref><sp/>&amp;&amp;</highlight></codeline>
-<codeline lineno="42" refid="classPDJE__UTIL_1_1common_1_1Result_1a2461b48e16ae511b4beb0ebe77bae202" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a2461b48e16ae511b4beb0ebe77bae202" kindref="member">value</ref>()<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="42" refid="classPDJE__UTIL_1_1common_1_1Result_1a203d08cd6ddcc1f0b45c4fe841bce743" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a203d08cd6ddcc1f0b45c4fe841bce743" kindref="member">value</ref>()<sp/>&amp;&amp;</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::move(<ref refid="classPDJE__UTIL_1_1common_1_1Result_1ab667bdf8448122debce43e6a0abd7c7b" kindref="member">value_</ref>);</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1common_1_1Status" kindref="compound">Status</ref><sp/>&amp;</highlight></codeline>
-<codeline lineno="48" refid="classPDJE__UTIL_1_1common_1_1Result_1a7f246f3652583765dd298bc293081d11" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a7f246f3652583765dd298bc293081d11" kindref="member">status</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="48" refid="classPDJE__UTIL_1_1common_1_1Result_1ae4b2179be385c9e0cb3f5906ea774b3f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1ae4b2179be385c9e0cb3f5906ea774b3f" kindref="member">status</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a78b6e99569a8cebec620c836b0e5047e" kindref="member">status_</ref>;</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"></highlight></codeline>
 <codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="54" refid="classPDJE__UTIL_1_1common_1_1Result_1a6bdf2e4cbfc396f901b4590511513d15" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a6bdf2e4cbfc396f901b4590511513d15" kindref="member">Result</ref>(<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1abecec39c4b9a59eb1e01d8421447241c" kindref="member">value</ref>,<sp/><ref refid="structPDJE__UTIL_1_1common_1_1Status" kindref="compound">Status</ref><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a7f246f3652583765dd298bc293081d11" kindref="member">status</ref>)</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1ab667bdf8448122debce43e6a0abd7c7b" kindref="member">value_</ref>(std::move(<ref refid="classPDJE__UTIL_1_1common_1_1Result_1abecec39c4b9a59eb1e01d8421447241c" kindref="member">value</ref>)),<sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a78b6e99569a8cebec620c836b0e5047e" kindref="member">status_</ref>(std::move(<ref refid="classPDJE__UTIL_1_1common_1_1Result_1a7f246f3652583765dd298bc293081d11" kindref="member">status</ref>))</highlight></codeline>
+<codeline lineno="54" refid="classPDJE__UTIL_1_1common_1_1Result_1a6bdf2e4cbfc396f901b4590511513d15" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a6bdf2e4cbfc396f901b4590511513d15" kindref="member">Result</ref>(<ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a76239b4313a8cbbe871617ff5002a2bd" kindref="member">value</ref>,<sp/><ref refid="structPDJE__UTIL_1_1common_1_1Status" kindref="compound">Status</ref><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1ae4b2179be385c9e0cb3f5906ea774b3f" kindref="member">status</ref>)</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1ab667bdf8448122debce43e6a0abd7c7b" kindref="member">value_</ref>(<ref refid="namespacestd" kindref="compound">std</ref>::move(<ref refid="classPDJE__UTIL_1_1common_1_1Result_1a76239b4313a8cbbe871617ff5002a2bd" kindref="member">value</ref>)),<sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a78b6e99569a8cebec620c836b0e5047e" kindref="member">status_</ref>(<ref refid="namespacestd" kindref="compound">std</ref>::move(<ref refid="classPDJE__UTIL_1_1common_1_1Result_1ae4b2179be385c9e0cb3f5906ea774b3f" kindref="member">status</ref>))</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight></codeline>
-<codeline lineno="59" refid="classPDJE__UTIL_1_1common_1_1Result_1ace3cdee1723dad790ee51be40fc03c64" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1ace3cdee1723dad790ee51be40fc03c64" kindref="member">Result</ref>(<ref refid="structPDJE__UTIL_1_1common_1_1Status" kindref="compound">Status</ref><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a7f246f3652583765dd298bc293081d11" kindref="member">status</ref>)<sp/>:<sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1ab667bdf8448122debce43e6a0abd7c7b" kindref="member">value_</ref>(),<sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a78b6e99569a8cebec620c836b0e5047e" kindref="member">status_</ref>(std::move(<ref refid="classPDJE__UTIL_1_1common_1_1Result_1a7f246f3652583765dd298bc293081d11" kindref="member">status</ref>))<sp/>{}</highlight></codeline>
+<codeline lineno="59" refid="classPDJE__UTIL_1_1common_1_1Result_1ace3cdee1723dad790ee51be40fc03c64" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1ace3cdee1723dad790ee51be40fc03c64" kindref="member">Result</ref>(<ref refid="structPDJE__UTIL_1_1common_1_1Status" kindref="compound">Status</ref><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1ae4b2179be385c9e0cb3f5906ea774b3f" kindref="member">status</ref>)<sp/>:<sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1ab667bdf8448122debce43e6a0abd7c7b" kindref="member">value_</ref>(),<sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a78b6e99569a8cebec620c836b0e5047e" kindref="member">status_</ref>(<ref refid="namespacestd" kindref="compound">std</ref>::move(<ref refid="classPDJE__UTIL_1_1common_1_1Result_1ae4b2179be385c9e0cb3f5906ea774b3f" kindref="member">status</ref>))<sp/>{}</highlight></codeline>
 <codeline lineno="60"><highlight class="normal"></highlight></codeline>
 <codeline lineno="61" refid="classPDJE__UTIL_1_1common_1_1Result_1ab667bdf8448122debce43e6a0abd7c7b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca21f40778b7db9343a6ca75ec2c41ccce" kindref="member">T</ref><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1ab667bdf8448122debce43e6a0abd7c7b" kindref="member">value_</ref>;</highlight></codeline>
 <codeline lineno="62" refid="classPDJE__UTIL_1_1common_1_1Result_1a78b6e99569a8cebec620c836b0e5047e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structPDJE__UTIL_1_1common_1_1Status" kindref="compound">Status</ref><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a78b6e99569a8cebec620c836b0e5047e" kindref="member">status_</ref>;</highlight></codeline>
 <codeline lineno="63"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"></highlight></codeline>
-<codeline lineno="65" refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">Result</ref>&lt;void&gt;<sp/>{</highlight></codeline>
+<codeline lineno="65" refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;&gt;<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4_1aeec035d627a2b82b7555735af0f3bd15" kindref="member">Result</ref>&lt;void&gt;<sp/>{</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">Result</ref></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4_1aeec035d627a2b82b7555735af0f3bd15" kindref="member">Result</ref></highlight></codeline>
 <codeline lineno="68" refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4_1a5a8f061aa44880a2cfb7f05b465ad31a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4_1a5a8f061aa44880a2cfb7f05b465ad31a" kindref="member">success</ref>()</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a6bdf2e4cbfc396f901b4590511513d15" kindref="member">Result</ref>({});</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"></highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">Result</ref></highlight></codeline>
-<codeline lineno="74" refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4_1afa8d8b8a79947b5e386f507c8898fa73" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4_1afa8d8b8a79947b5e386f507c8898fa73" kindref="member">failure</ref>(<ref refid="structPDJE__UTIL_1_1common_1_1Status" kindref="compound">Status</ref><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a7f246f3652583765dd298bc293081d11" kindref="member">status</ref>)</highlight></codeline>
+<codeline lineno="74" refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4_1afa8d8b8a79947b5e386f507c8898fa73" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4_1afa8d8b8a79947b5e386f507c8898fa73" kindref="member">failure</ref>(<ref refid="structPDJE__UTIL_1_1common_1_1Status" kindref="compound">Status</ref><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4_1a94e1b3b9350ded692dd7822ec57fe580" kindref="member">status</ref>)</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a6bdf2e4cbfc396f901b4590511513d15" kindref="member">Result</ref>(std::move(<ref refid="classPDJE__UTIL_1_1common_1_1Result_1a7f246f3652583765dd298bc293081d11" kindref="member">status</ref>));</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a6bdf2e4cbfc396f901b4590511513d15" kindref="member">Result</ref>(std::move(<ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4_1a94e1b3b9350ded692dd7822ec57fe580" kindref="member">status</ref>));</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"></highlight></codeline>
 <codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="80" refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4_1a7ae8d63b2852f85f559abf7c88aa0752" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4_1a7ae8d63b2852f85f559abf7c88aa0752" kindref="member">ok</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a78b6e99569a8cebec620c836b0e5047e" kindref="member">status_</ref>.<ref refid="structPDJE__UTIL_1_1common_1_1Status_1a422a0af607d3fc4c8cbdd441bbdbbbde" kindref="member">ok</ref>();</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4_1a3ddf2f3f2970aac2fb5be82283035398" kindref="member">status_</ref>.ok();</highlight></codeline>
 <codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"></highlight></codeline>
 <codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1common_1_1Status" kindref="compound">Status</ref><sp/>&amp;</highlight></codeline>
-<codeline lineno="86" refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4_1a3518228fa6a773707e29cdb08f18a5ac" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4_1a3518228fa6a773707e29cdb08f18a5ac" kindref="member">status</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="86" refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4_1a94e1b3b9350ded692dd7822ec57fe580" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4_1a94e1b3b9350ded692dd7822ec57fe580" kindref="member">status</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a78b6e99569a8cebec620c836b0e5047e" kindref="member">status_</ref>;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4_1a3ddf2f3f2970aac2fb5be82283035398" kindref="member">status_</ref>;</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="90"><highlight class="normal"></highlight></codeline>
 <codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="92" refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4_1aeec035d627a2b82b7555735af0f3bd15" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4_1aeec035d627a2b82b7555735af0f3bd15" kindref="member">Result</ref>(<ref refid="structPDJE__UTIL_1_1common_1_1Status" kindref="compound">Status</ref><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a7f246f3652583765dd298bc293081d11" kindref="member">status</ref>)<sp/>:<sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a78b6e99569a8cebec620c836b0e5047e" kindref="member">status_</ref>(std::move(<ref refid="classPDJE__UTIL_1_1common_1_1Result_1a7f246f3652583765dd298bc293081d11" kindref="member">status</ref>))<sp/>{}</highlight></codeline>
+<codeline lineno="92" refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4_1aeec035d627a2b82b7555735af0f3bd15" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4_1aeec035d627a2b82b7555735af0f3bd15" kindref="member">Result</ref>(<ref refid="structPDJE__UTIL_1_1common_1_1Status" kindref="compound">Status</ref><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4_1a94e1b3b9350ded692dd7822ec57fe580" kindref="member">status</ref>)<sp/>:<sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4_1a3ddf2f3f2970aac2fb5be82283035398" kindref="member">status_</ref>(<ref refid="namespacestd" kindref="compound">std</ref>::move(<ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4_1a94e1b3b9350ded692dd7822ec57fe580" kindref="member">status</ref>))<sp/>{}</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"></highlight></codeline>
 <codeline lineno="94" refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4_1a3ddf2f3f2970aac2fb5be82283035398" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structPDJE__UTIL_1_1common_1_1Status" kindref="compound">Status</ref><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4_1a3ddf2f3f2970aac2fb5be82283035398" kindref="member">status_</ref>;</highlight></codeline>
 <codeline lineno="95"><highlight class="normal">};</highlight></codeline>

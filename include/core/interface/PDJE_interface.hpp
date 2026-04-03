@@ -166,7 +166,7 @@ class PDJE_API PDJE {
      * @return std::vector<float> Interleaved PCM samples. Empty on failure.
      */
     std::vector<float>
-    GetPCMFromMusData(const musdata &md);
+    GetPCMFromMusData(const musdata &md, const int chSZ = 2);
     /**
      * @brief music handler getter api for binded codes.
      * this function gives you a music handler.

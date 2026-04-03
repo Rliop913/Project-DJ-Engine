@@ -135,6 +135,8 @@ Architecture Cheat Sheet
   module `PDJE_UTIL`
   doc :doc:`Util_Engine`
   entrypoint `include/util/PDJE_Util.hpp`
+  direct headers `include/util/function/image/` and
+  `include/util/function/stft/` for non-umbrella APIs
 - User wants editor data format details:
   doc :doc:`Editor_Format`
 - User wants live shared state details:
@@ -198,6 +200,8 @@ Which wrappers exist?
   side.
 - State that older wrapper-oriented docs also reference the Godot-facing
   wrapper path.
+- If a local checkout also has a `bind_tempdir` clone, describe it as an
+  external reference implementation rather than a repo-managed source of truth.
 - Do not claim that input and judge are fully exposed by SWIG unless verified in
   current wrapper outputs.
 
@@ -225,6 +229,8 @@ Anti-Hallucination Rules
 - Do not invent SWIG wrapper coverage for `PDJE_Input` or `PDJE_JUDGE::JUDGE`.
 - Do not describe the utility layer as roadmap-only; the current tree contains
   active `PDJE_UTIL` code and CMake targets.
+- Do not treat a local `bind_tempdir` checkout as if it were managed by this
+  repository or guaranteed to match the current in-repo utility headers.
 - Do not describe editor as only `InitEditor()` plus `render()`. The public
   surface also includes mutation, history, preview, and push paths.
 - Do not answer authoring, history, or time-travel questions from playback docs

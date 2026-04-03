@@ -18,8 +18,8 @@ PDJE is organized around four integration surfaces:
 - `PDJE_JUDGE::JUDGE`
   timing-sensitive note matching built on synchronized input and audio clocks.
 - `PDJE_UTIL`
-  reusable utility code for status handling, storage abstractions, and helper
-  functions.
+  reusable utility code for status/result transport, DB wrappers, image/WebP
+  helpers, and STFT/backend-loader utilities.
 
 Choose Your Starting Path
 -------------------------
@@ -105,7 +105,8 @@ Project Mental Model
 - **Judge**
   lives under `include/judge/` and exposes `include/judge/PDJE_Judge.hpp`.
 - **Utility**
-  lives under `include/util/` and exposes `include/util/PDJE_Util.hpp`.
+  lives under `include/util/` and exposes `include/util/PDJE_Util.hpp`, with
+  direct-include extensions for image/WebP and STFT helper headers.
 - **Global shared infrastructure**
   lives under `include/global/` and provides data lines, clocks, crypto, RAII,
   and logging helpers used across modules.

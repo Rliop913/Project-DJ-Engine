@@ -1,14 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="Clamp_8hpp" kind="file" language="C++">
     <compoundname>Clamp.hpp</compoundname>
     <includes refid="Result_8hpp" local="yes">util/common/Result.hpp</includes>
     <includes local="no">algorithm</includes>
     <includedby refid="PDJE__Util_8hpp" local="yes">include/util/PDJE_Util.hpp</includedby>
     <incdepgraph>
-      <node id="5">
-        <label>string</label>
-      </node>
       <node id="2">
         <label>util/common/Result.hpp</label>
         <link refid="Result_8hpp"/>
@@ -16,21 +13,6 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-      </node>
-      <node id="1">
-        <label>include/util/function/scalar/Clamp.hpp</label>
-        <link refid="Clamp_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>util/common/StatusCode.hpp</label>
-        <link refid="StatusCode_8hpp"/>
-      </node>
-      <node id="6">
-        <label>utility</label>
       </node>
       <node id="3">
         <label>util/common/Status.hpp</label>
@@ -40,20 +22,38 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="7">
-        <label>algorithm</label>
+      <node id="4">
+        <label>util/common/StatusCode.hpp</label>
+        <link refid="StatusCode_8hpp"/>
       </node>
-    </incdepgraph>
-    <invincdepgraph>
       <node id="1">
         <label>include/util/function/scalar/Clamp.hpp</label>
         <link refid="Clamp_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
       </node>
+      <node id="7">
+        <label>algorithm</label>
+      </node>
+      <node id="5">
+        <label>string</label>
+      </node>
+      <node id="6">
+        <label>utility</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
       <node id="2">
         <label>include/util/PDJE_Util.hpp</label>
         <link refid="PDJE__Util_8hpp"/>
+      </node>
+      <node id="1">
+        <label>include/util/function/scalar/Clamp.hpp</label>
+        <link refid="Clamp_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
       </node>
     </invincdepgraph>
     <innerclass refid="structPDJE__UTIL_1_1function_1_1ClampArgs" prot="public">PDJE_UTIL::function::ClampArgs</innerclass>
@@ -79,7 +79,7 @@
 <codeline lineno="13"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;double&gt;</ref></highlight></codeline>
-<codeline lineno="16" refid="namespacePDJE__UTIL_1_1function_1a0dd9d5fc5e61ac330a2f48d3b4f9561a" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1a0dd9d5fc5e61ac330a2f48d3b4f9561a" kindref="member">clamp</ref>(<ref refid="structPDJE__UTIL_1_1function_1_1ClampArgs" kindref="compound">ClampArgs</ref><sp/>args)</highlight></codeline>
+<codeline lineno="16" refid="namespacePDJE__UTIL_1_1function_1a9e26d8c8d51b6a6306cfe8e3e197d0e6" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1a9e26d8c8d51b6a6306cfe8e3e197d0e6" kindref="member">clamp</ref>(<ref refid="structPDJE__UTIL_1_1function_1_1ClampArgs" kindref="compound">ClampArgs</ref><sp/>args)</highlight></codeline>
 <codeline lineno="17"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(args.<ref refid="structPDJE__UTIL_1_1function_1_1ClampArgs_1a82e1c55f0acdeb89e726ad6100529824" kindref="member">min_value</ref><sp/>&gt;<sp/>args.<ref refid="structPDJE__UTIL_1_1function_1_1ClampArgs_1acc6cfe3900e0953b8bc6d3b18b0d5e14" kindref="member">max_value</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;double&gt;::failure</ref>(</highlight></codeline>
@@ -88,7 +88,7 @@
 <codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;double&gt;::success</ref>(</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__UTIL_1_1function_1a0dd9d5fc5e61ac330a2f48d3b4f9561a" kindref="member">std::clamp</ref>(args.<ref refid="structPDJE__UTIL_1_1function_1_1ClampArgs_1a70bc0af47633b51d0aad5858c61f90ee" kindref="member">value</ref>,<sp/>args.<ref refid="structPDJE__UTIL_1_1function_1_1ClampArgs_1a82e1c55f0acdeb89e726ad6100529824" kindref="member">min_value</ref>,<sp/>args.<ref refid="structPDJE__UTIL_1_1function_1_1ClampArgs_1acc6cfe3900e0953b8bc6d3b18b0d5e14" kindref="member">max_value</ref>));</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::clamp(args.<ref refid="structPDJE__UTIL_1_1function_1_1ClampArgs_1a70bc0af47633b51d0aad5858c61f90ee" kindref="member">value</ref>,<sp/>args.<ref refid="structPDJE__UTIL_1_1function_1_1ClampArgs_1a82e1c55f0acdeb89e726ad6100529824" kindref="member">min_value</ref>,<sp/>args.<ref refid="structPDJE__UTIL_1_1function_1_1ClampArgs_1acc6cfe3900e0953b8bc6d3b18b0d5e14" kindref="member">max_value</ref>));</highlight></codeline>
 <codeline lineno="26"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="27"><highlight class="normal"></highlight></codeline>
 <codeline lineno="28"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_UTIL::function</highlight><highlight class="normal"></highlight></codeline>

@@ -52,8 +52,6 @@ Includes
 
 - ``util/function/FunctionContext.hpp``
 
-- ``util/function/halide/GainBias.hpp``
-
 - ``util/function/scalar/Clamp.hpp``
 
 - ``util/function/text/Slugify.hpp``

@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="structPDJE__InputEventViewV1" kind="struct" language="C++" prot="public">
     <compoundname>PDJE_InputEventViewV1</compoundname>
     <includes refid="CPDJE__Input_8h" local="no">CPDJE_Input.h</includes>
-      <sectiondef kind="public-attrib">
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structPDJE__InputEventViewV1_1a048dbe958b92872efec8fb370f1db972" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
         <definition>uint32_t PDJE_InputEventViewV1::struct_size</definition>
         <argsstring></argsstring>
         <name>struct_size</name>
+        <qualifiedname>PDJE_InputEventViewV1::struct_size</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -22,6 +23,7 @@
         <definition>PDJE_InputDeviceTypeV1 PDJE_InputEventViewV1::type</definition>
         <argsstring></argsstring>
         <name>type</name>
+        <qualifiedname>PDJE_InputEventViewV1::type</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -35,6 +37,7 @@
         <definition>PDJE_InputStringViewV1 PDJE_InputEventViewV1::id</definition>
         <argsstring></argsstring>
         <name>id</name>
+        <qualifiedname>PDJE_InputEventViewV1::id</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -48,6 +51,7 @@
         <definition>PDJE_InputStringViewV1 PDJE_InputEventViewV1::name</definition>
         <argsstring></argsstring>
         <name>name</name>
+        <qualifiedname>PDJE_InputEventViewV1::name</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -61,6 +65,7 @@
         <definition>uint64_t PDJE_InputEventViewV1::microsecond</definition>
         <argsstring></argsstring>
         <name>microsecond</name>
+        <qualifiedname>PDJE_InputEventViewV1::microsecond</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -74,6 +79,7 @@
         <definition>PDJE_InputKeyboardEventV1 PDJE_InputEventViewV1::keyboard</definition>
         <argsstring></argsstring>
         <name>keyboard</name>
+        <qualifiedname>PDJE_InputEventViewV1::keyboard</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -87,6 +93,7 @@
         <definition>PDJE_InputMouseEventV1 PDJE_InputEventViewV1::mouse</definition>
         <argsstring></argsstring>
         <name>mouse</name>
+        <qualifiedname>PDJE_InputEventViewV1::mouse</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -100,6 +107,7 @@
         <definition>PDJE_InputBytesViewV1 PDJE_InputEventViewV1::hid_report</definition>
         <argsstring></argsstring>
         <name>hid_report</name>
+        <qualifiedname>PDJE_InputEventViewV1::hid_report</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -108,44 +116,44 @@
         </inbodydescription>
         <location file="include/input/CPDJE_Input.h" line="101" column="31" bodyfile="include/input/CPDJE_Input.h" bodystart="101" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
+      <node id="5">
+        <label>PDJE_InputBytesViewV1</label>
+        <link refid="structPDJE__InputBytesViewV1"/>
+      </node>
       <node id="1">
         <label>PDJE_InputEventViewV1</label>
         <link refid="structPDJE__InputEventViewV1"/>
         <childnode refid="2" relation="usage">
-          <edgelabel>keyboard</edgelabel>
-        </childnode>
-        <childnode refid="3" relation="usage">
           <edgelabel>id</edgelabel>
           <edgelabel>name</edgelabel>
         </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>keyboard</edgelabel>
+        </childnode>
         <childnode refid="4" relation="usage">
-          <edgelabel>hid_report</edgelabel>
+          <edgelabel>mouse</edgelabel>
         </childnode>
         <childnode refid="5" relation="usage">
-          <edgelabel>mouse</edgelabel>
+          <edgelabel>hid_report</edgelabel>
         </childnode>
       </node>
       <node id="3">
-        <label>PDJE_InputStringViewV1</label>
-        <link refid="structPDJE__InputStringViewV1"/>
+        <label>PDJE_InputKeyboardEventV1</label>
+        <link refid="structPDJE__InputKeyboardEventV1"/>
       </node>
       <node id="4">
-        <label>PDJE_InputBytesViewV1</label>
-        <link refid="structPDJE__InputBytesViewV1"/>
-      </node>
-      <node id="5">
         <label>PDJE_InputMouseEventV1</label>
         <link refid="structPDJE__InputMouseEventV1"/>
       </node>
       <node id="2">
-        <label>PDJE_InputKeyboardEventV1</label>
-        <link refid="structPDJE__InputKeyboardEventV1"/>
+        <label>PDJE_InputStringViewV1</label>
+        <link refid="structPDJE__InputStringViewV1"/>
       </node>
     </collaborationgraph>
     <location file="include/input/CPDJE_Input.h" line="93" column="1" bodyfile="include/input/CPDJE_Input.h" bodystart="93" bodyend="102"/>

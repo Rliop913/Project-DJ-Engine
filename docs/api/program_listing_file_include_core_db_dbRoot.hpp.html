@@ -82,6 +82,7 @@
 <p>↰ <a class="reference internal" href="file_include_core_db_dbRoot.hpp.html#file-include-core-db-dbroot-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include\core\db\dbRoot.hpp</span></code>)</p>
 <div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_EXPORT_SETTER.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;fileNameSanitizer.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;musicDB.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;trackDB.hpp&quot;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;filesystem&gt;</span>
@@ -109,9 +110,6 @@
 <span class="w">    </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="n">vectordbPath</span><span class="p">;</span>
 <span class="w">    </span><span class="n">sqlite3</span><span class="w">             </span><span class="o">*</span><span class="n">sdb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">RDB</span><span class="o">&gt;</span><span class="w"> </span><span class="n">kvdb_impl</span><span class="p">;</span>
-<span class="w">    </span><span class="c1">// RDB::DB          *kvdb = nullptr;</span>
-<span class="w">    </span><span class="c1">// RDB::WriteOptions wops;</span>
-<span class="w">    </span><span class="c1">// RDB::ReadOptions  rops;</span>
 
 <span class="w">    </span><span class="kt">bool</span>
 <span class="w">    </span><span class="nf">CheckTables</span><span class="p">();</span>
@@ -131,13 +129,16 @@
 
 <span class="w">    </span><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">DBType</span><span class="o">&gt;</span>
 <span class="w">    </span><span class="kt">bool</span>
-<span class="w">    </span><span class="n">EditData</span><span class="p">(</span><span class="n">DBType</span><span class="w"> </span><span class="o">&amp;</span><span class="n">searchObject</span><span class="p">,</span><span class="w"> </span><span class="n">DBType</span><span class="w"> </span><span class="o">&amp;</span><span class="n">editObject</span><span class="p">);</span><span class="w"> </span><span class="c1">// to-do impl</span>
+<span class="w">    </span><span class="n">EditData</span><span class="p">(</span><span class="n">DBType</span><span class="w"> </span><span class="o">&amp;</span><span class="n">searchObject</span><span class="p">,</span><span class="w"> </span><span class="n">DBType</span><span class="w"> </span><span class="o">&amp;</span><span class="n">editObject</span><span class="p">);</span>
 
 <span class="w">    </span><span class="kt">bool</span>
 <span class="w">    </span><span class="nf">KVGet</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SANITIZED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">V</span><span class="p">);</span>
 
 <span class="w">    </span><span class="kt">bool</span>
 <span class="w">    </span><span class="nf">KVPut</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SANITIZED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">V</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">bool</span>
+<span class="w">    </span><span class="nf">KVDelete</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SANITIZED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">K</span><span class="p">);</span>
 
 <span class="w">    </span><span class="kt">bool</span>
 <span class="w">    </span><span class="nf">openDB</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">fs</span><span class="o">::</span><span class="n">path</span><span class="w"> </span><span class="o">&amp;</span><span class="n">dbPath</span><span class="p">);</span>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="LinuxMouseButtonMapping_8hpp" kind="file" language="C++">
     <compoundname>LinuxMouseButtonMapping.hpp</compoundname>
     <includes refid="Input__State_8hpp" local="yes">Input_State.hpp</includes>
@@ -23,15 +23,6 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="8">
-        <label>cstdint</label>
-      </node>
-      <node id="4">
-        <label>memory_resource</label>
-      </node>
-      <node id="6">
-        <label>string</label>
-      </node>
       <node id="1">
         <label>include/input/DefaultDevs/linux/LinuxMouseButtonMapping.hpp</label>
         <link refid="LinuxMouseButtonMapping_8hpp"/>
@@ -44,24 +35,29 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
+      <node id="8">
+        <label>cstdint</label>
+      </node>
       <node id="3">
         <label>future</label>
-      </node>
-      <node id="5">
-        <label>optional</label>
-      </node>
-      <node id="7">
-        <label>vector</label>
       </node>
       <node id="9">
         <label>linux/input-event-codes.h</label>
       </node>
+      <node id="4">
+        <label>memory_resource</label>
+      </node>
+      <node id="5">
+        <label>optional</label>
+      </node>
+      <node id="6">
+        <label>string</label>
+      </node>
+      <node id="7">
+        <label>vector</label>
+      </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="2">
-        <label>include/input/DefaultDevs/linux/ParseMouse.cpp</label>
-        <link refid="ParseMouse_8cpp"/>
-      </node>
       <node id="1">
         <label>include/input/DefaultDevs/linux/LinuxMouseButtonMapping.hpp</label>
         <link refid="LinuxMouseButtonMapping_8hpp"/>
@@ -69,6 +65,10 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
+      </node>
+      <node id="2">
+        <label>include/input/DefaultDevs/linux/ParseMouse.cpp</label>
+        <link refid="ParseMouse_8cpp"/>
       </node>
       <node id="3">
         <label>include/input/DefaultDevs/linux/wayland_things/WaylandInputCore.cpp</label>
@@ -93,7 +93,7 @@
 <codeline lineno="9" refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__MAP" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__MAP" kindref="compound">PDJE_DEFAULT_DEVICES::LINUX_INPUT_MAP</ref><sp/>{</highlight></codeline>
 <codeline lineno="10"><highlight class="normal"></highlight></codeline>
 <codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::optional&lt;BITMASK&gt;</highlight></codeline>
-<codeline lineno="12" refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__MAP_1a810f704b7b3d66e4a1162ca6d8066a8f" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__MAP_1a810f704b7b3d66e4a1162ca6d8066a8f" kindref="member">TryMapLinuxMouseButton</ref>(uint32_t<sp/>button,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>pressed)<sp/>noexcept</highlight></codeline>
+<codeline lineno="12" refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__MAP_1a570a6beb4c166d9dc5c9a3fded351987" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__DEFAULT__DEVICES_1_1LINUX__INPUT__MAP_1a570a6beb4c166d9dc5c9a3fded351987" kindref="member">TryMapLinuxMouseButton</ref>(uint32_t<sp/>button,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>pressed)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="13"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(button)<sp/>{</highlight></codeline>
 <codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>BTN_LEFT:</highlight></codeline>

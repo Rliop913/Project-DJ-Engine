@@ -1,15 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="namespaceHWY__NAMESPACE" kind="namespace" language="C++">
     <compoundname>HWY_NAMESPACE</compoundname>
-      <sectiondef kind="func">
+    <sectiondef kind="func">
       <memberdef kind="function" id="namespaceHWY__NAMESPACE_1ad074d697d201fc9b6c258e128a4ef91e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>HWY_ATTR bool</type>
         <definition>HWY_ATTR bool HWY_NAMESPACE::GetPCMFramesSIMD</definition>
         <argsstring>(SIMD_FLOAT &amp;tempFrames, std::vector&lt; float &gt; &amp;L, std::vector&lt; float &gt; &amp;R, float **FaustStyle, LOADS &amp;deck, float *array, const unsigned long FrameSize)</argsstring>
         <name>GetPCMFramesSIMD</name>
+        <qualifiedname>HWY_NAMESPACE::GetPCMFramesSIMD</qualifiedname>
         <param>
-          <type><ref refid="FrameCalc_8hpp_1afaba0c56b304d05ee34bd4cc22319217" kindref="member">SIMD_FLOAT</ref> &amp;</type>
+          <type><ref refid="FrameCalc_8hpp_1a4ae0f789157647f4609ec87fb5b58e5a" kindref="member">SIMD_FLOAT</ref> &amp;</type>
           <declname>tempFrames</declname>
         </param>
         <param>
@@ -51,7 +52,7 @@
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername direction="out">L</parametername>
+<parametername direction="out"><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caef31cc6fe9479955961311ee18ac205f" kindref="member">L</ref></parametername>
 </parameternamelist>
 <parameterdescription>
 <para>A buffer to store the left channel audio data for Faust processing. </para>
@@ -59,7 +60,7 @@
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername direction="out">R</parametername>
+<parametername direction="out"><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca1784b1a3d7cbd43c45ff82c72d05e4ae" kindref="member">R</ref></parametername>
 </parameternamelist>
 <parameterdescription>
 <para>A buffer to store the right channel audio data for Faust processing. </para>
@@ -70,7 +71,7 @@
 <parametername direction="inout">FaustStyle</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>A pointer array to the left and right channel buffers (<computeroutput>L</computeroutput> and <computeroutput>R</computeroutput>). </para>
+<para>A pointer array to the left and right channel buffers (<computeroutput><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55caef31cc6fe9479955961311ee18ac205f" kindref="member">L</ref></computeroutput> and <computeroutput><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca1784b1a3d7cbd43c45ff82c72d05e4ae" kindref="member">R</ref></computeroutput>). </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -111,8 +112,9 @@
         <definition>HWY_ATTR void HWY_NAMESPACE::INTEGRATE_PCM_SIMD</definition>
         <argsstring>(SIMD_FLOAT &amp;tempVec, std::mutex &amp;renderLock, std::vector&lt; float &gt; &amp;rendered_out, MUSIC_CTR *&amp;MC)</argsstring>
         <name>INTEGRATE_PCM_SIMD</name>
+        <qualifiedname>HWY_NAMESPACE::INTEGRATE_PCM_SIMD</qualifiedname>
         <param>
-          <type><ref refid="FrameCalc_8hpp_1afaba0c56b304d05ee34bd4cc22319217" kindref="member">SIMD_FLOAT</ref> &amp;</type>
+          <type><ref refid="FrameCalc_8hpp_1a4ae0f789157647f4609ec87fb5b58e5a" kindref="member">SIMD_FLOAT</ref> &amp;</type>
           <declname>tempVec</declname>
         </param>
         <param>
@@ -176,6 +178,7 @@
         <definition>HWY_ATTR void HWY_NAMESPACE::ComputeWaveformColumnExtremaSIMD</definition>
         <argsstring>(const float *samples, std::size_t pcm_per_pixel, std::size_t x_pixels, float *mins_out, float *maxs_out)</argsstring>
         <name>ComputeWaveformColumnExtremaSIMD</name>
+        <qualifiedname>HWY_NAMESPACE::ComputeWaveformColumnExtremaSIMD</qualifiedname>
         <param>
           <type>const float *</type>
           <declname>samples</declname>
@@ -204,7 +207,7 @@
         </inbodydescription>
         <location file="include/util/function/image/WaveformWebpHighway-inl.h" line="14" column="1" bodyfile="include/util/function/image/WaveformWebpHighway-inl.h" bodystart="14" bodyend="53"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

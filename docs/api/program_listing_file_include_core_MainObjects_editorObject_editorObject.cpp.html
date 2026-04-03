@@ -240,6 +240,9 @@
 <span class="kt">bool</span>
 <span class="nf">editorObject::pushToRootDB</span><span class="p">(</span><span class="n">litedb</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ROOTDB</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">UNSANITIZED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">trackTitleToPush</span><span class="p">)</span>
 <span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">trackTitleToPush</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">trackdata</span><span class="w"> </span><span class="n">searchQuery</span><span class="p">;</span>
 <span class="w">    </span><span class="n">searchQuery</span><span class="p">.</span><span class="n">trackTitle</span><span class="w"> </span><span class="o">=</span>
 <span class="w">        </span><span class="n">PDJE_Name_Sanitizer</span><span class="o">::</span><span class="n">sanitizeFileName</span><span class="p">(</span><span class="n">trackTitleToPush</span><span class="p">).</span><span class="n">value_or</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">);</span>
@@ -258,7 +261,22 @@
 
 <span class="w">    </span><span class="n">TITLE_COMPOSER</span><span class="w"> </span><span class="n">tcData</span><span class="p">;</span>
 <span class="w">    </span><span class="k">auto</span><span class="w">           </span><span class="n">td</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">makeTrackData</span><span class="p">(</span><span class="n">trackTitleToPush</span><span class="p">,</span><span class="w"> </span><span class="n">tcData</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">ROOTDB</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">td</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">trackdata</span><span class="w">      </span><span class="n">checker_track</span><span class="p">;</span>
+<span class="w">    </span><span class="n">checker_track</span><span class="p">.</span><span class="n">trackTitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">td</span><span class="p">.</span><span class="n">trackTitle</span><span class="p">;</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">res</span><span class="w">                 </span><span class="o">=</span><span class="w"> </span><span class="n">ROOTDB</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">checker_track</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">res</span><span class="p">.</span><span class="n">has_value</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to search track data from rootdb. from editorObject &quot;</span>
+<span class="w">                </span><span class="s">&quot;pushToRootDB&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">trackTitleToPush</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">pushRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">res</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">pushRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ROOTDB</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">td</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">pushRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ROOTDB</span><span class="p">.</span><span class="n">EditData</span><span class="p">(</span><span class="n">res</span><span class="o">-&gt;</span><span class="n">front</span><span class="p">(),</span><span class="w"> </span><span class="n">td</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">pushRes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to push trackdata to root database. from editorObject &quot;</span>
 <span class="w">                </span><span class="s">&quot;pushToRootDB. trackTitle: &quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">trackTitleToPush</span><span class="p">);</span>
@@ -280,7 +298,7 @@
 <span class="p">{</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">fromProjectSearchQuery</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">musdata</span><span class="p">(</span><span class="n">musicTitle</span><span class="p">,</span><span class="w"> </span><span class="n">musicComposer</span><span class="p">);</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">searched</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="n">projectLocalDB</span><span class="o">-&gt;</span><span class="n">GetBuildedProject</span><span class="p">()</span>
-<span class="w">                    </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">fromProjectSearchQuery</span><span class="p">;</span>
+<span class="w">                                  </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">fromProjectSearchQuery</span><span class="p">;</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">searched</span><span class="p">.</span><span class="n">has_value</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;searched has no value. from editorObject pushToRootDB. &quot;</span>
 <span class="w">                </span><span class="s">&quot;musicTitle &amp; composer: &quot;</span><span class="p">);</span>

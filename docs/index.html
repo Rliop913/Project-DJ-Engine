@@ -178,9 +178,8 @@ Previously this implied ~1 ms timing steps; now the judge uses synchronized time
 <li><p><strong>Utility Engine</strong> :
 The Utility Engine is active code in the current tree. It is centered around
 <cite>util/PDJE_Util.hpp</cite> and the <cite>PDJE_UTIL</cite> interface targets, providing shared
-status/result types, database abstractions, and function helpers. The current
-utility direction also includes Halide-based function examples for
-GPGPU-oriented processing workflows.</p></li>
+status/result types, database abstractions, image/WebP helpers, and STFT
+utilities with runtime backend selection between OpenCL and serial paths.</p></li>
 </ul>
 </section>
 <section id="milestones">
@@ -206,7 +205,7 @@ timeline
     1.2.0 : Utility Module Expansion
     1.5.0 : OnnxRuntime Integration Utility Module
     2.0.0 : OnnxRuntime Integrated with Halide-backed utility workflows
-    </pre><p>See: Halide and the Utility Engine documentation for the current GPGPU-oriented direction.</p>
+    </pre><p>See <a class="reference internal" href="Util_Engine.html"><span class="doc">Util_Engine</span></a> for the current source-backed utility surface.</p>
 </section>
 <section id="use-cases">
 <h2>Use Cases<a class="headerlink" href="#use-cases" title="Link to this heading"></a></h2>

@@ -17,8 +17,6 @@ Namespaces
 ----------
 
 
-- :ref:`namespace_PDJE_UTIL__function__halide`
-
 - :ref:`namespace_PDJE_UTIL__function__image`
 
 

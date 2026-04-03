@@ -32,9 +32,11 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
         <childnode refid="28" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
         <childnode refid="34" relation="include">
         </childnode>
@@ -96,6 +98,8 @@
         </childnode>
         <childnode refid="29" relation="include">
         </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
         <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="34" relation="include">
@@ -104,14 +108,14 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="31">
+      <node id="32">
         <label>dbState.hpp</label>
         <link refid="db_state_8hpp"/>
         <childnode refid="5" relation="include">
@@ -120,15 +124,15 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
       </node>
-      <node id="29">
+      <node id="30">
         <label>musicDB.hpp</label>
         <link refid="music_d_b_8hpp"/>
-        <childnode refid="30" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -136,26 +140,26 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
         <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
         </childnode>
       </node>
       <node id="33">
         <label>trackDB.hpp</label>
         <link refid="track_d_b_8hpp"/>
-        <childnode refid="30" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
         <childnode refid="32" relation="include">
         </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
       </node>
-      <node id="32">
+      <node id="29">
         <label>fileNameSanitizer.hpp</label>
         <link refid="file_name_sanitizer_8hpp"/>
         <childnode refid="9" relation="include">
@@ -245,7 +249,7 @@
       <node id="15">
         <label>spdlog/spdlog.h</label>
       </node>
-      <node id="30">
+      <node id="31">
         <label>sqlite3.h</label>
       </node>
       <node id="12">
@@ -278,7 +282,7 @@
 <codeline lineno="4" refid="struct_pre_loaded_music_1a30e2d425f26d22b4615eb4597daeb9fd" refkind="member"><highlight class="normal"><ref refid="struct_pre_loaded_music_1a30e2d425f26d22b4615eb4597daeb9fd" kindref="member">PreLoadedMusic::init</ref>(<ref refid="classlitedb" kindref="compound">litedb</ref><sp/>&amp;db,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="file_name_sanitizer_8hpp_1a0662da7f5befd667eac83e4e3566cd47" kindref="member">SANITIZED_ORNOT</ref><sp/>&amp;KeyOrPath)</highlight></codeline>
 <codeline lineno="5"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_decoder" kindref="compound">Decoder</ref><sp/>dec;</highlight></codeline>
-<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!dec.<ref refid="struct_decoder_1a131a509056b8cccd6acf2a4cce59069e" kindref="member">init</ref>(db,<sp/>KeyOrPath))<sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!dec.<ref refid="struct_decoder_1acb1bb883085ea17c31410165e91114db" kindref="member">init</ref>(db,<sp/>KeyOrPath))<sp/>{</highlight></codeline>
 <codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1a6f4ac2826ed21d631281a5644018f590" kindref="member">warnlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>load<sp/>music&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -287,7 +291,7 @@
 <codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>get<sp/>maximum<sp/>frames.&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!dec.<ref refid="struct_decoder_1af5edf9c75d6929fc76133c87166cee2f" kindref="member">getRange</ref>(<ref refid="struct_pre_loaded_music_1a1d48f35dd0568d662b7ac35e37b3c3f6" kindref="member">fullSize</ref>,<sp/><ref refid="struct_pre_loaded_music_1a6a9b5a7b9a5cc8bc80201e4584a9294b" kindref="member">music</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!dec.<ref refid="struct_decoder_1a9885ca7b79a4b48cfb29547052485e97" kindref="member">getRange</ref>(<ref refid="struct_pre_loaded_music_1a1d48f35dd0568d662b7ac35e37b3c3f6" kindref="member">fullSize</ref>,<sp/><ref refid="struct_pre_loaded_music_1a6a9b5a7b9a5cc8bc80201e4584a9294b" kindref="member">music</ref>))<sp/>{</highlight></codeline>
 <codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_p_d_j_e___l_o_g___s_e_t_t_e_r_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>get<sp/>range&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>

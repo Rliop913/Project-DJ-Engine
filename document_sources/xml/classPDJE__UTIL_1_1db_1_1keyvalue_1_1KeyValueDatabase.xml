@@ -1,21 +1,22 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase" kind="class" language="C++" prot="public">
     <compoundname>PDJE_UTIL::db::keyvalue::KeyValueDatabase</compoundname>
     <includes refid="keyvalue_2Database_8hpp" local="no">Database.hpp</includes>
     <templateparamlist>
       <param>
-        <type><ref refid="namespacePDJE__UTIL_1_1db_1_1keyvalue_1ad862892c8319fcf5bf1c761f446f3680" kindref="member">KeyValueBackendConcept</ref></type>
+        <type>KeyValueBackendConcept</type>
         <declname>Backend</declname>
         <defname>Backend</defname>
       </param>
     </templateparamlist>
-      <sectiondef kind="public-type">
+    <sectiondef kind="public-type">
       <memberdef kind="typedef" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a338cd915119be42b39254fb3fa5167d0" prot="public" static="no">
         <type>Backend</type>
-        <definition>using PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::backend_type =  Backend</definition>
+        <definition>using PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::backend_type = Backend</definition>
         <argsstring></argsstring>
         <name>backend_type</name>
+        <qualifiedname>PDJE_UTIL::db::keyvalue::KeyValueDatabase::backend_type</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -26,9 +27,10 @@
       </memberdef>
       <memberdef kind="typedef" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a46a15a4fe07c51eecdffb5db04e6d1d4" prot="public" static="no">
         <type>typename Backend::config_type</type>
-        <definition>using PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::config_type =  typename Backend::config_type</definition>
+        <definition>using PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::config_type = typename Backend::config_type</definition>
         <argsstring></argsstring>
         <name>config_type</name>
+        <qualifiedname>PDJE_UTIL::db::keyvalue::KeyValueDatabase::config_type</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -37,13 +39,14 @@
         </inbodydescription>
         <location file="include/util/db/keyvalue/Database.hpp" line="13" column="5" bodyfile="include/util/db/keyvalue/Database.hpp" bodystart="13" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-attrib">
+    </sectiondef>
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aacfa572ae882f8ac34efb1901521e432" prot="private" static="no" mutable="no">
         <type>Backend</type>
         <definition>Backend PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::backend_</definition>
         <argsstring></argsstring>
         <name>backend_</name>
+        <qualifiedname>PDJE_UTIL::db::keyvalue::KeyValueDatabase::backend_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -57,6 +60,7 @@
         <definition>bool PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::is_open_</definition>
         <argsstring></argsstring>
         <name>is_open_</name>
+        <qualifiedname>PDJE_UTIL::db::keyvalue::KeyValueDatabase::is_open_</qualifiedname>
         <initializer>= false</initializer>
         <briefdescription>
         </briefdescription>
@@ -66,13 +70,14 @@
         </inbodydescription>
         <location file="include/util/db/keyvalue/Database.hpp" line="145" column="13" bodyfile="include/util/db/keyvalue/Database.hpp" bodystart="145" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a07c53198bc28a7ed2f77373a4bb9db79" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a27c35dccb45c6bb110044ac61ce729fd" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
-        <definition>static common::Result&lt;void&gt; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::create</definition>
+        <definition>static common::Result&lt; void &gt; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::create</definition>
         <argsstring>(const config_type &amp;cfg)</argsstring>
         <name>create</name>
+        <qualifiedname>PDJE_UTIL::db::keyvalue::KeyValueDatabase::create</qualifiedname>
         <param>
           <type>const <ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a46a15a4fe07c51eecdffb5db04e6d1d4" kindref="member">config_type</ref> &amp;</type>
           <declname>cfg</declname>
@@ -85,11 +90,12 @@
         </inbodydescription>
         <location file="include/util/db/keyvalue/Database.hpp" line="16" column="5" bodyfile="include/util/db/keyvalue/Database.hpp" bodystart="16" bodyend="19"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a636dabeba3bf26143e84a110f3197695" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a3691e7c61e15367185c2b9f34b128ee1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
-        <definition>static common::Result&lt;void&gt; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::destroy</definition>
+        <definition>static common::Result&lt; void &gt; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::destroy</definition>
         <argsstring>(const config_type &amp;cfg)</argsstring>
         <name>destroy</name>
+        <qualifiedname>PDJE_UTIL::db::keyvalue::KeyValueDatabase::destroy</qualifiedname>
         <param>
           <type>const <ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a46a15a4fe07c51eecdffb5db04e6d1d4" kindref="member">config_type</ref> &amp;</type>
           <declname>cfg</declname>
@@ -102,11 +108,12 @@
         </inbodydescription>
         <location file="include/util/db/keyvalue/Database.hpp" line="22" column="5" bodyfile="include/util/db/keyvalue/Database.hpp" bodystart="22" bodyend="25"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a637ff84406c3e64d8a29018aa52a8045" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; <ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase" kindref="compound">KeyValueDatabase</ref> &gt;</type>
-        <definition>static common::Result&lt;KeyValueDatabase&gt; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::open</definition>
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a77212cfecdb06654dabcd225e6ee20ac" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; <ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a66958c3c6f5f63b8a31faa7cd46574da" kindref="member">KeyValueDatabase</ref> &gt;</type>
+        <definition>static common::Result&lt; KeyValueDatabase &gt; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::open</definition>
         <argsstring>(const config_type &amp;cfg)</argsstring>
         <name>open</name>
+        <qualifiedname>PDJE_UTIL::db::keyvalue::KeyValueDatabase::open</qualifiedname>
         <param>
           <type>const <ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a46a15a4fe07c51eecdffb5db04e6d1d4" kindref="member">config_type</ref> &amp;</type>
           <declname>cfg</declname>
@@ -119,13 +126,14 @@
         </inbodydescription>
         <location file="include/util/db/keyvalue/Database.hpp" line="28" column="5" bodyfile="include/util/db/keyvalue/Database.hpp" bodystart="28" bodyend="37"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a66958c3c6f5f63b8a31faa7cd46574da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::KeyValueDatabase</definition>
         <argsstring>()=default</argsstring>
         <name>KeyValueDatabase</name>
+        <qualifiedname>PDJE_UTIL::db::keyvalue::KeyValueDatabase::KeyValueDatabase</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -139,8 +147,9 @@
         <definition>PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::KeyValueDatabase</definition>
         <argsstring>(KeyValueDatabase &amp;&amp;other) noexcept</argsstring>
         <name>KeyValueDatabase</name>
+        <qualifiedname>PDJE_UTIL::db::keyvalue::KeyValueDatabase::KeyValueDatabase</qualifiedname>
         <param>
-          <type><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase" kindref="compound">KeyValueDatabase</ref> &amp;&amp;</type>
+          <type>KeyValueDatabase &amp;&amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -151,13 +160,14 @@
         </inbodydescription>
         <location file="include/util/db/keyvalue/Database.hpp" line="40" column="5" bodyfile="include/util/db/keyvalue/Database.hpp" bodystart="40" bodyend="44"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1ac8795a2c205157e1a569a2d9a330403c" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase" kindref="compound">KeyValueDatabase</ref> &amp;</type>
-        <definition>KeyValueDatabase&amp; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::operator=</definition>
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1ae2fd89277eb54725fe95dbd9244032ab" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a66958c3c6f5f63b8a31faa7cd46574da" kindref="member">KeyValueDatabase</ref> &amp;</type>
+        <definition>KeyValueDatabase &amp; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::operator=</definition>
         <argsstring>(KeyValueDatabase &amp;&amp;other) noexcept</argsstring>
         <name>operator=</name>
+        <qualifiedname>PDJE_UTIL::db::keyvalue::KeyValueDatabase::operator=</qualifiedname>
         <param>
-          <type><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase" kindref="compound">KeyValueDatabase</ref> &amp;&amp;</type>
+          <type><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a66958c3c6f5f63b8a31faa7cd46574da" kindref="member">KeyValueDatabase</ref> &amp;&amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -173,8 +183,9 @@
         <definition>PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::KeyValueDatabase</definition>
         <argsstring>(const KeyValueDatabase &amp;)=delete</argsstring>
         <name>KeyValueDatabase</name>
+        <qualifiedname>PDJE_UTIL::db::keyvalue::KeyValueDatabase::KeyValueDatabase</qualifiedname>
         <param>
-          <type>const <ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase" kindref="compound">KeyValueDatabase</ref> &amp;</type>
+          <type>const KeyValueDatabase &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -184,13 +195,14 @@
         </inbodydescription>
         <location file="include/util/db/keyvalue/Database.hpp" line="59" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a44c9c0c732bb332fa6e0677244560e0a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase" kindref="compound">KeyValueDatabase</ref> &amp;</type>
-        <definition>KeyValueDatabase&amp; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::operator=</definition>
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aba9ecf76e4ed8e0a8a5a111b6c7cc891" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a66958c3c6f5f63b8a31faa7cd46574da" kindref="member">KeyValueDatabase</ref> &amp;</type>
+        <definition>KeyValueDatabase &amp; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::operator=</definition>
         <argsstring>(const KeyValueDatabase &amp;)=delete</argsstring>
         <name>operator=</name>
+        <qualifiedname>PDJE_UTIL::db::keyvalue::KeyValueDatabase::operator=</qualifiedname>
         <param>
-          <type>const <ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase" kindref="compound">KeyValueDatabase</ref> &amp;</type>
+          <type>const <ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a66958c3c6f5f63b8a31faa7cd46574da" kindref="member">KeyValueDatabase</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -205,6 +217,7 @@
         <definition>PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::~KeyValueDatabase</definition>
         <argsstring>()</argsstring>
         <name>~KeyValueDatabase</name>
+        <qualifiedname>PDJE_UTIL::db::keyvalue::KeyValueDatabase::~KeyValueDatabase</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -213,11 +226,12 @@
         </inbodydescription>
         <location file="include/util/db/keyvalue/Database.hpp" line="63" column="5" bodyfile="include/util/db/keyvalue/Database.hpp" bodystart="63" bodyend="68"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a7817ddba5bd07e5488fa063577d61d66" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aaf20f61f19da23898d2a39ccbb37e27b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
-        <definition>common::Result&lt;void&gt; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::close</definition>
+        <definition>common::Result&lt; void &gt; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::close</definition>
         <argsstring>()</argsstring>
         <name>close</name>
+        <qualifiedname>PDJE_UTIL::db::keyvalue::KeyValueDatabase::close</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -231,6 +245,7 @@
         <definition>bool PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::is_open</definition>
         <argsstring>() const noexcept</argsstring>
         <name>is_open</name>
+        <qualifiedname>PDJE_UTIL::db::keyvalue::KeyValueDatabase::is_open</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -239,11 +254,12 @@
         </inbodydescription>
         <location file="include/util/db/keyvalue/Database.hpp" line="84" column="5" bodyfile="include/util/db/keyvalue/Database.hpp" bodystart="84" bodyend="87"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a0a6362d57cf370c368b2a37c60126ac2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1ab61aaf5d1a442858ce461759eb2c9de7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; bool &gt;</type>
-        <definition>common::Result&lt;bool&gt; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::contains</definition>
+        <definition>common::Result&lt; bool &gt; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::contains</definition>
         <argsstring>(std::string_view key) const</argsstring>
         <name>contains</name>
+        <qualifiedname>PDJE_UTIL::db::keyvalue::KeyValueDatabase::contains</qualifiedname>
         <param>
           <type>std::string_view</type>
           <declname>key</declname>
@@ -256,11 +272,12 @@
         </inbodydescription>
         <location file="include/util/db/keyvalue/Database.hpp" line="90" column="5" bodyfile="include/util/db/keyvalue/Database.hpp" bodystart="90" bodyend="93"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1ae8cafdf45519174b1e9fa2792886ffdb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; <ref refid="namespacePDJE__UTIL_1_1db_1a4478e16df2aec53b3378bfd6337246b6" kindref="member">Text</ref> &gt;</type>
-        <definition>common::Result&lt;Text&gt; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::get_text</definition>
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a2605257fa6f18482bb8fd79891daa7cf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; <ref refid="namespacePDJE__UTIL_1_1db_1a89f870d3c2a028544646a9b95b827d28" kindref="member">Text</ref> &gt;</type>
+        <definition>common::Result&lt; Text &gt; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::get_text</definition>
         <argsstring>(std::string_view key) const</argsstring>
         <name>get_text</name>
+        <qualifiedname>PDJE_UTIL::db::keyvalue::KeyValueDatabase::get_text</qualifiedname>
         <param>
           <type>std::string_view</type>
           <declname>key</declname>
@@ -273,11 +290,12 @@
         </inbodydescription>
         <location file="include/util/db/keyvalue/Database.hpp" line="96" column="5" bodyfile="include/util/db/keyvalue/Database.hpp" bodystart="96" bodyend="99"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a0c1258a24bab9effb5d9463dce6521c4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; <ref refid="namespacePDJE__UTIL_1_1db_1acfb13486a5f831dd08830ce1cc8c7ba3" kindref="member">Bytes</ref> &gt;</type>
-        <definition>common::Result&lt;Bytes&gt; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::get_bytes</definition>
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a53dd50b81ba8813404f3e9bf7cfdb5d2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; <ref refid="namespacePDJE__UTIL_1_1db_1a2ef3b7d9e6089bee19f07baae2cdaa81" kindref="member">Bytes</ref> &gt;</type>
+        <definition>common::Result&lt; Bytes &gt; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::get_bytes</definition>
         <argsstring>(std::string_view key) const</argsstring>
         <name>get_bytes</name>
+        <qualifiedname>PDJE_UTIL::db::keyvalue::KeyValueDatabase::get_bytes</qualifiedname>
         <param>
           <type>std::string_view</type>
           <declname>key</declname>
@@ -290,11 +308,12 @@
         </inbodydescription>
         <location file="include/util/db/keyvalue/Database.hpp" line="102" column="5" bodyfile="include/util/db/keyvalue/Database.hpp" bodystart="102" bodyend="105"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1ac9dad430d9daf2119004d52dc1ad940f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a46c8ad160e98d09c7583ee3eb8bf0414" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
-        <definition>common::Result&lt;void&gt; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::put_text</definition>
+        <definition>common::Result&lt; void &gt; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::put_text</definition>
         <argsstring>(std::string_view key, std::string_view value)</argsstring>
         <name>put_text</name>
+        <qualifiedname>PDJE_UTIL::db::keyvalue::KeyValueDatabase::put_text</qualifiedname>
         <param>
           <type>std::string_view</type>
           <declname>key</declname>
@@ -311,11 +330,12 @@
         </inbodydescription>
         <location file="include/util/db/keyvalue/Database.hpp" line="108" column="5" bodyfile="include/util/db/keyvalue/Database.hpp" bodystart="108" bodyend="111"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a84e4df7096547060ddcc668abe7443fc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a3051e96c0c4df1f5cc7b7fdc92bf8d41" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
-        <definition>common::Result&lt;void&gt; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::put_bytes</definition>
+        <definition>common::Result&lt; void &gt; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::put_bytes</definition>
         <argsstring>(std::string_view key, std::span&lt; const std::byte &gt; value)</argsstring>
         <name>put_bytes</name>
+        <qualifiedname>PDJE_UTIL::db::keyvalue::KeyValueDatabase::put_bytes</qualifiedname>
         <param>
           <type>std::string_view</type>
           <declname>key</declname>
@@ -332,11 +352,12 @@
         </inbodydescription>
         <location file="include/util/db/keyvalue/Database.hpp" line="114" column="5" bodyfile="include/util/db/keyvalue/Database.hpp" bodystart="114" bodyend="117"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a01ac5936abcb476ab112e7313e7d9543" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1acebb8e2fd437ccb7d129384f5eff2a8b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
-        <definition>common::Result&lt;void&gt; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::erase</definition>
+        <definition>common::Result&lt; void &gt; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::erase</definition>
         <argsstring>(std::string_view key)</argsstring>
         <name>erase</name>
+        <qualifiedname>PDJE_UTIL::db::keyvalue::KeyValueDatabase::erase</qualifiedname>
         <param>
           <type>std::string_view</type>
           <declname>key</declname>
@@ -349,11 +370,12 @@
         </inbodydescription>
         <location file="include/util/db/keyvalue/Database.hpp" line="120" column="5" bodyfile="include/util/db/keyvalue/Database.hpp" bodystart="120" bodyend="123"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a04e5932e5da1d207439a3cafce7e8af1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; std::vector&lt; <ref refid="namespacePDJE__UTIL_1_1db_1aaa69bb1e1ba3230da8fb606c82d3ebc7" kindref="member">Key</ref> &gt; &gt;</type>
-        <definition>common::Result&lt;std::vector&lt;Key&gt; &gt; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::list_keys</definition>
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a839e10c54d49b38c6b281de1b6de6016" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; std::vector&lt; <ref refid="namespacePDJE__UTIL_1_1db_1aedbff324bfcd10a0857fd98f47045ba1" kindref="member">Key</ref> &gt; &gt;</type>
+        <definition>common::Result&lt; std::vector&lt; Key &gt; &gt; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::list_keys</definition>
         <argsstring>(std::string_view prefix={}) const</argsstring>
         <name>list_keys</name>
+        <qualifiedname>PDJE_UTIL::db::keyvalue::KeyValueDatabase::list_keys</qualifiedname>
         <param>
           <type>std::string_view</type>
           <declname>prefix</declname>
@@ -367,11 +389,12 @@
         </inbodydescription>
         <location file="include/util/db/keyvalue/Database.hpp" line="126" column="5" bodyfile="include/util/db/keyvalue/Database.hpp" bodystart="126" bodyend="129"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1ab96d24d9b81235db9c6d12b11ddd79bd" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aba43dd3072e3240c294cf8cfdd0fb3e7" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a338cd915119be42b39254fb3fa5167d0" kindref="member">backend_type</ref> &amp;</type>
-        <definition>backend_type&amp; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::backend</definition>
+        <definition>backend_type &amp; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::backend</definition>
         <argsstring>() noexcept</argsstring>
         <name>backend</name>
+        <qualifiedname>PDJE_UTIL::db::keyvalue::KeyValueDatabase::backend</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -380,11 +403,12 @@
         </inbodydescription>
         <location file="include/util/db/keyvalue/Database.hpp" line="132" column="5" bodyfile="include/util/db/keyvalue/Database.hpp" bodystart="132" bodyend="135"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a2e693c3bbf7445076be281e65856b8f8" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a573cd75787cc1e665b705a78987b9a9d" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const <ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a338cd915119be42b39254fb3fa5167d0" kindref="member">backend_type</ref> &amp;</type>
-        <definition>const backend_type&amp; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::backend</definition>
+        <definition>const backend_type &amp; PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;::backend</definition>
         <argsstring>() const noexcept</argsstring>
         <name>backend</name>
+        <qualifiedname>PDJE_UTIL::db::keyvalue::KeyValueDatabase::backend</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -393,12 +417,15 @@
         </inbodydescription>
         <location file="include/util/db/keyvalue/Database.hpp" line="138" column="5" bodyfile="include/util/db/keyvalue/Database.hpp" bodystart="138" bodyend="141"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
+      <node id="2">
+        <label>Backend</label>
+      </node>
       <node id="1">
         <label>PDJE_UTIL::db::keyvalue::KeyValueDatabase&lt; Backend &gt;</label>
         <link refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase"/>
@@ -406,35 +433,32 @@
           <edgelabel>backend_</edgelabel>
         </childnode>
       </node>
-      <node id="2">
-        <label>Backend</label>
-      </node>
     </collaborationgraph>
     <location file="include/util/db/keyvalue/Database.hpp" line="10" column="12" bodyfile="include/util/db/keyvalue/Database.hpp" bodystart="10" bodyend="146"/>
     <listofallmembers>
-      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1ab96d24d9b81235db9c6d12b11ddd79bd" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>backend</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a2e693c3bbf7445076be281e65856b8f8" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>backend</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aba43dd3072e3240c294cf8cfdd0fb3e7" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>backend</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a573cd75787cc1e665b705a78987b9a9d" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>backend</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aacfa572ae882f8ac34efb1901521e432" prot="private" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>backend_</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a338cd915119be42b39254fb3fa5167d0" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>backend_type</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a7817ddba5bd07e5488fa063577d61d66" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>close</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aaf20f61f19da23898d2a39ccbb37e27b" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>close</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a46a15a4fe07c51eecdffb5db04e6d1d4" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>config_type</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a0a6362d57cf370c368b2a37c60126ac2" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>contains</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a07c53198bc28a7ed2f77373a4bb9db79" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>create</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a636dabeba3bf26143e84a110f3197695" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>destroy</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a01ac5936abcb476ab112e7313e7d9543" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>erase</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a0c1258a24bab9effb5d9463dce6521c4" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>get_bytes</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1ae8cafdf45519174b1e9fa2792886ffdb" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>get_text</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1ab61aaf5d1a442858ce461759eb2c9de7" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>contains</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a27c35dccb45c6bb110044ac61ce729fd" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>create</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a3691e7c61e15367185c2b9f34b128ee1" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>destroy</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1acebb8e2fd437ccb7d129384f5eff2a8b" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>erase</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a53dd50b81ba8813404f3e9bf7cfdb5d2" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>get_bytes</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a2605257fa6f18482bb8fd79891daa7cf" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>get_text</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a7232b90a3339697b216c6ee1a8238be5" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>is_open</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a601c34a173fcb31d7962a9c19efd2dcd" prot="private" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>is_open_</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a66958c3c6f5f63b8a31faa7cd46574da" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>KeyValueDatabase</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a16735adc4825cb39fd1932cf47d58c3b" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>KeyValueDatabase</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aecfa66355a13ae844fd6159890d9f10d" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>KeyValueDatabase</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a04e5932e5da1d207439a3cafce7e8af1" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>list_keys</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a637ff84406c3e64d8a29018aa52a8045" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>open</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1ac8795a2c205157e1a569a2d9a330403c" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>operator=</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a44c9c0c732bb332fa6e0677244560e0a" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>operator=</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a84e4df7096547060ddcc668abe7443fc" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>put_bytes</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1ac9dad430d9daf2119004d52dc1ad940f" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>put_text</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a839e10c54d49b38c6b281de1b6de6016" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>list_keys</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a77212cfecdb06654dabcd225e6ee20ac" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>open</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1ae2fd89277eb54725fe95dbd9244032ab" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>operator=</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aba9ecf76e4ed8e0a8a5a111b6c7cc891" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>operator=</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a3051e96c0c4df1f5cc7b7fdc92bf8d41" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>put_bytes</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a46c8ad160e98d09c7583ee3eb8bf0414" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>put_text</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a91f2efbf7261cea18b386abe417de8cc" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::keyvalue::KeyValueDatabase</scope><name>~KeyValueDatabase</name></member>
     </listofallmembers>
   </compounddef>

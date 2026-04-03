@@ -1,26 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="keyvalue_2Database_8hpp" kind="file" language="C++">
     <compoundname>Database.hpp</compoundname>
     <includes refid="keyvalue_2BackendConcept_8hpp" local="yes">util/db/keyvalue/BackendConcept.hpp</includes>
     <includes local="no">span</includes>
     <includes local="no">utility</includes>
-    <includedby refid="Database_8hpp" local="yes">include/util/db/Database.hpp</includedby>
     <includedby refid="PDJE__Util_8hpp" local="yes">include/util/PDJE_Util.hpp</includedby>
+    <includedby refid="Database_8hpp" local="yes">include/util/db/Database.hpp</includedby>
     <incdepgraph>
-      <node id="8">
-        <label>util/db/DbTypes.hpp</label>
-        <link refid="DbTypes_8hpp"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>string</label>
-      </node>
       <node id="3">
         <label>util/common/Result.hpp</label>
         <link refid="Result_8hpp"/>
@@ -29,14 +16,26 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="1">
-        <label>include/util/db/keyvalue/Database.hpp</label>
-        <link refid="keyvalue_2Database_8hpp"/>
-        <childnode refid="2" relation="include">
+      <node id="4">
+        <label>util/common/Status.hpp</label>
+        <link refid="Status_8hpp"/>
+        <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+      </node>
+      <node id="5">
+        <label>util/common/StatusCode.hpp</label>
+        <link refid="StatusCode_8hpp"/>
+      </node>
+      <node id="8">
+        <label>util/db/DbTypes.hpp</label>
+        <link refid="DbTypes_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -55,42 +54,47 @@
         <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="13">
-        <label>string_view</label>
-      </node>
-      <node id="5">
-        <label>util/common/StatusCode.hpp</label>
-        <link refid="StatusCode_8hpp"/>
-      </node>
-      <node id="10">
-        <label>vector</label>
-      </node>
-      <node id="7">
-        <label>utility</label>
-      </node>
-      <node id="9">
-        <label>cstddef</label>
-      </node>
-      <node id="4">
-        <label>util/common/Status.hpp</label>
-        <link refid="Status_8hpp"/>
-        <childnode refid="5" relation="include">
+      <node id="1">
+        <label>include/util/db/keyvalue/Database.hpp</label>
+        <link refid="keyvalue_2Database_8hpp"/>
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
         </childnode>
       </node>
       <node id="11">
         <label>concepts</label>
       </node>
+      <node id="9">
+        <label>cstddef</label>
+      </node>
       <node id="12">
         <label>span</label>
+      </node>
+      <node id="6">
+        <label>string</label>
+      </node>
+      <node id="13">
+        <label>string_view</label>
+      </node>
+      <node id="7">
+        <label>utility</label>
+      </node>
+      <node id="10">
+        <label>vector</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
       <node id="2">
+        <label>include/util/PDJE_Util.hpp</label>
+        <link refid="PDJE__Util_8hpp"/>
+      </node>
+      <node id="3">
         <label>include/util/db/Database.hpp</label>
         <link refid="Database_8hpp"/>
-        <childnode refid="3" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -100,10 +104,6 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-      </node>
-      <node id="3">
-        <label>include/util/PDJE_Util.hpp</label>
-        <link refid="PDJE__Util_8hpp"/>
       </node>
     </invincdepgraph>
     <innerclass refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase" prot="public">PDJE_UTIL::db::keyvalue::KeyValueDatabase</innerclass>
@@ -124,48 +124,48 @@
 <codeline lineno="7"><highlight class="normal"></highlight></codeline>
 <codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1db_1_1keyvalue" kindref="compound">PDJE_UTIL::db::keyvalue</ref><sp/>{</highlight></codeline>
 <codeline lineno="9"><highlight class="normal"></highlight></codeline>
-<codeline lineno="10" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;KeyValueBackendConcept<sp/>Backend&gt;<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase" kindref="compound">KeyValueDatabase</ref><sp/>{</highlight></codeline>
+<codeline lineno="10" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;KeyValueBackendConcept<sp/>Backend&gt;<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a66958c3c6f5f63b8a31faa7cd46574da" kindref="member">KeyValueDatabase</ref><sp/>{</highlight></codeline>
 <codeline lineno="11"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="12" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a338cd915119be42b39254fb3fa5167d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a338cd915119be42b39254fb3fa5167d0" kindref="member">backend_type</ref><sp/>=<sp/>Backend;</highlight></codeline>
-<codeline lineno="13" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a46a15a4fe07c51eecdffb5db04e6d1d4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a46a15a4fe07c51eecdffb5db04e6d1d4" kindref="member">config_type</ref><sp/><sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Backend::config_type;</highlight></codeline>
+<codeline lineno="12" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a338cd915119be42b39254fb3fa5167d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a338cd915119be42b39254fb3fa5167d0" kindref="member">backend_type</ref><sp/>=<sp/>Backend;</highlight></codeline>
+<codeline lineno="13" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a46a15a4fe07c51eecdffb5db04e6d1d4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a46a15a4fe07c51eecdffb5db04e6d1d4" kindref="member">config_type</ref><sp/><sp/>=<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Backend::config_type;</highlight></codeline>
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>
-<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="16" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a07c53198bc28a7ed2f77373a4bb9db79" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a07c53198bc28a7ed2f77373a4bb9db79" kindref="member">create</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a46a15a4fe07c51eecdffb5db04e6d1d4" kindref="member">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="16" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a27c35dccb45c6bb110044ac61ce729fd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a27c35dccb45c6bb110044ac61ce729fd" kindref="member">create</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a46a15a4fe07c51eecdffb5db04e6d1d4" kindref="member">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
 <codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Backend::create(cfg);</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="22" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a636dabeba3bf26143e84a110f3197695" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a636dabeba3bf26143e84a110f3197695" kindref="member">destroy</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a46a15a4fe07c51eecdffb5db04e6d1d4" kindref="member">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="22" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a3691e7c61e15367185c2b9f34b128ee1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a3691e7c61e15367185c2b9f34b128ee1" kindref="member">destroy</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a46a15a4fe07c51eecdffb5db04e6d1d4" kindref="member">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Backend::destroy(cfg);</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight></codeline>
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;KeyValueDatabase&gt;</ref></highlight></codeline>
-<codeline lineno="28" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a637ff84406c3e64d8a29018aa52a8045" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a637ff84406c3e64d8a29018aa52a8045" kindref="member">open</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a46a15a4fe07c51eecdffb5db04e6d1d4" kindref="member">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
+<codeline lineno="28" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a77212cfecdb06654dabcd225e6ee20ac" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a77212cfecdb06654dabcd225e6ee20ac" kindref="member">open</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a46a15a4fe07c51eecdffb5db04e6d1d4" kindref="member">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase" kindref="compound">KeyValueDatabase</ref><sp/>db;</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>opened<sp/>=<sp/>db.<ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aacfa572ae882f8ac34efb1901521e432" kindref="member">backend_</ref>.open(cfg);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a66958c3c6f5f63b8a31faa7cd46574da" kindref="member">KeyValueDatabase</ref><sp/><ref refid="namespacePDJE__UTIL_1_1db" kindref="compound">db</ref>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>opened<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db" kindref="compound">db</ref>.backend_.open(cfg);</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!opened.ok())<sp/>{</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;KeyValueDatabase&gt;::failure</ref>(opened.status());</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>db.<ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a601c34a173fcb31d7962a9c19efd2dcd" kindref="member">is_open_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;KeyValueDatabase&gt;::success</ref>(std::move(db));</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__UTIL_1_1db" kindref="compound">db</ref>.is_open_<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;KeyValueDatabase&gt;::success</ref>(std::move(<ref refid="namespacePDJE__UTIL_1_1db" kindref="compound">db</ref>));</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
 <codeline lineno="39" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a66958c3c6f5f63b8a31faa7cd46574da" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a66958c3c6f5f63b8a31faa7cd46574da" kindref="member">KeyValueDatabase</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="40" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a16735adc4825cb39fd1932cf47d58c3b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a16735adc4825cb39fd1932cf47d58c3b" kindref="member">KeyValueDatabase</ref>(<ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase" kindref="compound">KeyValueDatabase</ref><sp/>&amp;&amp;other)<sp/>noexcept</highlight></codeline>
+<codeline lineno="40" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a16735adc4825cb39fd1932cf47d58c3b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a16735adc4825cb39fd1932cf47d58c3b" kindref="member">KeyValueDatabase</ref>(<ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a66958c3c6f5f63b8a31faa7cd46574da" kindref="member">KeyValueDatabase</ref><sp/>&amp;&amp;other)<sp/>noexcept</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aacfa572ae882f8ac34efb1901521e432" kindref="member">backend_</ref>(std::move(other.backend_)),</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a601c34a173fcb31d7962a9c19efd2dcd" kindref="member">is_open_</ref>(std::exchange(other.is_open_,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">))</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight></codeline>
 <codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase" kindref="compound">KeyValueDatabase</ref><sp/>&amp;</highlight></codeline>
-<codeline lineno="47" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1ac8795a2c205157e1a569a2d9a330403c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1ac8795a2c205157e1a569a2d9a330403c" kindref="member">operator=</ref>(<ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase" kindref="compound">KeyValueDatabase</ref><sp/>&amp;&amp;other)<sp/>noexcept</highlight></codeline>
+<codeline lineno="47" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1ae2fd89277eb54725fe95dbd9244032ab" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1ae2fd89277eb54725fe95dbd9244032ab" kindref="member">operator=</ref>(<ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a66958c3c6f5f63b8a31faa7cd46574da" kindref="member">KeyValueDatabase</ref><sp/>&amp;&amp;other)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>!=<sp/>&amp;other)<sp/>{</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a601c34a173fcb31d7962a9c19efd2dcd" kindref="member">is_open_</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(void)<ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a7817ddba5bd07e5488fa063577d61d66" kindref="member">close</ref>();</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(void)<ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aaf20f61f19da23898d2a39ccbb37e27b" kindref="member">close</ref>();</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aacfa572ae882f8ac34efb1901521e432" kindref="member">backend_</ref><sp/>=<sp/>std::move(other.backend_);</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a601c34a173fcb31d7962a9c19efd2dcd" kindref="member">is_open_</ref><sp/>=<sp/>std::exchange(other.is_open_,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
@@ -173,19 +173,19 @@
 <codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight></codeline>
-<codeline lineno="59" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aecfa66355a13ae844fd6159890d9f10d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aecfa66355a13ae844fd6159890d9f10d" kindref="member">KeyValueDatabase</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase" kindref="compound">KeyValueDatabase</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase" kindref="compound">KeyValueDatabase</ref><sp/>&amp;</highlight></codeline>
-<codeline lineno="61" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a44c9c0c732bb332fa6e0677244560e0a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a44c9c0c732bb332fa6e0677244560e0a" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase" kindref="compound">KeyValueDatabase</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="59" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aecfa66355a13ae844fd6159890d9f10d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aecfa66355a13ae844fd6159890d9f10d" kindref="member">KeyValueDatabase</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a66958c3c6f5f63b8a31faa7cd46574da" kindref="member">KeyValueDatabase</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a66958c3c6f5f63b8a31faa7cd46574da" kindref="member">KeyValueDatabase</ref><sp/>&amp;</highlight></codeline>
+<codeline lineno="61" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aba9ecf76e4ed8e0a8a5a111b6c7cc891" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aba9ecf76e4ed8e0a8a5a111b6c7cc891" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a66958c3c6f5f63b8a31faa7cd46574da" kindref="member">KeyValueDatabase</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="62"><highlight class="normal"></highlight></codeline>
 <codeline lineno="63" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a91f2efbf7261cea18b386abe417de8cc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a91f2efbf7261cea18b386abe417de8cc" kindref="member">~KeyValueDatabase</ref>()</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a601c34a173fcb31d7962a9c19efd2dcd" kindref="member">is_open_</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(void)<ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a7817ddba5bd07e5488fa063577d61d66" kindref="member">close</ref>();</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(void)<ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aaf20f61f19da23898d2a39ccbb37e27b" kindref="member">close</ref>();</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="71" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a7817ddba5bd07e5488fa063577d61d66" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a7817ddba5bd07e5488fa063577d61d66" kindref="member">close</ref>()</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="71" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aaf20f61f19da23898d2a39ccbb37e27b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aaf20f61f19da23898d2a39ccbb37e27b" kindref="member">close</ref>()</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a601c34a173fcb31d7962a9c19efd2dcd" kindref="member">is_open_</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;void&gt;::success</ref>();</highlight></codeline>
@@ -204,55 +204,55 @@
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"></highlight></codeline>
 <codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;bool&gt;</ref></highlight></codeline>
-<codeline lineno="90" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a0a6362d57cf370c368b2a37c60126ac2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a0a6362d57cf370c368b2a37c60126ac2" kindref="member">contains</ref>(std::string_view<sp/>key)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="90" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1ab61aaf5d1a442858ce461759eb2c9de7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1ab61aaf5d1a442858ce461759eb2c9de7" kindref="member">contains</ref>(std::string_view<sp/>key)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="91"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aacfa572ae882f8ac34efb1901521e432" kindref="member">backend_</ref>.contains(key);</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="94"><highlight class="normal"></highlight></codeline>
 <codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;Text&gt;</ref></highlight></codeline>
-<codeline lineno="96" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1ae8cafdf45519174b1e9fa2792886ffdb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1ae8cafdf45519174b1e9fa2792886ffdb" kindref="member">get_text</ref>(std::string_view<sp/>key)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="96" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a2605257fa6f18482bb8fd79891daa7cf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a2605257fa6f18482bb8fd79891daa7cf" kindref="member">get_text</ref>(std::string_view<sp/>key)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="97"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aacfa572ae882f8ac34efb1901521e432" kindref="member">backend_</ref>.get_text(key);</highlight></codeline>
 <codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"></highlight></codeline>
 <codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;Bytes&gt;</ref></highlight></codeline>
-<codeline lineno="102" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a0c1258a24bab9effb5d9463dce6521c4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a0c1258a24bab9effb5d9463dce6521c4" kindref="member">get_bytes</ref>(std::string_view<sp/>key)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="102" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a53dd50b81ba8813404f3e9bf7cfdb5d2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a53dd50b81ba8813404f3e9bf7cfdb5d2" kindref="member">get_bytes</ref>(std::string_view<sp/>key)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="103"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aacfa572ae882f8ac34efb1901521e432" kindref="member">backend_</ref>.get_bytes(key);</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="106"><highlight class="normal"></highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="108" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1ac9dad430d9daf2119004d52dc1ad940f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1ac9dad430d9daf2119004d52dc1ad940f" kindref="member">put_text</ref>(std::string_view<sp/>key,<sp/>std::string_view<sp/>value)</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="108" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a46c8ad160e98d09c7583ee3eb8bf0414" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a46c8ad160e98d09c7583ee3eb8bf0414" kindref="member">put_text</ref>(std::string_view<sp/>key,<sp/>std::string_view<sp/>value)</highlight></codeline>
 <codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aacfa572ae882f8ac34efb1901521e432" kindref="member">backend_</ref>.put_text(key,<sp/>value);</highlight></codeline>
 <codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="112"><highlight class="normal"></highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="114" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a84e4df7096547060ddcc668abe7443fc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a84e4df7096547060ddcc668abe7443fc" kindref="member">put_bytes</ref>(std::string_view<sp/>key,<sp/>std::span&lt;const<sp/>std::byte&gt;<sp/>value)</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="114" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a3051e96c0c4df1f5cc7b7fdc92bf8d41" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a3051e96c0c4df1f5cc7b7fdc92bf8d41" kindref="member">put_bytes</ref>(std::string_view<sp/>key,<sp/>std::span&lt;const<sp/>std::byte&gt;<sp/>value)</highlight></codeline>
 <codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aacfa572ae882f8ac34efb1901521e432" kindref="member">backend_</ref>.put_bytes(key,<sp/>value);</highlight></codeline>
 <codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="118"><highlight class="normal"></highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="120" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a01ac5936abcb476ab112e7313e7d9543" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a01ac5936abcb476ab112e7313e7d9543" kindref="member">erase</ref>(std::string_view<sp/>key)</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="120" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1acebb8e2fd437ccb7d129384f5eff2a8b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1acebb8e2fd437ccb7d129384f5eff2a8b" kindref="member">erase</ref>(std::string_view<sp/>key)</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aacfa572ae882f8ac34efb1901521e432" kindref="member">backend_</ref>.erase(key);</highlight></codeline>
 <codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="124"><highlight class="normal"></highlight></codeline>
 <codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;std::vector&lt;Key&gt;</ref>&gt;</highlight></codeline>
-<codeline lineno="126" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a04e5932e5da1d207439a3cafce7e8af1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a04e5932e5da1d207439a3cafce7e8af1" kindref="member">list_keys</ref>(std::string_view<sp/>prefix<sp/>=<sp/>{})<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a839e10c54d49b38c6b281de1b6de6016" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a839e10c54d49b38c6b281de1b6de6016" kindref="member">list_keys</ref>(std::string_view<sp/>prefix<sp/>=<sp/>{})<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aacfa572ae882f8ac34efb1901521e432" kindref="member">backend_</ref>.list_keys(prefix);</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="130"><highlight class="normal"></highlight></codeline>
 <codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a338cd915119be42b39254fb3fa5167d0" kindref="member">backend_type</ref><sp/>&amp;</highlight></codeline>
-<codeline lineno="132" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1ab96d24d9b81235db9c6d12b11ddd79bd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1ab96d24d9b81235db9c6d12b11ddd79bd" kindref="member">backend</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="132" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aba43dd3072e3240c294cf8cfdd0fb3e7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aba43dd3072e3240c294cf8cfdd0fb3e7" kindref="member">backend</ref>()<sp/>noexcept</highlight></codeline>
 <codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aacfa572ae882f8ac34efb1901521e432" kindref="member">backend_</ref>;</highlight></codeline>
 <codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="136"><highlight class="normal"></highlight></codeline>
 <codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a338cd915119be42b39254fb3fa5167d0" kindref="member">backend_type</ref><sp/>&amp;</highlight></codeline>
-<codeline lineno="138" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a2e693c3bbf7445076be281e65856b8f8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a2e693c3bbf7445076be281e65856b8f8" kindref="member">backend</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="138" refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a573cd75787cc1e665b705a78987b9a9d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1a573cd75787cc1e665b705a78987b9a9d" kindref="member">backend</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
 <codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase_1aacfa572ae882f8ac34efb1901521e432" kindref="member">backend_</ref>;</highlight></codeline>
 <codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>

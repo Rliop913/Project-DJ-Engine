@@ -298,6 +298,8 @@
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
         <childnode refid="63" relation="include">
         </childnode>
         <childnode refid="52" relation="include">
@@ -493,6 +495,8 @@
         <label>dbRoot.hpp</label>
         <link refid="db_root_8hpp"/>
         <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
         </childnode>
         <childnode refid="49" relation="include">
         </childnode>
@@ -799,6 +803,10 @@
         <childnode refid="63" relation="include">
         </childnode>
         <childnode refid="99" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
         </childnode>
       </node>
       <node id="30">
@@ -1471,7 +1479,7 @@
 <codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>pcm_decode_ms<sp/>=<sp/>0.0;</highlight></codeline>
 <codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_section_timer" kindref="compound">SectionTimer</ref><sp/>timer(</highlight><highlight class="stringliteral">&quot;PCM<sp/>Decoding&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pcm<sp/>=<sp/>engine.<ref refid="class_p_d_j_e_1a99f295a8927a9908f5d1db43b9838f68" kindref="member">GetPCMFromMusData</ref>(source_music);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pcm<sp/>=<sp/>engine.<ref refid="class_p_d_j_e_1a35e3ae61858f2586c638928d777ee8fd" kindref="member">GetPCMFromMusData</ref>(source_music);</highlight></codeline>
 <codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pcm_decode_ms<sp/><sp/><sp/><sp/>=<sp/>timer.<ref refid="class_section_timer_1ac30f3d8f9a19e717b05ac8538ba15f54" kindref="member">elapsed_ms</ref>();</highlight></codeline>
 <codeline lineno="219"><highlight class="normal"></highlight></codeline>
 <codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pcm.empty())<sp/>{</highlight></codeline>

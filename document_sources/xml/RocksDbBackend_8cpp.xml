@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="RocksDbBackend_8cpp" kind="file" language="C++">
     <compoundname>RocksDbBackend.cpp</compoundname>
     <includes refid="RocksDbBackend_8hpp" local="yes">RocksDbBackend.hpp</includes>
@@ -11,6 +11,26 @@
     <includes local="no">utility</includes>
     <includes local="no">vector</includes>
     <incdepgraph>
+      <node id="3">
+        <label>util/common/Result.hpp</label>
+        <link refid="Result_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>util/common/Status.hpp</label>
+        <link refid="Status_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>util/common/StatusCode.hpp</label>
+        <link refid="StatusCode_8hpp"/>
+      </node>
       <node id="8">
         <label>util/db/DbTypes.hpp</label>
         <link refid="DbTypes_8hpp"/>
@@ -20,9 +40,6 @@
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-      </node>
-      <node id="11">
-        <label>filesystem</label>
       </node>
       <node id="1">
         <label>include/util/db/backends/RocksDbBackend.cpp</label>
@@ -42,17 +59,6 @@
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>string</label>
-      </node>
-      <node id="3">
-        <label>util/common/Result.hpp</label>
-        <link refid="Result_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -75,44 +81,38 @@
         <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="15">
-        <label>rocksdb/db.h</label>
-      </node>
-      <node id="14">
-        <label>string_view</label>
-      </node>
-      <node id="5">
-        <label>util/common/StatusCode.hpp</label>
-        <link refid="StatusCode_8hpp"/>
-      </node>
-      <node id="16">
-        <label>rocksdb/options.h</label>
-      </node>
-      <node id="10">
-        <label>vector</label>
-      </node>
-      <node id="7">
-        <label>utility</label>
-      </node>
       <node id="9">
         <label>cstddef</label>
-      </node>
-      <node id="4">
-        <label>util/common/Status.hpp</label>
-        <link refid="Status_8hpp"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="13">
-        <label>span</label>
       </node>
       <node id="17">
         <label>cstring</label>
       </node>
+      <node id="11">
+        <label>filesystem</label>
+      </node>
       <node id="12">
         <label>memory</label>
+      </node>
+      <node id="15">
+        <label>rocksdb/db.h</label>
+      </node>
+      <node id="16">
+        <label>rocksdb/options.h</label>
+      </node>
+      <node id="13">
+        <label>span</label>
+      </node>
+      <node id="6">
+        <label>string</label>
+      </node>
+      <node id="14">
+        <label>string_view</label>
+      </node>
+      <node id="7">
+        <label>utility</label>
+      </node>
+      <node id="10">
+        <label>vector</label>
       </node>
     </incdepgraph>
     <innerclass refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl" prot="public">PDJE_UTIL::db::backends::RocksDbBackend::Impl</innerclass>
@@ -154,8 +154,8 @@
 <codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1ab70ef984d2d1c045904997f66a36035f" kindref="member">db_</ref>;</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="32" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1adfc8abc8de7c461ff8cd53fead320f83" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1adfc8abc8de7c461ff8cd53fead320f83" kindref="member">open</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1RocksDbConfig" kindref="compound">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="32" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1abb2a0e4d02f0fc7165a09b3ac7062920" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1abb2a0e4d02f0fc7165a09b3ac7062920" kindref="member">open</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aab2831e1ecf74688e63164d7d1a22739" kindref="member">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1ab70ef984d2d1c045904997f66a36035f" kindref="member">db_</ref><sp/>!=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(</highlight></codeline>
@@ -169,31 +169,31 @@
 <codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight></codeline>
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a39c493c5b15c984e7a8c22ade457a8b1" kindref="member">config_</ref><sp/>=<sp/>cfg;</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a39c493c5b15c984e7a8c22ade457a8b1" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1RocksDbConfig_1af5560eaae8f3d0acfa62edb871ec0c97" kindref="member">open_options</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1OpenOptions_1ae17d7423fa68120e197b73e3318c979e" kindref="member">truncate_if_exists</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a39c493c5b15c984e7a8c22ade457a8b1" kindref="member">config_</ref>.open_options.truncate_if_exists)<sp/>{</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>destroyed<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aa9159e03ef48c10653a7b8e874dd123c" kindref="member">RocksDbBackend::destroy</ref>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a39c493c5b15c984e7a8c22ade457a8b1" kindref="member">config_</ref>);</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!destroyed.ok())<sp/>{</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>destroyed;</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>exists<sp/>=<sp/>std::filesystem::exists(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a39c493c5b15c984e7a8c22ade457a8b1" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1RocksDbConfig_1a67a0fa6895e1cf0d91ad8afedcc072b0" kindref="member">path</ref>);</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!exists<sp/>&amp;&amp;<sp/>!<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a39c493c5b15c984e7a8c22ade457a8b1" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1RocksDbConfig_1af5560eaae8f3d0acfa62edb871ec0c97" kindref="member">open_options</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1OpenOptions_1af59ce4bcdfb2d4f5929ef2e700776d2e" kindref="member">create_if_missing</ref><sp/>&amp;&amp;</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>!<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a39c493c5b15c984e7a8c22ade457a8b1" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1RocksDbConfig_1af5560eaae8f3d0acfa62edb871ec0c97" kindref="member">open_options</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1OpenOptions_1a0a3190669f1f5d17b614c0511d802b66" kindref="member">read_only</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>exists<sp/>=<sp/>std::filesystem::exists(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a39c493c5b15c984e7a8c22ade457a8b1" kindref="member">config_</ref>.path);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!exists<sp/>&amp;&amp;<sp/>!<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a39c493c5b15c984e7a8c22ade457a8b1" kindref="member">config_</ref>.open_options.create_if_missing<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>!<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a39c493c5b15c984e7a8c22ade457a8b1" kindref="member">config_</ref>.open_options.read_only)<sp/>{</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(</highlight></codeline>
 <codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><ref refid="namespacePDJE__UTIL_1_1common_1a3025dd440bc92023d950561cff3dfdb4a7500611bf7030bc99d25c354e7b64714" kindref="member">common::StatusCode::not_found</ref>,</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;RocksDB<sp/>directory<sp/>does<sp/>not<sp/>exist.&quot;</highlight><highlight class="normal"><sp/>});</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="60"><highlight class="normal"></highlight></codeline>
 <codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>options<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1af7d08c7dc2ca7b138265fc7f7e1383d0" kindref="member">db_options_</ref>;</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>options.create_if_missing<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a39c493c5b15c984e7a8c22ade457a8b1" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1RocksDbConfig_1af5560eaae8f3d0acfa62edb871ec0c97" kindref="member">open_options</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1OpenOptions_1af59ce4bcdfb2d4f5929ef2e700776d2e" kindref="member">create_if_missing</ref>;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>options.create_if_missing<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a39c493c5b15c984e7a8c22ade457a8b1" kindref="member">config_</ref>.open_options.create_if_missing;</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>options.error_if_exists<sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"></highlight></codeline>
 <codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rocksdb::Status<sp/>status;</highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a39c493c5b15c984e7a8c22ade457a8b1" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1RocksDbConfig_1af5560eaae8f3d0acfa62edb871ec0c97" kindref="member">open_options</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1OpenOptions_1a0a3190669f1f5d17b614c0511d802b66" kindref="member">read_only</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a39c493c5b15c984e7a8c22ade457a8b1" kindref="member">config_</ref>.open_options.read_only)<sp/>{</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/>rocksdb::DB::OpenForReadOnly(</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>options,<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a39c493c5b15c984e7a8c22ade457a8b1" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1RocksDbConfig_1a67a0fa6895e1cf0d91ad8afedcc072b0" kindref="member">path</ref>.string(),<sp/>&amp;<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1ab70ef984d2d1c045904997f66a36035f" kindref="member">db_</ref>);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>options,<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a39c493c5b15c984e7a8c22ade457a8b1" kindref="member">config_</ref>.path.string(),<sp/>&amp;<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1ab70ef984d2d1c045904997f66a36035f" kindref="member">db_</ref>);</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/>rocksdb::DB::Open(options,<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a39c493c5b15c984e7a8c22ade457a8b1" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1RocksDbConfig_1a67a0fa6895e1cf0d91ad8afedcc072b0" kindref="member">path</ref>.string(),<sp/>&amp;<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1ab70ef984d2d1c045904997f66a36035f" kindref="member">db_</ref>);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>status<sp/>=<sp/>rocksdb::DB::Open(options,<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a39c493c5b15c984e7a8c22ade457a8b1" kindref="member">config_</ref>.path.string(),<sp/>&amp;<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1ab70ef984d2d1c045904997f66a36035f" kindref="member">db_</ref>);</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"></highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!status.ok())<sp/>{</highlight></codeline>
@@ -207,8 +207,8 @@
 <codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;void&gt;::success</ref>();</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="83"><highlight class="normal"></highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="85" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1ae56fc81973c8e41fc5147dc6e3cea436" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1ae56fc81973c8e41fc5147dc6e3cea436" kindref="member">close</ref>()</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="85" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a89874824d2cdb58fd4e286533cd27a85" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a89874824d2cdb58fd4e286533cd27a85" kindref="member">close</ref>()</highlight></codeline>
 <codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1ab70ef984d2d1c045904997f66a36035f" kindref="member">db_</ref>;</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1ab70ef984d2d1c045904997f66a36035f" kindref="member">db_</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
@@ -220,7 +220,7 @@
 <codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"></highlight></codeline>
 <codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;bool&gt;</ref></highlight></codeline>
-<codeline lineno="97" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1aa84a5cc292f0b16744d73f53c40a905e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1aa84a5cc292f0b16744d73f53c40a905e" kindref="member">contains</ref>(std::string_view<sp/>key)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="97" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a2a4c1955abf63e38fe7bde2655f51ecd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a2a4c1955abf63e38fe7bde2655f51ecd" kindref="member">contains</ref>(std::string_view<sp/>key)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="98"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>status<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a558f8cba0c1194e98d6d2ed0971e7797" kindref="member">require_open</ref>();<sp/>!status.<ref refid="structPDJE__UTIL_1_1common_1_1Status_1a422a0af607d3fc4c8cbdd441bbdbbbde" kindref="member">ok</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;bool&gt;::failure</ref>(status);</highlight></codeline>
@@ -239,9 +239,9 @@
 <codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="114"><highlight class="normal"></highlight></codeline>
 <codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;Text&gt;</ref></highlight></codeline>
-<codeline lineno="116" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a105907991c30a4c8dbe23e75d319051d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a105907991c30a4c8dbe23e75d319051d" kindref="member">get_text</ref>(std::string_view<sp/>key)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="116" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1ad57e9b6f3b3c05b11a33299afa20f5b0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1ad57e9b6f3b3c05b11a33299afa20f5b0" kindref="member">get_text</ref>(std::string_view<sp/>key)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="117"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>raw<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a6b8bf781844cea937f2fce5c35b0daeb" kindref="member">get_raw</ref>(key);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>raw<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1ae27cbfc4be2ad3edf65cf1e692f01a39" kindref="member">get_raw</ref>(key);</highlight></codeline>
 <codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!raw.ok())<sp/>{</highlight></codeline>
 <codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;Text&gt;::failure</ref>(raw.status());</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -255,9 +255,9 @@
 <codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="130"><highlight class="normal"></highlight></codeline>
 <codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;Bytes&gt;</ref></highlight></codeline>
-<codeline lineno="132" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a3d859a16b4cef3341f98d71dfe153c44" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a3d859a16b4cef3341f98d71dfe153c44" kindref="member">get_bytes</ref>(std::string_view<sp/>key)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="132" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a04e7a087f25a3086825911cb0418d9e3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a04e7a087f25a3086825911cb0418d9e3" kindref="member">get_bytes</ref>(std::string_view<sp/>key)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="133"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>raw<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a6b8bf781844cea937f2fce5c35b0daeb" kindref="member">get_raw</ref>(key);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>raw<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1ae27cbfc4be2ad3edf65cf1e692f01a39" kindref="member">get_raw</ref>(key);</highlight></codeline>
 <codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!raw.ok())<sp/>{</highlight></codeline>
 <codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;Bytes&gt;::failure</ref>(raw.status());</highlight></codeline>
 <codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -267,15 +267,15 @@
 <codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;RocksDB<sp/>value<sp/>is<sp/>not<sp/>stored<sp/>as<sp/>bytes.&quot;</highlight><highlight class="normal"><sp/>});</highlight></codeline>
 <codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="143"><highlight class="normal"></highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__UTIL_1_1db_1acfb13486a5f831dd08830ce1cc8c7ba3" kindref="member">Bytes</ref><sp/>bytes(raw.value().size()<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__UTIL_1_1db_1a2ef3b7d9e6089bee19f07baae2cdaa81" kindref="member">Bytes</ref><sp/>bytes(raw.value().size()<sp/>-<sp/>1);</highlight></codeline>
 <codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!bytes.empty())<sp/>{</highlight></codeline>
 <codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::memcpy(bytes.data(),<sp/>raw.value().data()<sp/>+<sp/>1,<sp/>bytes.size());</highlight></codeline>
 <codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;Bytes&gt;::success</ref>(std::move(bytes));</highlight></codeline>
 <codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="150"><highlight class="normal"></highlight></codeline>
-<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="152" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1ac9d1a06d32ecaaea0bdde4d60ba19d87" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1ac9d1a06d32ecaaea0bdde4d60ba19d87" kindref="member">put_text</ref>(std::string_view<sp/>key,<sp/>std::string_view<sp/>value)</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="152" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a9b022d30ea46372b174c74312f3647db" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a9b022d30ea46372b174c74312f3647db" kindref="member">put_text</ref>(std::string_view<sp/>key,<sp/>std::string_view<sp/>value)</highlight></codeline>
 <codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>status<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a5a496ca60ff7289748204ff7f3191c15" kindref="member">require_writable</ref>();<sp/>!status.<ref refid="structPDJE__UTIL_1_1common_1_1Status_1a422a0af607d3fc4c8cbdd441bbdbbbde" kindref="member">ok</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(status);</highlight></codeline>
@@ -295,8 +295,8 @@
 <codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;void&gt;::success</ref>();</highlight></codeline>
 <codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="171"><highlight class="normal"></highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="173" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1af24af81e18645ab8c17a1782e0729aad" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1af24af81e18645ab8c17a1782e0729aad" kindref="member">put_bytes</ref>(std::string_view<sp/>key,<sp/>std::span&lt;const<sp/>std::byte&gt;<sp/>value)</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="173" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1afc2f445cc4bdac45e684cf41a32ddc20" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1afc2f445cc4bdac45e684cf41a32ddc20" kindref="member">put_bytes</ref>(std::string_view<sp/>key,<sp/>std::span&lt;const<sp/>std::byte&gt;<sp/>value)</highlight></codeline>
 <codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>status<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a5a496ca60ff7289748204ff7f3191c15" kindref="member">require_writable</ref>();<sp/>!status.<ref refid="structPDJE__UTIL_1_1common_1_1Status_1a422a0af607d3fc4c8cbdd441bbdbbbde" kindref="member">ok</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(status);</highlight></codeline>
@@ -317,8 +317,8 @@
 <codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;void&gt;::success</ref>();</highlight></codeline>
 <codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="193"><highlight class="normal"></highlight></codeline>
-<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="195" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a14df899dff4442fae314e30e3f4cafc4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a14df899dff4442fae314e30e3f4cafc4" kindref="member">erase</ref>(std::string_view<sp/>key)</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="195" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a53bfbbb4c15af386c1fe6a4eca684a6b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a53bfbbb4c15af386c1fe6a4eca684a6b" kindref="member">erase</ref>(std::string_view<sp/>key)</highlight></codeline>
 <codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>status<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a5a496ca60ff7289748204ff7f3191c15" kindref="member">require_writable</ref>();<sp/>!status.<ref refid="structPDJE__UTIL_1_1common_1_1Status_1a422a0af607d3fc4c8cbdd441bbdbbbde" kindref="member">ok</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(status);</highlight></codeline>
@@ -334,7 +334,7 @@
 <codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="209"><highlight class="normal"></highlight></codeline>
 <codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;std::vector&lt;Key&gt;</ref>&gt;</highlight></codeline>
-<codeline lineno="211" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1ae09e19d88b2e24cee59f394dcfe6431f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1ae09e19d88b2e24cee59f394dcfe6431f" kindref="member">list_keys</ref>(std::string_view<sp/>prefix)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="211" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a5c2b61f23f6e912552ad34df98ecab51" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a5c2b61f23f6e912552ad34df98ecab51" kindref="member">list_keys</ref>(std::string_view<sp/>prefix)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="212"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>status<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a558f8cba0c1194e98d6d2ed0971e7797" kindref="member">require_open</ref>();<sp/>!status.<ref refid="structPDJE__UTIL_1_1common_1_1Status_1a422a0af607d3fc4c8cbdd441bbdbbbde" kindref="member">ok</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;std::vector&lt;Key&gt;</ref>&gt;::failure(status);</highlight></codeline>
@@ -377,7 +377,7 @@
 <codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>status<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a558f8cba0c1194e98d6d2ed0971e7797" kindref="member">require_open</ref>();<sp/>!status.<ref refid="structPDJE__UTIL_1_1common_1_1Status_1a422a0af607d3fc4c8cbdd441bbdbbbde" kindref="member">ok</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>status;</highlight></codeline>
 <codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a39c493c5b15c984e7a8c22ade457a8b1" kindref="member">config_</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1RocksDbConfig_1af5560eaae8f3d0acfa62edb871ec0c97" kindref="member">open_options</ref>.<ref refid="structPDJE__UTIL_1_1db_1_1OpenOptions_1a0a3190669f1f5d17b614c0511d802b66" kindref="member">read_only</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a39c493c5b15c984e7a8c22ade457a8b1" kindref="member">config_</ref>.open_options.read_only)<sp/>{</highlight></codeline>
 <codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>{<sp/><ref refid="namespacePDJE__UTIL_1_1common_1a3025dd440bc92023d950561cff3dfdb4a723c25877a86786664edc4b643c08a6f" kindref="member">common::StatusCode::unsupported</ref>,</highlight></codeline>
 <codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;RocksDB<sp/>backend<sp/>is<sp/>opened<sp/>read-only.&quot;</highlight><highlight class="normal"><sp/>};</highlight></codeline>
 <codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -385,7 +385,7 @@
 <codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="260"><highlight class="normal"></highlight></codeline>
 <codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;std::vector&lt;char&gt;</ref>&gt;</highlight></codeline>
-<codeline lineno="262" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a6b8bf781844cea937f2fce5c35b0daeb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a6b8bf781844cea937f2fce5c35b0daeb" kindref="member">get_raw</ref>(std::string_view<sp/>key)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="262" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1ae27cbfc4be2ad3edf65cf1e692f01a39" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1ae27cbfc4be2ad3edf65cf1e692f01a39" kindref="member">get_raw</ref>(std::string_view<sp/>key)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="263"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>status<sp/>=<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a558f8cba0c1194e98d6d2ed0971e7797" kindref="member">require_open</ref>();<sp/>!status.<ref refid="structPDJE__UTIL_1_1common_1_1Status_1a422a0af607d3fc4c8cbdd441bbdbbbde" kindref="member">ok</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;std::vector&lt;char&gt;</ref>&gt;::failure(status);</highlight></codeline>
@@ -408,26 +408,26 @@
 <codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="283"><highlight class="normal"></highlight></codeline>
 <codeline lineno="284"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="285" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a39c493c5b15c984e7a8c22ade457a8b1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1RocksDbConfig" kindref="compound">config_type</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a39c493c5b15c984e7a8c22ade457a8b1" kindref="member">config_</ref>{};</highlight></codeline>
+<codeline lineno="285" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a39c493c5b15c984e7a8c22ade457a8b1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aab2831e1ecf74688e63164d7d1a22739" kindref="member">config_type</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a39c493c5b15c984e7a8c22ade457a8b1" kindref="member">config_</ref>{};</highlight></codeline>
 <codeline lineno="286" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1af7d08c7dc2ca7b138265fc7f7e1383d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>rocksdb::Options<sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1af7d08c7dc2ca7b138265fc7f7e1383d0" kindref="member">db_options_</ref>{};</highlight></codeline>
 <codeline lineno="287" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1ab51adcc0291125384bbc562a2ca52977" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>rocksdb::ReadOptions<sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1ab51adcc0291125384bbc562a2ca52977" kindref="member">read_options_</ref>{};</highlight></codeline>
 <codeline lineno="288" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a20ef455b3e478e6816a57a3c6155a6a4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>rocksdb::WriteOptions<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1a20ef455b3e478e6816a57a3c6155a6a4" kindref="member">write_options_</ref>{};</highlight></codeline>
 <codeline lineno="289" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1ab70ef984d2d1c045904997f66a36035f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>rocksdb::DB<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl_1ab70ef984d2d1c045904997f66a36035f" kindref="member">db_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="290"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="291"><highlight class="normal"></highlight></codeline>
-<codeline lineno="292" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a7efbe9d1b5aa7804d913ac0924b2d5ca" refkind="member"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a7efbe9d1b5aa7804d913ac0924b2d5ca" kindref="member">RocksDbBackend::RocksDbBackend</ref>()<sp/>:<sp/>impl_(std::make_unique&lt;<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl" kindref="compound">Impl</ref>&gt;())</highlight></codeline>
+<codeline lineno="292" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a7efbe9d1b5aa7804d913ac0924b2d5ca" refkind="member"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a7efbe9d1b5aa7804d913ac0924b2d5ca" kindref="member">RocksDbBackend::RocksDbBackend</ref>()<sp/>:<sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a26be8e5a480a0cdbd9054986727fb2e5" kindref="member">impl_</ref>(<ref refid="namespacestd" kindref="compound">std</ref>::make_unique&lt;<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1_1Impl" kindref="compound">Impl</ref>&gt;())</highlight></codeline>
 <codeline lineno="293"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="294"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="295"><highlight class="normal"></highlight></codeline>
 <codeline lineno="296"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1ad709d4c36e312c53599ff45e1d78cb2c" kindref="member">RocksDbBackend::~RocksDbBackend</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="297"><highlight class="normal"></highlight></codeline>
-<codeline lineno="298"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a7efbe9d1b5aa7804d913ac0924b2d5ca" kindref="member">RocksDbBackend::RocksDbBackend</ref>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend" kindref="compound">RocksDbBackend</ref><sp/>&amp;&amp;other)<sp/>noexcept<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a7efbe9d1b5aa7804d913ac0924b2d5ca" kindref="member">RocksDbBackend::RocksDbBackend</ref>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend" kindref="compound">RocksDbBackend</ref><sp/>&amp;&amp;other)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="299"><highlight class="normal"></highlight></codeline>
 <codeline lineno="300"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend" kindref="compound">RocksDbBackend</ref><sp/>&amp;</highlight></codeline>
-<codeline lineno="301"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a0e0f1a50cb1ddfe7818e26d4371417dd" kindref="member">RocksDbBackend::operator=</ref>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend" kindref="compound">RocksDbBackend</ref><sp/>&amp;&amp;other)<sp/>noexcept<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a0e0f1a50cb1ddfe7818e26d4371417dd" kindref="member">RocksDbBackend::operator=</ref>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend" kindref="compound">RocksDbBackend</ref><sp/>&amp;&amp;other)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="302"><highlight class="normal"></highlight></codeline>
-<codeline lineno="303"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="304" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aa5492a7ac19ced1ea16f8fa27d0b0ae5" refkind="member"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aa5492a7ac19ced1ea16f8fa27d0b0ae5" kindref="member">RocksDbBackend::create</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1RocksDbConfig" kindref="compound">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="304" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aa5492a7ac19ced1ea16f8fa27d0b0ae5" refkind="member"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aa5492a7ac19ced1ea16f8fa27d0b0ae5" kindref="member">RocksDbBackend::create</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aab2831e1ecf74688e63164d7d1a22739" kindref="member">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
 <codeline lineno="305"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cfg.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1RocksDbConfig_1a67a0fa6895e1cf0d91ad8afedcc072b0" kindref="member">path</ref>.empty())<sp/>{</highlight></codeline>
 <codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(</highlight></codeline>
@@ -439,19 +439,19 @@
 <codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/>options.create_if_missing<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/>options.error_if_exists<sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="315"><highlight class="normal"></highlight></codeline>
-<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/>rocksdb::DB<sp/>*db<sp/><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>open_status<sp/>=<sp/>rocksdb::DB::Open(options,<sp/>cfg.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1RocksDbConfig_1a67a0fa6895e1cf0d91ad8afedcc072b0" kindref="member">path</ref>.string(),<sp/>&amp;db);</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/>rocksdb::DB<sp/>*<ref refid="namespacePDJE__UTIL_1_1db" kindref="compound">db</ref><sp/><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>open_status<sp/>=<sp/>rocksdb::DB::Open(options,<sp/>cfg.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1RocksDbConfig_1a67a0fa6895e1cf0d91ad8afedcc072b0" kindref="member">path</ref>.string(),<sp/>&amp;<ref refid="namespacePDJE__UTIL_1_1db" kindref="compound">db</ref>);</highlight></codeline>
 <codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!open_status.ok())<sp/>{</highlight></codeline>
 <codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(</highlight></codeline>
 <codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/><ref refid="namespacePDJE__UTIL_1_1common_1a3025dd440bc92023d950561cff3dfdb4a16d66afab4306c18516ebaa8e9060ec7" kindref="member">common::StatusCode::backend_error</ref>,<sp/>open_status.ToString()<sp/>});</highlight></codeline>
 <codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="322"><highlight class="normal"></highlight></codeline>
-<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>db;</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__UTIL_1_1db" kindref="compound">db</ref>;</highlight></codeline>
 <codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;void&gt;::success</ref>();</highlight></codeline>
 <codeline lineno="325"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="326"><highlight class="normal"></highlight></codeline>
-<codeline lineno="327"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="328" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aa9159e03ef48c10653a7b8e874dd123c" refkind="member"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aa9159e03ef48c10653a7b8e874dd123c" kindref="member">RocksDbBackend::destroy</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1RocksDbConfig" kindref="compound">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="328" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aa9159e03ef48c10653a7b8e874dd123c" refkind="member"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aa9159e03ef48c10653a7b8e874dd123c" kindref="member">RocksDbBackend::destroy</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aab2831e1ecf74688e63164d7d1a22739" kindref="member">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
 <codeline lineno="329"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cfg.<ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1RocksDbConfig_1a67a0fa6895e1cf0d91ad8afedcc072b0" kindref="member">path</ref>.empty())<sp/>{</highlight></codeline>
 <codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(</highlight></codeline>
@@ -468,8 +468,8 @@
 <codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;void&gt;::success</ref>();</highlight></codeline>
 <codeline lineno="343"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="344"><highlight class="normal"></highlight></codeline>
-<codeline lineno="345"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="346" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a0d90d2a61dcc96c6f84a413da82aff96" refkind="member"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a0d90d2a61dcc96c6f84a413da82aff96" kindref="member">RocksDbBackend::open</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1db_1_1backends_1_1RocksDbConfig" kindref="compound">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="346" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a0d90d2a61dcc96c6f84a413da82aff96" refkind="member"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a0d90d2a61dcc96c6f84a413da82aff96" kindref="member">RocksDbBackend::open</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aab2831e1ecf74688e63164d7d1a22739" kindref="member">config_type</ref><sp/>&amp;cfg)</highlight></codeline>
 <codeline lineno="347"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a26be8e5a480a0cdbd9054986727fb2e5" kindref="member">impl_</ref><sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a26be8e5a480a0cdbd9054986727fb2e5" kindref="member">impl_</ref><sp/>=<sp/>std::make_unique&lt;Impl&gt;();</highlight></codeline>
@@ -477,7 +477,7 @@
 <codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a26be8e5a480a0cdbd9054986727fb2e5" kindref="member">impl_</ref>-&gt;open(cfg);</highlight></codeline>
 <codeline lineno="352"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="353"><highlight class="normal"></highlight></codeline>
-<codeline lineno="354"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
 <codeline lineno="355" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a651d24e1d4d28af06f4c246ffbfa3ceb" refkind="member"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a651d24e1d4d28af06f4c246ffbfa3ceb" kindref="member">RocksDbBackend::close</ref>()</highlight></codeline>
 <codeline lineno="356"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a26be8e5a480a0cdbd9054986727fb2e5" kindref="member">impl_</ref><sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
@@ -516,7 +516,7 @@
 <codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a26be8e5a480a0cdbd9054986727fb2e5" kindref="member">impl_</ref>-&gt;get_bytes(key);</highlight></codeline>
 <codeline lineno="391"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="392"><highlight class="normal"></highlight></codeline>
-<codeline lineno="393"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
 <codeline lineno="394" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aef5316d6d2584099d56a3cf30519ef7c" refkind="member"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1aef5316d6d2584099d56a3cf30519ef7c" kindref="member">RocksDbBackend::put_text</ref>(std::string_view<sp/>key,<sp/>std::string_view<sp/>value)</highlight></codeline>
 <codeline lineno="395"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="396"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a26be8e5a480a0cdbd9054986727fb2e5" kindref="member">impl_</ref><sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
@@ -526,7 +526,7 @@
 <codeline lineno="400"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a26be8e5a480a0cdbd9054986727fb2e5" kindref="member">impl_</ref>-&gt;put_text(key,<sp/>value);</highlight></codeline>
 <codeline lineno="401"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="402"><highlight class="normal"></highlight></codeline>
-<codeline lineno="403"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="403"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
 <codeline lineno="404" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a4219f699275815e48bff7dfa428fa597" refkind="member"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a4219f699275815e48bff7dfa428fa597" kindref="member">RocksDbBackend::put_bytes</ref>(std::string_view<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>key,</highlight></codeline>
 <codeline lineno="405"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::span&lt;const<sp/>std::byte&gt;<sp/>value)</highlight></codeline>
 <codeline lineno="406"><highlight class="normal">{</highlight></codeline>
@@ -537,7 +537,7 @@
 <codeline lineno="411"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a26be8e5a480a0cdbd9054986727fb2e5" kindref="member">impl_</ref>-&gt;put_bytes(key,<sp/>value);</highlight></codeline>
 <codeline lineno="412"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="413"><highlight class="normal"></highlight></codeline>
-<codeline lineno="414"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="414"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
 <codeline lineno="415" refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a55fb000344a0fb233538944e3a2226e2" refkind="member"><highlight class="normal"><ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a55fb000344a0fb233538944e3a2226e2" kindref="member">RocksDbBackend::erase</ref>(std::string_view<sp/>key)</highlight></codeline>
 <codeline lineno="416"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="417"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classPDJE__UTIL_1_1db_1_1backends_1_1RocksDbBackend_1a26be8e5a480a0cdbd9054986727fb2e5" kindref="member">impl_</ref><sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>

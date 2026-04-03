@@ -101,7 +101,7 @@ PDJE::SearchMusic(const UNSANITIZED &Title,
 }
 
 std::vector<float>
-PDJE::GetPCMFromMusData(const musdata &md)
+PDJE::GetPCMFromMusData(const musdata &md, const int chSZ)
 {
     if (!DBROOT) {
         critlog(
@@ -115,7 +115,7 @@ PDJE::GetPCMFromMusData(const musdata &md)
     }
 
     Decoder decoder;
-    if (!decoder.init(*DBROOT, keyOrPath.value())) {
+    if (!decoder.init(*DBROOT, keyOrPath.value(), chSZ)) {
         critlog("failed to initialize decoder. from PDJE GetPCMFromMusData");
         return {};
     }
@@ -129,7 +129,7 @@ PDJE::GetPCMFromMusData(const musdata &md)
     }
 
     std::vector<float> pcm;
-    if (!decoder.getRange(static_cast<FRAME_POS>(frameCount), pcm)) {
+    if (!decoder.getRange(static_cast<FRAME_POS>(frameCount), pcm, chSZ)) {
         critlog("failed to decode pcm frames. from PDJE GetPCMFromMusData");
         return {};
     }

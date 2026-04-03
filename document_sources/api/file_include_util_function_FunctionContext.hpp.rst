@@ -34,8 +34,6 @@ Included By
 
 - :ref:`file_include_util_PDJE_Util.hpp`
 
-- :ref:`file_include_util_function_halide_GainBias.hpp`
-
 - :ref:`file_include_util_function_image_WaveformWebp.hpp`
 
 - :ref:`file_include_util_function_image_WebpWriter.hpp`

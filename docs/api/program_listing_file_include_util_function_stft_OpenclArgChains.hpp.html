@@ -1,0 +1,229 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Listing for File OpenclArgChains.hpp &mdash; Project_DJ_Engine  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
+      <script src="../_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Project_DJ_Engine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Project_DJ_Engine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Program Listing for File OpenclArgChains.hpp</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/program_listing_file_include_util_function_stft_OpenclArgChains.hpp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-listing-for-file-openclargchains-hpp">
+<span id="program-listing-file-include-util-function-stft-openclargchains-hpp"></span><h1>Program Listing for File OpenclArgChains.hpp<a class="headerlink" href="#program-listing-for-file-openclargchains-hpp" title="Link to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="file_include_util_function_stft_OpenclArgChains.hpp.html#file-include-util-function-stft-openclargchains-hpp"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">include\util\function\stft\OpenclArgChains.hpp</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#pragma once</span>
+
+<span class="cp">#define setArgChain1(KERNEL, _A, _GSIZE, _LSIZE)                               \</span>
+<span class="cp">    KERNEL-&gt;setArg(0, _A);                                                     \</span>
+<span class="cp">    CQ-&gt;enqueueNDRangeKernel(                                                  \</span>
+<span class="cp">        KERNEL.value(), NullRange, NDRange(_GSIZE), NDRange(_LSIZE));</span>
+
+<span class="cp">#define setArgChain2(KERNEL, _A, _B, _GSIZE, _LSIZE)                           \</span>
+<span class="cp">    KERNEL-&gt;setArg(0, _A);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(1, _B);                                                     \</span>
+<span class="cp">    CQ-&gt;enqueueNDRangeKernel(                                                  \</span>
+<span class="cp">        KERNEL.value(), NullRange, NDRange(_GSIZE), NDRange(_LSIZE));</span>
+
+<span class="cp">#define setArgChain3(KERNEL, _A, _B, _C, _GSIZE, _LSIZE)                       \</span>
+<span class="cp">    KERNEL-&gt;setArg(0, _A);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(1, _B);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(2, _C);                                                     \</span>
+<span class="cp">    CQ-&gt;enqueueNDRangeKernel(                                                  \</span>
+<span class="cp">        KERNEL.value(), NullRange, NDRange(_GSIZE), NDRange(_LSIZE));</span>
+
+<span class="cp">#define setArgChain4(KERNEL, _A, _B, _C, _D, _GSIZE, _LSIZE)                   \</span>
+<span class="cp">    KERNEL-&gt;setArg(0, _A);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(1, _B);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(2, _C);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(3, _D);                                                     \</span>
+<span class="cp">    CQ-&gt;enqueueNDRangeKernel(                                                  \</span>
+<span class="cp">        KERNEL.value(), NullRange, NDRange(_GSIZE), NDRange(_LSIZE));</span>
+
+<span class="cp">#define setArgChain5(KERNEL, _A, _B, _C, _D, _E, _GSIZE, _LSIZE)               \</span>
+<span class="cp">    KERNEL-&gt;setArg(0, _A);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(1, _B);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(2, _C);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(3, _D);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(4, _E);                                                     \</span>
+<span class="cp">    CQ-&gt;enqueueNDRangeKernel(                                                  \</span>
+<span class="cp">        KERNEL.value(), NullRange, NDRange(_GSIZE), NDRange(_LSIZE));</span>
+
+<span class="cp">#define setArgChain6(KERNEL, _A, _B, _C, _D, _E, _F, _GSIZE, _LSIZE)           \</span>
+<span class="cp">    KERNEL-&gt;setArg(0, _A);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(1, _B);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(2, _C);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(3, _D);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(4, _E);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(5, _F);                                                     \</span>
+<span class="cp">    CQ-&gt;enqueueNDRangeKernel(                                                  \</span>
+<span class="cp">        KERNEL.value(), NullRange, NDRange(_GSIZE), NDRange(_LSIZE));</span>
+
+<span class="cp">#define setArgChain7(KERNEL, _A, _B, _C, _D, _E, _F, _G, _GSIZE, _LSIZE)       \</span>
+<span class="cp">    KERNEL-&gt;setArg(0, _A);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(1, _B);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(2, _C);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(3, _D);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(4, _E);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(5, _F);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(6, _G);                                                     \</span>
+<span class="cp">    CQ-&gt;enqueueNDRangeKernel(                                                  \</span>
+<span class="cp">        KERNEL.value(), NullRange, NDRange(_GSIZE), NDRange(_LSIZE));</span>
+
+<span class="cp">#define setArgChain8(KERNEL, _A, _B, _C, _D, _E, _F, _G, _H, _GSIZE, _LSIZE)   \</span>
+<span class="cp">    KERNEL-&gt;setArg(0, _A);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(1, _B);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(2, _C);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(3, _D);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(4, _E);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(5, _F);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(6, _G);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(7, _H);                                                     \</span>
+<span class="cp">    CQ-&gt;enqueueNDRangeKernel(                                                  \</span>
+<span class="cp">        KERNEL.value(), NullRange, NDRange(_GSIZE), NDRange(_LSIZE));</span>
+
+<span class="cp">#define setArgChain9(                                                          \</span>
+<span class="cp">    KERNEL, _A, _B, _C, _D, _E, _F, _G, _H, _I, _GSIZE, _LSIZE)                \</span>
+<span class="cp">    KERNEL-&gt;setArg(0, _A);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(1, _B);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(2, _C);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(3, _D);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(4, _E);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(5, _F);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(6, _G);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(7, _H);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(8, _I);                                                     \</span>
+<span class="cp">    CQ-&gt;enqueueNDRangeKernel(                                                  \</span>
+<span class="cp">        KERNEL.value(), NullRange, NDRange(_GSIZE), NDRange(_LSIZE));</span>
+
+<span class="cp">#define setArgChain10(                                                         \</span>
+<span class="cp">    KERNEL, _A, _B, _C, _D, _E, _F, _G, _H, _I, _J, _GSIZE, _LSIZE)            \</span>
+<span class="cp">    KERNEL-&gt;setArg(0, _A);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(1, _B);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(2, _C);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(3, _D);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(4, _E);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(5, _F);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(6, _G);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(7, _H);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(8, _I);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(9, _J);                                                     \</span>
+<span class="cp">    CQ-&gt;enqueueNDRangeKernel(                                                  \</span>
+<span class="cp">        KERNEL.value(), NullRange, NDRange(_GSIZE), NDRange(_LSIZE));</span>
+
+<span class="cp">#define setArgChain11(                                                         \</span>
+<span class="cp">    KERNEL, _A, _B, _C, _D, _E, _F, _G, _H, _I, _J, _K, _GSIZE, _LSIZE)        \</span>
+<span class="cp">    KERNEL-&gt;setArg(0, _A);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(1, _B);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(2, _C);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(3, _D);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(4, _E);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(5, _F);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(6, _G);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(7, _H);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(8, _I);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(9, _J);                                                     \</span>
+<span class="cp">    KERNEL-&gt;setArg(10, _K);                                                    \</span>
+<span class="cp">    CQ-&gt;enqueueNDRangeKernel(                                                  \</span>
+<span class="cp">        KERNEL.value(), NullRange, NDRange(_GSIZE), NDRange(_LSIZE));</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, RLIOP913.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
