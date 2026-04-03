@@ -1,0 +1,185 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File MelFilterBank.hpp &mdash; Project_DJ_Engine  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists\css\tree_view.css?v=a885cde7" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/collapsible-lists\js\CollapsibleLists.compressed.js?v=73120307"></script>
+      <script src="../_static/collapsible-lists\js\apply-collapsible-lists.js?v=660e4f45"></script>
+      <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Project_DJ_Engine
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Getting%20Started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_root.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Editor_Format.html">Editor_Format</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Project_DJ_Engine</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">File MelFilterBank.hpp</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/file_include_util_function_stft_MelFilterBank.hpp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-melfilterbank-hpp">
+<span id="file-include-util-function-stft-melfilterbank-hpp"></span><h1>File MelFilterBank.hpp<a class="headerlink" href="#file-melfilterbank-hpp" title="Link to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="dir_include_util_function_stft.html#dir-include-util-function-stft"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">include\util\function\stft</span></code>)</p>
+<nav class="contents local" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-include-util-function-stft-melfilterbank-hpp" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">include\util\function\stft\MelFilterBank.hpp</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#includes" id="id2">Includes</a></p></li>
+<li><p><a class="reference internal" href="#included-by" id="id3">Included By</a></p></li>
+<li><p><a class="reference internal" href="#namespaces" id="id4">Namespaces</a></p></li>
+<li><p><a class="reference internal" href="#enums" id="id5">Enums</a></p></li>
+<li><p><a class="reference internal" href="#functions" id="id6">Functions</a></p></li>
+<li><p><a class="reference internal" href="#variables" id="id7">Variables</a></p></li>
+</ul>
+</nav>
+<section id="definition-include-util-function-stft-melfilterbank-hpp">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">include\util\function\stft\MelFilterBank.hpp</span></code>)<a class="headerlink" href="#definition-include-util-function-stft-melfilterbank-hpp" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="program_listing_file_include_util_function_stft_MelFilterBank.hpp.html">Program Listing for File MelFilterBank.hpp</a></li>
+</ul>
+</div>
+</section>
+<section id="includes">
+<h2>Includes<a class="headerlink" href="#includes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cmath</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">limits</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vector</span></code></p></li>
+</ul>
+</section>
+<section id="included-by">
+<h2>Included By<a class="headerlink" href="#included-by" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="file_include_util_function_stft_OpenclBackend.cpp.html#file-include-util-function-stft-openclbackend-cpp"><span class="std std-ref">File OpenclBackend.cpp</span></a></p></li>
+<li><p><a class="reference internal" href="file_include_util_function_stft_SerialBackend.cpp.html#file-include-util-function-stft-serialbackend-cpp"><span class="std std-ref">File SerialBackend.cpp</span></a></p></li>
+</ul>
+</section>
+<section id="namespaces">
+<h2>Namespaces<a class="headerlink" href="#namespaces" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="namespace_PDJE_PARALLEL.html#namespace-pdje-parallel"><span class="std std-ref">Namespace PDJE_PARALLEL</span></a></p></li>
+<li><p><a class="reference internal" href="namespace_PDJE_PARALLEL__detail.html#namespace-pdje-parallel-detail"><span class="std std-ref">Namespace PDJE_PARALLEL::detail</span></a></p></li>
+</ul>
+</section>
+<section id="enums">
+<h2>Enums<a class="headerlink" href="#enums" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="enum_namespace_p_d_j_e___p_a_r_a_l_l_e_l_1af477ed4c1919021ca1b11d5f6677bd0c.html#exhale-enum-namespace-p-d-j-e-p-a-r-a-l-l-e-l-1af477ed4c1919021ca1b11d5f6677bd0c"><span class="std std-ref">Enum MelFormula</span></a></p></li>
+<li><p><a class="reference internal" href="enum_namespace_p_d_j_e___p_a_r_a_l_l_e_l_1a91ae44f836e72a18c5de1fc2366e169e.html#exhale-enum-namespace-p-d-j-e-p-a-r-a-l-l-e-l-1a91ae44f836e72a18c5de1fc2366e169e"><span class="std std-ref">Enum MelNorm</span></a></p></li>
+</ul>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="function_namespace_p_d_j_e___p_a_r_a_l_l_e_l_1a343f1dfc2ad7a1392c083a44c8fddf80.html#exhale-function-namespace-p-d-j-e-p-a-r-a-l-l-e-l-1a343f1dfc2ad7a1392c083a44c8fddf80"><span class="std std-ref">Function PDJE_PARALLEL::CheckMelVals</span></a></p></li>
+<li><p><a class="reference internal" href="function_namespace_p_d_j_e___p_a_r_a_l_l_e_l_1_1detail_1a002a8f9f170ed42790cd92ca7aba7e46.html#exhale-function-namespace-p-d-j-e-p-a-r-a-l-l-e-l-1-1detail-1a002a8f9f170ed42790cd92ca7aba7e46"><span class="std std-ref">Function PDJE_PARALLEL::detail::ApplyNorm</span></a></p></li>
+<li><p><a class="reference internal" href="function_namespace_p_d_j_e___p_a_r_a_l_l_e_l_1_1detail_1a969f8c41afe713913407ffc2f2a44e90.html#exhale-function-namespace-p-d-j-e-p-a-r-a-l-l-e-l-1-1detail-1a969f8c41afe713913407ffc2f2a44e90"><span class="std std-ref">Function PDJE_PARALLEL::detail::HtkHzToMel</span></a></p></li>
+<li><p><a class="reference internal" href="function_namespace_p_d_j_e___p_a_r_a_l_l_e_l_1_1detail_1ab7bba2576c4d4c084da34a25381e3bbd.html#exhale-function-namespace-p-d-j-e-p-a-r-a-l-l-e-l-1-1detail-1ab7bba2576c4d4c084da34a25381e3bbd"><span class="std std-ref">Function PDJE_PARALLEL::detail::HtkMelToHz</span></a></p></li>
+<li><p><a class="reference internal" href="function_namespace_p_d_j_e___p_a_r_a_l_l_e_l_1_1detail_1a6d346462a5543d7068110a998097ecc6.html#exhale-function-namespace-p-d-j-e-p-a-r-a-l-l-e-l-1-1detail-1a6d346462a5543d7068110a998097ecc6"><span class="std std-ref">Function PDJE_PARALLEL::detail::HzToMel</span></a></p></li>
+<li><p><a class="reference internal" href="function_namespace_p_d_j_e___p_a_r_a_l_l_e_l_1_1detail_1a2f1730611f918a1961bb5659d0518dfe.html#exhale-function-namespace-p-d-j-e-p-a-r-a-l-l-e-l-1-1detail-1a2f1730611f918a1961bb5659d0518dfe"><span class="std std-ref">Function PDJE_PARALLEL::detail::MelToHz</span></a></p></li>
+<li><p><a class="reference internal" href="function_namespace_p_d_j_e___p_a_r_a_l_l_e_l_1_1detail_1a59793df57fbc0caf3c289257247baefd.html#exhale-function-namespace-p-d-j-e-p-a-r-a-l-l-e-l-1-1detail-1a59793df57fbc0caf3c289257247baefd"><span class="std std-ref">Function PDJE_PARALLEL::detail::SlaneyHzToMel</span></a></p></li>
+<li><p><a class="reference internal" href="function_namespace_p_d_j_e___p_a_r_a_l_l_e_l_1_1detail_1a8380cd1e4ae2a7e541eae0336a9c4dbe.html#exhale-function-namespace-p-d-j-e-p-a-r-a-l-l-e-l-1-1detail-1a8380cd1e4ae2a7e541eae0336a9c4dbe"><span class="std std-ref">Function PDJE_PARALLEL::detail::SlaneyMelToHz</span></a></p></li>
+<li><p><a class="reference internal" href="function_namespace_p_d_j_e___p_a_r_a_l_l_e_l_1a968aba6120d5338a9915e858c6b7a90a.html#exhale-function-namespace-p-d-j-e-p-a-r-a-l-l-e-l-1a968aba6120d5338a9915e858c6b7a90a"><span class="std std-ref">Function PDJE_PARALLEL::GenMelFilterBank</span></a></p></li>
+</ul>
+</section>
+<section id="variables">
+<h2>Variables<a class="headerlink" href="#variables" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="variable_namespace_p_d_j_e___p_a_r_a_l_l_e_l_1_1detail_1ab40a677fa7575a21fe74475563caa8d4.html#exhale-variable-namespace-p-d-j-e-p-a-r-a-l-l-e-l-1-1detail-1ab40a677fa7575a21fe74475563caa8d4"><span class="std std-ref">Variable PDJE_PARALLEL::detail::kSlaneyFSp</span></a></p></li>
+<li><p><a class="reference internal" href="variable_namespace_p_d_j_e___p_a_r_a_l_l_e_l_1_1detail_1a2490190eec860a8e66bedca52e5d6bfa.html#exhale-variable-namespace-p-d-j-e-p-a-r-a-l-l-e-l-1-1detail-1a2490190eec860a8e66bedca52e5d6bfa"><span class="std std-ref">Variable PDJE_PARALLEL::detail::kSlaneyLogStep</span></a></p></li>
+<li><p><a class="reference internal" href="variable_namespace_p_d_j_e___p_a_r_a_l_l_e_l_1_1detail_1a1d3f865f7a1d32f5f86b2c83156d33fe.html#exhale-variable-namespace-p-d-j-e-p-a-r-a-l-l-e-l-1-1detail-1a1d3f865f7a1d32f5f86b2c83156d33fe"><span class="std std-ref">Variable PDJE_PARALLEL::detail::kSlaneyMinLogHz</span></a></p></li>
+<li><p><a class="reference internal" href="variable_namespace_p_d_j_e___p_a_r_a_l_l_e_l_1_1detail_1a80a1507071c962505d25d6abc93d7ae6.html#exhale-variable-namespace-p-d-j-e-p-a-r-a-l-l-e-l-1-1detail-1a80a1507071c962505d25d6abc93d7ae6"><span class="std std-ref">Variable PDJE_PARALLEL::detail::kSlaneyMinLogMel</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, RLIOP913.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

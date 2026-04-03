@@ -170,6 +170,9 @@ Program Listing for File editorObject.cpp
    bool
    editorObject::pushToRootDB(litedb &ROOTDB, const UNSANITIZED &trackTitleToPush)
    {
+       if (trackTitleToPush.empty()) {
+           return false;
+       }
        trackdata searchQuery;
        searchQuery.trackTitle =
            PDJE_Name_Sanitizer::sanitizeFileName(trackTitleToPush).value_or("");
@@ -188,7 +191,22 @@ Program Listing for File editorObject.cpp
    
        TITLE_COMPOSER tcData;
        auto           td = makeTrackData(trackTitleToPush, tcData);
-       if (!(ROOTDB <= td)) {
+       trackdata      checker_track;
+       checker_track.trackTitle = td.trackTitle;
+       auto res                 = ROOTDB << checker_track;
+       if (!res.has_value()) {
+           critlog("failed to search track data from rootdb. from editorObject "
+                   "pushToRootDB");
+           critlog(trackTitleToPush.c_str());
+           return false;
+       }
+       bool pushRes = false;
+       if (res->size() == 0) {
+           pushRes = ROOTDB <= td;
+       } else {
+           pushRes = ROOTDB.EditData(res->front(), td);
+       }
+       if (!pushRes) {
            critlog("failed to push trackdata to root database. from editorObject "
                    "pushToRootDB. trackTitle: ");
            critlog(trackTitleToPush);
@@ -210,7 +228,7 @@ Program Listing for File editorObject.cpp
    {
        auto fromProjectSearchQuery = musdata(musicTitle, musicComposer);
        auto searched               = projectLocalDB->GetBuildedProject()
-                       << fromProjectSearchQuery;
+                                     << fromProjectSearchQuery;
        if (!searched.has_value()) {
            critlog("searched has no value. from editorObject pushToRootDB. "
                    "musicTitle & composer: ");

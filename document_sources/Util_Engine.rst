@@ -445,26 +445,3 @@ AI Namespace
 
 `PDJE_UTIL::ai` currently exists as a placeholder namespace only. The current
 header set does not define public AI utility functions inside it.
-
-External Binding Note
----------------------
-
-Some local development environments may keep an external binding/reference
-codebase under `bind_tempdir`. Treat that as a useful out-of-repo reference
-implementation only.
-
-Important boundaries:
-
-- `bind_tempdir` is not managed by this repository
-- this repository's utility documentation should not copy external binding APIs
-  as if they were in-repo source of truth
-- when wrapper behavior differs from the C++ utility headers here, the C++
-  headers, tests, and CMake targets remain the canonical reference for this
-  document
-
-Generated API
--------------
-
-Use :doc:`/api/api_root` for symbol lookup after reading this page. This guide
-intentionally focuses on the maintained utility surface rather than exhaustive
-generated symbol listings.

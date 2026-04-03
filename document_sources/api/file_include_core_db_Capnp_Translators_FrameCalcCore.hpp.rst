@@ -46,6 +46,8 @@ Included By
 -----------
 
 
+- :ref:`file_include_core_audioRender_MixMachine_MiniaudioObjects_Decoder.hpp`
+
 - :ref:`file_include_core_db_Capnp_Translators_FrameCalc.cpp`
 
 - :ref:`file_include_core_db_Capnp_Translators_FrameCalc.hpp`

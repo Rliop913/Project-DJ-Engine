@@ -244,7 +244,9 @@ entrypoint <cite>include/judge/PDJE_Judge.hpp</cite></p></li>
 <li><p>User wants utility/helper APIs:
 module <cite>PDJE_UTIL</cite>
 doc <a class="reference internal" href="Util_Engine.html"><span class="doc">Util_Engine</span></a>
-entrypoint <cite>include/util/PDJE_Util.hpp</cite></p></li>
+entrypoint <cite>include/util/PDJE_Util.hpp</cite>
+direct headers <cite>include/util/function/image/</cite> and
+<cite>include/util/function/stft/</cite> for non-umbrella APIs</p></li>
 <li><p>User wants editor data format details:
 doc <a class="reference internal" href="Editor_Format.html"><span class="doc">Editor_Format</span></a></p></li>
 <li><p>User wants live shared state details:
@@ -313,6 +315,8 @@ judge input line is set.</p></li>
 side.</p></li>
 <li><p>State that older wrapper-oriented docs also reference the Godot-facing
 wrapper path.</p></li>
+<li><p>If a local checkout also has a <cite>bind_tempdir</cite> clone, describe it as an
+external reference implementation rather than a repo-managed source of truth.</p></li>
 <li><p>Do not claim that input and judge are fully exposed by SWIG unless verified in
 current wrapper outputs.</p></li>
 </ul>
@@ -344,6 +348,8 @@ file shapes, route back to <a class="reference internal" href="Editor_Workflows.
 <li><p>Do not invent SWIG wrapper coverage for <cite>PDJE_Input</cite> or <cite>PDJE_JUDGE::JUDGE</cite>.</p></li>
 <li><p>Do not describe the utility layer as roadmap-only; the current tree contains
 active <cite>PDJE_UTIL</cite> code and CMake targets.</p></li>
+<li><p>Do not treat a local <cite>bind_tempdir</cite> checkout as if it were managed by this
+repository or guaranteed to match the current in-repo utility headers.</p></li>
 <li><p>Do not describe editor as only <cite>InitEditor()</cite> plus <cite>render()</cite>. The public
 surface also includes mutation, history, preview, and push paths.</p></li>
 <li><p>Do not answer authoring, history, or time-travel questions from playback docs

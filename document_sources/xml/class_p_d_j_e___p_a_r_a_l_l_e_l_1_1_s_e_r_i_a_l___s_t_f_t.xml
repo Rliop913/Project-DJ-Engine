@@ -1,0 +1,452 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+  <compounddef id="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t" kind="class" language="C++" prot="public" final="yes">
+    <compoundname>PDJE_PARALLEL::SERIAL_STFT</compoundname>
+    <basecompoundref refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_i_stft_backend" prot="public" virt="non-virtual">PDJE_PARALLEL::IStftBackend</basecompoundref>
+    <includes refid="_serial_backend_8hpp" local="no">SerialBackend.hpp</includes>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1aecab1c7496a49d5c51ff23311a034f89" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t PDJE_PARALLEL::SERIAL_STFT::kMelBins</definition>
+        <argsstring></argsstring>
+        <name>kMelBins</name>
+        <qualifiedname>PDJE_PARALLEL::SERIAL_STFT::kMelBins</qualifiedname>
+        <initializer>= 80</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/SerialBackend.hpp" line="12" column="31" bodyfile="include/util/function/stft/SerialBackend.hpp" bodystart="12" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a5e43bda64868ddef34d2eeb2ae8fafcf" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>int</type>
+        <definition>int PDJE_PARALLEL::SERIAL_STFT::kDefaultSampleRate</definition>
+        <argsstring></argsstring>
+        <name>kDefaultSampleRate</name>
+        <qualifiedname>PDJE_PARALLEL::SERIAL_STFT::kDefaultSampleRate</qualifiedname>
+        <initializer>= 48000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/SerialBackend.hpp" line="13" column="31" bodyfile="include/util/function/stft/SerialBackend.hpp" bodystart="13" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a7e966383f7f7194ba234f528effa462b" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t PDJE_PARALLEL::SERIAL_STFT::prev_overlap_fullsize</definition>
+        <argsstring></argsstring>
+        <name>prev_overlap_fullsize</name>
+        <qualifiedname>PDJE_PARALLEL::SERIAL_STFT::prev_overlap_fullsize</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/SerialBackend.hpp" line="15" column="14" bodyfile="include/util/function/stft/SerialBackend.hpp" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a852de159ccffd77cc27971195a63a1e1" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t PDJE_PARALLEL::SERIAL_STFT::prev_overlap_subbuffer_fullsize</definition>
+        <argsstring></argsstring>
+        <name>prev_overlap_subbuffer_fullsize</name>
+        <qualifiedname>PDJE_PARALLEL::SERIAL_STFT::prev_overlap_subbuffer_fullsize</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/SerialBackend.hpp" line="16" column="14" bodyfile="include/util/function/stft/SerialBackend.hpp" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a4f1bcb55433ffbcb53d6b244e5c67901" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t PDJE_PARALLEL::SERIAL_STFT::prev_bin_fullsize</definition>
+        <argsstring></argsstring>
+        <name>prev_bin_fullsize</name>
+        <qualifiedname>PDJE_PARALLEL::SERIAL_STFT::prev_bin_fullsize</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/SerialBackend.hpp" line="17" column="14" bodyfile="include/util/function/stft/SerialBackend.hpp" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a855cad84926a30b44947eab50ec285cb" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t PDJE_PARALLEL::SERIAL_STFT::prev_mel_fullsize</definition>
+        <argsstring></argsstring>
+        <name>prev_mel_fullsize</name>
+        <qualifiedname>PDJE_PARALLEL::SERIAL_STFT::prev_mel_fullsize</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/SerialBackend.hpp" line="18" column="14" bodyfile="include/util/function/stft/SerialBackend.hpp" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a60fe2a260cce86bd06335b6c0896f0e0" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int PDJE_PARALLEL::SERIAL_STFT::prev_fft_size</definition>
+        <argsstring></argsstring>
+        <name>prev_fft_size</name>
+        <qualifiedname>PDJE_PARALLEL::SERIAL_STFT::prev_fft_size</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/SerialBackend.hpp" line="19" column="14" bodyfile="include/util/function/stft/SerialBackend.hpp" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a5d1ed30dba670a4295f648bb79b92c24" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; float &gt;</type>
+        <definition>std::vector&lt;float&gt; PDJE_PARALLEL::SERIAL_STFT::real</definition>
+        <argsstring></argsstring>
+        <name>real</name>
+        <qualifiedname>PDJE_PARALLEL::SERIAL_STFT::real</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/SerialBackend.hpp" line="21" column="17" bodyfile="include/util/function/stft/SerialBackend.hpp" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a49e822fc175e564075954bdf7ccce4c7" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; float &gt;</type>
+        <definition>std::vector&lt;float&gt; PDJE_PARALLEL::SERIAL_STFT::imag</definition>
+        <argsstring></argsstring>
+        <name>imag</name>
+        <qualifiedname>PDJE_PARALLEL::SERIAL_STFT::imag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/SerialBackend.hpp" line="22" column="17" bodyfile="include/util/function/stft/SerialBackend.hpp" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a2cb2e1c247e895aeb3c17c632e07a653" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; float &gt;</type>
+        <definition>std::vector&lt;float&gt; PDJE_PARALLEL::SERIAL_STFT::subreal</definition>
+        <argsstring></argsstring>
+        <name>subreal</name>
+        <qualifiedname>PDJE_PARALLEL::SERIAL_STFT::subreal</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/SerialBackend.hpp" line="23" column="17" bodyfile="include/util/function/stft/SerialBackend.hpp" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a31a48555873b2e5a7f2acbbbab4c32c6" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; float &gt;</type>
+        <definition>std::vector&lt;float&gt; PDJE_PARALLEL::SERIAL_STFT::subimag</definition>
+        <argsstring></argsstring>
+        <name>subimag</name>
+        <qualifiedname>PDJE_PARALLEL::SERIAL_STFT::subimag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/SerialBackend.hpp" line="24" column="17" bodyfile="include/util/function/stft/SerialBackend.hpp" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1ac645b3459bbfc50db8b549bf61080f65" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; float &gt;</type>
+        <definition>std::vector&lt;float&gt; PDJE_PARALLEL::SERIAL_STFT::bin_real</definition>
+        <argsstring></argsstring>
+        <name>bin_real</name>
+        <qualifiedname>PDJE_PARALLEL::SERIAL_STFT::bin_real</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/SerialBackend.hpp" line="25" column="17" bodyfile="include/util/function/stft/SerialBackend.hpp" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1ab132025ca11c8534bb51996f6d8ca654" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; float &gt;</type>
+        <definition>std::vector&lt;float&gt; PDJE_PARALLEL::SERIAL_STFT::bin_imag</definition>
+        <argsstring></argsstring>
+        <name>bin_imag</name>
+        <qualifiedname>PDJE_PARALLEL::SERIAL_STFT::bin_imag</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/SerialBackend.hpp" line="26" column="17" bodyfile="include/util/function/stft/SerialBackend.hpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1ab846de79e668f09e19c2b6474174b4db" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; float &gt;</type>
+        <definition>std::vector&lt;float&gt; PDJE_PARALLEL::SERIAL_STFT::mel</definition>
+        <argsstring></argsstring>
+        <name>mel</name>
+        <qualifiedname>PDJE_PARALLEL::SERIAL_STFT::mel</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/SerialBackend.hpp" line="27" column="17" bodyfile="include/util/function/stft/SerialBackend.hpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a77b95ad6f39cb08a0a157dd118ae62c1" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; float &gt;</type>
+        <definition>std::vector&lt;float&gt; PDJE_PARALLEL::SERIAL_STFT::rgb</definition>
+        <argsstring></argsstring>
+        <name>rgb</name>
+        <qualifiedname>PDJE_PARALLEL::SERIAL_STFT::rgb</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/SerialBackend.hpp" line="28" column="17" bodyfile="include/util/function/stft/SerialBackend.hpp" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1ae40fd64be5b07dbfbf2851c70f429e46" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; float &gt;</type>
+        <definition>std::vector&lt;float&gt; PDJE_PARALLEL::SERIAL_STFT::mel_filter_bank</definition>
+        <argsstring></argsstring>
+        <name>mel_filter_bank</name>
+        <qualifiedname>PDJE_PARALLEL::SERIAL_STFT::mel_filter_bank</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/SerialBackend.hpp" line="29" column="17" bodyfile="include/util/function/stft/SerialBackend.hpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1ac79623c1ab92355521dcb20fa73c42dd" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_PARALLEL::SERIAL_STFT::EnsureMemory</definition>
+        <argsstring>(const StftArgs &amp;gargs, const POST_PROCESS &amp;post_process, bool needSubBuffer)</argsstring>
+        <name>EnsureMemory</name>
+        <qualifiedname>PDJE_PARALLEL::SERIAL_STFT::EnsureMemory</qualifiedname>
+        <param>
+          <type>const <ref refid="struct_p_d_j_e___p_a_r_a_l_l_e_l_1_1_stft_args" kindref="compound">StftArgs</ref> &amp;</type>
+          <declname>gargs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_p_d_j_e___p_a_r_a_l_l_e_l_1_1_p_o_s_t___p_r_o_c_e_s_s" kindref="compound">POST_PROCESS</ref> &amp;</type>
+          <declname>post_process</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>needSubBuffer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/SerialBackend.hpp" line="32" column="5" bodyfile="include/util/function/stft/SerialBackend.cpp" bodystart="20" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a86e7a9738ba78e5c2783500356eac38b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_PARALLEL::SERIAL_STFT::EnsureMelFilterBank</definition>
+        <argsstring>(int windowSize)</argsstring>
+        <name>EnsureMelFilterBank</name>
+        <qualifiedname>PDJE_PARALLEL::SERIAL_STFT::EnsureMelFilterBank</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>windowSize</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/SerialBackend.hpp" line="37" column="5" bodyfile="include/util/function/stft/SerialBackend.cpp" bodystart="56" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1ad773682bcc32ba6005342f2850df7f99" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_PARALLEL::SERIAL_STFT::ApplyWindow</definition>
+        <argsstring>(WINDOW_LIST target_window, const StftArgs &amp;gargs)</argsstring>
+        <name>ApplyWindow</name>
+        <qualifiedname>PDJE_PARALLEL::SERIAL_STFT::ApplyWindow</qualifiedname>
+        <param>
+          <type><ref refid="namespace_p_d_j_e___p_a_r_a_l_l_e_l_1a09a7d92b5f20cd3abe1ff3a1c68d6c46" kindref="member">WINDOW_LIST</ref></type>
+          <declname>target_window</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_p_d_j_e___p_a_r_a_l_l_e_l_1_1_stft_args" kindref="compound">StftArgs</ref> &amp;</type>
+          <declname>gargs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/SerialBackend.hpp" line="40" column="5" bodyfile="include/util/function/stft/SerialBackend.cpp" bodystart="73" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a3ebec09df9c9a820ba3ba02c38f30cce" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_PARALLEL::SERIAL_STFT::RunFft</definition>
+        <argsstring>(unsigned int windowSizeEXP, const StftArgs &amp;gargs)</argsstring>
+        <name>RunFft</name>
+        <qualifiedname>PDJE_PARALLEL::SERIAL_STFT::RunFft</qualifiedname>
+        <param>
+          <type>unsigned int</type>
+          <declname>windowSizeEXP</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_p_d_j_e___p_a_r_a_l_l_e_l_1_1_stft_args" kindref="compound">StftArgs</ref> &amp;</type>
+          <declname>gargs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/SerialBackend.hpp" line="43" column="5" bodyfile="include/util/function/stft/SerialBackend.cpp" bodystart="108" bodyend="156"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a8f9181fe601a753d29ba13373b8c6326" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespace_p_d_j_e___p_a_r_a_l_l_e_l_1a659810d362e9f11e7600ef9e86e12156" kindref="member">StftResult</ref></type>
+        <definition>StftResult PDJE_PARALLEL::SERIAL_STFT::Execute</definition>
+        <argsstring>(std::vector&lt; float &gt; &amp;PCMdata, WINDOW_LIST target_window, POST_PROCESS post_process, unsigned int windowSizeEXP, const StftArgs &amp;gargs) override</argsstring>
+        <name>Execute</name>
+        <qualifiedname>PDJE_PARALLEL::SERIAL_STFT::Execute</qualifiedname>
+        <reimplements refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_i_stft_backend_1a336319e522baf8e9dd1477011ffa0dc6">Execute</reimplements>
+        <param>
+          <type>std::vector&lt; float &gt; &amp;</type>
+          <declname>PCMdata</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_p_d_j_e___p_a_r_a_l_l_e_l_1a09a7d92b5f20cd3abe1ff3a1c68d6c46" kindref="member">WINDOW_LIST</ref></type>
+          <declname>target_window</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_p_d_j_e___p_a_r_a_l_l_e_l_1_1_p_o_s_t___p_r_o_c_e_s_s" kindref="compound">POST_PROCESS</ref></type>
+          <declname>post_process</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>windowSizeEXP</declname>
+        </param>
+        <param>
+          <type>const <ref refid="struct_p_d_j_e___p_a_r_a_l_l_e_l_1_1_stft_args" kindref="compound">StftArgs</ref> &amp;</type>
+          <declname>gargs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/SerialBackend.hpp" line="47" column="5" bodyfile="include/util/function/stft/SerialBackend.cpp" bodystart="159" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="function" id="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a4b223412ef398a35e57ca2ac8272a291" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_PARALLEL::SERIAL_STFT::~SERIAL_STFT</definition>
+        <argsstring>() override</argsstring>
+        <name>~SERIAL_STFT</name>
+        <qualifiedname>PDJE_PARALLEL::SERIAL_STFT::~SERIAL_STFT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/SerialBackend.hpp" line="53" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>PDJE_PARALLEL::IStftBackend</label>
+        <link refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_i_stft_backend"/>
+      </node>
+      <node id="1">
+        <label>PDJE_PARALLEL::SERIAL_STFT</label>
+        <link refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>PDJE_PARALLEL::IStftBackend</label>
+        <link refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_i_stft_backend"/>
+      </node>
+      <node id="1">
+        <label>PDJE_PARALLEL::SERIAL_STFT</label>
+        <link refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>bin_imag</edgelabel>
+          <edgelabel>bin_real</edgelabel>
+          <edgelabel>imag</edgelabel>
+          <edgelabel>mel</edgelabel>
+          <edgelabel>mel_filter_bank</edgelabel>
+          <edgelabel>real</edgelabel>
+          <edgelabel>rgb</edgelabel>
+          <edgelabel>subimag</edgelabel>
+          <edgelabel>subreal</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>std::vector&lt; float &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/util/function/stft/SerialBackend.hpp" line="10" column="1" bodyfile="include/util/function/stft/SerialBackend.hpp" bodystart="10" bodyend="54"/>
+    <listofallmembers>
+      <member refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1ad773682bcc32ba6005342f2850df7f99" prot="private" virt="non-virtual"><scope>PDJE_PARALLEL::SERIAL_STFT</scope><name>ApplyWindow</name></member>
+      <member refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1ab132025ca11c8534bb51996f6d8ca654" prot="private" virt="non-virtual"><scope>PDJE_PARALLEL::SERIAL_STFT</scope><name>bin_imag</name></member>
+      <member refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1ac645b3459bbfc50db8b549bf61080f65" prot="private" virt="non-virtual"><scope>PDJE_PARALLEL::SERIAL_STFT</scope><name>bin_real</name></member>
+      <member refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a86e7a9738ba78e5c2783500356eac38b" prot="private" virt="non-virtual"><scope>PDJE_PARALLEL::SERIAL_STFT</scope><name>EnsureMelFilterBank</name></member>
+      <member refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1ac79623c1ab92355521dcb20fa73c42dd" prot="private" virt="non-virtual"><scope>PDJE_PARALLEL::SERIAL_STFT</scope><name>EnsureMemory</name></member>
+      <member refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a8f9181fe601a753d29ba13373b8c6326" prot="public" virt="virtual"><scope>PDJE_PARALLEL::SERIAL_STFT</scope><name>Execute</name></member>
+      <member refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a49e822fc175e564075954bdf7ccce4c7" prot="private" virt="non-virtual"><scope>PDJE_PARALLEL::SERIAL_STFT</scope><name>imag</name></member>
+      <member refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a5e43bda64868ddef34d2eeb2ae8fafcf" prot="private" virt="non-virtual"><scope>PDJE_PARALLEL::SERIAL_STFT</scope><name>kDefaultSampleRate</name></member>
+      <member refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1aecab1c7496a49d5c51ff23311a034f89" prot="private" virt="non-virtual"><scope>PDJE_PARALLEL::SERIAL_STFT</scope><name>kMelBins</name></member>
+      <member refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1ab846de79e668f09e19c2b6474174b4db" prot="private" virt="non-virtual"><scope>PDJE_PARALLEL::SERIAL_STFT</scope><name>mel</name></member>
+      <member refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1ae40fd64be5b07dbfbf2851c70f429e46" prot="private" virt="non-virtual"><scope>PDJE_PARALLEL::SERIAL_STFT</scope><name>mel_filter_bank</name></member>
+      <member refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a4f1bcb55433ffbcb53d6b244e5c67901" prot="private" virt="non-virtual"><scope>PDJE_PARALLEL::SERIAL_STFT</scope><name>prev_bin_fullsize</name></member>
+      <member refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a60fe2a260cce86bd06335b6c0896f0e0" prot="private" virt="non-virtual"><scope>PDJE_PARALLEL::SERIAL_STFT</scope><name>prev_fft_size</name></member>
+      <member refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a855cad84926a30b44947eab50ec285cb" prot="private" virt="non-virtual"><scope>PDJE_PARALLEL::SERIAL_STFT</scope><name>prev_mel_fullsize</name></member>
+      <member refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a7e966383f7f7194ba234f528effa462b" prot="private" virt="non-virtual"><scope>PDJE_PARALLEL::SERIAL_STFT</scope><name>prev_overlap_fullsize</name></member>
+      <member refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a852de159ccffd77cc27971195a63a1e1" prot="private" virt="non-virtual"><scope>PDJE_PARALLEL::SERIAL_STFT</scope><name>prev_overlap_subbuffer_fullsize</name></member>
+      <member refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a5d1ed30dba670a4295f648bb79b92c24" prot="private" virt="non-virtual"><scope>PDJE_PARALLEL::SERIAL_STFT</scope><name>real</name></member>
+      <member refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a77b95ad6f39cb08a0a157dd118ae62c1" prot="private" virt="non-virtual"><scope>PDJE_PARALLEL::SERIAL_STFT</scope><name>rgb</name></member>
+      <member refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a3ebec09df9c9a820ba3ba02c38f30cce" prot="private" virt="non-virtual"><scope>PDJE_PARALLEL::SERIAL_STFT</scope><name>RunFft</name></member>
+      <member refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a31a48555873b2e5a7f2acbbbab4c32c6" prot="private" virt="non-virtual"><scope>PDJE_PARALLEL::SERIAL_STFT</scope><name>subimag</name></member>
+      <member refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a2cb2e1c247e895aeb3c17c632e07a653" prot="private" virt="non-virtual"><scope>PDJE_PARALLEL::SERIAL_STFT</scope><name>subreal</name></member>
+      <member refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_i_stft_backend_1a4bb16a6f96140d8ec4c0ea79a58d27b4" prot="public" virt="virtual"><scope>PDJE_PARALLEL::SERIAL_STFT</scope><name>~IStftBackend</name></member>
+      <member refid="class_p_d_j_e___p_a_r_a_l_l_e_l_1_1_s_e_r_i_a_l___s_t_f_t_1a4b223412ef398a35e57ca2ac8272a291" prot="public" virt="non-virtual"><scope>PDJE_PARALLEL::SERIAL_STFT</scope><name>~SERIAL_STFT</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

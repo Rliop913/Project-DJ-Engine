@@ -32,6 +32,8 @@ Includes
 
 - ``FrameCalc.hpp`` (:ref:`file_include_core_db_Capnp_Translators_FrameCalc.hpp`)
 
+- ``FrameCalcCore.hpp`` (:ref:`file_include_core_db_Capnp_Translators_FrameCalcCore.hpp`)
+
 - ``dbRoot.hpp`` (:ref:`file_include_core_db_dbRoot.hpp`)
 
 - ``fileNameSanitizer.hpp`` (:ref:`file_include_global_DataLines_fileNameSanitizer.hpp`)

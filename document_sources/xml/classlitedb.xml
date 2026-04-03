@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
   <compounddef id="classlitedb" kind="class" language="C++" prot="public">
     <compoundname>litedb</compoundname>
-    <includes refid="dbRoot_8hpp" local="no">dbRoot.hpp</includes>
+    <includes refid="db_root_8hpp" local="no">dbRoot.hpp</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classlitedb_1a3fa0b6c88df33c15dd495450a6a9023c" prot="private" static="no" mutable="no">
         <type>fs::path</type>
@@ -78,7 +78,7 @@
         <location file="include/core/db/dbRoot.hpp" line="39" column="25" bodyfile="include/core/db/dbRoot.hpp" bodystart="39" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classlitedb_1a88078f4a247f192b057c715b3c898e90" prot="private" static="no" mutable="no">
-        <type>std::unique_ptr&lt; <ref refid="classRDB" kindref="compound">RDB</ref> &gt;</type>
+        <type>std::unique_ptr&lt; <ref refid="class_r_d_b" kindref="compound">RDB</ref> &gt;</type>
         <definition>std::unique_ptr&lt;RDB&gt; litedb::kvdb_impl</definition>
         <argsstring></argsstring>
         <name>kvdb_impl</name>
@@ -314,11 +314,11 @@
         <name>KVGet</name>
         <qualifiedname>litedb::KVGet</qualifiedname>
         <param>
-          <type>const <ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref> &amp;</type>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref> &amp;</type>
           <declname>K</declname>
         </param>
         <param>
-          <type><ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <type><ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
           <declname>V</declname>
         </param>
         <briefdescription>
@@ -327,7 +327,7 @@
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
-<parametername><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca660a38111995acbeb2820648e82f0d8c" kindref="member">K</ref></parametername>
+<parametername>K</parametername>
 </parameternamelist>
 <parameterdescription>
 <para>The key to retrieve. </para>
@@ -335,7 +335,7 @@
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca28f41f1144eee94834387e9a6a088bc1" kindref="member">V</ref></parametername>
+<parametername>V</parametername>
 </parameternamelist>
 <parameterdescription>
 <para>The output parameter for the retrieved value. </para>
@@ -357,11 +357,11 @@
         <name>KVPut</name>
         <qualifiedname>litedb::KVPut</qualifiedname>
         <param>
-          <type>const <ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref> &amp;</type>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref> &amp;</type>
           <declname>K</declname>
         </param>
         <param>
-          <type>const <ref refid="fileNameSanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a2ec6d785f45dccabee178706d40c0d7d" kindref="member">DONT_SANITIZE</ref> &amp;</type>
           <declname>V</declname>
         </param>
         <briefdescription>
@@ -370,7 +370,7 @@
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
-<parametername><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca660a38111995acbeb2820648e82f0d8c" kindref="member">K</ref></parametername>
+<parametername>K</parametername>
 </parameternamelist>
 <parameterdescription>
 <para>The key to insert or update. </para>
@@ -378,7 +378,7 @@
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername><ref refid="Input__State_8hpp_1a3a9ea0bb92bbb69edb406c9a5ba4e55ca28f41f1144eee94834387e9a6a088bc1" kindref="member">V</ref></parametername>
+<parametername>V</parametername>
 </parameternamelist>
 <parameterdescription>
 <para>The value to associate with the key. </para>
@@ -400,7 +400,7 @@
         <name>KVDelete</name>
         <qualifiedname>litedb::KVDelete</qualifiedname>
         <param>
-          <type>const <ref refid="fileNameSanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref> &amp;</type>
+          <type>const <ref refid="file_name_sanitizer_8hpp_1a42b314db575a72ce50d61bf37a153f07" kindref="member">SANITIZED</ref> &amp;</type>
           <declname>K</declname>
         </param>
         <briefdescription>
@@ -501,7 +501,7 @@
     <collaborationgraph>
       <node id="3">
         <label>RDB</label>
-        <link refid="classRDB"/>
+        <link refid="class_r_d_b"/>
       </node>
       <node id="1">
         <label>litedb</label>

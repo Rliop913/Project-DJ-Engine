@@ -371,6 +371,11 @@ Directories
 .. toctree::
    :maxdepth: 5
 
+   dir_include_util_common_BackendLoader.rst
+
+.. toctree::
+   :maxdepth: 5
+
    dir_include_util_db.rst
 
 .. toctree::
@@ -401,11 +406,6 @@ Directories
 .. toctree::
    :maxdepth: 5
 
-   dir_include_util_function_halide.rst
-
-.. toctree::
-   :maxdepth: 5
-
    dir_include_util_function_image.rst
 
 .. toctree::
@@ -416,12 +416,12 @@ Directories
 .. toctree::
    :maxdepth: 5
 
-   dir_include_util_function_text.rst
+   dir_include_util_function_stft.rst
 
 .. toctree::
    :maxdepth: 5
 
-   dir_include_util_Halide_Codes.rst
+   dir_include_util_function_text.rst
 
 Files
 *****
@@ -511,6 +511,16 @@ Files
    :maxdepth: 5
 
    file_include_util_db_relational_BackendConcept.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_function_stft_BackendLess.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_function_stft_BackendLess.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -830,11 +840,6 @@ Files
 .. toctree::
    :maxdepth: 5
 
-   file_include_util_function_halide_GainBias.hpp.rst
-
-.. toctree::
-   :maxdepth: 5
-
    file_include_core_MainObjects_editorObject_getall.cpp.rst
 
 .. toctree::
@@ -866,11 +871,6 @@ Files
    :maxdepth: 5
 
    file_include_core_MainObjects_editorObject_go.cpp.rst
-
-.. toctree::
-   :maxdepth: 5
-
-   file_include_util_Halide_Codes_Halide_CodeSample.cpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -1026,6 +1026,11 @@ Files
    :maxdepth: 5
 
    file_include_core_audioRender_ManualMix_ManualMix.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_function_stft_MelFilterBank.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -1205,12 +1210,42 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_util_common_BackendLoader_OpenCL_Loader.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_common_BackendLoader_OpenCL_Loader.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_function_stft_OpenclArgChains.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_function_stft_OpenclBackend.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_function_stft_OpenclBackend.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_core_audioRender_MixMachine_FAUST_VALS_panner.hpp.rst
 
 .. toctree::
    :maxdepth: 5
 
    file_include_core_audioRender_ManualMix_ManualFausts_pannerMan.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_common_BackendLoader_Parallel_Args.hpp.rst
 
 .. toctree::
    :maxdepth: 5
@@ -1430,6 +1465,16 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_util_common_BackendLoader_PDJE_Parallel_Runtime_Loader.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_common_BackendLoader_PDJE_Parallel_Runtime_Loader.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_core_interface_PDJE_polyglot_wraps.cpp.rst
 
 .. toctree::
@@ -1595,6 +1640,16 @@ Files
 .. toctree::
    :maxdepth: 5
 
+   file_include_util_function_stft_SerialBackend.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_function_stft_SerialBackend.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
    file_include_core_audioRender_MixMachine_MUSIC_CTR_SetCue.cpp.rst
 
 .. toctree::
@@ -1626,6 +1681,21 @@ Files
    :maxdepth: 5
 
    file_include_util_common_StatusCode.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_function_stft_STFT_args.hpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_function_stft_STFT_Parallel.cpp.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file_include_util_function_stft_STFT_Parallel.hpp.rst
 
 .. toctree::
    :maxdepth: 5

@@ -36,6 +36,8 @@ Includes
 
 - ``PDJE_interface.hpp`` (:ref:`file_include_core_interface_PDJE_interface.hpp`)
 
+- ``musicDB.hpp`` (:ref:`file_include_core_db_musicDB.hpp`)
+
 - ``optional``
 
 - ``stdexcept``

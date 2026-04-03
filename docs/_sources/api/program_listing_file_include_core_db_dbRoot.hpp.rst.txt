@@ -12,6 +12,7 @@ Program Listing for File dbRoot.hpp
 
    #pragma once
    #include "PDJE_EXPORT_SETTER.hpp"
+   #include "fileNameSanitizer.hpp"
    #include "musicDB.hpp"
    #include "trackDB.hpp"
    #include <filesystem>
@@ -39,9 +40,6 @@ Program Listing for File dbRoot.hpp
        fs::path vectordbPath;
        sqlite3             *sdb = nullptr;
        std::unique_ptr<RDB> kvdb_impl;
-       // RDB::DB          *kvdb = nullptr;
-       // RDB::WriteOptions wops;
-       // RDB::ReadOptions  rops;
    
        bool
        CheckTables();
@@ -61,13 +59,16 @@ Program Listing for File dbRoot.hpp
    
        template <typename DBType>
        bool
-       EditData(DBType &searchObject, DBType &editObject); // to-do impl
+       EditData(DBType &searchObject, DBType &editObject);
    
        bool
        KVGet(const SANITIZED &K, DONT_SANITIZE &V);
    
        bool
        KVPut(const SANITIZED &K, const DONT_SANITIZE &V);
+   
+       bool
+       KVDelete(const SANITIZED &K);
    
        bool
        openDB(const fs::path &dbPath);

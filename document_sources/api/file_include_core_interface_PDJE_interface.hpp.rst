@@ -44,6 +44,10 @@ Includes
 
 - ``editorObject.hpp`` (:ref:`file_include_core_MainObjects_editorObject_editorObject.hpp`)
 
+- ``musicDB.hpp`` (:ref:`file_include_core_db_musicDB.hpp`)
+
+- ``trackDB.hpp`` (:ref:`file_include_core_db_trackDB.hpp`)
+
 
 
 Included By

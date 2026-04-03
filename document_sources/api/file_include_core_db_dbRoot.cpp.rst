@@ -36,6 +36,8 @@ Includes
 
 - ``dbRoot.hpp`` (:ref:`file_include_core_db_dbRoot.hpp`)
 
+- ``fileNameSanitizer.hpp`` (:ref:`file_include_global_DataLines_fileNameSanitizer.hpp`)
+
 - ``memory`` (:ref:`file_include_input_IPC_memory_linux_Input_Transfer.cpp`)
 
 - ``rocksdb/db.h``

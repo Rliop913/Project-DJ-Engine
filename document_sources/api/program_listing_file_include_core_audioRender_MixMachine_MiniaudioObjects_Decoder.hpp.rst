@@ -17,6 +17,7 @@ Program Listing for File Decoder.hpp
    #include <vector>
    
    #include "FrameCalc.hpp"
+   #include "FrameCalcCore.hpp"
    #include "dbRoot.hpp"
    #include "fileNameSanitizer.hpp"
    #include <filesystem>
@@ -32,7 +33,9 @@ Program Listing for File Decoder.hpp
        Decoder();
        ~Decoder();
        bool
-       init(litedb &db, const SANITIZED_ORNOT &KeyOrPath);
+       init(litedb                &db,
+            const SANITIZED_ORNOT &KeyOrPath,
+            const int              chSZ = CHANNEL);
        bool
        changePos(FRAME_POS Pos);
    
@@ -40,8 +43,10 @@ Program Listing for File Decoder.hpp
        getPos(FRAME_POS &pos);
    
        bool
-       getRange(FRAME_POS numFrames, std::vector<float> &buffer);
+       getRange(FRAME_POS           numFrames,
+                std::vector<float> &buffer,
+                const int           chSZ = CHANNEL);
    
        bool
-       getRange(FRAME_POS numFrames, SIMD_FLOAT &buffer);
+       getRange(FRAME_POS numFrames, SIMD_FLOAT &buffer, const int chSZ = CHANNEL);
    };

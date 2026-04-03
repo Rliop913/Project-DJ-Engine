@@ -21,10 +21,10 @@ Program Listing for File Decoder.cpp
    }
    
    bool
-   Decoder::init(litedb &db, const SANITIZED_ORNOT &KeyOrPath)
+   Decoder::init(litedb &db, const SANITIZED_ORNOT &KeyOrPath, const int chSZ)
    {
        ma_decoder_config dconf =
-           ma_decoder_config_init(ma_format_f32, CHANNEL, SAMPLERATE);
+           ma_decoder_config_init(ma_format_f32, chSZ, SAMPLERATE);
    
        if (KeyOrPath.find(".") != std::string::npos or
            KeyOrPath.find("/") != std::string::npos) {
@@ -87,9 +87,11 @@ Program Listing for File Decoder.cpp
    }
    
    bool
-   Decoder::getRange(FRAME_POS numFrames, std::vector<float> &buffer)
+   Decoder::getRange(FRAME_POS           numFrames,
+                     std::vector<float> &buffer,
+                     const int           chSZ)
    {
-       FRAME_POS BufferSize = numFrames * CHANNEL;
+       FRAME_POS BufferSize = numFrames * chSZ;
        if (buffer.size() < BufferSize) {
            buffer.resize(BufferSize);
        }
@@ -102,9 +104,9 @@ Program Listing for File Decoder.cpp
        return true;
    }
    bool
-   Decoder::getRange(FRAME_POS numFrames, SIMD_FLOAT &buffer)
+   Decoder::getRange(FRAME_POS numFrames, SIMD_FLOAT &buffer, const int chSZ)
    {
-       FRAME_POS BufferSize = numFrames * CHANNEL;
+       FRAME_POS BufferSize = numFrames * chSZ;
        if (buffer.size() < BufferSize) {
            buffer.resize(BufferSize);
        }

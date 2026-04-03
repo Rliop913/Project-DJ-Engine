@@ -22,8 +22,8 @@ Documentation Map
   `PDJE_Input`.
 - :doc:`Judge_Engine` covers `PDJE_JUDGE::JUDGE`, `Judge_Init`, and the
   note-matching pipeline.
-- :doc:`Util_Engine` covers the header-first `PDJE_UTIL` layer and its common,
-  database, and function helpers.
+- :doc:`Util_Engine` covers the current `PDJE_UTIL` surface, including status
+  types, DB wrappers, image/WebP helpers, and STFT/backend-loader utilities.
 - :doc:`Data_Lines` explains the zero-copy data-line structs shared between
   modules.
 - :doc:`Editor_Format` describes the editor-facing JSON and binary data shapes.

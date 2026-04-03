@@ -32,6 +32,8 @@ Includes
 
 - ``PDJE_EXPORT_SETTER.hpp`` (:ref:`file_include_global_PDJE_EXPORT_SETTER.hpp`)
 
+- ``fileNameSanitizer.hpp`` (:ref:`file_include_global_DataLines_fileNameSanitizer.hpp`)
+
 - ``filesystem``
 
 - ``memory`` (:ref:`file_include_input_IPC_memory_linux_Input_Transfer.cpp`)

@@ -29,7 +29,7 @@ Program Listing for File PDJE_Note_OBJ.hpp
    using LOCAL_TIME  = int64_t;
    struct NOTE {
        std::string type;
-       uint16_t    detail;
+       uint16_t    detail = 0;
        std::string first;
        std::string second;
        std::string third;

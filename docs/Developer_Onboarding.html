@@ -126,8 +126,8 @@ low-latency keyboard, mouse, and MIDI ingestion.</p></li>
 <li><p><cite>PDJE_JUDGE::JUDGE</cite>
 timing-sensitive note matching built on synchronized input and audio clocks.</p></li>
 <li><p><cite>PDJE_UTIL</cite>
-reusable utility code for status handling, storage abstractions, and helper
-functions.</p></li>
+reusable utility code for status/result transport, DB wrappers, image/WebP
+helpers, and STFT/backend-loader utilities.</p></li>
 </ul>
 </section>
 <section id="choose-your-starting-path">
@@ -214,7 +214,8 @@ lives under <cite>include/input/</cite> and exposes <cite>include/input/PDJE_Inp
 <li><p><strong>Judge</strong>
 lives under <cite>include/judge/</cite> and exposes <cite>include/judge/PDJE_Judge.hpp</cite>.</p></li>
 <li><p><strong>Utility</strong>
-lives under <cite>include/util/</cite> and exposes <cite>include/util/PDJE_Util.hpp</cite>.</p></li>
+lives under <cite>include/util/</cite> and exposes <cite>include/util/PDJE_Util.hpp</cite>, with
+direct-include extensions for image/WebP and STFT helper headers.</p></li>
 <li><p><strong>Global shared infrastructure</strong>
 lives under <cite>include/global/</cite> and provides data lines, clocks, crypto, RAII,
 and logging helpers used across modules.</p></li>

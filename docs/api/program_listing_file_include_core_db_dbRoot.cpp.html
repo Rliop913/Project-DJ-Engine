@@ -93,6 +93,7 @@
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdexcept&gt;</span>
 
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;PDJE_LOG_SETTER.hpp&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;fileNameSanitizer.hpp&quot;</span>
 <span class="k">namespace</span><span class="w"> </span><span class="nn">ROCK_DB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">ROCKSDB_NAMESPACE</span><span class="p">;</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">RDB</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">public</span><span class="o">:</span>
@@ -260,12 +261,25 @@
 <span class="kt">bool</span>
 <span class="n">litedb</span><span class="o">::</span><span class="n">KVPut</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SANITIZED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">DONT_SANITIZE</span><span class="w"> </span><span class="o">&amp;</span><span class="n">V</span><span class="p">)</span>
 <span class="p">{</span>
-
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">putRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kvdb_impl</span><span class="o">-&gt;</span><span class="n">kvdb</span><span class="o">-&gt;</span><span class="n">Put</span><span class="p">(</span><span class="n">kvdb_impl</span><span class="o">-&gt;</span><span class="n">wops</span><span class="p">,</span><span class="w"> </span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">V</span><span class="p">);</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">putRes</span><span class="p">.</span><span class="n">ok</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to put new datas to database. from litedb KVPut. &quot;</span>
 <span class="w">                </span><span class="s">&quot;rocksdbErr: &quot;</span><span class="p">);</span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">resErr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">putRes</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">resErr</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span>
+<span class="n">litedb</span><span class="o">::</span><span class="n">KVDelete</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">SANITIZED</span><span class="w"> </span><span class="o">&amp;</span><span class="n">K</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">deleteRes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kvdb_impl</span><span class="o">-&gt;</span><span class="n">kvdb</span><span class="o">-&gt;</span><span class="n">Delete</span><span class="p">(</span><span class="n">kvdb_impl</span><span class="o">-&gt;</span><span class="n">wops</span><span class="p">,</span><span class="w"> </span><span class="n">K</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">deleteRes</span><span class="p">.</span><span class="n">ok</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="s">&quot;failed to delete datas from kv database. litedb::KVDelete.  &quot;</span>
+<span class="w">                </span><span class="s">&quot;rocksdbErr: &quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">resErr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">deleteRes</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
 <span class="w">        </span><span class="n">critlog</span><span class="p">(</span><span class="n">resErr</span><span class="p">);</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
