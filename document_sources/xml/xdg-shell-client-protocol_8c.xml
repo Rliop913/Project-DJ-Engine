@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="xdg-shell-client-protocol_8c" kind="file" language="C++">
     <compoundname>xdg-shell-client-protocol.c</compoundname>
     <includes local="no">stdbool.h</includes>
@@ -101,10 +101,10 @@
         <definition>WL_PRIVATE const struct wl_interface xdg_popup_interface</definition>
         <argsstring></argsstring>
         <name>xdg_popup_interface</name>
-        <initializer>= {
-	&quot;xdg_popup&quot;, 7,
-	3, <ref refid="xdg-shell-client-protocol_8c_1a3f4c4d0c81f6efddf1a337e488b3d999" kindref="member">xdg_popup_requests</ref>,
-	3, <ref refid="xdg-shell-client-protocol_8c_1afaf16d7a07b821dd9d76d83a28cc02e3" kindref="member">xdg_popup_events</ref>,
+        <initializer>                                   = {
+    &quot;xdg_popup&quot;, 7,
+    3, <ref refid="xdg-shell-client-protocol_8c_1a3f4c4d0c81f6efddf1a337e488b3d999" kindref="member">xdg_popup_requests</ref>,
+    3, <ref refid="xdg-shell-client-protocol_8c_1afaf16d7a07b821dd9d76d83a28cc02e3" kindref="member">xdg_popup_events</ref>,
 }</initializer>
         <briefdescription>
         </briefdescription>
@@ -119,10 +119,10 @@
         <definition>WL_PRIVATE const struct wl_interface xdg_positioner_interface</definition>
         <argsstring></argsstring>
         <name>xdg_positioner_interface</name>
-        <initializer>= {
-	&quot;xdg_positioner&quot;, 7,
-	10, <ref refid="xdg-shell-client-protocol_8c_1a74d60c715e45804abbfb69a9e0716e23" kindref="member">xdg_positioner_requests</ref>,
-	0, NULL,
+        <initializer>                                   = {
+    &quot;xdg_positioner&quot;, 7,
+    10, <ref refid="xdg-shell-client-protocol_8c_1a74d60c715e45804abbfb69a9e0716e23" kindref="member">xdg_positioner_requests</ref>,
+    0, NULL,
 }</initializer>
         <briefdescription>
         </briefdescription>
@@ -137,10 +137,10 @@
         <definition>WL_PRIVATE const struct wl_interface xdg_surface_interface</definition>
         <argsstring></argsstring>
         <name>xdg_surface_interface</name>
-        <initializer>= {
-	&quot;xdg_surface&quot;, 7,
-	5, <ref refid="xdg-shell-client-protocol_8c_1a822df53758e9616d29a1f8fade4108a2" kindref="member">xdg_surface_requests</ref>,
-	1, <ref refid="xdg-shell-client-protocol_8c_1a002ff434c94b3a9dd7a333d06a9df531" kindref="member">xdg_surface_events</ref>,
+        <initializer>                                   = {
+    &quot;xdg_surface&quot;, 7,
+    5, <ref refid="xdg-shell-client-protocol_8c_1a822df53758e9616d29a1f8fade4108a2" kindref="member">xdg_surface_requests</ref>,
+    1, <ref refid="xdg-shell-client-protocol_8c_1a002ff434c94b3a9dd7a333d06a9df531" kindref="member">xdg_surface_events</ref>,
 }</initializer>
         <briefdescription>
         </briefdescription>
@@ -155,10 +155,10 @@
         <definition>WL_PRIVATE const struct wl_interface xdg_toplevel_interface</definition>
         <argsstring></argsstring>
         <name>xdg_toplevel_interface</name>
-        <initializer>= {
-	&quot;xdg_toplevel&quot;, 7,
-	14, <ref refid="xdg-shell-client-protocol_8c_1ad5745b9472db2bfe53010f0a77e03e17" kindref="member">xdg_toplevel_requests</ref>,
-	4, <ref refid="xdg-shell-client-protocol_8c_1a438bc0a84d9f8032bc13b34feff2a3cd" kindref="member">xdg_toplevel_events</ref>,
+        <initializer>                                   = {
+    &quot;xdg_toplevel&quot;, 7,
+    14, <ref refid="xdg-shell-client-protocol_8c_1ad5745b9472db2bfe53010f0a77e03e17" kindref="member">xdg_toplevel_requests</ref>,
+    4, <ref refid="xdg-shell-client-protocol_8c_1a438bc0a84d9f8032bc13b34feff2a3cd" kindref="member">xdg_toplevel_events</ref>,
 }</initializer>
         <briefdescription>
         </briefdescription>
@@ -173,33 +173,33 @@
         <definition>const struct wl_interface* xdg_shell_types[]</definition>
         <argsstring>[]</argsstring>
         <name>xdg_shell_types</name>
-        <initializer>= {
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	&amp;<ref refid="xdg-shell-client-protocol_8c_1a16a9be7454042fdc62e0418508a624d4" kindref="member">xdg_positioner_interface</ref>,
-	&amp;<ref refid="xdg-shell-client-protocol_8c_1a5ac26be247039c7cdf4a5a26f613cfe6" kindref="member">xdg_surface_interface</ref>,
-	&amp;<ref refid="xdg-shell-client-protocol_8c_1ab5b94bcc25b21d2fdd945533016d0e33" kindref="member">wl_surface_interface</ref>,
-	&amp;<ref refid="xdg-shell-client-protocol_8c_1a41eaf1ac12f3ef225df8b9f2f6559326" kindref="member">xdg_toplevel_interface</ref>,
-	&amp;<ref refid="xdg-shell-client-protocol_8c_1aa60edf2c19b40f7ba7e31b4aa1bf8d19" kindref="member">xdg_popup_interface</ref>,
-	&amp;<ref refid="xdg-shell-client-protocol_8c_1a5ac26be247039c7cdf4a5a26f613cfe6" kindref="member">xdg_surface_interface</ref>,
-	&amp;<ref refid="xdg-shell-client-protocol_8c_1a16a9be7454042fdc62e0418508a624d4" kindref="member">xdg_positioner_interface</ref>,
-	&amp;<ref refid="xdg-shell-client-protocol_8c_1a41eaf1ac12f3ef225df8b9f2f6559326" kindref="member">xdg_toplevel_interface</ref>,
-	&amp;<ref refid="xdg-shell-client-protocol_8c_1abaec16e5d3db301ad4c2f3430c218239" kindref="member">wl_seat_interface</ref>,
-	NULL,
-	NULL,
-	NULL,
-	&amp;<ref refid="xdg-shell-client-protocol_8c_1abaec16e5d3db301ad4c2f3430c218239" kindref="member">wl_seat_interface</ref>,
-	NULL,
-	&amp;<ref refid="xdg-shell-client-protocol_8c_1abaec16e5d3db301ad4c2f3430c218239" kindref="member">wl_seat_interface</ref>,
-	NULL,
-	NULL,
-	&amp;<ref refid="xdg-shell-client-protocol_8c_1ae97e9c3c498cdd2419db058fa13f26a5" kindref="member">wl_output_interface</ref>,
-	&amp;<ref refid="xdg-shell-client-protocol_8c_1abaec16e5d3db301ad4c2f3430c218239" kindref="member">wl_seat_interface</ref>,
-	NULL,
-	&amp;<ref refid="xdg-shell-client-protocol_8c_1a16a9be7454042fdc62e0418508a624d4" kindref="member">xdg_positioner_interface</ref>,
-	NULL,
+        <initializer>                                               = {
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    &amp;<ref refid="xdg-shell-client-protocol_8c_1a16a9be7454042fdc62e0418508a624d4" kindref="member">xdg_positioner_interface</ref>,
+    &amp;<ref refid="xdg-shell-client-protocol_8c_1a5ac26be247039c7cdf4a5a26f613cfe6" kindref="member">xdg_surface_interface</ref>,
+    &amp;<ref refid="xdg-shell-client-protocol_8c_1ab5b94bcc25b21d2fdd945533016d0e33" kindref="member">wl_surface_interface</ref>,
+    &amp;<ref refid="xdg-shell-client-protocol_8c_1a41eaf1ac12f3ef225df8b9f2f6559326" kindref="member">xdg_toplevel_interface</ref>,
+    &amp;<ref refid="xdg-shell-client-protocol_8c_1aa60edf2c19b40f7ba7e31b4aa1bf8d19" kindref="member">xdg_popup_interface</ref>,
+    &amp;<ref refid="xdg-shell-client-protocol_8c_1a5ac26be247039c7cdf4a5a26f613cfe6" kindref="member">xdg_surface_interface</ref>,
+    &amp;<ref refid="xdg-shell-client-protocol_8c_1a16a9be7454042fdc62e0418508a624d4" kindref="member">xdg_positioner_interface</ref>,
+    &amp;<ref refid="xdg-shell-client-protocol_8c_1a41eaf1ac12f3ef225df8b9f2f6559326" kindref="member">xdg_toplevel_interface</ref>,
+    &amp;<ref refid="xdg-shell-client-protocol_8c_1abaec16e5d3db301ad4c2f3430c218239" kindref="member">wl_seat_interface</ref>,
+    NULL,
+    NULL,
+    NULL,
+    &amp;<ref refid="xdg-shell-client-protocol_8c_1abaec16e5d3db301ad4c2f3430c218239" kindref="member">wl_seat_interface</ref>,
+    NULL,
+    &amp;<ref refid="xdg-shell-client-protocol_8c_1abaec16e5d3db301ad4c2f3430c218239" kindref="member">wl_seat_interface</ref>,
+    NULL,
+    NULL,
+    &amp;<ref refid="xdg-shell-client-protocol_8c_1ae97e9c3c498cdd2419db058fa13f26a5" kindref="member">wl_output_interface</ref>,
+    &amp;<ref refid="xdg-shell-client-protocol_8c_1abaec16e5d3db301ad4c2f3430c218239" kindref="member">wl_seat_interface</ref>,
+    NULL,
+    &amp;<ref refid="xdg-shell-client-protocol_8c_1a16a9be7454042fdc62e0418508a624d4" kindref="member">xdg_positioner_interface</ref>,
+    NULL,
 }</initializer>
         <briefdescription>
         </briefdescription>
@@ -214,11 +214,11 @@
         <definition>const struct wl_message xdg_wm_base_requests[]</definition>
         <argsstring>[]</argsstring>
         <name>xdg_wm_base_requests</name>
-        <initializer>= {
-	{ &quot;destroy&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;create_positioner&quot;, &quot;n&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 4 },
-	{ &quot;get_xdg_surface&quot;, &quot;no&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 5 },
-	{ &quot;pong&quot;, &quot;u&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+        <initializer>                              = {
+    { &quot;destroy&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+    { &quot;create_positioner&quot;, &quot;n&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 4 },
+    { &quot;get_xdg_surface&quot;, &quot;no&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 5 },
+    { &quot;pong&quot;, &quot;u&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
 }</initializer>
         <briefdescription>
         </briefdescription>
@@ -233,8 +233,8 @@
         <definition>const struct wl_message xdg_wm_base_events[]</definition>
         <argsstring>[]</argsstring>
         <name>xdg_wm_base_events</name>
-        <initializer>= {
-	{ &quot;ping&quot;, &quot;u&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+        <initializer>                              = {
+    { &quot;ping&quot;, &quot;u&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
 }</initializer>
         <briefdescription>
         </briefdescription>
@@ -249,10 +249,10 @@
         <definition>WL_PRIVATE const struct wl_interface xdg_wm_base_interface</definition>
         <argsstring></argsstring>
         <name>xdg_wm_base_interface</name>
-        <initializer>= {
-	&quot;xdg_wm_base&quot;, 7,
-	4, <ref refid="xdg-shell-client-protocol_8c_1af554e1eb2989ab3a59118e4d038fceb1" kindref="member">xdg_wm_base_requests</ref>,
-	1, <ref refid="xdg-shell-client-protocol_8c_1a1f43f6e8f0a8519a6aeeb05080036d6d" kindref="member">xdg_wm_base_events</ref>,
+        <initializer>                                   = {
+    &quot;xdg_wm_base&quot;, 7,
+    4, <ref refid="xdg-shell-client-protocol_8c_1af554e1eb2989ab3a59118e4d038fceb1" kindref="member">xdg_wm_base_requests</ref>,
+    1, <ref refid="xdg-shell-client-protocol_8c_1a1f43f6e8f0a8519a6aeeb05080036d6d" kindref="member">xdg_wm_base_events</ref>,
 }</initializer>
         <briefdescription>
         </briefdescription>
@@ -267,17 +267,17 @@
         <definition>const struct wl_message xdg_positioner_requests[]</definition>
         <argsstring>[]</argsstring>
         <name>xdg_positioner_requests</name>
-        <initializer>= {
-	{ &quot;destroy&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_size&quot;, &quot;ii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_anchor_rect&quot;, &quot;iiii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_anchor&quot;, &quot;u&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_gravity&quot;, &quot;u&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_constraint_adjustment&quot;, &quot;u&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_offset&quot;, &quot;ii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_reactive&quot;, &quot;3&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_parent_size&quot;, &quot;3ii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_parent_configure&quot;, &quot;3u&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+        <initializer>                              = {
+    { &quot;destroy&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+    { &quot;set_size&quot;, &quot;ii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+    { &quot;set_anchor_rect&quot;, &quot;iiii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+    { &quot;set_anchor&quot;, &quot;u&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+    { &quot;set_gravity&quot;, &quot;u&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+    { &quot;set_constraint_adjustment&quot;, &quot;u&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+    { &quot;set_offset&quot;, &quot;ii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+    { &quot;set_reactive&quot;, &quot;3&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+    { &quot;set_parent_size&quot;, &quot;3ii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+    { &quot;set_parent_configure&quot;, &quot;3u&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
 }</initializer>
         <briefdescription>
         </briefdescription>
@@ -292,12 +292,12 @@
         <definition>const struct wl_message xdg_surface_requests[]</definition>
         <argsstring>[]</argsstring>
         <name>xdg_surface_requests</name>
-        <initializer>= {
-	{ &quot;destroy&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;get_toplevel&quot;, &quot;n&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 7 },
-	{ &quot;get_popup&quot;, &quot;n?oo&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 8 },
-	{ &quot;set_window_geometry&quot;, &quot;iiii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;ack_configure&quot;, &quot;u&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+        <initializer>                              = {
+    { &quot;destroy&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+    { &quot;get_toplevel&quot;, &quot;n&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 7 },
+    { &quot;get_popup&quot;, &quot;n?oo&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 8 },
+    { &quot;set_window_geometry&quot;, &quot;iiii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+    { &quot;ack_configure&quot;, &quot;u&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
 }</initializer>
         <briefdescription>
         </briefdescription>
@@ -312,8 +312,8 @@
         <definition>const struct wl_message xdg_surface_events[]</definition>
         <argsstring>[]</argsstring>
         <name>xdg_surface_events</name>
-        <initializer>= {
-	{ &quot;configure&quot;, &quot;u&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+        <initializer>                              = {
+    { &quot;configure&quot;, &quot;u&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
 }</initializer>
         <briefdescription>
         </briefdescription>
@@ -328,21 +328,21 @@
         <definition>const struct wl_message xdg_toplevel_requests[]</definition>
         <argsstring>[]</argsstring>
         <name>xdg_toplevel_requests</name>
-        <initializer>= {
-	{ &quot;destroy&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_parent&quot;, &quot;?o&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 11 },
-	{ &quot;set_title&quot;, &quot;s&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_app_id&quot;, &quot;s&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;show_window_menu&quot;, &quot;ouii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 12 },
-	{ &quot;move&quot;, &quot;ou&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 16 },
-	{ &quot;resize&quot;, &quot;ouu&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 18 },
-	{ &quot;set_max_size&quot;, &quot;ii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_min_size&quot;, &quot;ii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_maximized&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;unset_maximized&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_fullscreen&quot;, &quot;?o&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 21 },
-	{ &quot;unset_fullscreen&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;set_minimized&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+        <initializer>                              = {
+    { &quot;destroy&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+    { &quot;set_parent&quot;, &quot;?o&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 11 },
+    { &quot;set_title&quot;, &quot;s&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+    { &quot;set_app_id&quot;, &quot;s&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+    { &quot;show_window_menu&quot;, &quot;ouii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 12 },
+    { &quot;move&quot;, &quot;ou&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 16 },
+    { &quot;resize&quot;, &quot;ouu&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 18 },
+    { &quot;set_max_size&quot;, &quot;ii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+    { &quot;set_min_size&quot;, &quot;ii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+    { &quot;set_maximized&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+    { &quot;unset_maximized&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+    { &quot;set_fullscreen&quot;, &quot;?o&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 21 },
+    { &quot;unset_fullscreen&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+    { &quot;set_minimized&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
 }</initializer>
         <briefdescription>
         </briefdescription>
@@ -357,11 +357,11 @@
         <definition>const struct wl_message xdg_toplevel_events[]</definition>
         <argsstring>[]</argsstring>
         <name>xdg_toplevel_events</name>
-        <initializer>= {
-	{ &quot;configure&quot;, &quot;iia&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;close&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;configure_bounds&quot;, &quot;4ii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;wm_capabilities&quot;, &quot;5a&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+        <initializer>                              = {
+    { &quot;configure&quot;, &quot;iia&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+    { &quot;close&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+    { &quot;configure_bounds&quot;, &quot;4ii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+    { &quot;wm_capabilities&quot;, &quot;5a&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
 }</initializer>
         <briefdescription>
         </briefdescription>
@@ -376,10 +376,10 @@
         <definition>const struct wl_message xdg_popup_requests[]</definition>
         <argsstring>[]</argsstring>
         <name>xdg_popup_requests</name>
-        <initializer>= {
-	{ &quot;destroy&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;grab&quot;, &quot;ou&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 22 },
-	{ &quot;reposition&quot;, &quot;3ou&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 24 },
+        <initializer>                              = {
+    { &quot;destroy&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+    { &quot;grab&quot;, &quot;ou&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 22 },
+    { &quot;reposition&quot;, &quot;3ou&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 24 },
 }</initializer>
         <briefdescription>
         </briefdescription>
@@ -394,10 +394,10 @@
         <definition>const struct wl_message xdg_popup_events[]</definition>
         <argsstring>[]</argsstring>
         <name>xdg_popup_events</name>
-        <initializer>= {
-	{ &quot;configure&quot;, &quot;iiii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;popup_done&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
-	{ &quot;repositioned&quot;, &quot;3u&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+        <initializer>                              = {
+    { &quot;configure&quot;, &quot;iiii&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+    { &quot;popup_done&quot;, &quot;&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
+    { &quot;repositioned&quot;, &quot;3u&quot;, <ref refid="xdg-shell-client-protocol_8c_1ac3d3d0075de2095881bfe2d9fd622d66" kindref="member">xdg_shell_types</ref> + 0 },
 }</initializer>
         <briefdescription>
         </briefdescription>

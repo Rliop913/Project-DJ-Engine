@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="classPDJE__PARALLEL_1_1STFT" kind="class" language="C++" prot="public">
+    <compoundname>PDJE_PARALLEL::STFT</compoundname>
+    <includes refid="STFT__Parallel_8hpp" local="no">STFT_Parallel.hpp</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classPDJE__PARALLEL_1_1STFT_1a083d1c0e7d2ab52be7d5e2e63c680a71" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classPDJE__PARALLEL_1_1IStftBackend" kindref="compound">IStftBackend</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;IStftBackend&gt; PDJE_PARALLEL::STFT::serial_backend</definition>
+        <argsstring></argsstring>
+        <name>serial_backend</name>
+        <qualifiedname>PDJE_PARALLEL::STFT::serial_backend</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/STFT_Parallel.hpp" line="98" column="21" bodyfile="include/util/function/stft/STFT_Parallel.hpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__PARALLEL_1_1STFT_1a15247291e5a5e6c806536940b1476b93" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; <ref refid="classPDJE__PARALLEL_1_1IStftBackend" kindref="compound">IStftBackend</ref> &gt;</type>
+        <definition>std::unique_ptr&lt;IStftBackend&gt; PDJE_PARALLEL::STFT::opencl_backend</definition>
+        <argsstring></argsstring>
+        <name>opencl_backend</name>
+        <qualifiedname>PDJE_PARALLEL::STFT::opencl_backend</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/STFT_Parallel.hpp" line="99" column="21" bodyfile="include/util/function/stft/STFT_Parallel.hpp" bodystart="99" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classPDJE__PARALLEL_1_1STFT_1ab96cd4627177c8a65160b6a8d1fce245" prot="public" static="no" mutable="no">
+        <type><ref refid="classPDJE__PARALLEL_1_1Backend" kindref="compound">Backend</ref></type>
+        <definition>Backend PDJE_PARALLEL::STFT::backendinfo</definition>
+        <argsstring></argsstring>
+        <name>backendinfo</name>
+        <qualifiedname>PDJE_PARALLEL::STFT::backendinfo</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/STFT_Parallel.hpp" line="102" column="15" bodyfile="include/util/function/stft/STFT_Parallel.hpp" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPDJE__PARALLEL_1_1STFT_1a5492bdc58a4f3a69b42172afc70d64e5" prot="public" static="no" mutable="no">
+        <type><ref refid="namespacePDJE__PARALLEL_1a44ecf37f16838a705092d2e3d9ab7a75" kindref="member">BACKEND_T</ref></type>
+        <definition>BACKEND_T PDJE_PARALLEL::STFT::backend_now</definition>
+        <argsstring></argsstring>
+        <name>backend_now</name>
+        <qualifiedname>PDJE_PARALLEL::STFT::backend_now</qualifiedname>
+        <initializer>= <ref refid="namespacePDJE__PARALLEL_1a44ecf37f16838a705092d2e3d9ab7a75a7b804a28d6154ab8007287532037f1d0" kindref="member">BACKEND_T::SERIAL</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/STFT_Parallel.hpp" line="103" column="15" bodyfile="include/util/function/stft/STFT_Parallel.hpp" bodystart="103" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classPDJE__PARALLEL_1_1STFT_1a8e791b3a709d0474ebf5dc65701a557b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structPDJE__PARALLEL_1_1StftArgs" kindref="compound">StftArgs</ref></type>
+        <definition>StftArgs PDJE_PARALLEL::STFT::GenArgs</definition>
+        <argsstring>(const std::vector&lt; float &gt; &amp;inputVec, int windowSizeEXP, float overlapRatio)</argsstring>
+        <name>GenArgs</name>
+        <qualifiedname>PDJE_PARALLEL::STFT::GenArgs</qualifiedname>
+        <param>
+          <type>const std::vector&lt; float &gt; &amp;</type>
+          <declname>inputVec</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>windowSizeEXP</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>overlapRatio</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/STFT_Parallel.hpp" line="94" column="5" bodyfile="include/util/function/stft/BackendLess.cpp" bodystart="6" bodyend="20"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPDJE__PARALLEL_1_1STFT_1adb832744fce7f04b2e95e8d98619c0f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_PARALLEL::STFT::STFT</definition>
+        <argsstring>()</argsstring>
+        <name>STFT</name>
+        <qualifiedname>PDJE_PARALLEL::STFT::STFT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/STFT_Parallel.hpp" line="105" column="5" bodyfile="include/util/function/stft/STFT_Parallel.cpp" bodystart="13" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__PARALLEL_1_1STFT_1adc28360924e8394935fd0c9b6191128a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PDJE_PARALLEL::STFT::SetBackendForTesting</definition>
+        <argsstring>(BACKEND_T backend_type, std::unique_ptr&lt; IStftBackend &gt; backend)</argsstring>
+        <name>SetBackendForTesting</name>
+        <qualifiedname>PDJE_PARALLEL::STFT::SetBackendForTesting</qualifiedname>
+        <param>
+          <type><ref refid="namespacePDJE__PARALLEL_1a44ecf37f16838a705092d2e3d9ab7a75" kindref="member">BACKEND_T</ref></type>
+          <declname>backend_type</declname>
+        </param>
+        <param>
+          <type>std::unique_ptr&lt; <ref refid="classPDJE__PARALLEL_1_1IStftBackend" kindref="compound">IStftBackend</ref> &gt;</type>
+          <declname>backend</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/STFT_Parallel.hpp" line="108" column="5" bodyfile="include/util/function/stft/STFT_Parallel.cpp" bodystart="76" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__PARALLEL_1_1STFT_1a0f26572c778451d0c0a45510a66f0b5b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacePDJE__PARALLEL_1a659810d362e9f11e7600ef9e86e12156" kindref="member">StftResult</ref></type>
+        <definition>StftResult PDJE_PARALLEL::STFT::calculate</definition>
+        <argsstring>(std::vector&lt; float &gt; &amp;PCMdata, WINDOW_LIST target_window=WINDOW_LIST::HANNING, int windowSizeEXP=10, float overlapRatio=0.5f, POST_PROCESS post_process=POST_PROCESS())</argsstring>
+        <name>calculate</name>
+        <qualifiedname>PDJE_PARALLEL::STFT::calculate</qualifiedname>
+        <param>
+          <type>std::vector&lt; float &gt; &amp;</type>
+          <declname>PCMdata</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacePDJE__PARALLEL_1a09a7d92b5f20cd3abe1ff3a1c68d6c46" kindref="member">WINDOW_LIST</ref></type>
+          <declname>target_window</declname>
+          <defval><ref refid="namespacePDJE__PARALLEL_1a09a7d92b5f20cd3abe1ff3a1c68d6c46ae20da0bd120c48c9d21a24cf25940300" kindref="member">WINDOW_LIST::HANNING</ref></defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>windowSizeEXP</declname>
+          <defval>10</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>overlapRatio</declname>
+          <defval>0.5f</defval>
+        </param>
+        <param>
+          <type><ref refid="structPDJE__PARALLEL_1_1POST__PROCESS" kindref="compound">POST_PROCESS</ref></type>
+          <declname>post_process</declname>
+          <defval><ref refid="structPDJE__PARALLEL_1_1POST__PROCESS" kindref="compound">POST_PROCESS</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/STFT_Parallel.hpp" line="112" column="5" bodyfile="include/util/function/stft/STFT_Parallel.cpp" bodystart="33" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classPDJE__PARALLEL_1_1STFT_1a524f80bafd36b31aaf09ee6c6a050c84" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PDJE_PARALLEL::STFT::~STFT</definition>
+        <argsstring>()</argsstring>
+        <name>~STFT</name>
+        <qualifiedname>PDJE_PARALLEL::STFT::~STFT</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/util/function/stft/STFT_Parallel.hpp" line="118" column="5"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4">
+        <label>PDJE_PARALLEL::Backend</label>
+        <link refid="classPDJE__PARALLEL_1_1Backend"/>
+      </node>
+      <node id="3">
+        <label>PDJE_PARALLEL::IStftBackend</label>
+        <link refid="classPDJE__PARALLEL_1_1IStftBackend"/>
+      </node>
+      <node id="1">
+        <label>PDJE_PARALLEL::STFT</label>
+        <link refid="classPDJE__PARALLEL_1_1STFT"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>opencl_backend</edgelabel>
+          <edgelabel>serial_backend</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>backendinfo</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::unique_ptr&lt; PDJE_PARALLEL::IStftBackend &gt;</label>
+        <childnode refid="3" relation="usage">
+          <edgelabel>ptr</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/util/function/stft/STFT_Parallel.hpp" line="91" column="1" bodyfile="include/util/function/stft/STFT_Parallel.hpp" bodystart="91" bodyend="119"/>
+    <listofallmembers>
+      <member refid="classPDJE__PARALLEL_1_1STFT_1a5492bdc58a4f3a69b42172afc70d64e5" prot="public" virt="non-virtual"><scope>PDJE_PARALLEL::STFT</scope><name>backend_now</name></member>
+      <member refid="classPDJE__PARALLEL_1_1STFT_1ab96cd4627177c8a65160b6a8d1fce245" prot="public" virt="non-virtual"><scope>PDJE_PARALLEL::STFT</scope><name>backendinfo</name></member>
+      <member refid="classPDJE__PARALLEL_1_1STFT_1a0f26572c778451d0c0a45510a66f0b5b" prot="public" virt="non-virtual"><scope>PDJE_PARALLEL::STFT</scope><name>calculate</name></member>
+      <member refid="classPDJE__PARALLEL_1_1STFT_1a8e791b3a709d0474ebf5dc65701a557b" prot="private" virt="non-virtual"><scope>PDJE_PARALLEL::STFT</scope><name>GenArgs</name></member>
+      <member refid="classPDJE__PARALLEL_1_1STFT_1a15247291e5a5e6c806536940b1476b93" prot="private" virt="non-virtual"><scope>PDJE_PARALLEL::STFT</scope><name>opencl_backend</name></member>
+      <member refid="classPDJE__PARALLEL_1_1STFT_1a083d1c0e7d2ab52be7d5e2e63c680a71" prot="private" virt="non-virtual"><scope>PDJE_PARALLEL::STFT</scope><name>serial_backend</name></member>
+      <member refid="classPDJE__PARALLEL_1_1STFT_1adc28360924e8394935fd0c9b6191128a" prot="public" virt="non-virtual"><scope>PDJE_PARALLEL::STFT</scope><name>SetBackendForTesting</name></member>
+      <member refid="classPDJE__PARALLEL_1_1STFT_1adb832744fce7f04b2e95e8d98619c0f8" prot="public" virt="non-virtual"><scope>PDJE_PARALLEL::STFT</scope><name>STFT</name></member>
+      <member refid="classPDJE__PARALLEL_1_1STFT_1a524f80bafd36b31aaf09ee6c6a050c84" prot="public" virt="non-virtual"><scope>PDJE_PARALLEL::STFT</scope><name>~STFT</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

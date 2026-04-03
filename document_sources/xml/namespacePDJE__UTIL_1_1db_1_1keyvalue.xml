@@ -1,50 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="namespacePDJE__UTIL_1_1db_1_1keyvalue" kind="namespace" language="C++">
     <compoundname>PDJE_UTIL::db::keyvalue</compoundname>
     <innerclass refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase" prot="public">PDJE_UTIL::db::keyvalue::KeyValueDatabase</innerclass>
-      <sectiondef kind="var">
-      <memberdef kind="variable" id="namespacePDJE__UTIL_1_1db_1_1keyvalue_1ad862892c8319fcf5bf1c761f446f3680" prot="public" static="no" mutable="no">
-        <templateparamlist>
-          <param>
-            <type>class Backend</type>
-          </param>
-        </templateparamlist>
-        <type>concept</type>
-        <definition>concept PDJE_UTIL::db::keyvalue::KeyValueBackendConcept</definition>
-        <argsstring></argsstring>
-        <name>KeyValueBackendConcept</name>
-        <initializer>= requires(typename Backend::config_type cfg,
-                                          Backend                      backend,
-                                          std::string_view             key,
-                                          std::span&lt;const std::byte&gt;   bytes,
-                                          std::string_view             text) {
-    typename Backend::config_type;
-
-    { Backend::create(cfg) } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;void&gt;&gt;;
-    { Backend::destroy(cfg) } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;void&gt;&gt;;
-
-    { backend.open(cfg) } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;void&gt;&gt;;
-    { backend.close() } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;void&gt;&gt;;
-
-    { backend.contains(key) } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;bool&gt;&gt;;
-    { backend.get_text(key) } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;<ref refid="namespacePDJE__UTIL_1_1db_1a4478e16df2aec53b3378bfd6337246b6" kindref="member">Text</ref>&gt;&gt;;
-    { backend.get_bytes(key) } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;<ref refid="namespacePDJE__UTIL_1_1db_1acfb13486a5f831dd08830ce1cc8c7ba3" kindref="member">Bytes</ref>&gt;&gt;;
-    { backend.put_text(key, text) } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;void&gt;&gt;;
-    { backend.put_bytes(key, bytes) } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;void&gt;&gt;;
-    { backend.erase(key) } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;void&gt;&gt;;
-    { backend.list_keys(std::string_view {}) }
-    -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;std::vector&lt;<ref refid="namespacePDJE__UTIL_1_1db_1aaa69bb1e1ba3230da8fb606c82d3ebc7" kindref="member">Key</ref>&gt;&gt;&gt;;
-}</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/util/db/keyvalue/BackendConcept.hpp" line="14" column="9" bodyfile="include/util/db/keyvalue/BackendConcept.hpp" bodystart="14" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
+    <innerconcept refid="conceptPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueBackendConcept">PDJE_UTIL::db::keyvalue::KeyValueBackendConcept</innerconcept>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

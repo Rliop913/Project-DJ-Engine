@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="WaveformWebp_8cpp" kind="file" language="C++">
     <compoundname>WaveformWebp.cpp</compoundname>
     <includes refid="WaveformWebp_8hpp" local="yes">util/function/image/WaveformWebp.hpp</includes>
@@ -18,17 +18,29 @@
     <includes local="no">utility</includes>
     <includes local="no">vector</includes>
     <incdepgraph>
-      <node id="24">
-        <label>atomic</label>
+      <node id="3">
+        <label>util/common/Result.hpp</label>
+        <link refid="Result_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
       </node>
-      <node id="18">
-        <label>limits</label>
+      <node id="4">
+        <label>util/common/Status.hpp</label>
+        <link refid="Status_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
       </node>
-      <node id="16">
-        <label>filesystem</label>
+      <node id="5">
+        <label>util/common/StatusCode.hpp</label>
+        <link refid="StatusCode_8hpp"/>
       </node>
-      <node id="10">
-        <label>cstdint</label>
+      <node id="8">
+        <label>util/function/FunctionContext.hpp</label>
+        <link refid="FunctionContext_8hpp"/>
       </node>
       <node id="1">
         <label>include/util/function/image/WaveformWebp.cpp</label>
@@ -64,21 +76,20 @@
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="22">
-        <label>hwy/foreach_target.h</label>
-      </node>
-      <node id="25">
-        <label>cmath</label>
-      </node>
-      <node id="6">
-        <label>string</label>
-      </node>
-      <node id="3">
-        <label>util/common/Result.hpp</label>
-        <link refid="Result_8hpp"/>
-        <childnode refid="4" relation="include">
+      <node id="2">
+        <label>util/function/image/WaveformWebp.hpp</label>
+        <link refid="WaveformWebp_8hpp"/>
+        <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
         </childnode>
       </node>
       <node id="20">
@@ -92,16 +103,6 @@
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-      </node>
-      <node id="17">
-        <label>fstream</label>
-      </node>
-      <node id="19">
-        <label>string_view</label>
-      </node>
-      <node id="5">
-        <label>util/common/StatusCode.hpp</label>
-        <link refid="StatusCode_8hpp"/>
       </node>
       <node id="13">
         <label>util/function/image/WebpWriter.hpp</label>
@@ -133,63 +134,62 @@
         <childnode refid="12" relation="include">
         </childnode>
       </node>
+      <node id="21">
+        <label>algorithm</label>
+      </node>
+      <node id="24">
+        <label>atomic</label>
+      </node>
+      <node id="25">
+        <label>cmath</label>
+      </node>
+      <node id="9">
+        <label>cstddef</label>
+      </node>
+      <node id="10">
+        <label>cstdint</label>
+      </node>
+      <node id="15">
+        <label>cstring</label>
+      </node>
+      <node id="16">
+        <label>filesystem</label>
+      </node>
+      <node id="17">
+        <label>fstream</label>
+      </node>
+      <node id="22">
+        <label>hwy/foreach_target.h</label>
+      </node>
+      <node id="23">
+        <label>hwy/highway.h</label>
+      </node>
+      <node id="18">
+        <label>limits</label>
+      </node>
+      <node id="26">
+        <label>mutex</label>
+      </node>
+      <node id="11">
+        <label>span</label>
+      </node>
+      <node id="6">
+        <label>string</label>
+      </node>
+      <node id="19">
+        <label>string_view</label>
+      </node>
+      <node id="27">
+        <label>thread</label>
+      </node>
+      <node id="7">
+        <label>utility</label>
+      </node>
       <node id="12">
         <label>vector</label>
       </node>
       <node id="14">
         <label>webp/encode.h</label>
-      </node>
-      <node id="7">
-        <label>utility</label>
-      </node>
-      <node id="8">
-        <label>util/function/FunctionContext.hpp</label>
-        <link refid="FunctionContext_8hpp"/>
-      </node>
-      <node id="9">
-        <label>cstddef</label>
-      </node>
-      <node id="4">
-        <label>util/common/Status.hpp</label>
-        <link refid="Status_8hpp"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="26">
-        <label>mutex</label>
-      </node>
-      <node id="23">
-        <label>hwy/highway.h</label>
-      </node>
-      <node id="27">
-        <label>thread</label>
-      </node>
-      <node id="2">
-        <label>util/function/image/WaveformWebp.hpp</label>
-        <link refid="WaveformWebp_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-      </node>
-      <node id="11">
-        <label>span</label>
-      </node>
-      <node id="21">
-        <label>algorithm</label>
-      </node>
-      <node id="15">
-        <label>cstring</label>
       </node>
     </incdepgraph>
     <innerclass refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WaveformJob" prot="public">PDJE_UTIL::function::image::detail::WaveformJob</innerclass>
@@ -198,7 +198,7 @@
     <innernamespace refid="namespacePDJE__UTIL_1_1function">PDJE_UTIL::function</innernamespace>
     <innernamespace refid="namespacePDJE__UTIL_1_1function_1_1image">PDJE_UTIL::function::image</innernamespace>
     <innernamespace refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail">PDJE_UTIL::function::image::detail</innernamespace>
-      <sectiondef kind="func">
+    <sectiondef kind="func">
       <memberdef kind="function" id="WaveformWebp_8cpp_1ac3180678ac3d8e17a9fb79bb9b7a6785" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>HWY_EXPORT</definition>
@@ -215,7 +215,7 @@
         </inbodydescription>
         <location file="include/util/function/image/WaveformWebp.cpp" line="19" column="1" declfile="include/util/function/image/WaveformWebp.cpp" declline="19" declcolumn="1"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
@@ -239,17 +239,17 @@
 <codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="18"><highlight class="normal"></highlight></codeline>
-<codeline lineno="19" refid="WaveformWebp_8cpp_1ac3180678ac3d8e17a9fb79bb9b7a6785" refkind="member"><highlight class="normal"><ref refid="WaveformWebp_8cpp_1ac3180678ac3d8e17a9fb79bb9b7a6785" kindref="member">HWY_EXPORT</ref>(<ref refid="namespaceHWY__NAMESPACE_1ab6efc652b6b232a50217bc7c55417f15" kindref="member">ComputeWaveformColumnExtremaSIMD</ref>);</highlight></codeline>
+<codeline lineno="19" refid="WaveformWebp_8cpp_1ac3180678ac3d8e17a9fb79bb9b7a6785" refkind="member"><highlight class="normal"><ref refid="WaveformWebp_8cpp_1ac3180678ac3d8e17a9fb79bb9b7a6785" kindref="member">HWY_EXPORT</ref>(ComputeWaveformColumnExtremaSIMD);</highlight></codeline>
 <codeline lineno="20"><highlight class="normal"></highlight></codeline>
 <codeline lineno="21" refid="namespacePDJE__UTIL_1_1function_1_1image" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1_1image" kindref="compound">PDJE_UTIL::function::image</ref><sp/>{</highlight></codeline>
-<codeline lineno="22" refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">detail<sp/>{</highlight></codeline>
+<codeline lineno="22" refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail" kindref="compound">detail</ref><sp/>{</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight></codeline>
 <codeline lineno="24" refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WaveformJob" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WaveformJob" kindref="compound">WaveformJob</ref><sp/>{</highlight></codeline>
 <codeline lineno="25" refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WaveformJob_1a55a3be545186a5598b3995c30742eb11" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WaveformJob_1a55a3be545186a5598b3995c30742eb11" kindref="member">samples</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="26" refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WaveformJob_1ad7c6c0e00e1af10288498acf1032db81" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::size_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WaveformJob_1ad7c6c0e00e1af10288498acf1032db81" kindref="member">sample_count</ref><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="27" refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WaveformJob_1a116a1756cd16bf2a1c9ae9e6e8dd8938" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::size_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WaveformJob_1a116a1756cd16bf2a1c9ae9e6e8dd8938" kindref="member">channel_index</ref><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="28" refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WaveformJob_1a6c71cb05a99f73c7ab39757971606682" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::size_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WaveformJob_1a6c71cb05a99f73c7ab39757971606682" kindref="member">image_index</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="29" refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WaveformJob_1ac7ea0388707dc378cb77e2a40c9301f2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1abcacc0fed837681188831f0c0cd28c64" kindref="member">EncodedWebpBytes</ref><sp/>*<ref refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WaveformJob_1ac7ea0388707dc378cb77e2a40c9301f2" kindref="member">output_slot</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="29" refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WaveformJob_1ac7ea0388707dc378cb77e2a40c9301f2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1a7b998cfb499fad07c17f416c6035ea7f" kindref="member">EncodedWebpBytes</ref><sp/>*<ref refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WaveformJob_1ac7ea0388707dc378cb77e2a40c9301f2" kindref="member">output_slot</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="30"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
 <codeline lineno="32" refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WorkerScratch" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WorkerScratch" kindref="compound">WorkerScratch</ref><sp/>{</highlight></codeline>
@@ -258,8 +258,8 @@
 <codeline lineno="35" refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WorkerScratch_1af42efeac35cc43114dd2758eb5408dbc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::uint8_t&gt;<sp/><ref refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WorkerScratch_1af42efeac35cc43114dd2758eb5408dbc" kindref="member">rgba</ref>;</highlight></codeline>
 <codeline lineno="36"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="39" refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a676e4144d06079696e394a05f56498b4" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a676e4144d06079696e394a05f56498b4" kindref="member">validate_waveform_args</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1function_1_1image_1_1EncodeWaveformWebpArgs" kindref="compound">EncodeWaveformWebpArgs</ref><sp/>&amp;args)</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="39" refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1aeb82b041fb95e166b0d7afe692789620" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1aeb82b041fb95e166b0d7afe692789620" kindref="member">validate_waveform_args</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1function_1_1image_1_1EncodeWaveformWebpArgs" kindref="compound">EncodeWaveformWebpArgs</ref><sp/>&amp;args)</highlight></codeline>
 <codeline lineno="40"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(args.<ref refid="structPDJE__UTIL_1_1function_1_1image_1_1EncodeWaveformWebpArgs_1abb0373de5a0413b8a0c3042f134810b8" kindref="member">pcm</ref>.data()<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;void&gt;::failure</ref>(</highlight></codeline>
@@ -309,7 +309,7 @@
 <codeline lineno="86"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="87" refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a2512b6afddc3704d1fb7f3ba1e692d76" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a2512b6afddc3704d1fb7f3ba1e692d76" kindref="member">checked_multiply_waveform</ref>(std::size_t<sp/>lhs,</highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::size_t<sp/>rhs,</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::size_t<sp/>&amp;result)<sp/>noexcept</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::size_t<sp/>&amp;result)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="90"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(lhs<sp/>!=<sp/>0<sp/>&amp;&amp;<sp/>rhs<sp/>&gt;<sp/>(std::numeric_limits&lt;std::size_t&gt;::max()<sp/>/<sp/>lhs))<sp/>{</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
@@ -322,7 +322,7 @@
 <codeline lineno="99"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="100" refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1ae9252e37707d8839dbb8457ccb7c33bb" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1ae9252e37707d8839dbb8457ccb7c33bb" kindref="member">checked_add_waveform</ref>(std::size_t<sp/>lhs,</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::size_t<sp/>rhs,</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::size_t<sp/>&amp;result)<sp/>noexcept</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::size_t<sp/>&amp;result)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="103"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rhs<sp/>&gt;<sp/>(std::numeric_limits&lt;std::size_t&gt;::max()<sp/>-<sp/>lhs))<sp/>{</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
@@ -333,7 +333,7 @@
 <codeline lineno="110"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="111"><highlight class="normal"></highlight></codeline>
 <codeline lineno="112"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;std::size_t&gt;</ref></highlight></codeline>
-<codeline lineno="113" refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a8ff36899562f6b26a58e20b526aaa91d" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a8ff36899562f6b26a58e20b526aaa91d" kindref="member">compute_chunk_sample_count</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1function_1_1image_1_1EncodeWaveformWebpArgs" kindref="compound">EncodeWaveformWebpArgs</ref><sp/>&amp;args)</highlight></codeline>
+<codeline lineno="113" refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a38905f16ec7c48cd26b5fbf899566557" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a38905f16ec7c48cd26b5fbf899566557" kindref="member">compute_chunk_sample_count</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1function_1_1image_1_1EncodeWaveformWebpArgs" kindref="compound">EncodeWaveformWebpArgs</ref><sp/>&amp;args)</highlight></codeline>
 <codeline lineno="114"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>std::size_t<sp/>chunk_sample_count<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a2512b6afddc3704d1fb7f3ba1e692d76" kindref="member">checked_multiply_waveform</ref>(</highlight></codeline>
@@ -347,13 +347,13 @@
 <codeline lineno="124"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="125"><highlight class="normal"></highlight></codeline>
 <codeline lineno="126"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="127" refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a36599b82a8b95b511745669571ad7772" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a36599b82a8b95b511745669571ad7772" kindref="member">clamp_pcm_sample</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>value)<sp/>noexcept</highlight></codeline>
+<codeline lineno="127" refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a36599b82a8b95b511745669571ad7772" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a36599b82a8b95b511745669571ad7772" kindref="member">clamp_pcm_sample</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>value)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="128"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__UTIL_1_1function_1a0dd9d5fc5e61ac330a2f48d3b4f9561a" kindref="member">std::clamp</ref>(value,<sp/>-1.0f,<sp/>1.0f);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::clamp(value,<sp/>-1.0f,<sp/>1.0f);</highlight></codeline>
 <codeline lineno="130"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="131"><highlight class="normal"></highlight></codeline>
 <codeline lineno="132"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::size_t</highlight></codeline>
-<codeline lineno="133" refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a7b412d1090073e89f325137a83a26f54" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a7b412d1090073e89f325137a83a26f54" kindref="member">map_sample_to_row_floor</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>value,<sp/>std::size_t<sp/>y_pixels)<sp/>noexcept</highlight></codeline>
+<codeline lineno="133" refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a7b412d1090073e89f325137a83a26f54" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a7b412d1090073e89f325137a83a26f54" kindref="member">map_sample_to_row_floor</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>value,<sp/>std::size_t<sp/>y_pixels)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="134"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(y_pixels<sp/>&lt;=<sp/>1)<sp/>{</highlight></codeline>
 <codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
@@ -367,7 +367,7 @@
 <codeline lineno="144"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="145"><highlight class="normal"></highlight></codeline>
 <codeline lineno="146"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::size_t</highlight></codeline>
-<codeline lineno="147" refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a32ac59c22af8c17e1a9b1256ab334eb1" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a32ac59c22af8c17e1a9b1256ab334eb1" kindref="member">map_sample_to_row_ceil</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>value,<sp/>std::size_t<sp/>y_pixels)<sp/>noexcept</highlight></codeline>
+<codeline lineno="147" refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a32ac59c22af8c17e1a9b1256ab334eb1" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a32ac59c22af8c17e1a9b1256ab334eb1" kindref="member">map_sample_to_row_ceil</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>value,<sp/>std::size_t<sp/>y_pixels)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="148"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(y_pixels<sp/>&lt;=<sp/>1)<sp/>{</highlight></codeline>
 <codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
@@ -381,7 +381,7 @@
 <codeline lineno="158"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="159"><highlight class="normal"></highlight></codeline>
 <codeline lineno="160"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;std::vector&lt;std::vector&lt;float&gt;</ref>&gt;&gt;</highlight></codeline>
-<codeline lineno="161" refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a6dcfc0d6079de26d66a87279327dd830" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a6dcfc0d6079de26d66a87279327dd830" kindref="member">split_channels</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1function_1_1image_1_1EncodeWaveformWebpArgs" kindref="compound">EncodeWaveformWebpArgs</ref><sp/>&amp;args)</highlight></codeline>
+<codeline lineno="161" refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1add2bc02a8ef8dbe60e99cd831801036c" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1add2bc02a8ef8dbe60e99cd831801036c" kindref="member">split_channels</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1function_1_1image_1_1EncodeWaveformWebpArgs" kindref="compound">EncodeWaveformWebpArgs</ref><sp/>&amp;args)</highlight></codeline>
 <codeline lineno="162"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;float&gt;<sp/>padded_pcm(args.<ref refid="structPDJE__UTIL_1_1function_1_1image_1_1EncodeWaveformWebpArgs_1abb0373de5a0413b8a0c3042f134810b8" kindref="member">pcm</ref>.begin(),<sp/>args.<ref refid="structPDJE__UTIL_1_1function_1_1image_1_1EncodeWaveformWebpArgs_1abb0373de5a0413b8a0c3042f134810b8" kindref="member">pcm</ref>.end());</highlight></codeline>
 <codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::size_t<sp/><sp/>remainder<sp/>=<sp/>padded_pcm.size()<sp/>%<sp/>args.<ref refid="structPDJE__UTIL_1_1function_1_1image_1_1EncodeWaveformWebpArgs_1af87e636810ce3c636d3173f636aac591" kindref="member">channel_count</ref>;</highlight></codeline>
@@ -418,7 +418,7 @@
 <codeline lineno="195"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="196"><highlight class="normal"></highlight></codeline>
 <codeline lineno="197"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::size_t</highlight></codeline>
-<codeline lineno="198" refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a9ce48d7dd6f1b6f99751de8f45e35587" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a9ce48d7dd6f1b6f99751de8f45e35587" kindref="member">resolve_worker_thread_count</ref>(std::size_t<sp/>requested,<sp/>std::size_t<sp/>job_count)<sp/>noexcept</highlight></codeline>
+<codeline lineno="198" refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a9ce48d7dd6f1b6f99751de8f45e35587" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a9ce48d7dd6f1b6f99751de8f45e35587" kindref="member">resolve_worker_thread_count</ref>(std::size_t<sp/>requested,<sp/>std::size_t<sp/>job_count)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="199"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>std::size_t<sp/>resolved<sp/>=<sp/>requested;</highlight></codeline>
 <codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(resolved<sp/>==<sp/>0)<sp/>{</highlight></codeline>
@@ -436,8 +436,8 @@
 <codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::min(resolved,<sp/>job_count);</highlight></codeline>
 <codeline lineno="214"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="215"><highlight class="normal"></highlight></codeline>
-<codeline lineno="216"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="217" refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a773658892ba8f5558dfdb3ce13789527" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a773658892ba8f5558dfdb3ce13789527" kindref="member">compute_column_extrema_dispatch</ref>(std::span&lt;const<sp/>float&gt;<sp/>chunk_pcm,</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="217" refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a1e643fd02cb35f6630787616535b0d26" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a1e643fd02cb35f6630787616535b0d26" kindref="member">compute_column_extrema_dispatch</ref>(std::span&lt;const<sp/>float&gt;<sp/>chunk_pcm,</highlight></codeline>
 <codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::size_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pcm_per_pixel,</highlight></codeline>
 <codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::size_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>x_pixels_per_image,</highlight></codeline>
 <codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::span&lt;float&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/>mins_out,</highlight></codeline>
@@ -463,7 +463,7 @@
 <codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Waveform<sp/>extrema<sp/>buffers<sp/>must<sp/>match<sp/>x_pixels_per_image.&quot;</highlight><highlight class="normal"><sp/>});</highlight></codeline>
 <codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="242"><highlight class="normal"></highlight></codeline>
-<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/>HWY_DYNAMIC_DISPATCH(<ref refid="namespaceHWY__NAMESPACE_1ab6efc652b6b232a50217bc7c55417f15" kindref="member">ComputeWaveformColumnExtremaSIMD</ref>)(chunk_pcm.data(),</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/>HWY_DYNAMIC_DISPATCH(ComputeWaveformColumnExtremaSIMD)(chunk_pcm.data(),</highlight></codeline>
 <codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pcm_per_pixel,</highlight></codeline>
 <codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>x_pixels_per_image,</highlight></codeline>
 <codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mins_out.data(),</highlight></codeline>
@@ -471,8 +471,8 @@
 <codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1aaf1289221fee109ad97d48ca53796cb6" kindref="member">common::Result&lt;void&gt;::success</ref>();</highlight></codeline>
 <codeline lineno="249"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="250"><highlight class="normal"></highlight></codeline>
-<codeline lineno="251"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_3_01void_01_4" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
-<codeline lineno="252" refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a7ccfd3b8fa2e351697da00df5061dbd0" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a7ccfd3b8fa2e351697da00df5061dbd0" kindref="member">encode_waveform_job</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WaveformJob" kindref="compound">WaveformJob</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;job,</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result&lt;void&gt;</ref></highlight></codeline>
+<codeline lineno="252" refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1af63e394b87d5b59595a7125249367b63" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1af63e394b87d5b59595a7125249367b63" kindref="member">encode_waveform_job</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WaveformJob" kindref="compound">WaveformJob</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;job,</highlight></codeline>
 <codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1function_1_1image_1_1EncodeWaveformWebpArgs" kindref="compound">EncodeWaveformWebpArgs</ref><sp/>&amp;args,</highlight></codeline>
 <codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::size_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>row_stride,</highlight></codeline>
 <codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WorkerScratch" kindref="compound">WorkerScratch</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;scratch,</highlight></codeline>
@@ -484,7 +484,7 @@
 <codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Waveform<sp/>job<sp/>was<sp/>missing<sp/>required<sp/>sample<sp/>or<sp/>output<sp/>pointers.&quot;</highlight><highlight class="normal"><sp/>});</highlight></codeline>
 <codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="263"><highlight class="normal"></highlight></codeline>
-<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>extrema<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a773658892ba8f5558dfdb3ce13789527" kindref="member">compute_column_extrema_dispatch</ref>(</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>extrema<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a1e643fd02cb35f6630787616535b0d26" kindref="member">compute_column_extrema_dispatch</ref>(</highlight></codeline>
 <codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::span&lt;const<sp/>float&gt;(job.<ref refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WaveformJob_1a55a3be545186a5598b3995c30742eb11" kindref="member">samples</ref>,<sp/>job.<ref refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WaveformJob_1ad7c6c0e00e1af10288498acf1032db81" kindref="member">sample_count</ref>),</highlight></codeline>
 <codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args.<ref refid="structPDJE__UTIL_1_1function_1_1image_1_1EncodeWaveformWebpArgs_1a32602d2b479977a4a939dfcae8738dda" kindref="member">pcm_per_pixel</ref>,</highlight></codeline>
 <codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>args.<ref refid="structPDJE__UTIL_1_1function_1_1image_1_1EncodeWaveformWebpArgs_1a05c6ef3498049671b4b13857c42103b1" kindref="member">x_pixels_per_image</ref>,</highlight></codeline>
@@ -495,7 +495,7 @@
 <codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1adfc6107833827f152c158e37cc6948bc" kindref="member">wrap_job_status</ref>(extrema.status(),<sp/>job));</highlight></codeline>
 <codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="274"><highlight class="normal"></highlight></codeline>
-<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="audioTest_8cpp_1a84c51840ce6fd545243e9fb8a92d0074" kindref="member">std::fill</ref>(scratch.<ref refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WorkerScratch_1af42efeac35cc43114dd2758eb5408dbc" kindref="member">rgba</ref>.begin(),<sp/>scratch.<ref refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WorkerScratch_1af42efeac35cc43114dd2758eb5408dbc" kindref="member">rgba</ref>.end(),<sp/>std::uint8_t<sp/>{<sp/>0<sp/>});</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/>std::fill(scratch.<ref refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WorkerScratch_1af42efeac35cc43114dd2758eb5408dbc" kindref="member">rgba</ref>.begin(),<sp/>scratch.<ref refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WorkerScratch_1af42efeac35cc43114dd2758eb5408dbc" kindref="member">rgba</ref>.end(),<sp/>std::uint8_t<sp/>{<sp/>0<sp/>});</highlight></codeline>
 <codeline lineno="276"><highlight class="normal"></highlight></codeline>
 <codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(std::size_t<sp/>x<sp/>=<sp/>0;<sp/>x<sp/>&lt;<sp/>args.<ref refid="structPDJE__UTIL_1_1function_1_1image_1_1EncodeWaveformWebpArgs_1a05c6ef3498049671b4b13857c42103b1" kindref="member">x_pixels_per_image</ref>;<sp/>++x)<sp/>{</highlight></codeline>
 <codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::size_t<sp/>top_row<sp/>=</highlight></codeline>
@@ -515,7 +515,7 @@
 <codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="294"><highlight class="normal"></highlight></codeline>
-<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>encoded<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1a89b60ac7f65a65d050821f6467107d36" kindref="member">encode_webp</ref>(</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>encoded<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1ad73f20df717bb3b8336c40b1e2c9a3e1" kindref="member">encode_webp</ref>(</highlight></codeline>
 <codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>.image<sp/>=</highlight></codeline>
 <codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.pixels<sp/>=<sp/>scratch.<ref refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WorkerScratch_1af42efeac35cc43114dd2758eb5408dbc" kindref="member">rgba</ref>,</highlight></codeline>
@@ -541,17 +541,17 @@
 <codeline lineno="318" refid="namespacePDJE__UTIL_1_1function_1_1image_1ab6f8c1c9d220d513fef72978c82ef5a8" refkind="member"><highlight class="normal"><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1ab6f8c1c9d220d513fef72978c82ef5a8" kindref="member">encode_waveform_webps</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1function_1_1image_1_1EncodeWaveformWebpArgs" kindref="compound">EncodeWaveformWebpArgs</ref><sp/>&amp;args,</highlight></codeline>
 <codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPDJE__UTIL_1_1function_1_1EvalOptions" kindref="compound">function::EvalOptions</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>options)</highlight></codeline>
 <codeline lineno="320"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>validation<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a676e4144d06079696e394a05f56498b4" kindref="member">detail::validate_waveform_args</ref>(args);</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>validation<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1aeb82b041fb95e166b0d7afe692789620" kindref="member">detail::validate_waveform_args</ref>(args);</highlight></codeline>
 <codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!validation.ok())<sp/>{</highlight></codeline>
 <codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;WaveformWebpBatch&gt;::failure</ref>(validation.status());</highlight></codeline>
 <codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="325"><highlight class="normal"></highlight></codeline>
-<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>split<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a6dcfc0d6079de26d66a87279327dd830" kindref="member">detail::split_channels</ref>(args);</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>split<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1add2bc02a8ef8dbe60e99cd831801036c" kindref="member">detail::split_channels</ref>(args);</highlight></codeline>
 <codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!split.ok())<sp/>{</highlight></codeline>
 <codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;WaveformWebpBatch&gt;::failure</ref>(split.status());</highlight></codeline>
 <codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="330"><highlight class="normal"></highlight></codeline>
-<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>chunk_sample_count_result<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a8ff36899562f6b26a58e20b526aaa91d" kindref="member">detail::compute_chunk_sample_count</ref>(args);</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>chunk_sample_count_result<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a38905f16ec7c48cd26b5fbf899566557" kindref="member">detail::compute_chunk_sample_count</ref>(args);</highlight></codeline>
 <codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!chunk_sample_count_result.ok())<sp/>{</highlight></codeline>
 <codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__UTIL_1_1common_1_1Result_1a06e2b33850680736fc30b4ab0160dd3f" kindref="member">common::Result&lt;WaveformWebpBatch&gt;::failure</ref>(</highlight></codeline>
 <codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>chunk_sample_count_result.status());</highlight></codeline>
@@ -569,9 +569,9 @@
 <codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Waveform<sp/>image<sp/>size<sp/>overflows<sp/>size_t.&quot;</highlight><highlight class="normal"><sp/>});</highlight></codeline>
 <codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="348"><highlight class="normal"></highlight></codeline>
-<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>channels<sp/>=<sp/>std::move(split).<ref refid="classPDJE__UTIL_1_1common_1_1Result_1abecec39c4b9a59eb1e01d8421447241c" kindref="member">value</ref>();</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>channels<sp/>=<sp/>std::move(split).value();</highlight></codeline>
 <codeline lineno="350"><highlight class="normal"></highlight></codeline>
-<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1a76d4a0dba1d75dc5c495890eb75a1888" kindref="member">WaveformWebpBatch</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>batch(channels.size());</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1a781408e2b5312c618656f07675d378f8" kindref="member">WaveformWebpBatch</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>batch(channels.size());</highlight></codeline>
 <codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;detail::WaveformJob&gt;<sp/>jobs;</highlight></codeline>
 <codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/>std::size_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>total_job_count<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="354"><highlight class="normal"></highlight></codeline>
@@ -634,7 +634,7 @@
 <codeline lineno="411"><highlight class="normal"></highlight></codeline>
 <codeline lineno="412"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>worker_fn<sp/>=<sp/>[&amp;]()<sp/>{</highlight></codeline>
 <codeline lineno="413"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WorkerScratch" kindref="compound">detail::WorkerScratch</ref><sp/>scratch<sp/>{</highlight></codeline>
-<codeline lineno="414"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.<ref refid="structPDJE__UTIL_1_1function_1_1image_1_1detail_1_1WorkerScratch_1a3cf3037c431030c3e3e609d54d512122" kindref="member">column_mins</ref><sp/>=<sp/>std::vector&lt;float&gt;(args.<ref refid="structPDJE__UTIL_1_1function_1_1image_1_1EncodeWaveformWebpArgs_1a05c6ef3498049671b4b13857c42103b1" kindref="member">x_pixels_per_image</ref>,<sp/>0.0f),</highlight></codeline>
+<codeline lineno="414"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.column_mins<sp/>=<sp/>std::vector&lt;float&gt;(args.<ref refid="structPDJE__UTIL_1_1function_1_1image_1_1EncodeWaveformWebpArgs_1a05c6ef3498049671b4b13857c42103b1" kindref="member">x_pixels_per_image</ref>,<sp/>0.0f),</highlight></codeline>
 <codeline lineno="415"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.column_maxs<sp/>=<sp/>std::vector&lt;float&gt;(args.<ref refid="structPDJE__UTIL_1_1function_1_1image_1_1EncodeWaveformWebpArgs_1a05c6ef3498049671b4b13857c42103b1" kindref="member">x_pixels_per_image</ref>,<sp/>0.0f),</highlight></codeline>
 <codeline lineno="416"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>.rgba<sp/>=<sp/>std::vector&lt;std::uint8_t&gt;(image_byte_count,<sp/>0),</highlight></codeline>
 <codeline lineno="417"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
@@ -651,7 +651,7 @@
 <codeline lineno="428"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="429"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="430"><highlight class="normal"></highlight></codeline>
-<codeline lineno="431"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>job_result<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1a7ccfd3b8fa2e351697da00df5061dbd0" kindref="member">detail::encode_waveform_job</ref>(</highlight></codeline>
+<codeline lineno="431"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>job_result<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1function_1_1image_1_1detail_1af63e394b87d5b59595a7125249367b63" kindref="member">detail::encode_waveform_job</ref>(</highlight></codeline>
 <codeline lineno="432"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jobs[job_index],<sp/>args,<sp/>row_stride,<sp/>scratch,<sp/>options);</highlight></codeline>
 <codeline lineno="433"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!job_result.ok())<sp/>{</highlight></codeline>
 <codeline lineno="434"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>record_error(job_result.status());</highlight></codeline>

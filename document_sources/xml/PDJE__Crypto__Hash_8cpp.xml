@@ -1,17 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="PDJE__Crypto__Hash_8cpp" kind="file" language="C++">
     <compoundname>PDJE_Crypto_Hash.cpp</compoundname>
     <includes refid="PDJE__Crypto_8hpp" local="yes">PDJE_Crypto.hpp</includes>
     <includes local="no">botan/hex.h</includes>
     <includes local="no">fstream</includes>
     <incdepgraph>
-      <node id="16">
-        <label>filesystem</label>
-      </node>
-      <node id="7">
-        <label>stdint.h</label>
-      </node>
       <node id="2">
         <label>PDJE_Crypto.hpp</label>
         <link refid="PDJE__Crypto_8hpp"/>
@@ -28,20 +22,29 @@
         <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="14">
-        <label>botan/cipher_mode.h</label>
+      <node id="1">
+        <label>include/global/Crypto/PDJE_Crypto_Hash.cpp</label>
+        <link refid="PDJE__Crypto__Hash_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
       </node>
-      <node id="17">
-        <label>string</label>
+      <node id="4">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
       </node>
-      <node id="10">
-        <label>exception</label>
-      </node>
-      <node id="6">
-        <label>stddef.h</label>
-      </node>
-      <node id="19">
-        <label>fstream</label>
+      <node id="5">
+        <label>PDJE_LOG_RUNTIME_API.h</label>
+        <link refid="PDJE__LOG__RUNTIME__API_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
       </node>
       <node id="3">
         <label>PDJE_LOG_SETTER.hpp</label>
@@ -61,50 +64,47 @@
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="1">
-        <label>include/global/Crypto/PDJE_Crypto_Hash.cpp</label>
-        <link refid="PDJE__Crypto__Hash_8cpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
+      <node id="13">
+        <label>botan/auto_rng.h</label>
       </node>
-      <node id="9">
-        <label>spdlog/spdlog.h</label>
-      </node>
-      <node id="11">
-        <label>string_view</label>
-      </node>
-      <node id="8">
-        <label>spdlog/fmt/fmt.h</label>
+      <node id="14">
+        <label>botan/cipher_mode.h</label>
       </node>
       <node id="15">
         <label>botan/hash.h</label>
       </node>
-      <node id="12">
-        <label>utility</label>
-      </node>
-      <node id="13">
-        <label>botan/auto_rng.h</label>
-      </node>
-      <node id="4">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
-      </node>
-      <node id="5">
-        <label>PDJE_LOG_RUNTIME_API.h</label>
-        <link refid="PDJE__LOG__RUNTIME__API_8h"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
       <node id="18">
         <label>botan/hex.h</label>
+      </node>
+      <node id="10">
+        <label>exception</label>
+      </node>
+      <node id="16">
+        <label>filesystem</label>
+      </node>
+      <node id="19">
+        <label>fstream</label>
+      </node>
+      <node id="8">
+        <label>spdlog/fmt/fmt.h</label>
+      </node>
+      <node id="9">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="6">
+        <label>stddef.h</label>
+      </node>
+      <node id="7">
+        <label>stdint.h</label>
+      </node>
+      <node id="17">
+        <label>string</label>
+      </node>
+      <node id="11">
+        <label>string_view</label>
+      </node>
+      <node id="12">
+        <label>utility</label>
       </node>
     </incdepgraph>
     <innernamespace refid="namespacePDJE__CRYPTO">PDJE_CRYPTO</innernamespace>
@@ -134,7 +134,7 @@
 <codeline lineno="19"><highlight class="normal"></highlight></codeline>
 <codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__CRYPTO_1_1Hash_1a8f8b0dd108831f334a0e3847af79563b" kindref="member">hashEngine</ref>-&gt;update(</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal">uint8_t<sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(txt.data()),</highlight></codeline>
 <codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>txt.size());</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a766c7e77eb3fe1873001af578f4a495c" kindref="member">Botan::hex_encode</ref>(<ref refid="classPDJE__CRYPTO_1_1Hash_1a8f8b0dd108831f334a0e3847af79563b" kindref="member">hashEngine</ref>-&gt;final());</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Botan::hex_encode(<ref refid="classPDJE__CRYPTO_1_1Hash_1a8f8b0dd108831f334a0e3847af79563b" kindref="member">hashEngine</ref>-&gt;final());</highlight></codeline>
 <codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception<sp/>&amp;e)<sp/>{</highlight></codeline>
 <codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>hash<sp/>text.<sp/>Why:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(e.what());</highlight></codeline>
@@ -142,7 +142,7 @@
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="28"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
-<codeline lineno="30" refid="namespacePDJE__CRYPTO_1ad03d54fa0622af1e44befad88826ff63" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__CRYPTO_1ad03d54fa0622af1e44befad88826ff63" kindref="member">HashChunkSZ</ref><sp/>=<sp/>64<sp/>*<sp/>1024;</highlight></codeline>
+<codeline lineno="30" refid="namespacePDJE__CRYPTO_1ad03d54fa0622af1e44befad88826ff63" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__CRYPTO_1ad03d54fa0622af1e44befad88826ff63" kindref="member">HashChunkSZ</ref><sp/>=<sp/>64<sp/>*<sp/>1024;</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
 <codeline lineno="32"><highlight class="normal">std::string</highlight></codeline>
 <codeline lineno="33" refid="classPDJE__CRYPTO_1_1Hash_1acc512bbd69459097493287c9e9c270d1" refkind="member"><highlight class="normal"><ref refid="classPDJE__CRYPTO_1_1Hash_1acc512bbd69459097493287c9e9c270d1" kindref="member">Hash::FileHash</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>fs::path<sp/>&amp;fp)</highlight></codeline>
@@ -163,7 +163,7 @@
 <codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__CRYPTO_1_1Hash_1a8f8b0dd108831f334a0e3847af79563b" kindref="member">hashEngine</ref>-&gt;update(buf.data(),<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">size_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(got));</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a766c7e77eb3fe1873001af578f4a495c" kindref="member">Botan::hex_encode</ref>(<ref refid="classPDJE__CRYPTO_1_1Hash_1a8f8b0dd108831f334a0e3847af79563b" kindref="member">hashEngine</ref>-&gt;final());</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Botan::hex_encode(<ref refid="classPDJE__CRYPTO_1_1Hash_1a8f8b0dd108831f334a0e3847af79563b" kindref="member">hashEngine</ref>-&gt;final());</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception<sp/>&amp;e)<sp/>{</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>hash<sp/>file.<sp/>Why:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(e.what());</highlight></codeline>

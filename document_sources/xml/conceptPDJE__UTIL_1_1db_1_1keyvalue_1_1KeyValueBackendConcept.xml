@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="conceptPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueBackendConcept" kind="concept">
     <compoundname>PDJE_UTIL::db::keyvalue::KeyValueBackendConcept</compoundname>
     <includes refid="keyvalue_2BackendConcept_8hpp" local="no">BackendConcept.hpp</includes>
@@ -16,21 +16,49 @@ concept <ref refid="conceptPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueBackendConcep
                                           std::string_view             text) {
     typename Backend::config_type;
 
-    { Backend::create(cfg) } -&gt; std::same_as&lt;common::Result&lt;void&gt;&gt;;
-    { Backend::destroy(cfg) } -&gt; std::same_as&lt;common::Result&lt;void&gt;&gt;;
+    { Backend::create(cfg) } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;void&gt;&gt;;
+    { Backend::destroy(cfg) } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;void&gt;&gt;;
 
-    { backend.open(cfg) } -&gt; std::same_as&lt;common::Result&lt;void&gt;&gt;;
-    { backend.close() } -&gt; std::same_as&lt;common::Result&lt;void&gt;&gt;;
+    { backend.open(cfg) } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;void&gt;&gt;;
+    { backend.close() } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;void&gt;&gt;;
 
-    { backend.contains(key) } -&gt; std::same_as&lt;common::Result&lt;bool&gt;&gt;;
-    { backend.get_text(key) } -&gt; std::same_as&lt;common::Result&lt;Text&gt;&gt;;
-    { backend.get_bytes(key) } -&gt; std::same_as&lt;common::Result&lt;Bytes&gt;&gt;;
-    { backend.put_text(key, text) } -&gt; std::same_as&lt;common::Result&lt;void&gt;&gt;;
-    { backend.put_bytes(key, bytes) } -&gt; std::same_as&lt;common::Result&lt;void&gt;&gt;;
-    { backend.erase(key) } -&gt; std::same_as&lt;common::Result&lt;void&gt;&gt;;
+    { backend.contains(key) } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;bool&gt;&gt;;
+    { backend.get_text(key) } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;<ref refid="namespacePDJE__UTIL_1_1db_1a89f870d3c2a028544646a9b95b827d28" kindref="member">Text</ref>&gt;&gt;;
+    { backend.get_bytes(key) } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;<ref refid="namespacePDJE__UTIL_1_1db_1a2ef3b7d9e6089bee19f07baae2cdaa81" kindref="member">Bytes</ref>&gt;&gt;;
+    { backend.put_text(key, text) } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;void&gt;&gt;;
+    { backend.put_bytes(key, bytes) } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;void&gt;&gt;;
+    { backend.erase(key) } -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;void&gt;&gt;;
     { backend.list_keys(std::string_view {}) }
-    -&gt; std::same_as&lt;common::Result&lt;std::vector&lt;Key&gt;&gt;&gt;;
-}    </initializer>
+    -&gt; std::same_as&lt;<ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt;std::vector&lt;<ref refid="namespacePDJE__UTIL_1_1db_1aedbff324bfcd10a0857fd98f47045ba1" kindref="member">Key</ref>&gt;&gt;&gt;;
+}</initializer>
+    <conceptparts>
+      <codepart line="14">    <programlisting>
+<codeline><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Backend&gt;</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">concept<sp/></highlight><highlight class="normal">KeyValueBackendConcept<sp/>=<sp/></highlight><highlight class="keyword">requires</highlight><highlight class="normal">(</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Backend::config_type<sp/>cfg,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Backend<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>backend,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>key,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::span&lt;const<sp/>std::byte&gt;<sp/><sp/><sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1relational_1ad958498eab11301215755895d3e45d3aa4b3a6218bb3e3a7303e8a171a60fcf92" kindref="member">bytes</ref>,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string_view<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1relational_1ad958498eab11301215755895d3e45d3aa1cb251ec0d568de6a929b520c4aed8d1" kindref="member">text</ref>)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Backend::config_type;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/>Backend::create(cfg)<sp/>}<sp/>-&gt;<sp/>std::same_as&lt;common::Result&lt;void&gt;&gt;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/>Backend::destroy(cfg)<sp/>}<sp/>-&gt;<sp/>std::same_as&lt;common::Result&lt;void&gt;&gt;;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/>backend.open(cfg)<sp/>}<sp/>-&gt;<sp/>std::same_as&lt;common::Result&lt;void&gt;&gt;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/>backend.close()<sp/>}<sp/>-&gt;<sp/>std::same_as&lt;common::Result&lt;void&gt;&gt;;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/>backend.contains(key)<sp/>}<sp/>-&gt;<sp/>std::same_as&lt;common::Result&lt;bool&gt;&gt;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/>backend.get_text(key)<sp/>}<sp/>-&gt;<sp/>std::same_as&lt;common::Result&lt;Text&gt;&gt;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/>backend.get_bytes(key)<sp/>}<sp/>-&gt;<sp/>std::same_as&lt;common::Result&lt;Bytes&gt;&gt;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/>backend.put_text(key,<sp/>text)<sp/>}<sp/>-&gt;<sp/>std::same_as&lt;common::Result&lt;void&gt;&gt;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/>backend.put_bytes(key,<sp/>bytes)<sp/>}<sp/>-&gt;<sp/>std::same_as&lt;common::Result&lt;void&gt;&gt;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/>backend.erase(key)<sp/>}<sp/>-&gt;<sp/>std::same_as&lt;common::Result&lt;void&gt;&gt;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>{<sp/>backend.list_keys(std::string_view<sp/>{})<sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-&gt;<sp/>std::same_as&lt;common::Result&lt;std::vector&lt;Key&gt;&gt;&gt;;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+</codepart>
+    </conceptparts>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

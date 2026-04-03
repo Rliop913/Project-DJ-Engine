@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="WaylandRuntimeLoader_8hpp" kind="file" language="C++">
     <compoundname>WaylandRuntimeLoader.hpp</compoundname>
     <includes local="no">mutex</includes>
@@ -17,13 +17,9 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="1">
-        <label>include/input/DefaultDevs/linux/wayland_things/WaylandRuntimeLoader.hpp</label>
-        <link refid="WaylandRuntimeLoader_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
+      <node id="3">
+        <label>include/input/DefaultDevs/linux/DefaultDevs.cpp</label>
+        <link refid="linux_2DefaultDevs_8cpp"/>
       </node>
       <node id="2">
         <label>include/input/DefaultDevs/linux/DefaultDevs.hpp</label>
@@ -35,9 +31,13 @@
         <label>include/input/DefaultDevs/linux/wayland_things/WaylandRuntimeLoader.cpp</label>
         <link refid="WaylandRuntimeLoader_8cpp"/>
       </node>
-      <node id="3">
-        <label>include/input/DefaultDevs/linux/DefaultDevs.cpp</label>
-        <link refid="linux_2DefaultDevs_8cpp"/>
+      <node id="1">
+        <label>include/input/DefaultDevs/linux/wayland_things/WaylandRuntimeLoader.hpp</label>
+        <link refid="WaylandRuntimeLoader_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
       </node>
     </invincdepgraph>
     <innerclass refid="structPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeStatus" prot="public">PDJE_DEFAULT_DEVICES::WaylandRuntimeStatus</innerclass>
@@ -56,11 +56,11 @@
 <codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__DEFAULT__DEVICES" kindref="compound">PDJE_DEFAULT_DEVICES</ref><sp/>{</highlight></codeline>
 <codeline lineno="6"><highlight class="normal"></highlight></codeline>
 <codeline lineno="7" refid="namespacePDJE__DEFAULT__DEVICES_1ae16689a3920d6ddb9a03e669033334b7" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__DEFAULT__DEVICES_1ae16689a3920d6ddb9a03e669033334b7" kindref="member">LibLoadState</ref><sp/>{</highlight></codeline>
-<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__DEFAULT__DEVICES_1ae16689a3920d6ddb9a03e669033334b7a7381d487d18845b379422325c0a768d6" kindref="member">Loaded</ref>,</highlight></codeline>
-<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__DEFAULT__DEVICES_1ae16689a3920d6ddb9a03e669033334b7a2aee0be2678ee90fd327cc186826438e" kindref="member">Missing</ref>,</highlight></codeline>
-<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__DEFAULT__DEVICES_1ae16689a3920d6ddb9a03e669033334b7a77bd8fce7850032ce82d7b170300d2d9" kindref="member">LoadError</ref>,</highlight></codeline>
-<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__DEFAULT__DEVICES_1ae16689a3920d6ddb9a03e669033334b7af83619157512af844283a8831aa92ff5" kindref="member">SymbolMissing</ref>,</highlight></codeline>
-<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__DEFAULT__DEVICES_1ae16689a3920d6ddb9a03e669033334b7a881b3634f18ee4f2c2315bd19b75e0ae" kindref="member">Unchecked</ref></highlight></codeline>
+<codeline lineno="8" refid="namespacePDJE__DEFAULT__DEVICES_1ae16689a3920d6ddb9a03e669033334b7a7381d487d18845b379422325c0a768d6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__DEFAULT__DEVICES_1ae16689a3920d6ddb9a03e669033334b7a7381d487d18845b379422325c0a768d6" kindref="member">Loaded</ref>,</highlight></codeline>
+<codeline lineno="9" refid="namespacePDJE__DEFAULT__DEVICES_1ae16689a3920d6ddb9a03e669033334b7a2aee0be2678ee90fd327cc186826438e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__DEFAULT__DEVICES_1ae16689a3920d6ddb9a03e669033334b7a2aee0be2678ee90fd327cc186826438e" kindref="member">Missing</ref>,</highlight></codeline>
+<codeline lineno="10" refid="namespacePDJE__DEFAULT__DEVICES_1ae16689a3920d6ddb9a03e669033334b7a77bd8fce7850032ce82d7b170300d2d9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__DEFAULT__DEVICES_1ae16689a3920d6ddb9a03e669033334b7a77bd8fce7850032ce82d7b170300d2d9" kindref="member">LoadError</ref>,</highlight></codeline>
+<codeline lineno="11" refid="namespacePDJE__DEFAULT__DEVICES_1ae16689a3920d6ddb9a03e669033334b7af83619157512af844283a8831aa92ff5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__DEFAULT__DEVICES_1ae16689a3920d6ddb9a03e669033334b7af83619157512af844283a8831aa92ff5" kindref="member">SymbolMissing</ref>,</highlight></codeline>
+<codeline lineno="12" refid="namespacePDJE__DEFAULT__DEVICES_1ae16689a3920d6ddb9a03e669033334b7a881b3634f18ee4f2c2315bd19b75e0ae" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__DEFAULT__DEVICES_1ae16689a3920d6ddb9a03e669033334b7a881b3634f18ee4f2c2315bd19b75e0ae" kindref="member">Unchecked</ref></highlight></codeline>
 <codeline lineno="13"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="14"><highlight class="normal"></highlight></codeline>
 <codeline lineno="15" refid="structPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeStatus" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeStatus" kindref="compound">WaylandRuntimeStatus</ref><sp/>{</highlight></codeline>
@@ -78,7 +78,7 @@
 <codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*(*dlerror_fn)()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="28"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight></codeline>
-<codeline lineno="30" refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader" kindref="compound">WaylandRuntimeLoader</ref><sp/>{</highlight></codeline>
+<codeline lineno="30" refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1a1e9fd74336fdfb9d9a43e088bffc6026" kindref="member">WaylandRuntimeLoader</ref><sp/>{</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="32" refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1af6f45ddd086b5b7adad77e35cf9fe06c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1af6f45ddd086b5b7adad77e35cf9fe06c" kindref="member">wayland_client_handle</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="33" refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1ae00dd104422967897c3289e604fae1cb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<ref refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1ae00dd104422967897c3289e604fae1cb" kindref="member">xkbcommon_handle</ref><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
@@ -96,24 +96,24 @@
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1adf42b6960058c92d875ab55a86345174" kindref="member">ResolveXKBCommonSymbolsUnlocked</ref>()<sp/>noexcept;</highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal"><sp/><sp/>public:</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader" kindref="compound">WaylandRuntimeLoader</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1a1e9fd74336fdfb9d9a43e088bffc6026" kindref="member">WaylandRuntimeLoader</ref>()<sp/>noexcept;</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>PDJE_UNIT_TESTING</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1a1e9fd74336fdfb9d9a43e088bffc6026" kindref="member">WaylandRuntimeLoader</ref>(<ref refid="structPDJE__DEFAULT__DEVICES_1_1WaylandDynLibOps" kindref="compound">WaylandDynLibOps</ref><sp/>ops)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1a1e9fd74336fdfb9d9a43e088bffc6026" kindref="member">WaylandRuntimeLoader</ref>(<ref refid="structPDJE__DEFAULT__DEVICES_1_1WaylandDynLibOps" kindref="compound">WaylandDynLibOps</ref><sp/>ops)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1ad52574bbebb2e0b97cb4f49ea75ee1b4" kindref="member">~WaylandRuntimeLoader</ref>();</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"></highlight></codeline>
-<codeline lineno="54" refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1a0a78f637baff3d962f15188f251c5c44" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1a0a78f637baff3d962f15188f251c5c44" kindref="member">WaylandRuntimeLoader</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader" kindref="compound">WaylandRuntimeLoader</ref><sp/>&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="55" refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1ace22065fb60487ec2ab2c835dfe04541" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader" kindref="compound">WaylandRuntimeLoader</ref><sp/>&amp;<ref refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1ace22065fb60487ec2ab2c835dfe04541" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader" kindref="compound">WaylandRuntimeLoader</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54" refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1a0a78f637baff3d962f15188f251c5c44" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1a0a78f637baff3d962f15188f251c5c44" kindref="member">WaylandRuntimeLoader</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1a1e9fd74336fdfb9d9a43e088bffc6026" kindref="member">WaylandRuntimeLoader</ref><sp/>&amp;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="55" refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1a111c2266531daec99474d80522f57254" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1a1e9fd74336fdfb9d9a43e088bffc6026" kindref="member">WaylandRuntimeLoader</ref><sp/>&amp;<ref refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1a111c2266531daec99474d80522f57254" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1a1e9fd74336fdfb9d9a43e088bffc6026" kindref="member">WaylandRuntimeLoader</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight></codeline>
 <codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1ae4f46a965d2c50075ca34919be62f5f1" kindref="member">EnsureLoaded</ref>()<sp/>noexcept;</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="60" refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1a81bb70bd57f66102efc5de41ade4d1d9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1a81bb70bd57f66102efc5de41ade4d1d9" kindref="member">IsLoaded</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1a79363bcc47aa98a2dfbae0677b91d7c0" kindref="member">status</ref>.<ref refid="structPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeStatus_1acbf182b951ccf6bd6d4e9541169d0532" kindref="member">ready</ref>;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1a79363bcc47aa98a2dfbae0677b91d7c0" kindref="member">status</ref>.ready;</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeStatus" kindref="compound">WaylandRuntimeStatus</ref><sp/>&amp;</highlight></codeline>
-<codeline lineno="65" refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1aa8bf548922b6f32f2b3c82b3f97d59c0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1aa8bf548922b6f32f2b3c82b3f97d59c0" kindref="member">Status</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
+<codeline lineno="65" refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1ac22b82a963a62dcfa088c13f2239f414" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1ac22b82a963a62dcfa088c13f2239f414" kindref="member">Status</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classPDJE__DEFAULT__DEVICES_1_1WaylandRuntimeLoader_1a79363bcc47aa98a2dfbae0677b91d7c0" kindref="member">status</ref>;</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>

@@ -1,18 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="PDJE__CAbi__Input__Private_8hpp" kind="file" language="C++">
     <compoundname>PDJE_CAbi_Input_Private.hpp</compoundname>
     <includedby refid="CPDJE__Input_8cpp" local="yes">include/input/CPDJE_Input.cpp</includedby>
     <includedby refid="CPDJE__Judge_8cpp" local="yes">include/judge/CPDJE_Judge.cpp</includedby>
     <invincdepgraph>
-      <node id="2">
-        <label>include/input/CPDJE_Input.cpp</label>
-        <link refid="CPDJE__Input_8cpp"/>
-      </node>
-      <node id="3">
-        <label>include/judge/CPDJE_Judge.cpp</label>
-        <link refid="CPDJE__Judge_8cpp"/>
-      </node>
       <node id="1">
         <label>include/global/PDJE_CAbi_Input_Private.hpp</label>
         <link refid="PDJE__CAbi__Input__Private_8hpp"/>
@@ -20,6 +12,14 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
+      </node>
+      <node id="2">
+        <label>include/input/CPDJE_Input.cpp</label>
+        <link refid="CPDJE__Input_8cpp"/>
+      </node>
+      <node id="3">
+        <label>include/judge/CPDJE_Judge.cpp</label>
+        <link refid="CPDJE__Judge_8cpp"/>
       </node>
     </invincdepgraph>
     <briefdescription>
@@ -56,13 +56,13 @@
 <codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">PDJE_CABI<sp/>{</highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="CPDJE__Input_8h_1afea23fa318408d43b65823cc9ac3fc13" kindref="member">PDJE_InputHandleV1</ref><sp/>*</highlight></codeline>
-<codeline lineno="30"><highlight class="normal">BorrowInputDataLine(<ref refid="CPDJE__Input_8h_1afea23fa318408d43b65823cc9ac3fc13" kindref="member">PDJE_InputHandleV1</ref><sp/>*input)<sp/>noexcept</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">BorrowInputDataLine(<ref refid="CPDJE__Input_8h_1afea23fa318408d43b65823cc9ac3fc13" kindref="member">PDJE_InputHandleV1</ref><sp/>*input)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="31"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>input;</highlight></codeline>
 <codeline lineno="33"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structDeviceData" kindref="compound">DeviceData</ref><sp/>*</highlight></codeline>
-<codeline lineno="36"><highlight class="normal">TryGetInputDevice(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="CPDJE__Input_8h_1a0d8a39f66db95a5c018256ceca4cfbfc" kindref="member">PDJE_InputDeviceListHandleV1</ref><sp/>*list,<sp/>std::size_t<sp/>index)<sp/>noexcept</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DeviceData<sp/>*</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">TryGetInputDevice(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="CPDJE__Input_8h_1a0d8a39f66db95a5c018256ceca4cfbfc" kindref="member">PDJE_InputDeviceListHandleV1</ref><sp/>*list,<sp/>std::size_t<sp/>index)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(list<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>||<sp/>index<sp/>&gt;=<sp/>list-&gt;items.size())<sp/>{</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
@@ -72,7 +72,7 @@
 <codeline lineno="43"><highlight class="normal"></highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>libremidi::input_port<sp/>*</highlight></codeline>
 <codeline lineno="45"><highlight class="normal">TryGetMidiDevice(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="CPDJE__Input_8h_1aca717fdd92e2522439643ca06ed0d0aa" kindref="member">PDJE_MidiDeviceListHandleV1</ref><sp/>*list,</highlight></codeline>
-<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::size_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>index)<sp/>noexcept</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::size_t<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>index)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(list<sp/>==<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal"><sp/>||<sp/>index<sp/>&gt;=<sp/>list-&gt;items.size())<sp/>{</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>

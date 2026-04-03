@@ -1,35 +1,71 @@
 Util_Engine
 ===========
 
-The Utility layer is active code in the current tree. It is centered around the
-umbrella header `util/PDJE_Util.hpp` and a set of header-first abstractions that
-can be linked through the `PDJE_UTIL` interface targets declared in
-`cmakes/src/UTILsrc.cmake`.
+This page documents the current utility surface that is backed by the source
+tree in this repository. For this module, the hand-written source of truth is:
 
-Overview
---------
+- `include/util/`
+- `tests/unit/util/`
+- `cmakes/src/UTIL/UTILsrc.cmake`
 
-`PDJE_UTIL` currently groups four areas:
+Generated API pages under :doc:`/api/api_root` remain useful for symbol lookup,
+but this guide is the recommended starting point for the maintained utility
+surface and the intended consumption boundaries.
 
-- `PDJE_UTIL::common` for error/status transport.
-- `PDJE_UTIL::db` for generic key-value, relational, and nearest-neighbor
-  storage abstractions.
-- `PDJE_UTIL::function` for lightweight helper functions and evaluation context
-  types.
-- `PDJE_UTIL::ai` as a placeholder namespace for future higher-level AI helpers.
+Public Consumption Units
+------------------------
 
-Umbrella Header
----------------
+The current CMake targets split the utility layer into four consumer-facing
+units:
+
+- `PDJE_UTIL`
+  base interface target for the utility include tree and the umbrella header
+  path
+- `PDJE_UTIL_DB`
+  aggregate database target that wires the SQLite, RocksDB, and Annoy utility
+  backends
+- `PDJE_UTIL_IMAGE_WEBP`
+  image/WebP helper target for the generic WebP writer path
+- `PDJE_UTIL_IMAGE_WAVEFORM`
+  waveform image generation target that also compiles the STFT and backend
+  loader implementation files
+
+In other words, the utility layer is not roadmap-only. It is active code with
+headers, tests, and CMake consumption points in the current tree.
+
+Header Boundaries
+-----------------
+
+The utility surface is intentionally split between one umbrella header and a
+few direct-include headers.
+
+Umbrella header:
 
 .. code-block:: c++
 
    #include "util/PDJE_Util.hpp"
 
-This header re-exports the currently maintained common/status types, database
-wrappers, backend adapters, and function helpers.
+This re-exports the currently maintained:
 
-Common Status Types
--------------------
+- `PDJE_UTIL::common::{StatusCode, Status, Result<T>, Result<void>}`
+- database wrapper types and backend concepts
+- `db::Database<Backend>` as the key-value convenience alias
+- `PDJE_UTIL::function::{clamp, slugify, EvalOptions, CacheContext}`
+
+Direct include headers still required for APIs that are not re-exported by the
+umbrella header:
+
+- `util/function/image/WebpWriter.hpp`
+- `util/function/image/WaveformWebp.hpp`
+- `util/function/stft/STFT_Parallel.hpp`
+- `util/common/BackendLoader/OpenCL_Loader.hpp`
+- `util/common/BackendLoader/PDJE_Parallel_Runtime_Loader.hpp`
+
+Common Status And Result Types
+------------------------------
+
+The utility module uses one error transport pattern everywhere: `StatusCode`,
+`Status`, and `Result<T>`.
 
 .. doxygenfile:: include/util/common/StatusCode.hpp
    :project: Project_DJ_Engine
@@ -40,172 +76,135 @@ Common Status Types
 .. doxygenfile:: include/util/common/Result.hpp
    :project: Project_DJ_Engine
 
-`StatusCode` defines a compact error taxonomy such as `invalid_argument`,
-`not_found`, `io_error`, `backend_error`, and `internal_error`.
+Current facts from the headers and tests:
 
-`Status` stores the code plus a human-readable message.
+- `StatusCode` is the shared error taxonomy for utility APIs
+- `Status` stores `code` plus a human-readable `message`
+- `Status::ok()` is true only when `code == StatusCode::ok`
+- `Result<T>` stores either a value plus ok status, or a failure status
+- `Result<void>` keeps the same success/failure contract without a value
 
-`Result<T>` and `Result<void>` wrap either a value or a failure `Status`,
-providing a single convention used by the utility APIs.
+The header set and util status tests currently define and reference codes such
+as:
 
-Example:
+- `invalid_argument`
+- `not_found`
+- `type_mismatch`
+- `unsupported`
+- `io_error`
+- `closed`
+- `backend_error`
+- `out_of_range`
+- `internal_error`
+
+Typical usage looks like this:
 
 .. code-block:: c++
 
+   #include "util/PDJE_Util.hpp"
+
    using namespace PDJE_UTIL;
 
-   auto value = function::clamp({ .value = 1.4, .min_value = 0.0, .max_value = 1.0 });
-   if (!value.ok()) {
-       std::cerr << value.status().message << std::endl;
+   auto clamped = function::clamp(
+       { .value = 2.5, .min_value = 0.0, .max_value = 1.0 });
+   if (!clamped.ok()) {
+       std::cerr << clamped.status().message << std::endl;
        return;
    }
 
-   std::cout << value.value() << std::endl;
+   std::cout << clamped.value() << std::endl;
 
-Database Abstractions
----------------------
+Database Wrappers
+-----------------
 
-The database layer is split by access pattern:
+The current utility DB layer is organized by access pattern, not by one global
+database class.
 
-- `db::Database<Backend>` is the convenience alias for key-value backends.
-- `db::keyvalue::KeyValueDatabase<Backend>` is the generic key-value wrapper.
-- `db::relational::RelationalDatabase<Backend>` is the SQL/relational wrapper.
-- `db::nearest::NearestNeighborIndex<Backend>` is the embedding search wrapper.
-
-Each wrapper follows the same lifecycle shape:
-
-- `create(config)`
-- `destroy(config)`
-- `open(config)`
-- `close()`
-
-They return `common::Result<...>` values rather than throwing utility-specific
-exceptions.
-
-Backends shipped in the current tree:
-
-- `db::backends::SqliteBackend`
-- `db::backends::RocksDbBackend`
-- `db::backends::AnnoyBackend`
-
-The CMake interface targets expose the corresponding dependencies:
-
-- `PDJE_UTIL_DB_SQLITE`
-- `PDJE_UTIL_DB_ROCKSDB`
-- `PDJE_UTIL_DB_ANNOY`
-- `PDJE_UTIL_DB`
-
-`db::OpenOptions` is shared across the shipped backends and controls three
-important behaviors:
-
-- `create_if_missing`
-  create the underlying database if the target path does not exist yet
-- `truncate_if_exists`
-  delete and recreate the target before opening it
-- `read_only`
-  open an existing database without permitting writes
-
-`db::Database<Backend>` is still available as a convenience alias for
-key-value access, but the more explicit `keyvalue::KeyValueDatabase<Backend>`
-and `relational::RelationalDatabase<Backend>` names are clearer in new docs and
-new call sites.
-
-The utility tests in the current tree show two practical patterns:
-
-- use `RocksDbBackend` when the workload is key/value oriented
-- use `SqliteBackend` when the workload is SQL oriented
-
-`AnnoyBackend` and `db::nearest::NearestNeighborIndex<Backend>` are still part
-of the public capability set, but this page only touches them briefly because
-the current engine-facing and example-facing usage is dominated by SQLite and
-RocksDB.
-
-DB Access API
-~~~~~~~~~~~~~
-
-Low-Level C++
-^^^^^^^^^^^^^
-
-At the low-level utility layer, the wrapper classes all follow the same
-lifecycle:
-
-- `create(config)`
-- `open(config)`
-- use the database object
-- `close()`
-- optionally `destroy(config)` when the backing store should be removed
-
-The public wrapper split is:
+Wrapper split:
 
 .. list-table::
    :header-rows: 1
-   :widths: 25 45 30
+   :widths: 28 32 40
 
    * - Wrapper
-     - Main use
      - Typical backend
+     - Current role
+   * - `db::Database<Backend>`
+     - key-value backend
+     - convenience alias for `db::keyvalue::KeyValueDatabase<Backend>`
    * - `db::keyvalue::KeyValueDatabase<Backend>`
-     - text/blob lookups by key
      - `db::backends::RocksDbBackend`
+     - text/blob lookup, overwrite, erase, prefix scan
    * - `db::relational::RelationalDatabase<Backend>`
-     - SQL execution, queries, and transactions
      - `db::backends::SqliteBackend`
+     - SQL execution, queries, transactions
    * - `db::nearest::NearestNeighborIndex<Backend>`
-     - embedding search and ANN indexing
      - `db::backends::AnnoyBackend`
+     - embedding storage and nearest-neighbor search
 
-For key-value code, the important value types are:
+All three wrapper families follow the same high-level lifecycle:
 
-- `db::Key`
-- `db::Text`
-- `db::Bytes`
+- `create(config)`
+- `open(config)`
+- use the opened object
+- `close()`
+- optionally `destroy(config)`
 
-For relational code, the important data carriers are:
+The shipped tests validate concrete behavior rather than only type presence:
 
-- `db::relational::Value`
-- `db::relational::Params`
-- `db::relational::Row`
-- `db::relational::ExecResult`
-- `db::relational::QueryResult`
+- RocksDB key-value:
+  text writes, byte writes, overwrite, prefix `list_keys()`, erase, read-only
+  rejection, and type mismatch reporting
+- SQLite relational:
+  execute/query, parameter binding, blob transport, transaction rollback and
+  commit, and read-only rejection
+- Annoy nearest-neighbor:
+  upsert, get, search, erase, reopen/persistence, read-only rejection, and
+  invalid embedding dimension handling
 
-RocksDB key-value usage:
+RocksDB key-value example:
 
 .. code-block:: c++
 
-   using namespace PDJE_UTIL;
+   #include "util/db/backends/RocksDbBackend.hpp"
+   #include "util/db/keyvalue/Database.hpp"
 
-   db::backends::RocksDbConfig cfg;
-   cfg.path = "tmp/example-rocks";
-   cfg.open_options.create_if_missing = true;
+   using Db = PDJE_UTIL::db::keyvalue::KeyValueDatabase<
+       PDJE_UTIL::db::backends::RocksDbBackend>;
 
-   auto opened = db::keyvalue::KeyValueDatabase<db::backends::RocksDbBackend>::open(cfg);
+   PDJE_UTIL::db::backends::RocksDbConfig cfg{
+       .path = "tmp/example-rocks",
+       .open_options = { .create_if_missing = true }
+   };
+
+   auto opened = Db::open(cfg);
    if (!opened.ok()) {
        return;
    }
 
    auto db = std::move(opened.value());
    (void)db.put_text("artist", "RLIOP913");
-   (void)db.put_bytes("blob", {});
-
    auto artist = db.get_text("artist");
    if (artist.ok()) {
        std::cout << artist.value() << std::endl;
    }
 
-The key-value wrapper also exposes `contains()`, `erase()`, and `list_keys()`
-for simple metadata stores and blob caches.
-
-SQLite relational usage:
+SQLite relational example:
 
 .. code-block:: c++
 
-   using namespace PDJE_UTIL;
+   #include "util/db/backends/SqliteBackend.hpp"
+   #include "util/db/relational/Database.hpp"
 
-   db::backends::SqliteConfig cfg;
-   cfg.path = "tmp/example.sqlite3";
-   cfg.open_options.create_if_missing = true;
+   using Db = PDJE_UTIL::db::relational::RelationalDatabase<
+       PDJE_UTIL::db::backends::SqliteBackend>;
 
-   auto opened = db::relational::RelationalDatabase<db::backends::SqliteBackend>::open(cfg);
+   PDJE_UTIL::db::backends::SqliteConfig cfg{
+       .path = "tmp/example.sqlite3",
+       .open_options = { .create_if_missing = true }
+   };
+
+   auto opened = Db::open(cfg);
    if (!opened.ok()) {
        return;
    }
@@ -213,233 +212,132 @@ SQLite relational usage:
    auto db = std::move(opened.value());
    (void)db.execute(
        "CREATE TABLE IF NOT EXISTS notes("
-       "id INTEGER PRIMARY KEY, "
-       "lane TEXT NOT NULL)");
-
+       "id INTEGER PRIMARY KEY, lane TEXT NOT NULL);");
+   (void)db.begin_transaction();
    (void)db.execute("INSERT INTO notes(id, lane) VALUES(?1, ?2);",
-                    { db::relational::Value{std::int64_t{1}},
-                      db::relational::Value{db::Text{"left"}} });
+                    { PDJE_UTIL::db::relational::Value{ std::int64_t{1} },
+                      PDJE_UTIL::db::relational::Value{ PDJE_UTIL::db::Text{"left"} } });
+   (void)db.commit();
 
-   auto rows = db.query("SELECT lane FROM notes WHERE id = ?1;",
-                        { db::relational::Value{std::int64_t{1}} });
-   if (rows.ok() && !rows.value().rows.empty()) {
-       const auto *lane = rows.value().rows.front().find("lane");
-       if (lane != nullptr) {
-           std::cout << std::get<db::Text>(lane->storage) << std::endl;
-       }
-   }
-
-`RelationalDatabase<SqliteBackend>` also exposes `begin_transaction()`,
-`commit()`, and `rollback()`. The utility tests explicitly cover successful SQL
-queries, parameter binding, blob transport, transaction rollback/commit, and
-read-only open mode.
-
-Godot API
-^^^^^^^^^
-
-In `PDJE-Godot-Plugin-cloned`, the Godot-facing DB story is split into two
-layers:
-
-- `PDJE_LowLevelUtilAPI`
-  direct util-wrapper access for key-value, relational, nearest-neighbor, and
-  waveform helper entrypoints
-- `PDJE_Wrapper` plus `EditorWrapper`
-  higher-level engine and root-DB workflows for authored PDJE content
-
-`PDJE_LowLevelUtilAPI` is the low-level Godot bridge for util DB wrappers. Its
-methods mirror the C++ lifecycle and return a normalized `Dictionary` envelope:
-
-- `ok`
-- `code`
-- `message`
-- `data`
-
-The current bridge exposes:
-
-- `KeyValueCreate`, `KeyValueOpen`, `KeyValueClose`, `KeyValueGetText`,
-  `KeyValueGetBytes`, `KeyValuePutText`, `KeyValuePutBytes`, `KeyValueErase`,
-  `KeyValueListKeys`
-- `RelationalCreate`, `RelationalOpen`, `RelationalClose`,
-  `RelationalExecute`, `RelationalQuery`, `RelationalBeginTransaction`,
-  `RelationalCommit`, `RelationalRollback`
-- `NearestCreate`, `NearestOpen`, `NearestSearch`, and related ANN helpers
-
-Low-level util-style usage in Godot therefore looks like this:
-
-.. code-block:: gdscript
-
-   var util = PDJE_LowLevelUtilAPI.new()
-
-   print(util.KeyValueOpen({
-       "path": "res://imgdb",
-       "create_if_missing": true
-   }))
-   print(util.KeyValuePutText("artist", "RLIOP913"))
-
-   var rows = util.RelationalQuery(
-       "SELECT ?1 AS lane;",
-       ["left"]
-   )
-   print(rows)
-
-The `data` payload varies by method. For example:
-
-- key-value payloads include fields such as `text`, `bytes`, `keys`, and
-  `is_open`
-- relational query payloads include `rows`, where each row carries `columns`
-  and `values`
-- relational execute payloads include `affected_rows` and
-  `last_insert_rowid`
-
-When the task is not generic DB access but authored engine content, the higher
-level Godot path still goes through the engine wrapper layer:
-
-- `PDJE_Wrapper.InitEngine(path)`
-- `PDJE_Wrapper.SearchMusic(title, composer, bpm)`
-- `PDJE_Wrapper.SearchTrack(title)`
-- `PDJE_Wrapper.GetEditor()`
-- `EditorWrapper.render(track_title)`
-- `EditorWrapper.pushToRootDB(music_title, music_composer)`
-- `EditorWrapper.pushTrackToRootDB(track_title)`
-
-Current wrapper-style root-DB usage from the Godot example project looks like
-this:
-
-.. code-block:: gdscript
-
-   var engine = PDJE_Wrapper.new()
-   engine.InitEngine("res://rootdb")
-
-   if engine.SearchMusic("title", "composer").is_empty():
-       engine.InitEditor("name", "none", "res://sandbox")
-       var editor = engine.GetEditor()
-       editor.ConfigNewMusic("title", "composer", "G://YMCA.wav")
-       print(editor.render("sample_track"))
-       print(editor.pushToRootDB("title", "composer"))
-
-   var tracks = engine.SearchTrack("sample_track")
-   print(tracks)
-
-This distinction is important:
-
-- use `PDJE_LowLevelUtilAPI` when you want direct util DB semantics
-- use `PDJE_Wrapper` and `EditorWrapper` when you want PDJE music, track, and
-  editor workflows backed by the root DB
-- nearest-neighbor methods are available in the low-level util bridge, but they
-  remain secondary to the SQLite and RocksDB scenarios emphasized on this page
+Annoy nearest-neighbor follows the same open/use/close shape, but its payloads
+are `db::nearest::Item`, `SearchHit`, and `SearchOptions` rather than text or
+SQL values.
 
 Function Helpers
 ----------------
 
-`PDJE_UTIL::function` currently contains small, composable helpers.
+The function layer currently splits into small inline helpers plus larger image
+and signal-processing utilities.
 
-- `clamp(ClampArgs)` clamps a floating-point value inside a range.
+Scalar And Text
+~~~~~~~~~~~~~~~
+
+`PDJE_UTIL::function::clamp` and `slugify` are the smallest maintained public
+helpers.
+
+- `clamp(ClampArgs)` clamps a floating-point value and returns
+  `Result<double>`
 - `slugify(SlugifyArgs, EvalOptions)` normalizes text into a delimiter-based
-  slug.
-- `function::image` contains image-oriented helpers such as WebP writers and
-  waveform image generation.
-
-There are also Halide-oriented helper entrypoints in the tree, but this page
-does not use the Halide sample code as its teaching path. The focus here stays
-on the utility APIs that are already exercised by public headers, unit tests,
-and wrapper-facing workflows.
+  slug and rejects alphanumeric separators
+- `EvalOptions` currently carries an optional `CacheContext*`
+- `CacheContext` exists as a lightweight movable handle; the shipped inline
+  helpers shown here do not require a populated cache context
 
 Example:
 
 .. code-block:: c++
 
-   using namespace PDJE_UTIL;
+   #include "util/PDJE_Util.hpp"
 
-   auto slug = function::slugify({ .input = "Project DJ Engine", .separator = '-' });
+   auto slug = PDJE_UTIL::function::slugify(
+       { .input = "Project DJ Engine", .separator = '-' });
    if (slug.ok()) {
        std::cout << slug.value() << std::endl; // "project-dj-engine"
    }
 
-SoundToWaveForm
-~~~~~~~~~~~~~~~
+Image Helpers
+~~~~~~~~~~~~~
 
-The waveform-image path lives under `PDJE_UTIL::function::image` and is exposed
-through:
+The image surface is split into a generic WebP writer path and a waveform
+generator path.
+
+Generic WebP writer:
+
+.. code-block:: c++
+
+   #include "util/function/image/WebpWriter.hpp"
+
+Current public types in that header:
+
+- `RasterPixelFormat`
+- `RasterImageView`
+- `EncodeWebpArgs`
+- `WriteWebpArgs`
+- `encode_webp(...)`
+- `write_webp(...)`
+
+Current source-backed behavior:
+
+- validates image dimensions, stride, and buffer layout
+- accepts `gray8`, `gray_alpha8`, `rgb8`, and `rgba8` raster views
+- returns encoded WebP bytes from `encode_webp(...)`
+- writes encoded bytes to disk with `write_webp(...)`
+- validates `compression_level` in the `[-1, 9]` range before encoding
+
+Minimal example:
+
+.. code-block:: c++
+
+   #include "util/function/image/WebpWriter.hpp"
+
+   const std::vector<std::uint8_t> rgba{ 255, 0, 0, 255 };
+
+   auto encoded = PDJE_UTIL::function::image::encode_webp(
+       { .image =
+             {
+                 .pixels = rgba,
+                 .width = 1,
+                 .height = 1,
+                 .stride = 0,
+                 .pixel_format = PDJE_UTIL::function::image::RasterPixelFormat::rgba8,
+             } });
+
+Waveform WebP generation:
 
 .. code-block:: c++
 
    #include "util/function/image/WaveformWebp.hpp"
 
-This is an important include detail: `encode_waveform_webps()` is currently
-declared in `util/function/image/WaveformWebp.hpp`, and it is not re-exported
-by `util/PDJE_Util.hpp`.
+Current public types in that header:
 
-Low-Level C++
-^^^^^^^^^^^^^
-
-The public entrypoints are:
-
-- `PDJE_UTIL::function::image::EncodeWaveformWebpArgs`
-- `PDJE_UTIL::function::image::encode_waveform_webps`
-- `PDJE_UTIL::function::image::WaveformWebpBatch`
-
-`EncodeWaveformWebpArgs` is the full call contract:
-
-.. list-table::
-   :header-rows: 1
-   :widths: 30 70
-
-   * - Field
-     - Meaning
-   * - `pcm`
-     - input PCM sample span; expected as interleaved float samples
-   * - `channel_count`
-     - number of channels in the interleaved PCM input
-   * - `y_pixels`
-     - waveform image height in pixels
-   * - `pcm_per_pixel`
-     - number of PCM samples reduced into one x-axis column
-   * - `x_pixels_per_image`
-     - image width in pixels for each emitted waveform tile
-   * - `compression_level`
-     - WebP compression level from `-1` to `9`
-   * - `worker_thread_count`
-     - explicit worker count; `0` means auto-select
-
-The return type is a nested batch:
-
+- `EncodedWebpBytes`
+- `ChannelWaveformWebps`
 - `WaveformWebpBatch`
-  `batch[channel][image]`
-- each leaf value is an encoded WebP byte array for one channel tile
+- `EncodeWaveformWebpArgs`
+- `encode_waveform_webps(...)`
 
-Operationally, the implementation does the following:
+Current source-backed behavior and tests cover:
 
-- validates that the PCM span and shape parameters are usable
-- splits interleaved PCM into per-channel vectors
-- pads incomplete channel tails with zeroes when a chunk is short
-- groups each output image into `pcm_per_pixel * x_pixels_per_image` samples
-- reduces each x-axis column to min/max sample values
-- maps those min/max values into pixel rows
-- draws opaque white waveform strokes on a transparent RGBA background
-- encodes each generated tile into WebP bytes
-- runs jobs across multiple workers when `worker_thread_count` is greater than
-  `1`, or chooses a hardware-based worker count when it is `0`
-
-The waveform tests also verify several practical behaviors:
-
-- invalid required arguments return `StatusCode::invalid_argument`
-- channel splitting preserves per-channel output layout
-- min/max aggregation fills vertical spans inside a column
-- incomplete chunks are padded before reduction
-- single-worker and multi-worker runs produce the same output bytes
+- argument validation
+- interleaved PCM channel splitting
+- min/max aggregation per output column
+- incomplete chunk padding
+- transparent background output
+- deterministic output across single-worker, multi-worker, and auto-worker
+  runs
 
 Example:
 
 .. code-block:: c++
 
-   using namespace PDJE_UTIL;
+   #include "util/function/image/WaveformWebp.hpp"
 
-   std::vector<float> pcm {
+   std::vector<float> pcm{
        1.0f, -1.0f, 0.25f, -0.25f,
        -0.5f, 0.5f, 0.75f, -0.75f
    };
 
-   auto encoded = function::image::encode_waveform_webps(
+   auto waveform = PDJE_UTIL::function::image::encode_waveform_webps(
        { .pcm = pcm,
          .channel_count = 2,
          .y_pixels = 64,
@@ -448,121 +346,125 @@ Example:
          .compression_level = 1,
          .worker_thread_count = 0 });
 
-   if (!encoded.ok()) {
-       std::cerr << encoded.status().message << std::endl;
+   if (!waveform.ok()) {
        return;
    }
 
-   const auto &batch = encoded.value();
+   const auto &batch = waveform.value();
    // batch[channel][image] -> encoded WebP bytes
 
-Godot API
-^^^^^^^^^
+Signal / STFT Helpers
+~~~~~~~~~~~~~~~~~~~~~
 
-`PDJE-Godot-Plugin-cloned` exposes waveform functionality in two Godot-facing
-layers, and both are registered as public classes:
+The maintained STFT surface lives outside `util/PDJE_Util.hpp` and requires a
+direct include:
 
-- `PDJE_LowLevelUtilAPI`
-- `PDJE_HighLevelUtilAPI`
+.. code-block:: c++
 
-The low-level Godot entrypoint is:
+   #include "util/function/stft/STFT_Parallel.hpp"
 
-- `PDJE_LowLevelUtilAPI.EncodeWaveformWebps(...)`
+The current public interfaces are:
 
-This method mirrors the native `encode_waveform_webps()` call but accepts Godot
-types such as `Array` and returns the same normalized result envelope used by
-the other low-level util bridges:
+- `PDJE_PARALLEL::BACKEND_T`
+- `PDJE_PARALLEL::Backend`
+- `PDJE_PARALLEL::STFT`
+- `PDJE_PARALLEL::WINDOW_LIST`
+- `PDJE_PARALLEL::POST_PROCESS`
 
-- `ok`
-- `code`
-- `message`
-- `data`
+The current runtime model from the source tree is:
 
-For waveform generation, `data` includes:
+- `STFT` always constructs a serial backend
+- `STFT` calls `Backend::LoadBackend()` and then reads the selected
+  `BACKEND_T` through `PrintBackendType()`
+- if OpenCL loads successfully, `STFT` tries to construct `OPENCL_STFT`
+- if OpenCL startup or execution fails, `STFT` falls back to `SERIAL`
+- the current backend loader switches between `OPENCL` and `SERIAL`
+- `BACKEND_T::METAL` exists in the enum, but the shipped runtime loader does
+  not currently select it
 
-- `images`
-  a flattened `Array` of `PackedByteArray` WebP payloads
-- `layout`
-  currently `"channel_major"`
-- `channel_count`
-- `images_per_channel`
-- `total_images`
-- `y_pixels`
-- `pcm_per_pixel`
-- `x_pixels_per_image`
-- `compression_level`
-- `worker_thread_count`
-- `pcm_length`
+`POST_PROCESS` is the main post-chain contract:
 
-Low-level Godot usage looks like this:
+- `to_bin`
+- `toPower`
+- `mel_scale`
+- `to_db`
+- `normalize_min_max`
+- `to_rgb`
 
-.. code-block:: gdscript
+`POST_PROCESS::check_values()` currently applies the chain rules used by the
+implementation:
 
-   var util = PDJE_LowLevelUtilAPI.new()
-   var result = util.EncodeWaveformWebps(
-       [1.0, -1.0, 0.25, -0.25],
-       2,
-       256,
-       48,
-       4096,
-       -1,
-       0
-   )
+- `to_rgb` implies `normalize_min_max` and `mel_scale`
+- `mel_scale` implies `to_bin` and `toPower`
 
-   if result["ok"]:
-       var images = result["data"]["images"]
-       print(images.size())
+The util tests currently validate:
 
-The higher-level Godot entrypoint is:
+- serial backend stability across repeated calls
+- switching across cached FFT sizes
+- mel filter bank generation
+- mel, mel+db, and RGB reduction paths
+- OpenCL runtime shim caching and backend selection
+- CMRC resource packaging for `STFT_MAIN.cl`
 
-- `PDJE_HighLevelUtilAPI.SoundToWaveform(core_api, keyvalue_db_path, music_item, pcm_per_pixel, width, height, start_index, end_index)`
+Example:
 
-This high-level adapter does more than simple forwarding:
+.. code-block:: c++
 
-- reads PCM by calling `PDJE_Wrapper.GetPCMFromMusicData(music_item)`
-- encodes waveform WebPs through the low-level waveform bridge
-- caches the generated image array in a RocksDB key-value store at
-  `keyvalue_db_path`
-- slices the cached/generated image list using `start_index` and `end_index`
+   #include "util/function/stft/STFT_Parallel.hpp"
 
-Current high-level waveform usage from `util_test.tscn` looks like this:
+   std::vector<float> pcm(512, 0.0f);
 
-.. code-block:: gdscript
+   PDJE_PARALLEL::STFT stft;
+   PDJE_PARALLEL::POST_PROCESS post;
+   post.mel_scale = true;
+   post.to_db = true;
+   post.check_values();
 
-   var core = PDJE_Wrapper.new()
-   core.InitEngine("res://rootdb")
+   auto [real_out, imag_out] = stft.calculate(
+       pcm,
+       PDJE_PARALLEL::WINDOW_LIST::HANNING,
+       10,
+       0.5f,
+       post);
 
-   var util = PDJE_HighLevelUtilAPI.new()
-   var music = core.SearchMusic("", "")[0]
-   var images = util.SoundToWaveform(
-       core,
-       "res://imgdb",
-       music,
-       48,
-       4096,
-       256,
-       0,
-       -1
-   )
+If you need to probe runtime availability directly, the loader entrypoint lives
+in:
 
-   var image = Image.new()
-   image.load_webp_from_buffer(images[0])
+.. code-block:: c++
 
-The practical split is:
+   #include "util/common/BackendLoader/OpenCL_Loader.hpp"
 
-- use `PDJE_LowLevelUtilAPI.EncodeWaveformWebps()` when you already have PCM and
-  want a thin wrapper over the util module
-- use `PDJE_HighLevelUtilAPI.SoundToWaveform()` when you want the Godot wrapper
-  to fetch PCM from music metadata and manage cached waveform images for you
+And the capability query is:
+
+.. code-block:: c++
+
+   bool ready = PDJE_PARALLEL::EnsureOpenCLRuntimeLoaded();
 
 AI Namespace
 ------------
 
-`PDJE_UTIL::ai` currently exists as a placeholder namespace only. There are no
-public AI utility functions defined in the current header set.
+`PDJE_UTIL::ai` currently exists as a placeholder namespace only. The current
+header set does not define public AI utility functions inside it.
+
+External Binding Note
+---------------------
+
+Some local development environments may keep an external binding/reference
+codebase under `bind_tempdir`. Treat that as a useful out-of-repo reference
+implementation only.
+
+Important boundaries:
+
+- `bind_tempdir` is not managed by this repository
+- this repository's utility documentation should not copy external binding APIs
+  as if they were in-repo source of truth
+- when wrapper behavior differs from the C++ utility headers here, the C++
+  headers, tests, and CMake targets remain the canonical reference for this
+  document
 
 Generated API
 -------------
 
-Use :doc:`/api/api_root` if you need the file-by-file generated view of utility
-headers and backend classes.
+Use :doc:`/api/api_root` for symbol lookup after reading this page. This guide
+intentionally focuses on the maintained utility surface rather than exhaustive
+generated symbol listings.

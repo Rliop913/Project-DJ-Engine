@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
+  <compounddef id="PDJE__Parallel__Runtime__Loader_8hpp" kind="file" language="C++">
+    <compoundname>PDJE_Parallel_Runtime_Loader.hpp</compoundname>
+    <includes refid="Parallel__Args_8hpp" local="yes">Parallel_Args.hpp</includes>
+    <includedby refid="PDJE__Parallel__Runtime__Loader_8cpp" local="yes">include/util/common/BackendLoader/PDJE_Parallel_Runtime_Loader.cpp</includedby>
+    <includedby refid="STFT__Parallel_8hpp" local="yes">include/util/function/stft/STFT_Parallel.hpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>include/util/common/BackendLoader/PDJE_Parallel_Runtime_Loader.hpp</label>
+        <link refid="PDJE__Parallel__Runtime__Loader_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Parallel_Args.hpp</label>
+        <link refid="Parallel__Args_8hpp"/>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/util/common/BackendLoader/PDJE_Parallel_Runtime_Loader.cpp</label>
+        <link refid="PDJE__Parallel__Runtime__Loader_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/util/common/BackendLoader/PDJE_Parallel_Runtime_Loader.hpp</label>
+        <link refid="PDJE__Parallel__Runtime__Loader_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>include/util/function/stft/BackendLess.cpp</label>
+        <link refid="BackendLess_8cpp"/>
+      </node>
+      <node id="5">
+        <label>include/util/function/stft/OpenclBackend.cpp</label>
+        <link refid="OpenclBackend_8cpp"/>
+      </node>
+      <node id="6">
+        <label>include/util/function/stft/OpenclBackend.hpp</label>
+        <link refid="OpenclBackend_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>include/util/function/stft/STFT_Parallel.cpp</label>
+        <link refid="STFT__Parallel_8cpp"/>
+      </node>
+      <node id="3">
+        <label>include/util/function/stft/STFT_Parallel.hpp</label>
+        <link refid="STFT__Parallel_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>include/util/function/stft/SerialBackend.cpp</label>
+        <link refid="SerialBackend_8cpp"/>
+      </node>
+      <node id="8">
+        <label>include/util/function/stft/SerialBackend.hpp</label>
+        <link refid="SerialBackend_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classPDJE__PARALLEL_1_1Backend" prot="public">PDJE_PARALLEL::Backend</innerclass>
+    <innernamespace refid="namespacePDJE__PARALLEL">PDJE_PARALLEL</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="Parallel__Args_8hpp" kindref="compound">Parallel_Args.hpp</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacePDJE__PARALLEL" kindref="compound">PDJE_PARALLEL</ref><sp/>{</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="classPDJE__PARALLEL_1_1Backend" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classPDJE__PARALLEL_1_1Backend_1a2cd1bc8143fab9385524fe6e9136dced" kindref="member">Backend</ref><sp/>{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="8" refid="classPDJE__PARALLEL_1_1Backend_1a64fb6b2d357591f19537e3a343f032fd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__PARALLEL_1a44ecf37f16838a705092d2e3d9ab7a75" kindref="member">BACKEND_T</ref><sp/><ref refid="classPDJE__PARALLEL_1_1Backend_1a64fb6b2d357591f19537e3a343f032fd" kindref="member">backend_now</ref>;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__PARALLEL_1a44ecf37f16838a705092d2e3d9ab7a75" kindref="member">BACKEND_T</ref></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__PARALLEL_1_1Backend_1a2ab70b4c5f8b3d557b6279fbed8c8936" kindref="member">PrintBackendType</ref>();</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__PARALLEL_1_1Backend_1a331da17bb5e18c3d998e1618f6022b1f" kindref="member">LoadBackend</ref>();</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__PARALLEL_1_1Backend_1a2cd1bc8143fab9385524fe6e9136dced" kindref="member">Backend</ref>();</highlight></codeline>
+<codeline lineno="18" refid="classPDJE__PARALLEL_1_1Backend_1ac75cb359b4397cd12b402ac84f7489bf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPDJE__PARALLEL_1_1Backend_1ac75cb359b4397cd12b402ac84f7489bf" kindref="member">~Backend</ref>();</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>PDJE_PARALLEL</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/util/common/BackendLoader/PDJE_Parallel_Runtime_Loader.hpp"/>
+  </compounddef>
+</doxygen>

@@ -1,13 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="structPDJE__TrackListHandleV1" kind="struct" language="C++" prot="public">
     <compoundname>PDJE_TrackListHandleV1</compoundname>
-      <sectiondef kind="public-attrib">
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structPDJE__TrackListHandleV1_1a5f398f54fb6220265846483923f12223" prot="public" static="no" mutable="no">
         <type><ref refid="dbRoot_8hpp_1a5e5f6eb44078b1ddbcbb421faec83470" kindref="member">TRACK_VEC</ref></type>
         <definition>TRACK_VEC PDJE_TrackListHandleV1::items</definition>
         <argsstring></argsstring>
         <name>items</name>
+        <qualifiedname>PDJE_TrackListHandleV1::items</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -16,15 +17,12 @@
         </inbodydescription>
         <location file="include/core/interface/CPDJE_interface.cpp" line="17" column="15" bodyfile="include/core/interface/CPDJE_interface.cpp" bodystart="17" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="6">
-        <label>std::basic_string&lt; Char &gt;</label>
-      </node>
       <node id="1">
         <label>PDJE_TrackListHandleV1</label>
         <link refid="structPDJE__TrackListHandleV1"/>
@@ -32,31 +30,8 @@
           <edgelabel>items</edgelabel>
         </childnode>
       </node>
-      <node id="4">
-        <label>std::vector&lt; u_int8_t &gt;</label>
-      </node>
-      <node id="3">
-        <label>trackdata</label>
-        <link refid="structtrackdata"/>
-        <childnode refid="4" relation="usage">
-          <edgelabel>mixBinary</edgelabel>
-          <edgelabel>noteBinary</edgelabel>
-        </childnode>
-        <childnode refid="5" relation="usage">
-          <edgelabel>cachedMixList</edgelabel>
-          <edgelabel>trackTitle</edgelabel>
-        </childnode>
-      </node>
       <node id="2">
         <label>std::vector&lt; trackdata &gt;</label>
-        <childnode refid="3" relation="usage">
-          <edgelabel>elements</edgelabel>
-        </childnode>
-      </node>
-      <node id="5">
-        <label>std::string</label>
-        <childnode refid="6" relation="public-inheritance">
-        </childnode>
       </node>
     </collaborationgraph>
     <location file="include/core/interface/CPDJE_interface.cpp" line="16" column="1" bodyfile="include/core/interface/CPDJE_interface.cpp" bodystart="16" bodyend="18"/>

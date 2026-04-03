@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="namespacePDJE__UTIL_1_1db" kind="namespace" language="C++">
     <compoundname>PDJE_UTIL::db</compoundname>
     <innerclass refid="structPDJE__UTIL_1_1db_1_1OpenOptions" prot="public">PDJE_UTIL::db::OpenOptions</innerclass>
+    <innerconcept refid="conceptPDJE__UTIL_1_1db_1_1BackendConcept">PDJE_UTIL::db::BackendConcept</innerconcept>
     <innernamespace refid="namespacePDJE__UTIL_1_1db_1_1backends">PDJE_UTIL::db::backends</innernamespace>
     <innernamespace refid="namespacePDJE__UTIL_1_1db_1_1keyvalue">PDJE_UTIL::db::keyvalue</innernamespace>
     <innernamespace refid="namespacePDJE__UTIL_1_1db_1_1nearest">PDJE_UTIL::db::nearest</innernamespace>
     <innernamespace refid="namespacePDJE__UTIL_1_1db_1_1relational">PDJE_UTIL::db::relational</innernamespace>
-      <sectiondef kind="typedef">
-      <memberdef kind="typedef" id="namespacePDJE__UTIL_1_1db_1aedc4479cc9089f6782ace5f698496d2e" prot="public" static="no">
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespacePDJE__UTIL_1_1db_1ae9f58016e0d9976052730993dff29c01" prot="public" static="no">
         <templateparamlist>
           <param>
             <type>keyvalue::KeyValueBackendConcept</type>
@@ -17,9 +18,10 @@
           </param>
         </templateparamlist>
         <type><ref refid="classPDJE__UTIL_1_1db_1_1keyvalue_1_1KeyValueDatabase" kindref="compound">keyvalue::KeyValueDatabase</ref>&lt; Backend &gt;</type>
-        <definition>using PDJE_UTIL::db::Database = typedef keyvalue::KeyValueDatabase&lt;Backend&gt;</definition>
+        <definition>using PDJE_UTIL::db::Database = keyvalue::KeyValueDatabase&lt;Backend&gt;</definition>
         <argsstring></argsstring>
         <name>Database</name>
+        <qualifiedname>PDJE_UTIL::db::Database</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -28,11 +30,12 @@
         </inbodydescription>
         <location file="include/util/db/Database.hpp" line="8" column="1" bodyfile="include/util/db/Database.hpp" bodystart="8" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespacePDJE__UTIL_1_1db_1aaa69bb1e1ba3230da8fb606c82d3ebc7" prot="public" static="no">
+      <memberdef kind="typedef" id="namespacePDJE__UTIL_1_1db_1aedbff324bfcd10a0857fd98f47045ba1" prot="public" static="no">
         <type>std::string</type>
-        <definition>using PDJE_UTIL::db::Key = typedef std::string</definition>
+        <definition>using PDJE_UTIL::db::Key = std::string</definition>
         <argsstring></argsstring>
         <name>Key</name>
+        <qualifiedname>PDJE_UTIL::db::Key</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -41,11 +44,12 @@
         </inbodydescription>
         <location file="include/util/db/DbTypes.hpp" line="9" column="1" bodyfile="include/util/db/DbTypes.hpp" bodystart="9" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespacePDJE__UTIL_1_1db_1a4478e16df2aec53b3378bfd6337246b6" prot="public" static="no">
+      <memberdef kind="typedef" id="namespacePDJE__UTIL_1_1db_1a89f870d3c2a028544646a9b95b827d28" prot="public" static="no">
         <type>std::string</type>
-        <definition>using PDJE_UTIL::db::Text = typedef std::string</definition>
+        <definition>using PDJE_UTIL::db::Text = std::string</definition>
         <argsstring></argsstring>
         <name>Text</name>
+        <qualifiedname>PDJE_UTIL::db::Text</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -54,11 +58,12 @@
         </inbodydescription>
         <location file="include/util/db/DbTypes.hpp" line="10" column="1" bodyfile="include/util/db/DbTypes.hpp" bodystart="10" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespacePDJE__UTIL_1_1db_1acfb13486a5f831dd08830ce1cc8c7ba3" prot="public" static="no">
+      <memberdef kind="typedef" id="namespacePDJE__UTIL_1_1db_1a2ef3b7d9e6089bee19f07baae2cdaa81" prot="public" static="no">
         <type>std::vector&lt; std::byte &gt;</type>
-        <definition>using PDJE_UTIL::db::Bytes = typedef std::vector&lt;std::byte&gt;</definition>
+        <definition>using PDJE_UTIL::db::Bytes = std::vector&lt;std::byte&gt;</definition>
         <argsstring></argsstring>
         <name>Bytes</name>
+        <qualifiedname>PDJE_UTIL::db::Bytes</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -67,28 +72,7 @@
         </inbodydescription>
         <location file="include/util/db/DbTypes.hpp" line="11" column="1" bodyfile="include/util/db/DbTypes.hpp" bodystart="11" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="var">
-      <memberdef kind="variable" id="namespacePDJE__UTIL_1_1db_1a59557c87079ab0460c94d35ea2f53143" prot="public" static="no" mutable="no">
-        <templateparamlist>
-          <param>
-            <type>class Backend</type>
-          </param>
-        </templateparamlist>
-        <type>concept</type>
-        <definition>concept PDJE_UTIL::db::BackendConcept</definition>
-        <argsstring></argsstring>
-        <name>BackendConcept</name>
-        <initializer>= <ref refid="namespacePDJE__UTIL_1_1db_1_1keyvalue_1ad862892c8319fcf5bf1c761f446f3680" kindref="member">keyvalue::KeyValueBackendConcept</ref>&lt;Backend&gt;</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="include/util/db/BackendConcept.hpp" line="8" column="9" bodyfile="include/util/db/BackendConcept.hpp" bodystart="8" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

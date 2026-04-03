@@ -1,21 +1,22 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase" kind="class" language="C++" prot="public">
     <compoundname>PDJE_UTIL::db::relational::RelationalDatabase</compoundname>
     <includes refid="relational_2Database_8hpp" local="no">Database.hpp</includes>
     <templateparamlist>
       <param>
-        <type><ref refid="namespacePDJE__UTIL_1_1db_1_1relational_1a62b671f28fda26d3f1c05db715cc4001" kindref="member">RelationalBackendConcept</ref></type>
+        <type>RelationalBackendConcept</type>
         <declname>Backend</declname>
         <defname>Backend</defname>
       </param>
     </templateparamlist>
-      <sectiondef kind="public-type">
+    <sectiondef kind="public-type">
       <memberdef kind="typedef" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a94f09b63abf486ad32a7ab4a3e32ff86" prot="public" static="no">
         <type>Backend</type>
-        <definition>using PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::backend_type =  Backend</definition>
+        <definition>using PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::backend_type = Backend</definition>
         <argsstring></argsstring>
         <name>backend_type</name>
+        <qualifiedname>PDJE_UTIL::db::relational::RelationalDatabase::backend_type</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -26,9 +27,10 @@
       </memberdef>
       <memberdef kind="typedef" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a5cf9e6c4c95004c088cbc0c8986e30c6" prot="public" static="no">
         <type>typename Backend::config_type</type>
-        <definition>using PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::config_type =  typename Backend::config_type</definition>
+        <definition>using PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::config_type = typename Backend::config_type</definition>
         <argsstring></argsstring>
         <name>config_type</name>
+        <qualifiedname>PDJE_UTIL::db::relational::RelationalDatabase::config_type</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -37,13 +39,14 @@
         </inbodydescription>
         <location file="include/util/db/relational/Database.hpp" line="12" column="5" bodyfile="include/util/db/relational/Database.hpp" bodystart="12" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-attrib">
+    </sectiondef>
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1aeea4b348357e749c9ff8b52f310247f8" prot="private" static="no" mutable="no">
         <type>Backend</type>
         <definition>Backend PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::backend_</definition>
         <argsstring></argsstring>
         <name>backend_</name>
+        <qualifiedname>PDJE_UTIL::db::relational::RelationalDatabase::backend_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -57,6 +60,7 @@
         <definition>bool PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::is_open_</definition>
         <argsstring></argsstring>
         <name>is_open_</name>
+        <qualifiedname>PDJE_UTIL::db::relational::RelationalDatabase::is_open_</qualifiedname>
         <initializer>= false</initializer>
         <briefdescription>
         </briefdescription>
@@ -66,13 +70,14 @@
         </inbodydescription>
         <location file="include/util/db/relational/Database.hpp" line="132" column="13" bodyfile="include/util/db/relational/Database.hpp" bodystart="132" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1ab1a8fed83b9b739551dc246e4bd57de8" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a8070e0c4140f088435a39051734148e2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
-        <definition>static common::Result&lt;void&gt; PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::create</definition>
+        <definition>static common::Result&lt; void &gt; PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::create</definition>
         <argsstring>(const config_type &amp;cfg)</argsstring>
         <name>create</name>
+        <qualifiedname>PDJE_UTIL::db::relational::RelationalDatabase::create</qualifiedname>
         <param>
           <type>const <ref refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a5cf9e6c4c95004c088cbc0c8986e30c6" kindref="member">config_type</ref> &amp;</type>
           <declname>cfg</declname>
@@ -85,11 +90,12 @@
         </inbodydescription>
         <location file="include/util/db/relational/Database.hpp" line="15" column="5" bodyfile="include/util/db/relational/Database.hpp" bodystart="15" bodyend="18"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1aa302063209b4e32f4c214f3ad3b16e95" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a54f1ef787e3fd0e1f68bd4b3a4989d35" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
-        <definition>static common::Result&lt;void&gt; PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::destroy</definition>
+        <definition>static common::Result&lt; void &gt; PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::destroy</definition>
         <argsstring>(const config_type &amp;cfg)</argsstring>
         <name>destroy</name>
+        <qualifiedname>PDJE_UTIL::db::relational::RelationalDatabase::destroy</qualifiedname>
         <param>
           <type>const <ref refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a5cf9e6c4c95004c088cbc0c8986e30c6" kindref="member">config_type</ref> &amp;</type>
           <declname>cfg</declname>
@@ -102,11 +108,12 @@
         </inbodydescription>
         <location file="include/util/db/relational/Database.hpp" line="21" column="5" bodyfile="include/util/db/relational/Database.hpp" bodystart="21" bodyend="24"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1ac90fad97712efe6fd4351abaa9e9e182" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; <ref refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase" kindref="compound">RelationalDatabase</ref> &gt;</type>
-        <definition>static common::Result&lt;RelationalDatabase&gt; PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::open</definition>
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1aeda1e7fd16515a4106a1bdae2be450fc" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; <ref refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a4e6f2c1f7802edc77c79f97a9ad44d7e" kindref="member">RelationalDatabase</ref> &gt;</type>
+        <definition>static common::Result&lt; RelationalDatabase &gt; PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::open</definition>
         <argsstring>(const config_type &amp;cfg)</argsstring>
         <name>open</name>
+        <qualifiedname>PDJE_UTIL::db::relational::RelationalDatabase::open</qualifiedname>
         <param>
           <type>const <ref refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a5cf9e6c4c95004c088cbc0c8986e30c6" kindref="member">config_type</ref> &amp;</type>
           <declname>cfg</declname>
@@ -119,13 +126,14 @@
         </inbodydescription>
         <location file="include/util/db/relational/Database.hpp" line="27" column="5" bodyfile="include/util/db/relational/Database.hpp" bodystart="27" bodyend="36"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a4e6f2c1f7802edc77c79f97a9ad44d7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::RelationalDatabase</definition>
         <argsstring>()=default</argsstring>
         <name>RelationalDatabase</name>
+        <qualifiedname>PDJE_UTIL::db::relational::RelationalDatabase::RelationalDatabase</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -139,8 +147,9 @@
         <definition>PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::RelationalDatabase</definition>
         <argsstring>(RelationalDatabase &amp;&amp;other) noexcept</argsstring>
         <name>RelationalDatabase</name>
+        <qualifiedname>PDJE_UTIL::db::relational::RelationalDatabase::RelationalDatabase</qualifiedname>
         <param>
-          <type><ref refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase" kindref="compound">RelationalDatabase</ref> &amp;&amp;</type>
+          <type>RelationalDatabase &amp;&amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -151,13 +160,14 @@
         </inbodydescription>
         <location file="include/util/db/relational/Database.hpp" line="39" column="5" bodyfile="include/util/db/relational/Database.hpp" bodystart="39" bodyend="43"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a6efdc3557f57a6068d5a8f131f8fe33c" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase" kindref="compound">RelationalDatabase</ref> &amp;</type>
-        <definition>RelationalDatabase&amp; PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::operator=</definition>
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1ad3851ced7277c355892f4d654e1ad864" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a4e6f2c1f7802edc77c79f97a9ad44d7e" kindref="member">RelationalDatabase</ref> &amp;</type>
+        <definition>RelationalDatabase &amp; PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::operator=</definition>
         <argsstring>(RelationalDatabase &amp;&amp;other) noexcept</argsstring>
         <name>operator=</name>
+        <qualifiedname>PDJE_UTIL::db::relational::RelationalDatabase::operator=</qualifiedname>
         <param>
-          <type><ref refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase" kindref="compound">RelationalDatabase</ref> &amp;&amp;</type>
+          <type><ref refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a4e6f2c1f7802edc77c79f97a9ad44d7e" kindref="member">RelationalDatabase</ref> &amp;&amp;</type>
           <declname>other</declname>
         </param>
         <briefdescription>
@@ -173,8 +183,9 @@
         <definition>PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::RelationalDatabase</definition>
         <argsstring>(const RelationalDatabase &amp;)=delete</argsstring>
         <name>RelationalDatabase</name>
+        <qualifiedname>PDJE_UTIL::db::relational::RelationalDatabase::RelationalDatabase</qualifiedname>
         <param>
-          <type>const <ref refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase" kindref="compound">RelationalDatabase</ref> &amp;</type>
+          <type>const RelationalDatabase &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -184,13 +195,14 @@
         </inbodydescription>
         <location file="include/util/db/relational/Database.hpp" line="58" column="5"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a050a557d70ffbaecb05d2b76166ad517" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase" kindref="compound">RelationalDatabase</ref> &amp;</type>
-        <definition>RelationalDatabase&amp; PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::operator=</definition>
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a7c7258a90f272e494dddec36bb6b15b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a4e6f2c1f7802edc77c79f97a9ad44d7e" kindref="member">RelationalDatabase</ref> &amp;</type>
+        <definition>RelationalDatabase &amp; PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::operator=</definition>
         <argsstring>(const RelationalDatabase &amp;)=delete</argsstring>
         <name>operator=</name>
+        <qualifiedname>PDJE_UTIL::db::relational::RelationalDatabase::operator=</qualifiedname>
         <param>
-          <type>const <ref refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase" kindref="compound">RelationalDatabase</ref> &amp;</type>
+          <type>const <ref refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a4e6f2c1f7802edc77c79f97a9ad44d7e" kindref="member">RelationalDatabase</ref> &amp;</type>
         </param>
         <briefdescription>
         </briefdescription>
@@ -205,6 +217,7 @@
         <definition>PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::~RelationalDatabase</definition>
         <argsstring>()</argsstring>
         <name>~RelationalDatabase</name>
+        <qualifiedname>PDJE_UTIL::db::relational::RelationalDatabase::~RelationalDatabase</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -213,11 +226,12 @@
         </inbodydescription>
         <location file="include/util/db/relational/Database.hpp" line="62" column="5" bodyfile="include/util/db/relational/Database.hpp" bodystart="62" bodyend="67"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1ab7cafe914030db8f5ca604551f79de4c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1afc229bedcedf6dc44a8f7a2837b5040e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
-        <definition>common::Result&lt;void&gt; PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::close</definition>
+        <definition>common::Result&lt; void &gt; PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::close</definition>
         <argsstring>()</argsstring>
         <name>close</name>
+        <qualifiedname>PDJE_UTIL::db::relational::RelationalDatabase::close</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -231,6 +245,7 @@
         <definition>bool PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::is_open</definition>
         <argsstring>() const noexcept</argsstring>
         <name>is_open</name>
+        <qualifiedname>PDJE_UTIL::db::relational::RelationalDatabase::is_open</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -239,17 +254,18 @@
         </inbodydescription>
         <location file="include/util/db/relational/Database.hpp" line="83" column="5" bodyfile="include/util/db/relational/Database.hpp" bodystart="83" bodyend="86"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a534fd35621d6dea91840d033de0e583f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1abf2b89e7b2d87e5343c0ccbfcd396524" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; <ref refid="structPDJE__UTIL_1_1db_1_1relational_1_1ExecResult" kindref="compound">ExecResult</ref> &gt;</type>
-        <definition>common::Result&lt;ExecResult&gt; PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::execute</definition>
+        <definition>common::Result&lt; ExecResult &gt; PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::execute</definition>
         <argsstring>(std::string_view sql, const Params &amp;params={})</argsstring>
         <name>execute</name>
+        <qualifiedname>PDJE_UTIL::db::relational::RelationalDatabase::execute</qualifiedname>
         <param>
           <type>std::string_view</type>
           <declname>sql</declname>
         </param>
         <param>
-          <type>const <ref refid="namespacePDJE__UTIL_1_1db_1_1relational_1a25c3a844b1c359a144811c497afdceec" kindref="member">Params</ref> &amp;</type>
+          <type>const <ref refid="namespacePDJE__UTIL_1_1db_1_1relational_1a03d7b850c6d4c14c870bb5548dd36873" kindref="member">Params</ref> &amp;</type>
           <declname>params</declname>
           <defval>{}</defval>
         </param>
@@ -261,17 +277,18 @@
         </inbodydescription>
         <location file="include/util/db/relational/Database.hpp" line="89" column="5" bodyfile="include/util/db/relational/Database.hpp" bodystart="89" bodyend="92"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1aefc4b57cdff23f8f351d69a73e1e4255" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1aa269724ee6d645de8d6d312ec5a8b2f4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; <ref refid="structPDJE__UTIL_1_1db_1_1relational_1_1QueryResult" kindref="compound">QueryResult</ref> &gt;</type>
-        <definition>common::Result&lt;QueryResult&gt; PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::query</definition>
+        <definition>common::Result&lt; QueryResult &gt; PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::query</definition>
         <argsstring>(std::string_view sql, const Params &amp;params={}) const</argsstring>
         <name>query</name>
+        <qualifiedname>PDJE_UTIL::db::relational::RelationalDatabase::query</qualifiedname>
         <param>
           <type>std::string_view</type>
           <declname>sql</declname>
         </param>
         <param>
-          <type>const <ref refid="namespacePDJE__UTIL_1_1db_1_1relational_1a25c3a844b1c359a144811c497afdceec" kindref="member">Params</ref> &amp;</type>
+          <type>const <ref refid="namespacePDJE__UTIL_1_1db_1_1relational_1a03d7b850c6d4c14c870bb5548dd36873" kindref="member">Params</ref> &amp;</type>
           <declname>params</declname>
           <defval>{}</defval>
         </param>
@@ -283,11 +300,12 @@
         </inbodydescription>
         <location file="include/util/db/relational/Database.hpp" line="95" column="5" bodyfile="include/util/db/relational/Database.hpp" bodystart="95" bodyend="98"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a054a95763b5518afb71e644580474128" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a608770d7713cf953003d4ee2571fd2dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
-        <definition>common::Result&lt;void&gt; PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::begin_transaction</definition>
+        <definition>common::Result&lt; void &gt; PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::begin_transaction</definition>
         <argsstring>()</argsstring>
         <name>begin_transaction</name>
+        <qualifiedname>PDJE_UTIL::db::relational::RelationalDatabase::begin_transaction</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -296,11 +314,12 @@
         </inbodydescription>
         <location file="include/util/db/relational/Database.hpp" line="101" column="5" bodyfile="include/util/db/relational/Database.hpp" bodystart="101" bodyend="104"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a684dce64ccc7269cd70c244e4cffcc15" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a143e220b7e7adfc2bc9883d416b842e5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
-        <definition>common::Result&lt;void&gt; PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::commit</definition>
+        <definition>common::Result&lt; void &gt; PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::commit</definition>
         <argsstring>()</argsstring>
         <name>commit</name>
+        <qualifiedname>PDJE_UTIL::db::relational::RelationalDatabase::commit</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -309,11 +328,12 @@
         </inbodydescription>
         <location file="include/util/db/relational/Database.hpp" line="107" column="5" bodyfile="include/util/db/relational/Database.hpp" bodystart="107" bodyend="110"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1aaa85d03a493b51957420a96f472357fd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a8f0f6246d49fc7b227ffeb303a6ae771" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1common_1_1Result" kindref="compound">common::Result</ref>&lt; void &gt;</type>
-        <definition>common::Result&lt;void&gt; PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::rollback</definition>
+        <definition>common::Result&lt; void &gt; PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::rollback</definition>
         <argsstring>()</argsstring>
         <name>rollback</name>
+        <qualifiedname>PDJE_UTIL::db::relational::RelationalDatabase::rollback</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -322,11 +342,12 @@
         </inbodydescription>
         <location file="include/util/db/relational/Database.hpp" line="113" column="5" bodyfile="include/util/db/relational/Database.hpp" bodystart="113" bodyend="116"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a1a000ee953d21b064aefe80a79bfc740" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a8515e6946e0736c119daa0110617d083" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a94f09b63abf486ad32a7ab4a3e32ff86" kindref="member">backend_type</ref> &amp;</type>
-        <definition>backend_type&amp; PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::backend</definition>
+        <definition>backend_type &amp; PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::backend</definition>
         <argsstring>() noexcept</argsstring>
         <name>backend</name>
+        <qualifiedname>PDJE_UTIL::db::relational::RelationalDatabase::backend</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -335,11 +356,12 @@
         </inbodydescription>
         <location file="include/util/db/relational/Database.hpp" line="119" column="5" bodyfile="include/util/db/relational/Database.hpp" bodystart="119" bodyend="122"/>
       </memberdef>
-      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1ab8f19aa3d0ffd4306f52496158279d44" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1abc4f45a9abbae1e4b19444c4b6e32434" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const <ref refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a94f09b63abf486ad32a7ab4a3e32ff86" kindref="member">backend_type</ref> &amp;</type>
-        <definition>const backend_type&amp; PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::backend</definition>
+        <definition>const backend_type &amp; PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;::backend</definition>
         <argsstring>() const noexcept</argsstring>
         <name>backend</name>
+        <qualifiedname>PDJE_UTIL::db::relational::RelationalDatabase::backend</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -348,12 +370,15 @@
         </inbodydescription>
         <location file="include/util/db/relational/Database.hpp" line="125" column="5" bodyfile="include/util/db/relational/Database.hpp" bodystart="125" bodyend="128"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
+      <node id="2">
+        <label>Backend</label>
+      </node>
       <node id="1">
         <label>PDJE_UTIL::db::relational::RelationalDatabase&lt; Backend &gt;</label>
         <link refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase"/>
@@ -361,33 +386,30 @@
           <edgelabel>backend_</edgelabel>
         </childnode>
       </node>
-      <node id="2">
-        <label>Backend</label>
-      </node>
     </collaborationgraph>
     <location file="include/util/db/relational/Database.hpp" line="9" column="12" bodyfile="include/util/db/relational/Database.hpp" bodystart="9" bodyend="133"/>
     <listofallmembers>
-      <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a1a000ee953d21b064aefe80a79bfc740" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>backend</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1ab8f19aa3d0ffd4306f52496158279d44" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>backend</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a8515e6946e0736c119daa0110617d083" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>backend</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1abc4f45a9abbae1e4b19444c4b6e32434" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>backend</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1aeea4b348357e749c9ff8b52f310247f8" prot="private" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>backend_</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a94f09b63abf486ad32a7ab4a3e32ff86" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>backend_type</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a054a95763b5518afb71e644580474128" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>begin_transaction</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1ab7cafe914030db8f5ca604551f79de4c" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>close</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a684dce64ccc7269cd70c244e4cffcc15" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>commit</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a608770d7713cf953003d4ee2571fd2dc" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>begin_transaction</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1afc229bedcedf6dc44a8f7a2837b5040e" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>close</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a143e220b7e7adfc2bc9883d416b842e5" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>commit</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a5cf9e6c4c95004c088cbc0c8986e30c6" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>config_type</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1ab1a8fed83b9b739551dc246e4bd57de8" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>create</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1aa302063209b4e32f4c214f3ad3b16e95" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>destroy</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a534fd35621d6dea91840d033de0e583f" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>execute</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a8070e0c4140f088435a39051734148e2" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>create</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a54f1ef787e3fd0e1f68bd4b3a4989d35" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>destroy</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1abf2b89e7b2d87e5343c0ccbfcd396524" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>execute</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a86353557645666fae778c7cff5ea9d70" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>is_open</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a456f2feb56b39d27447298bfbc26aa93" prot="private" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>is_open_</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1ac90fad97712efe6fd4351abaa9e9e182" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>open</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a6efdc3557f57a6068d5a8f131f8fe33c" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>operator=</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a050a557d70ffbaecb05d2b76166ad517" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>operator=</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1aefc4b57cdff23f8f351d69a73e1e4255" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>query</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1aeda1e7fd16515a4106a1bdae2be450fc" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>open</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1ad3851ced7277c355892f4d654e1ad864" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>operator=</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a7c7258a90f272e494dddec36bb6b15b7" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>operator=</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1aa269724ee6d645de8d6d312ec5a8b2f4" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>query</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a4e6f2c1f7802edc77c79f97a9ad44d7e" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>RelationalDatabase</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1aaa6404f57e9419fb81407e9a01042583" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>RelationalDatabase</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a4f6c4688fac63ee28c07d73c726d250f" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>RelationalDatabase</name></member>
-      <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1aaa85d03a493b51957420a96f472357fd" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>rollback</name></member>
+      <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1a8f0f6246d49fc7b227ffeb303a6ae771" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>rollback</name></member>
       <member refid="classPDJE__UTIL_1_1db_1_1relational_1_1RelationalDatabase_1aaf1f00ffe3642af37a7ec61d2bd567be" prot="public" virt="non-virtual"><scope>PDJE_UTIL::db::relational::RelationalDatabase</scope><name>~RelationalDatabase</name></member>
     </listofallmembers>
   </compounddef>

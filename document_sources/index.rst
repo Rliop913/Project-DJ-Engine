@@ -112,9 +112,8 @@ PDJE is organized into major modules. In the default build these are linked toge
 - **Utility Engine** :
   The Utility Engine is active code in the current tree. It is centered around
   `util/PDJE_Util.hpp` and the `PDJE_UTIL` interface targets, providing shared
-  status/result types, database abstractions, and function helpers. The current
-  utility direction also includes Halide-based function examples for
-  GPGPU-oriented processing workflows.
+  status/result types, database abstractions, image/WebP helpers, and STFT
+  utilities with runtime backend selection between OpenCL and serial paths.
 
 MileStones
 ------------
@@ -136,7 +135,7 @@ MileStones
       1.5.0 : OnnxRuntime Integration Utility Module
       2.0.0 : OnnxRuntime Integrated with Halide-backed utility workflows
 
-See: Halide and the Utility Engine documentation for the current GPGPU-oriented direction.
+See :doc:`Util_Engine` for the current source-backed utility surface.
 
 Use Cases
 ---------

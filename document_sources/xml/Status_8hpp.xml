@@ -1,18 +1,62 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="Status_8hpp" kind="file" language="C++">
     <compoundname>Status.hpp</compoundname>
     <includes refid="StatusCode_8hpp" local="yes">util/common/StatusCode.hpp</includes>
     <includes local="no">string</includes>
-    <includedby refid="Result_8hpp" local="yes">include/util/common/Result.hpp</includedby>
     <includedby refid="PDJE__Util_8hpp" local="yes">include/util/PDJE_Util.hpp</includedby>
+    <includedby refid="Result_8hpp" local="yes">include/util/common/Result.hpp</includedby>
     <incdepgraph>
-      <node id="3">
-        <label>string</label>
+      <node id="1">
+        <label>include/util/common/Status.hpp</label>
+        <link refid="Status_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
       </node>
       <node id="2">
         <label>util/common/StatusCode.hpp</label>
         <link refid="StatusCode_8hpp"/>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="17">
+        <label>include/tests/music_to_waveform_webp.cpp</label>
+        <link refid="music__to__waveform__webp_8cpp"/>
+      </node>
+      <node id="2">
+        <label>include/util/PDJE_Util.hpp</label>
+        <link refid="PDJE__Util_8hpp"/>
+      </node>
+      <node id="3">
+        <label>include/util/common/Result.hpp</label>
+        <link refid="Result_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
       </node>
       <node id="1">
         <label>include/util/common/Status.hpp</label>
@@ -22,104 +66,62 @@
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-    </incdepgraph>
-    <invincdepgraph>
+      <node id="9">
+        <label>include/util/db/BackendConcept.hpp</label>
+        <link refid="BackendConcept_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>include/util/db/Database.hpp</label>
+        <link refid="Database_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>include/util/db/backends/AnnoyBackend.hpp</label>
+        <link refid="AnnoyBackend_8hpp"/>
+      </node>
+      <node id="6">
+        <label>include/util/db/backends/RocksDbBackend.cpp</label>
+        <link refid="RocksDbBackend_8cpp"/>
+      </node>
+      <node id="5">
+        <label>include/util/db/backends/RocksDbBackend.hpp</label>
+        <link refid="RocksDbBackend_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>include/util/db/backends/SqliteBackend.hpp</label>
+        <link refid="SqliteBackend_8hpp"/>
+      </node>
+      <node id="8">
+        <label>include/util/db/keyvalue/BackendConcept.hpp</label>
+        <link refid="keyvalue_2BackendConcept_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>include/util/db/keyvalue/Database.hpp</label>
+        <link refid="keyvalue_2Database_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
       <node id="12">
         <label>include/util/db/nearest/BackendConcept.hpp</label>
         <link refid="nearest_2BackendConcept_8hpp"/>
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="19">
-        <label>include/util/function/image/WaveformWebp.cpp</label>
-        <link refid="WaveformWebp_8cpp"/>
-      </node>
-      <node id="5">
-        <label>include/util/db/backends/RocksDbBackend.cpp</label>
-        <link refid="RocksDbBackend_8cpp"/>
-      </node>
-      <node id="11">
-        <label>include/util/db/Database.hpp</label>
-        <link refid="Database_8hpp"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-      </node>
-      <node id="2">
-        <label>include/util/common/Result.hpp</label>
-        <link refid="Result_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-      </node>
-      <node id="8">
-        <label>include/util/db/BackendConcept.hpp</label>
-        <link refid="BackendConcept_8hpp"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-      </node>
-      <node id="10">
-        <label>include/util/db/keyvalue/Database.hpp</label>
-        <link refid="keyvalue_2Database_8hpp"/>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-      </node>
-      <node id="3">
-        <label>include/util/db/backends/AnnoyBackend.hpp</label>
-        <link refid="AnnoyBackend_8hpp"/>
-      </node>
-      <node id="21">
-        <label>include/util/function/scalar/Clamp.hpp</label>
-        <link refid="Clamp_8hpp"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>include/util/db/backends/RocksDbBackend.hpp</label>
-        <link refid="RocksDbBackend_8hpp"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="7">
-        <label>include/util/db/keyvalue/BackendConcept.hpp</label>
-        <link refid="keyvalue_2BackendConcept_8hpp"/>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-      </node>
-      <node id="20">
-        <label>include/util/function/image/WebpWriter.hpp</label>
-        <link refid="WebpWriter_8hpp"/>
-        <childnode refid="19" relation="include">
-        </childnode>
-      </node>
       <node id="13">
         <label>include/util/db/nearest/Index.hpp</label>
         <link refid="Index_8hpp"/>
-        <childnode refid="9" relation="include">
+        <childnode refid="2" relation="include">
         </childnode>
       </node>
       <node id="14">
@@ -128,50 +130,40 @@
         <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="18">
-        <label>include/tests/music_to_waveform_webp.cpp</label>
-        <link refid="music__to__waveform__webp_8cpp"/>
-      </node>
-      <node id="9">
-        <label>include/util/PDJE_Util.hpp</label>
-        <link refid="PDJE__Util_8hpp"/>
-      </node>
-      <node id="6">
-        <label>include/util/db/backends/SqliteBackend.hpp</label>
-        <link refid="SqliteBackend_8hpp"/>
-      </node>
-      <node id="1">
-        <label>include/util/common/Status.hpp</label>
-        <link refid="Status_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-      </node>
-      <node id="17">
-        <label>include/util/function/image/WaveformWebp.hpp</label>
-        <link refid="WaveformWebp_8hpp"/>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-      </node>
-      <node id="16">
-        <label>include/util/function/halide/GainBias.hpp</label>
-        <link refid="GainBias_8hpp"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-      </node>
-      <node id="22">
-        <label>include/util/function/text/Slugify.hpp</label>
-        <link refid="Slugify_8hpp"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-      </node>
       <node id="15">
         <label>include/util/db/relational/Database.hpp</label>
         <link refid="relational_2Database_8hpp"/>
-        <childnode refid="9" relation="include">
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>include/util/function/image/WaveformWebp.cpp</label>
+        <link refid="WaveformWebp_8cpp"/>
+      </node>
+      <node id="16">
+        <label>include/util/function/image/WaveformWebp.hpp</label>
+        <link refid="WaveformWebp_8hpp"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>include/util/function/image/WebpWriter.hpp</label>
+        <link refid="WebpWriter_8hpp"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>include/util/function/scalar/Clamp.hpp</label>
+        <link refid="Clamp_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>include/util/function/text/Slugify.hpp</label>
+        <link refid="Slugify_8hpp"/>
+        <childnode refid="2" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -195,7 +187,7 @@
 <codeline lineno="10" refid="structPDJE__UTIL_1_1common_1_1Status_1a4b1bde50e489b4d2cb8d03012a07f3e0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacePDJE__UTIL_1_1common_1a3025dd440bc92023d950561cff3dfdb4" kindref="member">StatusCode</ref><sp/><sp/><ref refid="structPDJE__UTIL_1_1common_1_1Status_1a4b1bde50e489b4d2cb8d03012a07f3e0" kindref="member">code</ref><sp/><sp/><sp/><sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1common_1a3025dd440bc92023d950561cff3dfdb4a444bcb3a3fcf8389296c49467f27e1d6" kindref="member">StatusCode::ok</ref>;</highlight></codeline>
 <codeline lineno="11" refid="structPDJE__UTIL_1_1common_1_1Status_1a44bc43cca6e42fb06550726105361607" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="structPDJE__UTIL_1_1common_1_1Status_1a44bc43cca6e42fb06550726105361607" kindref="member">message</ref><sp/>=<sp/>{};</highlight></codeline>
 <codeline lineno="12"><highlight class="normal"></highlight></codeline>
-<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="14" refid="structPDJE__UTIL_1_1common_1_1Status_1a422a0af607d3fc4c8cbdd441bbdbbbde" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structPDJE__UTIL_1_1common_1_1Status_1a422a0af607d3fc4c8cbdd441bbdbbbde" kindref="member">ok</ref>()<sp/>const<sp/>noexcept</highlight></codeline>
 <codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
 <codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="structPDJE__UTIL_1_1common_1_1Status_1a4b1bde50e489b4d2cb8d03012a07f3e0" kindref="member">code</ref><sp/>==<sp/><ref refid="namespacePDJE__UTIL_1_1common_1a3025dd440bc92023d950561cff3dfdb4a444bcb3a3fcf8389296c49467f27e1d6" kindref="member">StatusCode::ok</ref>;</highlight></codeline>

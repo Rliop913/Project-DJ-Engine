@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="structPDJE__CoreDataLineSnapshotV1" kind="struct" language="C++" prot="public">
     <compoundname>PDJE_CoreDataLineSnapshotV1</compoundname>
     <includes refid="CPDJE__interface_8h" local="no">CPDJE_interface.h</includes>
-      <sectiondef kind="public-attrib">
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structPDJE__CoreDataLineSnapshotV1_1aa637f23abc0e1ba9852e4a1b92c0edaa" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
         <definition>uint32_t PDJE_CoreDataLineSnapshotV1::struct_size</definition>
         <argsstring></argsstring>
         <name>struct_size</name>
+        <qualifiedname>PDJE_CoreDataLineSnapshotV1::struct_size</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -22,6 +23,7 @@
         <definition>int PDJE_CoreDataLineSnapshotV1::has_player</definition>
         <argsstring></argsstring>
         <name>has_player</name>
+        <qualifiedname>PDJE_CoreDataLineSnapshotV1::has_player</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -35,6 +37,7 @@
         <definition>uint64_t PDJE_CoreDataLineSnapshotV1::now_cursor</definition>
         <argsstring></argsstring>
         <name>now_cursor</name>
+        <qualifiedname>PDJE_CoreDataLineSnapshotV1::now_cursor</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -48,6 +51,7 @@
         <definition>uint64_t PDJE_CoreDataLineSnapshotV1::max_cursor</definition>
         <argsstring></argsstring>
         <name>max_cursor</name>
+        <qualifiedname>PDJE_CoreDataLineSnapshotV1::max_cursor</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -61,6 +65,7 @@
         <definition>const float* PDJE_CoreDataLineSnapshotV1::pre_rendered_data</definition>
         <argsstring></argsstring>
         <name>pre_rendered_data</name>
+        <qualifiedname>PDJE_CoreDataLineSnapshotV1::pre_rendered_data</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -74,6 +79,7 @@
         <definition>int PDJE_CoreDataLineSnapshotV1::has_pre_rendered_data</definition>
         <argsstring></argsstring>
         <name>has_pre_rendered_data</name>
+        <qualifiedname>PDJE_CoreDataLineSnapshotV1::has_pre_rendered_data</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -87,6 +93,7 @@
         <definition>int PDJE_CoreDataLineSnapshotV1::has_sync</definition>
         <argsstring></argsstring>
         <name>has_sync</name>
+        <qualifiedname>PDJE_CoreDataLineSnapshotV1::has_sync</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -100,6 +107,7 @@
         <definition>PDJE_AudioSyncSnapshotV1 PDJE_CoreDataLineSnapshotV1::sync</definition>
         <argsstring></argsstring>
         <name>sync</name>
+        <qualifiedname>PDJE_CoreDataLineSnapshotV1::sync</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -108,22 +116,22 @@
         </inbodydescription>
         <location file="include/core/interface/CPDJE_interface.h" line="72" column="30" bodyfile="include/core/interface/CPDJE_interface.h" bodystart="72" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
+      <node id="2">
+        <label>PDJE_AudioSyncSnapshotV1</label>
+        <link refid="structPDJE__AudioSyncSnapshotV1"/>
+      </node>
       <node id="1">
         <label>PDJE_CoreDataLineSnapshotV1</label>
         <link refid="structPDJE__CoreDataLineSnapshotV1"/>
         <childnode refid="2" relation="usage">
           <edgelabel>sync</edgelabel>
         </childnode>
-      </node>
-      <node id="2">
-        <label>PDJE_AudioSyncSnapshotV1</label>
-        <link refid="structPDJE__AudioSyncSnapshotV1"/>
       </node>
     </collaborationgraph>
     <location file="include/core/interface/CPDJE_interface.h" line="64" column="1" bodyfile="include/core/interface/CPDJE_interface.h" bodystart="64" bodyend="73"/>

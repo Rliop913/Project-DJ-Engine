@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.14.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="structxdg__toplevel__listener" kind="struct" language="C++" prot="public">
     <compoundname>xdg_toplevel_listener</compoundname>
     <includes refid="xdg-shell-client-protocol_8h" local="no">xdg-shell-client-protocol.h</includes>
@@ -72,7 +72,7 @@
         </briefdescription>
         <detaileddescription>
 <para>compositor capabilities</para>
-<para>This event advertises the capabilities supported by the compositor. If a capability isn&apos;t supported, clients should hide or disable the <ref refid="class_u_i" kindref="compound">UI</ref> elements that expose this functionality. For instance, if the compositor doesn&apos;t advertise support for minimized toplevels, a button triggering the set_minimized request should not be displayed.</para>
+<para>This event advertises the capabilities supported by the compositor. If a capability isn&apos;t supported, clients should hide or disable the <ref refid="classUI" kindref="compound">UI</ref> elements that expose this functionality. For instance, if the compositor doesn&apos;t advertise support for minimized toplevels, a button triggering the set_minimized request should not be displayed.</para>
 <para>The compositor will ignore requests it doesn&apos;t support. For instance, a compositor which doesn&apos;t advertise support for minimized will ignore set_minimized requests.</para>
 <para>Compositors must send this event once before the first xdg_surface.configure event. When the capabilities change, compositors must send this event again and then send an xdg_surface.configure event.</para>
 <para>The configured state should not be applied immediately. See xdg_surface.configure for details.</para>

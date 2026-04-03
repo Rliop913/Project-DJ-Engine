@@ -1,17 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.16.1" xml:lang="en-US">
   <compounddef id="PDJE__Crypto__AEAD_8cpp" kind="file" language="C++">
     <compoundname>PDJE_Crypto_AEAD.cpp</compoundname>
     <includes refid="PDJE__Crypto_8hpp" local="yes">PDJE_Crypto.hpp</includes>
     <includes local="yes">botan/hex.h</includes>
     <includes local="no">nlohmann/json.hpp</includes>
     <incdepgraph>
-      <node id="16">
-        <label>filesystem</label>
-      </node>
-      <node id="7">
-        <label>stdint.h</label>
-      </node>
       <node id="2">
         <label>PDJE_Crypto.hpp</label>
         <link refid="PDJE__Crypto_8hpp"/>
@@ -28,12 +22,6 @@
         <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="14">
-        <label>botan/cipher_mode.h</label>
-      </node>
-      <node id="17">
-        <label>string</label>
-      </node>
       <node id="1">
         <label>include/global/Crypto/PDJE_Crypto_AEAD.cpp</label>
         <link refid="PDJE__Crypto__AEAD_8cpp"/>
@@ -44,11 +32,19 @@
         <childnode refid="19" relation="include">
         </childnode>
       </node>
-      <node id="10">
-        <label>exception</label>
+      <node id="4">
+        <label>PDJE_EXPORT_SETTER.hpp</label>
+        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
       </node>
-      <node id="6">
-        <label>stddef.h</label>
+      <node id="5">
+        <label>PDJE_LOG_RUNTIME_API.h</label>
+        <link refid="PDJE__LOG__RUNTIME__API_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
       </node>
       <node id="3">
         <label>PDJE_LOG_SETTER.hpp</label>
@@ -68,43 +64,47 @@
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="9">
-        <label>spdlog/spdlog.h</label>
+      <node id="13">
+        <label>botan/auto_rng.h</label>
       </node>
-      <node id="11">
-        <label>string_view</label>
-      </node>
-      <node id="8">
-        <label>spdlog/fmt/fmt.h</label>
+      <node id="14">
+        <label>botan/cipher_mode.h</label>
       </node>
       <node id="15">
         <label>botan/hash.h</label>
       </node>
-      <node id="12">
-        <label>utility</label>
+      <node id="18">
+        <label>botan/hex.h</label>
       </node>
-      <node id="13">
-        <label>botan/auto_rng.h</label>
+      <node id="10">
+        <label>exception</label>
       </node>
-      <node id="4">
-        <label>PDJE_EXPORT_SETTER.hpp</label>
-        <link refid="PDJE__EXPORT__SETTER_8hpp"/>
-      </node>
-      <node id="5">
-        <label>PDJE_LOG_RUNTIME_API.h</label>
-        <link refid="PDJE__LOG__RUNTIME__API_8h"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
+      <node id="16">
+        <label>filesystem</label>
       </node>
       <node id="19">
         <label>nlohmann/json.hpp</label>
       </node>
-      <node id="18">
-        <label>botan/hex.h</label>
+      <node id="8">
+        <label>spdlog/fmt/fmt.h</label>
+      </node>
+      <node id="9">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="6">
+        <label>stddef.h</label>
+      </node>
+      <node id="7">
+        <label>stdint.h</label>
+      </node>
+      <node id="17">
+        <label>string</label>
+      </node>
+      <node id="11">
+        <label>string_view</label>
+      </node>
+      <node id="12">
+        <label>utility</label>
       </node>
     </incdepgraph>
     <innernamespace refid="namespacePDJE__CRYPTO">PDJE_CRYPTO</innernamespace>
@@ -146,8 +146,8 @@
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
 <codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__CRYPTO_1_1AEAD_1a1cb6444131c304a91c7250d67f4a753a" kindref="member">enc</ref>-&gt;start(nonce);</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classPDJE__CRYPTO_1_1AEAD_1a1cb6444131c304a91c7250d67f4a753a" kindref="member">enc</ref>-&gt;finish(plain);</highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>noncestr<sp/>=<sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a766c7e77eb3fe1873001af578f4a495c" kindref="member">Botan::hex_encode</ref>(nonce);</highlight></codeline>
-<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacePDJE__UTIL_1_1db_1_1backends_1_1detail_1a766c7e77eb3fe1873001af578f4a495c" kindref="member">Botan::hex_encode</ref>(plain);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>noncestr<sp/>=<sp/>Botan::hex_encode(nonce);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Botan::hex_encode(plain);</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::exception<sp/>&amp;e)<sp/>{</highlight></codeline>
 <codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(</highlight><highlight class="stringliteral">&quot;failed<sp/>to<sp/>encrypt<sp/>with<sp/>AEAD.<sp/>Why:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PDJE__LOG__SETTER_8hpp_1ab5c002a5dab4ac06223c10cc8c69e287" kindref="member">critlog</ref>(e.what());</highlight></codeline>
