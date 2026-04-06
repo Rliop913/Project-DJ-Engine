@@ -220,18 +220,39 @@ encode_webp(const EncodeWebpArgs &args, function::EvalOptions options = {})
             layout.status());
     }
 
-    auto packed_rgba = detail::pack_rgba(args.image, layout.value());
-    if (!packed_rgba.ok()) {
-        return common::Result<std::vector<std::uint8_t>>::failure(
-            packed_rgba.status());
+    std::span<const std::uint8_t> rgba_pixels = {};
+    int                           rgba_stride = 0;
+    std::vector<std::uint8_t>     packed_rgba;
+
+    if (args.image.pixel_format == RasterPixelFormat::rgba8) {
+        if (layout.value().effective_stride >
+            static_cast<std::size_t>(std::numeric_limits<int>::max())) {
+            return common::Result<std::vector<std::uint8_t>>::failure(
+                { common::StatusCode::invalid_argument,
+                  "RasterImageView.stride must fit within WebP encoder "
+                  "limits." });
+        }
+
+        rgba_pixels = args.image.pixels;
+        rgba_stride = static_cast<int>(layout.value().effective_stride);
+    } else {
+        auto packed = detail::pack_rgba(args.image, layout.value());
+        if (!packed.ok()) {
+            return common::Result<std::vector<std::uint8_t>>::failure(
+                packed.status());
+        }
+
+        packed_rgba = std::move(packed).value();
+        rgba_pixels = packed_rgba;
+        rgba_stride = static_cast<int>(args.image.width * 4);
     }
 
     std::uint8_t *encoded_bytes = nullptr;
     const auto    encoded_size =
-        WebPEncodeLosslessRGBA(packed_rgba.value().data(),
+        WebPEncodeLosslessRGBA(rgba_pixels.data(),
                                static_cast<int>(args.image.width),
                                static_cast<int>(args.image.height),
-                               static_cast<int>(args.image.width * 4),
+                               rgba_stride,
                                &encoded_bytes);
     if (encoded_size == 0 || encoded_bytes == nullptr) {
         return common::Result<std::vector<std::uint8_t>>::failure(

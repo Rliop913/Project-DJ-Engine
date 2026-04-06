@@ -17,6 +17,10 @@ setWebpReqLib(PDJE_UTIL_IMAGE_WEBP)
 
 add_library(PDJE_UTIL_IMAGE_WAVEFORM
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/image/WaveformWebp.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/image/WaveformWebpEncoder.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/image/WaveformWebpPlanBuilder.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/image/WaveformWebpRasterizer.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/image/WaveformWebpProcessor.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/stft/STFT_Parallel.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/stft/BackendLess.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/stft/SerialBackend.cpp

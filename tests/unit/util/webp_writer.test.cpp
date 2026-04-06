@@ -115,6 +115,37 @@ TEST_CASE("encode_webp produces a valid WebP from padded RGBA rows")
     CHECK(decoded.pixels == expected_rgba_pixels);
 }
 
+TEST_CASE("encode_webp preserves RGB fallback packing for padded rows")
+{
+    const std::vector<std::uint8_t> padded_rgb_pixels{
+        255, 0, 0,   0,   255, 0,   9, 9, 9,
+        0,   0, 255, 255, 255, 255, 7, 7, 7
+    };
+    const std::vector<std::uint8_t> expected_rgba_pixels{
+        255, 0, 0, 255, 0, 255, 0, 255,
+        0,   0, 255, 255, 255, 255, 255, 255
+    };
+
+    auto encoded = PDJE_UTIL::function::image::encode_webp(
+        { .image =
+              {
+                  .pixels = padded_rgb_pixels,
+                  .width = 2,
+                  .height = 2,
+                  .stride = 9,
+                  .pixel_format = PDJE_UTIL::function::image::RasterPixelFormat::rgb8,
+              },
+          .compression_level = 3 });
+
+    REQUIRE(encoded.ok());
+    REQUIRE(has_webp_signature(encoded.value()));
+
+    auto decoded = decode_rgba8(encoded.value());
+    CHECK(decoded.width == 2);
+    CHECK(decoded.height == 2);
+    CHECK(decoded.pixels == expected_rgba_pixels);
+}
+
 TEST_CASE("write_webp writes a WebP file to disk")
 {
     const std::vector<std::uint8_t> rgba_pixel{ 12, 34, 56, 255 };

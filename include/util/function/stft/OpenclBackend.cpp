@@ -377,7 +377,7 @@ OPENCL_STFT::Execute(REAL_VEC          &origin_cpu_memory,
         throw std::runtime_error("Failed to Retrieve Result.");
     }
 
-    if (post_process.normalize_min_max) {
+    if (post_process.normalize_min_max && !post_process.to_rgb) {
         const uint32_t chunkSize =
             post_process.mel_scale
                 ? kMelBins
