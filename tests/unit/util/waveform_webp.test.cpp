@@ -1,6 +1,7 @@
 #include <doctest/doctest.h>
 
 #include "util/function/image/WaveformWebp.hpp"
+#include "util/function/image/WaveformWebpSupport.hpp"
 
 #include <webp/decode.h>
 
@@ -102,14 +103,14 @@ map_column_to_stft_frame(const std::size_t x,
                          const std::size_t frame_count,
                          const std::size_t x_pixels_per_image)
 {
-    if (frame_count <= 1 || x_pixels_per_image == 0) {
+    if (frame_count <= 1 || x_pixels_per_image <= 1) {
         return 0;
     }
 
     const long double scaled = static_cast<long double>(x) *
-                               static_cast<long double>(frame_count);
+                               static_cast<long double>(frame_count - 1);
     const auto frame_index = static_cast<std::size_t>(
-        scaled / static_cast<long double>(x_pixels_per_image));
+        scaled / static_cast<long double>(x_pixels_per_image - 1));
     return std::min(frame_index, frame_count - 1);
 }
 
@@ -129,6 +130,16 @@ build_color_pcm(const std::size_t sample_count)
 }
 
 } // namespace
+
+TEST_CASE("waveform support maps rightmost column to final stft frame")
+{
+    using PDJE_UTIL::function::image::detail::support::map_column_to_stft_frame;
+
+    CHECK(map_column_to_stft_frame(0, 3, 2) == 0u);
+    CHECK(map_column_to_stft_frame(1, 3, 2) == 2u);
+    CHECK(map_column_to_stft_frame(7, 11, 8) == 10u);
+    CHECK(map_column_to_stft_frame(0, 11, 1) == 0u);
+}
 
 TEST_CASE("encode_waveform_webps validates required waveform arguments")
 {

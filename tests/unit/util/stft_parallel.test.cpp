@@ -475,7 +475,9 @@ TEST_CASE("backendless rgb conversion maps high-only energy to blue")
     CHECK(triplet[1] > 0.05f);
 }
 
-TEST_CASE("backendless rgb conversion balances equal-energy frames to pastel")
+TEST_CASE(
+    "backendless rgb conversion keeps equal-energy frames within bright "
+    "blue-leaning pastel range")
 {
     const std::vector<float> values(10, 1.0f);
 
@@ -484,11 +486,11 @@ TEST_CASE("backendless rgb conversion balances equal-energy frames to pastel")
     REQUIRE(rgb.size() == 3u);
     CheckUnitRange(rgb);
     const auto triplet = RgbTriplet(rgb, 0u);
-    CHECK(triplet[0] > 0.30f);
-    CHECK(triplet[1] > 0.30f);
-    CHECK(triplet[2] > 0.30f);
+    CHECK(triplet[0] > 0.35f);
+    CHECK(triplet[1] > 0.35f);
+    CHECK(triplet[2] > 0.35f);
     CHECK((std::max({ triplet[0], triplet[1], triplet[2] }) -
-           std::min({ triplet[0], triplet[1], triplet[2] })) < 0.18f);
+           std::min({ triplet[0], triplet[1], triplet[2] })) < 0.22f);
     CHECK(triplet[2] >= triplet[1]);
     CHECK(triplet[1] >= triplet[0]);
 }

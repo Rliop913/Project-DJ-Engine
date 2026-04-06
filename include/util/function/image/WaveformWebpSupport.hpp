@@ -100,14 +100,14 @@ map_column_to_stft_frame(const std::size_t x,
                          const std::size_t frame_count,
                          const std::size_t x_pixels_per_image) noexcept
 {
-    if (frame_count <= 1 || x_pixels_per_image == 0) {
+    if (frame_count <= 1 || x_pixels_per_image <= 1) {
         return 0;
     }
 
     const long double scaled = static_cast<long double>(x) *
-                               static_cast<long double>(frame_count);
+                               static_cast<long double>(frame_count - 1);
     const auto frame_index = static_cast<std::size_t>(
-        scaled / static_cast<long double>(x_pixels_per_image));
+        scaled / static_cast<long double>(x_pixels_per_image - 1));
     return std::min(frame_index, frame_count - 1);
 }
 
