@@ -269,6 +269,34 @@ CheckUnitRange(const std::vector<float> &values)
     }
 }
 
+std::array<float, 3>
+RgbTriplet(const std::vector<float> &values, const std::size_t frameIndex)
+{
+    const std::size_t base = frameIndex * 3u;
+    return { values[base + 0u], values[base + 1u], values[base + 2u] };
+}
+
+void
+CheckDominantChannel(const std::array<float, 3> &rgb,
+                     const std::size_t           dominantIndex)
+{
+    REQUIRE(dominantIndex < rgb.size());
+
+    for (std::size_t idx = 0; idx < rgb.size(); ++idx) {
+        if (idx == dominantIndex) {
+            continue;
+        }
+
+        CHECK(rgb[dominantIndex] > rgb[idx]);
+    }
+}
+
+float
+ComputeLuminance(const std::array<float, 3> &rgb)
+{
+    return (0.2126f * rgb[0]) + (0.7152f * rgb[1]) + (0.0722f * rgb[2]);
+}
+
 void
 CheckOpenclMatchesSerial(const std::vector<float>          &pcm,
                          const int                          windowSizeExp,
@@ -380,14 +408,18 @@ TEST_CASE("backendless minmax normalization treats zero chunk size as no-op")
     CHECK(emptyValues.empty());
 }
 
-TEST_CASE("backendless rgb conversion averages equal mel thirds per frame")
+TEST_CASE("post process rgb mode no longer auto-enables minmax normalization")
 {
-    const std::vector<float> values{ 0.1f, 0.2f, 0.4f, 0.6f, 0.8f, 1.0f };
+    PDJE_PARALLEL::POST_PROCESS postProcess;
+    postProcess.to_rgb = true;
 
-    const auto rgb = PDJE_PARALLEL::TO_RGB(values, 6);
+    postProcess.check_values();
 
-    REQUIRE(rgb.size() == 3u);
-    CheckVectorsClose(rgb, { 0.15f, 0.5f, 0.9f }, 1.0e-6f);
+    CHECK(postProcess.to_rgb);
+    CHECK(postProcess.mel_scale);
+    CHECK(postProcess.to_bin);
+    CHECK(postProcess.toPower);
+    CHECK_FALSE(postProcess.normalize_min_max);
 }
 
 TEST_CASE("backendless rgb conversion emits one triplet per frame")
@@ -396,22 +428,123 @@ TEST_CASE("backendless rgb conversion emits one triplet per frame")
         PDJE_PARALLEL::TO_RGB({ 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f }, 3);
 
     REQUIRE(rgb.size() == 6u);
-    CheckVectorsClose(rgb, { 1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f }, 1.0e-6f);
+    CheckUnitRange(rgb);
+    CheckDominantChannel(RgbTriplet(rgb, 0u), 0u);
+    CheckDominantChannel(RgbTriplet(rgb, 1u), 1u);
 }
 
-TEST_CASE(
-    "backendless rgb conversion handles uneven thirds and non-finite bins")
+TEST_CASE("backendless rgb conversion maps low-only energy to red")
 {
-    const std::vector<float> values{ 0.2f,
-                                     0.4f,
-                                     std::numeric_limits<float>::quiet_NaN(),
-                                     std::numeric_limits<float>::infinity(),
-                                     0.6f };
+    const std::vector<float> values{ 1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
+                                     0.0f, 0.0f, 0.0f, 0.0f, 0.0f };
 
-    const auto rgb = PDJE_PARALLEL::TO_RGB(values, 5);
+    const auto rgb = PDJE_PARALLEL::TO_RGB(values, 10);
 
     REQUIRE(rgb.size() == 3u);
-    CheckVectorsClose(rgb, { 0.2f, 0.4f, 0.6f }, 1.0e-6f);
+    CheckUnitRange(rgb);
+    const auto triplet = RgbTriplet(rgb, 0u);
+    CheckDominantChannel(triplet, 0u);
+    CHECK(triplet[1] > 0.05f);
+    CHECK(triplet[2] > 0.05f);
+}
+
+TEST_CASE("backendless rgb conversion maps mid-only energy to green")
+{
+    const std::vector<float> values{ 0.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+                                     0.0f, 0.0f, 0.0f, 0.0f, 0.0f };
+
+    const auto rgb = PDJE_PARALLEL::TO_RGB(values, 10);
+
+    REQUIRE(rgb.size() == 3u);
+    CheckUnitRange(rgb);
+    CheckDominantChannel(RgbTriplet(rgb, 0u), 1u);
+}
+
+TEST_CASE("backendless rgb conversion maps high-only energy to blue")
+{
+    const std::vector<float> values{ 0.0f, 0.0f, 0.0f, 0.0f, 1.0f,
+                                     1.0f, 1.0f, 1.0f, 1.0f, 1.0f };
+
+    const auto rgb = PDJE_PARALLEL::TO_RGB(values, 10);
+
+    REQUIRE(rgb.size() == 3u);
+    CheckUnitRange(rgb);
+    const auto triplet = RgbTriplet(rgb, 0u);
+    CheckDominantChannel(triplet, 2u);
+    CHECK(triplet[0] > 0.05f);
+    CHECK(triplet[1] > 0.05f);
+}
+
+TEST_CASE("backendless rgb conversion balances equal-energy frames to pastel")
+{
+    const std::vector<float> values(10, 1.0f);
+
+    const auto rgb = PDJE_PARALLEL::TO_RGB(values, 10);
+
+    REQUIRE(rgb.size() == 3u);
+    CheckUnitRange(rgb);
+    const auto triplet = RgbTriplet(rgb, 0u);
+    CHECK(triplet[0] > 0.30f);
+    CHECK(triplet[1] > 0.30f);
+    CHECK(triplet[2] > 0.30f);
+    CHECK((std::max({ triplet[0], triplet[1], triplet[2] }) -
+           std::min({ triplet[0], triplet[1], triplet[2] })) < 0.18f);
+    CHECK(triplet[2] >= triplet[1]);
+    CHECK(triplet[1] >= triplet[0]);
+}
+
+TEST_CASE("backendless rgb conversion keeps blue visible in low-high mixes")
+{
+    const std::vector<float> values{ 1.0f, 0.0f, 0.0f, 0.0f, 1.0f,
+                                     1.0f, 1.0f, 1.0f, 1.0f, 1.0f };
+
+    const auto rgb = PDJE_PARALLEL::TO_RGB(values, 10);
+
+    REQUIRE(rgb.size() == 3u);
+    CheckUnitRange(rgb);
+    const auto triplet = RgbTriplet(rgb, 0u);
+    CHECK(triplet[2] > 0.45f);
+    CHECK(triplet[2] > triplet[1]);
+}
+
+TEST_CASE("backendless rgb conversion handles negative and non-finite mel bins")
+{
+    const std::vector<float> values{ -1.0f,
+                                     -1.0f,
+                                     std::numeric_limits<float>::quiet_NaN(),
+                                     std::numeric_limits<float>::infinity(),
+                                     0.0f,
+                                     0.0f,
+                                     0.0f,
+                                     0.0f,
+                                     0.25f,
+                                     0.5f };
+
+    const auto rgb = PDJE_PARALLEL::TO_RGB(values, 10);
+
+    REQUIRE(rgb.size() == 3u);
+    CheckUnitRange(rgb);
+    CheckDominantChannel(RgbTriplet(rgb, 0u), 2u);
+}
+
+TEST_CASE("backendless rgb conversion flattens brightness for same-spectrum frames")
+{
+    const std::vector<float> values{
+        0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f,
+        1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
+    };
+
+    const auto rgb = PDJE_PARALLEL::TO_RGB(values, 10);
+
+    REQUIRE(rgb.size() == 6u);
+    CheckUnitRange(rgb);
+
+    const float lowLuminance  = ComputeLuminance(RgbTriplet(rgb, 0u));
+    const float highLuminance = ComputeLuminance(RgbTriplet(rgb, 1u));
+
+    CHECK(lowLuminance > 0.0f);
+    CHECK(highLuminance >= lowLuminance);
+    CHECK((highLuminance / lowLuminance) <= 2.5f);
 }
 
 TEST_CASE("backendless rgb conversion rejects invalid mel layouts")
@@ -647,10 +780,9 @@ TEST_CASE("stft serial rgb output reduces mel frames into triplets")
     rgbPostProcess.to_rgb = true;
 
     PDJE_PARALLEL::POST_PROCESS melPostProcess;
-    melPostProcess.to_bin            = true;
-    melPostProcess.toPower           = true;
-    melPostProcess.mel_scale         = true;
-    melPostProcess.normalize_min_max = true;
+    melPostProcess.to_bin    = true;
+    melPostProcess.toPower   = true;
+    melPostProcess.mel_scale = true;
 
     PDJE_PARALLEL::STFT rgbStft;
     rgbStft.backend_now              = PDJE_PARALLEL::BACKEND_T::SERIAL;
@@ -676,6 +808,38 @@ TEST_CASE("stft serial rgb output reduces mel frames into triplets")
     CheckVectorsClose(firstRgb, expectedRgb, 1.0e-6f);
     CheckVectorsClose(secondRgb, firstRgb, 1.0e-6f);
     CheckUnitRange(firstRgb);
+}
+
+TEST_CASE("stft serial rgb output ignores normalize_min_max flag")
+{
+    auto pcm = BuildSignal(128);
+
+    PDJE_PARALLEL::POST_PROCESS directRgbPostProcess;
+    directRgbPostProcess.to_rgb = true;
+
+    PDJE_PARALLEL::POST_PROCESS normalizedRgbPostProcess;
+    normalizedRgbPostProcess.to_rgb            = true;
+    normalizedRgbPostProcess.normalize_min_max = true;
+
+    PDJE_PARALLEL::STFT stft;
+    stft.backend_now = PDJE_PARALLEL::BACKEND_T::SERIAL;
+
+    const auto [directRgb, directImag] = stft.calculate(
+        pcm,
+        PDJE_PARALLEL::WINDOW_LIST::HANNING,
+        6,
+        0.5f,
+        directRgbPostProcess);
+    const auto [normalizedRgb, normalizedImag] = stft.calculate(
+        pcm,
+        PDJE_PARALLEL::WINDOW_LIST::HANNING,
+        6,
+        0.5f,
+        normalizedRgbPostProcess);
+
+    REQUIRE(directImag.empty());
+    REQUIRE(normalizedImag.empty());
+    CheckVectorsClose(directRgb, normalizedRgb, 1.0e-6f);
 }
 
 TEST_CASE(

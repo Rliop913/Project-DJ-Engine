@@ -247,7 +247,7 @@ SERIAL_STFT::Execute(std::vector<float> &PCMdata,
         active_imag.reset();
     }
 
-    if (post_process.normalize_min_max) {
+    if (post_process.normalize_min_max && !post_process.to_rgb) {
         const uint32_t chunkSize =
             post_process.mel_scale
                 ? kMelBins
@@ -257,7 +257,7 @@ SERIAL_STFT::Execute(std::vector<float> &PCMdata,
     }
 
     if (post_process.to_rgb) {
-        rgb = TO_RGB(mel, kMelBins);
+        rgb = TO_RGB(active_real.get(), kMelBins);
         active_real = rgb;
         active_imag.reset();
     }

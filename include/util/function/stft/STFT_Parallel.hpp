@@ -52,7 +52,6 @@ struct POST_PROCESS {
     check_values()
     {
         if (to_rgb) {
-            normalize_min_max = true;
             mel_scale         = true;
         }
         if (mel_scale) {
