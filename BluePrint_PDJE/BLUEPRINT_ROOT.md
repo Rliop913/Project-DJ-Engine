@@ -1,62 +1,19 @@
-[[PDJE]] - The Rhythm Game Engine + DJ 
-	[[Engines]]
-	[[Interface]]
-		[[DB]]
-			[[Music]]
-			 [[Track]]
-		[[Audio_Render]]
-			[[FullPreRender]]
-			[[Hybrid Render]]
-			[[FullManualRender]]
-			[[EffectRender]]
-		[[Editor]]
-		[[Note_Render]]
-		[[Input]]
-		
+# Blueprint Archive
 
+`BluePrint_PDJE/` is an archived design-note vault that predates the current
+root documentation baseline. Treat the files here as historical context, not as
+live architecture or platform-support truth.
 
-Documentation
-```mermaid
-flowchart LR
+Use these files instead when you need current information:
 
+- `../README.md`
+- `../AGENTS.md`
+- `../AGENT_DOCS/INDEX.md`
+- `../AGENT_DOCS/ARCHITECTURE.md`
+- `../AGENT_DOCS/NOW.md`
 
-index --> PDJ_modules
-index --> Basic_usage
-index --> PDJE_data_format
-index --> greetings
+Archive status:
 
-PDJ_modules --> core
-PDJ_modules --> input
-PDJ_modules --> note
-PDJ_modules --> util
-
-core --> audio_renderer
-core --> db
-core --> editor
-
-input --> general
-input --> midi
-
-
-
-```
-
-```mermaid
-flowchart LR
-
-PDJE --> PDJ_Modules
-
-PDJ_Modules --> PDJ_Core_Engine
-PDJ_Modules --> PDJ_Input_Engine
-PDJ_Modules --> PDJ_Note_Engine
-PDJ_Modules --> PDJ_Utility_Engine
-
-
-PDJ_Core_Engine --> PDJE_Editor
-PDJ_Core_Engine --> PDJE_Audio_Renderer
-PDJ_Core_Engine --> PDJE_DB
-
-PDJ_Input_Engine --> general_input
-PDJ_Input_Engine --> midi_input
-
-```
+- kept for historical design context and old Obsidian-style notes
+- may contain outdated platform assumptions, naming, and roadmap material
+- should not be used to override source code, CMake, or root docs

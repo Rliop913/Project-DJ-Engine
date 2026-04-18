@@ -1,55 +1,16 @@
-Treat input as a minimum delay.
+# Archive Note: Input Sketch
 
-Windows: Raw Input
-Linux: [[EVDEV]]
-MAC OS: IO KIT
+This file is an archived sketch from the old blueprint set.
 
-There's an implementation of each one, and it supports the cross platform.
+Do not use it as the current source of truth for platform support. In the
+current codebase:
 
-all applications are satisfied with update frames less than 1 ms.
+- Linux input is active
+- Windows input is active
+- macOS input is not enabled in the active CMake path
 
-Also, they all use the interactive method.
+For current input architecture and verification commands, use:
 
-
-```mermaid
-flowchart TD
-PDJE_Input --> windows --> Raw_Input --> Regular_I
-PDJE_Input --> RTMidi --> midi
-PDJE_Input --> linux --> linevdev --> Regular_I
-```
-
-```mermaid
-flowchart TD
-input --> push --> _val_
-input --> pull --> _val_
-input --> move --> _val_
-```
-
-```mermaid
-flowchart TD
-interface --> search
-interface --> set
-interface --> get
-interface --> pair_job
-
-search --> devices
-search --> memorized
-
-
-devices --> role
-devices --> name
-devices --> type
-
-
-set --> device
-set --> type
-
-get --> device
-get --> type
-get --> status
-
-pair_job --> pair_input_to_function
-pair_job --> unpair_function
-
-```
-
+- `../AGENT_DOCS/INDEX.md`
+- `../AGENT_DOCS/ARCHITECTURE.md`
+- `../AGENT_DOCS/VERIFY.md`
