@@ -1,5 +1,7 @@
 #pragma once
-namespace PDJE_PARALLEL {
+
+namespace PDJE_PARALLEL::detail {
+
 struct StftArgs {
     unsigned int FullSize;
     int          windowSize;
@@ -8,4 +10,5 @@ struct StftArgs {
     unsigned int OHalfSize;
     unsigned int OMove;
 };
-} // namespace PDJE_PARALLEL
+
+} // namespace PDJE_PARALLEL::detail

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "util/common/Result.hpp"
-#include "util/function/image/WaveformWebpInternal.hpp"
+#include "util/function/image/detail/WaveformWebpInternal.hpp"
 
 namespace PDJE_UTIL::function::image::detail {
 

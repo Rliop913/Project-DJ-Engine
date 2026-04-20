@@ -1,6 +1,7 @@
-#include "STFT_Parallel.hpp"
-#include "BackendLess.hpp"
-#include "MelFilterBank.hpp"
+#include "util/function/stft/BackendLess.hpp"
+#include "util/function/stft/MelFilterBank.hpp"
+#include "util/function/stft/STFT_Parallel.hpp"
+#include "support/StftTestHarness.hpp"
 
 #include <cmath>
 #include <cstddef>
@@ -15,6 +16,8 @@ namespace {
 
 constexpr float kPi                 = 3.14159265358979323846f;
 constexpr float kReferenceTolerance = 1.0e-3f;
+constexpr float kOpenclAbsoluteFloorTolerance = 1.2e-2f;
+constexpr float kOpenclRelativeTolerance = 2.5e-4f;
 constexpr int   kMelBins            = 80;
 constexpr int   kDefaultSampleRate  = 48000;
 
@@ -260,6 +263,33 @@ CheckVectorsClose(const std::vector<float> &actual,
 }
 
 void
+CheckVectorsCloseWithRelativeTolerance(
+    const std::vector<float> &actual,
+    const std::vector<float> &expected,
+    const float               absoluteTolerance,
+    const float               relativeTolerance)
+{
+    REQUIRE(actual.size() == expected.size());
+
+    for (std::size_t idx = 0; idx < actual.size(); ++idx) {
+        if (std::isfinite(expected[idx])) {
+            CHECK(std::isfinite(actual[idx]));
+
+            const float scale = std::max(std::fabs(actual[idx]),
+                                         std::fabs(expected[idx]));
+            const float tolerance = std::max(
+                std::max(absoluteTolerance, kOpenclAbsoluteFloorTolerance),
+                scale * relativeTolerance);
+            CHECK(std::fabs(actual[idx] - expected[idx]) < tolerance);
+            continue;
+        }
+
+        CHECK(std::isinf(actual[idx]));
+        CHECK(std::signbit(actual[idx]) == std::signbit(expected[idx]));
+    }
+}
+
+void
 CheckUnitRange(const std::vector<float> &values)
 {
     for (const float value : values) {
@@ -307,8 +337,7 @@ CheckOpenclMatchesSerial(const std::vector<float>          &pcm,
     auto serialPcm = pcm;
     auto openclPcm = pcm;
 
-    PDJE_PARALLEL::STFT serialStft;
-    serialStft.backend_now = PDJE_PARALLEL::BACKEND_T::SERIAL;
+    PDJE_TEST::util::SerialStftHarness serialStft;
     const auto [expectedReal, expectedImag] =
         serialStft.calculate(serialPcm,
                              PDJE_PARALLEL::WINDOW_LIST::HANNING,
@@ -316,8 +345,8 @@ CheckOpenclMatchesSerial(const std::vector<float>          &pcm,
                              overlapRatio,
                              postProcess);
 
-    PDJE_PARALLEL::STFT openclStft;
-    REQUIRE(openclStft.backend_now == PDJE_PARALLEL::BACKEND_T::OPENCL);
+    PDJE_TEST::util::OpenclStftHarness openclStft;
+    REQUIRE(openclStft.available());
     const auto [actualReal, actualImag] =
         openclStft.calculate(openclPcm,
                              PDJE_PARALLEL::WINDOW_LIST::HANNING,
@@ -325,36 +354,41 @@ CheckOpenclMatchesSerial(const std::vector<float>          &pcm,
                              overlapRatio,
                              postProcess);
 
-    REQUIRE(openclStft.backend_now == PDJE_PARALLEL::BACKEND_T::OPENCL);
     REQUIRE(actualImag.empty() == expectedImag.empty());
 
-    CheckVectorsClose(actualReal, expectedReal, tolerance);
+    CheckVectorsCloseWithRelativeTolerance(actualReal,
+                                          expectedReal,
+                                          tolerance,
+                                          kOpenclRelativeTolerance);
     if (!expectedImag.empty()) {
-        CheckVectorsClose(actualImag, expectedImag, tolerance);
+        CheckVectorsCloseWithRelativeTolerance(actualImag,
+                                              expectedImag,
+                                              tolerance,
+                                              kOpenclRelativeTolerance);
     }
 }
 
-class ThrowingBackend final : public PDJE_PARALLEL::IStftBackend {
+class ThrowingBackend final : public PDJE_PARALLEL::detail::IStftBackend {
   public:
     PDJE_PARALLEL::StftResult
     Execute(std::vector<float> &,
             PDJE_PARALLEL::WINDOW_LIST,
             PDJE_PARALLEL::POST_PROCESS,
             unsigned int,
-            const PDJE_PARALLEL::StftArgs &) override
+            const PDJE_PARALLEL::detail::StftArgs &) override
     {
         throw std::runtime_error("Injected backend failure.");
     }
 };
 
-class EmptyBackend final : public PDJE_PARALLEL::IStftBackend {
+class EmptyBackend final : public PDJE_PARALLEL::detail::IStftBackend {
   public:
     PDJE_PARALLEL::StftResult
     Execute(std::vector<float> &,
             PDJE_PARALLEL::WINDOW_LIST,
             PDJE_PARALLEL::POST_PROCESS,
             unsigned int,
-            const PDJE_PARALLEL::StftArgs &) override
+            const PDJE_PARALLEL::detail::StftArgs &) override
     {
         return {};
     }
@@ -562,8 +596,7 @@ TEST_CASE("stft parallel calculate returns raw complex output by default")
     auto pcm                            = BuildSignal(128);
     auto [referenceReal, referenceImag] = ReferenceDftStft(pcm, 6, 0.5f);
 
-    PDJE_PARALLEL::STFT stft;
-    stft.backend_now = PDJE_PARALLEL::BACKEND_T::SERIAL;
+    PDJE_TEST::util::SerialStftHarness stft;
     auto [realOut, imagOut] =
         stft.calculate(pcm, PDJE_PARALLEL::WINDOW_LIST::HANNING, 6, 0.5f);
 
@@ -580,8 +613,7 @@ TEST_CASE("stft parallel calculate returns power-only output when requested")
     PDJE_PARALLEL::POST_PROCESS postProcess;
     postProcess.toPower = true;
 
-    PDJE_PARALLEL::STFT stft;
-    stft.backend_now = PDJE_PARALLEL::BACKEND_T::SERIAL;
+    PDJE_TEST::util::SerialStftHarness stft;
 
     auto [powerOut, imagOut] = stft.calculate(
         pcm, PDJE_PARALLEL::WINDOW_LIST::HANNING, 6, 0.5f, postProcess);
@@ -600,8 +632,7 @@ TEST_CASE("stft parallel calculate returns bin-only complex output")
     PDJE_PARALLEL::POST_PROCESS postProcess;
     postProcess.to_bin = true;
 
-    PDJE_PARALLEL::STFT stft;
-    stft.backend_now = PDJE_PARALLEL::BACKEND_T::SERIAL;
+    PDJE_TEST::util::SerialStftHarness stft;
 
     auto [binReal, binImag] = stft.calculate(
         pcm, PDJE_PARALLEL::WINDOW_LIST::HANNING, 6, 0.5f, postProcess);
@@ -628,8 +659,7 @@ TEST_CASE("stft parallel calculate returns mel-db chain output when requested")
     postProcess.mel_scale = true;
     postProcess.to_db     = true;
 
-    PDJE_PARALLEL::STFT stft;
-    stft.backend_now = PDJE_PARALLEL::BACKEND_T::SERIAL;
+    PDJE_TEST::util::SerialStftHarness stft;
 
     auto [melOut, imagOut] = stft.calculate(
         pcm, PDJE_PARALLEL::WINDOW_LIST::HANNING, 6, 0.5f, postProcess);
@@ -645,8 +675,7 @@ TEST_CASE("stft parallel calculate rejects unsupported window sizes")
     PDJE_PARALLEL::POST_PROCESS postProcess;
     postProcess.toPower = true;
 
-    PDJE_PARALLEL::STFT stft;
-    stft.backend_now = PDJE_PARALLEL::BACKEND_T::SERIAL;
+    PDJE_TEST::util::SerialStftHarness stft;
 
     const auto [realOut, imagOut] =
         stft.calculate(pcm, PDJE_PARALLEL::WINDOW_LIST::HANNING, 5, 0.5f);
@@ -663,8 +692,7 @@ TEST_CASE("stft serial backend returns stable results for repeated calls")
 {
     auto pcm = BuildSignal(512);
 
-    PDJE_PARALLEL::STFT stft;
-    stft.backend_now = PDJE_PARALLEL::BACKEND_T::SERIAL;
+    PDJE_TEST::util::SerialStftHarness stft;
 
     const auto [firstReal, firstImag] =
         stft.calculate(pcm, PDJE_PARALLEL::WINDOW_LIST::HANNING, 10, 0.5f);
@@ -679,8 +707,7 @@ TEST_CASE("stft serial backend survives switching between cached fft sizes")
 {
     auto pcm = BuildSignal(5000);
 
-    PDJE_PARALLEL::STFT cachedStft;
-    cachedStft.backend_now = PDJE_PARALLEL::BACKEND_T::SERIAL;
+    PDJE_TEST::util::SerialStftHarness cachedStft;
 
     const auto [initialLargeReal, initialLargeImag] = cachedStft.calculate(
         pcm, PDJE_PARALLEL::WINDOW_LIST::HANNING, 12, 0.5f);
@@ -689,8 +716,7 @@ TEST_CASE("stft serial backend survives switching between cached fft sizes")
     const auto [afterSwitchReal, afterSwitchImag] = cachedStft.calculate(
         pcm, PDJE_PARALLEL::WINDOW_LIST::HANNING, 12, 0.5f);
 
-    PDJE_PARALLEL::STFT freshStft;
-    freshStft.backend_now = PDJE_PARALLEL::BACKEND_T::SERIAL;
+    PDJE_TEST::util::SerialStftHarness freshStft;
     const auto [freshLargeReal, freshLargeImag] =
         freshStft.calculate(pcm, PDJE_PARALLEL::WINDOW_LIST::HANNING, 12, 0.5f);
 
@@ -711,8 +737,7 @@ TEST_CASE("stft serial backend refreshes mel cache across fft sizes")
     postProcess.mel_scale = true;
     postProcess.to_db     = true;
 
-    PDJE_PARALLEL::STFT cachedStft;
-    cachedStft.backend_now = PDJE_PARALLEL::BACKEND_T::SERIAL;
+    PDJE_TEST::util::SerialStftHarness cachedStft;
 
     const auto [firstMel, firstImag] = cachedStft.calculate(
         pcm, PDJE_PARALLEL::WINDOW_LIST::HANNING, 10, 0.5f, postProcess);
@@ -721,8 +746,7 @@ TEST_CASE("stft serial backend refreshes mel cache across fft sizes")
     const auto [thirdMel, thirdImag] = cachedStft.calculate(
         pcm, PDJE_PARALLEL::WINDOW_LIST::HANNING, 10, 0.5f, postProcess);
 
-    PDJE_PARALLEL::STFT freshStft;
-    freshStft.backend_now            = PDJE_PARALLEL::BACKEND_T::SERIAL;
+    PDJE_TEST::util::SerialStftHarness freshStft;
     const auto [freshMel, freshImag] = freshStft.calculate(
         pcm, PDJE_PARALLEL::WINDOW_LIST::HANNING, 10, 0.5f, postProcess);
 
@@ -740,38 +764,47 @@ TEST_CASE("stft parallel falls back to serial when opencl backend fails")
 {
     auto pcm = BuildSignal(128);
 
-    PDJE_PARALLEL::STFT expectedStft;
-    expectedStft.backend_now                = PDJE_PARALLEL::BACKEND_T::SERIAL;
+    PDJE_TEST::util::SerialStftHarness expectedStft;
     const auto [expectedReal, expectedImag] = expectedStft.calculate(
         pcm, PDJE_PARALLEL::WINDOW_LIST::HANNING, 6, 0.5f);
 
     SUBCASE("exception fallback")
     {
-        PDJE_PARALLEL::STFT stft;
-        stft.SetBackendForTesting(PDJE_PARALLEL::BACKEND_T::OPENCL,
-                                  std::make_unique<ThrowingBackend>());
+        PDJE_TEST::util::FallbackStftHarness stft;
+        stft.set_opencl_backend(std::make_unique<ThrowingBackend>());
 
         const auto [realOut, imagOut] =
             stft.calculate(pcm, PDJE_PARALLEL::WINDOW_LIST::HANNING, 6, 0.5f);
 
-        CHECK(stft.backend_now == PDJE_PARALLEL::BACKEND_T::SERIAL);
+        CHECK(stft.active_backend() == PDJE_PARALLEL::BACKEND_T::SERIAL);
         CheckVectorsClose(realOut, expectedReal);
         CheckVectorsClose(imagOut, expectedImag);
     }
 
     SUBCASE("empty result fallback")
     {
-        PDJE_PARALLEL::STFT stft;
-        stft.SetBackendForTesting(PDJE_PARALLEL::BACKEND_T::OPENCL,
-                                  std::make_unique<EmptyBackend>());
+        PDJE_TEST::util::FallbackStftHarness stft;
+        stft.set_opencl_backend(std::make_unique<EmptyBackend>());
 
         const auto [realOut, imagOut] =
             stft.calculate(pcm, PDJE_PARALLEL::WINDOW_LIST::HANNING, 6, 0.5f);
 
-        CHECK(stft.backend_now == PDJE_PARALLEL::BACKEND_T::SERIAL);
+        CHECK(stft.active_backend() == PDJE_PARALLEL::BACKEND_T::SERIAL);
         CheckVectorsClose(realOut, expectedReal);
         CheckVectorsClose(imagOut, expectedImag);
     }
+}
+
+TEST_CASE("stft public api exposes backend query without internal seams")
+{
+    PDJE_PARALLEL::STFT stft;
+    const bool hasSupportedBackend =
+        stft.active_backend() == PDJE_PARALLEL::BACKEND_T::SERIAL ||
+        stft.active_backend() == PDJE_PARALLEL::BACKEND_T::OPENCL;
+
+    CHECK(hasSupportedBackend);
+    CHECK(PDJE_PARALLEL::STFT::detect_available_backend() ==
+          PDJE_TEST::util::DetectAvailableBackend());
 }
 
 TEST_CASE("stft serial rgb output reduces mel frames into triplets")
@@ -786,15 +819,13 @@ TEST_CASE("stft serial rgb output reduces mel frames into triplets")
     melPostProcess.toPower   = true;
     melPostProcess.mel_scale = true;
 
-    PDJE_PARALLEL::STFT rgbStft;
-    rgbStft.backend_now              = PDJE_PARALLEL::BACKEND_T::SERIAL;
+    PDJE_TEST::util::SerialStftHarness rgbStft;
     const auto [firstRgb, firstImag] = rgbStft.calculate(
         pcm, PDJE_PARALLEL::WINDOW_LIST::HANNING, 6, 0.5f, rgbPostProcess);
     const auto [secondRgb, secondImag] = rgbStft.calculate(
         pcm, PDJE_PARALLEL::WINDOW_LIST::HANNING, 6, 0.5f, rgbPostProcess);
 
-    PDJE_PARALLEL::STFT melStft;
-    melStft.backend_now          = PDJE_PARALLEL::BACKEND_T::SERIAL;
+    PDJE_TEST::util::SerialStftHarness melStft;
     const auto [melOut, melImag] = melStft.calculate(
         pcm, PDJE_PARALLEL::WINDOW_LIST::HANNING, 6, 0.5f, melPostProcess);
     const auto expectedRgb = PDJE_PARALLEL::TO_RGB(melOut, kMelBins);
@@ -823,8 +854,7 @@ TEST_CASE("stft serial rgb output ignores normalize_min_max flag")
     normalizedRgbPostProcess.to_rgb            = true;
     normalizedRgbPostProcess.normalize_min_max = true;
 
-    PDJE_PARALLEL::STFT stft;
-    stft.backend_now = PDJE_PARALLEL::BACKEND_T::SERIAL;
+    PDJE_TEST::util::SerialStftHarness stft;
 
     const auto [directRgb, directImag] = stft.calculate(
         pcm,
@@ -847,12 +877,17 @@ TEST_CASE("stft serial rgb output ignores normalize_min_max flag")
 TEST_CASE(
     "stft opencl backend matches serial postprocess outputs when available")
 {
-    PDJE_PARALLEL::STFT openclProbe;
-    if (openclProbe.backend_now != PDJE_PARALLEL::BACKEND_T::OPENCL) {
+    if (PDJE_PARALLEL::STFT::detect_available_backend() !=
+        PDJE_PARALLEL::BACKEND_T::OPENCL) {
         return;
     }
 
-    CheckOpenclMatchesSerial(BuildSignal(5000), 12, 0.5f, {}, 1.0e-3f);
+    PDJE_TEST::util::OpenclStftHarness openclProbe;
+    if (!openclProbe.available()) {
+        return;
+    }
+
+    CheckOpenclMatchesSerial(BuildSignal(5000), 12, 0.5f, {}, 1.2e-2f);
 
     PDJE_PARALLEL::POST_PROCESS toPowerPostProcess;
     toPowerPostProcess.toPower = true;

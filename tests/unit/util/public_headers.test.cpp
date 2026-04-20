@@ -1,6 +1,11 @@
 #include <doctest/doctest.h>
 
 #include "util/PDJE_Util.hpp"
+#include "util/function/image/WaveformWebp.hpp"
+#include "util/function/image/WebpWriter.hpp"
+#include "util/function/stft/BackendLess.hpp"
+#include "util/function/stft/MelFilterBank.hpp"
+#include "util/function/stft/STFT_Parallel.hpp"
 
 #include <span>
 #include <string>
@@ -212,6 +217,8 @@ static_assert(PDJE_UTIL::db::relational::RelationalBackendConcept<DummyRelationa
 static_assert(PDJE_UTIL::db::nearest::NearestNeighborBackendConcept<DummyNearestBackend>);
 static_assert(!std::is_member_function_pointer_v<decltype(&PDJE_UTIL::function::clamp)>);
 static_assert(!std::is_member_function_pointer_v<decltype(&PDJE_UTIL::function::slugify)>);
+static_assert(std::is_same_v<decltype(PDJE_PARALLEL::STFT::detect_available_backend()),
+                             PDJE_PARALLEL::BACKEND_T>);
 
 } // namespace
 
@@ -253,4 +260,20 @@ TEST_CASE("util database wrappers can be instantiated with compatible backends")
     auto nearest_opened = DummyNearestIndex::open({});
     REQUIRE(nearest_opened.ok());
     CHECK(nearest_opened.value().is_open());
+}
+
+TEST_CASE("util stable leaf headers remain self-contained")
+{
+    PDJE_PARALLEL::STFT stft;
+    const bool hasSupportedBackend =
+        stft.active_backend() == PDJE_PARALLEL::BACKEND_T::SERIAL ||
+        stft.active_backend() == PDJE_PARALLEL::BACKEND_T::OPENCL;
+
+    CHECK(hasSupportedBackend);
+
+    PDJE_UTIL::function::image::EncodeWaveformWebpArgs waveformArgs;
+    CHECK(waveformArgs.channel_count == 0u);
+
+    PDJE_UTIL::function::image::EncodeWebpArgs webpArgs;
+    CHECK(webpArgs.compression_level == -1);
 }

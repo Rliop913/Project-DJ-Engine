@@ -1,15 +1,15 @@
 #pragma once
 
-#include "STFT_Parallel.hpp"
+#include "util/function/stft/detail/StftBackend.hpp"
 
 #include <cstdint>
 #include <vector>
 
-namespace PDJE_PARALLEL {
+namespace PDJE_PARALLEL::detail {
 
 class SERIAL_STFT final : public IStftBackend {
   private:
-    static constexpr uint32_t kMelBins          = 80;
+    static constexpr uint32_t kMelBins           = 80;
     static constexpr int      kDefaultSampleRate = 48000;
 
     uint32_t prev_overlap_fullsize           = 0;
@@ -53,4 +53,4 @@ class SERIAL_STFT final : public IStftBackend {
     ~SERIAL_STFT() override;
 };
 
-} // namespace PDJE_PARALLEL
+} // namespace PDJE_PARALLEL::detail

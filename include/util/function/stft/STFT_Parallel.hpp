@@ -1,18 +1,14 @@
 #pragma once
 
-#include "PDJE_Parallel_Runtime_Loader.hpp"
-#include "Parallel_Args.hpp"
-#include "STFT_args.hpp"
-
 #include <memory>
 #include <utility>
 #include <vector>
 
 namespace PDJE_PARALLEL {
 
-class IStftBackend;
-class OPENCL_STFT;
-class SERIAL_STFT;
+namespace detail {
+class STFTImpl;
+}
 
 inline int
 toQuot(const unsigned int fullSize,
@@ -27,6 +23,8 @@ toQuot(const unsigned int fullSize,
     const float stepSize = static_cast<float>(windowSize) * (1.0f - overlapRatio);
     return static_cast<int>(static_cast<float>(fullSize) / stepSize) + 1;
 }
+
+enum class BACKEND_T { OPENCL, METAL, SERIAL };
 
 enum WINDOW_LIST {
     BLACKMAN,
@@ -52,11 +50,11 @@ struct POST_PROCESS {
     check_values()
     {
         if (to_rgb) {
-            mel_scale         = true;
+            mel_scale = true;
         }
         if (mel_scale) {
-            to_bin   = true;
-            toPower  = true;
+            to_bin  = true;
+            toPower = true;
         }
     }
 
@@ -75,37 +73,23 @@ struct POST_PROCESS {
 
 using StftResult = std::pair<std::vector<float>, std::vector<float>>;
 
-class IStftBackend {
-  public:
-    virtual ~IStftBackend() = default;
-
-    virtual StftResult
-    Execute(std::vector<float> &PCMdata,
-            WINDOW_LIST         target_window,
-            POST_PROCESS        post_process,
-            unsigned int        windowSizeEXP,
-            const StftArgs     &gargs) = 0;
-};
-
 class STFT {
-  private:
-    StftArgs
-    GenArgs(const std::vector<float> &inputVec,
-            int                       windowSizeEXP,
-            float                     overlapRatio);
-
-    std::unique_ptr<IStftBackend> serial_backend;
-    std::unique_ptr<IStftBackend> opencl_backend;
-
   public:
-    Backend   backendinfo;
-    BACKEND_T backend_now = BACKEND_T::SERIAL;
-
     STFT();
+    ~STFT();
 
-    void
-    SetBackendForTesting(BACKEND_T backend_type,
-                         std::unique_ptr<IStftBackend> backend);
+    STFT(STFT &&) noexcept;
+    STFT &
+    operator=(STFT &&) noexcept;
+
+    STFT(const STFT &)            = delete;
+    STFT &operator=(const STFT &) = delete;
+
+    BACKEND_T
+    active_backend() const noexcept;
+
+    static BACKEND_T
+    detect_available_backend() noexcept;
 
     StftResult
     calculate(std::vector<float> &PCMdata,
@@ -114,7 +98,8 @@ class STFT {
               float               overlapRatio  = 0.5f,
               POST_PROCESS        post_process  = POST_PROCESS());
 
-    ~STFT();
+  private:
+    std::unique_ptr<detail::STFTImpl> impl_;
 };
 
 } // namespace PDJE_PARALLEL

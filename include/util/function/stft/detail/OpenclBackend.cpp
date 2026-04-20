@@ -1,10 +1,8 @@
-#include "OpenclBackend.hpp"
+#include "util/function/stft/detail/OpenclBackend.hpp"
 
-#include "BackendLess.hpp"
-#include "CL/opencl.hpp"
-#include "MelFilterBank.hpp"
-#include "OpenclArgChains.hpp"
-#include "STFT_Parallel.hpp"
+#include "util/function/stft/BackendLess.hpp"
+#include "util/function/stft/MelFilterBank.hpp"
+#include "util/function/stft/detail/OpenclArgChains.hpp"
 
 #include <CL/cl.h>
 #include <algorithm>
@@ -13,7 +11,7 @@
 #include <optional>
 #include <stdexcept>
 
-namespace PDJE_PARALLEL {
+namespace PDJE_PARALLEL::detail {
 
 namespace {
 
@@ -32,6 +30,42 @@ RoundUpToLocalSize(const unsigned int size, const unsigned int localSize)
 }
 
 } // namespace
+
+OPENCL_STFT::OPENCL_STFT()
+{
+    std::vector<cl::Platform> platforms;
+
+    int device_power_score = 0;
+    cl::Platform::get(&platforms);
+    for (auto &i : platforms) {
+        std::vector<cl::Device> calc_devs;
+        i.getDevices(CL_DEVICE_TYPE_ALL, &calc_devs);
+        for (auto target_dev : calc_devs) {
+            int local_power_score = 0;
+            target_dev.getInfo(CL_DEVICE_MAX_COMPUTE_UNITS, &local_power_score);
+            if (local_power_score > device_power_score) {
+                gpu                = std::move(target_dev);
+                device_power_score = local_power_score;
+            }
+        }
+    }
+
+    if (device_power_score == 0 || !gpu.has_value()) {
+        throw std::runtime_error("failed to load opencl device.");
+    }
+
+    gpu_ctxt = cl::Context(gpu.value());
+
+    auto fs   = cmrc::pdje_okl::get_filesystem();
+    auto file = fs.open("STFT_MAIN.cl");
+
+    std::string cl_codes(file.begin(), file.end());
+    gpu_codes.emplace(gpu_ctxt.value(), cl_codes);
+    if (gpu_codes->build(gpu.value()) != CL_SUCCESS) {
+        throw std::runtime_error("failed to build cl kernel codes.");
+    }
+    CQ.emplace(gpu_ctxt.value(), gpu.value());
+}
 
 void
 OPENCL_STFT::EnsureMelFilterBank(const int windowSize)
@@ -98,8 +132,8 @@ OPENCL_STFT::Execute(REAL_VEC          &origin_cpu_memory,
                            sizeof(float) * zeroImag.size(),
                            zeroImag.data());
 
-    auto buildKernel = [this](std::optional<Kernel> &kernel,
-                              const char            *kernelName) {
+    auto buildKernel = [this](std::optional<cl::Kernel> &kernel,
+                              const char                *kernelName) {
         if (!kernel.has_value()) {
             kernel.emplace(gpu_codes.value(), kernelName);
         }
@@ -124,8 +158,8 @@ OPENCL_STFT::Execute(REAL_VEC          &origin_cpu_memory,
                  args.qtConst * 64,
                  64);
 
-    auto enqueueWindow = [&](std::optional<Kernel> &kernel,
-                             const char            *kernelName) {
+    auto enqueueWindow = [&](std::optional<cl::Kernel> &kernel,
+                             const char                *kernelName) {
         buildKernel(kernel, kernelName);
         setArgChain3(kernel,
                      memories.real.value(),
@@ -262,8 +296,8 @@ OPENCL_STFT::Execute(REAL_VEC          &origin_cpu_memory,
         break;
     }
 
-    Buffer *activeReal = &memories.real.value();
-    Buffer *activeImag = &memories.imag.value();
+    cl::Buffer *activeReal = &memories.real.value();
+    cl::Buffer *activeImag = &memories.imag.value();
     if (needSubBuffer && (win_expsz % 2) != 0) {
         activeReal = &memories.subreal.value();
         activeImag = &memories.subimag.value();
@@ -480,4 +514,4 @@ OPENCL_STFT::SetMemory(const uint32_t      origin_cpu_memory_sz,
 
 OPENCL_STFT::~OPENCL_STFT() = default;
 
-} // namespace PDJE_PARALLEL
+} // namespace PDJE_PARALLEL::detail

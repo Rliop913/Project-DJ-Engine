@@ -1,6 +1,6 @@
-#include "util/function/image/WaveformWebpProcessor.hpp"
+#include "util/function/image/detail/WaveformWebpProcessor.hpp"
 
-#include "util/function/image/WaveformWebpSupport.hpp"
+#include "util/function/image/detail/WaveformWebpSupport.hpp"
 
 #include <array>
 #include <cstddef>

@@ -1,8 +1,8 @@
 #define CL_HPP_TARGET_OPENCL_VERSION 300
 #define CL_TARGET_OPENCL_VERSION 300
 
-#include "util/common/BackendLoader/OpenCL_Loader.hpp"
-#include "util/common/BackendLoader/PDJE_Parallel_Runtime_Loader.hpp"
+#include "util/function/stft/detail/OpenCL_Loader.hpp"
+#include "util/function/stft/detail/PDJE_Parallel_Runtime_Loader.hpp"
 
 #include <CL/opencl.hpp>
 #include <doctest/doctest.h>
@@ -16,9 +16,7 @@ TEST_CASE("util: opencl runtime shim caches readiness and selects backend")
 
     CHECK(firstLoadResult == secondLoadResult);
 
-    PDJE_PARALLEL::Backend backend;
-    CHECK(backend.LoadBackend());
-    CHECK(backend.PrintBackendType() ==
+    CHECK(PDJE_PARALLEL::detail::DetectPreferredBackend() ==
           (firstLoadResult ? PDJE_PARALLEL::BACKEND_T::OPENCL
                            : PDJE_PARALLEL::BACKEND_T::SERIAL));
 

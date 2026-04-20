@@ -2,7 +2,7 @@
 #include <cstddef>
 
 #undef HWY_TARGET_INCLUDE
-#define HWY_TARGET_INCLUDE "WaveformWebpHighway-inl.h"
+#define HWY_TARGET_INCLUDE "util/function/image/detail/WaveformWebpHighway-inl.h"
 #include "hwy/foreach_target.h"
 
 #include <hwy/highway.h>

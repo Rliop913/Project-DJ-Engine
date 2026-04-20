@@ -1,6 +1,6 @@
-#include "util/function/image/WaveformWebpPlanBuilder.hpp"
+#include "util/function/image/detail/WaveformWebpPlanBuilder.hpp"
 
-#include "util/function/image/WaveformWebpSupport.hpp"
+#include "util/function/image/detail/WaveformWebpSupport.hpp"
 
 #include <cstddef>
 #include <utility>

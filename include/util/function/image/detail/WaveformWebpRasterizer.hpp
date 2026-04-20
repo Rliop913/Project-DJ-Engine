@@ -1,8 +1,8 @@
 #pragma once
 
 #include "util/common/Result.hpp"
-#include "util/function/image/WaveformWebpInternal.hpp"
-#include "util/function/image/WaveformWebpSupport.hpp"
+#include "util/function/image/detail/WaveformWebpInternal.hpp"
+#include "util/function/image/detail/WaveformWebpSupport.hpp"
 #include "util/function/FunctionContext.hpp"
 
 #include <algorithm>

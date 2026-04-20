@@ -1,7 +1,7 @@
 #pragma once
 
 #include "util/common/Status.hpp"
-#include "util/function/image/WaveformWebpInternal.hpp"
+#include "util/function/image/detail/WaveformWebpInternal.hpp"
 
 #include <algorithm>
 #include <cmath>

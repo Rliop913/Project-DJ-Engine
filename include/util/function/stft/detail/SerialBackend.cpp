@@ -1,14 +1,14 @@
-#include "SerialBackend.hpp"
+#include "util/function/stft/detail/SerialBackend.hpp"
 
-#include "BackendLess.hpp"
-#include "MelFilterBank.hpp"
+#include "util/function/stft/BackendLess.hpp"
+#include "util/function/stft/MelFilterBank.hpp"
 #include "STFT_MAIN_SERIAL.hpp"
 
 #include <algorithm>
 #include <functional>
 #include <optional>
 
-namespace PDJE_PARALLEL {
+namespace PDJE_PARALLEL::detail {
 
 namespace {
 
@@ -271,4 +271,4 @@ SERIAL_STFT::Execute(std::vector<float> &PCMdata,
 
 SERIAL_STFT::~SERIAL_STFT() = default;
 
-} // namespace PDJE_PARALLEL
+} // namespace PDJE_PARALLEL::detail

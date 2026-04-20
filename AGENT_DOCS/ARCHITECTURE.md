@@ -135,10 +135,10 @@ surface includes:
 - status/result types under `include/util/common/`
 - relational, key-value, and nearest-neighbor DB wrappers under
   `include/util/db/`
-- image/WebP helpers and waveform generation under
-  `include/util/function/image/`
-- STFT and runtime backend-loading helpers under
-  `include/util/function/stft/` and `include/util/common/BackendLoader/`
+- image/WebP public entrypoints under `include/util/function/image/`, with
+  pipeline ownership in `include/util/function/image/detail/`
+- STFT public entrypoints under `include/util/function/stft/`, with runtime and
+  backend ownership in `include/util/function/stft/detail/`
 
 Deep-dive doc: [UTIL_SYSTEM.md](UTIL_SYSTEM.md)
 

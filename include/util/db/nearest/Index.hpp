@@ -1,5 +1,6 @@
 #pragma once
 
+#include "util/db/detail/Lifecycle.hpp"
 #include "util/db/nearest/BackendConcept.hpp"
 
 #include <utility>
@@ -27,30 +28,28 @@ template <NearestNeighborBackendConcept Backend> class NearestNeighborIndex {
     open(const config_type &cfg)
     {
         NearestNeighborIndex index;
-        auto                 opened = index.backend_.open(cfg);
+        auto                 opened =
+            detail::open_backend(index.backend_, index.is_open_, cfg);
         if (!opened.ok()) {
             return common::Result<NearestNeighborIndex>::failure(opened.status());
         }
-        index.is_open_ = true;
         return common::Result<NearestNeighborIndex>::success(std::move(index));
     }
 
     NearestNeighborIndex() = default;
     NearestNeighborIndex(NearestNeighborIndex &&other) noexcept
-        : backend_(std::move(other.backend_)),
-          is_open_(std::exchange(other.is_open_, false))
     {
+        detail::take_backend_state(
+            backend_, is_open_, std::move(other.backend_), other.is_open_);
     }
 
     NearestNeighborIndex &
     operator=(NearestNeighborIndex &&other) noexcept
     {
         if (this != &other) {
-            if (is_open_) {
-                (void)close();
-            }
-            backend_ = std::move(other.backend_);
-            is_open_ = std::exchange(other.is_open_, false);
+            (void)detail::close_if_open(backend_, is_open_);
+            detail::take_backend_state(
+                backend_, is_open_, std::move(other.backend_), other.is_open_);
         }
         return *this;
     }
@@ -61,22 +60,13 @@ template <NearestNeighborBackendConcept Backend> class NearestNeighborIndex {
 
     ~NearestNeighborIndex()
     {
-        if (is_open_) {
-            (void)close();
-        }
+        (void)detail::close_if_open(backend_, is_open_);
     }
 
     common::Result<void>
     close()
     {
-        if (!is_open_) {
-            return common::Result<void>::success();
-        }
-        auto closed = backend_.close();
-        if (closed.ok()) {
-            is_open_ = false;
-        }
-        return closed;
+        return detail::close_if_open(backend_, is_open_);
     }
 
     bool

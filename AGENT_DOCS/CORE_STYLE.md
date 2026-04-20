@@ -91,6 +91,16 @@ representative anchor from that tree.
 - Include the file's direct dependencies and avoid unnecessary wrapper hops or
   artificial include hierarchies. Representative anchor:
   `include/core/interface/PDJE_interface.hpp`
+- Do not introduce trivial forwarding headers whose only job is to redirect a
+  public-looking path to a `detail/` header. If a path is meant to be public,
+  keep the public declaration there; if the code is internal, keep callers on
+  the internal path. This is especially disallowed for `function/image/`, where
+  simple redirecting headers blur the public/private boundary without adding a
+  stable contract. Representative anchor: `include/core/interface/PDJE_interface.hpp`
+- Do not preserve forwarding headers as a long-lived compatibility pattern.
+  Once callers move to the canonical owner path, remove the redirect layer
+  instead of normalizing it into a new default. Representative anchor:
+  `include/core/interface/PDJE_interface.hpp`
 
 ## Behavioral Rules
 

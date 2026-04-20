@@ -1,8 +1,8 @@
-#include "util/function/image/WaveformWebpRasterizer.hpp"
+#include "util/function/image/detail/WaveformWebpRasterizer.hpp"
 
 #include "util/function/image/WebpWriter.hpp"
-#include "util/function/image/WaveformWebpSupport.hpp"
-#include "WaveformWebpHighway-inl.h"
+#include "util/function/image/detail/WaveformWebpSupport.hpp"
+#include "util/function/image/detail/WaveformWebpHighway-inl.h"
 
 #include <cstddef>
 #include <span>

@@ -1,8 +1,8 @@
-#include "util/function/image/WaveformWebpEncoder.hpp"
+#include "util/function/image/detail/WaveformWebpEncoder.hpp"
 
-#include "util/function/image/WaveformWebpPlanBuilder.hpp"
-#include "util/function/image/WaveformWebpProcessor.hpp"
-#include "util/function/image/WaveformWebpWorkerRunner.hpp"
+#include "util/function/image/detail/WaveformWebpPlanBuilder.hpp"
+#include "util/function/image/detail/WaveformWebpProcessor.hpp"
+#include "util/function/image/detail/WaveformWebpWorkerRunner.hpp"
 
 namespace PDJE_UTIL::function::image::detail {
 

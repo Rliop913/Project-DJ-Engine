@@ -1,7 +1,7 @@
 #include <doctest/doctest.h>
 
 #include "util/function/image/WaveformWebp.hpp"
-#include "util/function/image/WaveformWebpSupport.hpp"
+#include "util/function/image/detail/WaveformWebpSupport.hpp"
 
 #include <webp/decode.h>
 
