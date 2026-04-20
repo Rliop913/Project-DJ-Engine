@@ -26,6 +26,7 @@ legacy material.
 
 - [CHANGE_MAP.md](CHANGE_MAP.md): where to look first for each common change type
 - [CORE_STYLE.md](CORE_STYLE.md): default structural rules generalized from the observed patterns in `include/core/`
+- [PROJECT_SKILLS.md](PROJECT_SKILLS.md): repo-local Codex skills and when to use them
 - [TEST_MAP.md](TEST_MAP.md): smallest stable verification routes by area
 - [DECISIONS.md](DECISIONS.md): short rationale ledger for non-obvious repo choices
 - [GLOSSARY.md](GLOSSARY.md): compact definitions for project-specific terms

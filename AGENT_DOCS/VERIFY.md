@@ -35,7 +35,7 @@ Check the doc surface:
 ```bash
 find AGENT_DOCS -maxdepth 1 -name '*.md' | sort
 find . -maxdepth 1 -type f -name '*.md' | sort
-rg -n "CORE_STYLE\\.md" AGENT_DOCS/INDEX.md AGENT_DOCS/VERIFY.md
+rg -n "CORE_STYLE\\.md|PROJECT_SKILLS\\.md|pdje-build-verify" AGENT_DOCS/INDEX.md AGENT_DOCS/VERIFY.md AGENT_DOCS/PROJECT_SKILLS.md
 ```
 
 ## Clean Verify
@@ -74,8 +74,11 @@ ctest --test-dir build -C Release -L unit --output-on-failure
   `ARCHITECTURE.md`, `CHANGE_MAP.md`, `CORE_STYLE.md`, `TEST_MAP.md`,
   `DECISIONS.md`, `GLOSSARY.md`, `CORE_RUNTIME.md`, `EDITOR_SYSTEM.md`,
   `INPUT_SYSTEM.md`, `JUDGE_SYSTEM.md`, `UTIL_SYSTEM.md`, `LIFECYCLES.md`,
-  `DATA_CONTRACTS.md`, and `KNOWN_GAPS.md`
+  `DATA_CONTRACTS.md`, `KNOWN_GAPS.md`, and `PROJECT_SKILLS.md`
 - `AGENT_DOCS/INDEX.md` links to `CORE_STYLE.md`
+- `AGENT_DOCS/INDEX.md` links to `PROJECT_SKILLS.md`
+- `AGENT_DOCS/skills/pdje-build-verify/SKILL.md` exists; run the skill-creator
+  quick validator when `PyYAML` is available in the local Python environment
 - root compatibility aliases exist and point to the new canonical location
 - `ctest --test-dir build -N -L unit` is non-empty
 - the unit-label test run passes in the chosen verification mode
