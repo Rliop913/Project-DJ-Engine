@@ -35,6 +35,7 @@ Check the doc surface:
 ```bash
 find AGENT_DOCS -maxdepth 1 -name '*.md' | sort
 find . -maxdepth 1 -type f -name '*.md' | sort
+rg -n "CORE_STYLE\\.md" AGENT_DOCS/INDEX.md AGENT_DOCS/VERIFY.md
 ```
 
 ## Clean Verify
@@ -70,10 +71,11 @@ ctest --test-dir build -C Release -L unit --output-on-failure
 ## Success Criteria
 
 - `AGENT_DOCS/` contains `INDEX.md`, `NOW.md`, `INVARIANTS.md`, `VERIFY.md`,
-  `ARCHITECTURE.md`, `CHANGE_MAP.md`, `TEST_MAP.md`, `DECISIONS.md`,
-  `GLOSSARY.md`, `CORE_RUNTIME.md`, `EDITOR_SYSTEM.md`, `INPUT_SYSTEM.md`,
-  `JUDGE_SYSTEM.md`, `UTIL_SYSTEM.md`, `LIFECYCLES.md`,
+  `ARCHITECTURE.md`, `CHANGE_MAP.md`, `CORE_STYLE.md`, `TEST_MAP.md`,
+  `DECISIONS.md`, `GLOSSARY.md`, `CORE_RUNTIME.md`, `EDITOR_SYSTEM.md`,
+  `INPUT_SYSTEM.md`, `JUDGE_SYSTEM.md`, `UTIL_SYSTEM.md`, `LIFECYCLES.md`,
   `DATA_CONTRACTS.md`, and `KNOWN_GAPS.md`
+- `AGENT_DOCS/INDEX.md` links to `CORE_STYLE.md`
 - root compatibility aliases exist and point to the new canonical location
 - `ctest --test-dir build -N -L unit` is non-empty
 - the unit-label test run passes in the chosen verification mode
