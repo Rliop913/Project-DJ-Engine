@@ -1,5 +1,6 @@
 #pragma once
 
+#include "global/PDJE_EXPORT_SETTER.hpp"
 #include "util/common/Result.hpp"
 #include "util/function/FunctionContext.hpp"
 #include "util/function/stft/STFT_Parallel.hpp"
@@ -33,11 +34,11 @@ struct EncodeWaveformWebpStftArgs {
     PDJE_PARALLEL::POST_PROCESS post_process    = {};
 };
 
-common::Result<WaveformWebpBatch>
+PDJE_API common::Result<WaveformWebpBatch>
 encode_waveform_webps(const EncodeWaveformWebpArgs &args,
                       function::EvalOptions         options = {});
 
-common::Result<WaveformWebpBatch>
+PDJE_API common::Result<WaveformWebpBatch>
 encode_waveform_webps(const EncodeWaveformWebpArgs     &args,
                       const EncodeWaveformWebpStftArgs &stft_args,
                       function::EvalOptions             options = {});

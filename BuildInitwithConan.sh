@@ -1,2 +1,2 @@
 #!/bin/bash
-conan install $1 --output-folder=conan_cmakes --build=missing --settings compiler.cppstd=20 --settings build_type=$2 --deployer=direct_deploy
+conan install $1 --output-folder=conan_cmakes --build=missing --settings compiler.cppstd=20 --settings build_type=$2 --settings:b compiler.cppstd=20 --deployer=direct_deploy

@@ -31,8 +31,8 @@ The CMake graph is library-first. Most implementation code lives under
 - `PDJE`: main C++ library for core playback/editor/DB functionality
 - `CPDJE`: C ABI wrapper around the core engine
 - `PDJE_LOG_RUNTIME`: logging runtime support
-- `PDJE_UTIL`, `PDJE_UTIL_DB`, `PDJE_UTIL_IMAGE_WEBP`,
-  `PDJE_UTIL_IMAGE_WAVEFORM`: utility headers and helper libraries
+- `PDJE_UTIL`: shared utility library for status/result types, DB wrappers,
+  and image/STFT helpers
 - `pdje_capnp_codegen`: Cap'n Proto code generation target used by downstream
   targets
 

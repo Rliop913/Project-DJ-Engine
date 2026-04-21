@@ -86,8 +86,34 @@ FetchContent_Declare(
     GIT_TAG        v5.3.1
 )
 
-set(WEBP_BUILD_ANIM_UTILS OFF CACHE BOOL "" FORCE)
-set(WEBP_BUILD_CWEBP OFF CACHE BOOL "" FORCE)
+find_package(onnxruntime CONFIG REQUIRED)
+
+set(BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+set(WITH_LSR_BINDINGS OFF CACHE BOOL "" FORCE)
+set(BUILD_SHARED_LIBS OFF CACHE BOOL "" FORCE)
+set(WITH_OPENMP OFF CACHE BOOL "" FORCE)
+set(WITH_DEV_TRACE OFF CACHE BOOL "" FORCE)
+
+FetchContent_Declare(
+  pysoxr_cpp
+  GIT_REPOSITORY https://github.com/dofuuz/soxr.git
+  GIT_TAG "a66f3eeeeb62a32403ff143b756eed92b1ec6b62"
+  GIT_SHALLOW TRUE
+  UPDATE_DISCONNECTED TRUE
+)
+FetchContent_MakeAvailable(pysoxr_cpp)
+function(setPyCustomSoxr targetName)
+  
+  target_link_libraries(${targetName} PRIVATE 
+  soxr)
+  target_include_directories(${targetName} PRIVATE 
+    "${pysoxr_cpp_SOURCE_DIR}/src"
+    "${pysoxr_cpp_BINARY_DIR}")
+endfunction(setPyCustomSoxr)
+  
+  set(WEBP_BUILD_ANIM_UTILS OFF CACHE BOOL "" FORCE)
+  set(WEBP_BUILD_CWEBP OFF CACHE BOOL "" FORCE)
 set(WEBP_BUILD_DWEBP OFF CACHE BOOL "" FORCE)
 set(WEBP_BUILD_GIF2WEBP OFF CACHE BOOL "" FORCE)
 set(WEBP_BUILD_IMG2WEBP OFF CACHE BOOL "" FORCE)
@@ -115,7 +141,27 @@ endfunction(setLibreMIDIReqLib)
 
 find_package(ZLIB REQUIRED)
 
+function(pdje_resolve_dependency_scope outVar targetName defaultConcreteScope requestedScope)
+  if(NOT "${requestedScope}" STREQUAL "")
+    set(_pdje_resolved_scope "${requestedScope}")
+  else()
+    get_target_property(_pdje_target_type ${targetName} TYPE)
+    if("${_pdje_target_type}" STREQUAL "INTERFACE_LIBRARY")
+      set(_pdje_resolved_scope INTERFACE)
+    else()
+      set(_pdje_resolved_scope "${defaultConcreteScope}")
+    endif()
+  endif()
+
+  set(${outVar} "${_pdje_resolved_scope}" PARENT_SCOPE)
+endfunction()
+
 function(setWebpReqLib targetName)
+  set(_pdje_requested_scope "")
+  if(ARGC GREATER 1)
+    set(_pdje_requested_scope "${ARGV1}")
+  endif()
+
   set(_pdje_webp_targets "")
   foreach(_pdje_webp_candidate
       webp
@@ -139,12 +185,12 @@ function(setWebpReqLib targetName)
     message(FATAL_ERROR "libwebp targets not found after FetchContent_MakeAvailable(libwebp)")
   endif()
 
-  get_target_property(_pdje_target_type ${targetName} TYPE)
-  if("${_pdje_target_type}" STREQUAL "INTERFACE_LIBRARY")
-    target_link_libraries(${targetName} INTERFACE ${_pdje_webp_targets})
-  else()
-    target_link_libraries(${targetName} PRIVATE ${_pdje_webp_targets})
-  endif()
+  pdje_resolve_dependency_scope(
+    _pdje_webp_scope
+    ${targetName}
+    PRIVATE
+    "${_pdje_requested_scope}")
+  target_link_libraries(${targetName} ${_pdje_webp_scope} ${_pdje_webp_targets})
 endfunction(setWebpReqLib)
 
 
@@ -167,21 +213,22 @@ endfunction()
 find_package(Annoy CONFIG REQUIRED)
 
 function(setAnnoyReqLib targetName)
-  get_target_property(_pdje_target_type ${targetName} TYPE)
-  if("${_pdje_target_type}" STREQUAL "INTERFACE_LIBRARY")
-    target_link_libraries(${targetName} INTERFACE Annoy::Annoy)
-    if(DEFINED Annoy_INCLUDE_DIRS)
-      target_include_directories(${targetName} INTERFACE ${Annoy_INCLUDE_DIRS})
-    elseif(DEFINED Annoy_INCLUDE_DIR)
-      target_include_directories(${targetName} INTERFACE ${Annoy_INCLUDE_DIR})
-    endif()
-  else()
-    target_link_libraries(${targetName} PRIVATE Annoy::Annoy)
-    if(DEFINED Annoy_INCLUDE_DIRS)
-      target_include_directories(${targetName} PRIVATE ${Annoy_INCLUDE_DIRS})
-    elseif(DEFINED Annoy_INCLUDE_DIR)
-      target_include_directories(${targetName} PRIVATE ${Annoy_INCLUDE_DIR})
-    endif()
+  set(_pdje_requested_scope "")
+  if(ARGC GREATER 1)
+    set(_pdje_requested_scope "${ARGV1}")
+  endif()
+
+  pdje_resolve_dependency_scope(
+    _pdje_annoy_scope
+    ${targetName}
+    PRIVATE
+    "${_pdje_requested_scope}")
+
+  target_link_libraries(${targetName} ${_pdje_annoy_scope} Annoy::Annoy)
+  if(DEFINED Annoy_INCLUDE_DIRS)
+    target_include_directories(${targetName} ${_pdje_annoy_scope} ${Annoy_INCLUDE_DIRS})
+  elseif(DEFINED Annoy_INCLUDE_DIR)
+    target_include_directories(${targetName} ${_pdje_annoy_scope} ${Annoy_INCLUDE_DIR})
   endif()
 endfunction(setAnnoyReqLib)
 
@@ -305,14 +352,19 @@ if(NOT TARGET PDJE_SQLITE3_AMALGAM)
 endif()
 
 function(setSqliteReqLib targetName)
-  get_target_property(_pdje_target_type ${targetName} TYPE)
-  if("${_pdje_target_type}" STREQUAL "INTERFACE_LIBRARY")
-    target_link_libraries(${targetName} INTERFACE PDJE_SQLITE3_AMALGAM)
-    target_include_directories(${targetName} INTERFACE ${sql_amalgam_SOURCE_DIR})
-  else()
-    target_link_libraries(${targetName} PRIVATE PDJE_SQLITE3_AMALGAM)
-    target_include_directories(${targetName} PRIVATE ${sql_amalgam_SOURCE_DIR})
+  set(_pdje_requested_scope "")
+  if(ARGC GREATER 1)
+    set(_pdje_requested_scope "${ARGV1}")
   endif()
+
+  pdje_resolve_dependency_scope(
+    _pdje_sqlite_scope
+    ${targetName}
+    PRIVATE
+    "${_pdje_requested_scope}")
+
+  target_link_libraries(${targetName} ${_pdje_sqlite_scope} PDJE_SQLITE3_AMALGAM)
+  target_include_directories(${targetName} ${_pdje_sqlite_scope} ${sql_amalgam_SOURCE_DIR})
 endfunction(setSqliteReqLib)
 
 set(PDJE_OPENCL_CPP_INCLUDE_DIR

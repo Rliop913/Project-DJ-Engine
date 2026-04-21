@@ -1,5 +1,7 @@
 #pragma once
 
+#include "global/PDJE_EXPORT_SETTER.hpp"
+
 #include <memory>
 #include <utility>
 #include <vector>
@@ -73,7 +75,7 @@ struct POST_PROCESS {
 
 using StftResult = std::pair<std::vector<float>, std::vector<float>>;
 
-class STFT {
+class PDJE_API STFT {
   public:
     STFT();
     ~STFT();

@@ -66,8 +66,7 @@ target_include_directories(
 
 setCapnpReqLib(music_to_waveform_webp)
 
-target_link_libraries(music_to_waveform_webp PRIVATE PDJE_UTIL_IMAGE_WEBP)
-target_link_libraries(music_to_waveform_webp PRIVATE PDJE_UTIL_IMAGE_WAVEFORM)
+target_link_libraries(music_to_waveform_webp PRIVATE PDJE_UTIL)
 
 
 

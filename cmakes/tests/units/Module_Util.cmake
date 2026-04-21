@@ -26,9 +26,6 @@ target_include_directories(pdje_unit_util PRIVATE ${PDJE_INCLUDE_GLOBAL} ${PDJE_
 target_link_libraries(pdje_unit_util PRIVATE doctest::doctest GLOBAL_OBJ)
 # Keep util unit tests decoupled from the platform-specific input stack.
 target_link_libraries(pdje_unit_util PRIVATE PDJE_UTIL)
-target_link_libraries(pdje_unit_util PRIVATE PDJE_UTIL_IMAGE_WEBP)
-target_link_libraries(pdje_unit_util PRIVATE PDJE_UTIL_IMAGE_WAVEFORM)
-target_link_libraries(pdje_unit_util PRIVATE PDJE_UTIL_DB)
 setOpenCLCppReqLib(pdje_unit_util)
 setOpenCLRuntimeShimReqLib(pdje_unit_util)
 
