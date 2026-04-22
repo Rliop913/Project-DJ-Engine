@@ -43,6 +43,7 @@ endfunction()
 
 
 
+include(cmakes/tests/units/Module_OnnxRuntime.cmake)
 if(NOT APPLE)
     include(cmakes/tests/units/Module_Util.cmake)
 endif()

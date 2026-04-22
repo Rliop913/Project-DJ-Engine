@@ -86,8 +86,6 @@ FetchContent_Declare(
     GIT_TAG        v5.3.1
 )
 
-find_package(onnxruntime CONFIG REQUIRED)
-
 set(BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 set(WITH_LSR_BINDINGS OFF CACHE BOOL "" FORCE)
@@ -155,6 +153,8 @@ function(pdje_resolve_dependency_scope outVar targetName defaultConcreteScope re
 
   set(${outVar} "${_pdje_resolved_scope}" PARENT_SCOPE)
 endfunction()
+
+include(cmakes/OnnxRuntimePrebuilt.cmake)
 
 function(setWebpReqLib targetName)
   set(_pdje_requested_scope "")
@@ -284,7 +284,18 @@ FetchContent_MakeAvailable(opencl_headers)
 FetchContent_MakeAvailable(cmrc)
 
 function(setCmrcReqLib targetName)
-  target_link_libraries(${targetName} PRIVATE PDJE::util_okl_resources)
+  set(_pdje_requested_scope "")
+  if(ARGC GREATER 1)
+    set(_pdje_requested_scope "${ARGV1}")
+  endif()
+
+  pdje_resolve_dependency_scope(
+    _pdje_cmrc_scope
+    ${targetName}
+    PRIVATE
+    "${_pdje_requested_scope}")
+
+  target_link_libraries(${targetName} ${_pdje_cmrc_scope} PDJE::util_okl_resources)
 endfunction()
 
 

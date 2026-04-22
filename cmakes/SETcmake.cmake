@@ -101,7 +101,7 @@ function(PDJE_COMPILE_OPTION targetName)
   
 if(CMAKE_BUILD_TYPE STREQUAL "Debug" AND NOT PDJE_RTTI_FORCE_OFF)
 target_compile_options(${targetName} PRIVATE
-  $<$<CXX_COMPILER_ID:MSVC>:/permissive- /WX- /W3 /GR /arch:AVX2>
+  $<$<CXX_COMPILER_ID:MSVC>:/permissive- /WX- /W3 /GR /EHsc /arch:AVX2>
   $<$<CXX_COMPILER_ID:GNU,Clang,AppleClang>:
     -Wnon-virtual-dtor
     -Wpacked -Wpragma-pack
@@ -111,7 +111,7 @@ target_compile_options(${targetName} PRIVATE
 )
 else()
 target_compile_options(${targetName} PRIVATE
-  $<$<CXX_COMPILER_ID:MSVC>:/permissive- /WX- /W3 /GR /arch:AVX2>
+  $<$<CXX_COMPILER_ID:MSVC>:/permissive- /WX- /W3 /GR /EHsc /arch:AVX2>
   $<$<CXX_COMPILER_ID:GNU,Clang,AppleClang>:
     -Wnon-virtual-dtor
     -Wpacked -Wpragma-pack
