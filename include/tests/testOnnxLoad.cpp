@@ -39,12 +39,14 @@ main()
             return 4;
         }
 
-        Ort::Env env(ORT_LOGGING_LEVEL_WARNING, "pdje_onnxruntime_smoke");
+        Ort::Env env(ORT_LOGGING_LEVEL_WARNING, "testOnnxLoad");
         Ort::SessionOptions session_options;
         session_options.SetIntraOpNumThreads(1);
         session_options.SetInterOpNumThreads(1);
         session_options.SetGraphOptimizationLevel(GraphOptimizationLevel::ORT_DISABLE_ALL);
 
+        std::cout << "ONNX Runtime load probe succeeded. version=" << cpp_version
+                  << std::endl;
         return 0;
     } catch (const Ort::Exception &ex) {
         std::cerr << "ONNX Runtime exception: " << ex.what() << std::endl;

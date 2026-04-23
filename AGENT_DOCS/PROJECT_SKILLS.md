@@ -4,7 +4,7 @@ This doc indexes repository-local Codex skills that are specific to this checkou
 
 ## Available Skills
 
-- [pdje-build-verify](</g:/Project_DJ_Engine/AGENT_DOCS/skills/pdje-build-verify/SKILL.md>): choose the smallest reliable PDJE build and verification flow, especially for `winRelease`, util/STFT/waveform work, `PDJE_DEV_TEST`, and `music_to_waveform_webp`
+- [pdje-build-verify](</g:/Project_DJ_Engine/AGENT_DOCS/skills/pdje-build-verify/SKILL.md>): choose the smallest reliable PDJE build and verification flow, especially for the shared `build` tree, `RelWithDebInfo` or `Release`, util/STFT/waveform work, `PDJE_DEV_TEST`, and `music_to_waveform_webp`
 
 ## Current Notes
 

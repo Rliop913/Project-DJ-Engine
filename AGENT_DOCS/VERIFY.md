@@ -40,18 +40,23 @@ rg -n "CORE_STYLE\\.md|PROJECT_SKILLS\\.md|pdje-build-verify" AGENT_DOCS/INDEX.m
 
 ## Clean Verify
 
+Use only `RelWithDebInfo` or `Release` in agent-driven builds. Bootstrap
+Conan once in `Release`, then reuse the same `conan_cmakes/` output for either
+CMake build type.
+
 Linux / macOS:
 
 ```bash
 bash ./BuildInitwithConan.sh . Release
 cmake -B build -S . \
-  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_BUILD_TYPE=RelWithDebInfo \
   -DCMAKE_TOOLCHAIN_FILE=./conan_cmakes/conan_toolchain.cmake \
   -DPDJE_TEST=ON \
   -DPDJE_DEV_TEST=OFF \
   -DPDJE_DYNAMIC=OFF
 cmake --build build --parallel
 ctest --test-dir build -L unit --output-on-failure
+# Swap RelWithDebInfo for Release when you want the pure optimized mode.
 ```
 
 Windows:
@@ -59,13 +64,14 @@ Windows:
 ```bat
 BuildInitwithConan.bat . static Release
 cmake -B build -S . ^
-  -DCMAKE_BUILD_TYPE=Release ^
+  -DCMAKE_BUILD_TYPE=RelWithDebInfo ^
   -DCMAKE_TOOLCHAIN_FILE=./conan_cmakes/conan_toolchain.cmake ^
   -DPDJE_TEST=ON ^
   -DPDJE_DEV_TEST=OFF ^
   -DPDJE_DYNAMIC=OFF
-cmake --build build --config Release --parallel
-ctest --test-dir build -C Release -L unit --output-on-failure
+cmake --build build --parallel
+ctest --test-dir build -L unit --output-on-failure
+:: Swap RelWithDebInfo for Release when you want the pure optimized mode.
 ```
 
 ## Success Criteria

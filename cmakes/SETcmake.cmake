@@ -30,6 +30,12 @@ if(PDJE_USE_CCACHE)
   endif()
 endif()
 
+if(NOT PDJE_RTTI_FORCE_OFF)
+  # Keep RTTI on only for the symbol-bearing dev config across single- and multi-config generators.
+  add_compile_options(
+    "$<$<AND:$<COMPILE_LANGUAGE:CXX>,$<CXX_COMPILER_ID:GNU,Clang,AppleClang>,$<CONFIG:RelWithDebInfo>>:-frtti>")
+endif()
+
 function(SET_PROPERTIES targetname)
     
   if(APPLE)
@@ -93,23 +99,7 @@ endfunction(SET_PROPERTIES)
 #   -Wpadded -Wpacked -Wpragma-pack
 #   )
 
-# endif()
-if(CMAKE_BUILD_TYPE STREQUAL "Debug" AND NOT PDJE_RTTI_FORCE_OFF)
-add_compile_options(-frtti)
-endif()
 function(PDJE_COMPILE_OPTION targetName)
-  
-if(CMAKE_BUILD_TYPE STREQUAL "Debug" AND NOT PDJE_RTTI_FORCE_OFF)
-target_compile_options(${targetName} PRIVATE
-  $<$<CXX_COMPILER_ID:MSVC>:/permissive- /WX- /W3 /GR /EHsc /arch:AVX2>
-  $<$<CXX_COMPILER_ID:GNU,Clang,AppleClang>:
-    -Wnon-virtual-dtor
-    -Wpacked -Wpragma-pack
-    -Wabi
-    -frtti
-  >
-)
-else()
 target_compile_options(${targetName} PRIVATE
   $<$<CXX_COMPILER_ID:MSVC>:/permissive- /WX- /W3 /GR /EHsc /arch:AVX2>
   $<$<CXX_COMPILER_ID:GNU,Clang,AppleClang>:
@@ -118,8 +108,6 @@ target_compile_options(${targetName} PRIVATE
     -Wabi
   >
 )
-
-endif()
 # Apple Silicon (arm64)
 target_compile_options(${targetName} PRIVATE
   $<$<AND:$<CXX_COMPILER_ID:AppleClang>,$<STREQUAL:${CMAKE_SYSTEM_PROCESSOR},arm64>>:
@@ -145,13 +133,8 @@ endfunction(PDJE_COMPILE_OPTION)
 #     set(cmake_c_compiler clang)
 #     set(cmake_cxx_compiler clang++)
 # endif()
-if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    
-    if(NOT WIN32)
-    # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O1 -fsanitize=address")
-    endif()
-    set_property(SOURCE PDJE_swig.i PROPERTY CPLUSPLUS ON)
-else()
-    set_property(SOURCE PDJE_swig.i PROPERTY CPLUSPLUS ON)
-    set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+set_property(SOURCE PDJE_swig.i PROPERTY CPLUSPLUS ON)
+
+if(NOT WIN32)
+  string(APPEND CMAKE_CXX_FLAGS_RELWITHDEBINFO_INIT " -O3")
 endif()

@@ -24,11 +24,14 @@ These come from `cmakes/Options.cmake`, not from the local `build/` cache.
 The current local `build/` cache is configured differently from source
 defaults.
 
-- `CMAKE_BUILD_TYPE=Debug`
+- `CMAKE_BUILD_TYPE=Release`
 - `PDJE_TEST=ON`
 - `PDJE_DEV_TEST=ON`
 - `PDJE_DYNAMIC=ON`
 - `PDJE_DEVELOP_INPUT=ON`
+- Agent build guidance now uses only `RelWithDebInfo` and `Release`.
+- Reuse one `BuildInitwithConan ... Release` bootstrap for both modes instead of
+  regenerating `conan_cmakes/` per build type.
 
 Treat local binaries and `ctest` output as observations of this checkout, not
 as documentation of the source defaults.

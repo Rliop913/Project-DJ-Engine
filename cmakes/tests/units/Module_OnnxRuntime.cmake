@@ -5,6 +5,10 @@ add_executable(
 
 setOnnxRuntimeReqLib(pdje_onnxruntime_smoke)
 pdje_copy_onnxruntime_runtime(pdje_onnxruntime_smoke)
+target_compile_definitions(
+  pdje_onnxruntime_smoke
+  PRIVATE PDJE_EXPECTED_ONNXRUNTIME_VERSION="${PDJE_ONNXRUNTIME_VERSION}"
+)
 PDJE_COMPILE_OPTION(pdje_onnxruntime_smoke)
 SET_PROPERTIES(pdje_onnxruntime_smoke)
 

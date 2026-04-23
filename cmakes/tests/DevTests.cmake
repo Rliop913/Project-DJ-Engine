@@ -2,6 +2,9 @@
 add_executable(testEditor ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/editorTest.cpp ${CORE_SRC_EXPORT})
 add_executable(DBTester ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/dbTest.cpp ${CORE_SRC_EXPORT})
 add_executable(gitTester ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/gittest.cpp ${CORE_SRC_EXPORT})
+add_executable(
+    testOnnxLoad
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/testOnnxLoad.cpp)
 
 target_link_libraries(testEditor PRIVATE CORE_OBJ)
 target_link_libraries(DBTester PRIVATE CORE_OBJ)
@@ -9,6 +12,13 @@ target_link_libraries(gitTester PRIVATE CORE_OBJ)
 setCoreReqs(testEditor)
 setCoreReqs(DBTester)
 setCoreReqs(gitTester)
+setOnnxRuntimeReqLib(testOnnxLoad)
+pdje_copy_onnxruntime_runtime(testOnnxLoad)
+target_compile_definitions(
+    testOnnxLoad
+    PRIVATE PDJE_EXPECTED_ONNXRUNTIME_VERSION="${PDJE_ONNXRUNTIME_VERSION}")
+PDJE_COMPILE_OPTION(testOnnxLoad)
+SET_PROPERTIES(testOnnxLoad)
 
 if(PDJE_DEVELOP_INPUT)
 add_executable(testInput ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/INPUT_TESTS/pdjeInputTest.cpp ${INPUT_SRC_EXPORT})
