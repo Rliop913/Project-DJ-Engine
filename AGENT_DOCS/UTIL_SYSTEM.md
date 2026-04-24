@@ -75,9 +75,9 @@ This page covers the active utility surface behind `PDJE_UTIL`.
 
 ## Verify
 
-- `ctest --test-dir build -R 'unit.core::(rocksdb|annoy|sqlite|util)' --output-on-failure`
-- `ctest --test-dir build -R 'unit.core::(backendless|post process rgb mode|stft|mel filter bank|waveform|encode_waveform_webps|encode_webp|write_webp)' --output-on-failure`
-- `ctest --test-dir build -L unit --output-on-failure`
+- `ctest --test-dir ./build -R 'unit.core::(rocksdb|annoy|sqlite|util)' --output-on-failure`
+- `ctest --test-dir ./build -R 'unit.core::(backendless|post process rgb mode|stft|mel filter bank|waveform|encode_waveform_webps|encode_webp|write_webp)' --output-on-failure`
+- `ctest --test-dir ./build -L unit --output-on-failure`
 
 ## Known Traps
 

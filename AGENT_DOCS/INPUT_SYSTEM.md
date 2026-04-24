@@ -66,8 +66,8 @@ This page covers `PDJE_Input`, its state machine, and its data-line contract.
 
 ## Verify
 
-- `ctest --test-dir build -R '^unit.input::' --output-on-failure`
-- `ctest --test-dir build -L unit --output-on-failure`
+- `ctest --test-dir ./build -R '^unit.input::' --output-on-failure`
+- `ctest --test-dir ./build -L unit --output-on-failure`
 
 ## Known Traps
 

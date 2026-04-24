@@ -59,8 +59,8 @@ Timeline behavior:
 
 ## Verify
 
-- `ctest --test-dir build -R '^unit.core::core:' --output-on-failure`
-- `ctest --test-dir build -L unit --output-on-failure`
+- `ctest --test-dir ./build -R '^unit.core::core:' --output-on-failure`
+- `ctest --test-dir ./build -L unit --output-on-failure`
 
 ## Known Traps
 

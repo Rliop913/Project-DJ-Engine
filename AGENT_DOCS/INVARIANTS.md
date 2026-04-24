@@ -21,6 +21,15 @@ restructured.
 - Source defaults come from `cmakes/Options.cmake`.
 - Local build caches can diverge from source defaults and must not overwrite
   them in docs.
+- The checked-in `CMakePresets.json` is the canonical shared build matrix.
+- Shared preset flows use the repo-root `/build` directory, written as
+  `./build` in commands.
+- Shared preset flows support exactly `Release` and `RelWithDebInfo`.
+- Shared preset flows fix `PDJE_DYNAMIC=ON`.
+- Shared preset flows allow `PDJE_TEST=ON` and `PDJE_DEV_TEST=ON` only in
+  `RelWithDebInfo`.
+- Shared preset flows fix compilers by platform: Windows=`cl`,
+  Linux=`clang`, macOS=`clang` expecting AppleClang.
 - SWIG is required only when `PDJE_SWIG_BUILD=ON`.
 - `PDJE_DEVELOP_INPUT` is active on Linux and Windows and forced off on macOS.
 
@@ -34,6 +43,6 @@ restructured.
 
 ## Verification Expectations
 
-- Unit test truth comes from `ctest --test-dir build -L unit`.
+- Unit test truth comes from `ctest --test-dir ./build -L unit`.
 - Generated documentation should be produced through `DOCUMENT_GENERATOR.sh`,
   not by editing `docs/` directly.

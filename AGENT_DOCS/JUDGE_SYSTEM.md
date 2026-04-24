@@ -68,8 +68,8 @@ This page covers `PDJE_JUDGE::JUDGE`, `Judge_Init`, rails, and note staging.
 
 ## Verify
 
-- `ctest --test-dir build -R '^unit.judge::' --output-on-failure`
-- `ctest --test-dir build -L unit --output-on-failure`
+- `ctest --test-dir ./build -R '^unit.judge::' --output-on-failure`
+- `ctest --test-dir ./build -L unit --output-on-failure`
 
 ## Known Traps
 
