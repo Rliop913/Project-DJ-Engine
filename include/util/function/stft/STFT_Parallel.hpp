@@ -1,8 +1,10 @@
 #pragma once
 
+#include "util/function/stft/MelFilterBank.hpp"
 #include "global/PDJE_EXPORT_SETTER.hpp"
 
 #include <memory>
+#include <optional>
 #include <utility>
 #include <vector>
 
@@ -27,6 +29,11 @@ toQuot(const unsigned int fullSize,
 }
 
 enum class BACKEND_T { OPENCL, METAL, SERIAL };
+
+enum class FRAME_POLICY {
+    LEGACY_ZERO_PAD = 0,
+    EXACT_WINDOWED
+};
 
 enum WINDOW_LIST {
     BLACKMAN,
@@ -75,6 +82,17 @@ struct POST_PROCESS {
 
 using StftResult = std::pair<std::vector<float>, std::vector<float>>;
 
+struct STFTRequest {
+    int                            sample_rate  = 22050;
+    int                            n_fft        = 1024;
+    unsigned int                   hop_length   = 441u;
+    WINDOW_LIST                    target_window = WINDOW_LIST::HANNING;
+    POST_PROCESS                   post_process {};
+    FRAME_POLICY                   frame_policy = FRAME_POLICY::EXACT_WINDOWED;
+    std::optional<MelFilterBankSpec> mel_filter_bank {};
+    bool                           dc_remove = true;
+};
+
 class PDJE_API STFT {
   public:
     STFT();
@@ -92,6 +110,9 @@ class PDJE_API STFT {
 
     static BACKEND_T
     detect_available_backend() noexcept;
+
+    StftResult
+    calculate(std::vector<float> &PCMdata, const STFTRequest &request);
 
     StftResult
     calculate(std::vector<float> &PCMdata,

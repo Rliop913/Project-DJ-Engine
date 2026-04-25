@@ -8,6 +8,8 @@ function(setUtilReqs targetName)
   DynamicInnerFlag(${targetName})
   setRocksDBReqLib(${targetName})
   setHighwayReqLib(${targetName})
+  setPyCustomSoxr(${targetName})
+  setOnnxRuntimeReqLib(${targetName})
   setOpenCLRuntimeShimReqLib(${targetName})
   PDJE_COMPILE_OPTION(${targetName})
   SET_PROPERTIES(${targetName})
@@ -31,6 +33,9 @@ add_library(UTIL_OBJ OBJECT
 target_include_directories(UTIL_OBJ PRIVATE
   ${PDJE_UTIL_PRIVATE_INCLUDE}
 )
+target_compile_definitions(
+  UTIL_OBJ
+  PRIVATE PDJE_DEFAULT_BEAT_THIS_MODEL_PATH="${CMAKE_CURRENT_SOURCE_DIR}/third_party/onnx_models/beat_this_model_final0.onnx")
 target_link_libraries(UTIL_OBJ PUBLIC UTIL_INCLUDE)
 setUtilReqs(UTIL_OBJ)
 
@@ -59,3 +64,6 @@ target_link_libraries(PDJE_UTIL
     UTIL_INCLUDE
 )
 DynamicOuterFlag(PDJE_UTIL)
+if(WIN32)
+  pdje_copy_onnxruntime_runtime(PDJE_UTIL)
+endif()

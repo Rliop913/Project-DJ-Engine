@@ -1,4 +1,10 @@
 set(PDJE_UTIL_SOURCES
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/util/ai/AI.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/util/ai/beat_this/BeatThis.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/util/ai/beat_this/BeatThisFrontend.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/util/ai/beat_this/BeatThisMelBackend.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/util/ai/beat_this/BeatThisInference.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/util/ai/beat_this/BeatThisPostprocessor.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/db/backends/RocksDbBackend.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/stft/STFT_Parallel.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/stft/BackendLess.cpp

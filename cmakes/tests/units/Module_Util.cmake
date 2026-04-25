@@ -8,6 +8,7 @@ add_executable(
   pdje_unit_util
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/main_doctest.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/public_headers.test.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/ai_beat_this.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/webp_writer.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/waveform_webp.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/stft_parallel.test.cpp
@@ -33,6 +34,9 @@ target_compile_definitions(
 
 setUtilReqs(pdje_unit_util)
 pdje_copy_zlib_runtime(pdje_unit_util)
+if(WIN32)
+  pdje_copy_onnxruntime_runtime(pdje_unit_util)
+endif()
 pdje_discover_unit_tests(pdje_unit_util util)
 
 add_executable(

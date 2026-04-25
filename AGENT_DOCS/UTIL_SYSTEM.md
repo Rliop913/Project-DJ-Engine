@@ -34,9 +34,13 @@ This page covers the active utility surface behind `PDJE_UTIL`.
   `include/util/function/stft/MelFilterBank.hpp`.
 - stable image public surface is `include/util/function/image/WaveformWebp.hpp`
   and `include/util/function/image/WebpWriter.hpp`.
+- stable AI public surface is `include/util/ai/AI.hpp` for the generic ONNX
+  Runtime facade and `include/util/ai/beat_this/BeatThis.hpp` for Beat This
+  convenience types.
 - STFT backend/runtime implementation is owned by
   `include/util/function/stft/detail/`.
 - waveform/WebP internals are owned by `include/util/function/image/detail/`.
+- Beat This implementation is owned by `include/util/ai/beat_this/`.
 - scalar and text helpers live under `include/util/function/scalar/` and
   `include/util/function/text/`.
 
@@ -61,6 +65,7 @@ This page covers the active utility surface behind `PDJE_UTIL`.
   especially `include/util/function/stft/detail/`
 - waveform and WebP helpers: `include/util/function/image/`,
   especially `include/util/function/image/detail/`
+- generic ONNX Runtime facade and Beat This pipeline: `include/util/ai/`
 
 ## No Redirect Layer
 
@@ -72,6 +77,9 @@ This page covers the active utility surface behind `PDJE_UTIL`.
 - `include/util/function/stft/` keeps only real public surface headers.
   Internal backend/helper headers live only under
   `include/util/function/stft/detail/`.
+- `include/util/ai/` keeps only the real public facade in `AI.hpp` and the
+  canonical Beat This subdomain in `beat_this/`; util AI does not keep a
+  `detail/` redirect layer.
 
 ## Verify
 

@@ -129,6 +129,36 @@ build_color_pcm(const std::size_t sample_count)
     return pcm;
 }
 
+unsigned int
+legacy_hop_length(
+    const PDJE_UTIL::function::image::EncodeWaveformWebpStftArgs &stft_args)
+{
+    const auto window_size = static_cast<unsigned int>(1u << stft_args.window_size_exp);
+    return std::max(
+        1u,
+        static_cast<unsigned int>(
+            static_cast<float>(window_size) * (1.0f - stft_args.overlap_ratio)));
+}
+
+PDJE_PARALLEL::STFTRequest
+build_waveform_stft_request(
+    const PDJE_UTIL::function::image::EncodeWaveformWebpStftArgs &stft_args)
+{
+    auto post_process = stft_args.post_process;
+    post_process.to_rgb = true;
+    post_process.check_values();
+
+    return PDJE_PARALLEL::STFTRequest{
+        .sample_rate = stft_args.mel_filter_bank->sample_rate,
+        .n_fft = static_cast<int>(1u << stft_args.window_size_exp),
+        .hop_length = legacy_hop_length(stft_args),
+        .target_window = stft_args.target_window,
+        .post_process = post_process,
+        .frame_policy = PDJE_PARALLEL::FRAME_POLICY::LEGACY_ZERO_PAD,
+        .mel_filter_bank = stft_args.mel_filter_bank,
+    };
+}
+
 } // namespace
 
 TEST_CASE("waveform support maps rightmost column to final stft frame")
@@ -310,12 +340,54 @@ TEST_CASE("encode_waveform_webps rgb overload validates stft arguments")
           .x_pixels_per_image = 4 },
         { .overlap_ratio = 1.0f });
 
+    auto invalid_mel_fft = PDJE_UTIL::function::image::encode_waveform_webps(
+        { .pcm                = pcm,
+          .channel_count      = 1,
+          .y_pixels           = 8,
+          .pcm_per_pixel      = 1,
+          .x_pixels_per_image = 4 },
+        { .window_size_exp = 6,
+          .mel_filter_bank = PDJE_PARALLEL::MelFilterBankSpec{
+              .sample_rate = 44100,
+              .n_fft = 128,
+              .n_mels = 24,
+              .f_min = 40.0f,
+              .f_max = 8000.0f,
+              .mel_formula = PDJE_PARALLEL::MelFormula::HTK,
+              .norm = PDJE_PARALLEL::MelNorm::Peak,
+          } });
+
+    auto invalid_mel_bins = PDJE_UTIL::function::image::encode_waveform_webps(
+        { .pcm                = pcm,
+          .channel_count      = 1,
+          .y_pixels           = 8,
+          .pcm_per_pixel      = 1,
+          .x_pixels_per_image = 4 },
+        { .window_size_exp = 6,
+          .mel_filter_bank = PDJE_PARALLEL::MelFilterBankSpec{
+              .sample_rate = 44100,
+              .n_fft = 64,
+              .n_mels = 2,
+              .f_min = 40.0f,
+              .f_max = 8000.0f,
+              .mel_formula = PDJE_PARALLEL::MelFormula::HTK,
+              .norm = PDJE_PARALLEL::MelNorm::Peak,
+          } });
+
     CHECK_FALSE(invalid_window.ok());
     CHECK(invalid_window.status().code ==
           PDJE_UTIL::common::StatusCode::invalid_argument);
 
     CHECK_FALSE(invalid_overlap.ok());
     CHECK(invalid_overlap.status().code ==
+          PDJE_UTIL::common::StatusCode::invalid_argument);
+
+    CHECK_FALSE(invalid_mel_fft.ok());
+    CHECK(invalid_mel_fft.status().code ==
+          PDJE_UTIL::common::StatusCode::invalid_argument);
+
+    CHECK_FALSE(invalid_mel_bins.ok());
+    CHECK(invalid_mel_bins.status().code ==
           PDJE_UTIL::common::StatusCode::invalid_argument);
 }
 
@@ -443,6 +515,93 @@ TEST_CASE("encode_waveform_webps rgb overload maps stft rgb onto waveform "
     CHECK(saw_opaque);
     CHECK(saw_transparent);
     CHECK(saw_non_white);
+}
+
+TEST_CASE("encode_waveform_webps rgb overload honors custom mel filter bank")
+{
+    const auto mono_pcm = build_color_pcm(128);
+
+    const PDJE_UTIL::function::image::EncodeWaveformWebpArgs waveform_args {
+        .pcm                = mono_pcm,
+        .channel_count      = 1,
+        .y_pixels           = 32,
+        .pcm_per_pixel      = 16,
+        .x_pixels_per_image = 8,
+        .compression_level  = 1,
+    };
+
+    const PDJE_UTIL::function::image::EncodeWaveformWebpStftArgs stft_args {
+        .target_window   = PDJE_PARALLEL::WINDOW_LIST::HANNING,
+        .window_size_exp = 6,
+        .overlap_ratio   = 0.5f,
+        .mel_filter_bank = PDJE_PARALLEL::MelFilterBankSpec{
+            .sample_rate = 44100,
+            .n_fft = 64,
+            .n_mels = 24,
+            .f_min = 40.0f,
+            .f_max = 9000.0f,
+            .mel_formula = PDJE_PARALLEL::MelFormula::HTK,
+            .norm = PDJE_PARALLEL::MelNorm::Peak,
+        },
+    };
+
+    auto encoded = PDJE_UTIL::function::image::encode_waveform_webps(
+        waveform_args, stft_args);
+
+    REQUIRE(encoded.ok());
+    REQUIRE(encoded.value().size() == 1);
+    REQUIRE(encoded.value()[0].size() == 1);
+
+    auto decoded = decode_rgba8(encoded.value()[0][0]);
+    CHECK(decoded.width == waveform_args.x_pixels_per_image);
+    CHECK(decoded.height == waveform_args.y_pixels);
+
+    auto expected_pcm = mono_pcm;
+    PDJE_PARALLEL::STFT stft;
+    const auto [expected_rgb, expected_imag] =
+        stft.calculate(expected_pcm, build_waveform_stft_request(stft_args));
+
+    REQUIRE(expected_imag.empty());
+    REQUIRE_FALSE(expected_rgb.empty());
+    REQUIRE((expected_rgb.size() % 3u) == 0u);
+
+    auto legacy_pcm = mono_pcm;
+    auto legacy_postprocess = stft_args.post_process;
+    legacy_postprocess.to_rgb = true;
+    legacy_postprocess.check_values();
+    const auto [legacy_rgb, legacy_imag] = stft.calculate(legacy_pcm,
+                                                          stft_args.target_window,
+                                                          stft_args.window_size_exp,
+                                                          stft_args.overlap_ratio,
+                                                          legacy_postprocess);
+
+    REQUIRE(legacy_imag.empty());
+    REQUIRE(legacy_rgb.size() == expected_rgb.size());
+
+    bool saw_rgb_difference = false;
+    for (std::size_t idx = 0; idx < expected_rgb.size(); ++idx) {
+        if (std::fabs(expected_rgb[idx] - legacy_rgb[idx]) > 1.0e-6f) {
+            saw_rgb_difference = true;
+            break;
+        }
+    }
+    CHECK(saw_rgb_difference);
+
+    const std::size_t frame_count = expected_rgb.size() / 3u;
+    for (std::size_t x = 0; x < decoded.width; ++x) {
+        const std::size_t opaque_row = find_first_opaque_row(decoded, x);
+        REQUIRE(opaque_row < decoded.height);
+
+        const std::size_t frame_index =
+            map_column_to_stft_frame(x, frame_count, waveform_args.x_pixels_per_image);
+        const std::array<std::uint8_t, 3> expected_color{
+            unit_float_to_byte(expected_rgb[(frame_index * 3u) + 0u]),
+            unit_float_to_byte(expected_rgb[(frame_index * 3u) + 1u]),
+            unit_float_to_byte(expected_rgb[(frame_index * 3u) + 2u]),
+        };
+
+        CHECK(rgb_at(decoded, x, opaque_row) == expected_color);
+    }
 }
 
 TEST_CASE("encode_waveform_webps rgb overload keeps identical output across "

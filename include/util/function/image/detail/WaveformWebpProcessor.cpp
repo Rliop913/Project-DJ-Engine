@@ -2,6 +2,7 @@
 
 #include "util/function/image/detail/WaveformWebpSupport.hpp"
 
+#include <algorithm>
 #include <array>
 #include <cstddef>
 #include <cstdint>
@@ -10,6 +11,39 @@
 #include <vector>
 
 namespace PDJE_UTIL::function::image::detail {
+
+namespace {
+
+unsigned int
+LegacyHopLength(const EncodeWaveformWebpStftArgs &stftArgs) noexcept
+{
+    const auto windowSize =
+        static_cast<unsigned int>(1u << stftArgs.window_size_exp);
+    return std::max(
+        1u,
+        static_cast<unsigned int>(
+            static_cast<float>(windowSize) * (1.0f - stftArgs.overlap_ratio)));
+}
+
+PDJE_PARALLEL::STFTRequest
+BuildStftRequest(const EncodeWaveformWebpStftArgs &stftArgs)
+{
+    PDJE_PARALLEL::POST_PROCESS postProcess = stftArgs.post_process;
+    postProcess.to_rgb = true;
+    postProcess.check_values();
+
+    return PDJE_PARALLEL::STFTRequest{
+        .sample_rate = stftArgs.mel_filter_bank->sample_rate,
+        .n_fft = static_cast<int>(1u << stftArgs.window_size_exp),
+        .hop_length = LegacyHopLength(stftArgs),
+        .target_window = stftArgs.target_window,
+        .post_process = postProcess,
+        .frame_policy = PDJE_PARALLEL::FRAME_POLICY::LEGACY_ZERO_PAD,
+        .mel_filter_bank = stftArgs.mel_filter_bank,
+    };
+}
+
+} // namespace
 
 StftColorMapper::StftColorMapper(const EncodeWaveformWebpArgs     &args,
                                  const EncodeWaveformWebpStftArgs &stft_args,
@@ -29,17 +63,32 @@ StftColorMapper::Prepare(const WaveformJob &job)
 
     auto post_process = stft_args_.post_process;
     post_process.to_rgb = true;
+    post_process.check_values();
 
-    auto [stft_real, stft_imag] = stft_.calculate(stft_pcm_,
-                                                  stft_args_.target_window,
-                                                  stft_args_.window_size_exp,
-                                                  stft_args_.overlap_ratio,
-                                                  post_process);
+    PDJE_PARALLEL::StftResult stftResult;
+    if (stft_args_.mel_filter_bank.has_value()) {
+        auto request = BuildStftRequest(stft_args_);
+        stftResult   = stft_.calculate(stft_pcm_, request);
+    } else {
+        stftResult = stft_.calculate(stft_pcm_,
+                                     stft_args_.target_window,
+                                     stft_args_.window_size_exp,
+                                     stft_args_.overlap_ratio,
+                                     post_process);
+    }
+
+    auto &[stft_real, stft_imag] = stftResult;
 
     if (!stft_imag.empty()) {
         return common::Result<void>::failure(support::wrap_job_status(
             { common::StatusCode::internal_error,
               "STFT RGB output unexpectedly contained imaginary data." },
+            job));
+    }
+
+    if (stft_real.empty()) {
+        return common::Result<void>::failure(support::wrap_job_status(
+            { common::StatusCode::internal_error, "STFT RGB output was empty." },
             job));
     }
 

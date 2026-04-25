@@ -20,6 +20,16 @@ constexpr unsigned int kLocalSize64          = 64;
 constexpr unsigned int kLocalSize256         = 256;
 
 unsigned int
+ResolveMelBins(const StftArgs &args) noexcept
+{
+    if (!args.mel_filter_bank.has_value() || args.mel_filter_bank->n_mels <= 0) {
+        return 0u;
+    }
+
+    return static_cast<unsigned int>(args.mel_filter_bank->n_mels);
+}
+
+unsigned int
 RoundUpToLocalSize(const unsigned int size, const unsigned int localSize)
 {
     if (localSize == 0 || (size % localSize) == 0) {
@@ -68,19 +78,21 @@ OPENCL_STFT::OPENCL_STFT()
 }
 
 void
-OPENCL_STFT::EnsureMelFilterBank(const int windowSize)
+OPENCL_STFT::EnsureMelFilterBank(const StftArgs &args)
 {
-    if (prev_fft_size == windowSize && memories.mel_filter_bank.has_value()) {
+    if (!args.mel_filter_bank.has_value()) {
+        memories.mel_filter_bank.reset();
+        mel_filter_bank_host.clear();
+        prev_mel_filter_bank_spec.reset();
         return;
     }
 
-    mel_filter_bank_host = GenMelFilterBank(kDefaultSampleRate,
-                                            windowSize,
-                                            static_cast<int>(kMelBins),
-                                            0.0f,
-                                            -1.0f,
-                                            MelFormula::Slaney,
-                                            MelNorm::Slaney);
+    if (prev_mel_filter_bank_spec == args.mel_filter_bank &&
+        memories.mel_filter_bank.has_value()) {
+        return;
+    }
+
+    mel_filter_bank_host = GenMelFilterBank(args.mel_filter_bank.value());
     if (mel_filter_bank_host.empty()) {
         throw std::runtime_error("Failed to Generate Mel Filter Bank.");
     }
@@ -95,7 +107,7 @@ OPENCL_STFT::EnsureMelFilterBank(const int windowSize)
                            0,
                            sizeof(float) * mel_filter_bank_host.size(),
                            mel_filter_bank_host.data());
-    prev_fft_size = windowSize;
+    prev_mel_filter_bank_spec = args.mel_filter_bank;
 }
 
 std::pair<REAL_VEC, IMAG_VEC>
@@ -106,6 +118,9 @@ OPENCL_STFT::Execute(REAL_VEC          &origin_cpu_memory,
                      const StftArgs    &args)
 {
     post_process.check_values();
+    if (post_process.mel_scale && !args.mel_filter_bank.has_value()) {
+        return {};
+    }
 
     if (win_expsz < 6) {
         return {};
@@ -150,13 +165,15 @@ OPENCL_STFT::Execute(REAL_VEC          &origin_cpu_memory,
                  args.OFullSize,
                  64);
 
-    buildKernel(built_kernels.DCRemove, "_occa_DCRemove_Common_0");
-    setArgChain3(built_kernels.DCRemove,
-                 memories.real.value(),
-                 args.OFullSize,
-                 args.windowSize,
-                 args.qtConst * 64,
-                 64);
+    if (args.dc_remove) {
+        buildKernel(built_kernels.DCRemove, "_occa_DCRemove_Common_0");
+        setArgChain3(built_kernels.DCRemove,
+                     memories.real.value(),
+                     args.OFullSize,
+                     args.windowSize,
+                     args.qtConst * 64,
+                     64);
+    }
 
     auto enqueueWindow = [&](std::optional<cl::Kernel> &kernel,
                              const char                *kernelName) {
@@ -308,7 +325,9 @@ OPENCL_STFT::Execute(REAL_VEC          &origin_cpu_memory,
 
     const uint32_t binSize = static_cast<uint32_t>((args.windowSize >> 1) + 1);
     const uint32_t binFullSize = binSize * static_cast<uint32_t>(args.qtConst);
-    const uint32_t melFullSize = kMelBins * static_cast<uint32_t>(args.qtConst);
+    const uint32_t melBins = ResolveMelBins(args);
+    const uint32_t melFullSize =
+        melBins * static_cast<uint32_t>(args.qtConst);
 
     if (post_process.Chainable_BIN_POWER()) {
         buildKernel(built_kernels.BinPowerChain, "_occa_BinPowerChain_0");
@@ -355,7 +374,10 @@ OPENCL_STFT::Execute(REAL_VEC          &origin_cpu_memory,
     }
 
     if (post_process.mel_scale) {
-        EnsureMelFilterBank(static_cast<int>(args.windowSize));
+        EnsureMelFilterBank(args);
+        if (!memories.mel_filter_bank.has_value()) {
+            return {};
+        }
     }
 
     if (post_process.Chainable_MEL_DB()) {
@@ -366,7 +388,7 @@ OPENCL_STFT::Execute(REAL_VEC          &origin_cpu_memory,
                      memories.mel_filter_bank.value(),
                      melFullSize,
                      binSize,
-                     kMelBins,
+                     melBins,
                      RoundUpToLocalSize(melFullSize, kLocalSize64),
                      kLocalSize64);
         activeReal = &memories.mel.value();
@@ -380,7 +402,7 @@ OPENCL_STFT::Execute(REAL_VEC          &origin_cpu_memory,
                      memories.mel_filter_bank.value(),
                      melFullSize,
                      binSize,
-                     kMelBins,
+                     melBins,
                      RoundUpToLocalSize(melFullSize, kLocalSize64),
                      kLocalSize64);
         activeReal = &memories.mel.value();
@@ -414,7 +436,7 @@ OPENCL_STFT::Execute(REAL_VEC          &origin_cpu_memory,
     if (post_process.normalize_min_max && !post_process.to_rgb) {
         const uint32_t chunkSize =
             post_process.mel_scale
-                ? kMelBins
+                ? melBins
                 : (post_process.to_bin
                        ? binSize
                        : static_cast<uint32_t>(args.windowSize));
@@ -422,7 +444,7 @@ OPENCL_STFT::Execute(REAL_VEC          &origin_cpu_memory,
     }
 
     if (post_process.to_rgb) {
-        return { TO_RGB(rout, kMelBins), {} };
+        return { TO_RGB(rout, melBins), {} };
     }
 
     if (hasImag) {
@@ -501,7 +523,9 @@ OPENCL_STFT::SetMemory(const uint32_t      origin_cpu_memory_sz,
         prev_bin_fullsize = binFullSize;
     }
 
-    const uint32_t melFullSize = kMelBins * static_cast<uint32_t>(args.qtConst);
+    const uint32_t melBins = ResolveMelBins(args);
+    const uint32_t melFullSize =
+        melBins * static_cast<uint32_t>(args.qtConst);
     if (post_process.mel_scale && prev_mel_fullsize != melFullSize) {
         memories.mel.reset();
         memories.mel.emplace(

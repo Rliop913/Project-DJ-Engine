@@ -14,6 +14,17 @@ namespace {
 
 constexpr float kDefaultGaussianSigma = 0.4f;
 
+unsigned int
+ResolveMelBins(const StftArgs &gargs) noexcept
+{
+    if (!gargs.mel_filter_bank.has_value() ||
+        gargs.mel_filter_bank->n_mels <= 0) {
+        return 0u;
+    }
+
+    return static_cast<unsigned int>(gargs.mel_filter_bank->n_mels);
+}
+
 } // namespace
 
 void
@@ -44,8 +55,9 @@ SERIAL_STFT::EnsureMemory(const StftArgs     &gargs,
         prev_bin_fullsize = binFullSize;
     }
 
+    const uint32_t melBins = ResolveMelBins(gargs);
     const uint32_t melFullSize =
-        kMelBins * static_cast<uint32_t>(gargs.qtConst);
+        melBins * static_cast<uint32_t>(gargs.qtConst);
     if (post_process.mel_scale && prev_mel_fullsize != melFullSize) {
         mel.resize(melFullSize);
         prev_mel_fullsize = melFullSize;
@@ -53,20 +65,21 @@ SERIAL_STFT::EnsureMemory(const StftArgs     &gargs,
 }
 
 void
-SERIAL_STFT::EnsureMelFilterBank(const int windowSize)
+SERIAL_STFT::EnsureMelFilterBank(const StftArgs &gargs)
 {
-    if (prev_fft_size == windowSize) {
+    if (!gargs.mel_filter_bank.has_value()) {
+        mel_filter_bank.clear();
+        prev_mel_filter_bank_spec.reset();
         return;
     }
 
-    mel_filter_bank = GenMelFilterBank(kDefaultSampleRate,
-                                       windowSize,
-                                       static_cast<int>(kMelBins),
-                                       0.0f,
-                                       -1.0f,
-                                       MelFormula::Slaney,
-                                       MelNorm::Slaney);
-    prev_fft_size = windowSize;
+    if (prev_mel_filter_bank_spec == gargs.mel_filter_bank &&
+        !mel_filter_bank.empty()) {
+        return;
+    }
+
+    mel_filter_bank = GenMelFilterBank(gargs.mel_filter_bank.value());
+    prev_mel_filter_bank_spec = gargs.mel_filter_bank;
 }
 
 void
@@ -163,6 +176,9 @@ SERIAL_STFT::Execute(std::vector<float> &PCMdata,
                      const StftArgs     &gargs)
 {
     post_process.check_values();
+    if (post_process.mel_scale && !gargs.mel_filter_bank.has_value()) {
+        return {};
+    }
 
     const bool needSubBuffer = windowSizeEXP > 11;
     EnsureMemory(gargs, post_process, needSubBuffer);
@@ -174,7 +190,9 @@ SERIAL_STFT::Execute(std::vector<float> &PCMdata,
                    gargs.OMove,
                    real.data());
 
-    DCRemove_Common(real.data(), gargs.OFullSize, gargs.windowSize);
+    if (gargs.dc_remove) {
+        DCRemove_Common(real.data(), gargs.OFullSize, gargs.windowSize);
+    }
     ApplyWindow(target_window, gargs);
     RunFft(windowSizeEXP, gargs);
 
@@ -189,8 +207,9 @@ SERIAL_STFT::Execute(std::vector<float> &PCMdata,
     const uint32_t binSize =
         static_cast<uint32_t>((gargs.windowSize >> 1) + 1);
     const uint32_t binFullSize = binSize * static_cast<uint32_t>(gargs.qtConst);
+    const uint32_t melBins = ResolveMelBins(gargs);
     const uint32_t melFullSize =
-        kMelBins * static_cast<uint32_t>(gargs.qtConst);
+        melBins * static_cast<uint32_t>(gargs.qtConst);
 
     if (post_process.Chainable_BIN_POWER()) {
         BinPowerChain(active_real.get().data(),
@@ -220,7 +239,10 @@ SERIAL_STFT::Execute(std::vector<float> &PCMdata,
     }
 
     if (post_process.mel_scale) {
-        EnsureMelFilterBank(gargs.windowSize);
+        EnsureMelFilterBank(gargs);
+        if (mel_filter_bank.empty()) {
+            return {};
+        }
     }
 
     if (post_process.Chainable_MEL_DB()) {
@@ -229,7 +251,7 @@ SERIAL_STFT::Execute(std::vector<float> &PCMdata,
                    mel_filter_bank.data(),
                    melFullSize,
                    binSize,
-                   kMelBins);
+                   melBins);
         active_real = mel;
         active_imag.reset();
     } else if (post_process.mel_scale) {
@@ -238,7 +260,7 @@ SERIAL_STFT::Execute(std::vector<float> &PCMdata,
                  mel_filter_bank.data(),
                  melFullSize,
                  binSize,
-                 kMelBins);
+                 melBins);
         active_real = mel;
         active_imag.reset();
     } else if (post_process.to_db) {
@@ -250,14 +272,14 @@ SERIAL_STFT::Execute(std::vector<float> &PCMdata,
     if (post_process.normalize_min_max && !post_process.to_rgb) {
         const uint32_t chunkSize =
             post_process.mel_scale
-                ? kMelBins
+                ? melBins
                 : (post_process.to_bin ? binSize
                                        : static_cast<uint32_t>(gargs.windowSize));
         Normalize_minmax(active_real.get(), chunkSize);
     }
 
     if (post_process.to_rgb) {
-        rgb = TO_RGB(active_real.get(), kMelBins);
+        rgb = TO_RGB(active_real.get(), melBins);
         active_real = rgb;
         active_imag.reset();
     }

@@ -152,6 +152,32 @@ WaveformPlanBuilder::Validate() const
                   "EncodeWaveformWebpStftArgs.overlap_ratio must be greater "
                   "than or equal to 0.0 and less than 1.0." });
         }
+
+        if (stft_args_->mel_filter_bank.has_value()) {
+            const auto &melFilterBank = stft_args_->mel_filter_bank.value();
+            const int expectedNfft =
+                static_cast<int>(1u << stft_args_->window_size_exp);
+
+            if (melFilterBank.n_fft != expectedNfft) {
+                return common::Result<void>::failure(
+                    { common::StatusCode::invalid_argument,
+                      "EncodeWaveformWebpStftArgs.mel_filter_bank.n_fft must "
+                      "match window_size_exp." });
+            }
+
+            if (!PDJE_PARALLEL::CheckMelVals(melFilterBank)) {
+                return common::Result<void>::failure(
+                    { common::StatusCode::invalid_argument,
+                      "EncodeWaveformWebpStftArgs.mel_filter_bank is invalid." });
+            }
+
+            if (melFilterBank.n_mels < 3) {
+                return common::Result<void>::failure(
+                    { common::StatusCode::invalid_argument,
+                      "EncodeWaveformWebpStftArgs.mel_filter_bank.n_mels must "
+                      "be at least 3 for RGB output." });
+            }
+        }
     }
 
     return common::Result<void>::success();

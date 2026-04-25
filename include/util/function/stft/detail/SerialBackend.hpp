@@ -3,20 +3,17 @@
 #include "util/function/stft/detail/StftBackend.hpp"
 
 #include <cstdint>
+#include <optional>
 #include <vector>
 
 namespace PDJE_PARALLEL::detail {
 
 class SERIAL_STFT final : public IStftBackend {
   private:
-    static constexpr uint32_t kMelBins           = 80;
-    static constexpr int      kDefaultSampleRate = 48000;
-
     uint32_t prev_overlap_fullsize           = 0;
     uint32_t prev_overlap_subbuffer_fullsize = 0;
     uint32_t prev_bin_fullsize               = 0;
     uint32_t prev_mel_fullsize               = 0;
-    int      prev_fft_size                   = 0;
 
     std::vector<float> real;
     std::vector<float> imag;
@@ -27,6 +24,7 @@ class SERIAL_STFT final : public IStftBackend {
     std::vector<float> mel;
     std::vector<float> rgb;
     std::vector<float> mel_filter_bank;
+    std::optional<MelFilterBankSpec> prev_mel_filter_bank_spec;
 
     void
     EnsureMemory(const StftArgs &gargs,
@@ -34,7 +32,7 @@ class SERIAL_STFT final : public IStftBackend {
                  bool needSubBuffer);
 
     void
-    EnsureMelFilterBank(int windowSize);
+    EnsureMelFilterBank(const StftArgs &gargs);
 
     void
     ApplyWindow(WINDOW_LIST target_window, const StftArgs &gargs);

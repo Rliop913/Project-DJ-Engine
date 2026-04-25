@@ -7,6 +7,7 @@
 
 #include <cstddef>
 #include <cstdint>
+#include <optional>
 #include <span>
 #include <vector>
 
@@ -32,6 +33,7 @@ struct EncodeWaveformWebpStftArgs {
     int                         window_size_exp = 10;
     float                       overlap_ratio   = 0.5f;
     PDJE_PARALLEL::POST_PROCESS post_process    = {};
+    std::optional<PDJE_PARALLEL::MelFilterBankSpec> mel_filter_bank {};
 };
 
 PDJE_API common::Result<WaveformWebpBatch>

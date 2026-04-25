@@ -135,6 +135,8 @@ surface includes:
 - status/result types under `include/util/common/`
 - relational, key-value, and nearest-neighbor DB wrappers under
   `include/util/db/`
+- generic ONNX Runtime session ownership under `include/util/ai/AI.hpp`
+- Beat This ownership under `include/util/ai/beat_this/`
 - image/WebP public entrypoints under `include/util/function/image/`, with
   pipeline ownership in `include/util/function/image/detail/`
 - STFT public entrypoints under `include/util/function/stft/`, with runtime and

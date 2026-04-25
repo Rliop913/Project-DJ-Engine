@@ -219,6 +219,8 @@ static_assert(!std::is_member_function_pointer_v<decltype(&PDJE_UTIL::function::
 static_assert(!std::is_member_function_pointer_v<decltype(&PDJE_UTIL::function::slugify)>);
 static_assert(std::is_same_v<decltype(PDJE_PARALLEL::STFT::detect_available_backend()),
                              PDJE_PARALLEL::BACKEND_T>);
+static_assert(std::is_move_constructible_v<PDJE_UTIL::ai::OnnxSession>);
+static_assert(std::is_move_constructible_v<PDJE_UTIL::ai::BeatThisDetector>);
 
 } // namespace
 
@@ -233,6 +235,20 @@ TEST_CASE("util umbrella header exposes public surface")
         { .input = "Hello, PDJE Util!", .lowercase = true, .separator = '-' });
     REQUIRE(slug.ok());
     CHECK(slug.value() == "hello-pdje-util");
+
+    PDJE_UTIL::ai::BeatThisFrontendConfig aiConfig;
+    PDJE_UTIL::ai::OnnxSessionOptions     sessionOptions;
+    PDJE_UTIL::ai::FloatTensor tensor{
+        .shape = { 1, 2 },
+        .values = { 0.0f, 1.0f },
+    };
+
+    CHECK(aiConfig.target_sample_rate == 22050);
+    CHECK(aiConfig.nfft == 1024);
+    CHECK(aiConfig.num_mels == 128);
+    CHECK(sessionOptions.optimization_level ==
+          PDJE_UTIL::ai::OnnxOptimizationLevel::EXTENDED);
+    CHECK_FALSE(tensor.empty());
 }
 
 TEST_CASE("util database wrappers can be instantiated with compatible backends")
@@ -273,6 +289,8 @@ TEST_CASE("util stable leaf headers remain self-contained")
 
     PDJE_UTIL::function::image::EncodeWaveformWebpArgs waveformArgs;
     CHECK(waveformArgs.channel_count == 0u);
+    PDJE_UTIL::function::image::EncodeWaveformWebpStftArgs waveformStftArgs;
+    CHECK_FALSE(waveformStftArgs.mel_filter_bank.has_value());
 
     PDJE_UTIL::function::image::EncodeWebpArgs webpArgs;
     CHECK(webpArgs.compression_level == -1);
