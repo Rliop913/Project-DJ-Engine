@@ -5,15 +5,28 @@ add_executable(gitTester ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/gittest.cpp $
 add_executable(
     testOnnxLoad
     ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/testOnnxLoad.cpp)
+add_executable(
+    testBeatThis
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/testBeatThis.cpp)
 
 target_link_libraries(testEditor PRIVATE CORE_OBJ)
 target_link_libraries(DBTester PRIVATE CORE_OBJ)
 target_link_libraries(gitTester PRIVATE CORE_OBJ)
+target_link_libraries(
+    testBeatThis
+    PRIVATE
+    PDJE_UTIL
+    MINIAUDIO_OBJ
+    MINIAUDIO_INCLUDE)
 setCoreReqs(testEditor)
 setCoreReqs(DBTester)
 setCoreReqs(gitTester)
+setUtilReqs(testBeatThis)
+setRocksDBReqLib(testBeatThis)
+setHighwayReqLib(testBeatThis)
 setOnnxRuntimeReqLib(testOnnxLoad)
 pdje_copy_onnxruntime_runtime(testOnnxLoad)
+pdje_copy_onnxruntime_runtime(testBeatThis)
 target_compile_definitions(
     testOnnxLoad
     PRIVATE PDJE_EXPECTED_ONNXRUNTIME_VERSION="${PDJE_ONNXRUNTIME_VERSION}")

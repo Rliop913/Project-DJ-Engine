@@ -2,6 +2,21 @@
 
 This is the thin verification doc for the repository and its control-doc set.
 
+## Agent Rule
+
+The commands in this file are examples, not blanket permission for agents to
+run them automatically.
+
+- Before any `conan install`, `cmake` configure, `cmake --build`, `ctest`, or
+  helper-script invocation, agents must ask the user which build/config or
+  verification flow to use.
+- Agents must not pick a preset, toolchain, build type, or verification
+  command on their own.
+- Agents must not create or use build directories other than `./build` unless
+  the user explicitly requests an exception.
+- Build/config/verification commands require explicit user approval every time;
+  do not start them speculatively.
+
 ## Quick Verify Existing Checkout
 
 Check source defaults:

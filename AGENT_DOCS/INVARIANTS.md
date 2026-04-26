@@ -30,6 +30,14 @@ restructured.
   `RelWithDebInfo`.
 - Shared preset flows fix compilers by platform: Windows=`cl`,
   Linux=`clang`, macOS=`clang` expecting AppleClang.
+- Agents must ask the user which build/config flow to use before running any
+  `conan install`, `cmake` configure, `cmake --build`, `ctest`, or wrapper
+  script command.
+- Agents must not choose a preset, toolchain, build type, or verification
+  command on their own and must not start build/config work without explicit
+  user approval.
+- Agents must not create or use build directories other than `./build` unless
+  the user explicitly requests an exception.
 - SWIG is required only when `PDJE_SWIG_BUILD=ON`.
 - `PDJE_DEVELOP_INPUT` is active on Linux and Windows and forced off on macOS.
 

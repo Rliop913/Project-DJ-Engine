@@ -19,6 +19,11 @@ control docs live under `AGENT_DOCS/`.
 - `BluePrint_PDJE/` is archive material only.
 - Source defaults come from `cmakes/Options.cmake`, not from local build
   caches.
+- Agents must ask the user which build/config or verification flow to use
+  before running any `conan install`, `cmake`, `cmake --build`, `ctest`, or
+  wrapper script command.
+- Agents must not create or use build directories other than `./build` unless
+  the user explicitly requests an exception.
 - `include/` contains both headers and implementation `.cpp` files.
 
 ## Primary Entry Points
