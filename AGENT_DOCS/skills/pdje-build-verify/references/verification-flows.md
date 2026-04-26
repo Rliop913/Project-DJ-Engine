@@ -57,13 +57,13 @@ cmake --build --preset windows-relwithdebinfo --target pdje_unit_util
 Run the util DB, status, and public-surface checks:
 
 ```powershell
-ctest --test-dir ./build -R "unit.core::(rocksdb|annoy|sqlite|util)" --output-on-failure
+ctest --test-dir ./build -R "unit.util::(rocksdb|annoy|sqlite|util)" --output-on-failure
 ```
 
 Run the util signal, runtime, image, and WebP checks:
 
 ```powershell
-ctest --test-dir ./build -R "unit.core::(backendless|post process rgb mode|stft|mel filter bank|waveform|encode_waveform_webps|encode_webp|write_webp)" --output-on-failure
+ctest --test-dir ./build -R "unit.util::(backendless|post process rgb mode|stft|mel filter bank|waveform|encode_waveform_webps|encode_webp|write_webp)" --output-on-failure
 ```
 
 ## Dev Consumer Flow

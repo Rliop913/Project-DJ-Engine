@@ -62,7 +62,7 @@ The CMake graph is library-first. Most implementation code lives under
 | `tests/unit/` | Doctest unit suites registered with CTest |
 | `include/tests/` | Legacy/manual test sources and helper programs |
 | `cmakes/` | Build composition, package discovery, target assembly, test wiring |
-| `docs/` | Generated HTML output; do not hand-edit |
+| `docs/` | Redirecting HTML to the external documentation site |
 | `BluePrint_PDJE/` | Archived design notes; not the current source of truth |
 
 ## Runtime Data Flow
@@ -168,5 +168,6 @@ instead of exposing raw C++ owners directly.
 ## Documentation Boundaries
 
 - `AGENT_DOCS/` is the canonical Markdown control-doc surface
-- `docs/` is generated output from `DOCUMENT_GENERATOR.sh`
+- public documentation is maintained outside this checkout
+- `docs/` contains only redirecting HTML for the external documentation site
 - `BluePrint_PDJE/` is retained as archived design context only

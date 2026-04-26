@@ -46,7 +46,7 @@ legacy material.
 
 - [ARCHITECTURE.md](ARCHITECTURE.md): canonical architecture deep dive
 - [../README.md](../README.md): public-facing project landing page
-- `../docs/`: generated HTML output only
+- `../docs/`: redirecting HTML only; public docs live outside this checkout
 
 ## Current Known Risks
 
@@ -54,7 +54,7 @@ legacy material.
 - explicit C ABI unit test sources exist, but current unit target wiring does
   not include them.
 - `Judge_Init::SetInputLine()` still assumes a non-null `input_arena`.
-- `docs/` is already used for generated output and must stay separate from
+- `docs/` contains only redirecting HTML and must stay separate from
   agent-control docs.
 - `BluePrint_PDJE/` can still surface in search results despite being archive
   material.

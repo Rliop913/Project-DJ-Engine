@@ -11,9 +11,10 @@ restructured.
 - Root `ARCHITECTURE.md`, `PROJECT_STATE.md`, and `HOW_TO_VERIFY.md` are
   compatibility aliases, not canonical deep docs.
 - `DECISIONS.md` is the short rationale ledger for these control-doc rules.
-- `document_sources/` may still exist as external/generated-doc source, but it
-  is not part of the required maintenance reading flow.
-- `docs/` is generated output.
+- Public project documentation is maintained outside this checkout.
+- `document_sources/` may still exist as legacy external-doc source material,
+  but it is not part of the required maintenance reading flow.
+- `docs/` contains only redirecting HTML for the external documentation site.
 - `BluePrint_PDJE/` is archive material, not current source of truth.
 
 ## Build Truth
@@ -52,5 +53,5 @@ restructured.
 ## Verification Expectations
 
 - Unit test truth comes from `ctest --test-dir ./build -L unit`.
-- Generated documentation should be produced through `DOCUMENT_GENERATOR.sh`,
-  not by editing `docs/` directly.
+- Public documentation changes belong in the external documentation surface, not
+  in `docs/`; this checkout keeps only the redirect HTML.

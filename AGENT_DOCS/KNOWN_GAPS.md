@@ -24,8 +24,10 @@ This page is the intentional list of current documentation and wiring gaps.
 - The generated `conanbuild.bat` and `conanrun.bat` track the last Conan
   install mode, so mode-specific env scripts are still safer on Windows when
   switching between `Release` and `RelWithDebInfo`.
-- `AGENT_DOCS` is now the maintenance doc harness. `document_sources/` is not
-  part of the required maintenance reading flow.
+- `AGENT_DOCS` is now the maintenance doc harness. Public documentation is
+  external; `document_sources/` is not part of the required maintenance reading
+  flow.
+- `docs/` contains only redirecting HTML for the external documentation site.
 - `BluePrint_PDJE/` can still appear in search results even though it is
   archive-only material.
 

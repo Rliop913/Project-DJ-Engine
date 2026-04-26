@@ -147,6 +147,9 @@ This project uses the following dependencies, which are automatically fetched us
 - **[SoundTouch](https://www.surina.net/soundtouch/)**: Audio processing library.
 - **[Faust language](https://github.com/grame-cncm/faust)**: Functional Programming Language for Real Time Signal Processing
 - **[Botan](https://github.com/randombit/botan)**: Cryptography Toolkit
+- **[Beat This](https://github.com/CPJKU/beat_this)**: Beat and downbeat tracking model pipeline.
+- **[soxr pysoxr fork](https://github.com/dofuuz/soxr.git)**: Sample-rate conversion library used through the pysoxr fork.
+- **[ONNX Runtime](https://github.com/microsoft/onnxruntime.git)**: Runtime for ONNX model inference.
 ## Generating Documentation
 
 Documentation is produced using Doxygen and Sphinx. Ensure both tools are available in your PATH, then run:

@@ -6,35 +6,33 @@ This file is the thin current-state control doc for `Project-DJ-Engine`.
 
 - Version file: `PDJE_VERSION` currently reports `0.8.7`
 - Canonical agent Markdown docs now live under `AGENT_DOCS/`
-- Generated HTML output lives under `docs/`
+- Public documentation lives outside this checkout; `docs/` contains only
+  redirecting HTML
 
 ## Source Defaults That Matter
 
 These come from `cmakes/Options.cmake`, not from the local `/build` cache.
 
-- `PDJE_TEST=ON`
-- `PDJE_DEV_TEST=OFF`
-- `PDJE_DYNAMIC=OFF`
-- `PDJE_SWIG_BUILD=OFF`
-- `PDJE_DEVELOP_INPUT=ON` on Linux and Windows
-- `PDJE_DEVELOP_INPUT=OFF` on macOS
+- `PDJE_TEST` defaults on.
+- `PDJE_DEV_TEST` defaults off.
+- `PDJE_DYNAMIC` defaults off.
+- `PDJE_SWIG_BUILD` defaults off.
+- `PDJE_DEVELOP_INPUT` defaults on for Linux and Windows.
+- `PDJE_DEVELOP_INPUT` is forced off on macOS.
 
 ## Local Checkout Caveat
 
-The current local `/build` cache is configured differently from source
-defaults and from the fixed verification baseline.
+The repo-root `./build` cache is mutable local state. Inspect it separately
+before relying on cached build options:
 
-- `CMAKE_BUILD_TYPE=Release`
-- `PDJE_TEST=ON`
-- `PDJE_DEV_TEST=ON`
-- `PDJE_DYNAMIC=ON`
-- `PDJE_DEVELOP_INPUT=ON`
-- The canonical shared build matrix now lives in root `CMakePresets.json`.
-- That matrix fixes the repo-root `/build` directory.
-- That matrix supports `Release` and `RelWithDebInfo` only.
-- That matrix fixes `PDJE_DYNAMIC=ON` everywhere.
-- That matrix enables `PDJE_TEST` and `PDJE_DEV_TEST` only in
-  `RelWithDebInfo`.
+```bash
+cmake -LA -N ./build | rg '^PDJE_|^CMAKE_BUILD_TYPE'
+```
+
+The canonical shared build matrix now lives in root `CMakePresets.json`.
+That matrix fixes the repo-root `./build` directory, supports only `Release`
+and `RelWithDebInfo`, fixes `PDJE_DYNAMIC=ON` everywhere, and enables
+`PDJE_TEST` plus `PDJE_DEV_TEST` only in `RelWithDebInfo`.
 
 Treat local binaries and `ctest` output as observations of this checkout, not
 as documentation of the source defaults or the fixed verification baseline.
@@ -47,7 +45,8 @@ as documentation of the source defaults or the fixed verification baseline.
 
 ## Current Watchouts
 
-- `docs/` is generated output and should not be hand-edited.
+- `docs/` contains only redirecting HTML for the external docs site; do not
+  treat it as canonical documentation content.
 - `BluePrint_PDJE/` is archive material only.
 - `include/` contains both headers and implementation `.cpp` files.
 - explicit C ABI unit test sources exist, but current module test lists do not

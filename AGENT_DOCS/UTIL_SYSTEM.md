@@ -47,7 +47,7 @@ This page covers the active utility surface behind `PDJE_UTIL`.
 ## Contracts / Invariants
 
 - `PDJE_UTIL` is active code, not roadmap-only material.
-- utility doctest coverage is registered under the `unit.core::...` prefix in
+- utility doctest coverage is registered under the `unit.util::...` prefix in
   the current checkout.
 - backend-loading logic must keep serial fallback behavior intact when optional
   accelerated paths fail.
@@ -83,12 +83,13 @@ This page covers the active utility surface behind `PDJE_UTIL`.
 
 ## Verify
 
-- `ctest --test-dir ./build -R 'unit.core::(rocksdb|annoy|sqlite|util)' --output-on-failure`
-- `ctest --test-dir ./build -R 'unit.core::(backendless|post process rgb mode|stft|mel filter bank|waveform|encode_waveform_webps|encode_webp|write_webp)' --output-on-failure`
+- `ctest --test-dir ./build -R 'unit.util::(rocksdb|annoy|sqlite|util)' --output-on-failure`
+- `ctest --test-dir ./build -R 'unit.util::(backendless|post process rgb mode|stft|mel filter bank|waveform|encode_waveform_webps|encode_webp|write_webp)' --output-on-failure`
 - `ctest --test-dir ./build -L unit --output-on-failure`
 
 ## Known Traps
 
 - utility behavior is spread across both umbrella headers and direct includes.
-- the current test namespace does not advertise itself as `unit.util::...`.
+- ONNX Runtime smoke coverage is registered separately as
+  `unit.onnxruntime::smoke`.
 - OpenCL-related tests verify fallback behavior as much as accelerated success.
