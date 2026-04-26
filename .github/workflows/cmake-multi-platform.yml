@@ -166,10 +166,19 @@ jobs:
       run: |
         ccache -z
 
+    - name: Configure and Build (Windows)
+      if: runner.os == 'Windows'
+      shell: cmd
+      working-directory: ${{ github.workspace }}
+      run: |
+        call .\windows_conf_and_build.bat ${{ matrix.build_type }} %NUMBER_OF_PROCESSORS% on
+
     - name: Configure CMake
+      if: runner.os != 'Windows'
       run: cmake --preset ${{ matrix.preset }}
 
     - name: Build
+      if: runner.os != 'Windows'
       run: cmake --build --preset ${{ matrix.preset }}
 
     - name: ccache stats
