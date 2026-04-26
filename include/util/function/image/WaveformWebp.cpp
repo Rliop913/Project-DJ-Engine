@@ -1,6 +1,6 @@
 #include "util/function/image/WaveformWebp.hpp"
 
-#include "util/function/image/WaveformWebpEncoder.hpp"
+#include "util/function/image/detail/WaveformWebpEncoder.hpp"
 
 namespace PDJE_UTIL::function::image {
 

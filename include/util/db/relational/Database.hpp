@@ -1,5 +1,6 @@
 #pragma once
 
+#include "util/db/detail/Lifecycle.hpp"
 #include "util/db/relational/BackendConcept.hpp"
 
 #include <utility>
@@ -27,30 +28,28 @@ template <RelationalBackendConcept Backend> class RelationalDatabase {
     open(const config_type &cfg)
     {
         RelationalDatabase db;
-        auto               opened = db.backend_.open(cfg);
+        auto               opened =
+            detail::open_backend(db.backend_, db.is_open_, cfg);
         if (!opened.ok()) {
             return common::Result<RelationalDatabase>::failure(opened.status());
         }
-        db.is_open_ = true;
         return common::Result<RelationalDatabase>::success(std::move(db));
     }
 
     RelationalDatabase() = default;
     RelationalDatabase(RelationalDatabase &&other) noexcept
-        : backend_(std::move(other.backend_)),
-          is_open_(std::exchange(other.is_open_, false))
     {
+        detail::take_backend_state(
+            backend_, is_open_, std::move(other.backend_), other.is_open_);
     }
 
     RelationalDatabase &
     operator=(RelationalDatabase &&other) noexcept
     {
         if (this != &other) {
-            if (is_open_) {
-                (void)close();
-            }
-            backend_ = std::move(other.backend_);
-            is_open_ = std::exchange(other.is_open_, false);
+            (void)detail::close_if_open(backend_, is_open_);
+            detail::take_backend_state(
+                backend_, is_open_, std::move(other.backend_), other.is_open_);
         }
         return *this;
     }
@@ -61,22 +60,13 @@ template <RelationalBackendConcept Backend> class RelationalDatabase {
 
     ~RelationalDatabase()
     {
-        if (is_open_) {
-            (void)close();
-        }
+        (void)detail::close_if_open(backend_, is_open_);
     }
 
     common::Result<void>
     close()
     {
-        if (!is_open_) {
-            return common::Result<void>::success();
-        }
-        auto closed = backend_.close();
-        if (closed.ok()) {
-            is_open_ = false;
-        }
-        return closed;
+        return detail::close_if_open(backend_, is_open_);
     }
 
     bool

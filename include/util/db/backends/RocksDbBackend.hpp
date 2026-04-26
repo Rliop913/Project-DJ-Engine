@@ -1,5 +1,6 @@
 #pragma once
 
+#include "global/PDJE_EXPORT_SETTER.hpp"
 #include "util/common/Result.hpp"
 #include "util/db/DbTypes.hpp"
 
@@ -17,7 +18,7 @@ struct RocksDbConfig {
     OpenOptions           open_options{};
 };
 
-class RocksDbBackend {
+class PDJE_API RocksDbBackend {
   public:
     using config_type = RocksDbConfig;
 

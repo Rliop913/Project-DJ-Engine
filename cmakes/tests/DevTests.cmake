@@ -2,13 +2,36 @@
 add_executable(testEditor ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/editorTest.cpp ${CORE_SRC_EXPORT})
 add_executable(DBTester ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/dbTest.cpp ${CORE_SRC_EXPORT})
 add_executable(gitTester ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/gittest.cpp ${CORE_SRC_EXPORT})
+add_executable(
+    testOnnxLoad
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/testOnnxLoad.cpp)
+add_executable(
+    testBeatThis
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/testBeatThis.cpp)
 
 target_link_libraries(testEditor PRIVATE CORE_OBJ)
 target_link_libraries(DBTester PRIVATE CORE_OBJ)
 target_link_libraries(gitTester PRIVATE CORE_OBJ)
+target_link_libraries(
+    testBeatThis
+    PRIVATE
+    PDJE_UTIL
+    MINIAUDIO_OBJ
+    MINIAUDIO_INCLUDE)
 setCoreReqs(testEditor)
 setCoreReqs(DBTester)
 setCoreReqs(gitTester)
+setUtilReqs(testBeatThis)
+setRocksDBReqLib(testBeatThis)
+setHighwayReqLib(testBeatThis)
+setOnnxRuntimeReqLib(testOnnxLoad)
+pdje_copy_onnxruntime_runtime(testOnnxLoad)
+pdje_copy_onnxruntime_runtime(testBeatThis)
+target_compile_definitions(
+    testOnnxLoad
+    PRIVATE PDJE_EXPECTED_ONNXRUNTIME_VERSION="${PDJE_ONNXRUNTIME_VERSION}")
+PDJE_COMPILE_OPTION(testOnnxLoad)
+SET_PROPERTIES(testOnnxLoad)
 
 if(PDJE_DEVELOP_INPUT)
 add_executable(testInput ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/INPUT_TESTS/pdjeInputTest.cpp ${INPUT_SRC_EXPORT})
@@ -66,8 +89,7 @@ target_include_directories(
 
 setCapnpReqLib(music_to_waveform_webp)
 
-target_link_libraries(music_to_waveform_webp PRIVATE PDJE_UTIL_IMAGE_WEBP)
-target_link_libraries(music_to_waveform_webp PRIVATE PDJE_UTIL_IMAGE_WAVEFORM)
+target_link_libraries(music_to_waveform_webp PRIVATE PDJE_UTIL)
 
 
 

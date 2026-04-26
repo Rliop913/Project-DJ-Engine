@@ -1,5 +1,6 @@
 #pragma once
 
+#include "util/db/detail/Lifecycle.hpp"
 #include "util/db/keyvalue/BackendConcept.hpp"
 
 #include <span>
@@ -28,30 +29,27 @@ template <KeyValueBackendConcept Backend> class KeyValueDatabase {
     open(const config_type &cfg)
     {
         KeyValueDatabase db;
-        auto             opened = db.backend_.open(cfg);
+        auto             opened = detail::open_backend(db.backend_, db.is_open_, cfg);
         if (!opened.ok()) {
             return common::Result<KeyValueDatabase>::failure(opened.status());
         }
-        db.is_open_ = true;
         return common::Result<KeyValueDatabase>::success(std::move(db));
     }
 
     KeyValueDatabase() = default;
     KeyValueDatabase(KeyValueDatabase &&other) noexcept
-        : backend_(std::move(other.backend_)),
-          is_open_(std::exchange(other.is_open_, false))
     {
+        detail::take_backend_state(
+            backend_, is_open_, std::move(other.backend_), other.is_open_);
     }
 
     KeyValueDatabase &
     operator=(KeyValueDatabase &&other) noexcept
     {
         if (this != &other) {
-            if (is_open_) {
-                (void)close();
-            }
-            backend_ = std::move(other.backend_);
-            is_open_ = std::exchange(other.is_open_, false);
+            (void)detail::close_if_open(backend_, is_open_);
+            detail::take_backend_state(
+                backend_, is_open_, std::move(other.backend_), other.is_open_);
         }
         return *this;
     }
@@ -62,22 +60,13 @@ template <KeyValueBackendConcept Backend> class KeyValueDatabase {
 
     ~KeyValueDatabase()
     {
-        if (is_open_) {
-            (void)close();
-        }
+        (void)detail::close_if_open(backend_, is_open_);
     }
 
     common::Result<void>
     close()
     {
-        if (!is_open_) {
-            return common::Result<void>::success();
-        }
-        auto closed = backend_.close();
-        if (closed.ok()) {
-            is_open_ = false;
-        }
-        return closed;
+        return detail::close_if_open(backend_, is_open_);
     }
 
     bool

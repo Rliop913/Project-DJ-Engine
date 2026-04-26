@@ -26,7 +26,9 @@ include(cmakes/findPackages.cmake)
 
 
 if(WIN32)
+  add_compile_definitions(WIN32)
   add_compile_definitions(__WINDOWS__)
+  add_compile_definitions(NOMINMAX)
   add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
   
 else()

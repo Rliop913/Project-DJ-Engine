@@ -17,6 +17,19 @@ enum class MelNorm {
     Slaney
 };
 
+struct MelFilterBankSpec {
+    int        sample_rate = 22050;
+    int        n_fft       = 1024;
+    int        n_mels      = 128;
+    float      f_min       = 30.0f;
+    float      f_max       = 11000.0f;
+    MelFormula mel_formula = MelFormula::Slaney;
+    MelNorm    norm        = MelNorm::Slaney;
+
+    bool
+    operator==(const MelFilterBankSpec &) const = default;
+};
+
 namespace detail {
 
 constexpr float kSlaneyFSp = 200.0f / 3.0f;
@@ -130,39 +143,35 @@ ApplyNorm(float       *weights,
 } // namespace detail
 
 static inline bool
-CheckMelVals(const int        sample_rate,
-             const int        n_fft,
-             const int        n_mels,
-             const float      f_min,
-             const float      f_max,
-             const MelFormula mel_formula,
-             const MelNorm    norm)
+CheckMelVals(const MelFilterBankSpec &spec)
 {
-    if (sample_rate <= 0 || n_fft <= 0 || n_mels <= 0 || f_min < 0.0f) {
+    if (spec.sample_rate <= 0 || spec.n_fft <= 0 || spec.n_mels <= 0 ||
+        spec.f_min < 0.0f) {
         return false;
     }
 
-    if (n_mels > (std::numeric_limits<int>::max() - 2)) {
+    if (spec.n_mels > (std::numeric_limits<int>::max() - 2)) {
         return false;
     }
 
-    const float nyquist = static_cast<float>(sample_rate) * 0.5f;
-    if (f_max <= f_min || f_max > nyquist) {
+    const float nyquist = static_cast<float>(spec.sample_rate) * 0.5f;
+    const float resolved_f_max = spec.f_max < 0.0f ? nyquist : spec.f_max;
+    if (resolved_f_max <= spec.f_min || resolved_f_max > nyquist) {
         return false;
     }
 
-    const int freq_bins = (n_fft / 2) + 1;
+    const int freq_bins = (spec.n_fft / 2) + 1;
     if (freq_bins <= 0) {
         return false;
     }
 
-    const std::size_t mel_count = static_cast<std::size_t>(n_mels);
+    const std::size_t mel_count = static_cast<std::size_t>(spec.n_mels);
     const std::size_t bin_count = static_cast<std::size_t>(freq_bins);
     if (mel_count > (std::numeric_limits<std::size_t>::max() / bin_count)) {
         return false;
     }
 
-    switch (mel_formula) {
+    switch (spec.mel_formula) {
     case MelFormula::HTK:
     case MelFormula::Slaney:
         break;
@@ -170,7 +179,7 @@ CheckMelVals(const int        sample_rate,
         return false;
     }
 
-    switch (norm) {
+    switch (spec.norm) {
     case MelNorm::None:
     case MelNorm::Peak:
     case MelNorm::Slaney:
@@ -181,49 +190,50 @@ CheckMelVals(const int        sample_rate,
 }
 
 static inline std::vector<float>
-GenMelFilterBank(const int   sample_rate,
-                 const int   n_fft,
-                 const int   n_mels,
-                 const float f_min = 0.0f,
-                 float       f_max = -1.0f,
-                 MelFormula  mel_formula = MelFormula::HTK,
-                 MelNorm     norm = MelNorm::None)
+GenMelFilterBank(const MelFilterBankSpec &spec)
 {
-    const float nyquist = static_cast<float>(sample_rate) * 0.5f;
-    if (f_max < 0.0f) {
-        f_max = nyquist;
+    MelFilterBankSpec resolved_spec = spec;
+    const float nyquist = static_cast<float>(resolved_spec.sample_rate) * 0.5f;
+    if (resolved_spec.f_max < 0.0f) {
+        resolved_spec.f_max = nyquist;
     }
 
-    if (!CheckMelVals(sample_rate, n_fft, n_mels, f_min, f_max, mel_formula, norm)) {
+    if (!CheckMelVals(resolved_spec)) {
         return {};
     }
 
-    const int freq_bins = (n_fft / 2) + 1;
+    const int freq_bins = (resolved_spec.n_fft / 2) + 1;
     if (freq_bins <= 0) {
         return {};
     }
 
     std::vector<float> filter_bank(
-        static_cast<std::size_t>(n_mels) * static_cast<std::size_t>(freq_bins),
+        static_cast<std::size_t>(resolved_spec.n_mels) *
+            static_cast<std::size_t>(freq_bins),
         0.0f);
 
-    const float mel_min = detail::HzToMel(f_min, mel_formula);
-    const float mel_max = detail::HzToMel(f_max, mel_formula);
+    const float mel_min =
+        detail::HzToMel(resolved_spec.f_min, resolved_spec.mel_formula);
+    const float mel_max =
+        detail::HzToMel(resolved_spec.f_max, resolved_spec.mel_formula);
     const float mel_step =
-        (mel_max - mel_min) / static_cast<float>(n_mels + 1);
+        (mel_max - mel_min) / static_cast<float>(resolved_spec.n_mels + 1);
 
-    std::vector<float> hz_points(static_cast<std::size_t>(n_mels) + 2u, 0.0f);
-    for (int point_idx = 0; point_idx < n_mels + 2; ++point_idx) {
+    std::vector<float> hz_points(
+        static_cast<std::size_t>(resolved_spec.n_mels) + 2u,
+        0.0f);
+    for (int point_idx = 0; point_idx < resolved_spec.n_mels + 2; ++point_idx) {
         const float mel_value =
             mel_min + (static_cast<float>(point_idx) * mel_step);
         hz_points[static_cast<std::size_t>(point_idx)] =
-            detail::MelToHz(mel_value, mel_formula);
+            detail::MelToHz(mel_value, resolved_spec.mel_formula);
     }
 
     const float fft_scale =
-        static_cast<float>(sample_rate) / static_cast<float>(n_fft);
+        static_cast<float>(resolved_spec.sample_rate) /
+        static_cast<float>(resolved_spec.n_fft);
 
-    for (int mel_idx = 0; mel_idx < n_mels; ++mel_idx) {
+    for (int mel_idx = 0; mel_idx < resolved_spec.n_mels; ++mel_idx) {
         const float left_hz =
             hz_points[static_cast<std::size_t>(mel_idx)];
         const float center_hz =
@@ -257,10 +267,46 @@ GenMelFilterBank(const int   sample_rate,
             freq_bins,
             left_hz,
             right_hz,
-            norm);
+            resolved_spec.norm);
     }
 
     return filter_bank;
+}
+
+static inline bool
+CheckMelVals(const int        sample_rate,
+             const int        n_fft,
+             const int        n_mels,
+             const float      f_min,
+             const float      f_max,
+             const MelFormula mel_formula,
+             const MelNorm    norm)
+{
+    return CheckMelVals(MelFilterBankSpec{ .sample_rate = sample_rate,
+                                           .n_fft = n_fft,
+                                           .n_mels = n_mels,
+                                           .f_min = f_min,
+                                           .f_max = f_max,
+                                           .mel_formula = mel_formula,
+                                           .norm = norm });
+}
+
+static inline std::vector<float>
+GenMelFilterBank(const int   sample_rate,
+                 const int   n_fft,
+                 const int   n_mels,
+                 const float f_min = 0.0f,
+                 float       f_max = -1.0f,
+                 MelFormula  mel_formula = MelFormula::HTK,
+                 MelNorm     norm = MelNorm::None)
+{
+    return GenMelFilterBank(MelFilterBankSpec{ .sample_rate = sample_rate,
+                                               .n_fft = n_fft,
+                                               .n_mels = n_mels,
+                                               .f_min = f_min,
+                                               .f_max = f_max,
+                                               .mel_formula = mel_formula,
+                                               .norm = norm });
 }
 
 } // namespace PDJE_PARALLEL
