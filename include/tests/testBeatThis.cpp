@@ -200,15 +200,18 @@ decode_stereo_pcm(const fs::path &audio_path)
         ma_uint64 frames_read = 0;
         const auto read_result = ma_decoder_read_pcm_frames(
             decoder, chunk.data(), chunk_frames, &frames_read);
-        if (read_result != MA_SUCCESS) {
-            throw std::runtime_error("could not decode PCM frames");
-        }
-        if (frames_read == 0) {
-            break;
+        if (read_result != MA_SUCCESS && read_result != MA_AT_END) {
+            throw std::runtime_error("could not decode PCM frames (error code " +
+                                     std::to_string(static_cast<int>(read_result)) +
+                                     ")");
         }
 
         const auto sample_count = static_cast<std::size_t>(frames_read) * channels;
         pcm.insert(pcm.end(), chunk.begin(), chunk.begin() + sample_count);
+
+        if (read_result == MA_AT_END || frames_read == 0) {
+            break;
+        }
     }
 
     if (pcm.empty()) {
