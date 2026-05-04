@@ -13,17 +13,6 @@ namespace PDJE_UTIL::ai {
 
 namespace {
 
-std::filesystem::path
-DefaultBeatThisModelPath()
-{
-#ifdef PDJE_DEFAULT_BEAT_THIS_MODEL_PATH
-    return std::filesystem::path(PDJE_DEFAULT_BEAT_THIS_MODEL_PATH);
-#else
-    return std::filesystem::path(
-        "third_party/onnx_models/beat_this_model_final0.onnx");
-#endif
-}
-
 bool
 IsPowerOfTwo(const int value) noexcept
 {
@@ -88,8 +77,7 @@ EmptyPath() noexcept
 class BeatThisDetector::Impl {
   public:
     Impl(std::filesystem::path modelPath, BeatThisFrontendConfig frontendConfig)
-        : model_path_(
-              modelPath.empty() ? DefaultBeatThisModelPath() : std::move(modelPath)),
+        : model_path_(std::move(modelPath)),
           frontend_config_(ValidateAndReturn(std::move(frontendConfig))),
           session_(model_path_),
           backend_(std::make_shared<beat_this::PdjeMelSpectrogramBackend>(
@@ -122,12 +110,12 @@ class BeatThisDetector::Impl {
 };
 
 BeatThisDetector::BeatThisDetector()
-    : BeatThisDetector(DefaultBeatThisModelPath(), {})
+    : BeatThisDetector(std::filesystem::path{}, {})
 {
 }
 
 BeatThisDetector::BeatThisDetector(BeatThisFrontendConfig frontend_config)
-    : BeatThisDetector(DefaultBeatThisModelPath(), std::move(frontend_config))
+    : BeatThisDetector(std::filesystem::path{}, std::move(frontend_config))
 {
 }
 

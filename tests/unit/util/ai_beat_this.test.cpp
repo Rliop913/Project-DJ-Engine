@@ -175,6 +175,28 @@ TEST_CASE("onnx session rejects invalid model path and tensor inputs")
     }
 }
 
+TEST_CASE("beat this detector requires an explicit model path")
+{
+    CHECK_THROWS_AS(
+        []() {
+            PDJE_UTIL::ai::BeatThisDetector detector;
+        }(),
+        std::invalid_argument);
+
+    CHECK_THROWS_AS(
+        []() {
+            PDJE_UTIL::ai::BeatThisDetector detector(
+                PDJE_UTIL::ai::BeatThisFrontendConfig{});
+        }(),
+        std::invalid_argument);
+
+    CHECK_THROWS_AS(
+        []() {
+            PDJE_UTIL::ai::BeatThisDetector detector(std::filesystem::path{});
+        }(),
+        std::invalid_argument);
+}
+
 TEST_CASE("beat this preprocess resamples waveform to the frontend sample rate")
 {
     const auto input = BuildSineWave(44100, 0.1, 440.0);

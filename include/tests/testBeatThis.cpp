@@ -69,12 +69,12 @@ class DecoderHandle {
 void
 print_usage(std::ostream &out, const std::string_view program_name)
 {
-    out << "Usage: " << program_name << " [--model MODEL_PATH] AUDIO_PATH\n"
+    out << "Usage: " << program_name << " --model MODEL_PATH AUDIO_PATH\n"
         << "\n"
         << "Run the BeatThis detector against one audio file.\n"
         << "\n"
         << "Options:\n"
-        << "  --model MODEL_PATH   Override the default BeatThis ONNX model path.\n"
+        << "  --model MODEL_PATH   Required BeatThis ONNX model path.\n"
         << "  --help               Show this help text.\n";
 }
 
@@ -124,6 +124,10 @@ parse_args(const int argc, char **argv, CliArgs &args, std::string &error)
 
     if (args.audio_path.empty()) {
         error = "missing AUDIO_PATH.";
+        return false;
+    }
+    if (!args.model_path.has_value()) {
+        error = "missing --model MODEL_PATH.";
         return false;
     }
 
@@ -257,13 +261,7 @@ run_detector(const CliArgs           &args,
              const int                input_sample_rate,
              fs::path                &resolved_model_path)
 {
-    if (args.model_path.has_value()) {
-        PDJE_UTIL::ai::BeatThisDetector detector(args.model_path.value());
-        resolved_model_path = detector.model_path();
-        return detector.detect(mono_pcm, input_sample_rate);
-    }
-
-    PDJE_UTIL::ai::BeatThisDetector detector;
+    PDJE_UTIL::ai::BeatThisDetector detector(args.model_path.value());
     resolved_model_path = detector.model_path();
     return detector.detect(mono_pcm, input_sample_rate);
 }
