@@ -21,6 +21,14 @@ target_sources(
     target_link_libraries(pdje_unit_input PRIVATE ${CMAKE_DL_LIBS})
 endif()
 
+if(WIN32)
+target_sources(
+    pdje_unit_input
+    PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/input/windows_keyboard_press_tracker.test.cpp
+    )
+endif()
+
 target_include_directories(pdje_unit_input PRIVATE ${PDJE_INCLUDE_INPUT_MAINPROC})
 target_link_libraries(pdje_unit_input PRIVATE 
 doctest::doctest 

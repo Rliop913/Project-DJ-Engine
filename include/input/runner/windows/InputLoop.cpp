@@ -1,8 +1,8 @@
 #include "ListDevice.hpp"
 #include "SubProcess.hpp"
 #include "windows_keyboard_fill.hpp"
+#include "windows_keyboard_press_tracker.hpp"
 #include <Windows.h>
-#include <bitset>
 namespace PDJE_IPC {
 using namespace SUBPROC;
 void *
@@ -40,13 +40,13 @@ TXRXListener::Run()
     PDJE_Dev_Type                                       dtype;
     thread_local std::pmr::unsynchronized_pool_resource mono_arena;
 
-    std::string      handlestr;
-    std::string      namestr;
+    std::string handlestr;
+    std::string namestr;
     PDJE_Input_Event tempEv;
     handlestr.reserve(100);
-    PDJE_HID_Event   hidEv;
-    std::bitset<102> isPressed;
-    bool             Writable = true;
+    PDJE_HID_Event hidEv;
+    PDJE_RAWINPUT::KeyboardPressTracker keyboard_press_tracker;
+    bool Writable = true;
 
     MSG tmp;
     PeekMessageW(&tmp, nullptr, 0, 0, PM_NOREMOVE);
@@ -96,6 +96,8 @@ TXRXListener::Run()
 
                     const RAWINPUT *ri =
                         reinterpret_cast<const RAWINPUT *>(buf.data());
+                    const auto device_id =
+                        reinterpret_cast<uintptr_t>(ri->header.hDevice);
 
                     switch (ri->header.dwType) {
                     case RIM_TYPEMOUSE:
@@ -105,21 +107,17 @@ TXRXListener::Run()
                     case RIM_TYPEKEYBOARD:
                         dtype = PDJE_Dev_Type::KEYBOARD;
                         PDJE_RAWINPUT::FillKeyboardInput(tempEv, ri);
-                        if (isPressed.test(tempEv.keyboard.k) &&
-                            tempEv.keyboard.pressed) {
-                            Writable = false;
-                        } else {
-                            isPressed.set(tempEv.keyboard.k,
-                                          tempEv.keyboard.pressed);
-                        }
+                        Writable = keyboard_press_tracker.ShouldWrite(
+                            device_id,
+                            tempEv.keyboard.k,
+                            tempEv.keyboard.pressed);
 
                         break;
                     default:
                         dtype = PDJE_Dev_Type::UNKNOWN;
                         break;
                     }
-                    handlestr = std::to_string(
-                        reinterpret_cast<uintptr_t>(ri->header.hDevice));
+                    handlestr = std::to_string(device_id);
 
                     if (!unlisted_targets.empty()) {
                         if (!id_name.contains(handlestr)) {
