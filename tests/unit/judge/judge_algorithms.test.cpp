@@ -170,17 +170,17 @@ TEST_CASE("judge: startup without audio sync drains input without misses")
     CHECK(CountMisses(*pre.Event_Datas.miss_queue.Get()) == 0);
 }
 
-TEST_CASE("judge: local position prefers now cursor over stale consumed frames")
+TEST_CASE("judge: local position uses atomic sync frame snapshot")
 {
     JudgePreprocessHarness harness;
     harness.now_cursor = 0;
-    harness.SetSync(kFrameRate * 60, 0, 100000000);
-    harness.AddMainNote(1000000);
+    harness.SetSync(kFrameRate, 0, 100000000);
+    harness.AddMainNote(2000000);
 
     PDJE_JUDGE::PreProcess pre(&harness.init);
 
     CHECK_FALSE(pre.Work());
-    CHECK(pre.local_micro_pos == 0);
+    CHECK(pre.local_micro_pos == 1000000);
     CHECK(CountMisses(*pre.Event_Datas.miss_queue.Get()) == 0);
 }
 

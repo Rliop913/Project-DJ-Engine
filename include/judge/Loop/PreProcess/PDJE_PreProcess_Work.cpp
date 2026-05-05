@@ -10,12 +10,8 @@ SaturatingSub(const uint64_t lhs, const uint64_t rhs)
 }
 
 uint64_t
-RenderedFrameCursor(const Judge_Init *init, const audioSyncData &sync)
+PlaybackFrameFromSync(const audioSyncData &sync)
 {
-    if (init != nullptr && init->coreline.has_value() &&
-        init->coreline->nowCursor != nullptr) {
-        return *init->coreline->nowCursor;
-    }
     return sync.consumed_frames;
 }
 
@@ -106,10 +102,10 @@ ResetTimingWindow(PreProcess &pre)
 }
 
 void
-SetLocalTiming(PreProcess &pre, const Judge_Init *init)
+SetLocalTiming(PreProcess &pre)
 {
     const auto real_frame =
-        SaturatingSub(RenderedFrameCursor(init, pre.synced_data),
+        SaturatingSub(PlaybackFrameFromSync(pre.synced_data),
                       pre.synced_data.pre_calculated_unused_frames);
     pre.local_micro_pos = Convert_Frame_Into_MicroSecond(real_frame);
     pre.global_local_diff =
@@ -155,7 +151,7 @@ PreProcess::Work()
         return false;
     }
 
-    SetLocalTiming(*this, init);
+    SetLocalTiming(*this);
 
     if (!GetDatas()) { // no input datas
         CutExpiredByPlaybackPosition(*this, *init->ev_rule);
