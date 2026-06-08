@@ -17,7 +17,7 @@ This file records only verifier-accepted bugs. The Lead owns final insertion.
 - Approved commands: none
 - Commands run: none
 - Not run reason: no execution checks were approved for this run
-- Fix-plan status: not planned
+- Fix-plan status: implemented; pending approved runtime verification
 
 #### Summary
 

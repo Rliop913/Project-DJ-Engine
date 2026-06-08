@@ -10,7 +10,7 @@ void
 Match::UseEvent<PDJE_Dev_Type::KEYBOARD>(const PDJE_Input_Log &ilog)
 {
     RAIL_KEY::KB_MOUSE key;
-    key.Device_Name.assign(ilog.name, ilog.name_len);
+    key.Device_Name = NormalizeRailIdentity(ilog.name, ilog.name_len);
     key.DeviceKey = ilog.event.keyboard.k;
     auto res      = init->raildb.GetID(key);
     if (!res) {

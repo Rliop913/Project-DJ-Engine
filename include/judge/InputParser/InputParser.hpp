@@ -33,7 +33,7 @@ Parse(PARSE_OUT &out, const RAIL_DB &raildb, const INPUT_RAW &raw)
 
     for (const auto &rawp : raw) {
 
-        offsetkey.assign(rawp.id, rawp.id_len);
+        offsetkey = NormalizeRailIdentity(rawp.name, rawp.name_len);
 
         auto it = raildb.offset.find(offsetkey);
         if (it != raildb.offset.end()) {
@@ -67,7 +67,7 @@ Parse(PARSE_OUT &out, const RAIL_DB &raildb, const MIDI_RAW &midi_raw)
     std::string offsetkey;
     for (const auto &rawp : midi_raw) {
 
-        offsetkey.assign(rawp.port_name, rawp.port_name_len);
+        offsetkey = NormalizeRailIdentity(rawp.port_name, rawp.port_name_len);
         auto it = raildb.offset.find(offsetkey);
         if (it != raildb.offset.end()) {
             off = it->second;

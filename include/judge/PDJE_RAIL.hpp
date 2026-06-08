@@ -1,5 +1,7 @@
 #pragma once
 #include "PDJE_Rule.hpp"
+#include <algorithm>
+#include <string_view>
 
 static inline uint64_t
 splitmix64_mix(uint64_t x) noexcept
@@ -50,6 +52,23 @@ template <> struct std::hash<PDJE_JUDGE::RAIL_KEY::MIDI> {
 }; // namespace std
 
 namespace PDJE_JUDGE {
+inline constexpr std::size_t RAIL_IDENTITY_MAX_BYTES = 255;
+
+inline std::string
+NormalizeRailIdentity(std::string_view value)
+{
+    return std::string(value.substr(0, RAIL_IDENTITY_MAX_BYTES));
+}
+
+inline std::string
+NormalizeRailIdentity(const char *value, const std::size_t length)
+{
+    if (value == nullptr) {
+        return {};
+    }
+    return std::string(value, std::min(length, RAIL_IDENTITY_MAX_BYTES));
+}
+
 struct RAIL_DB {
     std::unordered_map<std::string, int64_t>                  offset;
     std::unordered_map<uint64_t, std::vector<RAIL_KEY::META>> meta;
