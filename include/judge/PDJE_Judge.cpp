@@ -15,6 +15,10 @@ JUDGE_STATUS
 JUDGE::Start()
 {
     startlog();
+    if (loop_obj.has_value() || loop.has_value()) {
+        warnlog("failed to start pdje judge module. judge is already running.");
+        return JUDGE_STATUS::ALREADY_RUNNING;
+    }
     if (!inits.coreline.has_value()) {
         warnlog("failed to start pdje judge module. core line is missing. "
                 "please connect core data line.");

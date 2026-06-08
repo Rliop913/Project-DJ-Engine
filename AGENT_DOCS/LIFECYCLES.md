@@ -59,6 +59,7 @@ Failure rules:
 - `NOTE_OBJECT_IS_MISSING`
 - `EVENT_RULE_IS_EMPTY`
 - `INPUT_RULE_IS_EMPTY`
+- `ALREADY_RUNNING`
 - `OK`
 
 ## Wrapper Lifecycles

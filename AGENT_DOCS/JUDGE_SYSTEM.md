@@ -46,6 +46,7 @@ This page covers `PDJE_JUDGE::JUDGE`, `Judge_Init`, rails, and note staging.
 - `NOTE_OBJECT_IS_MISSING`: no staged note buffer
 - `EVENT_RULE_IS_EMPTY`: no hit/miss window
 - `INPUT_RULE_IS_EMPTY`: no rail mapping
+- `ALREADY_RUNNING`: loop state already exists; call `End()` before restarting
 - `OK`: loop created and started
 
 ## Contracts / Invariants
