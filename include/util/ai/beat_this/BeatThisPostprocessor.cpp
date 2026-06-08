@@ -71,25 +71,26 @@ PostprocessPipeline::DeduplicatePeaks(const std::span<const int> peaks)
     }
 
     deduplicated.reserve(peaks.size());
-    double mean  = static_cast<double>(peaks.front());
-    int    count = 1;
+    int    previous = peaks.front();
+    double sum      = static_cast<double>(previous);
+    int    count    = 1;
 
     for (std::size_t index = 1; index < peaks.size(); ++index) {
         const int current = peaks[index];
-        if ((static_cast<double>(current) - mean) <=
-            static_cast<double>(kDeduplicateWidth)) {
+        if ((current - previous) <= kDeduplicateWidth) {
+            previous = current;
+            sum += static_cast<double>(current);
             ++count;
-            mean += (static_cast<double>(current) - mean) /
-                    static_cast<double>(count);
             continue;
         }
 
-        deduplicated.push_back(mean);
-        mean  = static_cast<double>(current);
-        count = 1;
+        deduplicated.push_back(sum / static_cast<double>(count));
+        previous = current;
+        sum      = static_cast<double>(current);
+        count    = 1;
     }
 
-    deduplicated.push_back(mean);
+    deduplicated.push_back(sum / static_cast<double>(count));
     return deduplicated;
 }
 

@@ -301,6 +301,32 @@ TEST_CASE("beat this inference chunk helpers split and aggregate full spectrogra
     }
 }
 
+TEST_CASE("beat this postprocessor deduplicates connected peak clusters")
+{
+    SUBCASE("transitive adjacent peaks collapse to one representative")
+    {
+        const std::vector<int> peaks{ 0, 1, 2 };
+
+        const auto deduplicated =
+            beat_this::PostprocessPipeline::DeduplicatePeaks(peaks);
+
+        REQUIRE(deduplicated.size() == 1u);
+        CHECK(deduplicated[0] == doctest::Approx(1.0));
+    }
+
+    SUBCASE("gaps outside the dedupe width start a new cluster")
+    {
+        const std::vector<int> peaks{ 10, 11, 13, 14 };
+
+        const auto deduplicated =
+            beat_this::PostprocessPipeline::DeduplicatePeaks(peaks);
+
+        REQUIRE(deduplicated.size() == 2u);
+        CHECK(deduplicated[0] == doctest::Approx(10.5));
+        CHECK(deduplicated[1] == doctest::Approx(13.5));
+    }
+}
+
 TEST_CASE("beat this postprocessor extracts peaks and snaps downbeats to beats")
 {
     const beat_this::FrameLogits logits{
@@ -318,6 +344,22 @@ TEST_CASE("beat this postprocessor extracts peaks and snaps downbeats to beats")
     CHECK(result.beats[1] == doctest::Approx(6.0 / 50.0));
     CHECK(result.downbeats[0] == doctest::Approx(result.beats[0]));
     CHECK(result.downbeats[1] == doctest::Approx(result.beats[1]));
+}
+
+TEST_CASE("beat this postprocessor emits one beat for one plateau cluster")
+{
+    const beat_this::FrameLogits logits{
+        .num_frames = 6,
+        .beat = { 0.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f },
+        .downbeat = { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f },
+    };
+
+    beat_this::MinimalBeatPostprocessor postprocessor(1.0);
+    const auto result = postprocessor.Process(logits);
+
+    REQUIRE(result.beats.size() == 1u);
+    CHECK(result.downbeats.empty());
+    CHECK(result.beats[0] == doctest::Approx(2.0));
 }
 
 TEST_CASE("beat this detector loads checked-in model and returns sorted finite timestamps")

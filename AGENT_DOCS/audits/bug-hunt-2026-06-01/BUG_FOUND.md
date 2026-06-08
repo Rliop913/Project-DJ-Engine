@@ -107,7 +107,7 @@ The C ABI wrapper has a separate `running` guard; the native C++ class does not.
 - Approved commands: none
 - Commands run: none
 - Not run reason: no execution checks were approved for this run
-- Fix-plan status: not planned
+- Fix-plan status: implemented; pending approved runtime verification
 
 #### Summary
 
