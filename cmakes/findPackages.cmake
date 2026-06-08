@@ -97,8 +97,6 @@ FetchContent_Declare(
   pysoxr_cpp
   GIT_REPOSITORY https://github.com/dofuuz/soxr.git
   GIT_TAG "a66f3eeeeb62a32403ff143b756eed92b1ec6b62"
-  GIT_SHALLOW TRUE
-  UPDATE_DISCONNECTED TRUE
 )
 FetchContent_MakeAvailable(pysoxr_cpp)
 function(setPyCustomSoxr targetName)
