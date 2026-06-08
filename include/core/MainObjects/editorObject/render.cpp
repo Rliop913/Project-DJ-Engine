@@ -11,7 +11,11 @@ editorObject::render(const UNSANITIZED &trackTitle,
 {
     std::unordered_map<SANITIZED, SANITIZED> titles;
     auto td = makeTrackData(trackTitle, titles);
-    if (!PDJE_Linter<trackdata>::Lint(td, lint_msg)) {
+    if (!td) {
+        lint_msg = "failed to sanitize track title.";
+        return false;
+    }
+    if (!PDJE_Linter<trackdata>::Lint(td.value(), lint_msg)) {
         return false;
     }
 
@@ -81,5 +85,5 @@ editorObject::render(const UNSANITIZED &trackTitle,
         }
     }
 
-    return projectLocalDB->BuildProject(td, mds);
+    return projectLocalDB->BuildProject(td.value(), mds);
 }

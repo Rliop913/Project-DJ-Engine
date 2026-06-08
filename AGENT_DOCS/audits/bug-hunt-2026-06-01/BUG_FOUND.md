@@ -151,7 +151,7 @@ connected-peak grouping is the intended behavior.
 - Approved commands: none
 - Commands run: none
 - Not run reason: no execution checks were approved for the reopened pass
-- Fix-plan status: not planned
+- Fix-plan status: implemented; pending approved runtime verification
 
 #### Summary
 
