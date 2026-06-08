@@ -44,7 +44,6 @@ TXRXListener::Run()
     std::string namestr;
     PDJE_Input_Event tempEv;
     handlestr.reserve(100);
-    PDJE_HID_Event hidEv;
     PDJE_RAWINPUT::KeyboardPressTracker keyboard_press_tracker;
     bool Writable = true;
 
@@ -151,7 +150,6 @@ TXRXListener::Run()
                     if (Writable) {
                         cachedLog.type      = dtype;
                         cachedLog.event     = tempEv;
-                        cachedLog.hid_event = hidEv;
                         cachedLog.id_len =
                             handlestr.size() > 256 ? 256 : handlestr.size();
                         memcpy(cachedLog.id,

@@ -54,11 +54,6 @@ typedef struct PDJE_InputStringViewV1 {
     size_t      size;
 } PDJE_InputStringViewV1;
 
-typedef struct PDJE_InputBytesViewV1 {
-    const uint8_t *data;
-    size_t         size;
-} PDJE_InputBytesViewV1;
-
 typedef struct PDJE_InputDeviceViewV1 {
     uint32_t               struct_size;
     PDJE_InputDeviceTypeV1 type;
@@ -98,7 +93,6 @@ typedef struct PDJE_InputEventViewV1 {
     uint64_t                  microsecond;
     PDJE_InputKeyboardEventV1 keyboard;
     PDJE_InputMouseEventV1    mouse;
-    PDJE_InputBytesViewV1     hid_report;
 } PDJE_InputEventViewV1;
 
 typedef struct PDJE_MidiEventViewV1 {

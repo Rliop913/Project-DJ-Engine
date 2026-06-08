@@ -195,7 +195,8 @@ Lead accepted the reopened verifier result as `BUG-004`.
 - Approved commands: none
 - Commands run: none
 - Not run reason: no execution checks were approved for the reopened pass
-- Fix-plan status: not planned
+- Fix-plan status: implemented; unsupported HID payload surface removed; pending
+  approved runtime verification
 
 #### Summary
 

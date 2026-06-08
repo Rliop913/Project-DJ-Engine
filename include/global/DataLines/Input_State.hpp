@@ -167,11 +167,6 @@ struct PDJE_Keyboard_Event {
     bool     pressed;
 };
 
-struct PDJE_HID_Event {
-    uint8_t       hid_buffer[512];
-    unsigned long hid_byte_size = 0;
-};
-
 struct Midi_Input_Data {
     PDJE_MIDI_EVENTS event_type;
     uint8_t          channel;

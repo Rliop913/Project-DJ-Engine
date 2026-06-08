@@ -93,15 +93,6 @@ MakeCountedStringView(const char *value, std::size_t value_size) noexcept
     return PDJE_InputStringViewV1 { value, value_size };
 }
 
-PDJE_InputBytesViewV1
-MakeBytesView(const uint8_t *value, std::size_t value_size) noexcept
-{
-    if (value == nullptr || value_size == 0) {
-        return {};
-    }
-    return PDJE_InputBytesViewV1 { value, value_size };
-}
-
 PDJE_InputDeviceTypeV1
 ToCDeviceType(const PDJE_Dev_Type type) noexcept
 {
@@ -599,11 +590,6 @@ pdje_input_snapshot_input_get_v1(const PDJE_InputSnapshotHandleV1 *snapshot,
             static_cast<uint32_t>(item.event.mouse.axis_type);
         out_event->mouse.x = item.event.mouse.x;
         out_event->mouse.y = item.event.mouse.y;
-        out_event->hid_report = MakeBytesView(
-            item.hid_event.hid_buffer,
-            std::min<std::size_t>(
-                static_cast<std::size_t>(item.hid_event.hid_byte_size),
-                sizeof(item.hid_event.hid_buffer)));
         out_event->struct_size = sizeof(*out_event);
         return PDJE_INPUT_RESULT_OK_V1;
     });
