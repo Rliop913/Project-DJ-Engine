@@ -32,6 +32,9 @@ class PDJE_API PDJE_Input {
     void                          *platform_ctx0_ = nullptr;
     void                          *platform_ctx1_ = nullptr;
     bool                           use_internal_window_ = false;
+#ifdef PDJE_UNIT_TESTING
+    friend struct PDJE_Input_TestAccess;
+#endif
 
   public:
     /** @brief Get All Connected devices.

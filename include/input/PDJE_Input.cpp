@@ -55,17 +55,14 @@ PDJE_Input::Config(std::vector<DeviceData>                  &devs,
                    const std::vector<libremidi::input_port> &midi_dev)
 {
     try {
-        if (!midi_dev.empty()) {
-            midi_engine->configed_devices = midi_dev;
-            FLAG_MIDI_ON                  = true;
-        }
-
         if (!PDJE_INPUT_STATE_LOGIC::CanConfig(state)) {
             critlog(
                 "pdje input module config failed. pdje input state is not on "
                 "device config state. Init it first.");
             return false;
         }
+
+        const bool has_midi = !midi_dev.empty();
         std::vector<DeviceData> sanitized_devs =
             PDJE_INPUT_STATE_LOGIC::SanitizeConfigDevices(devs);
         const bool has_valid_input = !sanitized_devs.empty();
@@ -77,9 +74,8 @@ PDJE_Input::Config(std::vector<DeviceData>                  &devs,
 
         const auto decision = PDJE_INPUT_STATE_LOGIC::DecideConfigOutcome(
             has_valid_input,
-            FLAG_MIDI_ON,
+            has_midi,
             backend_ok);
-        FLAG_INPUT_ON = decision.flag_input_on;
 
         if (!decision.success) {
             if (decision.backend_fail_path) {
@@ -88,6 +84,11 @@ PDJE_Input::Config(std::vector<DeviceData>                  &devs,
             return false;
         }
 
+        if (has_midi) {
+            midi_engine->configed_devices = midi_dev;
+        }
+        FLAG_MIDI_ON  = has_midi;
+        FLAG_INPUT_ON = decision.flag_input_on;
         state = decision.next_state;
         if (decision.should_call_kill) { // fallback: only midi devices.
             return Kill();

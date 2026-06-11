@@ -4,6 +4,7 @@ pdje_unit_input
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/main_doctest.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/input/input_sanity.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/input/cpdje_input_snapshot_event_view.test.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/input/pdje_input_config_lifecycle.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/input/pdje_input_state_logic.test.cpp
 ${INPUT_SRC_EXPORT}
 )
