@@ -50,7 +50,7 @@ Match::UseEvent<PDJE_Dev_Type::MOUSE>(const PDJE_Input_Log &ilog)
     RAIL_KEY::KB_MOUSE key;
 
     mouse_btn_ev_queue.clear();
-    key.Device_Name.assign(ilog.name, ilog.name_len);
+    key.Device_Name = NormalizeRailIdentity(ilog.name, ilog.name_len);
 
     ParseMouse(ilog.event.mouse.button_type, key);
 

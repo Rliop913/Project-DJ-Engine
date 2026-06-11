@@ -31,6 +31,11 @@ legacy material.
 - [DECISIONS.md](DECISIONS.md): short rationale ledger for non-obvious repo choices
 - [GLOSSARY.md](GLOSSARY.md): compact definitions for project-specific terms
 - [KNOWN_GAPS.md](KNOWN_GAPS.md): current wiring and documentation gaps to keep visible
+- [strategy/STRATEGY.md](strategy/STRATEGY.md): developer-agent collaboration strategy by module
+- [strategy/MEETING_PROTOCOL.md](strategy/MEETING_PROTOCOL.md): meeting flow for closing strategy agendas into plans
+- [strategy/BUG_HUNT_PROTOCOL.md](strategy/BUG_HUNT_PROTOCOL.md): large-scale bug-hunt coordination and acceptance protocol
+- `strategy/bug-hunt-template/`: template files for future `AGENT_DOCS/audits/bug-hunt-YYYY-MM-DD/` runs
+- [strategy/SESSIONS.md](strategy/SESSIONS.md): index for future strategy meeting logs
 
 ## Subsystem Deep Dives
 

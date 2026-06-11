@@ -414,6 +414,9 @@ pdje_judge_start_v1(PDJE_JudgeHandleV1      *judge,
         RefreshAttachedLines(judge);
 
         const auto start_status = judge->judge.Start();
+        if (start_status == PDJE_JUDGE::JUDGE_STATUS::ALREADY_RUNNING) {
+            return PDJE_JUDGE_RESULT_INVALID_STATE_V1;
+        }
         *out_status             = ToCStartStatus(start_status);
         judge->running          = start_status == PDJE_JUDGE::JUDGE_STATUS::OK;
         return PDJE_JUDGE_RESULT_OK_V1;

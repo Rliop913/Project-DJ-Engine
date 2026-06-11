@@ -48,7 +48,7 @@ class PDJE_API editorObject {
     // fs::path                   musicFileRootPath;
     std::unique_ptr<PDJE_Editor> edit_core;
 
-    trackdata
+    std::optional<trackdata>
     makeTrackData(const UNSANITIZED &trackTitle, TITLE_COMPOSER &titles);
 
   public:

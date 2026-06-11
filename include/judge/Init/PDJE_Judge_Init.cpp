@@ -40,10 +40,7 @@ Judge_Init::SetRail(const std::string &midi_port_name,
                     const int64_t      offset_microsecond)
 {
     RAIL_KEY::MIDI key;
-    key.port_name = midi_port_name;
-    if (key.port_name.size() > 255) {
-        key.port_name = std::string(key.port_name, 255);
-    }
+    key.port_name = NormalizeRailIdentity(midi_port_name);
     key.ch   = ch;
     key.pos  = pos;
     key.type = type;
@@ -69,10 +66,7 @@ Judge_Init::SetRail(const DeviceData &devData,
         return;
     }
     RAIL_KEY::KB_MOUSE key;
-    key.Device_Name = devData.Name;
-    if (key.Device_Name.size() > 255) {
-        key.Device_Name = std::string(key.Device_Name, 255);
-    }
+    key.Device_Name = NormalizeRailIdentity(devData.Name);
     key.DeviceKey = DeviceKey;
     raildb.Add(key, devData.Type, MatchRail, offset_microsecond);
 }

@@ -7,7 +7,6 @@
 struct PDJE_API PDJE_Input_Log {
     PDJE_Dev_Type    type;
     PDJE_Input_Event event;
-    PDJE_HID_Event   hid_event;
     char             id[256];
     char             name[256];
     uint16_t         id_len;

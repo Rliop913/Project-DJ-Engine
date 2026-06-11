@@ -19,6 +19,7 @@ enum JUDGE_STATUS {
     EVENT_RULE_IS_EMPTY,
     INPUT_RULE_IS_EMPTY,
     NOTE_OBJECT_IS_MISSING,
+    ALREADY_RUNNING = 6,
 };
 
 /** @brief Judge controller that owns initialization data and the event loop. */

@@ -1,9 +1,11 @@
 #include "Init/PDJE_Judge_Init_Structs.hpp"
+#include "PDJE_Judge.hpp"
 #include "PDJE_PreProcess.hpp"
 #include "PDJE_RAIL.hpp"
 #include <doctest/doctest.h>
 
 #include <atomic>
+#include <chrono>
 #include <cstddef>
 #include <cstdint>
 #include <unordered_map>
@@ -76,6 +78,18 @@ struct JudgePreprocessHarness {
         PDJE_MIDI::MIDI_EV event {};
         event.highres_time = highres_time;
         midi_buffer.Write(event);
+    }
+};
+
+struct JudgeEndGuard {
+    PDJE_JUDGE::JUDGE *judge = nullptr;
+    bool               armed = false;
+
+    ~JudgeEndGuard()
+    {
+        if (armed && judge != nullptr) {
+            judge->End();
+        }
     }
 };
 
@@ -154,6 +168,40 @@ TEST_CASE("judge: MIDI rail key equality and hashing are deterministic")
     CHECK(m1 == m2);
     CHECK(std::hash<PDJE_JUDGE::RAIL_KEY::MIDI>{}(m1) ==
           std::hash<PDJE_JUDGE::RAIL_KEY::MIDI>{}(m2));
+}
+
+TEST_CASE("judge: native double Start is rejected without replacing running loop")
+{
+    JudgePreprocessHarness harness;
+
+    PDJE_JUDGE::JUDGE judge;
+    judge.inits.coreline  = harness.init.coreline;
+    judge.inits.inputline = harness.init.inputline;
+    judge.inits.ev_rule   = harness.init.ev_rule;
+
+    PDJE_JUDGE::Custom_Events events {};
+    events.used_event = [](uint64_t, bool, bool, uint64_t) {};
+    events.missed_event =
+        [](std::unordered_map<uint64_t, PDJE_JUDGE::NOTE_VEC>) {};
+    events.use_event_sleep_time  = std::chrono::milliseconds(1);
+    events.miss_event_sleep_time = std::chrono::milliseconds(1);
+    judge.inits.SetCustomEvents(events);
+
+    judge.inits.SetRail("midi-port", kTestRail, 1, 2, 64, 0);
+    judge.inits.note_objects.emplace();
+    PDJE_JUDGE::NOTE note;
+    note.type        = "tap";
+    note.microsecond = 1000000;
+    judge.inits.note_objects->Fill<PDJE_JUDGE::BUFFER_MAIN>(note, kTestRail);
+
+    JudgeEndGuard guard { &judge, false };
+
+    REQUIRE(judge.Start() == PDJE_JUDGE::JUDGE_STATUS::OK);
+    guard.armed = true;
+    CHECK(judge.Start() == PDJE_JUDGE::JUDGE_STATUS::ALREADY_RUNNING);
+
+    judge.End();
+    guard.armed = false;
 }
 
 TEST_CASE("judge: startup without audio sync drains input without misses")

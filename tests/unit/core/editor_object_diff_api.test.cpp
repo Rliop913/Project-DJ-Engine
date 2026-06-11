@@ -1,6 +1,7 @@
 #include <doctest/doctest.h>
 
 #include "editorObject.hpp"
+#include "fileNameSanitizer.hpp"
 
 #include <chrono>
 #include <cstdint>
@@ -183,6 +184,45 @@ MakeMusicEdit(const std::string &music_name, const std::string &bpm, int beat)
 }
 
 } // namespace
+
+TEST_CASE("core: editorObject render rejects unsanitizable track title")
+{
+    const auto    root = MakeTempRoot("sanitize_render");
+    ScopedCleanup cleanup{ root };
+
+    litedb root_db;
+    REQUIRE(root_db.openDB(root / "ROOTDB"));
+
+    editorObject editor;
+    REQUIRE(editor.Open(root / "project", "sanitize-tester", "sanitize@test"));
+
+    const std::string too_long(300, 'a');
+    REQUIRE_FALSE(PDJE_Name_Sanitizer::sanitizeFileName(too_long).has_value());
+
+    UNSANITIZED lint_msg;
+    CHECK_FALSE(editor.render(too_long, root_db, lint_msg));
+    CHECK(lint_msg.find("sanitize") != std::string::npos);
+}
+
+TEST_CASE("core: editorObject push rejects unsanitizable track title")
+{
+    const auto    root = MakeTempRoot("sanitize_push");
+    ScopedCleanup cleanup{ root };
+
+    litedb root_db;
+    REQUIRE(root_db.openDB(root / "ROOTDB"));
+
+    editorObject editor;
+    REQUIRE(editor.Open(root / "project", "sanitize-tester", "sanitize@test"));
+
+    UNSANITIZED lint_msg;
+    REQUIRE(editor.render("valid_track", root_db, lint_msg));
+
+    const std::string too_long(300, 'a');
+    REQUIRE_FALSE(PDJE_Name_Sanitizer::sanitizeFileName(too_long).has_value());
+
+    CHECK_FALSE(editor.pushToRootDB(root_db, too_long));
+}
 
 TEST_CASE("core: editorObject MIX diff reports append semantics")
 {

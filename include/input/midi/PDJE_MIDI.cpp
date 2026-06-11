@@ -1,4 +1,6 @@
 #include "PDJE_MIDI.hpp"
+#include <algorithm>
+#include <cstring>
 
 namespace PDJE_MIDI {
 
@@ -107,11 +109,14 @@ MIDI::Run(const bool CC_LSB_ON)
                                        .value = value,
                                        .highres_time =
                                            clock.Get_MicroSecond() };
+                        const auto port_name_len =
+                            std::min<std::size_t>(pname.size(),
+                                                  sizeof(evres.port_name) - 1);
                         evres.port_name_len =
-                            pname.size() > 256 ? 256 : pname.size();
+                            static_cast<uint8_t>(port_name_len);
                         std::memcpy(evres.port_name,
                                     pname.data(),
-                                    sizeof(char) * (evres.port_name_len));
+                                    sizeof(char) * port_name_len);
 
                         evlog.Write(evres);
                     } catch (const std::exception &e) {

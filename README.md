@@ -1,6 +1,6 @@
 # Project-DJ-Engine
 
-This project is a DJ/rhythm game engine written in C++. All sources live under `include/`.
+This project is a DJ/rhythm game engine written in C++. All sources live under `include/`..
 
 ## Documents
 

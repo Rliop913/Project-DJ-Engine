@@ -8,7 +8,7 @@ Match::UseEvent(const PDJE_MIDI::MIDI_EV &ilog)
 
     RAIL_KEY::MIDI key;
     key.ch = ilog.ch;
-    key.port_name.assign(ilog.port_name, ilog.port_name_len);
+    key.port_name = NormalizeRailIdentity(ilog.port_name, ilog.port_name_len);
     key.pos  = ilog.pos;
     key.type = ilog.type;
     auto res = init->raildb.GetID(key);

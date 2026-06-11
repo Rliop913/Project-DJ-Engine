@@ -7,10 +7,18 @@
 #include <exception>
 #include <memory>
 
-trackdata
+std::optional<trackdata>
 editorObject::makeTrackData(const UNSANITIZED &trackTitle,
                             std::unordered_map<SANITIZED, SANITIZED> &titles)
 {
+    auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(trackTitle);
+    if (!safeTitle) {
+        critlog("failed to sanitize title. from editorObject makeTrackData. "
+                "trackTitle: ");
+        critlog(trackTitle);
+        return std::nullopt;
+    }
+
     trackdata td;
     auto      mixRendered = edit_core->mixHandle->GetJson()->render();
     auto      mixData     = mixRendered->Wp->getDatas();
@@ -22,12 +30,6 @@ editorObject::makeTrackData(const UNSANITIZED &trackTitle,
 
             titles.insert(std::pair(first, second));
         }
-    }
-    auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(trackTitle);
-    if (!safeTitle) {
-        critlog("failed to sanitize title. from editorObject makeTrackData. "
-                "trackTitle: ");
-        critlog(trackTitle);
     }
     td.trackTitle = safeTitle.value();
     td.mixBinary  = mixRendered->out();
@@ -161,9 +163,15 @@ editorObject::pushToRootDB(litedb &ROOTDB, const UNSANITIZED &trackTitleToPush)
     if (trackTitleToPush.empty()) {
         return false;
     }
+    auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(trackTitleToPush);
+    if (!safeTitle) {
+        critlog("failed to sanitize title. from editorObject "
+                "pushToRootDB(litedb, UNSANITIZED); trackTitle: ");
+        critlog(trackTitleToPush);
+        return false;
+    }
     trackdata searchQuery;
-    searchQuery.trackTitle =
-        PDJE_Name_Sanitizer::sanitizeFileName(trackTitleToPush).value_or("");
+    searchQuery.trackTitle = safeTitle.value();
     auto localSearched = projectLocalDB->GetBuildedProject() << searchQuery;
     if (!localSearched.has_value()) {
         critlog("failed to search track data. from editorObject "
@@ -179,8 +187,11 @@ editorObject::pushToRootDB(litedb &ROOTDB, const UNSANITIZED &trackTitleToPush)
 
     TITLE_COMPOSER tcData;
     auto           td = makeTrackData(trackTitleToPush, tcData);
+    if (!td) {
+        return false;
+    }
     trackdata      checker_track;
-    checker_track.trackTitle = td.trackTitle;
+    checker_track.trackTitle = td->trackTitle;
     auto res                 = ROOTDB << checker_track;
     if (!res.has_value()) {
         critlog("failed to search track data from rootdb. from editorObject "
@@ -190,9 +201,9 @@ editorObject::pushToRootDB(litedb &ROOTDB, const UNSANITIZED &trackTitleToPush)
     }
     bool pushRes = false;
     if (res->size() == 0) {
-        pushRes = ROOTDB <= td;
+        pushRes = ROOTDB <= td.value();
     } else {
-        pushRes = ROOTDB.EditData(res->front(), td);
+        pushRes = ROOTDB.EditData(res->front(), td.value());
     }
     if (!pushRes) {
         critlog("failed to push trackdata to root database. from editorObject "
