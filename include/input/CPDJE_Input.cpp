@@ -154,18 +154,6 @@ ResetMidiDeviceView(PDJE_MidiDeviceViewV1 *out_device) noexcept
 }
 
 void
-ResetInputEventView(PDJE_InputEventViewV1 *out_event) noexcept
-{
-    if (out_event == nullptr) {
-        return;
-    }
-    const auto struct_size = out_event->struct_size;
-    *out_event             = {};
-    out_event->struct_size =
-        struct_size != 0 ? struct_size : sizeof(*out_event);
-}
-
-void
 ResetMidiEventView(PDJE_MidiEventViewV1 *out_event) noexcept
 {
     if (out_event == nullptr) {
@@ -573,24 +561,8 @@ pdje_input_snapshot_input_get_v1(const PDJE_InputSnapshotHandleV1 *snapshot,
             return PDJE_INPUT_RESULT_OUT_OF_RANGE_V1;
         }
 
-        ResetInputEventView(out_event);
-        const auto &item = snapshot->input_events[index];
-        out_event->type  = ToCDeviceType(item.type);
-        out_event->id    = MakeCountedStringView(
-            item.id, std::min<std::size_t>(item.id_len, sizeof(item.id)));
-        out_event->name = MakeCountedStringView(
-            item.name, std::min<std::size_t>(item.name_len, sizeof(item.name)));
-        out_event->microsecond       = item.microSecond;
-        out_event->keyboard.key_code =
-            static_cast<uint32_t>(item.event.keyboard.k);
-        out_event->keyboard.pressed  = item.event.keyboard.pressed ? 1 : 0;
-        out_event->mouse.button_type = item.event.mouse.button_type;
-        out_event->mouse.wheel_move  = item.event.mouse.wheel_move;
-        out_event->mouse.axis_type =
-            static_cast<uint32_t>(item.event.mouse.axis_type);
-        out_event->mouse.x = item.event.mouse.x;
-        out_event->mouse.y = item.event.mouse.y;
-        out_event->struct_size = sizeof(*out_event);
+        PDJE_CABI::FillInputEventViewFromLog(snapshot->input_events[index],
+                                             out_event);
         return PDJE_INPUT_RESULT_OK_V1;
     });
 }
