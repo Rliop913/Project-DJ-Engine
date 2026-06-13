@@ -14,13 +14,12 @@ These are the smallest stable verification routes in the current checkout.
 | ONNX Runtime smoke | `tests/unit/onnxruntime/onnxruntime_smoke.cpp` | `ctest --test-dir ./build -R '^unit.onnxruntime::smoke$' --output-on-failure` | `./build/pdje_onnxruntime_smoke` | validates the configured ONNX Runtime package and copied runtime |
 | Dev/manual executables | `include/tests/`, `cmakes/tests/DevTests.cmake` | `ctest --test-dir ./build -L unit --output-on-failure` first, then run the manual executable you changed | `./build/testEditor`, `./build/testInput`, `./build/testMIDI`, `./build/testJudge`, `./build/DBTester`, `./build/gitTester` | requires `PDJE_DEV_TEST=ON`; not a substitute for unit coverage |
 
-## Current C ABI Wiring Caveat
+## C ABI Wiring Caveat
 
-- `tests/unit/core/cpdje_interface_c_api.test.cpp` exists in the tree.
-- `tests/unit/input/cpdje_input_c_api.test.cpp` exists in the tree.
-- `tests/unit/judge/cpdje_judge_c_api.test.cpp` exists in the tree.
-- The current unit target source lists under `cmakes/tests/units/` do not wire
-  those files into `ctest --test-dir ./build -L unit`.
-- If you touch `CPDJE*` wrappers in this checkout, run the owning unit binaries
-  and re-check the module CMake wiring before claiming explicit C ABI coverage.
-- Track this caveat through [KNOWN_GAPS.md](KNOWN_GAPS.md).
+- Full C ABI tests exist under `tests/unit/{core,input,judge}/cpdje_*_c_api.test.cpp`.
+- Current unit target lists do not wire core/judge full C ABI tests or
+  `tests/unit/input/cpdje_input_c_api.test.cpp`.
+- `pdje_unit_input` does wire
+  `tests/unit/input/cpdje_input_snapshot_event_view.test.cpp`.
+- If you touch `CPDJE*`, inspect the owning `cmakes/tests/units/Module_*.cmake`
+  list before claiming C ABI coverage.

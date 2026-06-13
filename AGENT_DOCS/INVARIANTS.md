@@ -1,57 +1,38 @@
 # PDJE Invariants
 
-These rules are intended to stay stable unless the repository is deliberately
-restructured.
+Stable unless the repository is deliberately restructured.
 
-## Documentation Ownership
+## Documentation
 
-- `AGENT_DOCS/` is the canonical Markdown control-doc location.
-- Root `README.md` is the public landing page.
-- Root `AGENTS.md` is the thin agent entrypoint.
-- Root `ARCHITECTURE.md`, `PROJECT_STATE.md`, and `HOW_TO_VERIFY.md` are
-  compatibility aliases, not canonical deep docs.
-- `DECISIONS.md` is the short rationale ledger for these control-doc rules.
-- Public project documentation is maintained outside this checkout.
-- `document_sources/` may still exist as legacy external-doc source material,
-  but it is not part of the required maintenance reading flow.
-- `docs/` contains only redirecting HTML for the external documentation site.
-- `BluePrint_PDJE/` is archive material, not current source of truth.
+| Path | Rule |
+| --- | --- |
+| `AGENT_DOCS/` | canonical Markdown control docs |
+| `README.md` | public landing page |
+| `AGENTS.md` | thin agent entrypoint |
+| `DECISIONS.md` | rationale ledger for control-doc choices |
+| `docs/` | redirecting HTML only; public docs live outside this checkout |
+| `BluePrint_PDJE/` | archive material, not current truth |
 
 ## Build Truth
 
-- Source defaults come from `cmakes/Options.cmake`.
-- Local build caches can diverge from source defaults and must not overwrite
-  them in docs.
-- The checked-in `CMakePresets.json` is the canonical shared build matrix.
-- Shared preset flows use the repo-root `/build` directory, written as
-  `./build` in commands.
-- Shared preset flows support exactly `Release` and `RelWithDebInfo`.
-- Shared preset flows fix `PDJE_DYNAMIC=ON`.
-- Shared preset flows allow `PDJE_TEST=ON` and `PDJE_DEV_TEST=ON` only in
-  `RelWithDebInfo`.
-- Shared preset flows fix compilers by platform: Windows=`cl`,
-  Linux=`clang`, macOS=`clang` expecting AppleClang.
-- Agents must ask the user which build/config flow to use before running any
-  `conan install`, `cmake` configure, `cmake --build`, `ctest`, or wrapper
-  script command.
-- Agents must not choose a preset, toolchain, build type, or verification
-  command on their own and must not start build/config work without explicit
-  user approval.
-- Agents must not create or use build directories other than `./build` unless
-  the user explicitly requests an exception.
-- SWIG is required only when `PDJE_SWIG_BUILD=ON`.
-- `PDJE_DEVELOP_INPUT` is active on Linux and Windows and forced off on macOS.
+| Item | Rule |
+| --- | --- |
+| source defaults | `cmakes/Options.cmake`, not local build cache |
+| shared matrix | root `CMakePresets.json` |
+| build directory | repo-root `./build` only unless user requests otherwise |
+| modes | `Release` and `RelWithDebInfo`; `PDJE_DYNAMIC=ON` |
+| test flags | only `RelWithDebInfo` enables `PDJE_TEST` and `PDJE_DEV_TEST` |
+| compilers | Windows=`cl`; Linux=`clang`; macOS=`clang`/AppleClang |
+| agent approval | ask before `conan install`, `cmake`, `cmake --build`, `ctest`, or wrappers |
+| optional gates | SWIG only with `PDJE_SWIG_BUILD=ON`; input/judge on Linux/Windows, forced off on macOS |
 
-## Codebase Shape
+Agents must not choose preset, toolchain, build type, verification command, or
+new build directory without explicit user approval.
 
-- `include/` contains both headers and implementation `.cpp` files.
-- `PDJE`, `PDJE_Input`, `PDJE_JUDGE::JUDGE`, and `PDJE_UTIL` are the main
-  native integration surfaces.
-- `PDJE_UTIL` is active code, not roadmap-only material.
-- Pointer-based data-line structs must be treated as non-owning and null-checked.
+## Code Shape
 
-## Verification Expectations
-
-- Unit test truth comes from `ctest --test-dir ./build -L unit`.
-- Public documentation changes belong in the external documentation surface, not
-  in `docs/`; this checkout keeps only the redirect HTML.
+- `include/` contains headers and implementation `.cpp` files.
+- Main native surfaces: `PDJE`, `PDJE_Input`, `PDJE_JUDGE::JUDGE`, `PDJE_UTIL`.
+- `PDJE_UTIL` is active code.
+- Pointer data-line structs are non-owning and require null checks.
+- Unit test truth comes from CTest unit labels in repo-root `./build`.

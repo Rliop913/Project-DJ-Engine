@@ -1,42 +1,48 @@
 ---
 name: pdje-build-verify
-description: Build and verify changes in Project_DJ_Engine using the repository's checked-in preset matrix and CTest flows. Use when Codex needs to choose a repo-specific build target, run focused verification after code changes, reconfigure the repo-root `./build` directory through presets, or validate util/STFT/waveform work against `music_to_waveform_webp` and other PDJE targets.
+description: Build and verify changes in Project_DJ_Engine using the repository's checked-in preset matrix and CTest flows. Use when Codex needs to choose a repo-specific build target, run focused verification after code changes, reconfigure the repo-root `./build` directory through presets, or validate subsystem-specific unit and dev/manual executable coverage.
 ---
 
 # PDJE Build Verify
 
 ## Overview
 
-Use this skill to pick the smallest reliable build and verification path for this repository, especially with the shared preset matrix in root `CMakePresets.json`. Prefer it when generic advice would miss PDJE-specific target names, test regexes, or the repository's current build-tree habits.
+Use this skill to pick the smallest reliable PDJE build/test path when generic
+advice would miss target names, regexes, presets, or `./build` habits.
 
 ## Start
 
 - Read `AGENT_DOCS/VERIFY.md` for repository-wide verification rules and success criteria.
 - Read `AGENT_DOCS/TEST_MAP.md` when you need the smallest stable test route for a subsystem.
 - Read `AGENT_DOCS/CHANGE_MAP.md` when the owning slice is still ambiguous.
-- Use the root `CMakePresets.json` matrix as the canonical configure/build/test entrypoint.
-- Use the repo-root `/build` directory, written as `./build` in commands.
-- Use only `Release` and `RelWithDebInfo`.
-- Keep `PDJE_DYNAMIC=ON` in both modes.
-- Only `*-relwithdebinfo` presets enable `PDJE_TEST` and `PDJE_DEV_TEST`.
-- Run the matching `BuildInitwithConan*.{bat,sh}` bootstrap before invoking the preset for that platform and mode.
-- On Windows, prefer `call .\windows_conf_and_build.bat <Release|RelWithDebInfo> <jobs> <on|off>` when you want the helper to activate the Conan/MSVC shell and run the matching configure+build in one `cmd` process.
-- Prefer reusing the existing `./build` directory when it already exists.
+- Use root `CMakePresets.json`, repo-root `./build`, and only `Release` or
+  `RelWithDebInfo`.
+- Keep `PDJE_DYNAMIC=ON`; only `*-relwithdebinfo` enables `PDJE_TEST` and
+  `PDJE_DEV_TEST`.
+- Run matching `BuildInitwithConan*.{bat,sh}` before the platform preset.
+- On Windows, prefer `call .\windows_conf_and_build.bat <Release|RelWithDebInfo> <jobs> <on|off>` for one-shell Conan/MSVC configure+build.
+- Reuse existing `./build` when possible.
 
 ## Choose The Flow
 
 - Use the repository-wide flow from `AGENT_DOCS/VERIFY.md` when the change is cross-cutting or the affected subsystem is unclear.
-- Use the util-focused commands in `references/verification-flows.md` when working on `include/util/`, util tests, OpenCL/STFT, waveform/WebP, or util-adjacent build wiring.
-- Use the dev-consumer flow in `references/verification-flows.md` when the change must compile against `include/tests/music_to_waveform_webp.cpp` or another `PDJE_DEV_TEST` executable.
+- Use `AGENT_DOCS/TEST_MAP.md` for focused unit routes.
+- Use `references/verification-flows.md` for platform bootstrap and preset command
+  shapes.
+- Build a changed `PDJE_DEV_TEST` executable when the change affects a
+  dev/manual consumer.
 
 ## Working Rules
 
 - Build the narrowest target first with `cmake --build --preset <host>-<mode> --target <target>`.
 - Run focused `ctest` regexes before broader suites.
 - Reconfigure the existing `./build` directory by rerunning the matching preset instead of inventing a new build tree.
-- Treat `music_to_waveform_webp` build success as compile coverage only; say explicitly if you did not run the executable.
-- If sandboxed MSBuild or `ZERO_CHECK` fails because of file-tracking or access-denied issues, rerun the same build with escalation instead of inventing a new build path.
-- If a fresh `./build` directory cannot find the compiler, check whether the shell and Conan bootstrap actually match the preset's compiler lock before spending time on generator debugging.
+- Treat dev/manual executable build success as compile coverage only unless
+  executed.
+- If sandboxed MSBuild or `ZERO_CHECK` hits file-tracking/access-denied issues,
+  rerun the same build with escalation.
+- If fresh `./build` cannot find the compiler, check shell/bootstrap vs preset
+  compiler lock first.
 
 ## Report The Result
 
@@ -47,4 +53,5 @@ Use this skill to pick the smallest reliable build and verification path for thi
 
 ## References
 
-- Read `references/verification-flows.md` for the exact command sets already used successfully in this repository.
+- Read `references/verification-flows.md` for platform bootstrap and preset
+  command sets.

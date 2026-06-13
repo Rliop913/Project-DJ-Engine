@@ -1,21 +1,15 @@
 # PDJE Build And Verification Flows
 
-Use these commands when the repository state matches the current workflow with the checked-in preset matrix in root `CMakePresets.json` and the repo-root `/build` directory.
+Platform command shapes for root `CMakePresets.json` and repo-root `./build`.
+Baseline docs: `AGENT_DOCS/VERIFY.md`, `TEST_MAP.md`, `CHANGE_MAP.md`.
 
-## Baseline Docs
+## Compile-Only
 
-- Read `AGENT_DOCS/VERIFY.md` for repo-wide defaults.
-- Read `AGENT_DOCS/TEST_MAP.md` for the smallest stable test route by area.
-- Read `AGENT_DOCS/CHANGE_MAP.md` if the owning slice is still unclear.
-
-## Compile-Only Command Set
-
-Use the `Release` presets when you only need a dynamic compile check without
-unit or dev tests.
+Use `Release` for dynamic compile checks without unit/dev tests.
 
 Linux:
 
-```powershell
+```bash
 CC=clang CXX=clang++ bash ./BuildInitwithConan.sh . Release
 cmake --preset linux-release
 cmake --build --preset linux-release
@@ -23,7 +17,7 @@ cmake --build --preset linux-release
 
 macOS:
 
-```powershell
+```bash
 CC=clang CXX=clang++ bash ./BuildInitwithConan.sh . Release
 cmake --preset macos-release
 cmake --build --preset macos-release
@@ -36,10 +30,25 @@ BuildInitwithConan.bat . dynamic Release
 call .\windows_conf_and_build.bat Release 16 on
 ```
 
-## Util Hard-Refactor Command Set
+## Unit And Dev Verification
 
-Use the `RelWithDebInfo` presets when you need unit coverage plus dev-test
-executables.
+Use `RelWithDebInfo` when unit tests or `PDJE_DEV_TEST` executables are needed.
+
+Linux:
+
+```bash
+CC=clang CXX=clang++ bash ./BuildInitwithConan.sh . RelWithDebInfo
+cmake --preset linux-relwithdebinfo
+cmake --build --preset linux-relwithdebinfo
+```
+
+macOS:
+
+```bash
+CC=clang CXX=clang++ bash ./BuildInitwithConan.sh . RelWithDebInfo
+cmake --preset macos-relwithdebinfo
+cmake --build --preset macos-relwithdebinfo
+```
 
 Windows:
 
@@ -48,45 +57,27 @@ BuildInitwithConan.bat . dynamic RelWithDebInfo
 call .\windows_conf_and_build.bat RelWithDebInfo 16 on
 ```
 
-Build the util unit target from the shared preset-configured `./build` tree:
+After the build, choose the focused or full run from `AGENT_DOCS/TEST_MAP.md`.
 
-```powershell
-cmake --build --preset windows-relwithdebinfo --target pdje_unit_util
-```
+## Targeted Builds
 
-Run the util DB, status, and public-surface checks:
-
-```powershell
-ctest --test-dir ./build -R "unit.util::(rocksdb|annoy|sqlite|util)" --output-on-failure
-```
-
-Run the util signal, runtime, image, and WebP checks:
-
-```powershell
-ctest --test-dir ./build -R "unit.util::(backendless|post process rgb mode|stft|mel filter bank|waveform|encode_waveform_webps|encode_webp|write_webp)" --output-on-failure
-```
-
-## Dev Consumer Flow
-
-Build the waveform/WebP consumer executable:
-
-```powershell
-cmake --build --preset windows-relwithdebinfo --target music_to_waveform_webp
-```
-
-Treat this build as compile compatibility only unless you also run the executable.
+- Build the narrowest owning target first when the target is known.
+- Use `<host>-relwithdebinfo` for unit targets and dev/manual executables.
+- Treat dev/manual executable build success as compile coverage only unless the
+  executable also runs.
 
 ## Selection Notes
 
-- Prefer the existing `./build` directory over creating a fresh build tree when you only need incremental verification.
-- Expect a fresh tree without the right compiler shell or mismatched Conan bootstrap to fail compiler discovery.
-- Expect sandboxed Windows builds to sometimes fail in `ZERO_CHECK` or MSBuild file tracking with access-denied errors.
-- If that happens, rerun the same configure or build with escalation instead of changing targets or switching to a different verification story.
-- `windows_conf_and_build.bat` keeps the Conan/MSVC environment and the matching Windows preset configure/build inside one `cmd` process, and its third argument toggles `--fresh` on or off. The default is `off`. It still assumes the matching Conan-generated files already exist in `conan_cmakes/`.
-- Linux and macOS presets lock `clang` / `clang++`, so the preceding Conan bootstrap must be run with matching compiler environment.
+- Reuse existing `./build` for incremental verification.
+- Fresh trees need a compiler shell and Conan bootstrap that match the preset.
+- Sandboxed Windows builds can fail in `ZERO_CHECK` or MSBuild file tracking;
+  rerun the same command with escalation instead of changing verification story.
+- `windows_conf_and_build.bat` keeps Conan/MSVC and preset configure/build in
+  one `cmd`; arg 3 toggles `--fresh` and defaults to `off`.
+- Linux/macOS presets lock `clang` / `clang++`; bootstrap must match.
 
 ## Reporting Notes
 
-- Report the exact commands you ran.
+- Report exact build and test commands run.
 - Report whether `./build` was reconfigured.
 - Report whether a target was only built or also executed.

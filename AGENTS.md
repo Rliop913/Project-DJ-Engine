@@ -6,7 +6,6 @@ control docs live under `AGENT_DOCS/`.
 ## Start Here
 
 - [AGENT_DOCS/INDEX.md](AGENT_DOCS/INDEX.md)
-- [AGENT_DOCS/NOW.md](AGENT_DOCS/NOW.md)
 - [AGENT_DOCS/INVARIANTS.md](AGENT_DOCS/INVARIANTS.md)
 - [AGENT_DOCS/VERIFY.md](AGENT_DOCS/VERIFY.md)
 - [AGENT_DOCS/ARCHITECTURE.md](AGENT_DOCS/ARCHITECTURE.md)
@@ -14,8 +13,7 @@ control docs live under `AGENT_DOCS/`.
 ## Critical Rules
 
 - `AGENT_DOCS/` is the canonical Markdown doc surface.
-- `document_sources/` is the Sphinx source tree.
-- `docs/` is generated output.
+- `docs/` contains only redirecting HTML for the external documentation site.
 - `BluePrint_PDJE/` is archive material only.
 - Source defaults come from `cmakes/Options.cmake`, not from local build
   caches.
@@ -32,11 +30,3 @@ control docs live under `AGENT_DOCS/`.
 - `include/input/PDJE_Input.hpp`
 - `include/judge/PDJE_Judge.hpp`
 - `include/util/PDJE_Util.hpp`
-
-## Fast Commands
-
-```bash
-ctest --test-dir build -L unit --output-on-failure
-ctest --test-dir build -N -L unit
-bash RunClangFormat.sh
-```

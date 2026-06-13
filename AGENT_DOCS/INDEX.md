@@ -3,13 +3,11 @@
 `AGENT_DOCS/` is the canonical Markdown documentation surface for repository
 operations, agent guidance, and source-backed project control notes.
 
-This index follows the same broad idea as the Sphinx landing page: short
-overview first, then the current control docs, then deeper references, then
-legacy material.
+This index keeps the active control surface small: entry docs first, then
+operational references, then subsystem deep dives.
 
 ## Start Here
 
-- [NOW.md](NOW.md): current verified state, active caveats, and immediate risks
 - [INVARIANTS.md](INVARIANTS.md): repository rules that should not drift
 - [VERIFY.md](VERIFY.md): commands and success criteria for confirming reality
 - [ARCHITECTURE.md](ARCHITECTURE.md): deeper module and data-flow map
@@ -18,7 +16,6 @@ legacy material.
 
 | Doc | Purpose |
 | --- | --- |
-| `NOW.md` | What is true right now and what to watch before making changes |
 | `INVARIANTS.md` | Stable rules about doc ownership, build defaults, and archive boundaries |
 | `VERIFY.md` | Quick and clean verification flows |
 
@@ -30,12 +27,9 @@ legacy material.
 - [TEST_MAP.md](TEST_MAP.md): smallest stable verification routes by area
 - [DECISIONS.md](DECISIONS.md): short rationale ledger for non-obvious repo choices
 - [GLOSSARY.md](GLOSSARY.md): compact definitions for project-specific terms
-- [KNOWN_GAPS.md](KNOWN_GAPS.md): current wiring and documentation gaps to keep visible
 - [strategy/STRATEGY.md](strategy/STRATEGY.md): developer-agent collaboration strategy by module
 - [strategy/MEETING_PROTOCOL.md](strategy/MEETING_PROTOCOL.md): meeting flow for closing strategy agendas into plans
 - [strategy/BUG_HUNT_PROTOCOL.md](strategy/BUG_HUNT_PROTOCOL.md): large-scale bug-hunt coordination and acceptance protocol
-- `strategy/bug-hunt-template/`: template files for future `AGENT_DOCS/audits/bug-hunt-YYYY-MM-DD/` runs
-- [strategy/SESSIONS.md](strategy/SESSIONS.md): index for future strategy meeting logs
 
 ## Subsystem Deep Dives
 
@@ -47,26 +41,7 @@ legacy material.
 - [LIFECYCLES.md](LIFECYCLES.md): valid call order across core, input, judge, and wrappers
 - [DATA_CONTRACTS.md](DATA_CONTRACTS.md): current contracts for data lines, play modes, and timing types
 
-## Deep Dives
+## External
 
-- [ARCHITECTURE.md](ARCHITECTURE.md): canonical architecture deep dive
 - [../README.md](../README.md): public-facing project landing page
 - `../docs/`: redirecting HTML only; public docs live outside this checkout
-
-## Current Known Risks
-
-- The local `build/` cache does not represent source defaults.
-- explicit C ABI unit test sources exist, but current unit target wiring does
-  not include them.
-- `Judge_Init::SetInputLine()` still assumes a non-null `input_arena`.
-- `docs/` contains only redirecting HTML and must stay separate from
-  agent-control docs.
-- `BluePrint_PDJE/` can still surface in search results despite being archive
-  material.
-
-## Legacy References
-
-- `../BluePrint_PDJE/`: archived design-note vault
-- `../manual_doc_code_audit_2026-02-16.md`: historical `.rst` audit note
-- root compatibility aliases:
-  `../ARCHITECTURE.md`, `../PROJECT_STATE.md`, `../HOW_TO_VERIFY.md`

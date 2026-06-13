@@ -1,78 +1,49 @@
 # PDJE Input System
 
-This page covers `PDJE_Input`, its state machine, and its data-line contract.
+`PDJE_Input` owns device enumeration, backend configuration, live capture, and
+the input data line.
 
-## Purpose
+## Surface
 
-- enumerate keyboard, mouse, and MIDI devices
-- configure the selected backend
-- run live input capture
-- expose live input buffers to judge or external consumers
+| Kind | Paths |
+| --- | --- |
+| facade/state | `include/input/PDJE_Input.hpp`, `.cpp`, `PDJE_Input_StateLogic.hpp` |
+| devices | `include/input/DefaultDevs/` |
+| transport | `include/input/IPC/`, `include/input/runner/` |
+| MIDI | `include/input/midi/` |
 
-## Primary Entry Points
+## Flow
 
-- `include/input/PDJE_Input.hpp`
-- `include/input/PDJE_Input.cpp`
-- `include/input/PDJE_Input_StateLogic.hpp`
-- `include/input/DefaultDevs/`
-- `include/input/midi/`
+| State | Call / result |
+| --- | --- |
+| `DEAD` | construct, then `Init(platform_ctx0, platform_ctx1, use_internal_window)` |
+| `DEVICE_CONFIG_STATE` | `Init()` prepared devices/MIDI; `GetDevs()` and `GetMIDIDevs()` may inspect them |
+| `INPUT_LOOP_READY` | `Config(devs, midi_dev)` sanitized input and selected backend/MIDI-only outcome |
+| `INPUT_LOOP_RUNNING` | `Run()` starts capture; `PullOutDataLine()` exposes buffers |
+| `DEAD` | `Kill()` tears down backend state; safe as a no-op from `DEAD` |
 
-## Owning Paths
+## Contracts
 
-- `include/input/DefaultDevs/`
-- `include/input/IPC/`
-- `include/input/midi/`
-- `include/input/runner/`
+- `Init()`, `Config()`, and `Run()` are valid only from the states above.
+- Config sanitizes empty names, empty ids, and `UNKNOWN` device types.
+- MIDI-only config is legal and returns through `Kill()` after readiness.
+- Backend readiness and MIDI readiness are separate flags.
+- `PullOutDataLine()` may expose only `input_arena`, only `midi_datas`, both,
+  or neither.
 
-## Lifecycle / Flow
+## Platforms
 
-1. Construct `PDJE_Input`.
-2. Call `Init(platform_ctx0, platform_ctx1, use_internal_window)`.
-3. `Init()` creates `DefaultDevs`, prepares platform contexts, creates MIDI
-   support, and moves state from `DEAD` to `DEVICE_CONFIG_STATE`.
-4. Call `GetDevs()` and `GetMIDIDevs()` to inspect available devices.
-5. Call `Config(devs, midi_dev)`.
-6. `Config()` sanitizes device input, configures the backend, and decides
-   whether the module is input-backed, MIDI-only, or invalid.
-7. Call `Run()` only from `INPUT_LOOP_READY`.
-8. Pull live state through `PullOutDataLine()`.
-9. Call `Kill()` to terminate backend state and reset to `DEAD`.
+- Linux: evdev, Wayland fallback, loader/runtime tests.
+- Windows: subprocess/raw-input path under `runner/windows`.
+- macOS: gated off by `PDJE_DEVELOP_INPUT=OFF`.
 
-## Contracts / Invariants
+## Change Points
 
-- `Init()` is valid only from `DEAD`.
-- `Config()` is valid only from `DEVICE_CONFIG_STATE`.
-- `Run()` is valid only from `INPUT_LOOP_READY`.
-- device configuration sanitizes out empty names, empty ids, and `UNKNOWN`
-  device types before backend config.
-- MIDI-only configuration is legal; it transitions through `INPUT_LOOP_READY`
-  and then immediately tears backend state down through `Kill()`.
-- `PullOutDataLine()` returns null members when input or MIDI are not active.
-- `Kill()` is safe as a no-op from `DEAD`.
-
-## Platform Notes
-
-- Linux and Windows are the active input targets in the current tree.
-- Linux owns evdev, Wayland fallback, and loader/runtime tests.
-- Windows owns the subprocess/raw-input path under `runner/windows`.
-- macOS is gated off through `PDJE_DEVELOP_INPUT=OFF`.
-
-## Common Change Points
-
-- device discovery and runtime: `include/input/DefaultDevs/`
-- input buffer / IPC transport: `include/input/IPC/`
-- MIDI handling: `include/input/midi/`
+- discovery/runtime: `include/input/DefaultDevs/`
+- buffer/IPC transport: `include/input/IPC/`
+- MIDI: `include/input/midi/`
 - state transitions: `PDJE_Input_StateLogic.hpp`
 
 ## Verify
 
-- `ctest --test-dir ./build -R '^unit.input::' --output-on-failure`
-- `ctest --test-dir ./build -L unit --output-on-failure`
-
-## Known Traps
-
-- `GetDevs()` assumes the module was initialized; it is not a free-standing
-  static query API.
-- backend readiness and MIDI readiness are separate flags.
-- `PullOutDataLine()` does not guarantee both `input_arena` and `midi_datas`
-  are present at the same time.
+- Use [TEST_MAP.md](TEST_MAP.md): input module or full unit rows.
