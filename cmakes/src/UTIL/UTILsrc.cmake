@@ -17,6 +17,8 @@ set(PDJE_UTIL_SOURCES
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/image/detail/WaveformWebpPlanBuilder.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/image/detail/WaveformWebpRasterizer.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/image/detail/WaveformWebpProcessor.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/fuzzy/FuzzySearch.cpp
+
 )
 
 set(PDJE_UTIL_PRIVATE_INCLUDE

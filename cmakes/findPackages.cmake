@@ -230,6 +230,28 @@ function(setAnnoyReqLib targetName)
   endif()
 endfunction(setAnnoyReqLib)
 
+find_package(rapidfuzz CONFIG REQUIRED)
+
+function(setRapidfuzzReqLib targetName)
+  set(_pdje_requested_scope "")
+  if(ARGC GREATER 1)
+    set(_pdje_requested_scope "${ARGV1}")
+  endif()
+
+  pdje_resolve_dependency_scope(
+    _pdje_rapidfuzz_scope
+    ${targetName}
+    PRIVATE
+    "${_pdje_requested_scope}")
+
+  target_link_libraries(${targetName} ${_pdje_rapidfuzz_scope} rapidfuzz::rapidfuzz)
+  if(DEFINED rapidfuzz_INCLUDE_DIRS)
+    target_include_directories(${targetName} ${_pdje_rapidfuzz_scope} ${rapidfuzz_INCLUDE_DIRS})
+  elseif(DEFINED rapidfuzz_INCLUDE_DIR)
+    target_include_directories(${targetName} ${_pdje_rapidfuzz_scope} ${rapidfuzz_INCLUDE_DIR})
+  endif()
+endfunction(setRapidfuzzReqLib)
+
 find_package(spdlog CONFIG REQUIRED)
 
 function(setSpdlogReqLib targetName)

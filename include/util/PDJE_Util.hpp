@@ -13,3 +13,4 @@
 #include "util/function/FunctionContext.hpp"
 #include "util/function/scalar/Clamp.hpp"
 #include "util/function/text/Slugify.hpp"
+#include "util/function/fuzzy/FuzzySearch.hpp"
