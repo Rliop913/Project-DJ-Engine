@@ -101,12 +101,12 @@ class BeatThisDetector::Impl {
         return postprocessor_.Process(logits);
     }
 
-    std::filesystem::path                              model_path_;
-    BeatThisFrontendConfig                             frontend_config_;
-    OnnxSession                                        session_;
+    std::filesystem::path                                 model_path_;
+    BeatThisFrontendConfig                                frontend_config_;
+    OnnxSession                                           session_;
     std::shared_ptr<beat_this::PdjeMelSpectrogramBackend> backend_;
-    beat_this::FrontendProcessor                       frontend_;
-    beat_this::MinimalBeatPostprocessor                postprocessor_;
+    beat_this::FrontendProcessor                          frontend_;
+    beat_this::MinimalBeatPostprocessor                   postprocessor_;
 };
 
 BeatThisDetector::BeatThisDetector()
@@ -119,12 +119,12 @@ BeatThisDetector::BeatThisDetector(BeatThisFrontendConfig frontend_config)
 {
 }
 
-BeatThisDetector::BeatThisDetector(std::filesystem::path model_path,
+BeatThisDetector::BeatThisDetector(std::filesystem::path  model_path,
                                    BeatThisFrontendConfig frontend_config)
     : impl_(std::make_unique<Impl>(std::move(model_path),
                                    std::move(frontend_config)))
 {
-    this->model_path = impl_->model_path_;
+    this->model_path      = impl_->model_path_;
     this->frontend_config = impl_->frontend_config_;
 }
 
@@ -136,7 +136,7 @@ BeatThisDetector::operator=(BeatThisDetector &&) noexcept = default;
 
 BeatDetectionResult
 BeatThisDetector::detect(const std::span<const float> samples,
-                         const int                     input_sample_rate) const
+                         const int                    input_sample_rate) const
 {
     if (!impl_) {
         throw std::runtime_error("beat this detector is not initialized");

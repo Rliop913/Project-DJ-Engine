@@ -14,7 +14,7 @@ namespace PDJE_UTIL::ai::beat_this {
 
 void
 FrontendPipeline::ValidateAudioBuffer(const std::span<const float> samples,
-                                      const int                     input_sample_rate)
+                                      const int input_sample_rate)
 {
     if (input_sample_rate <= 0) {
         throw std::invalid_argument("input_sample_rate must be positive");
@@ -37,7 +37,7 @@ FrontendPipeline::CopyMonoToDouble(const std::span<const float> samples)
 
 void
 FrontendPipeline::EnsureResampleCapacity(std::vector<double> &output,
-                                         const std::size_t     out_pos)
+                                         const std::size_t    out_pos)
 {
     if (out_pos < output.size()) {
         return;
@@ -50,22 +50,20 @@ FrontendPipeline::EnsureResampleCapacity(std::vector<double> &output,
 
 std::vector<double>
 FrontendPipeline::ResampleMonoWaveform(const std::span<const double> mono,
-                                       const int                     input_sample_rate,
-                                       const int                     output_sample_rate)
+                                       const int input_sample_rate,
+                                       const int output_sample_rate)
 {
     if (input_sample_rate == output_sample_rate) {
         return std::vector<double>(mono.begin(), mono.end());
     }
 
-    const double ratio =
-        static_cast<double>(output_sample_rate) /
-        static_cast<double>(input_sample_rate);
+    const double ratio = static_cast<double>(output_sample_rate) /
+                         static_cast<double>(input_sample_rate);
     const std::size_t chunkFrames = static_cast<std::size_t>(
         std::max(1000.0,
                  48000.0 * static_cast<double>(input_sample_rate) /
                      static_cast<double>(output_sample_rate)));
-    const soxr_io_spec_t ioSpec =
-        soxr_io_spec(SOXR_FLOAT64_I, SOXR_FLOAT64_I);
+    const soxr_io_spec_t ioSpec = soxr_io_spec(SOXR_FLOAT64_I, SOXR_FLOAT64_I);
     const soxr_quality_spec_t qualitySpec = soxr_quality_spec(SOXR_HQ, 0);
     soxr_error_t              createError = nullptr;
     soxr_t rawResampler = soxr_create(static_cast<double>(input_sample_rate),
@@ -83,9 +81,9 @@ FrontendPipeline::ResampleMonoWaveform(const std::span<const double> mono,
 
     std::unique_ptr<soxr, decltype(&soxr_delete)> resampler(rawResampler,
                                                             &soxr_delete);
-    const double expectedFrames =
-        soxr_delay(resampler.get()) + (static_cast<double>(mono.size()) * ratio) +
-        1.0;
+    const double expectedFrames = soxr_delay(resampler.get()) +
+                                  (static_cast<double>(mono.size()) * ratio) +
+                                  1.0;
     const std::size_t initialCapacity = std::max(
         kResampleBufferFloorFrames,
         static_cast<std::size_t>(std::ceil(std::max(1.0, expectedFrames))));
@@ -94,30 +92,27 @@ FrontendPipeline::ResampleMonoWaveform(const std::span<const double> mono,
     std::size_t         outPos = 0;
 
     for (std::size_t idx = 0; idx < mono.size(); idx += chunkFrames) {
-        const double *input = mono.data() + idx;
-        std::size_t   inputRemaining =
-            std::min(chunkFrames, mono.size() - idx);
+        const double *input          = mono.data() + idx;
+        std::size_t   inputRemaining = std::min(chunkFrames, mono.size() - idx);
 
         while (inputRemaining > 0) {
             EnsureResampleCapacity(output, outPos);
 
-            std::size_t inputDone  = 0;
-            std::size_t outputDone = 0;
-            const soxr_error_t error =
-                soxr_process(resampler.get(),
-                             input,
-                             inputRemaining,
-                             &inputDone,
-                             output.data() + outPos,
-                             output.size() - outPos,
-                             &outputDone);
+            std::size_t        inputDone  = 0;
+            std::size_t        outputDone = 0;
+            const soxr_error_t error      = soxr_process(resampler.get(),
+                                                    input,
+                                                    inputRemaining,
+                                                    &inputDone,
+                                                    output.data() + outPos,
+                                                    output.size() - outPos,
+                                                    &outputDone);
             if (error != nullptr) {
                 throw std::runtime_error(
                     std::string("libsoxr streaming process failed: ") + error);
             }
             if (inputDone == 0 && outputDone == 0) {
-                throw std::runtime_error(
-                    "libsoxr streaming process stalled");
+                throw std::runtime_error("libsoxr streaming process stalled");
             }
 
             input += inputDone;
@@ -129,18 +124,17 @@ FrontendPipeline::ResampleMonoWaveform(const std::span<const double> mono,
     while (true) {
         EnsureResampleCapacity(output, outPos);
 
-        std::size_t outputDone = 0;
-        const soxr_error_t error =
-            soxr_process(resampler.get(),
-                         nullptr,
-                         0,
-                         nullptr,
-                         output.data() + outPos,
-                         output.size() - outPos,
-                         &outputDone);
+        std::size_t        outputDone = 0;
+        const soxr_error_t error      = soxr_process(resampler.get(),
+                                                nullptr,
+                                                0,
+                                                nullptr,
+                                                output.data() + outPos,
+                                                output.size() - outPos,
+                                                &outputDone);
         if (error != nullptr) {
-            throw std::runtime_error(
-                std::string("libsoxr flush failed: ") + error);
+            throw std::runtime_error(std::string("libsoxr flush failed: ") +
+                                     error);
         }
 
         outPos += outputDone;
@@ -159,15 +153,13 @@ FrontendPipeline::ResampleMonoWaveform(const std::span<const double> mono,
 
 std::vector<float>
 FrontendPipeline::PrepareMonoWaveform(const std::span<const float> samples,
-                                      const int                     input_sample_rate,
+                                      const int input_sample_rate,
                                       const BeatThisFrontendConfig &config)
 {
     ValidateAudioBuffer(samples, input_sample_rate);
-    const std::vector<double> mono = CopyMonoToDouble(samples);
-    const std::vector<double> resampled =
-        ResampleMonoWaveform(mono,
-                             input_sample_rate,
-                             config.target_sample_rate);
+    const std::vector<double> mono      = CopyMonoToDouble(samples);
+    const std::vector<double> resampled = ResampleMonoWaveform(
+        mono, input_sample_rate, config.target_sample_rate);
 
     std::vector<float> output(resampled.size(), 0.0f);
     for (std::size_t idx = 0; idx < resampled.size(); ++idx) {
@@ -178,7 +170,7 @@ FrontendPipeline::PrepareMonoWaveform(const std::span<const float> samples,
 }
 
 std::vector<float>
-FrontendPipeline::ReflectPad(const std::span<const float> input,
+FrontendPipeline::ReflectPad(const std::span<const float>  input,
                              const BeatThisFrontendConfig &config)
 {
     const int pad = config.pad;
@@ -199,18 +191,16 @@ FrontendPipeline::ReflectPad(const std::span<const float> input,
               input.end(),
               padded.begin() + static_cast<std::ptrdiff_t>(leftPad));
     for (std::size_t idx = 0; idx < leftPad; ++idx) {
-        padded[leftPad + input.size() + idx] =
-            input[input.size() - 2u - idx];
+        padded[leftPad + input.size() + idx] = input[input.size() - 2u - idx];
     }
 
     return padded;
 }
 
 Spectrogram
-FrontendPipeline::ComputeLogMelSpectrogram(
-    const std::span<const float> samples,
-    MelSpectrogramBackend       &backend,
-    const BeatThisFrontendConfig &config)
+FrontendPipeline::ComputeLogMelSpectrogram(const std::span<const float> samples,
+                                           MelSpectrogramBackend       &backend,
+                                           const BeatThisFrontendConfig &config)
 {
     const std::vector<float> padded = ReflectPad(samples, config);
     if (padded.size() < static_cast<std::size_t>(config.nfft)) {
@@ -219,8 +209,7 @@ FrontendPipeline::ComputeLogMelSpectrogram(
 
     Spectrogram spectrogram = backend.ComputeLinearMel(padded, config);
     if (spectrogram.num_frames <= 0) {
-        throw std::runtime_error(
-            "mel backend returned an empty spectrogram");
+        throw std::runtime_error("mel backend returned an empty spectrogram");
     }
     if (spectrogram.num_bins != config.num_mels) {
         throw std::runtime_error(
@@ -231,8 +220,8 @@ FrontendPipeline::ComputeLogMelSpectrogram(
         static_cast<std::size_t>(spectrogram.num_frames) *
         static_cast<std::size_t>(spectrogram.num_bins);
     if (spectrogram.values.size() != expectedValues) {
-        throw std::runtime_error(
-            "mel backend returned spectrogram storage that does not match its shape");
+        throw std::runtime_error("mel backend returned spectrogram storage "
+                                 "that does not match its shape");
     }
 
     for (float &value : spectrogram.values) {
@@ -245,26 +234,20 @@ FrontendPipeline::ComputeLogMelSpectrogram(
 FrontendProcessor::FrontendProcessor(
     std::shared_ptr<MelSpectrogramBackend> backend,
     BeatThisFrontendConfig                 config)
-    : backend_(std::move(backend)),
-      config(std::move(config))
+    : backend_(std::move(backend)), config(std::move(config))
 {
     if (!backend_) {
-        throw std::invalid_argument(
-            "mel spectrogram backend must not be null");
+        throw std::invalid_argument("mel spectrogram backend must not be null");
     }
 }
 
 Spectrogram
 FrontendProcessor::Execute(const std::span<const float> samples,
-                           const int                     input_sample_rate) const
+                           const int                    input_sample_rate) const
 {
-    const std::vector<float> mono =
-        FrontendPipeline::PrepareMonoWaveform(samples,
-                                              input_sample_rate,
-                                              config);
-    return FrontendPipeline::ComputeLogMelSpectrogram(mono,
-                                                      *backend_,
-                                                      config);
+    const std::vector<float> mono = FrontendPipeline::PrepareMonoWaveform(
+        samples, input_sample_rate, config);
+    return FrontendPipeline::ComputeLogMelSpectrogram(mono, *backend_, config);
 }
 
 } // namespace PDJE_UTIL::ai::beat_this

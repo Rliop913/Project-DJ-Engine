@@ -15,7 +15,6 @@ struct FrameLogits {
     int                num_frames = 0;
     std::vector<float> beat;
     std::vector<float> downbeat;
-
 };
 
 struct SpectrogramChunk {
@@ -60,10 +59,10 @@ class InferencePipeline {
     ValidateSpectrogram(const Spectrogram &spectrogram);
 
     static FrameLogits
-    RunSpectrogramChunk(const OnnxSession       &session,
-                        std::span<const float>   values,
-                        int                      num_frames,
-                        int                      num_bins);
+    RunSpectrogramChunk(const OnnxSession     &session,
+                        std::span<const float> values,
+                        int                    num_frames,
+                        int                    num_bins);
 };
 
 } // namespace PDJE_UTIL::ai::beat_this

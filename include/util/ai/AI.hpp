@@ -21,8 +21,7 @@ enum class OnnxOptimizationLevel {
 struct OnnxSessionOptions {
     int                   intra_op_num_threads = 1;
     int                   inter_op_num_threads = 1;
-    OnnxOptimizationLevel optimization_level   =
-        OnnxOptimizationLevel::EXTENDED;
+    OnnxOptimizationLevel optimization_level = OnnxOptimizationLevel::EXTENDED;
 
     bool
     operator==(const OnnxSessionOptions &) const = default;
@@ -40,8 +39,8 @@ struct NamedFloatTensor {
 
 class PDJE_API OnnxSession {
   public:
-    std::filesystem::path model_path;
-    OnnxSessionOptions options;
+    std::filesystem::path    model_path;
+    OnnxSessionOptions       options;
     std::vector<std::string> input_names;
     std::vector<std::string> output_names;
 
@@ -53,8 +52,9 @@ class PDJE_API OnnxSession {
     OnnxSession &
     operator=(OnnxSession &&) noexcept;
 
-    OnnxSession(const OnnxSession &)            = delete;
-    OnnxSession &operator=(const OnnxSession &) = delete;
+    OnnxSession(const OnnxSession &) = delete;
+    OnnxSession &
+    operator=(const OnnxSession &) = delete;
 
     std::vector<NamedFloatTensor>
     run(std::span<const NamedFloatTensor> inputs) const;

@@ -6,16 +6,9 @@
 
 namespace PDJE_PARALLEL {
 
-enum class MelFormula {
-    HTK = 0,
-    Slaney
-};
+enum class MelFormula { HTK = 0, Slaney };
 
-enum class MelNorm {
-    None = 0,
-    Peak,
-    Slaney
-};
+enum class MelNorm { None = 0, Peak, Slaney };
 
 struct MelFilterBankSpec {
     int        sample_rate = 22050;
@@ -32,10 +25,10 @@ struct MelFilterBankSpec {
 
 namespace detail {
 
-constexpr float kSlaneyFSp = 200.0f / 3.0f;
-constexpr float kSlaneyMinLogHz = 1000.0f;
+constexpr float kSlaneyFSp       = 200.0f / 3.0f;
+constexpr float kSlaneyMinLogHz  = 1000.0f;
 constexpr float kSlaneyMinLogMel = kSlaneyMinLogHz / kSlaneyFSp;
-constexpr float kSlaneyLogStep = 0.06875177742094912f;
+constexpr float kSlaneyLogStep   = 0.06875177742094912f;
 
 static inline float
 HtkHzToMel(const float hz)
@@ -56,8 +49,7 @@ SlaneyHzToMel(const float hz)
         return hz / kSlaneyFSp;
     }
 
-    return kSlaneyMinLogMel +
-           (std::log(hz / kSlaneyMinLogHz) / kSlaneyLogStep);
+    return kSlaneyMinLogMel + (std::log(hz / kSlaneyMinLogHz) / kSlaneyLogStep);
 }
 
 static inline float
@@ -98,10 +90,10 @@ MelToHz(const float mel, const MelFormula mel_formula)
 }
 
 static inline void
-ApplyNorm(float       *weights,
-          const int    freq_bins,
-          const float  left_hz,
-          const float  right_hz,
+ApplyNorm(float        *weights,
+          const int     freq_bins,
+          const float   left_hz,
+          const float   right_hz,
           const MelNorm norm)
 {
     if (weights == nullptr || freq_bins <= 0 || norm == MelNorm::None) {
@@ -154,7 +146,7 @@ CheckMelVals(const MelFilterBankSpec &spec)
         return false;
     }
 
-    const float nyquist = static_cast<float>(spec.sample_rate) * 0.5f;
+    const float nyquist        = static_cast<float>(spec.sample_rate) * 0.5f;
     const float resolved_f_max = spec.f_max < 0.0f ? nyquist : spec.f_max;
     if (resolved_f_max <= spec.f_min || resolved_f_max > nyquist) {
         return false;
@@ -220,8 +212,7 @@ GenMelFilterBank(const MelFilterBankSpec &spec)
         (mel_max - mel_min) / static_cast<float>(resolved_spec.n_mels + 1);
 
     std::vector<float> hz_points(
-        static_cast<std::size_t>(resolved_spec.n_mels) + 2u,
-        0.0f);
+        static_cast<std::size_t>(resolved_spec.n_mels) + 2u, 0.0f);
     for (int point_idx = 0; point_idx < resolved_spec.n_mels + 2; ++point_idx) {
         const float mel_value =
             mel_min + (static_cast<float>(point_idx) * mel_step);
@@ -229,19 +220,17 @@ GenMelFilterBank(const MelFilterBankSpec &spec)
             detail::MelToHz(mel_value, resolved_spec.mel_formula);
     }
 
-    const float fft_scale =
-        static_cast<float>(resolved_spec.sample_rate) /
-        static_cast<float>(resolved_spec.n_fft);
+    const float fft_scale = static_cast<float>(resolved_spec.sample_rate) /
+                            static_cast<float>(resolved_spec.n_fft);
 
     for (int mel_idx = 0; mel_idx < resolved_spec.n_mels; ++mel_idx) {
-        const float left_hz =
-            hz_points[static_cast<std::size_t>(mel_idx)];
+        const float left_hz = hz_points[static_cast<std::size_t>(mel_idx)];
         const float center_hz =
             hz_points[static_cast<std::size_t>(mel_idx) + 1u];
         const float right_hz =
             hz_points[static_cast<std::size_t>(mel_idx) + 2u];
 
-        const float left_width = center_hz - left_hz;
+        const float left_width  = center_hz - left_hz;
         const float right_width = right_hz - center_hz;
 
         for (int bin_idx = 0; bin_idx < freq_bins; ++bin_idx) {
@@ -260,14 +249,13 @@ GenMelFilterBank(const MelFilterBankSpec &spec)
                         static_cast<std::size_t>(bin_idx)] = weight;
         }
 
-        detail::ApplyNorm(
-            filter_bank.data() +
-                (static_cast<std::size_t>(mel_idx) *
-                 static_cast<std::size_t>(freq_bins)),
-            freq_bins,
-            left_hz,
-            right_hz,
-            resolved_spec.norm);
+        detail::ApplyNorm(filter_bank.data() +
+                              (static_cast<std::size_t>(mel_idx) *
+                               static_cast<std::size_t>(freq_bins)),
+                          freq_bins,
+                          left_hz,
+                          right_hz,
+                          resolved_spec.norm);
     }
 
     return filter_bank;
@@ -283,30 +271,30 @@ CheckMelVals(const int        sample_rate,
              const MelNorm    norm)
 {
     return CheckMelVals(MelFilterBankSpec{ .sample_rate = sample_rate,
-                                           .n_fft = n_fft,
-                                           .n_mels = n_mels,
-                                           .f_min = f_min,
-                                           .f_max = f_max,
+                                           .n_fft       = n_fft,
+                                           .n_mels      = n_mels,
+                                           .f_min       = f_min,
+                                           .f_max       = f_max,
                                            .mel_formula = mel_formula,
-                                           .norm = norm });
+                                           .norm        = norm });
 }
 
 static inline std::vector<float>
 GenMelFilterBank(const int   sample_rate,
                  const int   n_fft,
                  const int   n_mels,
-                 const float f_min = 0.0f,
-                 float       f_max = -1.0f,
+                 const float f_min       = 0.0f,
+                 float       f_max       = -1.0f,
                  MelFormula  mel_formula = MelFormula::HTK,
-                 MelNorm     norm = MelNorm::None)
+                 MelNorm     norm        = MelNorm::None)
 {
     return GenMelFilterBank(MelFilterBankSpec{ .sample_rate = sample_rate,
-                                               .n_fft = n_fft,
-                                               .n_mels = n_mels,
-                                               .f_min = f_min,
-                                               .f_max = f_max,
+                                               .n_fft       = n_fft,
+                                               .n_mels      = n_mels,
+                                               .f_min       = f_min,
+                                               .f_max       = f_max,
                                                .mel_formula = mel_formula,
-                                               .norm = norm });
+                                               .norm        = norm });
 }
 
 } // namespace PDJE_PARALLEL

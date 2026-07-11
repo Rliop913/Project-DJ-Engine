@@ -13,7 +13,7 @@ namespace PDJE_UTIL::db::backends {
 
 struct RocksDbConfig {
     std::filesystem::path path;
-    OpenOptions open_options {};
+    OpenOptions           open_options{};
 };
 
 class PDJE_API RocksDbBackend {
@@ -23,21 +23,34 @@ class PDJE_API RocksDbBackend {
     RocksDbBackend();
     ~RocksDbBackend();
     RocksDbBackend(RocksDbBackend &&) noexcept;
-    RocksDbBackend &operator=(RocksDbBackend &&) noexcept;
+    RocksDbBackend &
+    operator=(RocksDbBackend &&) noexcept;
     RocksDbBackend(const RocksDbBackend &) = delete;
-    RocksDbBackend &operator=(const RocksDbBackend &) = delete;
+    RocksDbBackend &
+    operator=(const RocksDbBackend &) = delete;
 
-    static void create(const config_type &config);
-    static void destroy(const config_type &config);
-    void open(const config_type &config);
-    void close();
-    bool contains(std::string_view key) const;
-    Text get_text(std::string_view key) const;
-    Bytes get_bytes(std::string_view key) const;
-    void put_text(std::string_view key, std::string_view value);
-    void put_bytes(std::string_view key, std::span<const std::byte> value);
-    void erase(std::string_view key);
-    std::vector<Key> list_keys(std::string_view prefix = {}) const;
+    static void
+    create(const config_type &config);
+    static void
+    destroy(const config_type &config);
+    void
+    open(const config_type &config);
+    void
+    close();
+    bool
+    contains(std::string_view key) const;
+    Text
+    get_text(std::string_view key) const;
+    Bytes
+    get_bytes(std::string_view key) const;
+    void
+    put_text(std::string_view key, std::string_view value);
+    void
+    put_bytes(std::string_view key, std::span<const std::byte> value);
+    void
+    erase(std::string_view key);
+    std::vector<Key>
+    list_keys(std::string_view prefix = {}) const;
 
   private:
     class Impl;

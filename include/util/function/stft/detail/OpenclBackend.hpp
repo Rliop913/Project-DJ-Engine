@@ -24,11 +24,11 @@ using IMAG_VEC = std::vector<float>;
 class OPENCL_STFT final : public IStftBackend {
 
   private:
-    uint32_t prev_origin_size                = 0;
-    uint32_t prev_overlap_fullsize           = 0;
-    uint32_t prev_overlap_subbuffer_fullsize = 0;
-    uint32_t prev_bin_fullsize               = 0;
-    uint32_t prev_mel_fullsize               = 0;
+    uint32_t    prev_origin_size                = 0;
+    uint32_t    prev_overlap_fullsize           = 0;
+    uint32_t    prev_overlap_subbuffer_fullsize = 0;
+    uint32_t    prev_bin_fullsize               = 0;
+    uint32_t    prev_mel_fullsize               = 0;
     cl::Program opencl_kernel_code;
     struct {
         std::optional<cl::Kernel> EXP6STFT;
@@ -71,11 +71,11 @@ class OPENCL_STFT final : public IStftBackend {
         std::optional<cl::Buffer> mel_filter_bank;
     } memories;
 
-    std::optional<cl::Device>       gpu;
-    std::optional<cl::CommandQueue> CQ;
-    std::optional<cl::Context>      gpu_ctxt;
-    std::optional<cl::Program>      gpu_codes;
-    std::vector<float>              mel_filter_bank_host;
+    std::optional<cl::Device>        gpu;
+    std::optional<cl::CommandQueue>  CQ;
+    std::optional<cl::Context>       gpu_ctxt;
+    std::optional<cl::Program>       gpu_codes;
+    std::vector<float>               mel_filter_bank_host;
     std::optional<MelFilterBankSpec> prev_mel_filter_bank_spec;
 
     bool

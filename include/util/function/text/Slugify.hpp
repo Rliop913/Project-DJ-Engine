@@ -26,8 +26,9 @@ slugify(const SlugifyArgs &args)
     bool previous_was_separator = true;
     for (unsigned char ch : args.input) {
         if (std::isalnum(ch)) {
-            output.push_back(args.lowercase ? static_cast<char>(std::tolower(ch))
-                                            : static_cast<char>(ch));
+            output.push_back(args.lowercase
+                                 ? static_cast<char>(std::tolower(ch))
+                                 : static_cast<char>(ch));
             previous_was_separator = false;
         } else if (!previous_was_separator && !output.empty()) {
             output.push_back(args.separator);

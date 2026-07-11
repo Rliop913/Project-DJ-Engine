@@ -11,10 +11,10 @@ class IStftBackend {
 
     struct Execution {
         std::vector<float> &pcm;
-        WINDOW_LIST window;
-        POST_PROCESS post_process;
-        unsigned int window_size_exp;
-        const StftArgs &args;
+        WINDOW_LIST         window;
+        POST_PROCESS        post_process;
+        unsigned int        window_size_exp;
+        const StftArgs     &args;
     };
 
     virtual StftResult

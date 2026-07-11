@@ -15,12 +15,10 @@ void
 InferencePipeline::ValidateSession(const OnnxSession &session)
 {
     if (session.input_names.size() != 1u) {
-        throw std::runtime_error(
-            "onnx model must expose exactly one input");
+        throw std::runtime_error("onnx model must expose exactly one input");
     }
     if (session.output_names.size() != 1u) {
-        throw std::runtime_error(
-            "onnx model must expose exactly one output");
+        throw std::runtime_error("onnx model must expose exactly one output");
     }
     if (session.input_names.at(0u) != "spect") {
         throw std::runtime_error(
@@ -42,8 +40,7 @@ InferencePipeline::ValidateSpectrogram(const Spectrogram &spectrogram)
             "spectrogram must contain at least one frame");
     }
     if (spectrogram.num_bins != kNumMels) {
-        throw std::invalid_argument(
-            "spectrogram must contain 128 mel bins");
+        throw std::invalid_argument("spectrogram must contain 128 mel bins");
     }
 
     const std::size_t expectedValues =
@@ -58,7 +55,7 @@ InferencePipeline::ValidateSpectrogram(const Spectrogram &spectrogram)
 std::vector<int>
 InferencePipeline::ComputeChunkStarts(const int num_frames)
 {
-    const int step = kChunkSize - (2 * kChunkBorderSize);
+    const int        step = kChunkSize - (2 * kChunkBorderSize);
     std::vector<int> starts;
 
     for (int start = -kChunkBorderSize; start < num_frames - kChunkBorderSize;
@@ -83,19 +80,19 @@ InferencePipeline::SplitSpectrogram(const Spectrogram &spectrogram)
         const int contentBegin = std::max(start, 0);
         const int contentEnd =
             std::min(start + kChunkSize, spectrogram.num_frames);
-        const int leftPad  = std::max(0, -start);
-        const int rightPad = std::max(
-            0,
-            std::min(kChunkBorderSize,
-                     start + kChunkSize - spectrogram.num_frames));
+        const int leftPad = std::max(0, -start);
+        const int rightPad =
+            std::max(0,
+                     std::min(kChunkBorderSize,
+                              start + kChunkSize - spectrogram.num_frames));
         const int chunkNumFrames =
             leftPad + (contentEnd - contentBegin) + rightPad;
 
         SpectrogramChunk chunk{
             .start_frame = start,
-            .num_frames = chunkNumFrames,
-            .num_bins = spectrogram.num_bins,
-            .values = std::vector<float>(
+            .num_frames  = chunkNumFrames,
+            .num_bins    = spectrogram.num_bins,
+            .values      = std::vector<float>(
                 static_cast<std::size_t>(chunkNumFrames) *
                     static_cast<std::size_t>(spectrogram.num_bins),
                 0.0f),
@@ -111,12 +108,11 @@ InferencePipeline::SplitSpectrogram(const Spectrogram &spectrogram)
             static_cast<std::size_t>(leftPad) *
             static_cast<std::size_t>(spectrogram.num_bins);
 
-        std::copy_n(
-            spectrogram.values.begin() +
-                static_cast<std::ptrdiff_t>(sourceOffset),
-            static_cast<std::ptrdiff_t>(copyCount),
-            chunk.values.begin() +
-                static_cast<std::ptrdiff_t>(destinationOffset));
+        std::copy_n(spectrogram.values.begin() +
+                        static_cast<std::ptrdiff_t>(sourceOffset),
+                    static_cast<std::ptrdiff_t>(copyCount),
+                    chunk.values.begin() +
+                        static_cast<std::ptrdiff_t>(destinationOffset));
 
         chunks.push_back(std::move(chunk));
     }
@@ -125,14 +121,15 @@ InferencePipeline::SplitSpectrogram(const Spectrogram &spectrogram)
 }
 
 FrameLogits
-InferencePipeline::RunSpectrogramChunk(const OnnxSession       &session,
+InferencePipeline::RunSpectrogramChunk(const OnnxSession           &session,
                                        const std::span<const float> values,
-                                       const int                num_frames,
-                                       const int                num_bins)
+                                       const int                    num_frames,
+                                       const int                    num_bins)
 {
     std::array<NamedFloatTensor, 1> inputs;
     inputs[0].name         = session.input_names.at(0u);
-    inputs[0].tensor.shape = { 1, static_cast<int64_t>(num_frames),
+    inputs[0].tensor.shape = { 1,
+                               static_cast<int64_t>(num_frames),
                                static_cast<int64_t>(num_bins) };
     inputs[0].tensor.values.assign(values.begin(), values.end());
 
@@ -147,8 +144,7 @@ InferencePipeline::RunSpectrogramChunk(const OnnxSession       &session,
     const FloatTensor &outputTensor = outputs[0].tensor;
     if (outputTensor.shape.size() != 3u || outputTensor.shape[0] != 1 ||
         outputTensor.shape[1] != static_cast<int64_t>(num_frames) ||
-        outputTensor.shape[2] !=
-            static_cast<int64_t>(kModelOutputChannels)) {
+        outputTensor.shape[2] != static_cast<int64_t>(kModelOutputChannels)) {
         throw std::runtime_error(
             "onnx model returned an unexpected logits shape");
     }
@@ -183,25 +179,22 @@ InferencePipeline::RunSpectrogramChunk(const OnnxSession       &session,
 
 FrameLogits
 InferencePipeline::AggregateChunkLogits(
-    const std::span<const ChunkFrameLogits> chunks,
-    const int                               full_num_frames)
+    const std::span<const ChunkFrameLogits> chunks, const int full_num_frames)
 {
     FrameLogits result{
         .num_frames = full_num_frames,
-        .beat =
-            std::vector<float>(static_cast<std::size_t>(full_num_frames),
-                               kPaddingLogit),
-        .downbeat =
-            std::vector<float>(static_cast<std::size_t>(full_num_frames),
-                               kPaddingLogit),
+        .beat = std::vector<float>(static_cast<std::size_t>(full_num_frames),
+                                   kPaddingLogit),
+        .downbeat = std::vector<float>(
+            static_cast<std::size_t>(full_num_frames), kPaddingLogit),
     };
 
     for (auto chunkIt = chunks.rbegin(); chunkIt != chunks.rend(); ++chunkIt) {
         const int targetBegin =
             std::max(0, chunkIt->start_frame + kChunkBorderSize);
-        const int targetEnd = std::min(
-            full_num_frames,
-            chunkIt->start_frame + kChunkSize - kChunkBorderSize);
+        const int targetEnd =
+            std::min(full_num_frames,
+                     chunkIt->start_frame + kChunkSize - kChunkBorderSize);
         if (targetEnd <= targetBegin) {
             continue;
         }
@@ -239,10 +232,8 @@ InferencePipeline::RunFullSpectrogram(const OnnxSession &session,
     for (const SpectrogramChunk &chunk : chunks) {
         chunkLogits.push_back(ChunkFrameLogits{
             .start_frame = chunk.start_frame,
-            .logits = RunSpectrogramChunk(session,
-                                          chunk.values,
-                                          chunk.num_frames,
-                                          chunk.num_bins),
+            .logits      = RunSpectrogramChunk(
+                session, chunk.values, chunk.num_frames, chunk.num_bins),
         });
     }
 

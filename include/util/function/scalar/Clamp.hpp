@@ -15,8 +15,8 @@ inline double
 clamp(ClampArgs args)
 {
     if (args.min_value > args.max_value) {
-        throw std::invalid_argument(
-            "ClampArgs.min_value must be less than or equal to ClampArgs.max_value.");
+        throw std::invalid_argument("ClampArgs.min_value must be less than or "
+                                    "equal to ClampArgs.max_value.");
     }
 
     return std::clamp(args.value, args.min_value, args.max_value);

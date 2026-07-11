@@ -12,26 +12,20 @@
 
 namespace PDJE_UTIL::db::relational {
 
-enum class ValueKind {
-    null_value,
-    integer,
-    real,
-    text,
-    bytes
-};
+enum class ValueKind { null_value, integer, real, text, bytes };
 
-using ValueStorage = std::variant<std::monostate, std::int64_t, double, Text, Bytes>;
+using ValueStorage =
+    std::variant<std::monostate, std::int64_t, double, Text, Bytes>;
 
 struct Value {
-    ValueStorage storage {};
-
+    ValueStorage storage{};
 };
 
 using Params = std::vector<Value>;
 
 struct Row {
-    std::vector<std::string> columns {};
-    std::vector<Value>       values {};
+    std::vector<std::string> columns{};
+    std::vector<Value>       values{};
 
     const Value *
     find(std::string_view column_name) const noexcept
@@ -43,16 +37,15 @@ struct Row {
         }
         return nullptr;
     }
-
 };
 
 struct ExecResult {
-    std::uint64_t               affected_rows     = 0;
-    std::optional<std::int64_t> last_insert_rowid {};
+    std::uint64_t               affected_rows = 0;
+    std::optional<std::int64_t> last_insert_rowid{};
 };
 
 struct QueryResult {
-    std::vector<Row> rows {};
+    std::vector<Row> rows{};
 };
 
 } // namespace PDJE_UTIL::db::relational

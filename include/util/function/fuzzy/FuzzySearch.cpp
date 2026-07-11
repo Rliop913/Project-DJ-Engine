@@ -46,13 +46,14 @@ FuzzySearch::search(std::string_view                  query,
         }
     }
 
-    std::sort(matches.begin(), matches.end(), [](const FuzzyMatch &a,
-                                                 const FuzzyMatch &b) {
-        if (a.score != b.score) {
-            return a.score > b.score;
-        }
-        return a.index < b.index;
-    });
+    std::sort(matches.begin(),
+              matches.end(),
+              [](const FuzzyMatch &a, const FuzzyMatch &b) {
+                  if (a.score != b.score) {
+                      return a.score > b.score;
+                  }
+                  return a.index < b.index;
+              });
 
     if (options.max_results > 0 && matches.size() > options.max_results) {
         matches.resize(options.max_results);

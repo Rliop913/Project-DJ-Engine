@@ -31,10 +31,10 @@ class MonochromeColorMapper {
 class StftColorMapper {
   public:
     struct Args {
-        const EncodeWaveformWebpArgs &waveform;
+        const EncodeWaveformWebpArgs     &waveform;
         const EncodeWaveformWebpStftArgs &stft;
-        const WaveformBufferSizes &buffers;
-        std::size_t chunk_sample_count;
+        const WaveformBufferSizes        &buffers;
+        std::size_t                       chunk_sample_count;
     };
 
     explicit StftColorMapper(const Args &args);
@@ -61,7 +61,7 @@ template <class ColorMapper> class WaveformJobProcessor {
     template <class... MapperArgs>
     WaveformJobProcessor(const EncodeWaveformWebpArgs &args,
                          const WaveformBufferSizes    &buffer_sizes,
-                         MapperArgs                   &&...mapper_args)
+                         MapperArgs &&...mapper_args)
         : rasterizer_(args, buffer_sizes),
           context_(args.x_pixels_per_image, buffer_sizes.image_byte_count),
           color_mapper_(std::forward<MapperArgs>(mapper_args)...)
@@ -74,10 +74,9 @@ template <class ColorMapper> class WaveformJobProcessor {
         rasterizer_.ComputeExtrema(job, context_);
         color_mapper_.Prepare(job);
 
-        rasterizer_.Rasterize(context_,
-                              [&](const std::size_t x) {
-                                  return color_mapper_.ColorAt(x);
-                              });
+        rasterizer_.Rasterize(context_, [&](const std::size_t x) {
+            return color_mapper_.ColorAt(x);
+        });
         rasterizer_.Encode(job, context_, output);
     }
 

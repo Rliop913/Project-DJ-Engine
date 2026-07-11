@@ -10,15 +10,24 @@ namespace PDJE_UTIL::db::nearest {
 template <NearestNeighborBackendConcept Backend> class NearestNeighborIndex {
   public:
     using backend_type = Backend;
-    using config_type = typename Backend::config_type;
+    using config_type  = typename Backend::config_type;
 
-    Backend backend {};
-    bool is_open = false;
+    Backend backend{};
+    bool    is_open = false;
 
-    static void create(const config_type &config) { Backend::create(config); }
-    static void destroy(const config_type &config) { Backend::destroy(config); }
+    static void
+    create(const config_type &config)
+    {
+        Backend::create(config);
+    }
+    static void
+    destroy(const config_type &config)
+    {
+        Backend::destroy(config);
+    }
 
-    static NearestNeighborIndex open(const config_type &config)
+    static NearestNeighborIndex
+    open(const config_type &config)
     {
         NearestNeighborIndex index;
         detail::open_backend(index.backend, index.is_open, config);
@@ -31,7 +40,8 @@ template <NearestNeighborBackendConcept Backend> class NearestNeighborIndex {
         detail::take_backend_state(
             backend, is_open, std::move(other.backend), other.is_open);
     }
-    NearestNeighborIndex &operator=(NearestNeighborIndex &&other) noexcept
+    NearestNeighborIndex &
+    operator=(NearestNeighborIndex &&other) noexcept
     {
         if (this != &other) {
             backend = std::move(other.backend);
@@ -40,20 +50,45 @@ template <NearestNeighborBackendConcept Backend> class NearestNeighborIndex {
         return *this;
     }
     NearestNeighborIndex(const NearestNeighborIndex &) = delete;
-    NearestNeighborIndex &operator=(const NearestNeighborIndex &) = delete;
-    ~NearestNeighborIndex() = default;
+    NearestNeighborIndex &
+    operator=(const NearestNeighborIndex &) = delete;
+    ~NearestNeighborIndex()                 = default;
 
-    void close() { detail::close_if_open(backend, is_open); }
-    bool contains(std::string_view id) const { return backend.contains(id); }
-    Item get_item(std::string_view id) const { return backend.get_item(id); }
-    void upsert_item(const Item &item) { backend.upsert_item(item); }
-    void erase_item(std::string_view id) { backend.erase_item(id); }
-    std::vector<SearchHit> search(std::span<const float> query,
-                                  SearchOptions options = {}) const
+    void
+    close()
+    {
+        detail::close_if_open(backend, is_open);
+    }
+    bool
+    contains(std::string_view id) const
+    {
+        return backend.contains(id);
+    }
+    Item
+    get_item(std::string_view id) const
+    {
+        return backend.get_item(id);
+    }
+    void
+    upsert_item(const Item &item)
+    {
+        backend.upsert_item(item);
+    }
+    void
+    erase_item(std::string_view id)
+    {
+        backend.erase_item(id);
+    }
+    std::vector<SearchHit>
+    search(std::span<const float> query, SearchOptions options = {}) const
     {
         return backend.search(query, options);
     }
-    std::vector<Key> list_keys() const { return backend.list_keys(); }
+    std::vector<Key>
+    list_keys() const
+    {
+        return backend.list_keys();
+    }
 };
 
 } // namespace PDJE_UTIL::db::nearest

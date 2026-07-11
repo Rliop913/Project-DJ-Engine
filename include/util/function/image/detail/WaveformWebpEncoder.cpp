@@ -12,29 +12,31 @@ WaveformWebpEncoder::WaveformWebpEncoder(const EncodeWaveformWebpArgs &args)
 }
 
 WaveformWebpEncoder::WaveformWebpEncoder(
-    const EncodeWaveformWebpArgs &args,
+    const EncodeWaveformWebpArgs     &args,
     const EncodeWaveformWebpStftArgs &stft_args)
     : args_(args), stft_args_(&stft_args), mode_(Mode::Stft)
 {
 }
 
-WaveformWebpBatch WaveformWebpEncoder::Encode() const
+WaveformWebpBatch
+WaveformWebpEncoder::Encode() const
 {
-    auto plan = WaveformPlanBuilder(args_, stft_args_).Build();
+    auto                 plan = WaveformPlanBuilder(args_, stft_args_).Build();
     WaveformWorkerRunner runner(args_.worker_thread_count);
     if (mode_ == Mode::Stft) {
         return runner.Run(plan, [&] {
             return WaveformJobProcessor<StftColorMapper>(
                 args_,
                 plan.buffer_sizes,
-                StftColorMapper::Args {
-                    args_, *stft_args_, plan.buffer_sizes, plan.chunk_sample_count
-                });
+                StftColorMapper::Args{ args_,
+                                       *stft_args_,
+                                       plan.buffer_sizes,
+                                       plan.chunk_sample_count });
         });
     }
     return runner.Run(plan, [&] {
-        return WaveformJobProcessor<MonochromeColorMapper>(
-            args_, plan.buffer_sizes);
+        return WaveformJobProcessor<MonochromeColorMapper>(args_,
+                                                           plan.buffer_sizes);
     });
 }
 

@@ -11,7 +11,8 @@
 namespace PDJE_UTIL::db::backends {
 namespace {
 
-std::runtime_error sqlite_error(sqlite3 *db, std::string_view context)
+std::runtime_error
+sqlite_error(sqlite3 *db, std::string_view context)
 {
     std::string message(context);
     if (db != nullptr && sqlite3_errmsg(db) != nullptr) {
@@ -32,16 +33,19 @@ class Statement {
             throw sqlite_error(db, context);
         }
     }
-    ~Statement() { sqlite3_finalize(value); }
+    ~Statement()
+    {
+        sqlite3_finalize(value);
+    }
     Statement(const Statement &) = delete;
-    Statement &operator=(const Statement &) = delete;
+    Statement &
+    operator=(const Statement &) = delete;
 
     sqlite3_stmt *value = nullptr;
 };
 
-void bind_value(sqlite3_stmt *statement,
-                int index,
-                const relational::Value &value)
+void
+bind_value(sqlite3_stmt *statement, int index, const relational::Value &value)
 {
     int result = SQLITE_OK;
     switch (value.storage.index()) {
@@ -58,7 +62,7 @@ void bind_value(sqlite3_stmt *statement,
         break;
     case 3: {
         const auto &text = std::get<Text>(value.storage);
-        result = sqlite3_bind_text(statement,
+        result           = sqlite3_bind_text(statement,
                                    index,
                                    text.data(),
                                    static_cast<int>(text.size()),
@@ -67,7 +71,7 @@ void bind_value(sqlite3_stmt *statement,
     }
     default: {
         const auto &bytes = std::get<Bytes>(value.storage);
-        result = sqlite3_bind_blob(statement,
+        result            = sqlite3_bind_blob(statement,
                                    index,
                                    bytes.data(),
                                    static_cast<int>(bytes.size()),
@@ -80,7 +84,8 @@ void bind_value(sqlite3_stmt *statement,
     }
 }
 
-void bind_params(sqlite3_stmt *statement, const relational::Params &params)
+void
+bind_params(sqlite3_stmt *statement, const relational::Params &params)
 {
     const int expected = sqlite3_bind_parameter_count(statement);
     if (expected != static_cast<int>(params.size())) {
@@ -88,11 +93,13 @@ void bind_params(sqlite3_stmt *statement, const relational::Params &params)
             "SQLite parameter count does not match the SQL statement.");
     }
     for (int index = 0; index < expected; ++index) {
-        bind_value(statement, index + 1, params[static_cast<std::size_t>(index)]);
+        bind_value(
+            statement, index + 1, params[static_cast<std::size_t>(index)]);
     }
 }
 
-relational::Value read_value(sqlite3_stmt *statement, int column)
+relational::Value
+read_value(sqlite3_stmt *statement, int column)
 {
     switch (sqlite3_column_type(statement, column)) {
     case SQLITE_INTEGER:
@@ -101,25 +108,26 @@ relational::Value read_value(sqlite3_stmt *statement, int column)
         return { sqlite3_column_double(statement, column) };
     case SQLITE_TEXT: {
         const auto *text = sqlite3_column_text(statement, column);
-        const int size = sqlite3_column_bytes(statement, column);
+        const int   size = sqlite3_column_bytes(statement, column);
         return { Text(reinterpret_cast<const char *>(text), size) };
     }
     case SQLITE_BLOB: {
         const auto *data = static_cast<const std::byte *>(
             sqlite3_column_blob(statement, column));
         const int size = sqlite3_column_bytes(statement, column);
-        Bytes bytes(static_cast<std::size_t>(size));
+        Bytes     bytes(static_cast<std::size_t>(size));
         if (size > 0 && data != nullptr) {
             std::memcpy(bytes.data(), data, static_cast<std::size_t>(size));
         }
         return { std::move(bytes) };
     }
     default:
-        return { std::monostate {} };
+        return { std::monostate{} };
     }
 }
 
-bool starts_with_keyword(std::string_view sql, std::string_view keyword)
+bool
+starts_with_keyword(std::string_view sql, std::string_view keyword)
 {
     while (!sql.empty() &&
            std::isspace(static_cast<unsigned char>(sql.front())) != 0) {
@@ -137,7 +145,8 @@ bool starts_with_keyword(std::string_view sql, std::string_view keyword)
     return true;
 }
 
-void validate_config(const SqliteConfig &config)
+void
+validate_config(const SqliteConfig &config)
 {
     if (config.path.empty()) {
         throw std::invalid_argument("SqliteConfig.path must not be empty.");
@@ -164,19 +173,21 @@ SqliteBackend::SqliteBackend(SqliteBackend &&other) noexcept
 {
 }
 
-SqliteBackend &SqliteBackend::operator=(SqliteBackend &&other) noexcept
+SqliteBackend &
+SqliteBackend::operator=(SqliteBackend &&other) noexcept
 {
     if (this != &other) {
         if (db_ != nullptr) {
             sqlite3_close_v2(db_);
         }
         config_ = std::move(other.config_);
-        db_ = std::exchange(other.db_, nullptr);
+        db_     = std::exchange(other.db_, nullptr);
     }
     return *this;
 }
 
-void SqliteBackend::create(const config_type &config)
+void
+SqliteBackend::create(const config_type &config)
 {
     validate_config(config);
     std::error_code error;
@@ -193,14 +204,16 @@ void SqliteBackend::create(const config_type &config)
                         SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE |
                             SQLITE_OPEN_NOMUTEX,
                         nullptr) != SQLITE_OK) {
-        auto error_value = sqlite_error(database, "Failed to create SQLite database");
+        auto error_value =
+            sqlite_error(database, "Failed to create SQLite database");
         sqlite3_close_v2(database);
         throw error_value;
     }
     sqlite3_close_v2(database);
 }
 
-void SqliteBackend::destroy(const config_type &config)
+void
+SqliteBackend::destroy(const config_type &config)
 {
     if (config.path.empty()) {
         throw std::invalid_argument("SqliteConfig.path must not be empty.");
@@ -208,7 +221,8 @@ void SqliteBackend::destroy(const config_type &config)
     std::error_code error;
     std::filesystem::remove(config.path, error);
     if (error) {
-        throw std::runtime_error("Failed to remove SQLite database: " + error.message());
+        throw std::runtime_error("Failed to remove SQLite database: " +
+                                 error.message());
     }
     for (const auto suffix : { "-wal", "-shm", "-journal" }) {
         error.clear();
@@ -216,7 +230,8 @@ void SqliteBackend::destroy(const config_type &config)
     }
 }
 
-void SqliteBackend::open(const config_type &config)
+void
+SqliteBackend::open(const config_type &config)
 {
     if (db_ != nullptr) {
         throw std::logic_error("SQLite backend is already open.");
@@ -232,11 +247,14 @@ void SqliteBackend::open(const config_type &config)
         create(config);
     }
     int flags = SQLITE_OPEN_NOMUTEX |
-        (config.open_options.read_only ? SQLITE_OPEN_READONLY : SQLITE_OPEN_READWRITE);
-    if (config.open_options.create_if_missing && !config.open_options.read_only) {
+                (config.open_options.read_only ? SQLITE_OPEN_READONLY
+                                               : SQLITE_OPEN_READWRITE);
+    if (config.open_options.create_if_missing &&
+        !config.open_options.read_only) {
         flags |= SQLITE_OPEN_CREATE;
     }
-    if (sqlite3_open_v2(config.path.string().c_str(), &db_, flags, nullptr) != SQLITE_OK) {
+    if (sqlite3_open_v2(config.path.string().c_str(), &db_, flags, nullptr) !=
+        SQLITE_OK) {
         auto error_value = sqlite_error(db_, "Failed to open SQLite database");
         sqlite3_close_v2(db_);
         db_ = nullptr;
@@ -246,7 +264,8 @@ void SqliteBackend::open(const config_type &config)
     sqlite3_extended_result_codes(db_, 1);
 }
 
-void SqliteBackend::close()
+void
+SqliteBackend::close()
 {
     if (db_ == nullptr) {
         return;
@@ -257,15 +276,16 @@ void SqliteBackend::close()
     db_ = nullptr;
 }
 
-void SqliteBackend::require_open() const
+void
+SqliteBackend::require_open() const
 {
     if (db_ == nullptr) {
         throw std::logic_error("SQLite backend is not open.");
     }
 }
 
-relational::ExecResult SqliteBackend::execute(
-    std::string_view sql, const relational::Params &params)
+relational::ExecResult
+SqliteBackend::execute(std::string_view sql, const relational::Params &params)
 {
     require_open();
     Statement statement(db_, sql, "Failed to prepare SQLite statement");
@@ -277,24 +297,24 @@ relational::ExecResult SqliteBackend::execute(
     if (result != SQLITE_DONE) {
         throw sqlite_error(db_, "SQLite execute failed");
     }
-    relational::ExecResult output {
-        .affected_rows = static_cast<std::uint64_t>(sqlite3_changes64(db_))
-    };
+    relational::ExecResult output{ .affected_rows = static_cast<std::uint64_t>(
+                                       sqlite3_changes64(db_)) };
     if (starts_with_keyword(sql, "INSERT")) {
         output.last_insert_rowid = sqlite3_last_insert_rowid(db_);
     }
     return output;
 }
 
-relational::QueryResult SqliteBackend::query(
-    std::string_view sql, const relational::Params &params) const
+relational::QueryResult
+SqliteBackend::query(std::string_view          sql,
+                     const relational::Params &params) const
 {
     require_open();
     Statement statement(db_, sql, "Failed to prepare SQLite query");
     bind_params(statement.value, params);
     relational::QueryResult output;
-    const int columns = sqlite3_column_count(statement.value);
-    int result = SQLITE_OK;
+    const int               columns = sqlite3_column_count(statement.value);
+    int                     result  = SQLITE_OK;
     while ((result = sqlite3_step(statement.value)) == SQLITE_ROW) {
         relational::Row row;
         for (int column = 0; column < columns; ++column) {
@@ -310,7 +330,8 @@ relational::QueryResult SqliteBackend::query(
     return output;
 }
 
-void SqliteBackend::execute_command(const char *sql, std::string_view context)
+void
+SqliteBackend::execute_command(const char *sql, std::string_view context)
 {
     require_open();
     if (sqlite3_exec(db_, sql, nullptr, nullptr, nullptr) != SQLITE_OK) {
@@ -318,15 +339,18 @@ void SqliteBackend::execute_command(const char *sql, std::string_view context)
     }
 }
 
-void SqliteBackend::begin_transaction()
+void
+SqliteBackend::begin_transaction()
 {
     execute_command("BEGIN TRANSACTION;", "Failed to begin SQLite transaction");
 }
-void SqliteBackend::commit()
+void
+SqliteBackend::commit()
 {
     execute_command("COMMIT;", "Failed to commit SQLite transaction");
 }
-void SqliteBackend::rollback()
+void
+SqliteBackend::rollback()
 {
     execute_command("ROLLBACK;", "Failed to rollback SQLite transaction");
 }

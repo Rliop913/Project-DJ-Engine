@@ -13,7 +13,7 @@ namespace PDJE_UTIL::db::backends {
 
 struct SqliteConfig {
     std::filesystem::path path;
-    OpenOptions open_options {};
+    OpenOptions           open_options{};
 };
 
 class PDJE_API SqliteBackend {
@@ -23,28 +23,39 @@ class PDJE_API SqliteBackend {
     SqliteBackend() = default;
     ~SqliteBackend();
     SqliteBackend(SqliteBackend &&other) noexcept;
-    SqliteBackend &operator=(SqliteBackend &&other) noexcept;
+    SqliteBackend &
+    operator=(SqliteBackend &&other) noexcept;
     SqliteBackend(const SqliteBackend &) = delete;
-    SqliteBackend &operator=(const SqliteBackend &) = delete;
+    SqliteBackend &
+    operator=(const SqliteBackend &) = delete;
 
-    static void create(const config_type &config);
-    static void destroy(const config_type &config);
-    void open(const config_type &config);
-    void close();
-    relational::ExecResult execute(std::string_view sql,
-                                   const relational::Params &params);
-    relational::QueryResult query(std::string_view sql,
-                                  const relational::Params &params) const;
-    void begin_transaction();
-    void commit();
-    void rollback();
+    static void
+    create(const config_type &config);
+    static void
+    destroy(const config_type &config);
+    void
+    open(const config_type &config);
+    void
+    close();
+    relational::ExecResult
+    execute(std::string_view sql, const relational::Params &params);
+    relational::QueryResult
+    query(std::string_view sql, const relational::Params &params) const;
+    void
+    begin_transaction();
+    void
+    commit();
+    void
+    rollback();
 
   private:
-    void require_open() const;
-    void execute_command(const char *sql, std::string_view context);
+    void
+    require_open() const;
+    void
+    execute_command(const char *sql, std::string_view context);
 
-    config_type config_ {};
-    sqlite3 *db_ = nullptr;
+    config_type config_{};
+    sqlite3    *db_ = nullptr;
 };
 
 } // namespace PDJE_UTIL::db::backends

@@ -11,10 +11,10 @@ namespace PDJE_UTIL::db::keyvalue {
 
 template <class Backend>
 concept KeyValueBackendConcept = requires(typename Backend::config_type cfg,
-                                          Backend backend,
-                                          std::string_view key,
-                                          std::span<const std::byte> bytes,
-                                          std::string_view text) {
+                                          Backend                       backend,
+                                          std::string_view              key,
+                                          std::span<const std::byte>    bytes,
+                                          std::string_view              text) {
     { Backend::create(cfg) } -> std::same_as<void>;
     { Backend::destroy(cfg) } -> std::same_as<void>;
     { backend.open(cfg) } -> std::same_as<void>;
@@ -25,7 +25,7 @@ concept KeyValueBackendConcept = requires(typename Backend::config_type cfg,
     { backend.put_text(key, text) } -> std::same_as<void>;
     { backend.put_bytes(key, bytes) } -> std::same_as<void>;
     { backend.erase(key) } -> std::same_as<void>;
-    { backend.list_keys(std::string_view {}) } -> std::same_as<std::vector<Key>>;
+    { backend.list_keys(std::string_view{}) } -> std::same_as<std::vector<Key>>;
 };
 
 } // namespace PDJE_UTIL::db::keyvalue

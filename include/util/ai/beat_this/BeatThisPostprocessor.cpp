@@ -29,7 +29,7 @@ PostprocessPipeline::ValidateFrameLogits(const FrameLogits &logits)
 
 bool
 PostprocessPipeline::IsLocalMaximum(const std::span<const float> values,
-                                    const int                     index)
+                                    const int                    index)
 {
     const int start = std::max(0, index - kPeakRadius);
     const int end =
@@ -96,8 +96,7 @@ PostprocessPipeline::DeduplicatePeaks(const std::span<const int> peaks)
 
 std::vector<double>
 PostprocessPipeline::ConvertFramesToSeconds(
-    const std::span<const double> frame_positions,
-    const double                  fps)
+    const std::span<const double> frame_positions, const double fps)
 {
     std::vector<double> times;
     times.reserve(frame_positions.size());
@@ -136,10 +135,9 @@ PostprocessPipeline::SnapDownbeatsToNearestBeats(
 
         const double previous = *(upper - 1);
         const double next     = *upper;
-        downbeat =
-            (std::abs(downbeat - previous) <= std::abs(next - downbeat))
-                ? previous
-                : next;
+        downbeat = (std::abs(downbeat - previous) <= std::abs(next - downbeat))
+                       ? previous
+                       : next;
     }
 
     std::sort(snapped.begin(), snapped.end());
@@ -147,8 +145,7 @@ PostprocessPipeline::SnapDownbeatsToNearestBeats(
     return snapped;
 }
 
-MinimalBeatPostprocessor::MinimalBeatPostprocessor(const double fps)
-    : fps(fps)
+MinimalBeatPostprocessor::MinimalBeatPostprocessor(const double fps) : fps(fps)
 {
     if (!std::isfinite(fps) || fps <= 0.0) {
         throw std::invalid_argument(
@@ -177,10 +174,9 @@ MinimalBeatPostprocessor::Process(const FrameLogits &logits) const
         PostprocessPipeline::ConvertFramesToSeconds(downbeatFrames, fps);
 
     return BeatDetectionResult{
-        .beats = beatTimes,
-        .downbeats =
-            PostprocessPipeline::SnapDownbeatsToNearestBeats(beatTimes,
-                                                             downbeatTimes),
+        .beats     = beatTimes,
+        .downbeats = PostprocessPipeline::SnapDownbeatsToNearestBeats(
+            beatTimes, downbeatTimes),
     };
 }
 

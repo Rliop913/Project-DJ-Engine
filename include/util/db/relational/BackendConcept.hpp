@@ -9,9 +9,9 @@ namespace PDJE_UTIL::db::relational {
 
 template <class Backend>
 concept RelationalBackendConcept = requires(typename Backend::config_type cfg,
-                                            Backend backend,
+                                            Backend          backend,
                                             std::string_view sql,
-                                            const Params &params) {
+                                            const Params    &params) {
     { Backend::create(cfg) } -> std::same_as<void>;
     { Backend::destroy(cfg) } -> std::same_as<void>;
     { backend.open(cfg) } -> std::same_as<void>;

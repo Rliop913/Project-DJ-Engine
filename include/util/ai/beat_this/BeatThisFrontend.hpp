@@ -13,7 +13,6 @@ struct Spectrogram {
     int                num_frames = 0;
     int                num_bins   = 128;
     std::vector<float> values;
-
 };
 
 class MelSpectrogramBackend {
@@ -21,7 +20,7 @@ class MelSpectrogramBackend {
     virtual ~MelSpectrogramBackend() = default;
 
     virtual Spectrogram
-    ComputeLinearMel(std::span<const float>           padded_mono,
+    ComputeLinearMel(std::span<const float>        padded_mono,
                      const BeatThisFrontendConfig &config) = 0;
 };
 
@@ -30,7 +29,7 @@ class FrontendProcessor {
     static constexpr int kInputNumChannels = 1;
 
     explicit FrontendProcessor(std::shared_ptr<MelSpectrogramBackend> backend,
-                               BeatThisFrontendConfig                 config = {});
+                               BeatThisFrontendConfig config = {});
 
     Spectrogram
     Execute(std::span<const float> samples, int input_sample_rate) const;
@@ -43,16 +42,17 @@ class FrontendProcessor {
 
 class FrontendPipeline {
   public:
-    static constexpr int kInputNumChannels = FrontendProcessor::kInputNumChannels;
+    static constexpr int kInputNumChannels =
+        FrontendProcessor::kInputNumChannels;
 
     static std::vector<float>
-    PrepareMonoWaveform(std::span<const float>           samples,
-                        int                              input_sample_rate,
+    PrepareMonoWaveform(std::span<const float>        samples,
+                        int                           input_sample_rate,
                         const BeatThisFrontendConfig &config = {});
 
     static Spectrogram
-    ComputeLogMelSpectrogram(std::span<const float>           mono_waveform,
-                             MelSpectrogramBackend           &backend,
+    ComputeLogMelSpectrogram(std::span<const float>        mono_waveform,
+                             MelSpectrogramBackend        &backend,
                              const BeatThisFrontendConfig &config = {});
 
   private:
@@ -74,7 +74,7 @@ class FrontendPipeline {
                          int                     output_sample_rate);
 
     static std::vector<float>
-    ReflectPad(std::span<const float>           input,
+    ReflectPad(std::span<const float>        input,
                const BeatThisFrontendConfig &config);
 };
 

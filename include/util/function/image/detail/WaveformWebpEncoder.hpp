@@ -18,7 +18,7 @@ class WaveformWebpEncoder {
 
     const EncodeWaveformWebpArgs     &args_;
     const EncodeWaveformWebpStftArgs *stft_args_ = nullptr;
-    Mode                              mode_ = Mode::Monochrome;
+    Mode                              mode_      = Mode::Monochrome;
 };
 
 } // namespace PDJE_UTIL::function::image::detail

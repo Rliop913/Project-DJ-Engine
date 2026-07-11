@@ -1,7 +1,7 @@
 #include "util/function/stft/STFT_Parallel.hpp"
 
-#include "util/function/stft/detail/PDJE_Parallel_Runtime_Loader.hpp"
 #include "util/function/stft/detail/OpenclBackend.hpp"
+#include "util/function/stft/detail/PDJE_Parallel_Runtime_Loader.hpp"
 #include "util/function/stft/detail/SerialBackend.hpp"
 #include "util/function/stft/detail/StftBackend.hpp"
 
@@ -43,7 +43,7 @@ WindowSizeExpFromFft(const int nFft) noexcept
 }
 
 unsigned int
-ExactFrameCount(const std::size_t fullSize,
+ExactFrameCount(const std::size_t  fullSize,
                 const unsigned int hopLength,
                 const int          windowSize) noexcept
 {
@@ -73,12 +73,14 @@ ValidateRequest(const std::vector<float> &PCMdata, const STFTRequest &request)
 {
     if (PCMdata.empty() || request.sample_rate <= 0 || request.n_fft <= 0 ||
         !HasSupportedWindowSize(request.n_fft) || request.hop_length == 0u) {
-        throw std::invalid_argument("STFT request contains invalid input or geometry.");
+        throw std::invalid_argument(
+            "STFT request contains invalid input or geometry.");
     }
 
     if (request.frame_policy == FRAME_POLICY::EXACT_WINDOWED &&
         PCMdata.size() < static_cast<std::size_t>(request.n_fft)) {
-        throw std::invalid_argument("STFT exact-windowed input is shorter than n_fft.");
+        throw std::invalid_argument(
+            "STFT exact-windowed input is shorter than n_fft.");
     }
 
     if (!request.post_process.mel_scale) {
@@ -86,7 +88,8 @@ ValidateRequest(const std::vector<float> &PCMdata, const STFTRequest &request)
     }
 
     if (!request.mel_filter_bank.has_value()) {
-        throw std::invalid_argument("STFT mel processing requires a filter-bank specification.");
+        throw std::invalid_argument(
+            "STFT mel processing requires a filter-bank specification.");
     }
 
     const auto &melSpec = request.mel_filter_bank.value();
@@ -97,13 +100,13 @@ ValidateRequest(const std::vector<float> &PCMdata, const STFTRequest &request)
     }
 
     if (!CheckMelVals(melSpec)) {
-        throw std::invalid_argument("STFT mel filter-bank specification is invalid.");
+        throw std::invalid_argument(
+            "STFT mel filter-bank specification is invalid.");
     }
 }
 
 StftArgs
-MakeStftArgs(const std::vector<float> &inputVec,
-             const STFTRequest &request)
+MakeStftArgs(const std::vector<float> &inputVec, const STFTRequest &request)
 {
     StftArgs arglist;
     arglist.FullSize    = static_cast<unsigned int>(inputVec.size());
@@ -119,19 +122,16 @@ MakeStftArgs(const std::vector<float> &inputVec,
         arglist.OMove = request.hop_length;
     } else {
         arglist.qtConst = static_cast<int>(ExactFrameCount(
-            inputVec.size(),
-            request.hop_length,
-            arglist.windowSize));
-        arglist.OMove = request.hop_length;
+            inputVec.size(), request.hop_length, arglist.windowSize));
+        arglist.OMove   = request.hop_length;
     }
 
     if (arglist.qtConst <= 0) {
         return {};
     }
 
-    arglist.OFullSize =
-        static_cast<unsigned int>(arglist.qtConst) *
-        static_cast<unsigned int>(arglist.windowSize);
+    arglist.OFullSize = static_cast<unsigned int>(arglist.qtConst) *
+                        static_cast<unsigned int>(arglist.windowSize);
     arglist.OHalfSize = arglist.OFullSize / 2u;
     return arglist;
 }
@@ -156,10 +156,12 @@ class STFTImpl {
         }
     }
 
-    STFTImpl(const STFTImpl &)            = delete;
-    STFTImpl &operator=(const STFTImpl &) = delete;
-    STFTImpl(STFTImpl &&)                 = delete;
-    STFTImpl &operator=(STFTImpl &&)      = delete;
+    STFTImpl(const STFTImpl &) = delete;
+    STFTImpl &
+    operator=(const STFTImpl &) = delete;
+    STFTImpl(STFTImpl &&)       = delete;
+    STFTImpl &
+    operator=(STFTImpl &&) = delete;
 
     BACKEND_T active_backend = BACKEND_T::SERIAL;
 
@@ -170,19 +172,17 @@ class STFTImpl {
         ValidateRequest(PCMdata, request);
 
         const unsigned int windowSizeExp = WindowSizeExpFromFft(request.n_fft);
-        const auto         gargs =
-            MakeStftArgs(PCMdata, request);
+        const auto         gargs         = MakeStftArgs(PCMdata, request);
         if (gargs.qtConst <= 0 || gargs.OFullSize == 0u) {
-            throw std::invalid_argument("STFT request produces no output frames.");
+            throw std::invalid_argument(
+                "STFT request produces no output frames.");
         }
 
-        IStftBackend::Execution execution {
-            PCMdata,
-            request.target_window,
-            request.post_process,
-            windowSizeExp,
-            gargs
-        };
+        IStftBackend::Execution execution{ PCMdata,
+                                           request.target_window,
+                                           request.post_process,
+                                           windowSizeExp,
+                                           gargs };
 
         if (active_backend == BACKEND_T::OPENCL && opencl_backend_) {
             try {
@@ -220,7 +220,7 @@ STFT::STFT() : impl_(std::make_unique<detail::STFTImpl>())
 
 STFT::~STFT() = default;
 
-STFT::STFT(STFT &&) noexcept            = default;
+STFT::STFT(STFT &&) noexcept = default;
 STFT &
 STFT::operator=(STFT &&) noexcept = default;
 
@@ -236,7 +236,7 @@ STFT::calculate(std::vector<float> &PCMdata, const STFTRequest &request)
     if (!impl_) {
         throw std::logic_error("STFT instance is not initialized.");
     }
-    auto result = impl_->calculate(PCMdata, request);
+    auto result    = impl_->calculate(PCMdata, request);
     active_backend = impl_->active_backend;
     return result;
 }

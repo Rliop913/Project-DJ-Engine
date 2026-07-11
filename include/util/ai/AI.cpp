@@ -27,14 +27,14 @@ GraphOptimizationLevel
 ToOrtOptimizationLevel(const OnnxOptimizationLevel level)
 {
     switch (level) {
-        case OnnxOptimizationLevel::DISABLE_ALL:
-            return GraphOptimizationLevel::ORT_DISABLE_ALL;
-        case OnnxOptimizationLevel::BASIC:
-            return GraphOptimizationLevel::ORT_ENABLE_BASIC;
-        case OnnxOptimizationLevel::EXTENDED:
-            return GraphOptimizationLevel::ORT_ENABLE_EXTENDED;
-        case OnnxOptimizationLevel::ALL:
-            return GraphOptimizationLevel::ORT_ENABLE_ALL;
+    case OnnxOptimizationLevel::DISABLE_ALL:
+        return GraphOptimizationLevel::ORT_DISABLE_ALL;
+    case OnnxOptimizationLevel::BASIC:
+        return GraphOptimizationLevel::ORT_ENABLE_BASIC;
+    case OnnxOptimizationLevel::EXTENDED:
+        return GraphOptimizationLevel::ORT_ENABLE_EXTENDED;
+    case OnnxOptimizationLevel::ALL:
+        return GraphOptimizationLevel::ORT_ENABLE_ALL;
     }
 
     throw std::invalid_argument("unsupported onnx optimization level");
@@ -43,26 +43,24 @@ ToOrtOptimizationLevel(const OnnxOptimizationLevel level)
 void
 ValidateSessionOptions(const OnnxSessionOptions &options)
 {
-    if (options.intra_op_num_threads < 0 ||
-        options.inter_op_num_threads < 0) {
+    if (options.intra_op_num_threads < 0 || options.inter_op_num_threads < 0) {
         throw std::invalid_argument(
             "onnx session thread counts must not be negative");
     }
 }
 
 std::string
-ReadIoName(Ort::Session                       &session,
-           const bool                         input,
-           const std::size_t                  index,
+ReadIoName(Ort::Session                     &session,
+           const bool                        input,
+           const std::size_t                 index,
            Ort::AllocatorWithDefaultOptions &allocator)
 {
     Ort::AllocatedStringPtr name =
         input ? session.GetInputNameAllocated(index, allocator)
               : session.GetOutputNameAllocated(index, allocator);
     if (!name || name.get()[0] == '\0') {
-        throw std::runtime_error(
-            input ? "onnx model input name is empty"
-                  : "onnx model output name is empty");
+        throw std::runtime_error(input ? "onnx model input name is empty"
+                                       : "onnx model output name is empty");
     }
 
     return std::string(name.get());
@@ -72,7 +70,7 @@ std::vector<std::string>
 ReadIoNames(Ort::Session &session, const bool input)
 {
     Ort::AllocatorWithDefaultOptions allocator;
-    const std::size_t               count =
+    const std::size_t                count =
         input ? session.GetInputCount() : session.GetOutputCount();
     std::vector<std::string> names;
     names.reserve(count);
@@ -116,8 +114,7 @@ ExpectedTensorElementCount(const std::vector<int64_t> &shape)
 void
 ValidateFloatTensor(const FloatTensor &tensor)
 {
-    const std::size_t expectedCount =
-        ExpectedTensorElementCount(tensor.shape);
+    const std::size_t expectedCount = ExpectedTensorElementCount(tensor.shape);
     if (tensor.values.size() != expectedCount) {
         throw std::invalid_argument(
             "onnx float tensor flattened storage size does not match shape");
@@ -151,8 +148,7 @@ ResolveOutputNames(const std::vector<std::string> &knownNames,
         if (std::find(resolved.begin(), resolved.end(), requestedName) !=
             resolved.end()) {
             throw std::invalid_argument(
-                "onnx requested output name was duplicated: " +
-                requestedName);
+                "onnx requested output name was duplicated: " + requestedName);
         }
 
         resolved.push_back(requestedName);
@@ -175,7 +171,8 @@ BuildNamePointers(const std::vector<std::string> &names)
 }
 
 const NamedFloatTensor &
-FindInputByName(std::span<const NamedFloatTensor> inputs, const std::string &name)
+FindInputByName(std::span<const NamedFloatTensor> inputs,
+                const std::string                &name)
 {
     const NamedFloatTensor *found = nullptr;
 
@@ -185,8 +182,8 @@ FindInputByName(std::span<const NamedFloatTensor> inputs, const std::string &nam
         }
 
         if (found != nullptr) {
-            throw std::invalid_argument(
-                "onnx input name was duplicated: " + name);
+            throw std::invalid_argument("onnx input name was duplicated: " +
+                                        name);
         }
 
         found = &input;
@@ -244,12 +241,12 @@ CopyOutputTensor(const Ort::Value &value)
         throw std::runtime_error("onnx output tensor is not float");
     }
 
-    const std::vector<int64_t> shape = info.GetShape();
+    const std::vector<int64_t> shape        = info.GetShape();
     const std::size_t          elementCount = info.GetElementCount();
-    const float               *data = value.GetTensorData<float>();
+    const float               *data         = value.GetTensorData<float>();
 
     return FloatTensor{
-        .shape = shape,
+        .shape  = shape,
         .values = std::vector<float>(data, data + elementCount),
     };
 }
@@ -280,8 +277,7 @@ DefaultSessionOptions() noexcept
 class OnnxSession::Impl {
   public:
     Impl(std::filesystem::path modelPath, OnnxSessionOptions options)
-        : model_path_(std::move(modelPath)),
-          options_(std::move(options))
+        : model_path_(std::move(modelPath)), options_(std::move(options))
     {
         if (model_path_.empty()) {
             throw std::invalid_argument(
@@ -338,7 +334,7 @@ class OnnxSession::Impl {
         results.reserve(outputs.size());
         for (std::size_t idx = 0; idx < outputs.size(); ++idx) {
             results.push_back(NamedFloatTensor{
-                .name = resolvedOutputNames[idx],
+                .name   = resolvedOutputNames[idx],
                 .tensor = CopyOutputTensor(outputs[idx]),
             });
         }
@@ -346,10 +342,10 @@ class OnnxSession::Impl {
         return results;
     }
 
-    std::filesystem::path   model_path_;
-    OnnxSessionOptions      options_;
-    std::vector<std::string> input_names_;
-    std::vector<std::string> output_names_;
+    std::filesystem::path         model_path_;
+    OnnxSessionOptions            options_;
+    std::vector<std::string>      input_names_;
+    std::vector<std::string>      output_names_;
     std::unique_ptr<Ort::Session> session_;
 };
 
@@ -358,9 +354,9 @@ OnnxSession::OnnxSession(std::filesystem::path model_path,
     : impl_(std::make_unique<Impl>(std::move(model_path), std::move(options)))
 {
     this->model_path = impl_->model_path_;
-    this->options = impl_->options_;
-    input_names = impl_->input_names_;
-    output_names = impl_->output_names_;
+    this->options    = impl_->options_;
+    input_names      = impl_->input_names_;
+    output_names     = impl_->output_names_;
 }
 
 OnnxSession::~OnnxSession() = default;
@@ -376,8 +372,9 @@ OnnxSession::run(const std::span<const NamedFloatTensor> inputs) const
 }
 
 std::vector<NamedFloatTensor>
-OnnxSession::run(const std::span<const NamedFloatTensor> inputs,
-                 const std::span<const std::string>      requested_output_names) const
+OnnxSession::run(
+    const std::span<const NamedFloatTensor> inputs,
+    const std::span<const std::string>      requested_output_names) const
 {
     if (!impl_) {
         throw std::runtime_error("onnx session is not initialized");
