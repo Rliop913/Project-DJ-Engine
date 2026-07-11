@@ -8,6 +8,7 @@ set(PDJE_UTIL_SOURCES
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/db/backends/RocksDbBackend.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/db/backends/SqliteBackend.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/db/backends/AnnoyBackend.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/util/db/backends/detail/AnnoyManifest.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/stft/STFT_Parallel.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/stft/detail/SerialBackend.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/stft/detail/OpenclBackend.cpp

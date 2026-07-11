@@ -36,19 +36,19 @@ struct ScopedCleanup {
 PDJE_UTIL::db::relational::Value
 make_int(std::int64_t value)
 {
-    return { PDJE_UTIL::db::relational::ValueStorage { value } };
+    return { PDJE_UTIL::db::relational::ValueStorage{ value } };
 }
 
 PDJE_UTIL::db::relational::Value
 make_text(std::string value)
 {
-    return { PDJE_UTIL::db::relational::ValueStorage { std::move(value) } };
+    return { PDJE_UTIL::db::relational::ValueStorage{ std::move(value) } };
 }
 
 PDJE_UTIL::db::relational::Value
 make_bytes(PDJE_UTIL::db::Bytes value)
 {
-    return { PDJE_UTIL::db::relational::ValueStorage { std::move(value) } };
+    return { PDJE_UTIL::db::relational::ValueStorage{ std::move(value) } };
 }
 
 std::int64_t
@@ -76,32 +76,32 @@ TEST_CASE("sqlite relational backend supports sql execution and queries")
     using Db = PDJE_UTIL::db::relational::RelationalDatabase<
         PDJE_UTIL::db::backends::SqliteBackend>;
 
-    const auto root = make_temp_root("sqlite_relational");
-    ScopedCleanup cleanup { root };
+    const auto    root = make_temp_root("sqlite_relational");
+    ScopedCleanup cleanup{ root };
 
-    PDJE_UTIL::db::backends::SqliteConfig cfg {
-        .path = root / "util.sqlite",
+    PDJE_UTIL::db::backends::SqliteConfig cfg{
+        .path         = root / "util.sqlite",
         .open_options = { .create_if_missing = true }
     };
 
     Db::create(cfg);
     auto db = Db::open(cfg);
 
-    db.execute("CREATE TABLE items (id INTEGER PRIMARY KEY, name TEXT NOT NULL, payload BLOB);");
+    db.execute("CREATE TABLE items (id INTEGER PRIMARY KEY, name TEXT NOT "
+               "NULL, payload BLOB);");
 
-    const PDJE_UTIL::db::Bytes payload {
-        std::byte { 0x10 },
-        std::byte { 0x20 },
-        std::byte { 0x30 }
-    };
+    const PDJE_UTIL::db::Bytes payload{ std::byte{ 0x10 },
+                                        std::byte{ 0x20 },
+                                        std::byte{ 0x30 } };
 
-    auto inserted = db.execute("INSERT INTO items(id, name, payload) VALUES(?1, ?2, ?3);",
-                               { make_int(1), make_text("alpha"), make_bytes(payload) });
+    auto inserted =
+        db.execute("INSERT INTO items(id, name, payload) VALUES(?1, ?2, ?3);",
+                   { make_int(1), make_text("alpha"), make_bytes(payload) });
     CHECK(inserted.affected_rows == 1);
     CHECK(inserted.last_insert_rowid.has_value());
 
-    auto selected =
-        db.query("SELECT id, name, payload FROM items WHERE id = ?1;", { make_int(1) });
+    auto selected = db.query(
+        "SELECT id, name, payload FROM items WHERE id = ?1;", { make_int(1) });
     REQUIRE(selected.rows.size() == 1);
     const auto &row = selected.rows.front();
     REQUIRE(row.find("name") != nullptr);
@@ -109,9 +109,8 @@ TEST_CASE("sqlite relational backend supports sql execution and queries")
     CHECK(read_text(*row.find("name")) == "alpha");
     CHECK(read_bytes(row.values.at(2)) == payload);
 
-    auto updated =
-        db.execute("UPDATE items SET name = ?1 WHERE id = ?2;",
-                   { make_text("beta"), make_int(1) });
+    auto updated = db.execute("UPDATE items SET name = ?1 WHERE id = ?2;",
+                              { make_text("beta"), make_int(1) });
     CHECK(updated.affected_rows == 1);
 
     auto after_update =
@@ -135,17 +134,18 @@ TEST_CASE("sqlite relational backend supports transactions and read-only mode")
     using Db = PDJE_UTIL::db::relational::RelationalDatabase<
         PDJE_UTIL::db::backends::SqliteBackend>;
 
-    const auto root = make_temp_root("sqlite_transactions");
-    ScopedCleanup cleanup { root };
+    const auto    root = make_temp_root("sqlite_transactions");
+    ScopedCleanup cleanup{ root };
 
-    PDJE_UTIL::db::backends::SqliteConfig rw_cfg {
-        .path = root / "util.sqlite",
+    PDJE_UTIL::db::backends::SqliteConfig rw_cfg{
+        .path         = root / "util.sqlite",
         .open_options = { .create_if_missing = true }
     };
 
     auto db = Db::open(rw_cfg);
 
-    db.execute("CREATE TABLE tx_items (id INTEGER PRIMARY KEY, name TEXT NOT NULL);");
+    db.execute(
+        "CREATE TABLE tx_items (id INTEGER PRIMARY KEY, name TEXT NOT NULL);");
 
     db.begin_transaction();
     db.execute("INSERT INTO tx_items(id, name) VALUES(?1, ?2);",
@@ -165,9 +165,8 @@ TEST_CASE("sqlite relational backend supports transactions and read-only mode")
 
     db.close();
 
-    PDJE_UTIL::db::backends::SqliteConfig ro_cfg {
-        .path = rw_cfg.path,
-        .open_options = { .read_only = true }
+    PDJE_UTIL::db::backends::SqliteConfig ro_cfg{
+        .path = rw_cfg.path, .open_options = { .read_only = true }
     };
 
     auto ro_db = Db::open(ro_cfg);
@@ -179,4 +178,34 @@ TEST_CASE("sqlite relational backend supports transactions and read-only mode")
 
     ro_db.close();
     Db::destroy(rw_cfg);
+}
+
+TEST_CASE("sqlite relational backend accepts exactly one SQL statement")
+{
+    using Db = PDJE_UTIL::db::relational::RelationalDatabase<
+        PDJE_UTIL::db::backends::SqliteBackend>;
+
+    const auto    root = make_temp_root("sqlite_single_statement");
+    ScopedCleanup cleanup{ root };
+    PDJE_UTIL::db::backends::SqliteConfig cfg{
+        .path         = root / "util.sqlite",
+        .open_options = { .create_if_missing = true }
+    };
+    auto db = Db::open(cfg);
+
+    db.execute("CREATE TABLE single_statement (id INTEGER); -- allowed tail");
+    CHECK_THROWS_AS(db.execute("INSERT INTO single_statement VALUES(1); "
+                               "INSERT INTO single_statement VALUES(2);"),
+                    std::invalid_argument);
+    CHECK_THROWS_AS(db.query("SELECT 1; SELECT 2;"), std::invalid_argument);
+    CHECK_THROWS_AS(db.query(""), std::invalid_argument);
+    CHECK_THROWS_AS(db.query("-- comment only"), std::invalid_argument);
+
+    const std::string embedded_nul("SELECT 1;\0SELECT 2;", 19u);
+    CHECK_THROWS_AS(db.query(embedded_nul), std::invalid_argument);
+
+    const auto result = db.query("SELECT 7; /* allowed tail */   ");
+    REQUIRE(result.rows.size() == 1u);
+    CHECK(read_i64(result.rows.front().values.front()) == 7);
+    db.close();
 }

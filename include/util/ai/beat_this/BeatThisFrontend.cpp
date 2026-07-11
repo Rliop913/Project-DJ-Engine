@@ -1,4 +1,5 @@
 #include "util/ai/beat_this/BeatThisFrontend.hpp"
+#include "util/ai/beat_this/detail/BeatThisValidation.hpp"
 
 #include "soxr.h"
 
@@ -11,6 +12,34 @@
 #include <utility>
 
 namespace PDJE_UTIL::ai::beat_this {
+namespace {
+
+bool
+IsPowerOfTwo(const int value) noexcept
+{
+    if (value <= 0)
+        return false;
+    const auto unsigned_value = static_cast<unsigned int>(value);
+    return (unsigned_value & (unsigned_value - 1u)) == 0u;
+}
+
+} // namespace
+
+void
+detail::ValidateFrontendConfig(const BeatThisFrontendConfig &config)
+{
+    if (config.target_sample_rate <= 0 || config.nfft <= 0 ||
+        config.hop_length <= 0 || config.num_mels <= 0 || config.pad < 0 ||
+        !std::isfinite(config.f_min_hz) || !std::isfinite(config.f_max_hz) ||
+        !std::isfinite(config.log_multiplier) || config.f_min_hz < 0.0f ||
+        config.f_max_hz <= config.f_min_hz || config.log_multiplier <= 0.0f) {
+        throw std::invalid_argument("beat this frontend config is invalid");
+    }
+    if (!IsPowerOfTwo(config.nfft)) {
+        throw std::invalid_argument(
+            "beat this frontend nfft must be a power of two");
+    }
+}
 
 void
 FrontendPipeline::ValidateAudioBuffer(const std::span<const float> samples,
@@ -156,6 +185,7 @@ FrontendPipeline::PrepareMonoWaveform(const std::span<const float> samples,
                                       const int input_sample_rate,
                                       const BeatThisFrontendConfig &config)
 {
+    detail::ValidateFrontendConfig(config);
     ValidateAudioBuffer(samples, input_sample_rate);
     const std::vector<double> mono      = CopyMonoToDouble(samples);
     const std::vector<double> resampled = ResampleMonoWaveform(
@@ -202,6 +232,7 @@ FrontendPipeline::ComputeLogMelSpectrogram(const std::span<const float> samples,
                                            MelSpectrogramBackend       &backend,
                                            const BeatThisFrontendConfig &config)
 {
+    detail::ValidateFrontendConfig(config);
     const std::vector<float> padded = ReflectPad(samples, config);
     if (padded.size() < static_cast<std::size_t>(config.nfft)) {
         throw std::runtime_error("padded waveform shorter than FFT size");
@@ -236,6 +267,7 @@ FrontendProcessor::FrontendProcessor(
     BeatThisFrontendConfig                 config)
     : backend_(std::move(backend)), config(std::move(config))
 {
+    detail::ValidateFrontendConfig(this->config);
     if (!backend_) {
         throw std::invalid_argument("mel spectrogram backend must not be null");
     }

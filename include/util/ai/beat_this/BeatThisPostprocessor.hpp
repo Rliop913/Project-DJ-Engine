@@ -15,7 +15,7 @@ class MinimalBeatPostprocessor {
     BeatDetectionResult
     Process(const FrameLogits &logits) const;
 
-    double fps = 50.0;
+    const double fps;
 };
 
 class PostprocessPipeline {

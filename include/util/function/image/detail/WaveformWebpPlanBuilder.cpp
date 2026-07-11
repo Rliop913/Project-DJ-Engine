@@ -2,6 +2,7 @@
 
 #include "util/function/image/detail/WaveformWebpSupport.hpp"
 
+#include <cmath>
 #include <stdexcept>
 
 namespace PDJE_UTIL::function::image::detail {
@@ -73,7 +74,8 @@ WaveformPlanBuilder::Validate() const
         throw std::invalid_argument(
             "Waveform STFT window exponent must be between 6 and 30.");
     }
-    if (stft_args_->overlap_ratio < 0.0f || stft_args_->overlap_ratio >= 1.0f) {
+    if (!std::isfinite(stft_args_->overlap_ratio) ||
+        stft_args_->overlap_ratio < 0.0f || stft_args_->overlap_ratio >= 1.0f) {
         throw std::invalid_argument("Waveform STFT overlap must be in [0, 1).");
     }
     if (!stft_args_->mel_filter_bank)

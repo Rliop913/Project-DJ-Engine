@@ -1,6 +1,7 @@
 #include "FuzzySearch.hpp"
 
 #include <algorithm>
+#include <cmath>
 #include <rapidfuzz/fuzz.hpp>
 #include <stdexcept>
 #include <utility>
@@ -12,7 +13,8 @@ namespace {
 void
 validate_score_cutoff(double score_cutoff)
 {
-    if (score_cutoff < 0.0 || score_cutoff > 100.0) {
+    if (!std::isfinite(score_cutoff) || score_cutoff < 0.0 ||
+        score_cutoff > 100.0) {
         throw std::invalid_argument(
             "FuzzySearch score_cutoff must be between 0 and 100.");
     }

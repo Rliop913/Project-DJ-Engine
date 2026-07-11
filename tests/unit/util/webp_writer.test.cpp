@@ -117,12 +117,10 @@ TEST_CASE("encode_webp produces a valid WebP from padded RGBA rows")
 TEST_CASE("encode_webp preserves RGB fallback packing for padded rows")
 {
     const std::vector<std::uint8_t> padded_rgb_pixels{
-        255, 0, 0,   0,   255, 0,   9, 9, 9,
-        0,   0, 255, 255, 255, 255, 7, 7, 7
+        255, 0, 0, 0, 255, 0, 9, 9, 9, 0, 0, 255, 255, 255, 255, 7, 7, 7
     };
     const std::vector<std::uint8_t> expected_rgba_pixels{
-        255, 0, 0, 255, 0, 255, 0, 255,
-        0,   0, 255, 255, 255, 255, 255, 255
+        255, 0, 0, 255, 0, 255, 0, 255, 0, 0, 255, 255, 255, 255, 255, 255
     };
 
     auto encoded = PDJE_UTIL::function::image::encode_webp(
@@ -142,6 +140,48 @@ TEST_CASE("encode_webp preserves RGB fallback packing for padded rows")
     CHECK(decoded.width == 2);
     CHECK(decoded.height == 2);
     CHECK(decoded.pixels == expected_rgba_pixels);
+}
+
+TEST_CASE("encode_webp applies lossless compression presets")
+{
+    constexpr std::size_t     width  = 64;
+    constexpr std::size_t     height = 64;
+    std::vector<std::uint8_t> pixels(width * height * 4u, 0u);
+    for (std::size_t row = 0; row < height; ++row) {
+        for (std::size_t column = 0; column < width; ++column) {
+            const auto offset = (row * width + column) * 4u;
+            pixels[offset + 0u] =
+                static_cast<std::uint8_t>((row * 17u) ^ column);
+            pixels[offset + 1u] =
+                static_cast<std::uint8_t>((column / 4u) * 13u);
+            pixels[offset + 2u] =
+                static_cast<std::uint8_t>((row + column) % 7u);
+            pixels[offset + 3u] = 255u;
+        }
+    }
+
+    const auto encode_at = [&](int level) {
+        return PDJE_UTIL::function::image::encode_webp(
+            { .image = {
+                  .pixels = pixels,
+                  .width = width,
+                  .height = height,
+                  .pixel_format =
+                      PDJE_UTIL::function::image::RasterPixelFormat::rgba8,
+              },
+              .compression_level = level });
+    };
+
+    const auto fastest       = encode_at(0);
+    const auto default_level = encode_at(-1);
+    const auto level_six     = encode_at(6);
+    const auto smallest      = encode_at(9);
+
+    CHECK(default_level == level_six);
+    CHECK(fastest != smallest);
+    CHECK(smallest.size() <= fastest.size());
+    CHECK(decode_rgba8(fastest).pixels == pixels);
+    CHECK(decode_rgba8(smallest).pixels == pixels);
 }
 
 TEST_CASE("write_webp writes a WebP file to disk")

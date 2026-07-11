@@ -4,6 +4,7 @@
 
 #include <cctype>
 #include <cstring>
+#include <limits>
 #include <stdexcept>
 #include <string>
 #include <utility>
@@ -25,12 +26,53 @@ class Statement {
   public:
     Statement(sqlite3 *db, std::string_view sql, std::string_view context)
     {
+        if (sql.empty())
+            throw std::invalid_argument("SQLite SQL must not be empty.");
+        if (sql.find('\0') != std::string_view::npos)
+            throw std::invalid_argument("SQLite SQL must not contain NUL.");
+        if (sql.size() > static_cast<std::size_t>(
+                             std::numeric_limits<int>::max())) {
+            throw std::length_error("SQLite SQL is too large.");
+        }
+
+        const char *tail = nullptr;
         if (sqlite3_prepare_v2(db,
                                sql.data(),
                                static_cast<int>(sql.size()),
                                &value,
-                               nullptr) != SQLITE_OK) {
+                               &tail) != SQLITE_OK) {
             throw sqlite_error(db, context);
+        }
+        if (value == nullptr) {
+            throw std::invalid_argument(
+                "SQLite SQL must contain one executable statement.");
+        }
+
+        const char *end = sql.data() + sql.size();
+        while (tail != nullptr && tail < end) {
+            sqlite3_stmt *extra_statement = nullptr;
+            const char *next_tail = nullptr;
+            const auto remaining = static_cast<std::size_t>(end - tail);
+            const int result = sqlite3_prepare_v2(db,
+                                                  tail,
+                                                  static_cast<int>(remaining),
+                                                  &extra_statement,
+                                                  &next_tail);
+            if (result != SQLITE_OK) {
+                sqlite3_finalize(value);
+                value = nullptr;
+                throw sqlite_error(db, "SQLite trailing SQL is invalid");
+            }
+            if (extra_statement != nullptr) {
+                sqlite3_finalize(extra_statement);
+                sqlite3_finalize(value);
+                value = nullptr;
+                throw std::invalid_argument(
+                    "SQLite accepts exactly one SQL statement.");
+            }
+            if (next_tail == nullptr || next_tail <= tail)
+                break;
+            tail = next_tail;
         }
     }
     ~Statement()
@@ -62,6 +104,10 @@ bind_value(sqlite3_stmt *statement, int index, const relational::Value &value)
         break;
     case 3: {
         const auto &text = std::get<Text>(value.storage);
+        if (text.size() > static_cast<std::size_t>(
+                              std::numeric_limits<int>::max())) {
+            throw std::length_error("SQLite text parameter is too large.");
+        }
         result           = sqlite3_bind_text(statement,
                                    index,
                                    text.data(),
@@ -71,6 +117,10 @@ bind_value(sqlite3_stmt *statement, int index, const relational::Value &value)
     }
     default: {
         const auto &bytes = std::get<Bytes>(value.storage);
+        if (bytes.size() > static_cast<std::size_t>(
+                               std::numeric_limits<int>::max())) {
+            throw std::length_error("SQLite blob parameter is too large.");
+        }
         result            = sqlite3_bind_blob(statement,
                                    index,
                                    bytes.data(),
@@ -88,7 +138,9 @@ void
 bind_params(sqlite3_stmt *statement, const relational::Params &params)
 {
     const int expected = sqlite3_bind_parameter_count(statement);
-    if (expected != static_cast<int>(params.size())) {
+    if (params.size() > static_cast<std::size_t>(
+                            std::numeric_limits<int>::max()) ||
+        expected != static_cast<int>(params.size())) {
         throw std::invalid_argument(
             "SQLite parameter count does not match the SQL statement.");
     }
@@ -109,6 +161,10 @@ read_value(sqlite3_stmt *statement, int column)
     case SQLITE_TEXT: {
         const auto *text = sqlite3_column_text(statement, column);
         const int   size = sqlite3_column_bytes(statement, column);
+        if (text == nullptr && size != 0)
+            throw std::runtime_error("Failed to read SQLite text value.");
+        if (size == 0)
+            return { Text{} };
         return { Text(reinterpret_cast<const char *>(text), size) };
     }
     case SQLITE_BLOB: {

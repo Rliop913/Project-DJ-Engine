@@ -138,6 +138,7 @@ static inline bool
 CheckMelVals(const MelFilterBankSpec &spec)
 {
     if (spec.sample_rate <= 0 || spec.n_fft <= 0 || spec.n_mels <= 0 ||
+        !std::isfinite(spec.f_min) || !std::isfinite(spec.f_max) ||
         spec.f_min < 0.0f) {
         return false;
     }

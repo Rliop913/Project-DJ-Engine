@@ -1,105 +1,17 @@
 #include "AnnoyBackend.hpp"
+#include "util/db/backends/detail/AnnoyManifest.hpp"
 
 #include <annoy/annoylib.h>
 #include <annoy/kissrandom.h>
 
 #include <algorithm>
 #include <cstdlib>
-#include <cstring>
-#include <fstream>
+#include <limits>
 #include <map>
-#include <sstream>
 #include <stdexcept>
-#include <unordered_map>
 
 namespace PDJE_UTIL::db::backends {
 namespace {
-
-std::string
-encode(std::span<const std::byte> input)
-{
-    static constexpr char digits[] = "0123456789abcdef";
-    std::string           output(input.size() * 2, '0');
-    for (std::size_t index = 0; index < input.size(); ++index) {
-        const auto value      = std::to_integer<unsigned int>(input[index]);
-        output[index * 2]     = digits[value >> 4];
-        output[index * 2 + 1] = digits[value & 0x0f];
-    }
-    return output;
-}
-
-std::string
-encode(std::string_view input)
-{
-    return encode(
-        { reinterpret_cast<const std::byte *>(input.data()), input.size() });
-}
-
-int
-nibble(char value)
-{
-    if (value >= '0' && value <= '9')
-        return value - '0';
-    if (value >= 'a' && value <= 'f')
-        return value - 'a' + 10;
-    if (value >= 'A' && value <= 'F')
-        return value - 'A' + 10;
-    return -1;
-}
-
-std::vector<std::byte>
-decode(std::string_view input)
-{
-    if ((input.size() % 2) != 0) {
-        throw std::runtime_error(
-            "Annoy manifest contains invalid hexadecimal data.");
-    }
-    std::vector<std::byte> output;
-    output.reserve(input.size() / 2);
-    for (std::size_t index = 0; index < input.size(); index += 2) {
-        const int high = nibble(input[index]);
-        const int low  = nibble(input[index + 1]);
-        if (high < 0 || low < 0) {
-            throw std::runtime_error(
-                "Annoy manifest contains invalid hexadecimal data.");
-        }
-        output.push_back(static_cast<std::byte>((high << 4) | low));
-    }
-    return output;
-}
-
-std::string
-decode_text(std::string_view input)
-{
-    const auto bytes = decode(input);
-    return { reinterpret_cast<const char *>(bytes.data()), bytes.size() };
-}
-
-nearest::Embedding
-decode_embedding(std::string_view input, std::size_t dimension)
-{
-    const auto bytes = decode(input);
-    if (bytes.size() != dimension * sizeof(float)) {
-        throw std::runtime_error(
-            "Annoy manifest embedding dimension is invalid.");
-    }
-    nearest::Embedding output(dimension);
-    std::memcpy(output.data(), bytes.data(), bytes.size());
-    return output;
-}
-
-std::vector<std::string>
-split_fields(const std::string &line)
-{
-    std::vector<std::string> fields;
-    std::istringstream       stream(line);
-    for (std::string field; std::getline(stream, field, '\t');) {
-        fields.push_back(std::move(field));
-    }
-    if (!line.empty() && line.back() == '\t')
-        fields.emplace_back();
-    return fields;
-}
 
 void
 validate_config(const AnnoyConfig &config)
@@ -110,6 +22,16 @@ validate_config(const AnnoyConfig &config)
     if (config.dimension == 0) {
         throw std::invalid_argument(
             "AnnoyConfig.dimension must be greater than zero.");
+    }
+    if (config.dimension >
+            static_cast<std::size_t>(std::numeric_limits<int>::max()) ||
+        config.dimension >
+            std::numeric_limits<std::size_t>::max() / sizeof(float)) {
+        throw std::invalid_argument("AnnoyConfig.dimension is too large.");
+    }
+    if (config.trees <= 0) {
+        throw std::invalid_argument(
+            "AnnoyConfig.trees must be greater than zero.");
     }
     if (config.open_options.read_only &&
         (config.open_options.create_if_missing ||
@@ -150,46 +72,24 @@ class AnnoyBackend::Impl {
         index.reset();
         ids.clear();
         records.clear();
-        dirty   = true;
-        is_open = false;
+        index_dirty   = true;
+        storage_dirty = false;
+        is_open       = false;
     }
 
     void
     load()
     {
-        const auto path = config.root_path / "records.tsv";
-        if (!std::filesystem::exists(path))
-            return;
-        std::ifstream input(path);
-        if (!input)
-            throw std::runtime_error("Failed to open Annoy manifest file.");
-        for (std::string line; std::getline(input, line);) {
-            if (line.empty())
-                continue;
-            const auto fields = split_fields(line);
-            if (fields.size() != 6) {
-                throw std::runtime_error("Annoy manifest is malformed.");
-            }
-            nearest::Item item{ .id        = decode_text(fields[0]),
-                                .embedding = decode_embedding(
-                                    fields[1], config.dimension) };
-            if (fields[2] == "1")
-                item.text_payload = decode_text(fields[3]);
-            else if (fields[2] != "0")
-                throw std::runtime_error("Invalid Annoy text flag.");
-            if (fields[4] == "1")
-                item.bytes_payload = decode(fields[5]);
-            else if (fields[4] != "0")
-                throw std::runtime_error("Invalid Annoy bytes flag.");
-            records[item.id] = std::move(item);
-        }
+        records       = detail::load_annoy_manifest(config);
+        index_dirty   = true;
+        storage_dirty = false;
     }
 
     void
     rebuild() const
     {
         require_open();
-        if (!dirty)
+        if (!index_dirty)
             return;
         index = std::make_unique<Index>(static_cast<int>(config.dimension));
         ids.clear();
@@ -215,42 +115,17 @@ class AnnoyBackend::Impl {
                 throw std::runtime_error(message);
             }
         }
-        dirty = false;
+        index_dirty = false;
     }
 
     void
-    persist() const
+    flush()
     {
-        rebuild();
-        std::ofstream output(config.root_path / "records.tsv", std::ios::trunc);
-        if (!output)
-            throw std::runtime_error("Failed to write Annoy manifest file.");
-        for (const auto &key : sorted_keys()) {
-            const auto &item      = records.at(key);
-            const auto  embedding = std::span(
-                reinterpret_cast<const std::byte *>(item.embedding.data()),
-                item.embedding.size() * sizeof(float));
-            output << encode(item.id) << '\t' << encode(embedding) << '\t'
-                   << (item.text_payload ? "1\t" + encode(*item.text_payload)
-                                         : "0\t")
-                   << '\t'
-                   << (item.bytes_payload ? "1\t" + encode(*item.bytes_payload)
-                                          : "0\t")
-                   << '\n';
-        }
-        const auto index_path = config.root_path / "index.ann";
-        if (records.empty()) {
-            std::error_code ignored;
-            std::filesystem::remove(index_path, ignored);
+        require_open();
+        if (config.open_options.read_only || !storage_dirty)
             return;
-        }
-        char *error = nullptr;
-        if (!index->save(
-                index_path.string().c_str(), config.prefault, &error)) {
-            std::string message = error ? error : "Annoy save failed.";
-            std::free(error);
-            throw std::runtime_error(message);
-        }
+        detail::save_annoy_manifest_atomic(config, records);
+        storage_dirty = false;
     }
 
     std::vector<Key>
@@ -264,27 +139,30 @@ class AnnoyBackend::Impl {
         return output;
     }
 
-    config_type                            config{};
-    bool                                   is_open = false;
-    mutable bool                           dirty   = true;
-    std::unordered_map<Key, nearest::Item> records;
-    mutable std::map<int, Key>             ids;
-    mutable std::unique_ptr<Index>         index;
+    config_type                    config{};
+    bool                           is_open       = false;
+    mutable bool                   index_dirty   = true;
+    bool                           storage_dirty = false;
+    detail::AnnoyRecords           records;
+    mutable std::map<int, Key>     ids;
+    mutable std::unique_ptr<Index> index;
 };
 
 AnnoyBackend::AnnoyBackend() : impl_(std::make_unique<Impl>())
 {
 }
-AnnoyBackend::~AnnoyBackend()
-{
-    try {
-        close();
-    } catch (...) {
-    }
-}
+AnnoyBackend::~AnnoyBackend()                        = default;
 AnnoyBackend::AnnoyBackend(AnnoyBackend &&) noexcept = default;
 AnnoyBackend &
-AnnoyBackend::operator=(AnnoyBackend &&) noexcept = default;
+AnnoyBackend::operator=(AnnoyBackend &&other)
+{
+    if (this != &other) {
+        if (impl_ && impl_->is_open)
+            close();
+        impl_ = std::move(other.impl_);
+    }
+    return *this;
+}
 
 void
 AnnoyBackend::create(const config_type &config)
@@ -337,12 +215,19 @@ AnnoyBackend::open(const config_type &config)
 }
 
 void
+AnnoyBackend::flush()
+{
+    if (!impl_)
+        throw std::logic_error("Annoy backend is not open.");
+    impl_->flush();
+}
+
+void
 AnnoyBackend::close()
 {
     if (!impl_ || !impl_->is_open)
         return;
-    if (!impl_->config.open_options.read_only)
-        impl_->persist();
+    impl_->flush();
     impl_->reset();
 }
 
@@ -374,7 +259,8 @@ AnnoyBackend::upsert_item(const nearest::Item &item)
             "Annoy item dimension does not match configuration.");
     }
     impl_->records[item.id] = item;
-    impl_->dirty            = true;
+    impl_->index_dirty      = true;
+    impl_->storage_dirty    = true;
 }
 
 void
@@ -382,7 +268,8 @@ AnnoyBackend::erase_item(std::string_view key)
 {
     impl_->require_writable();
     impl_->records.erase(std::string(key));
-    impl_->dirty = true;
+    impl_->index_dirty   = true;
+    impl_->storage_dirty = true;
 }
 
 std::vector<nearest::SearchHit>

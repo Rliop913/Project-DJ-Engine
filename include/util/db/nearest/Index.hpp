@@ -3,6 +3,7 @@
 #include "util/db/detail/Lifecycle.hpp"
 #include "util/db/nearest/BackendConcept.hpp"
 
+#include <type_traits>
 #include <utility>
 
 namespace PDJE_UTIL::db::nearest {
@@ -35,13 +36,15 @@ template <NearestNeighborBackendConcept Backend> class NearestNeighborIndex {
     }
 
     NearestNeighborIndex() = default;
-    NearestNeighborIndex(NearestNeighborIndex &&other) noexcept
+    NearestNeighborIndex(NearestNeighborIndex &&other) noexcept(
+        std::is_nothrow_move_constructible_v<Backend>)
+        : backend(std::move(other.backend)),
+          is_open(std::exchange(other.is_open, false))
     {
-        detail::take_backend_state(
-            backend, is_open, std::move(other.backend), other.is_open);
     }
     NearestNeighborIndex &
-    operator=(NearestNeighborIndex &&other) noexcept
+    operator=(NearestNeighborIndex &&other) noexcept(
+        std::is_nothrow_move_assignable_v<Backend>)
     {
         if (this != &other) {
             backend = std::move(other.backend);
@@ -54,6 +57,11 @@ template <NearestNeighborBackendConcept Backend> class NearestNeighborIndex {
     operator=(const NearestNeighborIndex &) = delete;
     ~NearestNeighborIndex()                 = default;
 
+    void
+    flush()
+    {
+        backend.flush();
+    }
     void
     close()
     {

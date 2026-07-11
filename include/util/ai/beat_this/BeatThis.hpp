@@ -35,8 +35,8 @@ struct BeatDetectionResult {
 
 class PDJE_API BeatThisDetector {
   public:
-    std::filesystem::path  model_path;
-    BeatThisFrontendConfig frontend_config;
+    const std::filesystem::path  model_path;
+    const BeatThisFrontendConfig frontend_config;
 
     BeatThisDetector();
     explicit BeatThisDetector(BeatThisFrontendConfig frontend_config);
@@ -44,9 +44,9 @@ class PDJE_API BeatThisDetector {
                      BeatThisFrontendConfig frontend_config = {});
     ~BeatThisDetector();
 
-    BeatThisDetector(BeatThisDetector &&) noexcept;
+    BeatThisDetector(BeatThisDetector &&);
     BeatThisDetector &
-    operator=(BeatThisDetector &&) noexcept;
+    operator=(BeatThisDetector &&) = delete;
 
     BeatThisDetector(const BeatThisDetector &) = delete;
     BeatThisDetector &

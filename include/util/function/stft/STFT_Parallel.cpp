@@ -140,7 +140,8 @@ MakeStftArgs(const std::vector<float> &inputVec, const STFTRequest &request)
 
 class STFTImpl {
   public:
-    STFTImpl() : serial_backend_(std::make_unique<SERIAL_STFT>())
+    explicit STFTImpl(BACKEND_T &active_backend)
+        : serial_backend_(std::make_unique<SERIAL_STFT>())
     {
         active_backend = DetectPreferredBackend();
 
@@ -163,10 +164,10 @@ class STFTImpl {
     STFTImpl &
     operator=(STFTImpl &&) = delete;
 
-    BACKEND_T active_backend = BACKEND_T::SERIAL;
-
     StftResult
-    calculate(std::vector<float> &PCMdata, STFTRequest request)
+    calculate(std::vector<float> &PCMdata,
+              STFTRequest         request,
+              BACKEND_T          &active_backend)
     {
         request.post_process.check_values();
         ValidateRequest(PCMdata, request);
@@ -197,6 +198,9 @@ class STFTImpl {
             active_backend = BACKEND_T::SERIAL;
         }
 
+        if (active_backend != BACKEND_T::SERIAL)
+            active_backend = BACKEND_T::SERIAL;
+
         if (!serial_backend_) {
             throw std::runtime_error("STFT serial backend is unavailable.");
         }
@@ -213,9 +217,8 @@ class STFTImpl {
 
 namespace PDJE_PARALLEL {
 
-STFT::STFT() : impl_(std::make_unique<detail::STFTImpl>())
+STFT::STFT() : impl_(std::make_unique<detail::STFTImpl>(active_backend))
 {
-    active_backend = impl_->active_backend;
 }
 
 STFT::~STFT() = default;
@@ -236,9 +239,7 @@ STFT::calculate(std::vector<float> &PCMdata, const STFTRequest &request)
     if (!impl_) {
         throw std::logic_error("STFT instance is not initialized.");
     }
-    auto result    = impl_->calculate(PCMdata, request);
-    active_backend = impl_->active_backend;
-    return result;
+    return impl_->calculate(PCMdata, request, active_backend);
 }
 
 } // namespace PDJE_PARALLEL

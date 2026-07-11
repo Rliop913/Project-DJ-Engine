@@ -15,6 +15,43 @@ struct ImageLayout {
     std::size_t stride    = 0;
 };
 
+class WebpPicture {
+  public:
+    WebpPicture()
+    {
+        if (WebPPictureInit(&value) == 0)
+            throw std::runtime_error("Failed to initialize WebP picture.");
+    }
+    ~WebpPicture()
+    {
+        WebPPictureFree(&value);
+    }
+
+    WebpPicture(const WebpPicture &) = delete;
+    WebpPicture &
+    operator=(const WebpPicture &) = delete;
+
+    WebPPicture value{};
+};
+
+class WebpMemoryOutput {
+  public:
+    WebpMemoryOutput()
+    {
+        WebPMemoryWriterInit(&value);
+    }
+    ~WebpMemoryOutput()
+    {
+        WebPMemoryWriterClear(&value);
+    }
+
+    WebpMemoryOutput(const WebpMemoryOutput &) = delete;
+    WebpMemoryOutput &
+    operator=(const WebpMemoryOutput &) = delete;
+
+    WebPMemoryWriter value{};
+};
+
 std::size_t
 checked_multiply(std::size_t left, std::size_t right)
 {
@@ -130,19 +167,35 @@ encode_webp(const EncodeWebpArgs &args)
         pixels = packed.data();
         stride = static_cast<int>(args.image.width * 4);
     }
-    std::uint8_t *encoded = nullptr;
-    const auto    size =
-        WebPEncodeLosslessRGBA(pixels,
-                               static_cast<int>(args.image.width),
-                               static_cast<int>(args.image.height),
-                               stride,
-                               &encoded);
-    if (size == 0 || encoded == nullptr) {
-        throw std::runtime_error("WebP encoder failed.");
+    WebPConfig config{};
+    if (WebPConfigInit(&config) == 0)
+        throw std::runtime_error("Failed to initialize WebP config.");
+    const int level = args.compression_level < 0 ? 6 : args.compression_level;
+    if (WebPConfigLosslessPreset(&config, level) == 0 ||
+        WebPValidateConfig(&config) == 0) {
+        throw std::invalid_argument("WebP lossless preset is invalid.");
     }
-    std::vector<std::uint8_t> output(encoded, encoded + size);
-    WebPFree(encoded);
-    return output;
+    config.exact = 0;
+
+    WebpPicture picture;
+    picture.value.use_argb = 1;
+    picture.value.width    = static_cast<int>(args.image.width);
+    picture.value.height   = static_cast<int>(args.image.height);
+    if (WebPPictureImportRGBA(&picture.value, pixels, stride) == 0)
+        throw std::runtime_error("Failed to import WebP RGBA pixels.");
+
+    WebpMemoryOutput writer;
+    picture.value.writer     = &WebPMemoryWrite;
+    picture.value.custom_ptr = &writer.value;
+    if (WebPEncode(&config, &picture.value) == 0) {
+        throw std::runtime_error(
+            "WebP encoder failed with error code " +
+            std::to_string(static_cast<int>(picture.value.error_code)) + ".");
+    }
+    if (writer.value.mem == nullptr || writer.value.size == 0u)
+        throw std::runtime_error("WebP encoder returned an empty payload.");
+
+    return { writer.value.mem, writer.value.mem + writer.value.size };
 }
 
 void

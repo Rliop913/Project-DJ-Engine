@@ -20,6 +20,7 @@ concept NearestNeighborBackendConcept =
         { Backend::create(cfg) } -> std::same_as<void>;
         { Backend::destroy(cfg) } -> std::same_as<void>;
         { backend.open(cfg) } -> std::same_as<void>;
+        { backend.flush() } -> std::same_as<void>;
         { backend.close() } -> std::same_as<void>;
         { backend.contains(key) } -> std::same_as<bool>;
         { backend.get_item(key) } -> std::same_as<Item>;

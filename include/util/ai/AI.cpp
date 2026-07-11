@@ -251,71 +251,54 @@ CopyOutputTensor(const Ort::Value &value)
     };
 }
 
-const std::vector<std::string> &
-EmptyStringVector() noexcept
-{
-    static const std::vector<std::string> empty;
-    return empty;
-}
-
-const std::filesystem::path &
-EmptyPath() noexcept
-{
-    static const std::filesystem::path empty;
-    return empty;
-}
-
-const OnnxSessionOptions &
-DefaultSessionOptions() noexcept
-{
-    static const OnnxSessionOptions options{};
-    return options;
-}
-
 } // namespace
 
 class OnnxSession::Impl {
   public:
-    Impl(std::filesystem::path modelPath, OnnxSessionOptions options)
-        : model_path_(std::move(modelPath)), options_(std::move(options))
+    Impl(const std::filesystem::path &modelPath,
+         const OnnxSessionOptions    &options,
+         std::vector<std::string>    &inputNames,
+         std::vector<std::string>    &outputNames)
     {
-        if (model_path_.empty()) {
+        if (modelPath.empty()) {
             throw std::invalid_argument(
                 "onnx session model path must not be empty");
         }
-        if (!std::filesystem::exists(model_path_)) {
+        if (!std::filesystem::exists(modelPath)) {
             throw std::runtime_error("onnx model was not found: " +
-                                     model_path_.string());
+                                     modelPath.string());
         }
 
-        ValidateSessionOptions(options_);
+        ValidateSessionOptions(options);
 
         Ort::SessionOptions sessionOptions;
         sessionOptions.SetGraphOptimizationLevel(
-            ToOrtOptimizationLevel(options_.optimization_level));
-        if (options_.intra_op_num_threads > 0) {
-            sessionOptions.SetIntraOpNumThreads(options_.intra_op_num_threads);
+            ToOrtOptimizationLevel(options.optimization_level));
+        if (options.intra_op_num_threads > 0) {
+            sessionOptions.SetIntraOpNumThreads(options.intra_op_num_threads);
         }
-        if (options_.inter_op_num_threads > 0) {
-            sessionOptions.SetInterOpNumThreads(options_.inter_op_num_threads);
+        if (options.inter_op_num_threads > 0) {
+            sessionOptions.SetInterOpNumThreads(options.inter_op_num_threads);
         }
 
         session_ = std::make_unique<Ort::Session>(
-            GlobalOrtEnv(), model_path_.c_str(), sessionOptions);
-        input_names_  = ReadIoNames(*session_, true);
-        output_names_ = ReadIoNames(*session_, false);
+            GlobalOrtEnv(), modelPath.c_str(), sessionOptions);
+        inputNames  = ReadIoNames(*session_, true);
+        outputNames = ReadIoNames(*session_, false);
     }
 
     std::vector<NamedFloatTensor>
     run(std::span<const NamedFloatTensor> inputs,
-        std::span<const std::string>      requestedOutputNames) const
+        std::span<const std::string>      requestedOutputNames,
+        const std::vector<std::string>   &inputNames,
+        const std::vector<std::string>   &outputNames) const
     {
         const std::vector<std::string> resolvedOutputNames =
-            ResolveOutputNames(output_names_, requestedOutputNames);
+            ResolveOutputNames(outputNames, requestedOutputNames);
         std::vector<Ort::Value> inputValues =
-            BuildInputValues(inputs, input_names_);
+            BuildInputValues(inputs, inputNames);
         const std::vector<const char *> inputNamePointers =
-            BuildNamePointers(input_names_);
+            BuildNamePointers(inputNames);
         const std::vector<const char *> outputNamePointers =
             BuildNamePointers(resolvedOutputNames);
 
@@ -342,28 +325,51 @@ class OnnxSession::Impl {
         return results;
     }
 
-    std::filesystem::path         model_path_;
-    OnnxSessionOptions            options_;
-    std::vector<std::string>      input_names_;
-    std::vector<std::string>      output_names_;
     std::unique_ptr<Ort::Session> session_;
 };
 
+struct OnnxSession::Build {
+    std::filesystem::path    model_path;
+    OnnxSessionOptions       options;
+    std::vector<std::string> input_names;
+    std::vector<std::string> output_names;
+    std::unique_ptr<Impl>    impl;
+};
+
+OnnxSession::Build
+OnnxSession::build(std::filesystem::path model_path, OnnxSessionOptions options)
+{
+    Build result{ .model_path = std::move(model_path),
+                  .options    = std::move(options) };
+    result.impl = std::make_unique<Impl>(result.model_path,
+                                         result.options,
+                                         result.input_names,
+                                         result.output_names);
+    return result;
+}
+
+OnnxSession::OnnxSession(Build build)
+    : model_path(std::move(build.model_path)),
+      options(std::move(build.options)),
+      input_names(std::move(build.input_names)),
+      output_names(std::move(build.output_names)), impl_(std::move(build.impl))
+{
+}
+
 OnnxSession::OnnxSession(std::filesystem::path model_path,
                          OnnxSessionOptions    options)
-    : impl_(std::make_unique<Impl>(std::move(model_path), std::move(options)))
+    : OnnxSession(build(std::move(model_path), std::move(options)))
 {
-    this->model_path = impl_->model_path_;
-    this->options    = impl_->options_;
-    input_names      = impl_->input_names_;
-    output_names     = impl_->output_names_;
 }
 
 OnnxSession::~OnnxSession() = default;
 
-OnnxSession::OnnxSession(OnnxSession &&) noexcept = default;
-OnnxSession &
-OnnxSession::operator=(OnnxSession &&) noexcept = default;
+OnnxSession::OnnxSession(OnnxSession &&other)
+    : model_path(other.model_path), options(other.options),
+      input_names(other.input_names), output_names(other.output_names),
+      impl_(std::move(other.impl_))
+{
+}
 
 std::vector<NamedFloatTensor>
 OnnxSession::run(const std::span<const NamedFloatTensor> inputs) const
@@ -380,7 +386,8 @@ OnnxSession::run(
         throw std::runtime_error("onnx session is not initialized");
     }
 
-    return impl_->run(inputs, requested_output_names);
+    return impl_->run(
+        inputs, requested_output_names, input_names, output_names);
 }
 
 } // namespace PDJE_UTIL::ai

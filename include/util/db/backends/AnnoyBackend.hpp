@@ -28,7 +28,7 @@ class PDJE_API AnnoyBackend {
     ~AnnoyBackend();
     AnnoyBackend(AnnoyBackend &&) noexcept;
     AnnoyBackend &
-    operator=(AnnoyBackend &&) noexcept;
+    operator=(AnnoyBackend &&);
     AnnoyBackend(const AnnoyBackend &) = delete;
     AnnoyBackend &
     operator=(const AnnoyBackend &) = delete;
@@ -39,6 +39,8 @@ class PDJE_API AnnoyBackend {
     destroy(const config_type &config);
     void
     open(const config_type &config);
+    void
+    flush();
     void
     close();
     bool

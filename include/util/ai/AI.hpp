@@ -39,18 +39,18 @@ struct NamedFloatTensor {
 
 class PDJE_API OnnxSession {
   public:
-    std::filesystem::path    model_path;
-    OnnxSessionOptions       options;
-    std::vector<std::string> input_names;
-    std::vector<std::string> output_names;
+    const std::filesystem::path    model_path;
+    const OnnxSessionOptions       options;
+    const std::vector<std::string> input_names;
+    const std::vector<std::string> output_names;
 
     explicit OnnxSession(std::filesystem::path model_path,
                          OnnxSessionOptions    options = {});
     ~OnnxSession();
 
-    OnnxSession(OnnxSession &&) noexcept;
+    OnnxSession(OnnxSession &&);
     OnnxSession &
-    operator=(OnnxSession &&) noexcept;
+    operator=(OnnxSession &&) = delete;
 
     OnnxSession(const OnnxSession &) = delete;
     OnnxSession &
@@ -65,6 +65,11 @@ class PDJE_API OnnxSession {
 
   private:
     class Impl;
+    struct Build;
+
+    explicit OnnxSession(Build build);
+    static Build
+    build(std::filesystem::path model_path, OnnxSessionOptions options);
 
     std::unique_ptr<Impl> impl_;
 };

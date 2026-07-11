@@ -34,7 +34,7 @@ class FrontendProcessor {
     Spectrogram
     Execute(std::span<const float> samples, int input_sample_rate) const;
 
-    BeatThisFrontendConfig config;
+    const BeatThisFrontendConfig config;
 
   private:
     std::shared_ptr<MelSpectrogramBackend> backend_;
