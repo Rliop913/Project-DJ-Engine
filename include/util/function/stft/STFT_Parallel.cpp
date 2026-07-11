@@ -10,6 +10,7 @@
 #include <exception>
 #include <memory>
 #include <optional>
+#include <stdexcept>
 #include <utility>
 #include <vector>
 
@@ -67,25 +68,25 @@ HasSupportedWindowSize(const int nFft) noexcept
     return exp >= 6u && exp < 31u;
 }
 
-bool
+void
 ValidateRequest(const std::vector<float> &PCMdata, const STFTRequest &request)
 {
     if (PCMdata.empty() || request.sample_rate <= 0 || request.n_fft <= 0 ||
         !HasSupportedWindowSize(request.n_fft) || request.hop_length == 0u) {
-        return false;
+        throw std::invalid_argument("STFT request contains invalid input or geometry.");
     }
 
     if (request.frame_policy == FRAME_POLICY::EXACT_WINDOWED &&
         PCMdata.size() < static_cast<std::size_t>(request.n_fft)) {
-        return false;
+        throw std::invalid_argument("STFT exact-windowed input is shorter than n_fft.");
     }
 
     if (!request.post_process.mel_scale) {
-        return true;
+        return;
     }
 
     if (!request.mel_filter_bank.has_value()) {
-        return false;
+        throw std::invalid_argument("STFT mel processing requires a filter-bank specification.");
     }
 
     const auto &melSpec = request.mel_filter_bank.value();
@@ -94,13 +95,14 @@ ValidateRequest(const std::vector<float> &PCMdata, const STFTRequest &request)
         return false;
     }
 
-    return CheckMelVals(melSpec);
+    if (!CheckMelVals(melSpec)) {
+        throw std::invalid_argument("STFT mel filter-bank specification is invalid.");
+    }
 }
 
 StftArgs
 MakeStftArgs(const std::vector<float> &inputVec,
-             const STFTRequest        &request,
-             const std::optional<float> legacyOverlapRatio)
+             const STFTRequest &request)
 {
     StftArgs arglist;
     arglist.FullSize    = static_cast<unsigned int>(inputVec.size());
@@ -110,13 +112,7 @@ MakeStftArgs(const std::vector<float> &inputVec,
     arglist.mel_filter_bank =
         request.post_process.mel_scale ? request.mel_filter_bank : std::nullopt;
 
-    if (legacyOverlapRatio.has_value()) {
-        arglist.qtConst =
-            toQuot(arglist.FullSize, legacyOverlapRatio.value(), arglist.windowSize);
-        arglist.OMove = static_cast<unsigned int>(
-            static_cast<float>(arglist.windowSize) *
-            (1.0f - legacyOverlapRatio.value()));
-    } else if (request.frame_policy == FRAME_POLICY::LEGACY_ZERO_PAD) {
+    if (request.frame_policy == FRAME_POLICY::LEGACY_ZERO_PAD) {
         arglist.qtConst =
             static_cast<int>(arglist.FullSize / request.hop_length) + 1;
         arglist.OMove = request.hop_length;
@@ -171,29 +167,29 @@ class STFTImpl {
     }
 
     StftResult
-    calculate(std::vector<float>         &PCMdata,
-              STFTRequest                 request,
-              const std::optional<float> legacyOverlapRatio = std::nullopt)
+    calculate(std::vector<float> &PCMdata, STFTRequest request)
     {
         request.post_process.check_values();
-        if (!ValidateRequest(PCMdata, request)) {
-            return {};
-        }
+        ValidateRequest(PCMdata, request);
 
         const unsigned int windowSizeExp = WindowSizeExpFromFft(request.n_fft);
         const auto         gargs =
-            MakeStftArgs(PCMdata, request, legacyOverlapRatio);
+            MakeStftArgs(PCMdata, request);
         if (gargs.qtConst <= 0 || gargs.OFullSize == 0u) {
-            return {};
+            throw std::invalid_argument("STFT request produces no output frames.");
         }
+
+        IStftBackend::Execution execution {
+            PCMdata,
+            request.target_window,
+            request.post_process,
+            windowSizeExp,
+            gargs
+        };
 
         if (active_backend_ == BACKEND_T::OPENCL && opencl_backend_) {
             try {
-                auto result = opencl_backend_->Execute(PCMdata,
-                                                       request.target_window,
-                                                       request.post_process,
-                                                       windowSizeExp,
-                                                       gargs);
+                auto result = opencl_backend_->Execute(execution);
                 if (!result.first.empty() || !result.second.empty()) {
                     return result;
                 }
@@ -205,14 +201,10 @@ class STFTImpl {
         }
 
         if (!serial_backend_) {
-            return {};
+            throw std::runtime_error("STFT serial backend is unavailable.");
         }
 
-        return serial_backend_->Execute(PCMdata,
-                                        request.target_window,
-                                        request.post_process,
-                                        windowSizeExp,
-                                        gargs);
+        return serial_backend_->Execute(execution);
     }
 
   private:
@@ -227,6 +219,7 @@ namespace PDJE_PARALLEL {
 
 STFT::STFT() : impl_(std::make_unique<detail::STFTImpl>())
 {
+    active_backend = impl_->active_backend();
 }
 
 STFT::~STFT() = default;
@@ -234,12 +227,6 @@ STFT::~STFT() = default;
 STFT::STFT(STFT &&) noexcept            = default;
 STFT &
 STFT::operator=(STFT &&) noexcept = default;
-
-BACKEND_T
-STFT::active_backend() const noexcept
-{
-    return impl_ ? impl_->active_backend() : BACKEND_T::SERIAL;
-}
 
 BACKEND_T
 STFT::detect_available_backend() noexcept
@@ -251,52 +238,11 @@ StftResult
 STFT::calculate(std::vector<float> &PCMdata, const STFTRequest &request)
 {
     if (!impl_) {
-        return {};
+        throw std::logic_error("STFT instance is not initialized.");
     }
-
-    return impl_->calculate(PCMdata, request);
-}
-
-StftResult
-STFT::calculate(std::vector<float> &PCMdata,
-                const WINDOW_LIST   target_window,
-                const int           windowSizeEXP,
-                const float         overlapRatio,
-                POST_PROCESS        post_process)
-{
-    if (!impl_ || overlapRatio < 0.0f || overlapRatio >= 1.0f ||
-        windowSizeEXP < 6 || windowSizeEXP >= 31) {
-        return {};
-    }
-
-    post_process.check_values();
-
-    STFTRequest request{
-        .sample_rate = 48000,
-        .n_fft = 1 << windowSizeEXP,
-        .hop_length = std::max(
-            1u,
-            static_cast<unsigned int>(
-                static_cast<float>(1 << windowSizeEXP) * (1.0f - overlapRatio))),
-        .target_window = target_window,
-        .post_process = post_process,
-        .frame_policy = FRAME_POLICY::LEGACY_ZERO_PAD,
-        .mel_filter_bank = post_process.mel_scale
-                               ? std::optional<MelFilterBankSpec>(
-                                      MelFilterBankSpec{ .sample_rate = 48000,
-                                                         .n_fft =
-                                                             1 << windowSizeEXP,
-                                                         .n_mels = 80,
-                                                         .f_min = 0.0f,
-                                                         .f_max = -1.0f,
-                                                         .mel_formula =
-                                                             MelFormula::Slaney,
-                                                         .norm =
-                                                             MelNorm::Slaney })
-                               : std::nullopt,
-    };
-
-    return impl_->calculate(PCMdata, request, overlapRatio);
+    auto result = impl_->calculate(PCMdata, request);
+    active_backend = impl_->active_backend();
+    return result;
 }
 
 } // namespace PDJE_PARALLEL

@@ -1,15 +1,12 @@
 #pragma once
 
-#include "util/common/Result.hpp"
 #include "util/function/image/detail/WaveformWebpInternal.hpp"
 #include "util/function/image/detail/WaveformWebpSupport.hpp"
 
 #include <algorithm>
 #include <atomic>
-#include <cstddef>
 #include <exception>
 #include <mutex>
-#include <string>
 #include <thread>
 #include <utility>
 #include <vector>
@@ -18,131 +15,76 @@ namespace PDJE_UTIL::function::image::detail {
 
 class WaveformWorkerRunner {
   public:
-    explicit WaveformWorkerRunner(std::size_t requested_worker_count)
-        : requested_worker_count_(requested_worker_count)
+    explicit WaveformWorkerRunner(std::size_t requested_workers)
+        : requested_workers_(requested_workers)
     {
     }
 
     template <class ProcessorFactory>
-    common::Result<WaveformWebpBatch>
-    Run(WaveformEncodePlan &plan, ProcessorFactory &&create_processor) const
+    WaveformWebpBatch Run(WaveformEncodePlan &plan,
+                          ProcessorFactory &&create_processor) const
     {
-        if (plan.jobs.empty()) {
-            return common::Result<WaveformWebpBatch>::success(std::move(plan.batch));
-        }
+        if (plan.jobs.empty()) return std::move(plan.batch);
 
-        const std::size_t resolved_worker_count =
-            ResolveWorkerThreadCount(requested_worker_count_, plan.jobs.size());
-        std::atomic<std::size_t> next_job_index { 0 };
-        std::atomic<bool>        stop_requested { false };
-        std::mutex               error_mutex;
-        common::Status           first_error = {};
+        const auto worker_count = ResolveWorkerCount(
+            requested_workers_, plan.jobs.size());
+        std::atomic<std::size_t> next_job { 0 };
+        std::atomic<bool> stop { false };
+        std::mutex error_mutex;
+        std::exception_ptr first_error;
 
-        auto record_error = [&](common::Status status) {
-            std::lock_guard<std::mutex> lock(error_mutex);
-            if (first_error.ok()) {
-                first_error = std::move(status);
-            }
-            stop_requested.store(true, std::memory_order_release);
+        const auto record_error = [&](std::exception_ptr error) {
+            std::lock_guard lock(error_mutex);
+            if (!first_error) first_error = std::move(error);
+            stop.store(true, std::memory_order_release);
         };
 
-        auto worker_fn = [&]() {
+        const auto worker = [&] {
             try {
                 auto processor = create_processor();
-
-                while (true) {
-                    if (stop_requested.load(std::memory_order_acquire)) {
-                        return;
-                    }
-
-                    const std::size_t job_index =
-                        next_job_index.fetch_add(1, std::memory_order_relaxed);
-                    if (job_index >= plan.jobs.size()) {
-                        return;
-                    }
-
-                    const auto &job = plan.jobs[job_index];
+                while (!stop.load(std::memory_order_acquire)) {
+                    const auto index = next_job.fetch_add(1);
+                    if (index >= plan.jobs.size()) return;
+                    const auto &job = plan.jobs[index];
                     if (job.samples == nullptr || job.output_slot == nullptr) {
-                        record_error(support::wrap_job_status(
-                            { common::StatusCode::internal_error,
-                              "Waveform job was missing required sample or "
-                              "output pointers." },
-                            job));
-                        return;
+                        throw support::job_error(job,
+                            "job is missing sample or output storage");
                     }
-
-                    auto job_result = processor.Process(job, *(job.output_slot));
-                    if (!job_result.ok()) {
-                        record_error(job_result.status());
-                        return;
-                    }
+                    processor.Process(job, *job.output_slot);
                 }
-            } catch (const std::exception &e) {
-                record_error(
-                    { common::StatusCode::internal_error,
-                      std::string("Waveform worker failed: ") + e.what() });
             } catch (...) {
-                record_error(
-                    { common::StatusCode::internal_error,
-                      "Waveform worker failed with an unknown exception." });
+                record_error(std::current_exception());
             }
         };
 
         std::vector<std::thread> workers;
-        workers.reserve(resolved_worker_count);
-
+        workers.reserve(worker_count);
         try {
-            for (std::size_t i = 0; i < resolved_worker_count; ++i) {
-                workers.emplace_back(worker_fn);
+            for (std::size_t index = 0; index < worker_count; ++index) {
+                workers.emplace_back(worker);
             }
-        } catch (const std::exception &e) {
-            stop_requested.store(true, std::memory_order_release);
-            for (auto &worker : workers) {
-                if (worker.joinable()) {
-                    worker.join();
-                }
-            }
-            return common::Result<WaveformWebpBatch>::failure(
-                { common::StatusCode::internal_error,
-                  std::string("Failed to launch waveform worker: ") + e.what() });
+        } catch (...) {
+            stop.store(true, std::memory_order_release);
+            for (auto &thread : workers) if (thread.joinable()) thread.join();
+            throw;
         }
-
-        for (auto &worker : workers) {
-            if (worker.joinable()) {
-                worker.join();
-            }
-        }
-
-        if (!first_error.ok()) {
-            return common::Result<WaveformWebpBatch>::failure(first_error);
-        }
-
-        return common::Result<WaveformWebpBatch>::success(std::move(plan.batch));
+        for (auto &thread : workers) if (thread.joinable()) thread.join();
+        if (first_error) std::rethrow_exception(first_error);
+        return std::move(plan.batch);
     }
 
   private:
-    static std::size_t
-    ResolveWorkerThreadCount(std::size_t requested,
-                             std::size_t job_count) noexcept
+    static std::size_t ResolveWorkerCount(std::size_t requested,
+                                          std::size_t jobs) noexcept
     {
-        std::size_t resolved = requested;
-        if (resolved == 0) {
-            resolved =
-                static_cast<std::size_t>(std::thread::hardware_concurrency());
-        }
-
-        if (resolved == 0) {
-            resolved = 1;
-        }
-
-        if (job_count == 0) {
-            return 1;
-        }
-
-        return std::min(resolved, job_count);
+        auto count = requested == 0
+            ? static_cast<std::size_t>(std::thread::hardware_concurrency())
+            : requested;
+        if (count == 0) count = 1;
+        return std::min(count, jobs);
     }
 
-    std::size_t requested_worker_count_ = 0;
+    std::size_t requested_workers_ = 0;
 };
 
 } // namespace PDJE_UTIL::function::image::detail

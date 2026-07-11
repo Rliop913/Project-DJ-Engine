@@ -1,7 +1,5 @@
 #pragma once
 
-#include "util/common/Result.hpp"
-
 #include <cstddef>
 #include <span>
 #include <string_view>
@@ -21,12 +19,12 @@ struct FuzzyMatch {
 
 class FuzzySearch {
   public:
-    common::Result<double>
+    double
     score(std::string_view query,
           std::string_view candidate,
           double           score_cutoff = 0.0) const;
 
-    common::Result<std::vector<FuzzyMatch>>
+    std::vector<FuzzyMatch>
     search(std::string_view                  query,
            std::span<const std::string_view> candidates,
            FuzzySearchOptions                options = {}) const;

@@ -10,122 +10,50 @@ namespace PDJE_UTIL::db::nearest {
 template <NearestNeighborBackendConcept Backend> class NearestNeighborIndex {
   public:
     using backend_type = Backend;
-    using config_type  = typename Backend::config_type;
+    using config_type = typename Backend::config_type;
 
-    static common::Result<void>
-    create(const config_type &cfg)
-    {
-        return Backend::create(cfg);
-    }
+    Backend backend {};
+    bool is_open = false;
 
-    static common::Result<void>
-    destroy(const config_type &cfg)
-    {
-        return Backend::destroy(cfg);
-    }
+    static void create(const config_type &config) { Backend::create(config); }
+    static void destroy(const config_type &config) { Backend::destroy(config); }
 
-    static common::Result<NearestNeighborIndex>
-    open(const config_type &cfg)
+    static NearestNeighborIndex open(const config_type &config)
     {
         NearestNeighborIndex index;
-        auto                 opened =
-            detail::open_backend(index.backend_, index.is_open_, cfg);
-        if (!opened.ok()) {
-            return common::Result<NearestNeighborIndex>::failure(opened.status());
-        }
-        return common::Result<NearestNeighborIndex>::success(std::move(index));
+        detail::open_backend(index.backend, index.is_open, config);
+        return index;
     }
 
     NearestNeighborIndex() = default;
     NearestNeighborIndex(NearestNeighborIndex &&other) noexcept
     {
         detail::take_backend_state(
-            backend_, is_open_, std::move(other.backend_), other.is_open_);
+            backend, is_open, std::move(other.backend), other.is_open);
     }
-
-    NearestNeighborIndex &
-    operator=(NearestNeighborIndex &&other) noexcept
+    NearestNeighborIndex &operator=(NearestNeighborIndex &&other) noexcept
     {
         if (this != &other) {
-            (void)detail::close_if_open(backend_, is_open_);
-            detail::take_backend_state(
-                backend_, is_open_, std::move(other.backend_), other.is_open_);
+            backend = std::move(other.backend);
+            is_open = std::exchange(other.is_open, false);
         }
         return *this;
     }
-
     NearestNeighborIndex(const NearestNeighborIndex &) = delete;
-    NearestNeighborIndex &
-    operator=(const NearestNeighborIndex &) = delete;
+    NearestNeighborIndex &operator=(const NearestNeighborIndex &) = delete;
+    ~NearestNeighborIndex() = default;
 
-    ~NearestNeighborIndex()
+    void close() { detail::close_if_open(backend, is_open); }
+    bool contains(std::string_view id) const { return backend.contains(id); }
+    Item get_item(std::string_view id) const { return backend.get_item(id); }
+    void upsert_item(const Item &item) { backend.upsert_item(item); }
+    void erase_item(std::string_view id) { backend.erase_item(id); }
+    std::vector<SearchHit> search(std::span<const float> query,
+                                  SearchOptions options = {}) const
     {
-        (void)detail::close_if_open(backend_, is_open_);
+        return backend.search(query, options);
     }
-
-    common::Result<void>
-    close()
-    {
-        return detail::close_if_open(backend_, is_open_);
-    }
-
-    bool
-    is_open() const noexcept
-    {
-        return is_open_;
-    }
-
-    common::Result<bool>
-    contains(std::string_view id) const
-    {
-        return backend_.contains(id);
-    }
-
-    common::Result<Item>
-    get_item(std::string_view id) const
-    {
-        return backend_.get_item(id);
-    }
-
-    common::Result<void>
-    upsert_item(const Item &item)
-    {
-        return backend_.upsert_item(item);
-    }
-
-    common::Result<void>
-    erase_item(std::string_view id)
-    {
-        return backend_.erase_item(id);
-    }
-
-    common::Result<std::vector<SearchHit>>
-    search(std::span<const float> query, SearchOptions options = {}) const
-    {
-        return backend_.search(query, options);
-    }
-
-    common::Result<std::vector<Key>>
-    list_keys() const
-    {
-        return backend_.list_keys();
-    }
-
-    backend_type &
-    backend() noexcept
-    {
-        return backend_;
-    }
-
-    const backend_type &
-    backend() const noexcept
-    {
-        return backend_;
-    }
-
-  private:
-    Backend backend_;
-    bool    is_open_ = false;
+    std::vector<Key> list_keys() const { return backend.list_keys(); }
 };
 
 } // namespace PDJE_UTIL::db::nearest

@@ -9,12 +9,16 @@ class IStftBackend {
   public:
     virtual ~IStftBackend() = default;
 
+    struct Execution {
+        std::vector<float> &pcm;
+        WINDOW_LIST window;
+        POST_PROCESS post_process;
+        unsigned int window_size_exp;
+        const StftArgs &args;
+    };
+
     virtual StftResult
-    Execute(std::vector<float> &PCMdata,
-            WINDOW_LIST         target_window,
-            POST_PROCESS        post_process,
-            unsigned int        windowSizeEXP,
-            const StftArgs     &gargs) = 0;
+    Execute(const Execution &execution) = 0;
 };
 
 } // namespace PDJE_PARALLEL::detail

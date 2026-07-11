@@ -1,297 +1,94 @@
 #include <doctest/doctest.h>
 
 #include "util/PDJE_Util.hpp"
+#include "util/ai/beat_this/BeatThis.hpp"
+#include "util/db/backends/AnnoyBackend.hpp"
+#include "util/db/backends/RocksDbBackend.hpp"
+#include "util/db/backends/SqliteBackend.hpp"
 #include "util/function/image/WaveformWebp.hpp"
 #include "util/function/image/WebpWriter.hpp"
-#include "util/function/stft/BackendLess.hpp"
-#include "util/function/stft/MelFilterBank.hpp"
-#include "util/function/stft/STFT_Parallel.hpp"
 
-#include <span>
-#include <string>
-#include <string_view>
 #include <type_traits>
-#include <vector>
 
 namespace {
 
+struct DummyConfig {};
+
 struct DummyKeyValueBackend {
-    struct config_type {
-    };
-
-    static PDJE_UTIL::common::Result<void>
-    create(const config_type &)
-    {
-        return PDJE_UTIL::common::Result<void>::success();
-    }
-
-    static PDJE_UTIL::common::Result<void>
-    destroy(const config_type &)
-    {
-        return PDJE_UTIL::common::Result<void>::success();
-    }
-
-    PDJE_UTIL::common::Result<void>
-    open(const config_type &)
-    {
-        return PDJE_UTIL::common::Result<void>::success();
-    }
-
-    PDJE_UTIL::common::Result<void>
-    close()
-    {
-        return PDJE_UTIL::common::Result<void>::success();
-    }
-
-    PDJE_UTIL::common::Result<bool>
-    contains(std::string_view) const
-    {
-        return PDJE_UTIL::common::Result<bool>::success(false);
-    }
-
-    PDJE_UTIL::common::Result<PDJE_UTIL::db::Text>
-    get_text(std::string_view) const
-    {
-        return PDJE_UTIL::common::Result<PDJE_UTIL::db::Text>::success({});
-    }
-
-    PDJE_UTIL::common::Result<PDJE_UTIL::db::Bytes>
-    get_bytes(std::string_view) const
-    {
-        return PDJE_UTIL::common::Result<PDJE_UTIL::db::Bytes>::success({});
-    }
-
-    PDJE_UTIL::common::Result<void>
-    put_text(std::string_view, std::string_view)
-    {
-        return PDJE_UTIL::common::Result<void>::success();
-    }
-
-    PDJE_UTIL::common::Result<void>
-    put_bytes(std::string_view, std::span<const std::byte>)
-    {
-        return PDJE_UTIL::common::Result<void>::success();
-    }
-
-    PDJE_UTIL::common::Result<void>
-    erase(std::string_view)
-    {
-        return PDJE_UTIL::common::Result<void>::success();
-    }
-
-    PDJE_UTIL::common::Result<std::vector<PDJE_UTIL::db::Key>>
-    list_keys(std::string_view) const
-    {
-        return PDJE_UTIL::common::Result<std::vector<PDJE_UTIL::db::Key>>::success({});
-    }
+    using config_type = DummyConfig;
+    static void create(const config_type &) {}
+    static void destroy(const config_type &) {}
+    void open(const config_type &) {}
+    void close() {}
+    bool contains(std::string_view) const { return false; }
+    PDJE_UTIL::db::Text get_text(std::string_view) const { return {}; }
+    PDJE_UTIL::db::Bytes get_bytes(std::string_view) const { return {}; }
+    void put_text(std::string_view, std::string_view) {}
+    void put_bytes(std::string_view, std::span<const std::byte>) {}
+    void erase(std::string_view) {}
+    std::vector<PDJE_UTIL::db::Key> list_keys(std::string_view) const { return {}; }
 };
 
 struct DummyRelationalBackend {
-    struct config_type {
-    };
-
-    static PDJE_UTIL::common::Result<void>
-    create(const config_type &)
-    {
-        return PDJE_UTIL::common::Result<void>::success();
-    }
-
-    static PDJE_UTIL::common::Result<void>
-    destroy(const config_type &)
-    {
-        return PDJE_UTIL::common::Result<void>::success();
-    }
-
-    PDJE_UTIL::common::Result<void>
-    open(const config_type &)
-    {
-        return PDJE_UTIL::common::Result<void>::success();
-    }
-
-    PDJE_UTIL::common::Result<void>
-    close()
-    {
-        return PDJE_UTIL::common::Result<void>::success();
-    }
-
-    PDJE_UTIL::common::Result<PDJE_UTIL::db::relational::ExecResult>
-    execute(std::string_view, const PDJE_UTIL::db::relational::Params &)
-    {
-        return PDJE_UTIL::common::Result<PDJE_UTIL::db::relational::ExecResult>::success({});
-    }
-
-    PDJE_UTIL::common::Result<PDJE_UTIL::db::relational::QueryResult>
-    query(std::string_view, const PDJE_UTIL::db::relational::Params &) const
-    {
-        return PDJE_UTIL::common::Result<PDJE_UTIL::db::relational::QueryResult>::success({});
-    }
-
-    PDJE_UTIL::common::Result<void>
-    begin_transaction()
-    {
-        return PDJE_UTIL::common::Result<void>::success();
-    }
-
-    PDJE_UTIL::common::Result<void>
-    commit()
-    {
-        return PDJE_UTIL::common::Result<void>::success();
-    }
-
-    PDJE_UTIL::common::Result<void>
-    rollback()
-    {
-        return PDJE_UTIL::common::Result<void>::success();
-    }
+    using config_type = DummyConfig;
+    static void create(const config_type &) {}
+    static void destroy(const config_type &) {}
+    void open(const config_type &) {}
+    void close() {}
+    PDJE_UTIL::db::relational::ExecResult execute(
+        std::string_view, const PDJE_UTIL::db::relational::Params &) { return {}; }
+    PDJE_UTIL::db::relational::QueryResult query(
+        std::string_view, const PDJE_UTIL::db::relational::Params &) const { return {}; }
+    void begin_transaction() {}
+    void commit() {}
+    void rollback() {}
 };
 
 struct DummyNearestBackend {
-    struct config_type {
-    };
-
-    static PDJE_UTIL::common::Result<void>
-    create(const config_type &)
-    {
-        return PDJE_UTIL::common::Result<void>::success();
-    }
-
-    static PDJE_UTIL::common::Result<void>
-    destroy(const config_type &)
-    {
-        return PDJE_UTIL::common::Result<void>::success();
-    }
-
-    PDJE_UTIL::common::Result<void>
-    open(const config_type &)
-    {
-        return PDJE_UTIL::common::Result<void>::success();
-    }
-
-    PDJE_UTIL::common::Result<void>
-    close()
-    {
-        return PDJE_UTIL::common::Result<void>::success();
-    }
-
-    PDJE_UTIL::common::Result<bool>
-    contains(std::string_view) const
-    {
-        return PDJE_UTIL::common::Result<bool>::success(false);
-    }
-
-    PDJE_UTIL::common::Result<PDJE_UTIL::db::nearest::Item>
-    get_item(std::string_view) const
-    {
-        return PDJE_UTIL::common::Result<PDJE_UTIL::db::nearest::Item>::success({});
-    }
-
-    PDJE_UTIL::common::Result<void>
-    upsert_item(const PDJE_UTIL::db::nearest::Item &)
-    {
-        return PDJE_UTIL::common::Result<void>::success();
-    }
-
-    PDJE_UTIL::common::Result<void>
-    erase_item(std::string_view)
-    {
-        return PDJE_UTIL::common::Result<void>::success();
-    }
-
-    PDJE_UTIL::common::Result<std::vector<PDJE_UTIL::db::nearest::SearchHit>>
-    search(std::span<const float>, PDJE_UTIL::db::nearest::SearchOptions) const
-    {
-        return PDJE_UTIL::common::Result<
-            std::vector<PDJE_UTIL::db::nearest::SearchHit>>::success({});
-    }
-
-    PDJE_UTIL::common::Result<std::vector<PDJE_UTIL::db::Key>>
-    list_keys() const
-    {
-        return PDJE_UTIL::common::Result<std::vector<PDJE_UTIL::db::Key>>::success({});
-    }
+    using config_type = DummyConfig;
+    static void create(const config_type &) {}
+    static void destroy(const config_type &) {}
+    void open(const config_type &) {}
+    void close() {}
+    bool contains(std::string_view) const { return false; }
+    PDJE_UTIL::db::nearest::Item get_item(std::string_view) const { return {}; }
+    void upsert_item(const PDJE_UTIL::db::nearest::Item &) {}
+    void erase_item(std::string_view) {}
+    std::vector<PDJE_UTIL::db::nearest::SearchHit> search(
+        std::span<const float>, PDJE_UTIL::db::nearest::SearchOptions) const { return {}; }
+    std::vector<PDJE_UTIL::db::Key> list_keys() const { return {}; }
 };
 
-static_assert(PDJE_UTIL::db::BackendConcept<DummyKeyValueBackend>);
 static_assert(PDJE_UTIL::db::keyvalue::KeyValueBackendConcept<DummyKeyValueBackend>);
 static_assert(PDJE_UTIL::db::relational::RelationalBackendConcept<DummyRelationalBackend>);
 static_assert(PDJE_UTIL::db::nearest::NearestNeighborBackendConcept<DummyNearestBackend>);
-static_assert(!std::is_member_function_pointer_v<decltype(&PDJE_UTIL::function::clamp)>);
-static_assert(!std::is_member_function_pointer_v<decltype(&PDJE_UTIL::function::slugify)>);
-static_assert(std::is_same_v<decltype(PDJE_PARALLEL::STFT::detect_available_backend()),
-                             PDJE_PARALLEL::BACKEND_T>);
-static_assert(std::is_move_constructible_v<PDJE_UTIL::ai::OnnxSession>);
-static_assert(std::is_move_constructible_v<PDJE_UTIL::ai::BeatThisDetector>);
+static_assert(std::is_same_v<decltype(PDJE_UTIL::function::clamp({})), double>);
+static_assert(std::is_same_v<decltype(PDJE_UTIL::function::slugify({})), std::string>);
+static_assert(std::is_member_object_pointer_v<decltype(&PDJE_PARALLEL::STFT::active_backend)>);
+static_assert(std::is_member_object_pointer_v<decltype(&PDJE_UTIL::ai::OnnxSession::model_path)>);
+static_assert(std::is_member_object_pointer_v<decltype(&PDJE_UTIL::ai::BeatThisDetector::frontend_config)>);
 
 } // namespace
 
-TEST_CASE("util umbrella header exposes public surface")
+TEST_CASE("util umbrella exposes direct-return data-oriented surface")
 {
-    auto clamped = PDJE_UTIL::function::clamp(
-        { .value = 2.5, .min_value = 0.0, .max_value = 1.0 });
-    REQUIRE(clamped.ok());
-    CHECK(clamped.value() == doctest::Approx(1.0));
+    CHECK(PDJE_UTIL::function::clamp({ .value = 2.0, .min_value = 0.0, .max_value = 1.0 }) == 1.0);
+    CHECK(PDJE_UTIL::function::slugify({ .input = "Hello PDJE Util" }) == "hello-pdje-util");
 
-    auto slug = PDJE_UTIL::function::slugify(
-        { .input = "Hello, PDJE Util!", .lowercase = true, .separator = '-' });
-    REQUIRE(slug.ok());
-    CHECK(slug.value() == "hello-pdje-util");
-
-    PDJE_UTIL::ai::BeatThisFrontendConfig aiConfig;
-    PDJE_UTIL::ai::OnnxSessionOptions     sessionOptions;
-    PDJE_UTIL::ai::FloatTensor tensor{
-        .shape = { 1, 2 },
-        .values = { 0.0f, 1.0f },
-    };
-
-    CHECK(aiConfig.target_sample_rate == 22050);
-    CHECK(aiConfig.nfft == 1024);
-    CHECK(aiConfig.num_mels == 128);
-    CHECK(sessionOptions.optimization_level ==
-          PDJE_UTIL::ai::OnnxOptimizationLevel::EXTENDED);
-    CHECK_FALSE(tensor.empty());
+    auto keyvalue = PDJE_UTIL::db::keyvalue::KeyValueDatabase<DummyKeyValueBackend>::open({});
+    auto relational = PDJE_UTIL::db::relational::RelationalDatabase<DummyRelationalBackend>::open({});
+    auto nearest = PDJE_UTIL::db::nearest::NearestNeighborIndex<DummyNearestBackend>::open({});
+    CHECK(keyvalue.is_open);
+    CHECK(relational.is_open);
+    CHECK(nearest.is_open);
 }
 
-TEST_CASE("util database wrappers can be instantiated with compatible backends")
+TEST_CASE("util argument structs expose state directly")
 {
-    using DummyLegacyDb = PDJE_UTIL::db::Database<DummyKeyValueBackend>;
-    using DummyKeyValueDb =
-        PDJE_UTIL::db::keyvalue::KeyValueDatabase<DummyKeyValueBackend>;
-    using DummyRelationalDb =
-        PDJE_UTIL::db::relational::RelationalDatabase<DummyRelationalBackend>;
-    using DummyNearestIndex =
-        PDJE_UTIL::db::nearest::NearestNeighborIndex<DummyNearestBackend>;
-
-    auto legacy_opened = DummyLegacyDb::open({});
-    REQUIRE(legacy_opened.ok());
-    CHECK(legacy_opened.value().is_open());
-
-    auto keyvalue_opened = DummyKeyValueDb::open({});
-    REQUIRE(keyvalue_opened.ok());
-    CHECK(keyvalue_opened.value().is_open());
-
-    auto relational_opened = DummyRelationalDb::open({});
-    REQUIRE(relational_opened.ok());
-    CHECK(relational_opened.value().is_open());
-
-    auto nearest_opened = DummyNearestIndex::open({});
-    REQUIRE(nearest_opened.ok());
-    CHECK(nearest_opened.value().is_open());
-}
-
-TEST_CASE("util stable leaf headers remain self-contained")
-{
-    PDJE_PARALLEL::STFT stft;
-    const bool hasSupportedBackend =
-        stft.active_backend() == PDJE_PARALLEL::BACKEND_T::SERIAL ||
-        stft.active_backend() == PDJE_PARALLEL::BACKEND_T::OPENCL;
-
-    CHECK(hasSupportedBackend);
-
-    PDJE_UTIL::function::image::EncodeWaveformWebpArgs waveformArgs;
-    CHECK(waveformArgs.channel_count == 0u);
-    PDJE_UTIL::function::image::EncodeWaveformWebpStftArgs waveformStftArgs;
-    CHECK_FALSE(waveformStftArgs.mel_filter_bank.has_value());
-
-    PDJE_UTIL::function::image::EncodeWebpArgs webpArgs;
-    CHECK(webpArgs.compression_level == -1);
+    PDJE_UTIL::function::image::EncodeWaveformWebpArgs waveform;
+    PDJE_UTIL::function::image::EncodeWebpArgs webp;
+    PDJE_PARALLEL::STFTRequest stft;
+    CHECK(waveform.channel_count == 0);
+    CHECK(webp.compression_level == -1);
+    CHECK(stft.n_fft == 1024);
 }

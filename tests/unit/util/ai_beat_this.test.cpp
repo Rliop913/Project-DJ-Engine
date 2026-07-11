@@ -113,13 +113,11 @@ TEST_CASE("onnx session loads checked-in model and reports beat-this io contract
 
     PDJE_UTIL::ai::OnnxSession session(modelPath);
 
-    CHECK(session.model_path() == modelPath);
-    CHECK(session.input_count() == 1u);
-    CHECK(session.output_count() == 1u);
-    REQUIRE(session.input_names().size() == 1u);
-    REQUIRE(session.output_names().size() == 1u);
-    CHECK(session.input_name(0u) == "spect");
-    CHECK(session.output_name(0u) == "logits");
+    CHECK(session.model_path == modelPath);
+    REQUIRE(session.input_names.size() == 1u);
+    REQUIRE(session.output_names.size() == 1u);
+    CHECK(session.input_names.at(0u) == "spect");
+    CHECK(session.output_names.at(0u) == "logits");
 }
 
 TEST_CASE("onnx session runs dense float tensors and returns named float outputs")
@@ -371,8 +369,8 @@ TEST_CASE("beat this detector loads checked-in model and returns sorted finite t
     const auto input  = BuildSineWave(44100, 4.0, 120.0);
     const auto result = detector.detect(input, 44100);
 
-    CHECK(detector.model_path() == modelPath);
-    CHECK(detector.frontend_config().target_sample_rate == 22050);
+    CHECK(detector.model_path == modelPath);
+    CHECK(detector.frontend_config.target_sample_rate == 22050);
     CheckSortedFinite(result.beats);
     CheckSortedFinite(result.downbeats);
 }

@@ -84,15 +84,10 @@ TEST_CASE("sqlite relational backend supports sql execution and queries")
         .open_options = { .create_if_missing = true }
     };
 
-    REQUIRE(Db::create(cfg).ok());
+    Db::create(cfg);
+    auto db = Db::open(cfg);
 
-    auto opened = Db::open(cfg);
-    REQUIRE(opened.ok());
-    auto db = std::move(opened.value());
-
-    REQUIRE(db.execute(
-                   "CREATE TABLE items (id INTEGER PRIMARY KEY, name TEXT NOT NULL, payload BLOB);")
-                .ok());
+    db.execute("CREATE TABLE items (id INTEGER PRIMARY KEY, name TEXT NOT NULL, payload BLOB);");
 
     const PDJE_UTIL::db::Bytes payload {
         std::byte { 0x10 },
@@ -102,15 +97,13 @@ TEST_CASE("sqlite relational backend supports sql execution and queries")
 
     auto inserted = db.execute("INSERT INTO items(id, name, payload) VALUES(?1, ?2, ?3);",
                                { make_int(1), make_text("alpha"), make_bytes(payload) });
-    REQUIRE(inserted.ok());
-    CHECK(inserted.value().affected_rows == 1);
-    CHECK(inserted.value().last_insert_rowid.has_value());
+    CHECK(inserted.affected_rows == 1);
+    CHECK(inserted.last_insert_rowid.has_value());
 
     auto selected =
         db.query("SELECT id, name, payload FROM items WHERE id = ?1;", { make_int(1) });
-    REQUIRE(selected.ok());
-    REQUIRE(selected.value().rows.size() == 1);
-    const auto &row = selected.value().rows.front();
+    REQUIRE(selected.rows.size() == 1);
+    const auto &row = selected.rows.front();
     REQUIRE(row.find("name") != nullptr);
     CHECK(read_i64(row.at(0)) == 1);
     CHECK(read_text(*row.find("name")) == "alpha");
@@ -119,27 +112,22 @@ TEST_CASE("sqlite relational backend supports sql execution and queries")
     auto updated =
         db.execute("UPDATE items SET name = ?1 WHERE id = ?2;",
                    { make_text("beta"), make_int(1) });
-    REQUIRE(updated.ok());
-    CHECK(updated.value().affected_rows == 1);
+    CHECK(updated.affected_rows == 1);
 
     auto after_update =
         db.query("SELECT name FROM items WHERE id = ?1;", { make_int(1) });
-    REQUIRE(after_update.ok());
-    REQUIRE(after_update.value().rows.size() == 1);
-    CHECK(read_text(after_update.value().rows.front().at(0)) == "beta");
+    REQUIRE(after_update.rows.size() == 1);
+    CHECK(read_text(after_update.rows.front().values.at(0)) == "beta");
 
-    auto invalid = db.query("SELECT FROM broken;", {});
-    CHECK_FALSE(invalid.ok());
-    CHECK(invalid.status().code == PDJE_UTIL::common::StatusCode::backend_error);
+    CHECK_THROWS_AS(db.query("SELECT FROM broken;", {}), std::runtime_error);
 
-    REQUIRE(db.execute("DELETE FROM items WHERE id = ?1;", { make_int(1) }).ok());
+    db.execute("DELETE FROM items WHERE id = ?1;", { make_int(1) });
     auto remaining = db.query("SELECT COUNT(*) AS total FROM items;", {});
-    REQUIRE(remaining.ok());
-    REQUIRE(remaining.value().rows.size() == 1);
-    CHECK(read_i64(remaining.value().rows.front().at(0)) == 0);
+    REQUIRE(remaining.rows.size() == 1);
+    CHECK(read_i64(remaining.rows.front().values.at(0)) == 0);
 
-    REQUIRE(db.close().ok());
-    REQUIRE(Db::destroy(cfg).ok());
+    db.close();
+    Db::destroy(cfg);
 }
 
 TEST_CASE("sqlite relational backend supports transactions and read-only mode")
@@ -155,49 +143,40 @@ TEST_CASE("sqlite relational backend supports transactions and read-only mode")
         .open_options = { .create_if_missing = true }
     };
 
-    auto opened = Db::open(rw_cfg);
-    REQUIRE(opened.ok());
-    auto db = std::move(opened.value());
+    auto db = Db::open(rw_cfg);
 
-    REQUIRE(db.execute("CREATE TABLE tx_items (id INTEGER PRIMARY KEY, name TEXT NOT NULL);").ok());
+    db.execute("CREATE TABLE tx_items (id INTEGER PRIMARY KEY, name TEXT NOT NULL);");
 
-    REQUIRE(db.begin_transaction().ok());
-    REQUIRE(db.execute("INSERT INTO tx_items(id, name) VALUES(?1, ?2);",
-                       { make_int(1), make_text("rollback") })
-                .ok());
-    REQUIRE(db.rollback().ok());
+    db.begin_transaction();
+    db.execute("INSERT INTO tx_items(id, name) VALUES(?1, ?2);",
+               { make_int(1), make_text("rollback") });
+    db.rollback();
 
     auto rolled_back = db.query("SELECT COUNT(*) FROM tx_items;", {});
-    REQUIRE(rolled_back.ok());
-    CHECK(read_i64(rolled_back.value().rows.front().at(0)) == 0);
+    CHECK(read_i64(rolled_back.rows.front().values.at(0)) == 0);
 
-    REQUIRE(db.begin_transaction().ok());
-    REQUIRE(db.execute("INSERT INTO tx_items(id, name) VALUES(?1, ?2);",
-                       { make_int(2), make_text("commit") })
-                .ok());
-    REQUIRE(db.commit().ok());
+    db.begin_transaction();
+    db.execute("INSERT INTO tx_items(id, name) VALUES(?1, ?2);",
+               { make_int(2), make_text("commit") });
+    db.commit();
 
     auto committed = db.query("SELECT COUNT(*) FROM tx_items;", {});
-    REQUIRE(committed.ok());
-    CHECK(read_i64(committed.value().rows.front().at(0)) == 1);
+    CHECK(read_i64(committed.rows.front().values.at(0)) == 1);
 
-    REQUIRE(db.close().ok());
+    db.close();
 
     PDJE_UTIL::db::backends::SqliteConfig ro_cfg {
         .path = rw_cfg.path,
         .open_options = { .read_only = true }
     };
 
-    auto ro_opened = Db::open(ro_cfg);
-    REQUIRE(ro_opened.ok());
-    auto ro_db = std::move(ro_opened.value());
+    auto ro_db = Db::open(ro_cfg);
 
-    auto write_attempt =
+    CHECK_THROWS_AS(
         ro_db.execute("INSERT INTO tx_items(id, name) VALUES(?1, ?2);",
-                      { make_int(3), make_text("forbidden") });
-    CHECK_FALSE(write_attempt.ok());
-    CHECK(write_attempt.status().code == PDJE_UTIL::common::StatusCode::backend_error);
+                      { make_int(3), make_text("forbidden") }),
+        std::runtime_error);
 
-    REQUIRE(ro_db.close().ok());
-    REQUIRE(Db::destroy(rw_cfg).ok());
+    ro_db.close();
+    Db::destroy(rw_cfg);
 }

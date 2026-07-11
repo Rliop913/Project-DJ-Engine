@@ -6,13 +6,11 @@ namespace PDJE_UTIL::function::image::detail {
 
 class WaveformWebpEncoder {
   public:
-    WaveformWebpEncoder(const EncodeWaveformWebpArgs &args,
-                        function::EvalOptions         options);
+    explicit WaveformWebpEncoder(const EncodeWaveformWebpArgs &args);
     WaveformWebpEncoder(const EncodeWaveformWebpArgs     &args,
-                        const EncodeWaveformWebpStftArgs &stft_args,
-                        function::EvalOptions             options);
+                        const EncodeWaveformWebpStftArgs &stft_args);
 
-    common::Result<WaveformWebpBatch>
+    WaveformWebpBatch
     Encode() const;
 
   private:
@@ -20,7 +18,6 @@ class WaveformWebpEncoder {
 
     const EncodeWaveformWebpArgs     &args_;
     const EncodeWaveformWebpStftArgs *stft_args_ = nullptr;
-    function::EvalOptions             options_;
     Mode                              mode_ = Mode::Monochrome;
 };
 

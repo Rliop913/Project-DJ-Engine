@@ -101,11 +101,7 @@ class OPENCL_STFT final : public IStftBackend {
 
   public:
     StftResult
-    Execute(REAL_VEC       &origin_cpu_memory,
-            WINDOW_LIST     window,
-            POST_PROCESS    post_process,
-            unsigned int    win_expsz,
-            const StftArgs &args) override;
+    Execute(const Execution &execution) override;
     OPENCL_STFT();
     ~OPENCL_STFT() override;
 };

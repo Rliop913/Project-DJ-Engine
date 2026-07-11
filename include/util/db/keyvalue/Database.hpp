@@ -11,127 +11,56 @@ namespace PDJE_UTIL::db::keyvalue {
 template <KeyValueBackendConcept Backend> class KeyValueDatabase {
   public:
     using backend_type = Backend;
-    using config_type  = typename Backend::config_type;
+    using config_type = typename Backend::config_type;
 
-    static common::Result<void>
-    create(const config_type &cfg)
-    {
-        return Backend::create(cfg);
-    }
+    Backend backend {};
+    bool is_open = false;
 
-    static common::Result<void>
-    destroy(const config_type &cfg)
-    {
-        return Backend::destroy(cfg);
-    }
+    static void create(const config_type &config) { Backend::create(config); }
+    static void destroy(const config_type &config) { Backend::destroy(config); }
 
-    static common::Result<KeyValueDatabase>
-    open(const config_type &cfg)
+    static KeyValueDatabase open(const config_type &config)
     {
-        KeyValueDatabase db;
-        auto             opened = detail::open_backend(db.backend_, db.is_open_, cfg);
-        if (!opened.ok()) {
-            return common::Result<KeyValueDatabase>::failure(opened.status());
-        }
-        return common::Result<KeyValueDatabase>::success(std::move(db));
+        KeyValueDatabase database;
+        detail::open_backend(database.backend, database.is_open, config);
+        return database;
     }
 
     KeyValueDatabase() = default;
     KeyValueDatabase(KeyValueDatabase &&other) noexcept
     {
         detail::take_backend_state(
-            backend_, is_open_, std::move(other.backend_), other.is_open_);
+            backend, is_open, std::move(other.backend), other.is_open);
     }
-
-    KeyValueDatabase &
-    operator=(KeyValueDatabase &&other) noexcept
+    KeyValueDatabase &operator=(KeyValueDatabase &&other) noexcept
     {
         if (this != &other) {
-            (void)detail::close_if_open(backend_, is_open_);
-            detail::take_backend_state(
-                backend_, is_open_, std::move(other.backend_), other.is_open_);
+            backend = std::move(other.backend);
+            is_open = std::exchange(other.is_open, false);
         }
         return *this;
     }
-
     KeyValueDatabase(const KeyValueDatabase &) = delete;
-    KeyValueDatabase &
-    operator=(const KeyValueDatabase &) = delete;
+    KeyValueDatabase &operator=(const KeyValueDatabase &) = delete;
+    ~KeyValueDatabase() = default;
 
-    ~KeyValueDatabase()
+    void close() { detail::close_if_open(backend, is_open); }
+    bool contains(std::string_view key) const { return backend.contains(key); }
+    Text get_text(std::string_view key) const { return backend.get_text(key); }
+    Bytes get_bytes(std::string_view key) const { return backend.get_bytes(key); }
+    void put_text(std::string_view key, std::string_view value)
     {
-        (void)detail::close_if_open(backend_, is_open_);
+        backend.put_text(key, value);
     }
-
-    common::Result<void>
-    close()
+    void put_bytes(std::string_view key, std::span<const std::byte> value)
     {
-        return detail::close_if_open(backend_, is_open_);
+        backend.put_bytes(key, value);
     }
-
-    bool
-    is_open() const noexcept
+    void erase(std::string_view key) { backend.erase(key); }
+    std::vector<Key> list_keys(std::string_view prefix = {}) const
     {
-        return is_open_;
+        return backend.list_keys(prefix);
     }
-
-    common::Result<bool>
-    contains(std::string_view key) const
-    {
-        return backend_.contains(key);
-    }
-
-    common::Result<Text>
-    get_text(std::string_view key) const
-    {
-        return backend_.get_text(key);
-    }
-
-    common::Result<Bytes>
-    get_bytes(std::string_view key) const
-    {
-        return backend_.get_bytes(key);
-    }
-
-    common::Result<void>
-    put_text(std::string_view key, std::string_view value)
-    {
-        return backend_.put_text(key, value);
-    }
-
-    common::Result<void>
-    put_bytes(std::string_view key, std::span<const std::byte> value)
-    {
-        return backend_.put_bytes(key, value);
-    }
-
-    common::Result<void>
-    erase(std::string_view key)
-    {
-        return backend_.erase(key);
-    }
-
-    common::Result<std::vector<Key>>
-    list_keys(std::string_view prefix = {}) const
-    {
-        return backend_.list_keys(prefix);
-    }
-
-    backend_type &
-    backend() noexcept
-    {
-        return backend_;
-    }
-
-    const backend_type &
-    backend() const noexcept
-    {
-        return backend_;
-    }
-
-  private:
-    Backend backend_;
-    bool    is_open_ = false;
 };
 
 } // namespace PDJE_UTIL::db::keyvalue

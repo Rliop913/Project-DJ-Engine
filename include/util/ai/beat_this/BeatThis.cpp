@@ -124,6 +124,8 @@ BeatThisDetector::BeatThisDetector(std::filesystem::path model_path,
     : impl_(std::make_unique<Impl>(std::move(model_path),
                                    std::move(frontend_config)))
 {
+    this->model_path = impl_->model_path_;
+    this->frontend_config = impl_->frontend_config_;
 }
 
 BeatThisDetector::~BeatThisDetector() = default;
@@ -141,18 +143,6 @@ BeatThisDetector::detect(const std::span<const float> samples,
     }
 
     return impl_->detect(samples, input_sample_rate);
-}
-
-const BeatThisFrontendConfig &
-BeatThisDetector::frontend_config() const noexcept
-{
-    return impl_ ? impl_->frontend_config_ : EmptyConfig();
-}
-
-const std::filesystem::path &
-BeatThisDetector::model_path() const noexcept
-{
-    return impl_ ? impl_->model_path_ : EmptyPath();
 }
 
 } // namespace PDJE_UTIL::ai

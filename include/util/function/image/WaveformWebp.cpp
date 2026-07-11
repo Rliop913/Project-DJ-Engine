@@ -4,19 +4,17 @@
 
 namespace PDJE_UTIL::function::image {
 
-common::Result<WaveformWebpBatch>
-encode_waveform_webps(const EncodeWaveformWebpArgs &args,
-                      function::EvalOptions         options)
+WaveformWebpBatch
+encode_waveform_webps(const EncodeWaveformWebpArgs &args)
 {
-    return detail::WaveformWebpEncoder(args, options).Encode();
+    return detail::WaveformWebpEncoder(args).Encode();
 }
 
-common::Result<WaveformWebpBatch>
+WaveformWebpBatch
 encode_waveform_webps(const EncodeWaveformWebpArgs     &args,
-                      const EncodeWaveformWebpStftArgs &stft_args,
-                      function::EvalOptions             options)
+                      const EncodeWaveformWebpStftArgs &stft_args)
 {
-    return detail::WaveformWebpEncoder(args, stft_args, options).Encode();
+    return detail::WaveformWebpEncoder(args, stft_args).Encode();
 }
 
 } // namespace PDJE_UTIL::function::image

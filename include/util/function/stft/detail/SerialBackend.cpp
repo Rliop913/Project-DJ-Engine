@@ -169,12 +169,13 @@ SERIAL_STFT::RunFft(const unsigned int windowSizeEXP, const StftArgs &gargs)
 }
 
 StftResult
-SERIAL_STFT::Execute(std::vector<float> &PCMdata,
-                     const WINDOW_LIST   target_window,
-                     POST_PROCESS        post_process,
-                     const unsigned int  windowSizeEXP,
-                     const StftArgs     &gargs)
+SERIAL_STFT::Execute(const Execution &execution)
 {
+    auto &PCMdata = execution.pcm;
+    const auto target_window = execution.window;
+    auto post_process = execution.post_process;
+    const auto windowSizeEXP = execution.window_size_exp;
+    const auto &gargs = execution.args;
     post_process.check_values();
     if (post_process.mel_scale && !gargs.mel_filter_bank.has_value()) {
         return {};

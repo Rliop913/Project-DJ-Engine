@@ -42,6 +42,9 @@ struct BeatDetectionResult {
 
 class PDJE_API BeatThisDetector {
   public:
+    std::filesystem::path model_path;
+    BeatThisFrontendConfig frontend_config;
+
     BeatThisDetector();
     explicit BeatThisDetector(BeatThisFrontendConfig frontend_config);
     BeatThisDetector(std::filesystem::path model_path,
@@ -57,12 +60,6 @@ class PDJE_API BeatThisDetector {
 
     BeatDetectionResult
     detect(std::span<const float> samples, int input_sample_rate) const;
-
-    const BeatThisFrontendConfig &
-    frontend_config() const noexcept;
-
-    const std::filesystem::path &
-    model_path() const noexcept;
 
   private:
     class Impl;

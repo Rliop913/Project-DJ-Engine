@@ -42,11 +42,7 @@ class SERIAL_STFT final : public IStftBackend {
 
   public:
     StftResult
-    Execute(std::vector<float> &PCMdata,
-            WINDOW_LIST         target_window,
-            POST_PROCESS        post_process,
-            unsigned int        windowSizeEXP,
-            const StftArgs     &gargs) override;
+    Execute(const Execution &execution) override;
 
     ~SERIAL_STFT() override;
 };

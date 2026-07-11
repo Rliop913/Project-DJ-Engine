@@ -95,6 +95,8 @@ struct STFTRequest {
 
 class PDJE_API STFT {
   public:
+    BACKEND_T active_backend = BACKEND_T::SERIAL;
+
     STFT();
     ~STFT();
 
@@ -105,21 +107,11 @@ class PDJE_API STFT {
     STFT(const STFT &)            = delete;
     STFT &operator=(const STFT &) = delete;
 
-    BACKEND_T
-    active_backend() const noexcept;
-
     static BACKEND_T
     detect_available_backend() noexcept;
 
     StftResult
     calculate(std::vector<float> &PCMdata, const STFTRequest &request);
-
-    StftResult
-    calculate(std::vector<float> &PCMdata,
-              WINDOW_LIST         target_window = WINDOW_LIST::HANNING,
-              int                 windowSizeEXP = 10,
-              float               overlapRatio  = 0.5f,
-              POST_PROCESS        post_process  = POST_PROCESS());
 
   private:
     std::unique_ptr<detail::STFTImpl> impl_;

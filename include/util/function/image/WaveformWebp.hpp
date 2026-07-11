@@ -1,8 +1,6 @@
 #pragma once
 
 #include "global/PDJE_EXPORT_SETTER.hpp"
-#include "util/common/Result.hpp"
-#include "util/function/FunctionContext.hpp"
 #include "util/function/stft/STFT_Parallel.hpp"
 
 #include <cstddef>
@@ -36,13 +34,11 @@ struct EncodeWaveformWebpStftArgs {
     std::optional<PDJE_PARALLEL::MelFilterBankSpec> mel_filter_bank {};
 };
 
-PDJE_API common::Result<WaveformWebpBatch>
-encode_waveform_webps(const EncodeWaveformWebpArgs &args,
-                      function::EvalOptions         options = {});
+PDJE_API WaveformWebpBatch
+encode_waveform_webps(const EncodeWaveformWebpArgs &args);
 
-PDJE_API common::Result<WaveformWebpBatch>
+PDJE_API WaveformWebpBatch
 encode_waveform_webps(const EncodeWaveformWebpArgs     &args,
-                      const EncodeWaveformWebpStftArgs &stft_args,
-                      function::EvalOptions             options = {});
+                      const EncodeWaveformWebpStftArgs &stft_args);
 
 } // namespace PDJE_UTIL::function::image

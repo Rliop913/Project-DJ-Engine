@@ -1,257 +1,113 @@
-#include "util/function/image/detail/WaveformWebpPlanBuilder.hpp"
+#include "WaveformWebpPlanBuilder.hpp"
 
 #include "util/function/image/detail/WaveformWebpSupport.hpp"
 
-#include <cstddef>
-#include <utility>
-#include <vector>
+#include <stdexcept>
 
 namespace PDJE_UTIL::function::image::detail {
-
 namespace {
 
-std::size_t
-ceil_divide(const std::size_t dividend, const std::size_t divisor) noexcept
+std::size_t ceil_divide(std::size_t dividend, std::size_t divisor) noexcept
 {
-    return (dividend / divisor) + ((dividend % divisor) != 0 ? 1u : 0u);
+    return dividend / divisor + (dividend % divisor != 0 ? 1u : 0u);
 }
 
 } // namespace
 
 WaveformPlanBuilder::WaveformPlanBuilder(
-    const EncodeWaveformWebpArgs     &args,
+    const EncodeWaveformWebpArgs &args,
     const EncodeWaveformWebpStftArgs *stft_args)
     : args_(args), stft_args_(stft_args)
 {
 }
 
-common::Result<WaveformEncodePlan>
-WaveformPlanBuilder::Build() const
+WaveformEncodePlan WaveformPlanBuilder::Build() const
 {
-    const auto validation = Validate();
-    if (!validation.ok()) {
-        return common::Result<WaveformEncodePlan>::failure(validation.status());
-    }
-
+    Validate();
     WaveformEncodePlan plan;
-
-    auto chunk_sample_count = ComputeChunkSampleCount();
-    if (!chunk_sample_count.ok()) {
-        return common::Result<WaveformEncodePlan>::failure(
-            chunk_sample_count.status());
-    }
-    plan.chunk_sample_count = chunk_sample_count.value();
-
-    auto buffer_sizes = ComputeBufferSizes();
-    if (!buffer_sizes.ok()) {
-        return common::Result<WaveformEncodePlan>::failure(buffer_sizes.status());
-    }
-    plan.buffer_sizes = buffer_sizes.value();
-
-    auto split_channels = SplitChannels(plan.chunk_sample_count);
-    if (!split_channels.ok()) {
-        return common::Result<WaveformEncodePlan>::failure(
-            split_channels.status());
-    }
-    plan.channels = std::move(split_channels).value();
+    plan.chunk_sample_count = ComputeChunkSampleCount();
+    plan.buffer_sizes = ComputeBufferSizes();
+    plan.channels = SplitChannels(plan.chunk_sample_count);
     plan.batch.resize(plan.channels.size());
 
-    const std::size_t image_count_per_channel =
+    const auto images_per_channel =
         plan.channels.front().size() / plan.chunk_sample_count;
-    for (auto &channel_batch : plan.batch) {
-        channel_batch.resize(image_count_per_channel);
-    }
+    for (auto &channel : plan.batch) channel.resize(images_per_channel);
+    plan.jobs.reserve(support::checked_multiply(
+        plan.channels.size(), images_per_channel));
 
-    std::size_t total_job_count = 0;
-    if (!support::checked_multiply(
-            plan.channels.size(), image_count_per_channel, total_job_count)) {
-        return common::Result<WaveformEncodePlan>::failure(
-            { common::StatusCode::invalid_argument,
-              "Waveform job count overflows size_t." });
-    }
-
-    plan.jobs.reserve(total_job_count);
-    for (std::size_t channel_index = 0; channel_index < plan.channels.size();
-         ++channel_index) {
-        auto &channel_pcm = plan.channels[channel_index];
-        for (std::size_t image_index = 0;
-             image_index < plan.batch[channel_index].size();
-             ++image_index) {
-            const std::size_t sample_offset = image_index * plan.chunk_sample_count;
-            plan.jobs.push_back({ .samples = channel_pcm.data() + sample_offset,
-                                  .sample_count = plan.chunk_sample_count,
-                                  .channel_index = channel_index,
-                                  .image_index = image_index,
-                                  .output_slot =
-                                      &plan.batch[channel_index][image_index] });
+    for (std::size_t channel = 0; channel < plan.channels.size(); ++channel) {
+        for (std::size_t image = 0; image < images_per_channel; ++image) {
+            plan.jobs.push_back({
+                .samples = plan.channels[channel].data() +
+                           image * plan.chunk_sample_count,
+                .sample_count = plan.chunk_sample_count,
+                .channel_index = channel,
+                .image_index = image,
+                .output_slot = &plan.batch[channel][image]
+            });
         }
     }
-
-    return common::Result<WaveformEncodePlan>::success(std::move(plan));
+    return plan;
 }
 
-common::Result<void>
-WaveformPlanBuilder::Validate() const
+void WaveformPlanBuilder::Validate() const
 {
-    if (args_.pcm.data() == nullptr) {
-        return common::Result<void>::failure(
-            { common::StatusCode::invalid_argument,
-              "EncodeWaveformWebpArgs.pcm must reference valid PCM data." });
+    if (args_.pcm.data() == nullptr || args_.pcm.empty()) {
+        throw std::invalid_argument("Waveform PCM data must not be empty.");
     }
-
-    if (args_.pcm.empty()) {
-        return common::Result<void>::failure(
-            { common::StatusCode::invalid_argument,
-              "EncodeWaveformWebpArgs.pcm must not be empty." });
+    if (args_.channel_count == 0 || args_.y_pixels == 0 ||
+        args_.pcm_per_pixel == 0 || args_.x_pixels_per_image == 0) {
+        throw std::invalid_argument("Waveform dimensions must be greater than zero.");
     }
-
-    if (args_.channel_count == 0) {
-        return common::Result<void>::failure(
-            { common::StatusCode::invalid_argument,
-              "EncodeWaveformWebpArgs.channel_count must be greater than zero." });
-    }
-
-    if (args_.y_pixels == 0) {
-        return common::Result<void>::failure(
-            { common::StatusCode::invalid_argument,
-              "EncodeWaveformWebpArgs.y_pixels must be greater than zero." });
-    }
-
-    if (args_.pcm_per_pixel == 0) {
-        return common::Result<void>::failure(
-            { common::StatusCode::invalid_argument,
-              "EncodeWaveformWebpArgs.pcm_per_pixel must be greater than zero." });
-    }
-
-    if (args_.x_pixels_per_image == 0) {
-        return common::Result<void>::failure(
-            { common::StatusCode::invalid_argument,
-              "EncodeWaveformWebpArgs.x_pixels_per_image must be greater than "
-              "zero." });
-    }
-
     if (args_.compression_level < -1 || args_.compression_level > 9) {
-        return common::Result<void>::failure(
-            { common::StatusCode::invalid_argument,
-              "EncodeWaveformWebpArgs.compression_level must be between -1 and "
-              "9." });
+        throw std::invalid_argument("Waveform compression level must be between -1 and 9.");
     }
-
-    if (stft_args_ != nullptr) {
-        if (stft_args_->window_size_exp < 6 || stft_args_->window_size_exp >= 31) {
-            return common::Result<void>::failure(
-                { common::StatusCode::invalid_argument,
-                  "EncodeWaveformWebpStftArgs.window_size_exp must be between "
-                  "6 and 30." });
-        }
-
-        if (stft_args_->overlap_ratio < 0.0f ||
-            stft_args_->overlap_ratio >= 1.0f) {
-            return common::Result<void>::failure(
-                { common::StatusCode::invalid_argument,
-                  "EncodeWaveformWebpStftArgs.overlap_ratio must be greater "
-                  "than or equal to 0.0 and less than 1.0." });
-        }
-
-        if (stft_args_->mel_filter_bank.has_value()) {
-            const auto &melFilterBank = stft_args_->mel_filter_bank.value();
-            const int expectedNfft =
-                static_cast<int>(1u << stft_args_->window_size_exp);
-
-            if (melFilterBank.n_fft != expectedNfft) {
-                return common::Result<void>::failure(
-                    { common::StatusCode::invalid_argument,
-                      "EncodeWaveformWebpStftArgs.mel_filter_bank.n_fft must "
-                      "match window_size_exp." });
-            }
-
-            if (!PDJE_PARALLEL::CheckMelVals(melFilterBank)) {
-                return common::Result<void>::failure(
-                    { common::StatusCode::invalid_argument,
-                      "EncodeWaveformWebpStftArgs.mel_filter_bank is invalid." });
-            }
-
-            if (melFilterBank.n_mels < 3) {
-                return common::Result<void>::failure(
-                    { common::StatusCode::invalid_argument,
-                      "EncodeWaveformWebpStftArgs.mel_filter_bank.n_mels must "
-                      "be at least 3 for RGB output." });
-            }
-        }
+    if (stft_args_ == nullptr) return;
+    if (stft_args_->window_size_exp < 6 || stft_args_->window_size_exp >= 31) {
+        throw std::invalid_argument("Waveform STFT window exponent must be between 6 and 30.");
     }
-
-    return common::Result<void>::success();
+    if (stft_args_->overlap_ratio < 0.0f || stft_args_->overlap_ratio >= 1.0f) {
+        throw std::invalid_argument("Waveform STFT overlap must be in [0, 1).");
+    }
+    if (!stft_args_->mel_filter_bank) return;
+    const auto &mel = *stft_args_->mel_filter_bank;
+    if (mel.n_fft != static_cast<int>(1u << stft_args_->window_size_exp) ||
+        !PDJE_PARALLEL::CheckMelVals(mel) || mel.n_mels < 3) {
+        throw std::invalid_argument("Waveform mel filter bank is invalid for RGB output.");
+    }
 }
 
-common::Result<std::size_t>
-WaveformPlanBuilder::ComputeChunkSampleCount() const
+std::size_t WaveformPlanBuilder::ComputeChunkSampleCount() const
 {
-    std::size_t chunk_sample_count = 0;
-    if (!support::checked_multiply(
-            args_.pcm_per_pixel, args_.x_pixels_per_image, chunk_sample_count)) {
-        return common::Result<std::size_t>::failure(
-            { common::StatusCode::invalid_argument,
-              "Waveform chunk sample count overflows size_t." });
-    }
-
-    return common::Result<std::size_t>::success(chunk_sample_count);
+    return support::checked_multiply(
+        args_.pcm_per_pixel, args_.x_pixels_per_image);
 }
 
-common::Result<WaveformBufferSizes>
-WaveformPlanBuilder::ComputeBufferSizes() const
+WaveformBufferSizes WaveformPlanBuilder::ComputeBufferSizes() const
 {
-    WaveformBufferSizes buffer_sizes;
-    if (!support::checked_multiply(
-            args_.x_pixels_per_image, std::size_t { 4 }, buffer_sizes.row_stride) ||
-        !support::checked_multiply(buffer_sizes.row_stride,
-                                   args_.y_pixels,
-                                   buffer_sizes.image_byte_count)) {
-        return common::Result<WaveformBufferSizes>::failure(
-            { common::StatusCode::invalid_argument,
-              "Waveform image size overflows size_t." });
-    }
-
-    if (!support::checked_multiply(args_.x_pixels_per_image,
-                                   std::size_t { 3 },
-                                   buffer_sizes.column_rgb_byte_count)) {
-        return common::Result<WaveformBufferSizes>::failure(
-            { common::StatusCode::invalid_argument,
-              "Waveform column RGB size overflows size_t." });
-    }
-
-    return common::Result<WaveformBufferSizes>::success(buffer_sizes);
+    WaveformBufferSizes output;
+    output.row_stride = support::checked_multiply(args_.x_pixels_per_image, 4);
+    output.image_byte_count = support::checked_multiply(
+        output.row_stride, args_.y_pixels);
+    output.column_rgb_byte_count = support::checked_multiply(
+        args_.x_pixels_per_image, 3);
+    return output;
 }
 
-common::Result<std::vector<std::vector<float>>>
-WaveformPlanBuilder::SplitChannels(const std::size_t chunk_sample_count) const
+std::vector<std::vector<float>> WaveformPlanBuilder::SplitChannels(
+    std::size_t chunk_sample_count) const
 {
-    const std::size_t frame_count =
-        ceil_divide(args_.pcm.size(), args_.channel_count);
-    const std::size_t image_count_per_channel =
-        ceil_divide(frame_count, chunk_sample_count);
-
-    std::size_t final_channel_sample_count = 0;
-    if (!support::checked_multiply(image_count_per_channel,
-                                   chunk_sample_count,
-                                   final_channel_sample_count)) {
-        return common::Result<std::vector<std::vector<float>>>::failure(
-            { common::StatusCode::invalid_argument,
-              "Waveform channel sample count overflows size_t." });
-    }
-
+    const auto frame_count = ceil_divide(args_.pcm.size(), args_.channel_count);
+    const auto images = ceil_divide(frame_count, chunk_sample_count);
+    const auto samples = support::checked_multiply(images, chunk_sample_count);
     std::vector<std::vector<float>> channels(
-        args_.channel_count,
-        std::vector<float>(final_channel_sample_count, 0.0f));
-
-    for (std::size_t sample_index = 0; sample_index < args_.pcm.size();
-         ++sample_index) {
-        const std::size_t channel_index = sample_index % args_.channel_count;
-        const std::size_t frame_index   = sample_index / args_.channel_count;
-        channels[channel_index][frame_index] = args_.pcm[sample_index];
+        args_.channel_count, std::vector<float>(samples, 0.0f));
+    for (std::size_t index = 0; index < args_.pcm.size(); ++index) {
+        channels[index % args_.channel_count][index / args_.channel_count] =
+            args_.pcm[index];
     }
-
-    return common::Result<std::vector<std::vector<float>>>::success(
-        std::move(channels));
+    return channels;
 }
 
 } // namespace PDJE_UTIL::function::image::detail

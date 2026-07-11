@@ -52,6 +52,11 @@ struct NamedFloatTensor {
 
 class PDJE_API OnnxSession {
   public:
+    std::filesystem::path model_path;
+    OnnxSessionOptions options;
+    std::vector<std::string> input_names;
+    std::vector<std::string> output_names;
+
     explicit OnnxSession(std::filesystem::path model_path,
                          OnnxSessionOptions    options = {});
     ~OnnxSession();
@@ -62,30 +67,6 @@ class PDJE_API OnnxSession {
 
     OnnxSession(const OnnxSession &)            = delete;
     OnnxSession &operator=(const OnnxSession &) = delete;
-
-    const std::filesystem::path &
-    model_path() const noexcept;
-
-    const OnnxSessionOptions &
-    options() const noexcept;
-
-    std::size_t
-    input_count() const noexcept;
-
-    std::size_t
-    output_count() const noexcept;
-
-    const std::vector<std::string> &
-    input_names() const noexcept;
-
-    const std::vector<std::string> &
-    output_names() const noexcept;
-
-    const std::string &
-    input_name(std::size_t index) const;
-
-    const std::string &
-    output_name(std::size_t index) const;
 
     std::vector<NamedFloatTensor>
     run(std::span<const NamedFloatTensor> inputs) const;

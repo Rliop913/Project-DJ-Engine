@@ -111,12 +111,13 @@ OPENCL_STFT::EnsureMelFilterBank(const StftArgs &args)
 }
 
 std::pair<REAL_VEC, IMAG_VEC>
-OPENCL_STFT::Execute(REAL_VEC          &origin_cpu_memory,
-                     const WINDOW_LIST  window,
-                     POST_PROCESS       post_process,
-                     const unsigned int win_expsz,
-                     const StftArgs    &args)
+OPENCL_STFT::Execute(const Execution &execution)
 {
+    auto &origin_cpu_memory = execution.pcm;
+    const auto window = execution.window;
+    auto post_process = execution.post_process;
+    const auto win_expsz = execution.window_size_exp;
+    const auto &args = execution.args;
     post_process.check_values();
     if (post_process.mel_scale && !args.mel_filter_bank.has_value()) {
         return {};

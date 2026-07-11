@@ -357,6 +357,10 @@ OnnxSession::OnnxSession(std::filesystem::path model_path,
                          OnnxSessionOptions    options)
     : impl_(std::make_unique<Impl>(std::move(model_path), std::move(options)))
 {
+    this->model_path = impl_->model_path_;
+    this->options = impl_->options_;
+    input_names = impl_->input_names_;
+    output_names = impl_->output_names_;
 }
 
 OnnxSession::~OnnxSession() = default;
@@ -364,62 +368,6 @@ OnnxSession::~OnnxSession() = default;
 OnnxSession::OnnxSession(OnnxSession &&) noexcept = default;
 OnnxSession &
 OnnxSession::operator=(OnnxSession &&) noexcept = default;
-
-const std::filesystem::path &
-OnnxSession::model_path() const noexcept
-{
-    return impl_ ? impl_->model_path_ : EmptyPath();
-}
-
-const OnnxSessionOptions &
-OnnxSession::options() const noexcept
-{
-    return impl_ ? impl_->options_ : DefaultSessionOptions();
-}
-
-std::size_t
-OnnxSession::input_count() const noexcept
-{
-    return impl_ ? impl_->input_names_.size() : 0u;
-}
-
-std::size_t
-OnnxSession::output_count() const noexcept
-{
-    return impl_ ? impl_->output_names_.size() : 0u;
-}
-
-const std::vector<std::string> &
-OnnxSession::input_names() const noexcept
-{
-    return impl_ ? impl_->input_names_ : EmptyStringVector();
-}
-
-const std::vector<std::string> &
-OnnxSession::output_names() const noexcept
-{
-    return impl_ ? impl_->output_names_ : EmptyStringVector();
-}
-
-const std::string &
-OnnxSession::input_name(const std::size_t index) const
-{
-    if (!impl_) {
-        throw std::runtime_error("onnx session is not initialized");
-    }
-
-    return impl_->input_names_.at(index);
-}
-
-const std::string &
-OnnxSession::output_name(const std::size_t index) const
-{
-    if (!impl_) {
-        throw std::runtime_error("onnx session is not initialized");
-    }
-
-    return impl_->output_names_.at(index);
-}
 
 std::vector<NamedFloatTensor>
 OnnxSession::run(const std::span<const NamedFloatTensor> inputs) const

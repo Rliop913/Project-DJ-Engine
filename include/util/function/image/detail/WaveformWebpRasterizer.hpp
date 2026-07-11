@@ -1,9 +1,7 @@
 #pragma once
 
-#include "util/common/Result.hpp"
 #include "util/function/image/detail/WaveformWebpInternal.hpp"
 #include "util/function/image/detail/WaveformWebpSupport.hpp"
-#include "util/function/FunctionContext.hpp"
 
 #include <algorithm>
 #include <array>
@@ -16,10 +14,9 @@ namespace PDJE_UTIL::function::image::detail {
 class WaveformRasterizer {
   public:
     WaveformRasterizer(const EncodeWaveformWebpArgs &args,
-                       const WaveformBufferSizes    &buffer_sizes,
-                       function::EvalOptions         options);
+                       const WaveformBufferSizes    &buffer_sizes);
 
-    common::Result<void>
+    void
     ComputeExtrema(const WaveformJob      &job,
                    WaveformWorkerContext  &context) const;
 
@@ -50,7 +47,7 @@ class WaveformRasterizer {
         }
     }
 
-    common::Result<void>
+    void
     Encode(const WaveformJob          &job,
            const WaveformWorkerContext &context,
            EncodedWebpBytes           &output) const;
@@ -58,7 +55,6 @@ class WaveformRasterizer {
   private:
     const EncodeWaveformWebpArgs &args_;
     WaveformBufferSizes           buffer_sizes_;
-    function::EvalOptions         options_;
 };
 
 } // namespace PDJE_UTIL::function::image::detail
