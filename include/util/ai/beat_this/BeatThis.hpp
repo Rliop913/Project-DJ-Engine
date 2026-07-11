@@ -32,12 +32,6 @@ struct BeatThisFrontendConfig {
 struct BeatDetectionResult {
     std::vector<double> beats;
     std::vector<double> downbeats;
-
-    bool
-    empty() const noexcept
-    {
-        return beats.empty() && downbeats.empty();
-    }
 };
 
 class PDJE_API BeatThisDetector {

@@ -4,6 +4,12 @@ endif()
 
 include(cmakes/src/UTIL/UTILsrc.cmake)
 
+# Conan 2 names the runtime directory after the active configuration.  The
+# existing test/dev copy helpers use the release alias for RelWithDebInfo.
+if(WIN32 AND zlib_BIN_DIRS_RELWITHDEBINFO AND NOT zlib_BIN_DIRS_RELEASE)
+  set(zlib_BIN_DIRS_RELEASE "${zlib_BIN_DIRS_RELWITHDEBINFO}")
+endif()
+
 function(setUtilReqs targetName)
   DynamicInnerFlag(${targetName})
   setRocksDBReqLib(${targetName})

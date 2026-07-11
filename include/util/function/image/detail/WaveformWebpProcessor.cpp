@@ -65,11 +65,7 @@ void StftColorMapper::Prepare(const WaveformJob &job)
     if (real.empty()) {
         throw support::job_error(job, "STFT RGB output was empty");
     }
-    try {
-        MapStftRgbToColumns(real);
-    } catch (const std::exception &error) {
-        throw support::job_error(job, error.what());
-    }
+    MapStftRgbToColumns(real);
 }
 
 std::array<std::uint8_t, 3> StftColorMapper::ColorAt(std::size_t column) const

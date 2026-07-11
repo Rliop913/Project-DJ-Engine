@@ -48,7 +48,7 @@ PdjeMelSpectrogramBackend::PdjeMelSpectrogramBackend(
     const PDJE_PARALLEL::WINDOW_LIST window,
     const PDJE_PARALLEL::MelFormula  melFormula,
     const PDJE_PARALLEL::MelNorm     melNorm)
-    : window_(window),
+    : window(window),
       mel_formula_(melFormula),
       mel_norm_(melNorm)
 {
@@ -64,7 +64,7 @@ PdjeMelSpectrogramBackend::ComputeLinearMel(
     }
 
     std::vector<float> waveform(samples.begin(), samples.end());
-    auto               request = BuildStftRequest(config, window_);
+    auto               request = BuildStftRequest(config, window);
     request.mel_filter_bank->mel_formula = mel_formula_;
     request.mel_filter_bank->norm        = mel_norm_;
     auto [mel, imag] = stft_.calculate(waveform, request);

@@ -14,23 +14,23 @@ namespace PDJE_UTIL::ai::beat_this {
 void
 InferencePipeline::ValidateSession(const OnnxSession &session)
 {
-    if (session.input_count() != 1u) {
+    if (session.input_names.size() != 1u) {
         throw std::runtime_error(
             "onnx model must expose exactly one input");
     }
-    if (session.output_count() != 1u) {
+    if (session.output_names.size() != 1u) {
         throw std::runtime_error(
             "onnx model must expose exactly one output");
     }
-    if (session.input_name(0u) != "spect") {
+    if (session.input_names.at(0u) != "spect") {
         throw std::runtime_error(
             "unexpected onnx model input name: expected 'spect', got '" +
-            session.input_name(0u) + "'");
+            session.input_names.at(0u) + "'");
     }
-    if (session.output_name(0u) != "logits") {
+    if (session.output_names.at(0u) != "logits") {
         throw std::runtime_error(
             "unexpected onnx model output name: expected 'logits', got '" +
-            session.output_name(0u) + "'");
+            session.output_names.at(0u) + "'");
     }
 }
 
@@ -131,12 +131,12 @@ InferencePipeline::RunSpectrogramChunk(const OnnxSession       &session,
                                        const int                num_bins)
 {
     std::array<NamedFloatTensor, 1> inputs;
-    inputs[0].name         = session.input_name(0u);
+    inputs[0].name         = session.input_names.at(0u);
     inputs[0].tensor.shape = { 1, static_cast<int64_t>(num_frames),
                                static_cast<int64_t>(num_bins) };
     inputs[0].tensor.values.assign(values.begin(), values.end());
 
-    std::vector<std::string> requestedOutputs{ session.output_name(0u) };
+    std::vector<std::string> requestedOutputs{ session.output_names.at(0u) };
     const std::vector<NamedFloatTensor> outputs =
         session.run(inputs, requestedOutputs);
     if (outputs.size() != 1u) {

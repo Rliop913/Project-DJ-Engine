@@ -148,9 +148,9 @@ PostprocessPipeline::SnapDownbeatsToNearestBeats(
 }
 
 MinimalBeatPostprocessor::MinimalBeatPostprocessor(const double fps)
-    : fps_(fps)
+    : fps(fps)
 {
-    if (!std::isfinite(fps_) || fps_ <= 0.0) {
+    if (!std::isfinite(fps) || fps <= 0.0) {
         throw std::invalid_argument(
             "minimal beat postprocessor fps must be positive and finite");
     }
@@ -172,9 +172,9 @@ MinimalBeatPostprocessor::Process(const FrameLogits &logits) const
         PostprocessPipeline::DeduplicatePeaks(downbeatPeaks);
 
     const std::vector<double> beatTimes =
-        PostprocessPipeline::ConvertFramesToSeconds(beatFrames, fps_);
+        PostprocessPipeline::ConvertFramesToSeconds(beatFrames, fps);
     const std::vector<double> downbeatTimes =
-        PostprocessPipeline::ConvertFramesToSeconds(downbeatFrames, fps_);
+        PostprocessPipeline::ConvertFramesToSeconds(downbeatFrames, fps);
 
     return BeatDetectionResult{
         .beats = beatTimes,

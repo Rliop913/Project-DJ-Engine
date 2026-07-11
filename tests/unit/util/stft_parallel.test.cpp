@@ -511,11 +511,7 @@ CheckOpenclMatchesSerial(const std::vector<float>     &pcm,
 class ThrowingBackend final : public PDJE_PARALLEL::detail::IStftBackend {
   public:
     PDJE_PARALLEL::StftResult
-    Execute(std::vector<float> &,
-            PDJE_PARALLEL::WINDOW_LIST,
-            PDJE_PARALLEL::POST_PROCESS,
-            unsigned int,
-            const PDJE_PARALLEL::detail::StftArgs &) override
+    Execute(const Execution &) override
     {
         throw std::runtime_error("Injected backend failure.");
     }
@@ -524,11 +520,7 @@ class ThrowingBackend final : public PDJE_PARALLEL::detail::IStftBackend {
 class EmptyBackend final : public PDJE_PARALLEL::detail::IStftBackend {
   public:
     PDJE_PARALLEL::StftResult
-    Execute(std::vector<float> &,
-            PDJE_PARALLEL::WINDOW_LIST,
-            PDJE_PARALLEL::POST_PROCESS,
-            unsigned int,
-            const PDJE_PARALLEL::detail::StftArgs &) override
+    Execute(const Execution &) override
     {
         return {};
     }
@@ -1058,7 +1050,7 @@ TEST_CASE("stft parallel falls back to serial when opencl backend fails")
         const auto [realOut, imagOut] =
             stft.calculate(pcm, PDJE_PARALLEL::WINDOW_LIST::HANNING, 6, 0.5f);
 
-        CHECK(stft.active_backend() == PDJE_PARALLEL::BACKEND_T::SERIAL);
+        CHECK(stft.active_backend == PDJE_PARALLEL::BACKEND_T::SERIAL);
         CheckVectorsClose(realOut, expectedReal);
         CheckVectorsClose(imagOut, expectedImag);
     }
@@ -1071,7 +1063,7 @@ TEST_CASE("stft parallel falls back to serial when opencl backend fails")
         const auto [realOut, imagOut] =
             stft.calculate(pcm, PDJE_PARALLEL::WINDOW_LIST::HANNING, 6, 0.5f);
 
-        CHECK(stft.active_backend() == PDJE_PARALLEL::BACKEND_T::SERIAL);
+        CHECK(stft.active_backend == PDJE_PARALLEL::BACKEND_T::SERIAL);
         CheckVectorsClose(realOut, expectedReal);
         CheckVectorsClose(imagOut, expectedImag);
     }
@@ -1124,8 +1116,8 @@ TEST_CASE("stft public api exposes backend query without internal seams")
 {
     PDJE_PARALLEL::STFT stft;
     const bool hasSupportedBackend =
-        stft.active_backend() == PDJE_PARALLEL::BACKEND_T::SERIAL ||
-        stft.active_backend() == PDJE_PARALLEL::BACKEND_T::OPENCL;
+        stft.active_backend == PDJE_PARALLEL::BACKEND_T::SERIAL ||
+        stft.active_backend == PDJE_PARALLEL::BACKEND_T::OPENCL;
 
     CHECK(hasSupportedBackend);
     CHECK(PDJE_PARALLEL::STFT::detect_available_backend() ==

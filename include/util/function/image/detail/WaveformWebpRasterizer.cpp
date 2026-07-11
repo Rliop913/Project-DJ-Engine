@@ -36,24 +36,20 @@ void WaveformRasterizer::ComputeExtrema(
         context.column_maxs.data());
 }
 
-void WaveformRasterizer::Encode(const WaveformJob &job,
+void WaveformRasterizer::Encode(const WaveformJob &,
                                 const WaveformWorkerContext &context,
                                 EncodedWebpBytes &output) const
 {
-    try {
-        output = encode_webp({
-            .image = {
-                .pixels = context.rgba,
-                .width = args_.x_pixels_per_image,
-                .height = args_.y_pixels,
-                .stride = buffer_sizes_.row_stride,
-                .pixel_format = RasterPixelFormat::rgba8,
-            },
-            .compression_level = args_.compression_level,
-        });
-    } catch (const std::exception &error) {
-        throw support::job_error(job, error.what());
-    }
+    output = encode_webp({
+        .image = {
+            .pixels = context.rgba,
+            .width = args_.x_pixels_per_image,
+            .height = args_.y_pixels,
+            .stride = buffer_sizes_.row_stride,
+            .pixel_format = RasterPixelFormat::rgba8,
+        },
+        .compression_level = args_.compression_level,
+    });
 }
 
 } // namespace PDJE_UTIL::function::image::detail

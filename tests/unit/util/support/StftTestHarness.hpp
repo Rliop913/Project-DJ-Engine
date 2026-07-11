@@ -139,11 +139,11 @@ class SerialStftHarness {
                 ? std::optional<PDJE_PARALLEL::MelFilterBankSpec>(
                       BuildLegacyMelSpec(1 << windowSizeExp))
                 : std::nullopt);
-        return backend_.Execute(pcm,
-                                target_window,
-                                post_process,
-                                static_cast<unsigned int>(windowSizeExp),
-                                args);
+        return backend_.Execute({ pcm,
+                                  target_window,
+                                  post_process,
+                                  static_cast<unsigned int>(windowSizeExp),
+                                  args });
     }
 
     PDJE_PARALLEL::StftResult
@@ -171,11 +171,11 @@ class SerialStftHarness {
             return {};
         }
 
-        return backend_.Execute(pcm,
-                                normalizedRequest.target_window,
-                                normalizedRequest.post_process,
-                                WindowSizeExpFromFft(normalizedRequest.n_fft),
-                                args);
+        return backend_.Execute({ pcm,
+                                  normalizedRequest.target_window,
+                                  normalizedRequest.post_process,
+                                  WindowSizeExpFromFft(normalizedRequest.n_fft),
+                                  args });
     }
 
   private:
@@ -187,7 +187,7 @@ class OpenclStftHarness {
     bool
     available() const noexcept
     {
-        return backend_.active_backend() == PDJE_PARALLEL::BACKEND_T::OPENCL;
+        return backend_.active_backend == PDJE_PARALLEL::BACKEND_T::OPENCL;
     }
 
     PDJE_PARALLEL::StftResult
@@ -203,8 +203,25 @@ class OpenclStftHarness {
             return {};
         }
 
+        post_process.check_values();
+        const int n_fft = 1 << windowSizeExp;
         return backend_.calculate(
-            pcm, target_window, windowSizeExp, overlapRatio, post_process);
+            pcm,
+            {
+                .sample_rate = 48000,
+                .n_fft = n_fft,
+                .hop_length = std::max(
+                    1u,
+                    static_cast<unsigned int>(
+                        static_cast<float>(n_fft) * (1.0f - overlapRatio))),
+                .target_window = target_window,
+                .post_process = post_process,
+                .frame_policy = PDJE_PARALLEL::FRAME_POLICY::LEGACY_ZERO_PAD,
+                .mel_filter_bank = post_process.mel_scale
+                    ? std::optional<PDJE_PARALLEL::MelFilterBankSpec>(
+                          BuildLegacyMelSpec(n_fft))
+                    : std::nullopt,
+            });
     }
 
     PDJE_PARALLEL::StftResult
@@ -234,14 +251,11 @@ class FallbackStftHarness {
         std::unique_ptr<PDJE_PARALLEL::detail::IStftBackend> backend)
     {
         opencl_backend_ = std::move(backend);
-        active_backend_ = PDJE_PARALLEL::BACKEND_T::OPENCL;
+        active_backend = PDJE_PARALLEL::BACKEND_T::OPENCL;
     }
 
-    PDJE_PARALLEL::BACKEND_T
-    active_backend() const noexcept
-    {
-        return active_backend_;
-    }
+    PDJE_PARALLEL::BACKEND_T active_backend =
+        PDJE_PARALLEL::BACKEND_T::SERIAL;
 
     PDJE_PARALLEL::StftResult
     calculate(std::vector<float>         &pcm,
@@ -266,15 +280,15 @@ class FallbackStftHarness {
                       BuildLegacyMelSpec(1 << windowSizeExp))
                 : std::nullopt);
 
-        if (active_backend_ == PDJE_PARALLEL::BACKEND_T::OPENCL &&
+        if (active_backend == PDJE_PARALLEL::BACKEND_T::OPENCL &&
             opencl_backend_) {
             try {
                 auto result = opencl_backend_->Execute(
-                    pcm,
-                    target_window,
-                    post_process,
-                    static_cast<unsigned int>(windowSizeExp),
-                    args);
+                    { pcm,
+                      target_window,
+                      post_process,
+                      static_cast<unsigned int>(windowSizeExp),
+                      args });
                 if (!result.first.empty() || !result.second.empty()) {
                     return result;
                 }
@@ -282,25 +296,24 @@ class FallbackStftHarness {
             }
 
             opencl_backend_.reset();
-            active_backend_ = PDJE_PARALLEL::BACKEND_T::SERIAL;
+            active_backend = PDJE_PARALLEL::BACKEND_T::SERIAL;
         }
 
         if (!serial_backend_) {
             return {};
         }
 
-        return serial_backend_->Execute(pcm,
-                                        target_window,
-                                        post_process,
-                                        static_cast<unsigned int>(windowSizeExp),
-                                        args);
+        return serial_backend_->Execute(
+            { pcm,
+              target_window,
+              post_process,
+              static_cast<unsigned int>(windowSizeExp),
+              args });
     }
 
   private:
     std::unique_ptr<PDJE_PARALLEL::detail::IStftBackend> serial_backend_;
     std::unique_ptr<PDJE_PARALLEL::detail::IStftBackend> opencl_backend_;
-    PDJE_PARALLEL::BACKEND_T active_backend_ =
-        PDJE_PARALLEL::BACKEND_T::SERIAL;
 };
 
 } // namespace PDJE_TEST::util

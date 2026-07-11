@@ -25,22 +25,6 @@ using ValueStorage = std::variant<std::monostate, std::int64_t, double, Text, By
 struct Value {
     ValueStorage storage {};
 
-    ValueKind
-    kind() const noexcept
-    {
-        switch (storage.index()) {
-            case 0:
-                return ValueKind::null_value;
-            case 1:
-                return ValueKind::integer;
-            case 2:
-                return ValueKind::real;
-            case 3:
-                return ValueKind::text;
-            default:
-                return ValueKind::bytes;
-        }
-    }
 };
 
 using Params = std::vector<Value>;
@@ -60,11 +44,6 @@ struct Row {
         return nullptr;
     }
 
-    const Value &
-    at(std::size_t index) const
-    {
-        return values.at(index);
-    }
 };
 
 struct ExecResult {

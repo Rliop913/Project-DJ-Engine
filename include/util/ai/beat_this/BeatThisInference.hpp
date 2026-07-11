@@ -16,11 +16,6 @@ struct FrameLogits {
     std::vector<float> beat;
     std::vector<float> downbeat;
 
-    bool
-    empty() const noexcept
-    {
-        return num_frames == 0;
-    }
 };
 
 struct SpectrogramChunk {

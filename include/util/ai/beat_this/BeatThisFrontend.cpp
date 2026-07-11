@@ -246,7 +246,7 @@ FrontendProcessor::FrontendProcessor(
     std::shared_ptr<MelSpectrogramBackend> backend,
     BeatThisFrontendConfig                 config)
     : backend_(std::move(backend)),
-      config_(std::move(config))
+      config(std::move(config))
 {
     if (!backend_) {
         throw std::invalid_argument(
@@ -261,10 +261,10 @@ FrontendProcessor::Execute(const std::span<const float> samples,
     const std::vector<float> mono =
         FrontendPipeline::PrepareMonoWaveform(samples,
                                               input_sample_rate,
-                                              config_);
+                                              config);
     return FrontendPipeline::ComputeLogMelSpectrogram(mono,
                                                       *backend_,
-                                                      config_);
+                                                      config);
 }
 
 } // namespace PDJE_UTIL::ai::beat_this

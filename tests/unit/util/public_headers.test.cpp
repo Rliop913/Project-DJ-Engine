@@ -63,7 +63,10 @@ static_assert(PDJE_UTIL::db::keyvalue::KeyValueBackendConcept<DummyKeyValueBacke
 static_assert(PDJE_UTIL::db::relational::RelationalBackendConcept<DummyRelationalBackend>);
 static_assert(PDJE_UTIL::db::nearest::NearestNeighborBackendConcept<DummyNearestBackend>);
 static_assert(std::is_same_v<decltype(PDJE_UTIL::function::clamp({})), double>);
-static_assert(std::is_same_v<decltype(PDJE_UTIL::function::slugify({})), std::string>);
+static_assert(std::is_same_v<
+              decltype(PDJE_UTIL::function::slugify(
+                  PDJE_UTIL::function::SlugifyArgs {})),
+              std::string>);
 static_assert(std::is_member_object_pointer_v<decltype(&PDJE_PARALLEL::STFT::active_backend)>);
 static_assert(std::is_member_object_pointer_v<decltype(&PDJE_UTIL::ai::OnnxSession::model_path)>);
 static_assert(std::is_member_object_pointer_v<decltype(&PDJE_UTIL::ai::BeatThisDetector::frontend_config)>);

@@ -5,6 +5,7 @@
 #include <array>
 #include <chrono>
 #include <cstdint>
+#include <exception>
 #include <filesystem>
 #include <fstream>
 #include <iomanip>
@@ -184,7 +185,7 @@ print_timing_summary(double      pcm_decode_ms,
 }
 
 int
-main()
+run()
 {
     const auto project_root = find_project_root();
     if (!project_root.has_value()) {
@@ -311,4 +312,17 @@ main()
               << std::endl;
 
     return 0;
+}
+
+int
+main()
+{
+    try {
+        return run();
+    } catch (const std::exception &error) {
+        std::cerr << "failed: " << error.what() << std::endl;
+    } catch (...) {
+        std::cerr << "failed: unknown error" << std::endl;
+    }
+    return 1;
 }

@@ -31,23 +31,11 @@ struct OnnxSessionOptions {
 struct FloatTensor {
     std::vector<int64_t> shape;
     std::vector<float>   values;
-
-    bool
-    empty() const noexcept
-    {
-        return values.empty();
-    }
 };
 
 struct NamedFloatTensor {
     std::string name;
     FloatTensor tensor;
-
-    bool
-    empty() const noexcept
-    {
-        return tensor.empty();
-    }
 };
 
 class PDJE_API OnnxSession {

@@ -92,7 +92,8 @@ ValidateRequest(const std::vector<float> &PCMdata, const STFTRequest &request)
     const auto &melSpec = request.mel_filter_bank.value();
     if (melSpec.sample_rate != request.sample_rate ||
         melSpec.n_fft != request.n_fft) {
-        return false;
+        throw std::invalid_argument(
+            "STFT mel filter-bank geometry does not match the request.");
     }
 
     if (!CheckMelVals(melSpec)) {
@@ -141,9 +142,9 @@ class STFTImpl {
   public:
     STFTImpl() : serial_backend_(std::make_unique<SERIAL_STFT>())
     {
-        active_backend_ = DetectPreferredBackend();
+        active_backend = DetectPreferredBackend();
 
-        if (active_backend_ != BACKEND_T::OPENCL) {
+        if (active_backend != BACKEND_T::OPENCL) {
             return;
         }
 
@@ -151,7 +152,7 @@ class STFTImpl {
             opencl_backend_ = std::make_unique<OPENCL_STFT>();
         } catch (const std::exception &) {
             opencl_backend_.reset();
-            active_backend_ = BACKEND_T::SERIAL;
+            active_backend = BACKEND_T::SERIAL;
         }
     }
 
@@ -160,11 +161,7 @@ class STFTImpl {
     STFTImpl(STFTImpl &&)                 = delete;
     STFTImpl &operator=(STFTImpl &&)      = delete;
 
-    BACKEND_T
-    active_backend() const noexcept
-    {
-        return active_backend_;
-    }
+    BACKEND_T active_backend = BACKEND_T::SERIAL;
 
     StftResult
     calculate(std::vector<float> &PCMdata, STFTRequest request)
@@ -187,7 +184,7 @@ class STFTImpl {
             gargs
         };
 
-        if (active_backend_ == BACKEND_T::OPENCL && opencl_backend_) {
+        if (active_backend == BACKEND_T::OPENCL && opencl_backend_) {
             try {
                 auto result = opencl_backend_->Execute(execution);
                 if (!result.first.empty() || !result.second.empty()) {
@@ -197,7 +194,7 @@ class STFTImpl {
             }
 
             opencl_backend_.reset();
-            active_backend_ = BACKEND_T::SERIAL;
+            active_backend = BACKEND_T::SERIAL;
         }
 
         if (!serial_backend_) {
@@ -210,7 +207,6 @@ class STFTImpl {
   private:
     std::unique_ptr<IStftBackend> serial_backend_;
     std::unique_ptr<IStftBackend> opencl_backend_;
-    BACKEND_T                     active_backend_ = BACKEND_T::SERIAL;
 };
 
 } // namespace PDJE_PARALLEL::detail
@@ -219,7 +215,7 @@ namespace PDJE_PARALLEL {
 
 STFT::STFT() : impl_(std::make_unique<detail::STFTImpl>())
 {
-    active_backend = impl_->active_backend();
+    active_backend = impl_->active_backend;
 }
 
 STFT::~STFT() = default;
@@ -241,7 +237,7 @@ STFT::calculate(std::vector<float> &PCMdata, const STFTRequest &request)
         throw std::logic_error("STFT instance is not initialized.");
     }
     auto result = impl_->calculate(PCMdata, request);
-    active_backend = impl_->active_backend();
+    active_backend = impl_->active_backend;
     return result;
 }
 

@@ -14,11 +14,6 @@ struct Spectrogram {
     int                num_bins   = 128;
     std::vector<float> values;
 
-    bool
-    empty() const noexcept
-    {
-        return values.empty();
-    }
 };
 
 class MelSpectrogramBackend {
@@ -40,15 +35,10 @@ class FrontendProcessor {
     Spectrogram
     Execute(std::span<const float> samples, int input_sample_rate) const;
 
-    const BeatThisFrontendConfig &
-    config() const noexcept
-    {
-        return config_;
-    }
+    BeatThisFrontendConfig config;
 
   private:
     std::shared_ptr<MelSpectrogramBackend> backend_;
-    BeatThisFrontendConfig                 config_;
 };
 
 class FrontendPipeline {

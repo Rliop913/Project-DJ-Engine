@@ -1,7 +1,7 @@
 #include "AnnoyBackend.hpp"
 
-#include <annoylib.h>
-#include <kissrandom.h>
+#include <annoy/annoylib.h>
+#include <annoy/kissrandom.h>
 
 #include <algorithm>
 #include <cstdlib>

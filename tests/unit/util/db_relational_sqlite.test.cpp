@@ -105,9 +105,9 @@ TEST_CASE("sqlite relational backend supports sql execution and queries")
     REQUIRE(selected.rows.size() == 1);
     const auto &row = selected.rows.front();
     REQUIRE(row.find("name") != nullptr);
-    CHECK(read_i64(row.at(0)) == 1);
+    CHECK(read_i64(row.values.at(0)) == 1);
     CHECK(read_text(*row.find("name")) == "alpha");
-    CHECK(read_bytes(row.at(2)) == payload);
+    CHECK(read_bytes(row.values.at(2)) == payload);
 
     auto updated =
         db.execute("UPDATE items SET name = ?1 WHERE id = ?2;",
