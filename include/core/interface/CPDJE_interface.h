@@ -9,7 +9,7 @@
 extern "C" {
 #endif
 
-typedef struct PDJE_EngineHandleV1 PDJE_EngineHandleV1;
+typedef struct PDJE_EngineHandleV1    PDJE_EngineHandleV1;
 typedef struct PDJE_MusicListHandleV1 PDJE_MusicListHandleV1;
 typedef struct PDJE_TrackListHandleV1 PDJE_TrackListHandleV1;
 typedef struct PDJE_PcmBufferHandleV1 PDJE_PcmBufferHandleV1;
@@ -72,6 +72,21 @@ typedef struct PDJE_CoreDataLineSnapshotV1 {
     PDJE_AudioSyncSnapshotV1 sync;
 } PDJE_CoreDataLineSnapshotV1;
 
+// V1 ownership and lifetime rules:
+//
+// - Successful create/search/decode calls transfer one opaque handle to the
+//   caller. Release it with the matching destroy function.
+// - An out-handle parameter must point to an empty slot. Producing functions
+//   set a valid slot to NULL before work and leave it NULL on failure.
+// - Music and track views borrow storage from their list handle.
+// - pdje_pcm_buffer_data_v1 borrows storage from its PCM handle.
+// - Core cursor/sync snapshots are copied. pre_rendered_data is borrowed from
+//   the player and can be invalidated by reset, reinitialization, or destroy.
+// - A versioned output accepts struct_size == 0 or at least its V1 size.
+//   Compatible V1 fields are reset before later failures; extension bytes are
+//   left untouched. Smaller nonzero buffers are rejected.
+// - Handles are not generally safe for concurrent mutation.
+
 PDJE_API int PDJE_CALL
 pdje_engine_create_v1(const char *root_dir, PDJE_EngineHandleV1 **out_engine);
 
@@ -91,7 +106,7 @@ pdje_music_list_size_v1(const PDJE_MusicListHandleV1 *list);
 PDJE_API int PDJE_CALL
 pdje_music_list_get_v1(const PDJE_MusicListHandleV1 *list,
                        size_t                        index,
-                       PDJE_MusicViewV1            *out_music);
+                       PDJE_MusicViewV1             *out_music);
 
 PDJE_API void PDJE_CALL
 pdje_music_list_destroy_v1(PDJE_MusicListHandleV1 *list);
@@ -107,7 +122,7 @@ pdje_track_list_size_v1(const PDJE_TrackListHandleV1 *list);
 PDJE_API int PDJE_CALL
 pdje_track_list_get_v1(const PDJE_TrackListHandleV1 *list,
                        size_t                        index,
-                       PDJE_TrackViewV1            *out_track);
+                       PDJE_TrackViewV1             *out_track);
 
 PDJE_API void PDJE_CALL
 pdje_track_list_destroy_v1(PDJE_TrackListHandleV1 *list);
@@ -117,7 +132,7 @@ pdje_engine_init_player_from_track_v1(PDJE_EngineHandleV1          *engine,
                                       PDJE_PlayModeV1               mode,
                                       const PDJE_TrackListHandleV1 *tracks,
                                       size_t                        track_index,
-                                      uint32_t                      frame_buffer_size);
+                                      uint32_t frame_buffer_size);
 
 PDJE_API int PDJE_CALL
 pdje_engine_init_player_manual_v1(PDJE_EngineHandleV1 *engine,

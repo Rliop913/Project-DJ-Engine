@@ -2,9 +2,22 @@
 
 #include "CPDJE_Input.h"
 
+#include "../cabi/CAbiHandle.hpp"
+
 #include <string>
 
 namespace {
+
+using InputHandle =
+    PDJE_TEST::CAbiHandle<PDJE_InputHandleV1, pdje_input_destroy_v1>;
+using DeviceListHandle =
+    PDJE_TEST::CAbiHandle<PDJE_InputDeviceListHandleV1,
+                          pdje_input_device_list_destroy_v1>;
+using MidiListHandle =
+    PDJE_TEST::CAbiHandle<PDJE_MidiDeviceListHandleV1,
+                          pdje_input_midi_device_list_destroy_v1>;
+using SnapshotHandle = PDJE_TEST::CAbiHandle<PDJE_InputSnapshotHandleV1,
+                                             pdje_input_snapshot_destroy_v1>;
 
 std::string
 to_string(const PDJE_InputStringViewV1 &value)
@@ -17,39 +30,43 @@ to_string(const PDJE_InputStringViewV1 &value)
 
 } // namespace
 
-TEST_CASE("CPDJE input C ABI fresh handle reports dead state and safe empty snapshot")
+TEST_CASE(
+    "CPDJE input C ABI fresh handle reports dead state and safe empty snapshot")
 {
-    PDJE_InputHandleV1 *input = nullptr;
-    REQUIRE(pdje_input_create_v1(&input) == PDJE_INPUT_RESULT_OK_V1);
-    REQUIRE(input != nullptr);
+    InputHandle input;
+    REQUIRE(pdje_input_create_v1(input.put()) == PDJE_INPUT_RESULT_OK_V1);
+    REQUIRE(static_cast<bool>(input));
 
     PDJE_InputStateV1 state = PDJE_INPUT_STATE_LOOP_RUNNING_V1;
     REQUIRE(pdje_input_get_state_v1(input, &state) == PDJE_INPUT_RESULT_OK_V1);
     CHECK(state == PDJE_INPUT_STATE_DEAD_V1);
 
-    PDJE_InputStringViewV1 backend {};
+    PDJE_InputStringViewV1 backend{};
     REQUIRE(pdje_input_get_backend_name_v1(input, &backend) ==
             PDJE_INPUT_RESULT_OK_V1);
     CHECK(to_string(backend) == "none");
 
-    PDJE_InputDeviceListHandleV1 *device_list = nullptr;
-    CHECK(pdje_input_list_devices_v1(input, &device_list) ==
+    DeviceListHandle device_list;
+    CHECK(pdje_input_list_devices_v1(input, device_list.put()) ==
           PDJE_INPUT_RESULT_INVALID_STATE_V1);
+    CHECK_FALSE(static_cast<bool>(device_list));
 
-    PDJE_MidiDeviceListHandleV1 *midi_list = nullptr;
-    CHECK(pdje_input_list_midi_devices_v1(input, &midi_list) ==
+    MidiListHandle midi_list;
+    CHECK(pdje_input_list_midi_devices_v1(input, midi_list.put()) ==
           PDJE_INPUT_RESULT_INVALID_STATE_V1);
+    CHECK_FALSE(static_cast<bool>(midi_list));
 
-    CHECK(pdje_input_config_v1(input, nullptr, nullptr, 0, nullptr, nullptr, 0) ==
-          PDJE_INPUT_RESULT_INVALID_STATE_V1);
+    CHECK(
+        pdje_input_config_v1(input, nullptr, nullptr, 0, nullptr, nullptr, 0) ==
+        PDJE_INPUT_RESULT_INVALID_STATE_V1);
     CHECK(pdje_input_run_v1(input) == PDJE_INPUT_RESULT_INVALID_STATE_V1);
 
-    PDJE_InputSnapshotHandleV1 *snapshot = nullptr;
-    REQUIRE(pdje_input_poll_snapshot_v1(input, &snapshot) ==
+    SnapshotHandle snapshot;
+    REQUIRE(pdje_input_poll_snapshot_v1(input, snapshot.put()) ==
             PDJE_INPUT_RESULT_OK_V1);
-    REQUIRE(snapshot != nullptr);
+    REQUIRE(static_cast<bool>(snapshot));
 
-    PDJE_InputSnapshotInfoV1 info {};
+    PDJE_InputSnapshotInfoV1 info{};
     info.struct_size = sizeof(info);
     REQUIRE(pdje_input_snapshot_describe_v1(snapshot, &info) ==
             PDJE_INPUT_RESULT_OK_V1);
@@ -64,18 +81,17 @@ TEST_CASE("CPDJE input C ABI fresh handle reports dead state and safe empty snap
     CHECK(pdje_input_snapshot_midi_get_v1(snapshot, 0, nullptr) ==
           PDJE_INPUT_RESULT_INVALID_ARGUMENT_V1);
 
-    pdje_input_snapshot_destroy_v1(snapshot);
     CHECK(pdje_input_kill_v1(input) == PDJE_INPUT_RESULT_OK_V1);
-    pdje_input_destroy_v1(input);
     pdje_input_destroy_v1(nullptr);
     pdje_input_snapshot_destroy_v1(nullptr);
 }
 
-TEST_CASE("CPDJE input C ABI init, enumerate, validate getters, and kill cleanly")
+TEST_CASE(
+    "CPDJE input C ABI init, enumerate, validate getters, and kill cleanly")
 {
-    PDJE_InputHandleV1 *input = nullptr;
-    REQUIRE(pdje_input_create_v1(&input) == PDJE_INPUT_RESULT_OK_V1);
-    REQUIRE(input != nullptr);
+    InputHandle input;
+    REQUIRE(pdje_input_create_v1(input.put()) == PDJE_INPUT_RESULT_OK_V1);
+    REQUIRE(static_cast<bool>(input));
 
     REQUIRE(pdje_input_init_v1(input, nullptr, nullptr, 0) ==
             PDJE_INPUT_RESULT_OK_V1);
@@ -84,20 +100,20 @@ TEST_CASE("CPDJE input C ABI init, enumerate, validate getters, and kill cleanly
     REQUIRE(pdje_input_get_state_v1(input, &state) == PDJE_INPUT_RESULT_OK_V1);
     CHECK(state == PDJE_INPUT_STATE_DEVICE_CONFIG_V1);
 
-    PDJE_InputStringViewV1 backend {};
+    PDJE_InputStringViewV1 backend{};
     REQUIRE(pdje_input_get_backend_name_v1(input, &backend) ==
             PDJE_INPUT_RESULT_OK_V1);
     const bool backend_view_is_sane =
         backend.data != nullptr || backend.size == 0;
     CHECK(backend_view_is_sane);
 
-    PDJE_InputDeviceListHandleV1 *device_list = nullptr;
-    REQUIRE(pdje_input_list_devices_v1(input, &device_list) ==
+    DeviceListHandle device_list;
+    REQUIRE(pdje_input_list_devices_v1(input, device_list.put()) ==
             PDJE_INPUT_RESULT_OK_V1);
-    REQUIRE(device_list != nullptr);
+    REQUIRE(static_cast<bool>(device_list));
 
     const auto device_count = pdje_input_device_list_size_v1(device_list);
-    PDJE_InputDeviceViewV1 device_view {};
+    PDJE_InputDeviceViewV1 device_view{};
     device_view.struct_size = sizeof(device_view);
     if (device_count > 0) {
         REQUIRE(pdje_input_device_list_get_v1(device_list, 0, &device_view) ==
@@ -108,23 +124,29 @@ TEST_CASE("CPDJE input C ABI init, enumerate, validate getters, and kill cleanly
             device_view.type == PDJE_INPUT_DEVICE_KEYBOARD_V1 ||
             device_view.type == PDJE_INPUT_DEVICE_UNKNOWN_V1;
         CHECK(device_type_is_known);
+
+        PDJE_InputDeviceViewV1 zero_sized_view{};
+        REQUIRE(
+            pdje_input_device_list_get_v1(device_list, 0, &zero_sized_view) ==
+            PDJE_INPUT_RESULT_OK_V1);
+        CHECK(zero_sized_view.struct_size == sizeof(PDJE_InputDeviceViewV1));
     } else {
         CHECK(pdje_input_device_list_get_v1(device_list, 0, &device_view) ==
               PDJE_INPUT_RESULT_OUT_OF_RANGE_V1);
     }
 
-    PDJE_InputDeviceViewV1 bad_device_view {};
+    PDJE_InputDeviceViewV1 bad_device_view{};
     bad_device_view.struct_size = 1;
     CHECK(pdje_input_device_list_get_v1(device_list, 0, &bad_device_view) ==
           PDJE_INPUT_RESULT_INVALID_ARGUMENT_V1);
 
-    PDJE_MidiDeviceListHandleV1 *midi_list = nullptr;
-    REQUIRE(pdje_input_list_midi_devices_v1(input, &midi_list) ==
+    MidiListHandle midi_list;
+    REQUIRE(pdje_input_list_midi_devices_v1(input, midi_list.put()) ==
             PDJE_INPUT_RESULT_OK_V1);
-    REQUIRE(midi_list != nullptr);
+    REQUIRE(static_cast<bool>(midi_list));
 
     const auto midi_count = pdje_input_midi_device_list_size_v1(midi_list);
-    PDJE_MidiDeviceViewV1 midi_view {};
+    PDJE_MidiDeviceViewV1 midi_view{};
     midi_view.struct_size = sizeof(midi_view);
     if (midi_count > 0) {
         REQUIRE(pdje_input_midi_device_list_get_v1(midi_list, 0, &midi_view) ==
@@ -135,13 +157,14 @@ TEST_CASE("CPDJE input C ABI init, enumerate, validate getters, and kill cleanly
               PDJE_INPUT_RESULT_OUT_OF_RANGE_V1);
     }
 
-    PDJE_MidiDeviceViewV1 bad_midi_view {};
+    PDJE_MidiDeviceViewV1 bad_midi_view{};
     bad_midi_view.struct_size = 1;
     CHECK(pdje_input_midi_device_list_get_v1(midi_list, 0, &bad_midi_view) ==
           PDJE_INPUT_RESULT_INVALID_ARGUMENT_V1);
 
-    CHECK(pdje_input_config_v1(input, nullptr, nullptr, 0, nullptr, nullptr, 0) ==
-          PDJE_INPUT_RESULT_OPERATION_FAILED_V1);
+    CHECK(
+        pdje_input_config_v1(input, nullptr, nullptr, 0, nullptr, nullptr, 0) ==
+        PDJE_INPUT_RESULT_OPERATION_FAILED_V1);
 
     if (device_count == 0) {
         const size_t bad_device_index = 0;
@@ -165,37 +188,38 @@ TEST_CASE("CPDJE input C ABI init, enumerate, validate getters, and kill cleanly
                                    1) == PDJE_INPUT_RESULT_OUT_OF_RANGE_V1);
     }
 
-    PDJE_InputSnapshotHandleV1 *snapshot = nullptr;
-    REQUIRE(pdje_input_poll_snapshot_v1(input, &snapshot) ==
+    SnapshotHandle snapshot;
+    REQUIRE(pdje_input_poll_snapshot_v1(input, snapshot.put()) ==
             PDJE_INPUT_RESULT_OK_V1);
-    REQUIRE(snapshot != nullptr);
+    REQUIRE(static_cast<bool>(snapshot));
 
-    PDJE_InputSnapshotInfoV1 info {};
+    PDJE_InputSnapshotInfoV1 info{};
     info.struct_size = sizeof(info);
     REQUIRE(pdje_input_snapshot_describe_v1(snapshot, &info) ==
             PDJE_INPUT_RESULT_OK_V1);
-    CHECK(info.input_event_count == pdje_input_snapshot_input_size_v1(snapshot));
+    CHECK(info.input_event_count ==
+          pdje_input_snapshot_input_size_v1(snapshot));
     CHECK(info.midi_event_count == pdje_input_snapshot_midi_size_v1(snapshot));
 
-    PDJE_InputSnapshotInfoV1 bad_info {};
+    PDJE_InputSnapshotInfoV1 zero_sized_info{};
+    REQUIRE(pdje_input_snapshot_describe_v1(snapshot, &zero_sized_info) ==
+            PDJE_INPUT_RESULT_OK_V1);
+    CHECK(zero_sized_info.struct_size == sizeof(PDJE_InputSnapshotInfoV1));
+
+    PDJE_InputSnapshotInfoV1 bad_info{};
     bad_info.struct_size = 1;
     CHECK(pdje_input_snapshot_describe_v1(snapshot, &bad_info) ==
           PDJE_INPUT_RESULT_INVALID_ARGUMENT_V1);
 
-    pdje_input_snapshot_destroy_v1(snapshot);
-    pdje_input_midi_device_list_destroy_v1(midi_list);
-    pdje_input_device_list_destroy_v1(device_list);
-
     REQUIRE(pdje_input_kill_v1(input) == PDJE_INPUT_RESULT_OK_V1);
     REQUIRE(pdje_input_get_state_v1(input, &state) == PDJE_INPUT_RESULT_OK_V1);
     CHECK(state == PDJE_INPUT_STATE_DEAD_V1);
-
-    pdje_input_destroy_v1(input);
 }
 
 TEST_CASE("CPDJE input C ABI rejects null and mismatched outputs")
 {
-    CHECK(pdje_input_create_v1(nullptr) == PDJE_INPUT_RESULT_INVALID_ARGUMENT_V1);
+    CHECK(pdje_input_create_v1(nullptr) ==
+          PDJE_INPUT_RESULT_INVALID_ARGUMENT_V1);
     CHECK(pdje_input_init_v1(nullptr, nullptr, nullptr, 0) ==
           PDJE_INPUT_RESULT_INVALID_ARGUMENT_V1);
     CHECK(pdje_input_kill_v1(nullptr) == PDJE_INPUT_RESULT_INVALID_ARGUMENT_V1);
@@ -205,4 +229,9 @@ TEST_CASE("CPDJE input C ABI rejects null and mismatched outputs")
           PDJE_INPUT_RESULT_INVALID_ARGUMENT_V1);
     CHECK(pdje_input_poll_snapshot_v1(nullptr, nullptr) ==
           PDJE_INPUT_RESULT_INVALID_ARGUMENT_V1);
+
+    SnapshotHandle snapshot;
+    CHECK(pdje_input_poll_snapshot_v1(nullptr, snapshot.put()) ==
+          PDJE_INPUT_RESULT_INVALID_ARGUMENT_V1);
+    CHECK_FALSE(static_cast<bool>(snapshot));
 }

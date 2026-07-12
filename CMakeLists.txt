@@ -280,6 +280,10 @@ endif()# end dynamic
   FacadeTargetFlags(CPDJE_MODULE_JUDGE)
 endif()
 
+if(PDJE_TEST)
+  include(cmakes/tests/CAbiTests.cmake)
+endif()
+
 
 
 

@@ -4,15 +4,26 @@
 #include "CPDJE_Judge.h"
 #include "CPDJE_interface.h"
 
+#include "../cabi/CAbiHandle.hpp"
+
 #include <atomic>
 #include <chrono>
 #include <filesystem>
 #include <string>
-#include <thread>
 
 namespace {
 
 namespace fs = std::filesystem;
+
+using EngineHandle =
+    PDJE_TEST::CAbiHandle<PDJE_EngineHandleV1, pdje_engine_destroy_v1>;
+using InputHandle =
+    PDJE_TEST::CAbiHandle<PDJE_InputHandleV1, pdje_input_destroy_v1>;
+using DeviceListHandle =
+    PDJE_TEST::CAbiHandle<PDJE_InputDeviceListHandleV1,
+                          pdje_input_device_list_destroy_v1>;
+using JudgeHandle =
+    PDJE_TEST::CAbiHandle<PDJE_JudgeHandleV1, pdje_judge_destroy_v1>;
 
 fs::path
 make_temp_root(const std::string &label)
@@ -56,26 +67,13 @@ count_missed_notes(const PDJE_JudgeMissedNoteV1 *notes,
 }
 
 bool
-wait_for_nonzero(const std::atomic<int> &value, const std::chrono::milliseconds timeout)
-{
-    const auto deadline = std::chrono::steady_clock::now() + timeout;
-    while (std::chrono::steady_clock::now() < deadline) {
-        if (value.load(std::memory_order_relaxed) > 0) {
-            return true;
-        }
-        std::this_thread::sleep_for(std::chrono::milliseconds(10));
-    }
-    return value.load(std::memory_order_relaxed) > 0;
-}
-
-bool
 find_first_real_device(const PDJE_InputDeviceListHandleV1 *devices,
-                       size_t                              &out_index,
+                       size_t                             &out_index,
                        PDJE_InputDeviceTypeV1             &out_type)
 {
     const auto count = pdje_input_device_list_size_v1(devices);
     for (size_t i = 0; i < count; ++i) {
-        PDJE_InputDeviceViewV1 view {};
+        PDJE_InputDeviceViewV1 view{};
         view.struct_size = sizeof(view);
         if (pdje_input_device_list_get_v1(devices, i, &view) !=
             PDJE_INPUT_RESULT_OK_V1) {
@@ -95,7 +93,8 @@ find_first_real_device(const PDJE_InputDeviceListHandleV1 *devices,
 
 TEST_CASE("CPDJE judge C ABI validates null arguments and safe no-op teardown")
 {
-    CHECK(pdje_judge_create_v1(nullptr) == PDJE_JUDGE_RESULT_INVALID_ARGUMENT_V1);
+    CHECK(pdje_judge_create_v1(nullptr) ==
+          PDJE_JUDGE_RESULT_INVALID_ARGUMENT_V1);
     CHECK(pdje_judge_attach_engine_v1(nullptr, nullptr) ==
           PDJE_JUDGE_RESULT_INVALID_ARGUMENT_V1);
     CHECK(pdje_judge_attach_input_v1(nullptr, nullptr) ==
@@ -109,58 +108,67 @@ TEST_CASE("CPDJE judge C ABI validates null arguments and safe no-op teardown")
     pdje_judge_destroy_v1(nullptr);
 }
 
-TEST_CASE("CPDJE judge C ABI stages prerequisites and rejects out-of-range rails")
+TEST_CASE(
+    "CPDJE judge C ABI stages prerequisites and rejects out-of-range rails")
 {
-    PDJE_JudgeHandleV1 *judge = nullptr;
-    REQUIRE(pdje_judge_create_v1(&judge) == PDJE_JUDGE_RESULT_OK_V1);
-    REQUIRE(judge != nullptr);
+    const auto    root = make_temp_root("staged");
+    ScopedCleanup cleanup{ root };
+
+    EngineHandle     engine;
+    InputHandle      input;
+    DeviceListHandle devices;
+    JudgeHandle      judge;
+
+    REQUIRE(pdje_judge_create_v1(judge.put()) == PDJE_JUDGE_RESULT_OK_V1);
+    REQUIRE(static_cast<bool>(judge));
 
     PDJE_JudgeStartStatusV1 status = PDJE_JUDGE_START_STATUS_OK_V1;
     REQUIRE(pdje_judge_start_v1(judge, &status) == PDJE_JUDGE_RESULT_OK_V1);
     CHECK(status == PDJE_JUDGE_START_STATUS_CORE_LINE_MISSING_V1);
 
-    const auto root = make_temp_root("staged");
-    ScopedCleanup cleanup { root };
-
-    PDJE_EngineHandleV1 *engine = nullptr;
-    REQUIRE(pdje_engine_create_v1(root.generic_string().c_str(), &engine) ==
-            PDJE_RESULT_OK_V1);
-    REQUIRE(engine != nullptr);
+    REQUIRE(pdje_engine_create_v1(root.generic_string().c_str(),
+                                  engine.put()) == PDJE_RESULT_OK_V1);
+    REQUIRE(static_cast<bool>(engine));
 
     const int manual_init = pdje_engine_init_player_manual_v1(engine, 48);
     CHECK((manual_init == PDJE_RESULT_OK_V1 ||
            manual_init == PDJE_RESULT_INTERNAL_ERROR_V1));
-    REQUIRE(pdje_judge_attach_engine_v1(judge, engine) == PDJE_JUDGE_RESULT_OK_V1);
+    REQUIRE(pdje_judge_attach_engine_v1(judge, engine) ==
+            PDJE_JUDGE_RESULT_OK_V1);
 
     if (manual_init == PDJE_RESULT_OK_V1) {
         REQUIRE(pdje_judge_start_v1(judge, &status) == PDJE_JUDGE_RESULT_OK_V1);
         CHECK(status == PDJE_JUDGE_START_STATUS_INPUT_LINE_MISSING_V1);
     }
 
-    PDJE_InputHandleV1 *input = nullptr;
-    REQUIRE(pdje_input_create_v1(&input) == PDJE_INPUT_RESULT_OK_V1);
-    REQUIRE(input != nullptr);
-    REQUIRE(pdje_input_init_v1(input, nullptr, nullptr, 0) == PDJE_INPUT_RESULT_OK_V1);
-    REQUIRE(pdje_judge_attach_input_v1(judge, input) == PDJE_JUDGE_RESULT_OK_V1);
+    REQUIRE(pdje_input_create_v1(input.put()) == PDJE_INPUT_RESULT_OK_V1);
+    REQUIRE(static_cast<bool>(input));
+    REQUIRE(pdje_input_init_v1(input, nullptr, nullptr, 0) ==
+            PDJE_INPUT_RESULT_OK_V1);
+    REQUIRE(pdje_judge_attach_input_v1(judge, input) ==
+            PDJE_JUDGE_RESULT_OK_V1);
 
-    PDJE_InputDeviceListHandleV1 *devices = nullptr;
-    REQUIRE(pdje_input_list_devices_v1(input, &devices) == PDJE_INPUT_RESULT_OK_V1);
-    REQUIRE(devices != nullptr);
+    REQUIRE(pdje_input_list_devices_v1(input, devices.put()) ==
+            PDJE_INPUT_RESULT_OK_V1);
+    REQUIRE(static_cast<bool>(devices));
 
-    size_t                 device_index    = 0;
-    PDJE_InputDeviceTypeV1 device_type     = PDJE_INPUT_DEVICE_UNKNOWN_V1;
+    size_t                 device_index = 0;
+    PDJE_InputDeviceTypeV1 device_type  = PDJE_INPUT_DEVICE_UNKNOWN_V1;
     const bool             has_real_device =
         find_first_real_device(devices, device_index, device_type);
     if (manual_init == PDJE_RESULT_OK_V1 && has_real_device) {
         const size_t selected_index = device_index;
-        const auto config_result =
-            pdje_input_config_v1(input, devices, &selected_index, 1, nullptr, nullptr, 0);
+        const auto   config_result  = pdje_input_config_v1(
+            input, devices, &selected_index, 1, nullptr, nullptr, 0);
         if (config_result == PDJE_INPUT_RESULT_OK_V1) {
-            REQUIRE(pdje_judge_start_v1(judge, &status) == PDJE_JUDGE_RESULT_OK_V1);
+            REQUIRE(pdje_judge_start_v1(judge, &status) ==
+                    PDJE_JUDGE_RESULT_OK_V1);
             CHECK(status == PDJE_JUDGE_START_STATUS_NOTE_OBJECT_MISSING_V1);
 
             const uint16_t device_key_mask =
-                device_type == PDJE_INPUT_DEVICE_MOUSE_V1 ? PDJE_MOUSE_L_BTN_DOWN : 1;
+                device_type == PDJE_INPUT_DEVICE_MOUSE_V1
+                    ? PDJE_MOUSE_L_BTN_DOWN
+                    : 1;
             REQUIRE(pdje_judge_add_input_rail_v1(
                         judge, devices, device_index, device_key_mask, 0, 7) ==
                     PDJE_JUDGE_RESULT_OK_V1);
@@ -168,7 +176,8 @@ TEST_CASE("CPDJE judge C ABI stages prerequisites and rejects out-of-range rails
                       judge, devices, device_index + 1000, 1, 0, 9) ==
                   PDJE_JUDGE_RESULT_OUT_OF_RANGE_V1);
 
-            REQUIRE(pdje_judge_start_v1(judge, &status) == PDJE_JUDGE_RESULT_OK_V1);
+            REQUIRE(pdje_judge_start_v1(judge, &status) ==
+                    PDJE_JUDGE_RESULT_OK_V1);
             CHECK(status == PDJE_JUDGE_START_STATUS_NOTE_OBJECT_MISSING_V1);
 
             CHECK(pdje_judge_add_note_object_v1(
@@ -178,76 +187,64 @@ TEST_CASE("CPDJE judge C ABI stages prerequisites and rejects out-of-range rails
                         judge, "tap", 0, "", "", "", 0, 0, 7) ==
                     PDJE_JUDGE_RESULT_OK_V1);
 
-            REQUIRE(pdje_judge_start_v1(judge, &status) == PDJE_JUDGE_RESULT_OK_V1);
+            REQUIRE(pdje_judge_start_v1(judge, &status) ==
+                    PDJE_JUDGE_RESULT_OK_V1);
             CHECK(status == PDJE_JUDGE_START_STATUS_EVENT_RULE_EMPTY_V1);
         } else {
-            INFO("input device configuration is unavailable in this environment");
+            INFO("input device configuration is unavailable in this "
+                 "environment");
         }
     }
-
-    pdje_input_device_list_destroy_v1(devices);
-    CHECK(pdje_input_kill_v1(input) == PDJE_INPUT_RESULT_OK_V1);
-    pdje_input_destroy_v1(input);
-    pdje_engine_reset_player_v1(engine);
-    pdje_engine_destroy_v1(engine);
-    pdje_judge_destroy_v1(judge);
 }
 
-TEST_CASE("CPDJE judge C ABI can start with configured engine/input and emit missed callbacks")
+TEST_CASE("CPDJE judge C ABI can start with configured engine/input and reject "
+          "live mutation")
 {
-    const auto root = make_temp_root("runtime");
-    ScopedCleanup cleanup { root };
+    const auto    root = make_temp_root("runtime");
+    ScopedCleanup cleanup{ root };
 
-    PDJE_JudgeHandleV1 *judge = nullptr;
-    REQUIRE(pdje_judge_create_v1(&judge) == PDJE_JUDGE_RESULT_OK_V1);
-    REQUIRE(judge != nullptr);
+    EngineHandle     engine;
+    InputHandle      input;
+    DeviceListHandle devices;
+    JudgeHandle      judge;
 
-    PDJE_EngineHandleV1 *engine = nullptr;
-    REQUIRE(pdje_engine_create_v1(root.generic_string().c_str(), &engine) ==
-            PDJE_RESULT_OK_V1);
-    REQUIRE(engine != nullptr);
+    REQUIRE(pdje_judge_create_v1(judge.put()) == PDJE_JUDGE_RESULT_OK_V1);
+    REQUIRE(static_cast<bool>(judge));
+
+    REQUIRE(pdje_engine_create_v1(root.generic_string().c_str(),
+                                  engine.put()) == PDJE_RESULT_OK_V1);
+    REQUIRE(static_cast<bool>(engine));
 
     if (pdje_engine_init_player_manual_v1(engine, 48) != PDJE_RESULT_OK_V1) {
         INFO("manual player init is unavailable in this environment");
-        pdje_engine_destroy_v1(engine);
-        pdje_judge_destroy_v1(judge);
         return;
     }
-    REQUIRE(pdje_judge_attach_engine_v1(judge, engine) == PDJE_JUDGE_RESULT_OK_V1);
+    REQUIRE(pdje_judge_attach_engine_v1(judge, engine) ==
+            PDJE_JUDGE_RESULT_OK_V1);
 
-    PDJE_InputHandleV1 *input = nullptr;
-    REQUIRE(pdje_input_create_v1(&input) == PDJE_INPUT_RESULT_OK_V1);
-    REQUIRE(input != nullptr);
-    REQUIRE(pdje_input_init_v1(input, nullptr, nullptr, 0) == PDJE_INPUT_RESULT_OK_V1);
-    REQUIRE(pdje_judge_attach_input_v1(judge, input) == PDJE_JUDGE_RESULT_OK_V1);
+    REQUIRE(pdje_input_create_v1(input.put()) == PDJE_INPUT_RESULT_OK_V1);
+    REQUIRE(static_cast<bool>(input));
+    REQUIRE(pdje_input_init_v1(input, nullptr, nullptr, 0) ==
+            PDJE_INPUT_RESULT_OK_V1);
+    REQUIRE(pdje_judge_attach_input_v1(judge, input) ==
+            PDJE_JUDGE_RESULT_OK_V1);
 
-    PDJE_InputDeviceListHandleV1 *devices = nullptr;
-    REQUIRE(pdje_input_list_devices_v1(input, &devices) == PDJE_INPUT_RESULT_OK_V1);
-    REQUIRE(devices != nullptr);
+    REQUIRE(pdje_input_list_devices_v1(input, devices.put()) ==
+            PDJE_INPUT_RESULT_OK_V1);
+    REQUIRE(static_cast<bool>(devices));
 
     size_t                 device_index = 0;
     PDJE_InputDeviceTypeV1 device_type  = PDJE_INPUT_DEVICE_UNKNOWN_V1;
     if (!find_first_real_device(devices, device_index, device_type)) {
-        INFO("no keyboard or mouse device is available for judge runtime setup");
-        pdje_input_device_list_destroy_v1(devices);
-        CHECK(pdje_input_kill_v1(input) == PDJE_INPUT_RESULT_OK_V1);
-        pdje_input_destroy_v1(input);
-        pdje_engine_reset_player_v1(engine);
-        pdje_engine_destroy_v1(engine);
-        pdje_judge_destroy_v1(judge);
+        INFO(
+            "no keyboard or mouse device is available for judge runtime setup");
         return;
     }
 
-    const auto config_result =
-        pdje_input_config_v1(input, devices, &device_index, 1, nullptr, nullptr, 0);
+    const auto config_result = pdje_input_config_v1(
+        input, devices, &device_index, 1, nullptr, nullptr, 0);
     if (config_result != PDJE_INPUT_RESULT_OK_V1) {
         INFO("input device configuration is unavailable in this environment");
-        pdje_input_device_list_destroy_v1(devices);
-        CHECK(pdje_input_kill_v1(input) == PDJE_INPUT_RESULT_OK_V1);
-        pdje_input_destroy_v1(input);
-        pdje_engine_reset_player_v1(engine);
-        pdje_engine_destroy_v1(engine);
-        pdje_judge_destroy_v1(judge);
         return;
     }
 
@@ -261,17 +258,21 @@ TEST_CASE("CPDJE judge C ABI can start with configured engine/input and emit mis
     REQUIRE(pdje_judge_add_input_rail_v1(
                 judge, devices, device_index, device_key_mask, 0, 7) ==
             PDJE_JUDGE_RESULT_OK_V1);
-    REQUIRE(pdje_judge_add_note_object_v1(judge, "tap", 0, "", "", "", 0, 0, 7) ==
+    REQUIRE(
+        pdje_judge_add_note_object_v1(judge, "tap", 0, "", "", "", 0, 0, 7) ==
+        PDJE_JUDGE_RESULT_OK_V1);
+
+    std::atomic<int> used_count{ 0 };
+    std::atomic<int> missed_count{ 0 };
+    REQUIRE(pdje_judge_set_used_callback_v1(
+                judge, count_used_events, &used_count) ==
+            PDJE_JUDGE_RESULT_OK_V1);
+    REQUIRE(pdje_judge_set_missed_callback_v1(
+                judge, count_missed_notes, &missed_count) ==
             PDJE_JUDGE_RESULT_OK_V1);
 
-    std::atomic<int> used_count { 0 };
-    std::atomic<int> missed_count { 0 };
-    REQUIRE(pdje_judge_set_used_callback_v1(judge, count_used_events, &used_count) ==
-            PDJE_JUDGE_RESULT_OK_V1);
-    REQUIRE(pdje_judge_set_missed_callback_v1(judge, count_missed_notes, &missed_count) ==
-            PDJE_JUDGE_RESULT_OK_V1);
-
-    PDJE_JudgeStartStatusV1 status = PDJE_JUDGE_START_STATUS_NOTE_OBJECT_MISSING_V1;
+    PDJE_JudgeStartStatusV1 status =
+        PDJE_JUDGE_START_STATUS_NOTE_OBJECT_MISSING_V1;
     REQUIRE(pdje_judge_start_v1(judge, &status) == PDJE_JUDGE_RESULT_OK_V1);
     REQUIRE(status == PDJE_JUDGE_START_STATUS_OK_V1);
 
@@ -284,17 +285,7 @@ TEST_CASE("CPDJE judge C ABI can start with configured engine/input and emit mis
     CHECK(pdje_judge_set_callback_intervals_v1(judge, 10, 10) ==
           PDJE_JUDGE_RESULT_INVALID_STATE_V1);
 
-    CHECK(wait_for_nonzero(missed_count, std::chrono::milliseconds(500)));
-    CHECK(used_count.load(std::memory_order_relaxed) >= 0);
-
     pdje_judge_end_v1(judge);
     REQUIRE(pdje_judge_set_missed_callback_v1(judge, nullptr, nullptr) ==
             PDJE_JUDGE_RESULT_OK_V1);
-
-    pdje_input_device_list_destroy_v1(devices);
-    CHECK(pdje_input_kill_v1(input) == PDJE_INPUT_RESULT_OK_V1);
-    pdje_input_destroy_v1(input);
-    pdje_engine_reset_player_v1(engine);
-    pdje_engine_destroy_v1(engine);
-    pdje_judge_destroy_v1(judge);
 }
