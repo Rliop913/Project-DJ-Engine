@@ -1,32 +1,40 @@
 # AGENTS.md - PDJE Agent Entry
 
-This is the thin root entrypoint for coding agents. The canonical Markdown
-control docs live under `AGENT_DOCS/`.
+Project-DJ-Engine (PDJE) is a C++20 DJ/rhythm-game engine. The native engine,
+input capture, judge runtime, utility library, C ABI, and optional language
+bindings are built from this repository.
 
-## Start Here
+## Read Order
 
-- [AGENT_DOCS/INDEX.md](AGENT_DOCS/INDEX.md)
-- [AGENT_DOCS/INVARIANTS.md](AGENT_DOCS/INVARIANTS.md)
-- [AGENT_DOCS/VERIFY.md](AGENT_DOCS/VERIFY.md)
-- [AGENT_DOCS/ARCHITECTURE.md](AGENT_DOCS/ARCHITECTURE.md)
+1. [AGENT_DOCS/INDEX.md](AGENT_DOCS/INDEX.md)
+2. [AGENT_DOCS/INVARIANTS.md](AGENT_DOCS/INVARIANTS.md)
+3. The task route in [AGENT_DOCS/CHANGE_MAP.md](AGENT_DOCS/CHANGE_MAP.md)
+4. [AGENT_DOCS/RUNTIME_CONTRACTS.md](AGENT_DOCS/RUNTIME_CONTRACTS.md) when
+   changing a public API, lifecycle, data line, input state, or judge behavior
+5. [AGENT_DOCS/VERIFY.md](AGENT_DOCS/VERIFY.md) before verification
 
-## Critical Rules
+## Non-Negotiable Rules
 
-- `AGENT_DOCS/` is the canonical Markdown doc surface.
-- `docs/` contains only redirecting HTML for the external documentation site.
-- `BluePrint_PDJE/` is archive material only.
-- Source defaults come from `cmakes/Options.cmake`, not from local build
-  caches.
-- Agents must ask the user which build/config or verification flow to use
-  before running any `conan install`, `cmake`, `cmake --build`, `ctest`, or
-  wrapper script command.
-- Agents must not create or use build directories other than `./build` unless
-  the user explicitly requests an exception.
-- `include/` contains both headers and implementation `.cpp` files.
+- Current code and checked-in CMake files outrank prose when they disagree.
+- `AGENT_DOCS/` is the canonical agent-facing Markdown surface.
+- `docs/` is an external-site redirect; `BluePrint_PDJE/` is archive material.
+- Source defaults come from `cmakes/Options.cmake`; preset values come from
+  `CMakePresets.json`. Do not infer either from a local cache.
+- `include/` contains both headers and implementation `.cpp` files. Adding a
+  source file normally also requires updating an explicit list under `cmakes/`.
+- Preserve unrelated worktree changes and keep edits within the requested
+  subsystem.
+- Before the first `conan install`, CMake configure/build, CTest run, executable
+  smoke test, or wrapper-script invocation in a task, ask the user which
+  platform preset, configuration, and verification scope to use.
+- Use only repo-root `./build` unless the user explicitly approves another
+  build directory.
 
-## Primary Entry Points
+## Primary Interfaces
 
-- `include/core/interface/PDJE_interface.hpp`
-- `include/input/PDJE_Input.hpp`
-- `include/judge/PDJE_Judge.hpp`
-- `include/util/PDJE_Util.hpp`
+| Surface | C++ | C ABI |
+| --- | --- | --- |
+| Core | `include/core/interface/PDJE_interface.hpp` | `include/core/interface/CPDJE_interface.h` |
+| Input | `include/input/PDJE_Input.hpp` | `include/input/CPDJE_Input.h` |
+| Judge | `include/judge/PDJE_Judge.hpp` | `include/judge/CPDJE_Judge.h` |
+| Utility | `include/util/PDJE_Util.hpp` plus public leaf headers | none |

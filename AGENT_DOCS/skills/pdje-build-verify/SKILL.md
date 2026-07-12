@@ -1,57 +1,42 @@
 ---
 name: pdje-build-verify
-description: Build and verify changes in Project_DJ_Engine using the repository's checked-in preset matrix and CTest flows. Use when Codex needs to choose a repo-specific build target, run focused verification after code changes, reconfigure the repo-root `./build` directory through presets, or validate subsystem-specific unit and dev/manual executable coverage.
+description: Build and verify Project-DJ-Engine with its checked-in presets, explicit targets, and CTest module labels. Use for repo-specific configure/build/test selection after the user approves a platform, mode, and verification scope.
 ---
 
 # PDJE Build Verify
 
-## Overview
+Use this skill only for build or executable verification. Documentation-only
+inspection does not need it.
 
-Use this skill to pick the smallest reliable PDJE build/test path when generic
-advice would miss target names, regexes, presets, or `./build` habits.
+## Required Reading
 
-## Start
+1. Read `AGENT_DOCS/VERIFY.md`.
+2. Read `AGENT_DOCS/TEST_MAP.md`.
+3. Read `AGENT_DOCS/CHANGE_MAP.md` if ownership is unclear.
+4. Read `references/verification-flows.md` only when dependency bootstrap or
+   platform command syntax is needed.
 
-- Read `AGENT_DOCS/VERIFY.md` for repository-wide verification rules and success criteria.
-- Read `AGENT_DOCS/TEST_MAP.md` when you need the smallest stable test route for a subsystem.
-- Read `AGENT_DOCS/CHANGE_MAP.md` when the owning slice is still ambiguous.
-- Use root `CMakePresets.json`, repo-root `./build`, and only `Release` or
-  `RelWithDebInfo`.
-- Keep `PDJE_DYNAMIC=ON`; only `*-relwithdebinfo` enables `PDJE_TEST` and
-  `PDJE_DEV_TEST`.
-- Run matching `BuildInitwithConan*.{bat,sh}` before the platform preset.
-- On Windows, prefer `call .\windows_conf_and_build.bat <Release|RelWithDebInfo> <jobs> <on|off>` for one-shell Conan/MSVC configure+build.
-- Reuse existing `./build` when possible.
+## Permission Guard
 
-## Choose The Flow
+The skill does not grant command permission. Before the first Conan, CMake
+configure/build, CTest, smoke executable, or wrapper command, obtain the user's
+host preset/configuration and verification scope. Use only repo-root `./build`
+unless the user explicitly approves another build directory.
 
-- Use the repository-wide flow from `AGENT_DOCS/VERIFY.md` when the change is cross-cutting or the affected subsystem is unclear.
-- Use `AGENT_DOCS/TEST_MAP.md` for focused unit routes.
-- Use `references/verification-flows.md` for platform bootstrap and preset command
-  shapes.
-- Build a changed `PDJE_DEV_TEST` executable when the change affects a
-  dev/manual consumer.
+## Select The Smallest Reliable Flow
 
-## Working Rules
+- Compile-only acceptance: matching `*-release` preset.
+- Unit or dev/manual acceptance: matching `*-relwithdebinfo` preset.
+- One subsystem: build its target, then run its CTest module label.
+- Cross-cutting source/build changes: build the configured tree, then run the
+  matching test preset.
+- Manual/dev targets: report compile and execution coverage separately.
 
-- Build the narrowest target first with `cmake --build --preset <host>-<mode> --target <target>`.
-- Run focused `ctest` regexes before broader suites.
-- Reconfigure the existing `./build` directory by rerunning the matching preset instead of inventing a new build tree.
-- Treat dev/manual executable build success as compile coverage only unless
-  executed.
-- If sandboxed MSBuild or `ZERO_CHECK` hits file-tracking/access-denied issues,
-  rerun the same build with escalation.
-- If fresh `./build` cannot find the compiler, check shell/bootstrap vs preset
-  compiler lock first.
+Respect platform gates: input/judge are disabled on macOS, and util unit targets
+are currently excluded on Apple even though `PDJE_UTIL` itself builds.
 
-## Report The Result
+## Report
 
-- List the exact build and test commands you ran.
-- State which target or regex each command was meant to validate.
-- Call out unverified edges, especially binaries that were built but not executed.
-- Mention if `./build` was reconfigured during the task, because that changes the local build-tree state.
-
-## References
-
-- Read `references/verification-flows.md` for platform bootstrap and preset
-  command sets.
+State the exact commands, selected preset, whether dependencies or `./build`
+were reconfigured, targets and labels exercised, pass/fail result, and all
+gated or unwired edges. Never infer coverage merely from a test source existing.

@@ -1,41 +1,72 @@
-# PDJE Verify
+# PDJE Verification
 
-Rules and minimum checks for repository verification.
+## Permission Boundary
 
-## Agent Rule
+Commands shown here are examples, not permission. Before the first dependency
+install, configure, build, CTest run, smoke executable, or wrapper invocation in
+a task, ask the user to choose the host preset/configuration and verification
+scope. One explicit choice may cover the agreed flow; do not silently broaden
+it. Use only repo-root `./build` unless another directory is explicitly
+approved.
 
-- Commands here are examples, not permission.
-- Ask before any `conan install`, `cmake`, `cmake --build`, `ctest`, or wrapper.
-- Do not choose preset/toolchain/build type/verification without user direction.
-- Use only `./build` unless the user requests another build directory.
+Static source inspection, Markdown link/path checks, `git diff --check`, and
+worktree inspection do not select or mutate a build configuration.
 
-## Checks
+## Sources Of Build Truth
 
-| Kind | Command / source |
+| Question | Inspect |
 | --- | --- |
-| source defaults | inspect `cmakes/Options.cmake` for `PDJE_TEST`, `PDJE_DEV_TEST`, `PDJE_DYNAMIC`, `PDJE_SWIG_BUILD`, `PDJE_DEVELOP_INPUT` |
-| doc surface | list root Markdown files and `AGENT_DOCS/**/*.md` |
-| build cache inspection | inspect `cmake -LA -N ./build` for `PDJE_*` and `CMAKE_BUILD_TYPE` values |
-| preset listing | `cmake --list-presets`; `ctest --list-presets` |
-| unit listing/run | `ctest --test-dir ./build -N -L unit`; `ctest --test-dir ./build -L unit --output-on-failure` |
-| focused tests | [TEST_MAP.md](TEST_MAP.md) |
-| platform flows | [skills/pdje-build-verify/references/verification-flows.md](skills/pdje-build-verify/references/verification-flows.md) |
+| source option default | `cmakes/Options.cmake` |
+| supported preset value and build directory | `CMakePresets.json` |
+| dependency bootstrap | `BuildInitwithConan.sh`, `BuildInitwithConan.bat` |
+| Windows configure/build wrapper | `windows_conf_and_build.bat` |
+| target and source membership | top-level `CMakeLists.txt`, `cmakes/src/`, `cmakes/tests/` |
+| what a local tree was configured with | `./build/CMakeCache.txt`, only as local-state evidence |
+| CI coverage | `.github/workflows/` |
 
-Rows using `cmake` or `ctest` still require approval.
+The checked-in preset workflow requires CMake 3.23 or newer, as declared by
+`CMakePresets.json`.
 
-## Preset Shape
+The current CI matrix compiles `*-release` presets. It does not replace an
+approved `RelWithDebInfo` unit-test run.
 
-| Preset family | Build type | Dynamic | Tests | Dev tests | Compiler lock |
-| --- | --- | --- | --- | --- | --- |
-| `*-release` | `Release` | `ON` | `OFF` | `OFF` | Linux/macOS=`clang`; Windows=`cl` |
-| `*-relwithdebinfo` | `RelWithDebInfo` | `ON` | `ON` | `ON` | Linux/macOS=`clang`; Windows=`cl` |
+## Preset Matrix
 
-Windows also requires a prepared MSVC x64 shell; macOS expects AppleClang.
+| Family | Build type | Dynamic | Unit/dev tests | Platform compiler |
+| --- | --- | --- | --- | --- |
+| `windows-release` / `windows-relwithdebinfo` | name-matching | on | off / on | MSVC |
+| `linux-release` / `linux-relwithdebinfo` | name-matching | on | off / on | Clang |
+| `macos-release` / `macos-relwithdebinfo` | name-matching | on | off / on | AppleClang |
 
-## Success Criteria
+Input and judge are disabled on macOS. Util production code still builds there,
+but `pdje_unit_util` is currently excluded on Apple platforms.
 
-- `AGENT_DOCS/` is indexed and no control doc treats `docs/` or
-  `BluePrint_PDJE/` as canonical.
-- Approved release builds use dynamic libraries with test flags off.
-- Approved relwithdebinfo builds use dynamic libraries with test flags on and
-  pass `ctest --preset <host>-relwithdebinfo`.
+## Verification Sequence
+
+After the user approves a flow:
+
+1. Bootstrap dependencies only when the selected build tree does not already
+   match the chosen preset. Use the platform commands in
+   [verification-flows.md](skills/pdje-build-verify/references/verification-flows.md).
+2. Configure with `cmake --preset <host>-<mode>`, or use the approved Windows
+   wrapper.
+3. Build the narrowest owning target first:
+   `cmake --build --preset <host>-relwithdebinfo --target <target>`.
+4. Run its stable CTest label from [TEST_MAP.md](TEST_MAP.md).
+5. For cross-cutting work, run
+   `ctest --preset <host>-relwithdebinfo` after the full build.
+6. Build or execute a manual/dev binary only when it is part of the agreed
+   acceptance scope. Build success alone is not runtime coverage.
+
+Doctest cases are discovered after their binaries build, so `ctest -N` before
+the build is not a complete inventory.
+
+## Reporting
+
+Report:
+
+- the exact approved commands that ran;
+- the preset and whether `./build` was reconfigured or bootstrapped;
+- targets, CTest labels/regexes, and pass/fail counts;
+- manual binaries built versus actually executed;
+- platform-gated or unwired coverage that was not exercised.

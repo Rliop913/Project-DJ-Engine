@@ -1,38 +1,46 @@
 # PDJE Invariants
 
-Stable unless the repository is deliberately restructured.
+These rules are stable until the repository is deliberately restructured.
 
-## Documentation
+## Truth And Scope
 
-| Path | Rule |
-| --- | --- |
-| `AGENT_DOCS/` | canonical Markdown control docs |
-| `README.md` | public landing page |
-| `AGENTS.md` | thin agent entrypoint |
-| `DECISIONS.md` | rationale ledger for control-doc choices |
-| `docs/` | redirecting HTML only; public docs live outside this checkout |
-| `BluePrint_PDJE/` | archive material, not current truth |
+- Current source and checked-in build files outrank all prose.
+- `AGENT_DOCS/` is the canonical agent-facing Markdown surface; `AGENTS.md` is
+  only its root entrypoint.
+- `README.md` is public-facing. `docs/` only redirects to external docs, and
+  `BluePrint_PDJE/` is archive-only.
+- Preserve unrelated user changes and do not expand a requested subsystem
+  scope without approval.
 
-## Build Truth
+## Build
 
-| Item | Rule |
-| --- | --- |
-| source defaults | `cmakes/Options.cmake`, not local build cache |
-| shared matrix | root `CMakePresets.json` |
-| build directory | repo-root `./build` only unless user requests otherwise |
-| modes | `Release` and `RelWithDebInfo`; `PDJE_DYNAMIC=ON` |
-| test flags | only `RelWithDebInfo` enables `PDJE_TEST` and `PDJE_DEV_TEST` |
-| compilers | Windows=`cl`; Linux=`clang`; macOS=`clang`/AppleClang |
-| agent approval | ask before `conan install`, `cmake`, `cmake --build`, `ctest`, or wrappers |
-| optional gates | SWIG only with `PDJE_SWIG_BUILD=ON`; input/judge on Linux/Windows, forced off on macOS |
+- Source option defaults live in `cmakes/Options.cmake`.
+- The supported shared preset matrix lives in `CMakePresets.json`; every
+  checked-in preset uses Ninja, repo-root `./build`, and `PDJE_DYNAMIC=ON`.
+- `*-release` presets use `Release` with `PDJE_TEST=OFF` and
+  `PDJE_DEV_TEST=OFF`.
+- `*-relwithdebinfo` presets use `RelWithDebInfo` with `PDJE_TEST=ON` and
+  `PDJE_DEV_TEST=ON`.
+- Presets select MSVC on Windows and Clang/AppleClang on Linux/macOS.
+- `PDJE_DEVELOP_INPUT` is available on Linux and Windows and is forced off on
+  macOS. SWIG targets exist only when `PDJE_SWIG_BUILD=ON`.
+- A local CMake cache is evidence about that build tree, never a source default.
 
-Agents must not choose preset, toolchain, build type, verification command, or
-new build directory without explicit user approval.
+Before the first dependency install, configure, build, test execution, smoke
+binary, or wrapper command in a task, obtain the user's platform preset,
+configuration, and verification scope. Use only `./build` unless the user
+explicitly approves another directory.
 
-## Code Shape
+## Code And Wiring
 
-- `include/` contains headers and implementation `.cpp` files.
-- Main native surfaces: `PDJE`, `PDJE_Input`, `PDJE_JUDGE::JUDGE`, `PDJE_UTIL`.
-- `PDJE_UTIL` is active code.
-- Pointer data-line structs are non-owning and require null checks.
-- Unit test truth comes from CTest unit labels in repo-root `./build`.
+- The project uses C++20.
+- `include/` contains public headers, internal headers, and implementation
+  `.cpp` files.
+- Production and unit-test sources are explicitly listed under `cmakes/src/`
+  and `cmakes/tests/units/`; adding a file does not automatically compile it.
+- Native public surfaces are `PDJE`, `PDJE_Input`, `PDJE_JUDGE::JUDGE`, and
+  `PDJE_UTIL`. C ABI contracts are declared in the corresponding `CPDJE*.h`
+  headers, not their implementation `.cpp` files.
+- Core/input data lines are non-owning pointer views. Consumers must validate
+  required members and must not outlive the owning runtime.
+- `.clang-format` is the formatting authority for C/C++ sources.
