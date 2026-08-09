@@ -1,11 +1,8 @@
-# PDJE Platform Verification Flows
+# PDJE Platform Verification Commands
 
-These are command shapes for the root `CMakePresets.json` and `./build`. They
-require the approval described in `AGENT_DOCS/VERIFY.md`.
-
-Choose `Release` for compile-only work and `RelWithDebInfo` for unit or
-manual/dev verification. Bootstrap Conan when dependencies for that host and
-mode are not already prepared.
+These are the exact command forms for the presets and repo-root `./build`.
+Selection and approval belong to [../../../VERIFY.md](../../../VERIFY.md), and
+target/label availability belongs to [../../../TEST_MAP.md](../../../TEST_MAP.md).
 
 ## Linux
 
@@ -23,9 +20,6 @@ cmake --preset macos-<release|relwithdebinfo>
 cmake --build --preset macos-<release|relwithdebinfo>
 ~~~
 
-The macOS preset disables input/judge. The current unit root also excludes
-`pdje_unit_util` on Apple.
-
 ## Windows
 
 ~~~cmd
@@ -33,27 +27,19 @@ BuildInitwithConan.bat . dynamic <Release|RelWithDebInfo>
 call .\windows_conf_and_build.bat <Release|RelWithDebInfo> <jobs> <on|off>
 ~~~
 
-The wrapper activates the Conan/MSVC environment and performs configure plus
-build in one `cmd.exe` process. Its third argument controls `cmake --fresh` and
-defaults to `off`; choose `on` only when the approved flow requires a clean
-configure.
+The Windows wrapper performs configure and build in one activated Conan/MSVC
+process. Its final argument controls `cmake --fresh` and defaults to `off`.
 
-## Narrow Build And Test
-
-After an approved RelWithDebInfo configure:
+## Narrow Target And Label
 
 ~~~text
 cmake --build --preset <host>-relwithdebinfo --target <target>
-ctest --test-dir ./build -L <module> --output-on-failure
+ctest --test-dir ./build -L <label> --output-on-failure
 ~~~
 
-Use target and label names from `AGENT_DOCS/TEST_MAP.md`. For the full
-host-applicable suite:
+## Full Host-Applicable Suite
 
 ~~~text
 cmake --build --preset <host>-relwithdebinfo
 ctest --preset <host>-relwithdebinfo
 ~~~
-
-Report whether bootstrap/configure occurred, whether a manual target was only
-built or also run, and which platform or source-list gaps remain.
