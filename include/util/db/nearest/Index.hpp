@@ -1,6 +1,5 @@
 #pragma once
 
-#include "global/PDJE_LOG_SETTER.hpp"
 #include "util/db/detail/Lifecycle.hpp"
 #include "util/db/nearest/BackendConcept.hpp"
 
@@ -61,9 +60,8 @@ template <NearestNeighborBackendConcept Backend> class NearestNeighborIndex {
         try{
             flush();
             close();
-        }catch(const std::exception& e){
-            critlog("error on close NearsetNeighborIndex. WHAT= ");
-            critlog(e.what());
+        }catch(...){
+            ;//skip.
         }
     }
 
