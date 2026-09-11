@@ -2,53 +2,57 @@
 
 #include "util/function/fuzzy/FuzzySearch.hpp"
 
-#include <limits>
-#include <stdexcept>
-#include <string_view>
-#include <vector>
+#include <string>
 
 using PDJE_UTIL::function::fuzzy::FuzzySearch;
-using PDJE_UTIL::function::fuzzy::FuzzySearchOptions;
 
-TEST_CASE("util fuzzy search scores and ranks matches")
+TEST_CASE("util fuzzy search stores and ranks candidates")
 {
-    const FuzzySearch search;
-    CHECK(search.score("Project DJ Engine", "Project DJ Engine") ==
-          doctest::Approx(100.0));
+    FuzzySearch search;
+    search.store("alpah");
+    search.store("alpha");
+    search.store("beta");
 
-    const std::vector<std::string_view> candidates{ "alpah", "alpha", "beta" };
-    auto                                matches = search.search(
-        "alpha", candidates, FuzzySearchOptions{ .score_cutoff = 70.0 });
+    const auto matches = search.query("alpha", 2);
+
     REQUIRE(matches.size() == 2);
-    CHECK(matches[0].index == 1);
-    CHECK(matches[0].score == doctest::Approx(100.0));
-    CHECK(matches[1].index == 0);
+    CHECK(matches[0] == std::pair{ 100, std::string{ "alpha" } });
+    CHECK(matches[1].second == "alpah");
+    CHECK(matches[1].first < matches[0].first);
 }
 
-TEST_CASE("util fuzzy search limits results and accepts empty candidates")
+TEST_CASE("util fuzzy search owns stored candidates")
 {
-    const FuzzySearch                   search;
-    const std::vector<std::string_view> candidates{ "alpha", "alpah", "alfa" };
-    const auto                          limited = search.search(
-        "alpha", candidates, { .score_cutoff = 0.0, .max_results = 1 });
-    REQUIRE(limited.size() == 1);
-    CHECK(limited.front().index == 0);
-    CHECK(search.search("alpha", {}).empty());
+    FuzzySearch search;
+    std::string candidate = "alpha";
+    search.store(candidate);
+    candidate = "changed";
+
+    const auto matches = search.query("alpha", 1);
+
+    REQUIRE(matches.size() == 1);
+    CHECK(matches[0] == std::pair{ 100, std::string{ "alpha" } });
 }
 
-TEST_CASE("util fuzzy search rejects invalid score cutoffs")
+TEST_CASE("util fuzzy search handles empty and non-positive limits")
 {
-    const FuzzySearch search;
-    CHECK_THROWS_AS(search.score("a", "a", -1.0), std::invalid_argument);
-    CHECK_THROWS_AS(search.search("a", {}, { .score_cutoff = 101.0 }),
-                    std::invalid_argument);
-    CHECK_THROWS_AS(
-        search.score("a", "a", std::numeric_limits<double>::quiet_NaN()),
-        std::invalid_argument);
-    CHECK_THROWS_AS(
-        search.search(
-            "a",
-            {},
-            { .score_cutoff = std::numeric_limits<double>::infinity() }),
-        std::invalid_argument);
+    FuzzySearch search;
+    CHECK(search.query("alpha", 1).empty());
+
+    search.store("alpha");
+    CHECK(search.query("alpha", 0).empty());
+    CHECK(search.query("alpha", -1).empty());
+}
+
+TEST_CASE("util fuzzy search preserves storage order for equal scores")
+{
+    FuzzySearch search;
+    search.store("ab");
+    search.store("ac");
+
+    const auto matches = search.query("ax", 2);
+
+    REQUIRE(matches.size() == 2);
+    CHECK(matches[0] == std::pair{ 50, std::string{ "ab" } });
+    CHECK(matches[1] == std::pair{ 50, std::string{ "ac" } });
 }

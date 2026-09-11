@@ -1,33 +1,21 @@
 #pragma once
 
-#include <cstddef>
-#include <span>
-#include <string_view>
+#include <string>
+#include <utility>
 #include <vector>
 
 namespace PDJE_UTIL::function::fuzzy {
 
-struct FuzzySearchOptions {
-    double      score_cutoff = 0.0;
-    std::size_t max_results  = 0;
-};
-
-struct FuzzyMatch {
-    std::size_t index = 0;
-    double      score = 0.0;
-};
-
 class FuzzySearch {
   public:
-    double
-    score(std::string_view query,
-          std::string_view candidate,
-          double           score_cutoff = 0.0) const;
+    void
+    store(const std::string &store_string);
 
-    std::vector<FuzzyMatch>
-    search(std::string_view                  query,
-           std::span<const std::string_view> candidates,
-           FuzzySearchOptions                options = {}) const;
+    std::vector<std::pair<int, std::string>>
+    query(const std::string &query, int max_candidates) const;
+
+  private:
+    std::vector<std::string> candidates;
 };
 
 } // namespace PDJE_UTIL::function::fuzzy
