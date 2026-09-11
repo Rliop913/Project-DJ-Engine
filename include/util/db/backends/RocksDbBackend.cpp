@@ -4,19 +4,26 @@
 #include <rocksdb/options.h>
 
 #include <cstring>
-#include <memory>
+#include <stdexcept>
 #include <string>
 #include <utility>
-#include <vector>
 
 namespace PDJE_UTIL::db::backends {
-
 namespace {
 
 rocksdb::Slice
 slice_of(std::string_view value)
 {
-    return rocksdb::Slice(value.data(), value.size());
+    return { value.data(), value.size() };
+}
+
+void
+require_ok(const rocksdb::Status &status, std::string_view context)
+{
+    if (!status.ok()) {
+        throw std::runtime_error(std::string(context) + ": " +
+                                 status.ToString());
+    }
 }
 
 } // namespace
@@ -25,410 +32,216 @@ class RocksDbBackend::Impl {
   public:
     ~Impl()
     {
-        delete db_;
+        delete db;
     }
 
-    common::Result<void>
-    open(const config_type &cfg)
-    {
-        if (db_ != nullptr) {
-            return common::Result<void>::failure(
-                { common::StatusCode::invalid_argument,
-                  "RocksDB backend is already open." });
-        }
-        if (cfg.path.empty()) {
-            return common::Result<void>::failure(
-                { common::StatusCode::invalid_argument,
-                  "RocksDbConfig.path must not be empty." });
-        }
-
-        config_ = cfg;
-        if (config_.open_options.truncate_if_exists) {
-            auto destroyed = RocksDbBackend::destroy(config_);
-            if (!destroyed.ok()) {
-                return destroyed;
-            }
-        }
-
-        const bool exists = std::filesystem::exists(config_.path);
-        if (!exists && !config_.open_options.create_if_missing &&
-            !config_.open_options.read_only) {
-            return common::Result<void>::failure(
-                { common::StatusCode::not_found,
-                  "RocksDB directory does not exist." });
-        }
-
-        auto options              = db_options_;
-        options.create_if_missing = config_.open_options.create_if_missing;
-        options.error_if_exists   = false;
-
-        rocksdb::Status status;
-        if (config_.open_options.read_only) {
-            status = rocksdb::DB::OpenForReadOnly(
-                options, config_.path.string(), &db_);
-        } else {
-            status = rocksdb::DB::Open(options, config_.path.string(), &db_);
-        }
-
-        if (!status.ok()) {
-            db_ = nullptr;
-            return common::Result<void>::failure(
-                { common::StatusCode::backend_error, status.ToString() });
-        }
-
-        read_options_  = {};
-        write_options_ = {};
-        return common::Result<void>::success();
-    }
-
-    common::Result<void>
-    close()
-    {
-        delete db_;
-        db_            = nullptr;
-        config_        = {};
-        db_options_    = {};
-        read_options_  = {};
-        write_options_ = {};
-        return common::Result<void>::success();
-    }
-
-    common::Result<bool>
-    contains(std::string_view key) const
-    {
-        if (auto status = require_open(); !status.ok()) {
-            return common::Result<bool>::failure(status);
-        }
-
-        std::string value;
-        auto        get_status = db_->Get(read_options_, slice_of(key), &value);
-        if (get_status.IsNotFound()) {
-            return common::Result<bool>::success(false);
-        }
-        if (!get_status.ok()) {
-            return common::Result<bool>::failure(
-                { common::StatusCode::backend_error, get_status.ToString() });
-        }
-        return common::Result<bool>::success(true);
-    }
-
-    common::Result<Text>
-    get_text(std::string_view key) const
-    {
-        auto raw = get_raw(key);
-        if (!raw.ok()) {
-            return common::Result<Text>::failure(raw.status());
-        }
-        if (raw.value().empty() || raw.value().front() != 'T') {
-            return common::Result<Text>::failure(
-                { common::StatusCode::type_mismatch,
-                  "RocksDB value is not stored as text." });
-        }
-        return common::Result<Text>::success(
-            std::string(raw.value().begin() + 1, raw.value().end()));
-    }
-
-    common::Result<Bytes>
-    get_bytes(std::string_view key) const
-    {
-        auto raw = get_raw(key);
-        if (!raw.ok()) {
-            return common::Result<Bytes>::failure(raw.status());
-        }
-        if (raw.value().empty() || raw.value().front() != 'B') {
-            return common::Result<Bytes>::failure(
-                { common::StatusCode::type_mismatch,
-                  "RocksDB value is not stored as bytes." });
-        }
-
-        Bytes bytes(raw.value().size() - 1);
-        if (!bytes.empty()) {
-            std::memcpy(bytes.data(), raw.value().data() + 1, bytes.size());
-        }
-        return common::Result<Bytes>::success(std::move(bytes));
-    }
-
-    common::Result<void>
-    put_text(std::string_view key, std::string_view value)
-    {
-        if (auto status = require_writable(); !status.ok()) {
-            return common::Result<void>::failure(status);
-        }
-
-        std::string encoded;
-        encoded.reserve(value.size() + 1);
-        encoded.push_back('T');
-        encoded.append(value.data(), value.size());
-
-        auto put_status =
-            db_->Put(write_options_, slice_of(key), rocksdb::Slice(encoded));
-        if (!put_status.ok()) {
-            return common::Result<void>::failure(
-                { common::StatusCode::backend_error, put_status.ToString() });
-        }
-        return common::Result<void>::success();
-    }
-
-    common::Result<void>
-    put_bytes(std::string_view key, std::span<const std::byte> value)
-    {
-        if (auto status = require_writable(); !status.ok()) {
-            return common::Result<void>::failure(status);
-        }
-
-        std::string encoded;
-        encoded.reserve(value.size_bytes() + 1);
-        encoded.push_back('B');
-        encoded.append(reinterpret_cast<const char *>(value.data()),
-                       value.size_bytes());
-
-        auto put_status =
-            db_->Put(write_options_, slice_of(key), rocksdb::Slice(encoded));
-        if (!put_status.ok()) {
-            return common::Result<void>::failure(
-                { common::StatusCode::backend_error, put_status.ToString() });
-        }
-        return common::Result<void>::success();
-    }
-
-    common::Result<void>
-    erase(std::string_view key)
-    {
-        if (auto status = require_writable(); !status.ok()) {
-            return common::Result<void>::failure(status);
-        }
-
-        auto delete_status = db_->Delete(write_options_, slice_of(key));
-        if (!delete_status.ok()) {
-            return common::Result<void>::failure(
-                { common::StatusCode::backend_error,
-                  delete_status.ToString() });
-        }
-        return common::Result<void>::success();
-    }
-
-    common::Result<std::vector<Key>>
-    list_keys(std::string_view prefix) const
-    {
-        if (auto status = require_open(); !status.ok()) {
-            return common::Result<std::vector<Key>>::failure(status);
-        }
-
-        std::vector<Key>                   keys;
-        std::unique_ptr<rocksdb::Iterator> iterator(
-            db_->NewIterator(read_options_));
-        for (iterator->Seek(slice_of(prefix)); iterator->Valid();
-             iterator->Next()) {
-            const auto current = iterator->key().ToStringView();
-            if (!prefix.empty() && !current.starts_with(prefix)) {
-                break;
-            }
-            keys.emplace_back(current);
-        }
-
-        if (!iterator->status().ok()) {
-            return common::Result<std::vector<Key>>::failure(
-                { common::StatusCode::backend_error,
-                  iterator->status().ToString() });
-        }
-
-        return common::Result<std::vector<Key>>::success(std::move(keys));
-    }
-
-    common::Status
+    void
     require_open() const
     {
-        if (db_ == nullptr) {
-            return { common::StatusCode::closed,
-                     "RocksDB backend is not open." };
+        if (db == nullptr) {
+            throw std::logic_error("RocksDB backend is not open.");
         }
-        return {};
     }
 
-    common::Status
+    void
     require_writable() const
     {
-        if (auto status = require_open(); !status.ok()) {
-            return status;
+        require_open();
+        if (config.open_options.read_only) {
+            throw std::logic_error("RocksDB backend is opened read-only.");
         }
-        if (config_.open_options.read_only) {
-            return { common::StatusCode::unsupported,
-                     "RocksDB backend is opened read-only." };
-        }
-        return {};
     }
 
-    common::Result<std::vector<char>>
+    std::string
     get_raw(std::string_view key) const
     {
-        if (auto status = require_open(); !status.ok()) {
-            return common::Result<std::vector<char>>::failure(status);
-        }
-
+        require_open();
         std::string value;
-        auto        get_status = db_->Get(read_options_, slice_of(key), &value);
-        if (get_status.IsNotFound()) {
-            return common::Result<std::vector<char>>::failure(
-                { common::StatusCode::not_found,
-                  "RocksDB key was not found." });
+        const auto  status = db->Get(read_options, slice_of(key), &value);
+        if (status.IsNotFound()) {
+            throw std::out_of_range("RocksDB key was not found.");
         }
-        if (!get_status.ok()) {
-            return common::Result<std::vector<char>>::failure(
-                { common::StatusCode::backend_error, get_status.ToString() });
-        }
-
-        return common::Result<std::vector<char>>::success(
-            std::vector<char>(value.begin(), value.end()));
+        require_ok(status, "RocksDB read failed");
+        return value;
     }
 
-  private:
-    config_type           config_{};
-    rocksdb::Options      db_options_{};
-    rocksdb::ReadOptions  read_options_{};
-    rocksdb::WriteOptions write_options_{};
-    rocksdb::DB          *db_ = nullptr;
+    config_type           config{};
+    rocksdb::ReadOptions  read_options{};
+    rocksdb::WriteOptions write_options{};
+    rocksdb::DB          *db = nullptr;
 };
 
 RocksDbBackend::RocksDbBackend() : impl_(std::make_unique<Impl>())
 {
 }
-
-RocksDbBackend::~RocksDbBackend() = default;
-
-RocksDbBackend::RocksDbBackend(RocksDbBackend &&other) noexcept = default;
-
+RocksDbBackend::~RocksDbBackend()                          = default;
+RocksDbBackend::RocksDbBackend(RocksDbBackend &&) noexcept = default;
 RocksDbBackend &
-RocksDbBackend::operator=(RocksDbBackend &&other) noexcept = default;
+RocksDbBackend::operator=(RocksDbBackend &&) noexcept = default;
 
-common::Result<void>
-RocksDbBackend::create(const config_type &cfg)
+void
+RocksDbBackend::create(const config_type &config)
 {
-    if (cfg.path.empty()) {
-        return common::Result<void>::failure(
-            { common::StatusCode::invalid_argument,
-              "RocksDbConfig.path must not be empty." });
+    if (config.path.empty()) {
+        throw std::invalid_argument("RocksDbConfig.path must not be empty.");
+    }
+    rocksdb::Options options;
+    options.create_if_missing = true;
+    rocksdb::DB *database     = nullptr;
+    require_ok(rocksdb::DB::Open(options, config.path.string(), &database),
+               "Failed to create RocksDB database");
+    delete database;
+}
+
+void
+RocksDbBackend::destroy(const config_type &config)
+{
+    if (config.path.empty()) {
+        throw std::invalid_argument("RocksDbConfig.path must not be empty.");
+    }
+    std::error_code error;
+    std::filesystem::remove_all(config.path, error);
+    if (error) {
+        throw std::runtime_error("Failed to remove RocksDB database: " +
+                                 error.message());
+    }
+}
+
+void
+RocksDbBackend::open(const config_type &config)
+{
+    if (!impl_) {
+        impl_ = std::make_unique<Impl>();
+    }
+    if (impl_->db != nullptr) {
+        throw std::logic_error("RocksDB backend is already open.");
+    }
+    if (config.path.empty()) {
+        throw std::invalid_argument("RocksDbConfig.path must not be empty.");
+    }
+    if (config.open_options.read_only &&
+        (config.open_options.create_if_missing ||
+         config.open_options.truncate_if_exists)) {
+        throw std::invalid_argument(
+            "RocksDB read-only mode cannot create or truncate the database.");
+    }
+
+    if (config.open_options.truncate_if_exists) {
+        destroy(config);
+    }
+    if (!std::filesystem::exists(config.path) &&
+        !config.open_options.create_if_missing) {
+        throw std::out_of_range("RocksDB directory does not exist.");
     }
 
     rocksdb::Options options;
-    options.create_if_missing = true;
-    options.error_if_exists   = false;
-
-    rocksdb::DB *db  = nullptr;
-    auto open_status = rocksdb::DB::Open(options, cfg.path.string(), &db);
-    if (!open_status.ok()) {
-        return common::Result<void>::failure(
-            { common::StatusCode::backend_error, open_status.ToString() });
-    }
-
-    delete db;
-    return common::Result<void>::success();
+    options.create_if_missing = config.open_options.create_if_missing;
+    rocksdb::DB    *database  = nullptr;
+    rocksdb::Status status =
+        config.open_options.read_only
+            ? rocksdb::DB::OpenForReadOnly(
+                  options, config.path.string(), &database)
+            : rocksdb::DB::Open(options, config.path.string(), &database);
+    require_ok(status, "Failed to open RocksDB database");
+    impl_->config = config;
+    impl_->db     = database;
 }
 
-common::Result<void>
-RocksDbBackend::destroy(const config_type &cfg)
-{
-    if (cfg.path.empty()) {
-        return common::Result<void>::failure(
-            { common::StatusCode::invalid_argument,
-              "RocksDbConfig.path must not be empty." });
-    }
-
-    std::error_code ec;
-    std::filesystem::remove_all(cfg.path, ec);
-    if (ec) {
-        return common::Result<void>::failure(
-            { common::StatusCode::io_error, ec.message() });
-    }
-    return common::Result<void>::success();
-}
-
-common::Result<void>
-RocksDbBackend::open(const config_type &cfg)
-{
-    if (impl_ == nullptr) {
-        impl_ = std::make_unique<Impl>();
-    }
-    return impl_->open(cfg);
-}
-
-common::Result<void>
+void
 RocksDbBackend::close()
 {
-    if (impl_ == nullptr) {
-        return common::Result<void>::success();
+    if (!impl_ || impl_->db == nullptr) {
+        return;
     }
-    return impl_->close();
+    delete impl_->db;
+    impl_->db     = nullptr;
+    impl_->config = {};
 }
 
-common::Result<bool>
+bool
 RocksDbBackend::contains(std::string_view key) const
 {
-    if (impl_ == nullptr) {
-        return common::Result<bool>::failure(
-            { common::StatusCode::closed, "RocksDB backend is not open." });
+    impl_->require_open();
+    std::string value;
+    const auto  status =
+        impl_->db->Get(impl_->read_options, slice_of(key), &value);
+    if (status.IsNotFound()) {
+        return false;
     }
-    return impl_->contains(key);
+    require_ok(status, "RocksDB contains failed");
+    return true;
 }
 
-common::Result<Text>
+Text
 RocksDbBackend::get_text(std::string_view key) const
 {
-    if (impl_ == nullptr) {
-        return common::Result<Text>::failure(
-            { common::StatusCode::closed, "RocksDB backend is not open." });
+    auto value = impl_->get_raw(key);
+    if (value.empty() || value.front() != 'T') {
+        throw std::logic_error("RocksDB value is not stored as text.");
     }
-    return impl_->get_text(key);
+    return value.substr(1);
 }
 
-common::Result<Bytes>
+Bytes
 RocksDbBackend::get_bytes(std::string_view key) const
 {
-    if (impl_ == nullptr) {
-        return common::Result<Bytes>::failure(
-            { common::StatusCode::closed, "RocksDB backend is not open." });
+    const auto value = impl_->get_raw(key);
+    if (value.empty() || value.front() != 'B') {
+        throw std::logic_error("RocksDB value is not stored as bytes.");
     }
-    return impl_->get_bytes(key);
+    Bytes bytes(value.size() - 1);
+    if (!bytes.empty()) {
+        std::memcpy(bytes.data(), value.data() + 1, bytes.size());
+    }
+    return bytes;
 }
 
-common::Result<void>
+void
 RocksDbBackend::put_text(std::string_view key, std::string_view value)
 {
-    if (impl_ == nullptr) {
-        return common::Result<void>::failure(
-            { common::StatusCode::closed, "RocksDB backend is not open." });
-    }
-    return impl_->put_text(key, value);
+    impl_->require_writable();
+    std::string encoded("T");
+    encoded.append(value);
+    require_ok(impl_->db->Put(impl_->write_options, slice_of(key), encoded),
+               "RocksDB text write failed");
 }
 
-common::Result<void>
+void
 RocksDbBackend::put_bytes(std::string_view           key,
                           std::span<const std::byte> value)
 {
-    if (impl_ == nullptr) {
-        return common::Result<void>::failure(
-            { common::StatusCode::closed, "RocksDB backend is not open." });
-    }
-    return impl_->put_bytes(key, value);
+    impl_->require_writable();
+    std::string encoded("B");
+    encoded.append(reinterpret_cast<const char *>(value.data()), value.size());
+    require_ok(impl_->db->Put(impl_->write_options, slice_of(key), encoded),
+               "RocksDB byte write failed");
 }
 
-common::Result<void>
+void
 RocksDbBackend::erase(std::string_view key)
 {
-    if (impl_ == nullptr) {
-        return common::Result<void>::failure(
-            { common::StatusCode::closed, "RocksDB backend is not open." });
-    }
-    return impl_->erase(key);
+    impl_->require_writable();
+    require_ok(impl_->db->Delete(impl_->write_options, slice_of(key)),
+               "RocksDB erase failed");
 }
 
-common::Result<std::vector<Key>>
+std::vector<Key>
 RocksDbBackend::list_keys(std::string_view prefix) const
 {
-    if (impl_ == nullptr) {
-        return common::Result<std::vector<Key>>::failure(
-            { common::StatusCode::closed, "RocksDB backend is not open." });
+    impl_->require_open();
+    std::vector<Key>                   keys;
+    std::unique_ptr<rocksdb::Iterator> iterator(
+        impl_->db->NewIterator(impl_->read_options));
+    for (iterator->Seek(slice_of(prefix)); iterator->Valid();
+         iterator->Next()) {
+        const auto key = iterator->key().ToStringView();
+        if (!prefix.empty() && !key.starts_with(prefix)) {
+            break;
+        }
+        keys.emplace_back(key);
     }
-    return impl_->list_keys(prefix);
+    require_ok(iterator->status(), "RocksDB key scan failed");
+    return keys;
 }
 
 } // namespace PDJE_UTIL::db::backends

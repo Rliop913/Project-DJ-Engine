@@ -55,12 +55,22 @@ typedef struct PDJE_JudgeMissedNoteV1 {
 } PDJE_JudgeMissedNoteV1;
 
 typedef void(PDJE_CALL *PDJE_JudgeUsedCallbackV1)(
-    const PDJE_JudgeUsedEventV1 *event,
-    void                        *user_data);
+    const PDJE_JudgeUsedEventV1 *event, void *user_data);
 typedef void(PDJE_CALL *PDJE_JudgeMissedCallbackV1)(
-    const PDJE_JudgeMissedNoteV1 *notes,
-    size_t                        note_count,
-    void                         *user_data);
+    const PDJE_JudgeMissedNoteV1 *notes, size_t note_count, void *user_data);
+
+// V1 ownership and lifetime rules:
+//
+// - pdje_judge_create_v1 transfers one judge handle to the caller and leaves a
+//   valid output slot NULL on failure.
+// - Attached engine and input handles are borrowed. They and their data lines
+//   must remain valid until pdje_judge_end_v1 returns.
+// - Device-list handles are needed only while adding a rail; the judge copies
+//   the selected identity.
+// - Callbacks run on judge-owned worker threads. Event/note pointers and their
+//   string views are valid only during that callback invocation.
+// - Do not destroy or end the same judge reentrantly from its callback.
+// - Judge configuration functions are not safe for concurrent mutation.
 
 PDJE_API PDJE_JudgeResultV1 PDJE_CALL
 pdje_judge_create_v1(PDJE_JudgeHandleV1 **out_judge);
@@ -69,11 +79,12 @@ PDJE_API void PDJE_CALL
 pdje_judge_destroy_v1(PDJE_JudgeHandleV1 *judge);
 
 PDJE_API PDJE_JudgeResultV1 PDJE_CALL
-pdje_judge_attach_engine_v1(PDJE_JudgeHandleV1 *judge,
+pdje_judge_attach_engine_v1(PDJE_JudgeHandleV1  *judge,
                             PDJE_EngineHandleV1 *engine);
 
 PDJE_API PDJE_JudgeResultV1 PDJE_CALL
-pdje_judge_attach_input_v1(PDJE_JudgeHandleV1 *judge, PDJE_InputHandleV1 *input);
+pdje_judge_attach_input_v1(PDJE_JudgeHandleV1 *judge,
+                           PDJE_InputHandleV1 *input);
 
 PDJE_API PDJE_JudgeResultV1 PDJE_CALL
 pdje_judge_set_event_rule_v1(PDJE_JudgeHandleV1 *judge,
@@ -84,9 +95,9 @@ PDJE_API PDJE_JudgeResultV1 PDJE_CALL
 pdje_judge_add_input_rail_v1(PDJE_JudgeHandleV1                 *judge,
                              const PDJE_InputDeviceListHandleV1 *devices,
                              size_t                              device_index,
-                             uint16_t                            device_key_mask,
-                             int64_t                             offset_microsecond,
-                             uint64_t                            match_rail);
+                             uint16_t device_key_mask,
+                             int64_t  offset_microsecond,
+                             uint64_t match_rail);
 
 PDJE_API PDJE_JudgeResultV1 PDJE_CALL
 pdje_judge_add_midi_rail_v1(PDJE_JudgeHandleV1                *judge,
@@ -96,7 +107,7 @@ pdje_judge_add_midi_rail_v1(PDJE_JudgeHandleV1                *judge,
                             uint8_t                            type,
                             uint8_t                            channel,
                             uint8_t                            position,
-                            int64_t                            offset_microsecond);
+                            int64_t offset_microsecond);
 
 PDJE_API PDJE_JudgeResultV1 PDJE_CALL
 pdje_judge_add_note_object_v1(PDJE_JudgeHandleV1 *judge,
@@ -120,10 +131,9 @@ pdje_judge_set_missed_callback_v1(PDJE_JudgeHandleV1        *judge,
                                   void                      *user_data);
 
 PDJE_API PDJE_JudgeResultV1 PDJE_CALL
-pdje_judge_set_callback_intervals_v1(
-    PDJE_JudgeHandleV1 *judge,
-    uint64_t            used_event_sleep_millisecond,
-    uint64_t            missed_event_sleep_millisecond);
+pdje_judge_set_callback_intervals_v1(PDJE_JudgeHandleV1 *judge,
+                                     uint64_t used_event_sleep_millisecond,
+                                     uint64_t missed_event_sleep_millisecond);
 
 PDJE_API PDJE_JudgeResultV1 PDJE_CALL
 pdje_judge_start_v1(PDJE_JudgeHandleV1      *judge,

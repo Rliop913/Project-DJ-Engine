@@ -1,8 +1,8 @@
 #include "util/function/stft/detail/SerialBackend.hpp"
 
+#include "STFT_MAIN_SERIAL.hpp"
 #include "util/function/stft/BackendLess.hpp"
 #include "util/function/stft/MelFilterBank.hpp"
-#include "STFT_MAIN_SERIAL.hpp"
 
 #include <algorithm>
 #include <functional>
@@ -46,8 +46,7 @@ SERIAL_STFT::EnsureMemory(const StftArgs     &gargs,
         prev_overlap_subbuffer_fullsize = gargs.OFullSize;
     }
 
-    const uint32_t binSize =
-        static_cast<uint32_t>((gargs.windowSize >> 1) + 1);
+    const uint32_t binSize = static_cast<uint32_t>((gargs.windowSize >> 1) + 1);
     const uint32_t binFullSize = binSize * static_cast<uint32_t>(gargs.qtConst);
     if (post_process.to_bin && prev_bin_fullsize != binFullSize) {
         bin_real.resize(binFullSize);
@@ -55,9 +54,8 @@ SERIAL_STFT::EnsureMemory(const StftArgs     &gargs,
         prev_bin_fullsize = binFullSize;
     }
 
-    const uint32_t melBins = ResolveMelBins(gargs);
-    const uint32_t melFullSize =
-        melBins * static_cast<uint32_t>(gargs.qtConst);
+    const uint32_t melBins     = ResolveMelBins(gargs);
+    const uint32_t melFullSize = melBins * static_cast<uint32_t>(gargs.qtConst);
     if (post_process.mel_scale && prev_mel_fullsize != melFullSize) {
         mel.resize(melFullSize);
         prev_mel_fullsize = melFullSize;
@@ -78,7 +76,7 @@ SERIAL_STFT::EnsureMelFilterBank(const StftArgs &gargs)
         return;
     }
 
-    mel_filter_bank = GenMelFilterBank(gargs.mel_filter_bank.value());
+    mel_filter_bank           = GenMelFilterBank(gargs.mel_filter_bank.value());
     prev_mel_filter_bank_spec = gargs.mel_filter_bank;
 }
 
@@ -93,8 +91,7 @@ SERIAL_STFT::ApplyWindow(const WINDOW_LIST target_window, const StftArgs &gargs)
         Window_Blackman_harris(real.data(), gargs.OFullSize, gargs.windowSize);
         break;
     case WINDOW_LIST::BLACKMAN_NUTTALL:
-        Window_Blackman_Nuttall(
-            real.data(), gargs.OFullSize, gargs.windowSize);
+        Window_Blackman_Nuttall(real.data(), gargs.OFullSize, gargs.windowSize);
         break;
     case WINDOW_LIST::NUTTALL:
         Window_Nuttall(real.data(), gargs.OFullSize, gargs.windowSize);
@@ -103,8 +100,10 @@ SERIAL_STFT::ApplyWindow(const WINDOW_LIST target_window, const StftArgs &gargs)
         Window_FlatTop(real.data(), gargs.OFullSize, gargs.windowSize);
         break;
     case WINDOW_LIST::GAUSSIAN:
-        Window_Gaussian(
-            real.data(), gargs.OFullSize, gargs.windowSize, kDefaultGaussianSigma);
+        Window_Gaussian(real.data(),
+                        gargs.OFullSize,
+                        gargs.windowSize,
+                        kDefaultGaussianSigma);
         break;
     case WINDOW_LIST::HAMMING:
         Window_Hamming(real.data(), gargs.OFullSize, gargs.windowSize);
@@ -169,12 +168,13 @@ SERIAL_STFT::RunFft(const unsigned int windowSizeEXP, const StftArgs &gargs)
 }
 
 StftResult
-SERIAL_STFT::Execute(std::vector<float> &PCMdata,
-                     const WINDOW_LIST   target_window,
-                     POST_PROCESS        post_process,
-                     const unsigned int  windowSizeEXP,
-                     const StftArgs     &gargs)
+SERIAL_STFT::Execute(const Execution &execution)
 {
+    auto       &PCMdata       = execution.pcm;
+    const auto  target_window = execution.window;
+    auto        post_process  = execution.post_process;
+    const auto  windowSizeEXP = execution.window_size_exp;
+    const auto &gargs         = execution.args;
     post_process.check_values();
     if (post_process.mel_scale && !gargs.mel_filter_bank.has_value()) {
         return {};
@@ -197,19 +197,18 @@ SERIAL_STFT::Execute(std::vector<float> &PCMdata,
     RunFft(windowSizeEXP, gargs);
 
     std::reference_wrapper<std::vector<float>> active_real = real;
-    std::optional<std::reference_wrapper<std::vector<float>>> active_imag = imag;
+    std::optional<std::reference_wrapper<std::vector<float>>> active_imag =
+        imag;
 
     if (needSubBuffer && (windowSizeEXP % 2) != 0) {
         active_real = subreal;
         active_imag = subimag;
     }
 
-    const uint32_t binSize =
-        static_cast<uint32_t>((gargs.windowSize >> 1) + 1);
+    const uint32_t binSize = static_cast<uint32_t>((gargs.windowSize >> 1) + 1);
     const uint32_t binFullSize = binSize * static_cast<uint32_t>(gargs.qtConst);
-    const uint32_t melBins = ResolveMelBins(gargs);
-    const uint32_t melFullSize =
-        melBins * static_cast<uint32_t>(gargs.qtConst);
+    const uint32_t melBins     = ResolveMelBins(gargs);
+    const uint32_t melFullSize = melBins * static_cast<uint32_t>(gargs.qtConst);
 
     if (post_process.Chainable_BIN_POWER()) {
         BinPowerChain(active_real.get().data(),
@@ -273,22 +272,23 @@ SERIAL_STFT::Execute(std::vector<float> &PCMdata,
         const uint32_t chunkSize =
             post_process.mel_scale
                 ? melBins
-                : (post_process.to_bin ? binSize
-                                       : static_cast<uint32_t>(gargs.windowSize));
+                : (post_process.to_bin
+                       ? binSize
+                       : static_cast<uint32_t>(gargs.windowSize));
         Normalize_minmax(active_real.get(), chunkSize);
     }
 
     if (post_process.to_rgb) {
-        rgb = TO_RGB(active_real.get(), melBins);
+        rgb         = TO_RGB(active_real.get(), melBins);
         active_real = rgb;
         active_imag.reset();
     }
 
     if (active_imag.has_value()) {
-        return {active_real.get(), active_imag->get()};
+        return { active_real.get(), active_imag->get() };
     }
 
-    return {active_real.get(), {}};
+    return { active_real.get(), {} };
 }
 
 SERIAL_STFT::~SERIAL_STFT() = default;

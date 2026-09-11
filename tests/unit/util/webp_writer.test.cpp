@@ -106,10 +106,9 @@ TEST_CASE("encode_webp produces a valid WebP from padded RGBA rows")
               },
           .compression_level = 3 });
 
-    REQUIRE(encoded.ok());
-    REQUIRE(has_webp_signature(encoded.value()));
+    REQUIRE(has_webp_signature(encoded));
 
-    auto decoded = decode_rgba8(encoded.value());
+    auto decoded = decode_rgba8(encoded);
     CHECK(decoded.width == 2);
     CHECK(decoded.height == 2);
     CHECK(decoded.pixels == expected_rgba_pixels);
@@ -118,12 +117,10 @@ TEST_CASE("encode_webp produces a valid WebP from padded RGBA rows")
 TEST_CASE("encode_webp preserves RGB fallback packing for padded rows")
 {
     const std::vector<std::uint8_t> padded_rgb_pixels{
-        255, 0, 0,   0,   255, 0,   9, 9, 9,
-        0,   0, 255, 255, 255, 255, 7, 7, 7
+        255, 0, 0, 0, 255, 0, 9, 9, 9, 0, 0, 255, 255, 255, 255, 7, 7, 7
     };
     const std::vector<std::uint8_t> expected_rgba_pixels{
-        255, 0, 0, 255, 0, 255, 0, 255,
-        0,   0, 255, 255, 255, 255, 255, 255
+        255, 0, 0, 255, 0, 255, 0, 255, 0, 0, 255, 255, 255, 255, 255, 255
     };
 
     auto encoded = PDJE_UTIL::function::image::encode_webp(
@@ -137,13 +134,54 @@ TEST_CASE("encode_webp preserves RGB fallback packing for padded rows")
               },
           .compression_level = 3 });
 
-    REQUIRE(encoded.ok());
-    REQUIRE(has_webp_signature(encoded.value()));
+    REQUIRE(has_webp_signature(encoded));
 
-    auto decoded = decode_rgba8(encoded.value());
+    auto decoded = decode_rgba8(encoded);
     CHECK(decoded.width == 2);
     CHECK(decoded.height == 2);
     CHECK(decoded.pixels == expected_rgba_pixels);
+}
+
+TEST_CASE("encode_webp applies lossless compression presets")
+{
+    constexpr std::size_t     width  = 64;
+    constexpr std::size_t     height = 64;
+    std::vector<std::uint8_t> pixels(width * height * 4u, 0u);
+    for (std::size_t row = 0; row < height; ++row) {
+        for (std::size_t column = 0; column < width; ++column) {
+            const auto offset = (row * width + column) * 4u;
+            pixels[offset + 0u] =
+                static_cast<std::uint8_t>((row * 17u) ^ column);
+            pixels[offset + 1u] =
+                static_cast<std::uint8_t>((column / 4u) * 13u);
+            pixels[offset + 2u] =
+                static_cast<std::uint8_t>((row + column) % 7u);
+            pixels[offset + 3u] = 255u;
+        }
+    }
+
+    const auto encode_at = [&](int level) {
+        return PDJE_UTIL::function::image::encode_webp(
+            { .image = {
+                  .pixels = pixels,
+                  .width = width,
+                  .height = height,
+                  .pixel_format =
+                      PDJE_UTIL::function::image::RasterPixelFormat::rgba8,
+              },
+              .compression_level = level });
+    };
+
+    const auto fastest       = encode_at(0);
+    const auto default_level = encode_at(-1);
+    const auto level_six     = encode_at(6);
+    const auto smallest      = encode_at(9);
+
+    CHECK(default_level == level_six);
+    CHECK(fastest != smallest);
+    CHECK(smallest.size() <= fastest.size());
+    CHECK(decode_rgba8(fastest).pixels == pixels);
+    CHECK(decode_rgba8(smallest).pixels == pixels);
 }
 
 TEST_CASE("write_webp writes a WebP file to disk")
@@ -152,7 +190,7 @@ TEST_CASE("write_webp writes a WebP file to disk")
     const fs::path                  output_path = make_temp_webp_path();
     const ScopedFileCleanup         cleanup{ output_path };
 
-    auto written = PDJE_UTIL::function::image::write_webp(
+    PDJE_UTIL::function::image::write_webp(
         { .image =
               {
                   .pixels = rgba_pixel,
@@ -164,7 +202,6 @@ TEST_CASE("write_webp writes a WebP file to disk")
           .output_path = output_path,
           .compression_level = -1 });
 
-    REQUIRE(written.ok());
     REQUIRE(fs::exists(output_path));
 
     std::vector<std::uint8_t> file_bytes(
@@ -187,21 +224,17 @@ TEST_CASE("write_webp writes a WebP file to disk")
 TEST_CASE("encode_webp validates buffer layout and compression range")
 {
     const std::vector<std::uint8_t> too_small_pixels{ 1, 2, 3, 4, 5, 6, 7 };
-    auto invalid_layout = PDJE_UTIL::function::image::encode_webp(
+    CHECK_THROWS_AS(PDJE_UTIL::function::image::encode_webp(
         { .image = {
               .pixels       = too_small_pixels,
               .width        = 2,
               .height       = 1,
               .stride       = 0,
               .pixel_format = PDJE_UTIL::function::image::RasterPixelFormat::rgba8,
-          } });
-
-    CHECK_FALSE(invalid_layout.ok());
-    CHECK(invalid_layout.status().code ==
-          PDJE_UTIL::common::StatusCode::invalid_argument);
+          } }), std::invalid_argument);
 
     const std::vector<std::uint8_t> valid_pixels{ 1, 2, 3, 255 };
-    auto invalid_compression = PDJE_UTIL::function::image::encode_webp(
+    CHECK_THROWS_AS(PDJE_UTIL::function::image::encode_webp(
         { .image =
               {
                   .pixels = valid_pixels,
@@ -210,9 +243,5 @@ TEST_CASE("encode_webp validates buffer layout and compression range")
                   .stride = 0,
                   .pixel_format = PDJE_UTIL::function::image::RasterPixelFormat::rgba8,
               },
-          .compression_level = 12 });
-
-    CHECK_FALSE(invalid_compression.ok());
-    CHECK(invalid_compression.status().code ==
-          PDJE_UTIL::common::StatusCode::invalid_argument);
+          .compression_level = 12 }), std::invalid_argument);
 }

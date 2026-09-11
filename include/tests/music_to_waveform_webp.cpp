@@ -5,6 +5,7 @@
 #include <array>
 #include <chrono>
 #include <cstdint>
+#include <exception>
 #include <filesystem>
 #include <fstream>
 #include <iomanip>
@@ -184,7 +185,7 @@ print_timing_summary(double      pcm_decode_ms,
 }
 
 int
-main()
+run()
 {
     const auto project_root = find_project_root();
     if (!project_root.has_value()) {
@@ -251,18 +252,12 @@ main()
                 waveform_args, stft_args);
             waveform_encode_ms = timer.elapsed_ms();
 
-            if (!waveform.ok()) {
-                std::cerr << "failed: waveform encode error: "
-                          << waveform.status().message << std::endl;
-                return 1;
-            }
-
             double file_write_ms = 0.0;
             {
                 SectionTimer      timer("File Writing");
                 std::size_t       file_count = 0;
                 const std::string music_stem = music_path->stem().string();
-                const auto       &batch      = waveform.value();
+                const auto       &batch      = waveform;
                 for (std::size_t channel_index = 0;
                      channel_index < batch.size();
                      ++channel_index) {
@@ -317,4 +312,17 @@ main()
               << std::endl;
 
     return 0;
+}
+
+int
+main()
+{
+    try {
+        return run();
+    } catch (const std::exception &error) {
+        std::cerr << "failed: " << error.what() << std::endl;
+    } catch (...) {
+        std::cerr << "failed: unknown error" << std::endl;
+    }
+    return 1;
 }

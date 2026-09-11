@@ -262,7 +262,7 @@ run_detector(const CliArgs           &args,
              fs::path                &resolved_model_path)
 {
     PDJE_UTIL::ai::BeatThisDetector detector(args.model_path.value());
-    resolved_model_path = detector.model_path();
+    resolved_model_path = detector.model_path;
     return detector.detect(mono_pcm, input_sample_rate);
 }
 

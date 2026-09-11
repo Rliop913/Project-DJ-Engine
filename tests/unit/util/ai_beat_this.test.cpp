@@ -23,12 +23,12 @@ namespace beat_this = PDJE_UTIL::ai::beat_this;
 constexpr double kPi = 3.14159265358979323846;
 
 std::vector<float>
-BuildSineWave(const int sampleRate,
+BuildSineWave(const int    sampleRate,
               const double seconds,
               const double frequencyHz)
 {
-    const std::size_t sampleCount = static_cast<std::size_t>(
-        static_cast<double>(sampleRate) * seconds);
+    const std::size_t sampleCount =
+        static_cast<std::size_t>(static_cast<double>(sampleRate) * seconds);
     std::vector<float> samples(sampleCount, 0.0f);
     for (std::size_t idx = 0; idx < sampleCount; ++idx) {
         const double phase =
@@ -64,11 +64,11 @@ BuildSpectrogramInput(const int numFrames)
     PDJE_UTIL::ai::NamedFloatTensor input;
     input.name         = "spect";
     input.tensor.shape = { 1, static_cast<int64_t>(numFrames), 128 };
-    input.tensor.values.resize(static_cast<std::size_t>(numFrames) * 128u, 0.0f);
+    input.tensor.values.resize(static_cast<std::size_t>(numFrames) * 128u,
+                               0.0f);
 
     for (std::size_t idx = 0; idx < input.tensor.values.size(); ++idx) {
-        input.tensor.values[idx] =
-            static_cast<float>((idx % 17u) + 1u) / 17.0f;
+        input.tensor.values[idx] = static_cast<float>((idx % 17u) + 1u) / 17.0f;
     }
 
     return input;
@@ -77,20 +77,21 @@ BuildSpectrogramInput(const int numFrames)
 class InspectingBackend final : public beat_this::MelSpectrogramBackend {
   public:
     beat_this::Spectrogram
-    ComputeLinearMel(std::span<const float> samples,
-                     const PDJE_UTIL::ai::BeatThisFrontendConfig &config) override
+    ComputeLinearMel(
+        std::span<const float>                       samples,
+        const PDJE_UTIL::ai::BeatThisFrontendConfig &config) override
     {
         observed_input.assign(samples.begin(), samples.end());
         observed_config = config;
         return beat_this::Spectrogram{
             .num_frames = 1,
-            .num_bins = config.num_mels,
-            .values = std::vector<float>(
+            .num_bins   = config.num_mels,
+            .values     = std::vector<float>(
                 static_cast<std::size_t>(config.num_mels), 0.5f),
         };
     }
 
-    std::vector<float>                        observed_input;
+    std::vector<float>                    observed_input;
     PDJE_UTIL::ai::BeatThisFrontendConfig observed_config{};
 };
 
@@ -106,25 +107,25 @@ CheckSortedFinite(const std::vector<double> &values)
 
 } // namespace
 
-TEST_CASE("onnx session loads checked-in model and reports beat-this io contract")
+TEST_CASE(
+    "onnx session loads checked-in model and reports beat-this io contract")
 {
     const auto modelPath = BeatThisModelPath();
     REQUIRE(std::filesystem::exists(modelPath));
 
     PDJE_UTIL::ai::OnnxSession session(modelPath);
 
-    CHECK(session.model_path() == modelPath);
-    CHECK(session.input_count() == 1u);
-    CHECK(session.output_count() == 1u);
-    REQUIRE(session.input_names().size() == 1u);
-    REQUIRE(session.output_names().size() == 1u);
-    CHECK(session.input_name(0u) == "spect");
-    CHECK(session.output_name(0u) == "logits");
+    CHECK(session.model_path == modelPath);
+    REQUIRE(session.input_names.size() == 1u);
+    REQUIRE(session.output_names.size() == 1u);
+    CHECK(session.input_names.at(0u) == "spect");
+    CHECK(session.output_names.at(0u) == "logits");
 }
 
-TEST_CASE("onnx session runs dense float tensors and returns named float outputs")
+TEST_CASE(
+    "onnx session runs dense float tensors and returns named float outputs")
 {
-    PDJE_UTIL::ai::OnnxSession session(BeatThisModelPath());
+    PDJE_UTIL::ai::OnnxSession                   session(BeatThisModelPath());
     std::vector<PDJE_UTIL::ai::NamedFloatTensor> inputs{
         BuildSpectrogramInput(32),
     };
@@ -144,14 +145,27 @@ TEST_CASE("onnx session runs dense float tensors and returns named float outputs
     }
 }
 
+TEST_CASE("onnx session move construction preserves metadata and execution")
+{
+    PDJE_UTIL::ai::OnnxSession original(BeatThisModelPath());
+    PDJE_UTIL::ai::OnnxSession moved(std::move(original));
+
+    CHECK(moved.model_path == BeatThisModelPath());
+    CHECK(moved.input_names == std::vector<std::string>{ "spect" });
+    CHECK(moved.output_names == std::vector<std::string>{ "logits" });
+    std::vector<PDJE_UTIL::ai::NamedFloatTensor> inputs{
+        BuildSpectrogramInput(8),
+    };
+    CHECK(moved.run(inputs).size() == 1u);
+    CHECK_THROWS_AS(original.run(inputs), std::runtime_error);
+}
+
 TEST_CASE("onnx session rejects invalid model path and tensor inputs")
 {
     const auto missingModel = RepoRoot() / "third_party" / "onnx_models" /
                               "missing_beat_this_model.onnx";
     CHECK_THROWS_AS(
-        [&]() {
-            PDJE_UTIL::ai::OnnxSession session(missingModel);
-        }(),
+        [&]() { PDJE_UTIL::ai::OnnxSession session(missingModel); }(),
         std::runtime_error);
 
     PDJE_UTIL::ai::OnnxSession session(BeatThisModelPath());
@@ -177,11 +191,8 @@ TEST_CASE("onnx session rejects invalid model path and tensor inputs")
 
 TEST_CASE("beat this detector requires an explicit model path")
 {
-    CHECK_THROWS_AS(
-        []() {
-            PDJE_UTIL::ai::BeatThisDetector detector;
-        }(),
-        std::invalid_argument);
+    CHECK_THROWS_AS([]() { PDJE_UTIL::ai::BeatThisDetector detector; }(),
+                    std::invalid_argument);
 
     CHECK_THROWS_AS(
         []() {
@@ -205,6 +216,23 @@ TEST_CASE("beat this preprocess resamples waveform to the frontend sample rate")
 
     REQUIRE(!output.empty());
     CHECK(std::abs(static_cast<int>(output.size()) - 2205) <= 4);
+}
+
+TEST_CASE("beat this frontend rejects non-finite configuration")
+{
+    const std::vector<float> input(1024u, 0.0f);
+
+    auto nan_frequency     = PDJE_UTIL::ai::BeatThisFrontendConfig{};
+    nan_frequency.f_min_hz = std::numeric_limits<float>::quiet_NaN();
+    CHECK_THROWS_AS(beat_this::FrontendPipeline::PrepareMonoWaveform(
+                        input, 22050, nan_frequency),
+                    std::invalid_argument);
+
+    auto infinite_multiplier = PDJE_UTIL::ai::BeatThisFrontendConfig{};
+    infinite_multiplier.log_multiplier = std::numeric_limits<float>::infinity();
+    CHECK_THROWS_AS(beat_this::FrontendPipeline::PrepareMonoWaveform(
+                        input, 22050, infinite_multiplier),
+                    std::invalid_argument);
 }
 
 TEST_CASE("beat this preprocess reflect pads input and applies log mel scaling")
@@ -234,7 +262,7 @@ TEST_CASE("beat this preprocess reflect pads input and applies log mel scaling")
 
 TEST_CASE("pdje mel backend produces exact-frame 128-bin linear mel output")
 {
-    beat_this::PdjeMelSpectrogramBackend    backend;
+    beat_this::PdjeMelSpectrogramBackend        backend;
     const PDJE_UTIL::ai::BeatThisFrontendConfig config;
     std::vector<float> padded(config.nfft + (2 * config.hop_length), 0.25f);
 
@@ -252,15 +280,17 @@ TEST_CASE("pdje mel backend produces exact-frame 128-bin linear mel output")
     }
 }
 
-TEST_CASE("beat this inference chunk helpers split and aggregate full spectrogram coverage")
+TEST_CASE("beat this inference chunk helpers split and aggregate full "
+          "spectrogram coverage")
 {
     beat_this::Spectrogram spectrogram{
         .num_frames = 3010,
-        .num_bins = 128,
-        .values = std::vector<float>(3010u * 128u, 1.0f),
+        .num_bins   = 128,
+        .values     = std::vector<float>(3010u * 128u, 1.0f),
     };
 
-    const auto chunks = beat_this::InferencePipeline::SplitSpectrogram(spectrogram);
+    const auto chunks =
+        beat_this::InferencePipeline::SplitSpectrogram(spectrogram);
     REQUIRE(chunks.size() >= 3u);
 
     std::vector<beat_this::ChunkFrameLogits> chunkLogits;
@@ -269,7 +299,7 @@ TEST_CASE("beat this inference chunk helpers split and aggregate full spectrogra
     for (const auto &chunk : chunks) {
         beat_this::FrameLogits logits{
             .num_frames = chunk.num_frames,
-            .beat = std::vector<float>(
+            .beat       = std::vector<float>(
                 static_cast<std::size_t>(chunk.num_frames), 0.0f),
             .downbeat = std::vector<float>(
                 static_cast<std::size_t>(chunk.num_frames), 0.0f),
@@ -285,7 +315,7 @@ TEST_CASE("beat this inference chunk helpers split and aggregate full spectrogra
 
         chunkLogits.push_back(beat_this::ChunkFrameLogits{
             .start_frame = chunk.start_frame,
-            .logits = std::move(logits),
+            .logits      = std::move(logits),
         });
     }
 
@@ -331,12 +361,12 @@ TEST_CASE("beat this postprocessor extracts peaks and snaps downbeats to beats")
 {
     const beat_this::FrameLogits logits{
         .num_frames = 8,
-        .beat = { -1.0f, 1.0f, 0.2f, 0.3f, -0.1f, 0.4f, 0.9f, -0.5f },
-        .downbeat = { 0.7f, -0.2f, 0.2f, 0.1f, -0.1f, 0.3f, 0.2f, 0.8f },
+        .beat       = { -1.0f, 1.0f, 0.2f, 0.3f, -0.1f, 0.4f, 0.9f, -0.5f },
+        .downbeat   = { 0.7f, -0.2f, 0.2f, 0.1f, -0.1f, 0.3f, 0.2f, 0.8f },
     };
 
     beat_this::MinimalBeatPostprocessor postprocessor(50.0);
-    const auto result = postprocessor.Process(logits);
+    const auto                          result = postprocessor.Process(logits);
 
     REQUIRE(result.beats.size() == 2u);
     REQUIRE(result.downbeats.size() == 2u);
@@ -350,29 +380,42 @@ TEST_CASE("beat this postprocessor emits one beat for one plateau cluster")
 {
     const beat_this::FrameLogits logits{
         .num_frames = 6,
-        .beat = { 0.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f },
-        .downbeat = { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f },
+        .beat       = { 0.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f },
+        .downbeat   = { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f },
     };
 
     beat_this::MinimalBeatPostprocessor postprocessor(1.0);
-    const auto result = postprocessor.Process(logits);
+    const auto                          result = postprocessor.Process(logits);
 
     REQUIRE(result.beats.size() == 1u);
     CHECK(result.downbeats.empty());
     CHECK(result.beats[0] == doctest::Approx(2.0));
 }
 
-TEST_CASE("beat this detector loads checked-in model and returns sorted finite timestamps")
+TEST_CASE("beat this detector loads checked-in model and returns sorted finite "
+          "timestamps")
 {
     const auto modelPath = BeatThisModelPath();
     REQUIRE(std::filesystem::exists(modelPath));
 
     PDJE_UTIL::ai::BeatThisDetector detector(modelPath);
-    const auto input  = BuildSineWave(44100, 4.0, 120.0);
-    const auto result = detector.detect(input, 44100);
+    const auto                      input  = BuildSineWave(44100, 4.0, 120.0);
+    const auto                      result = detector.detect(input, 44100);
 
-    CHECK(detector.model_path() == modelPath);
-    CHECK(detector.frontend_config().target_sample_rate == 22050);
+    CHECK(detector.model_path == modelPath);
+    CHECK(detector.frontend_config.target_sample_rate == 22050);
     CheckSortedFinite(result.beats);
     CheckSortedFinite(result.downbeats);
+}
+
+TEST_CASE("beat this detector move construction preserves immutable metadata")
+{
+    PDJE_UTIL::ai::BeatThisDetector original(BeatThisModelPath());
+    PDJE_UTIL::ai::BeatThisDetector moved(std::move(original));
+
+    CHECK(moved.model_path == BeatThisModelPath());
+    CHECK(moved.frontend_config == PDJE_UTIL::ai::BeatThisFrontendConfig{});
+    const auto input = BuildSineWave(22050, 0.1, 440.0);
+    CHECK_NOTHROW(moved.detect(input, 22050));
+    CHECK_THROWS_AS(original.detect(input, 22050), std::runtime_error);
 }

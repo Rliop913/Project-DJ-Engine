@@ -1,57 +1,34 @@
 # PDJE Invariants
 
-These rules are intended to stay stable unless the repository is deliberately
+These constraints apply to every task unless the repository is deliberately
 restructured.
 
-## Documentation Ownership
+## Truth And Scope
 
-- `AGENT_DOCS/` is the canonical Markdown control-doc location.
-- Root `README.md` is the public landing page.
-- Root `AGENTS.md` is the thin agent entrypoint.
-- Root `ARCHITECTURE.md`, `PROJECT_STATE.md`, and `HOW_TO_VERIFY.md` are
-  compatibility aliases, not canonical deep docs.
-- `DECISIONS.md` is the short rationale ledger for these control-doc rules.
-- Public project documentation is maintained outside this checkout.
-- `document_sources/` may still exist as legacy external-doc source material,
-  but it is not part of the required maintenance reading flow.
-- `docs/` contains only redirecting HTML for the external documentation site.
-- `BluePrint_PDJE/` is archive material, not current source of truth.
+- Current source and checked-in CMake files outrank prose.
+- `AGENT_DOCS/` is the canonical agent-facing Markdown surface; `AGENTS.md` is
+  its entrypoint.
+- Preserve unrelated worktree changes and keep edits within the requested
+  subsystem.
+- Treat local caches and generated build trees only as evidence of their own
+  state, never as sources for repository defaults.
 
-## Build Truth
+## Code And Wiring
 
-- Source defaults come from `cmakes/Options.cmake`.
-- Local build caches can diverge from source defaults and must not overwrite
-  them in docs.
-- The checked-in `CMakePresets.json` is the canonical shared build matrix.
-- Shared preset flows use the repo-root `/build` directory, written as
-  `./build` in commands.
-- Shared preset flows support exactly `Release` and `RelWithDebInfo`.
-- Shared preset flows fix `PDJE_DYNAMIC=ON`.
-- Shared preset flows allow `PDJE_TEST=ON` and `PDJE_DEV_TEST=ON` only in
-  `RelWithDebInfo`.
-- Shared preset flows fix compilers by platform: Windows=`cl`,
-  Linux=`clang`, macOS=`clang` expecting AppleClang.
-- Agents must ask the user which build/config flow to use before running any
-  `conan install`, `cmake` configure, `cmake --build`, `ctest`, or wrapper
-  script command.
-- Agents must not choose a preset, toolchain, build type, or verification
-  command on their own and must not start build/config work without explicit
-  user approval.
-- Agents must not create or use build directories other than `./build` unless
-  the user explicitly requests an exception.
-- SWIG is required only when `PDJE_SWIG_BUILD=ON`.
-- `PDJE_DEVELOP_INPUT` is active on Linux and Windows and forced off on macOS.
+- The project uses C++20.
+- `include/` contains public headers, internal headers, and implementation
+  `.cpp` files.
+- Production and unit-test sources are explicitly listed under `cmakes/src/`
+  and `cmakes/tests/`; adding a file does not make it part of a target.
+- A source or test file change must preserve its owning explicit CMake list.
+- `.clang-format` is the formatting authority for C and C++ sources.
 
-## Codebase Shape
+## Ownership And Compatibility
 
-- `include/` contains both headers and implementation `.cpp` files.
-- `PDJE`, `PDJE_Input`, `PDJE_JUDGE::JUDGE`, and `PDJE_UTIL` are the main
-  native integration surfaces.
-- `PDJE_UTIL` is active code, not roadmap-only material.
-- Pointer-based data-line structs must be treated as non-owning and null-checked.
-
-## Verification Expectations
-
-- Unit test truth comes from `ctest --test-dir ./build -L unit`.
-- Public documentation changes belong in the external documentation surface, not
-  in `docs/`; this checkout keeps only the redirect HTML.
+- Public C++ declarations, C ABI declarations, data lines, callbacks, and
+  versioned structures are compatibility surfaces.
+- Borrowed pointers and views never acquire ownership implicitly and must not
+  outlive their documented owner.
+- Ownership, lifecycle, invalidation, and ABI details are defined in
+  [RUNTIME_CONTRACTS.md](RUNTIME_CONTRACTS.md); do not infer them from wrapper
+  convenience behavior.

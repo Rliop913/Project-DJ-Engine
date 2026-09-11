@@ -17,7 +17,7 @@ ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/opencl_runtime_shim.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/db_relational_sqlite.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/db_keyvalue_rocksdb.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/db_nearest_annoy.test.cpp
-${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/status.test.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/util/fuzzy_search.test.cpp
 ${UTIL_SRC_EXPORT}
 )
 

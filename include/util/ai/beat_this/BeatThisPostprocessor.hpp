@@ -15,14 +15,7 @@ class MinimalBeatPostprocessor {
     BeatDetectionResult
     Process(const FrameLogits &logits) const;
 
-    double
-    fps() const noexcept
-    {
-        return fps_;
-    }
-
-  private:
-    double fps_ = 50.0;
+    const double fps;
 };
 
 class PostprocessPipeline {
@@ -37,8 +30,7 @@ class PostprocessPipeline {
     DeduplicatePeaks(std::span<const int> peaks);
 
     static std::vector<double>
-    ConvertFramesToSeconds(std::span<const double> frame_positions,
-                           double                  fps);
+    ConvertFramesToSeconds(std::span<const double> frame_positions, double fps);
 
     static std::vector<double>
     SnapDownbeatsToNearestBeats(std::span<const double> beat_times,

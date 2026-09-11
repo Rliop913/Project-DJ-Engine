@@ -22,10 +22,10 @@
 extern "C" {
 #endif
 
-typedef struct PDJE_InputHandleV1 PDJE_InputHandleV1;
+typedef struct PDJE_InputHandleV1           PDJE_InputHandleV1;
 typedef struct PDJE_InputDeviceListHandleV1 PDJE_InputDeviceListHandleV1;
-typedef struct PDJE_MidiDeviceListHandleV1 PDJE_MidiDeviceListHandleV1;
-typedef struct PDJE_InputSnapshotHandleV1 PDJE_InputSnapshotHandleV1;
+typedef struct PDJE_MidiDeviceListHandleV1  PDJE_MidiDeviceListHandleV1;
+typedef struct PDJE_InputSnapshotHandleV1   PDJE_InputSnapshotHandleV1;
 
 typedef enum PDJE_InputResultV1 {
     PDJE_INPUT_RESULT_OK_V1               = 0,
@@ -113,6 +113,22 @@ typedef struct PDJE_InputSnapshotInfoV1 {
     size_t   midi_event_count;
 } PDJE_InputSnapshotInfoV1;
 
+// V1 ownership and lifetime rules:
+//
+// - Successful create/list/poll calls transfer one opaque handle to the
+//   caller. Release it with the matching destroy function.
+// - An out-handle parameter must point to an empty slot. Producing functions
+//   set a valid slot to NULL before work and leave it NULL on failure.
+// - Device and MIDI device views borrow strings from their list handle.
+// - A snapshot owns copies of polled events. Its event string views remain
+//   valid until that snapshot is destroyed.
+// - A backend-name view remains valid until the next backend-name query on the
+//   same input handle or until that handle is destroyed.
+// - A versioned output accepts struct_size == 0 or at least its V1 size.
+//   Compatible V1 fields are reset before later failures; extension bytes are
+//   left untouched. Smaller nonzero buffers are rejected.
+// - Handles are not generally safe for concurrent mutation.
+
 PDJE_API PDJE_InputResultV1 PDJE_CALL
 pdje_input_create_v1(PDJE_InputHandleV1 **out_input);
 
@@ -137,7 +153,7 @@ pdje_input_get_backend_name_v1(PDJE_InputHandleV1     *input,
                                PDJE_InputStringViewV1 *out_backend);
 
 PDJE_API PDJE_InputResultV1 PDJE_CALL
-pdje_input_list_devices_v1(PDJE_InputHandleV1           *input,
+pdje_input_list_devices_v1(PDJE_InputHandleV1            *input,
                            PDJE_InputDeviceListHandleV1 **out_list);
 
 PDJE_API size_t PDJE_CALL
@@ -146,13 +162,13 @@ pdje_input_device_list_size_v1(const PDJE_InputDeviceListHandleV1 *list);
 PDJE_API PDJE_InputResultV1 PDJE_CALL
 pdje_input_device_list_get_v1(const PDJE_InputDeviceListHandleV1 *list,
                               size_t                              index,
-                              PDJE_InputDeviceViewV1            *out_device);
+                              PDJE_InputDeviceViewV1             *out_device);
 
 PDJE_API void PDJE_CALL
 pdje_input_device_list_destroy_v1(PDJE_InputDeviceListHandleV1 *list);
 
 PDJE_API PDJE_InputResultV1 PDJE_CALL
-pdje_input_list_midi_devices_v1(PDJE_InputHandleV1          *input,
+pdje_input_list_midi_devices_v1(PDJE_InputHandleV1           *input,
                                 PDJE_MidiDeviceListHandleV1 **out_list);
 
 PDJE_API size_t PDJE_CALL
@@ -161,7 +177,7 @@ pdje_input_midi_device_list_size_v1(const PDJE_MidiDeviceListHandleV1 *list);
 PDJE_API PDJE_InputResultV1 PDJE_CALL
 pdje_input_midi_device_list_get_v1(const PDJE_MidiDeviceListHandleV1 *list,
                                    size_t                             index,
-                                   PDJE_MidiDeviceViewV1            *out_device);
+                                   PDJE_MidiDeviceViewV1 *out_device);
 
 PDJE_API void PDJE_CALL
 pdje_input_midi_device_list_destroy_v1(PDJE_MidiDeviceListHandleV1 *list);
@@ -179,7 +195,7 @@ PDJE_API PDJE_InputResultV1 PDJE_CALL
 pdje_input_run_v1(PDJE_InputHandleV1 *input);
 
 PDJE_API PDJE_InputResultV1 PDJE_CALL
-pdje_input_poll_snapshot_v1(PDJE_InputHandleV1         *input,
+pdje_input_poll_snapshot_v1(PDJE_InputHandleV1          *input,
                             PDJE_InputSnapshotHandleV1 **out_snapshot);
 
 PDJE_API PDJE_InputResultV1 PDJE_CALL
@@ -192,7 +208,7 @@ pdje_input_snapshot_input_size_v1(const PDJE_InputSnapshotHandleV1 *snapshot);
 PDJE_API PDJE_InputResultV1 PDJE_CALL
 pdje_input_snapshot_input_get_v1(const PDJE_InputSnapshotHandleV1 *snapshot,
                                  size_t                            index,
-                                 PDJE_InputEventViewV1           *out_event);
+                                 PDJE_InputEventViewV1            *out_event);
 
 PDJE_API size_t PDJE_CALL
 pdje_input_snapshot_midi_size_v1(const PDJE_InputSnapshotHandleV1 *snapshot);
@@ -200,7 +216,7 @@ pdje_input_snapshot_midi_size_v1(const PDJE_InputSnapshotHandleV1 *snapshot);
 PDJE_API PDJE_InputResultV1 PDJE_CALL
 pdje_input_snapshot_midi_get_v1(const PDJE_InputSnapshotHandleV1 *snapshot,
                                 size_t                            index,
-                                PDJE_MidiEventViewV1            *out_event);
+                                PDJE_MidiEventViewV1             *out_event);
 
 PDJE_API void PDJE_CALL
 pdje_input_snapshot_destroy_v1(PDJE_InputSnapshotHandleV1 *snapshot);

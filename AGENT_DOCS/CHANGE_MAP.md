@@ -1,16 +1,27 @@
 # PDJE Change Map
 
-Use this when you know what you need to change, but not which repository slice
-owns it.
+Use this table to find the owning code, explicit CMake wiring, and stable
+verification surface. Target and label availability is defined by
+[TEST_MAP.md](TEST_MAP.md). Rows marked `runtime` also require
+[RUNTIME_CONTRACTS.md](RUNTIME_CONTRACTS.md).
 
-| Change Area | Read First | Likely Edit Paths | Verify With | Caveats |
+| Change area | Primary code | CMake owner | Verification | Contract review |
 | --- | --- | --- | --- | --- |
-| Core facade and playback | `CORE_RUNTIME.md` | `include/core/interface/`, `include/core/MainObjects/audioPlayer/`, `include/core/db/` | `TEST_MAP.md` -> full unit or core | play modes and core data lines cross module boundaries |
-| Editor, timeline, diff, linter | `EDITOR_SYSTEM.md`, `LIFECYCLES.md` | `include/core/editor/`, `include/core/MainObjects/editorObject/` | `ctest --test-dir ./build -R '^unit.core::core:' --output-on-failure` | diff behavior is covered by core tests, not a separate editor binary |
-| Input device mapping and runtime | `INPUT_SYSTEM.md`, `DATA_CONTRACTS.md` | `include/input/DefaultDevs/`, `include/input/runner/`, `include/input/IPC/`, `include/input/midi/` | `ctest --test-dir ./build -R '^unit.input::' --output-on-failure` | `PDJE_DEVELOP_INPUT` is forced off on macOS |
-| Judge timing, rails, note objects | `JUDGE_SYSTEM.md`, `DATA_CONTRACTS.md`, `GLOSSARY.md` | `include/judge/Init/`, `include/judge/Loop/`, `include/judge/NoteOBJ/`, `include/judge/PDJE_RAIL.*` | `ctest --test-dir ./build -R '^unit.judge::' --output-on-failure` | judge setup depends on both core and input data lines |
-| Utility DB wrappers | `UTIL_SYSTEM.md` | `include/util/db/`, `include/util/common/` | `TEST_MAP.md` -> util db and status | util doctest cases are registered under `unit.util::...`; ONNX smoke is `unit.onnxruntime::smoke` |
-| Utility STFT, OpenCL, waveform, WebP | `UTIL_SYSTEM.md`, `GLOSSARY.md` | `include/util/function/stft/`, `include/util/function/stft/detail/`, `include/util/function/image/`, `include/util/function/image/detail/` | `TEST_MAP.md` -> util signal and image | runtime backend fallback behavior lives in util tests, not in the core facade; public leaves are thin and internal detail headers are included directly without forwarding shims |
-| C ABI wrappers | `LIFECYCLES.md`, `KNOWN_GAPS.md`, `DECISIONS.md` | `include/core/interface/CPDJE_interface.cpp`, `include/input/CPDJE_Input.cpp`, `include/judge/CPDJE_Judge.cpp` | `TEST_MAP.md` -> C ABI wrappers | explicit `cpdje_*_c_api.test.cpp` files exist, but current unit targets do not wire them yet |
-| CMake options and test wiring | `INVARIANTS.md`, `VERIFY.md`, `DECISIONS.md` | `cmakes/Options.cmake`, `cmakes/tests/`, `CMakeLists.txt` | `rg -n "option\\(PDJE_" cmakes/Options.cmake` and `cmake -LA -N ./build` | source defaults and local build cache are different sources of truth |
-| Control docs and public docs | `INDEX.md`, `NOW.md`, `INVARIANTS.md`, `VERIFY.md` | `AGENT_DOCS/`, `README.md` | `VERIFY.md` quick doc checks | public docs are external, `docs/` is redirect-only, and `BluePrint_PDJE/` is archive only |
+| core facade, DB search, playback | `include/core/interface/`, `include/core/MainObjects/audioPlayer/`, `include/core/audioRender/`, `include/core/db/` | `cmakes/src/CORE/` | core | runtime |
+| editor, timeline, diff, lint, render | `include/core/MainObjects/editorObject/`, `include/core/editor/` | `cmakes/src/CORE/EDITORsrc.cmake` | core; approved `testEditor` scope | runtime |
+| shared logging, data lines, IPC, crypto | `include/global/` | `cmakes/src/GLOBAL/`, `cmakes/BuildLog.cmake` | all affected labels | runtime for shared data |
+| input discovery, state, device/MIDI runtime | `include/input/` | `cmakes/src/INPUT/`, `cmakes/BuildSubProc.cmake` | input | runtime |
+| judge rules, rails, notes, loop | `include/judge/` | `cmakes/src/JUDGE/` | judge | runtime |
+| util DB adapters | `include/util/db/` | `cmakes/src/UTIL/UTILsrc.cmake` | util | public API changes only |
+| util AI / Beat This | `include/util/ai/` | `cmakes/src/UTIL/UTILsrc.cmake` | util, onnxruntime | public API changes only |
+| util STFT, OpenCL, image/WebP | `include/util/function/stft/`, `include/util/function/image/`, `GenCodes/OKL/` | `cmakes/src/UTIL/UTILsrc.cmake`, `cmakes/findPackages.cmake` | util | public API changes only |
+| util fuzzy/scalar/text | `include/util/function/fuzzy/`, `include/util/function/scalar/`, `include/util/function/text/` | `cmakes/src/UTIL/UTILsrc.cmake` when compiled | util | public API changes only |
+| C ABI | `include/core/interface/CPDJE_interface.h`, `include/input/CPDJE_Input.h`, `include/judge/CPDJE_Judge.h`, and adjacent `.cpp` files | top-level `CMakeLists.txt`, `cmakes/tests/CAbiTests.cmake` | cabi, then affected labels | runtime |
+| Cap'n Proto schema/translation | `third_party/Capnp/`, `include/core/db/Capnp/` | `cmakes/findPackages.cmake`, core source lists | core | schema compatibility |
+| Python/C# bindings | `PDJE_swig.i`, `swig_python/`, `swig_csharp/` | `cmakes/ADD_SWIGS.cmake` | approved SWIG build | wrapped public API |
+| options, dependencies, targets | `cmakes/Options.cmake`, `cmakes/findPackages.cmake`, top-level `CMakeLists.txt`, `CMakePresets.json` | changed CMake or bootstrap file | approved host suite | none |
+| unit or manual test wiring | `tests/unit/`, `include/tests/` | `cmakes/tests/units/`, `cmakes/tests/CAbiTests.cmake`, `cmakes/tests/DevTests.cmake` | owning label or manual target | none |
+| agent documentation | `AGENTS.md`, `AGENT_DOCS/` | [MAINTENANCE.md](MAINTENANCE.md) | static documentation checks | none |
+
+When adding a `.cpp` or test file, update or confirm the owning explicit CMake
+list in the same change.

@@ -1,9 +1,7 @@
 #pragma once
 
-#include "util/common/Result.hpp"
-#include "util/function/FunctionContext.hpp"
-
 #include <cctype>
+#include <stdexcept>
 #include <string>
 
 namespace PDJE_UTIL::function {
@@ -14,15 +12,12 @@ struct SlugifyArgs {
     char        separator = '-';
 };
 
-inline common::Result<std::string>
-slugify(const SlugifyArgs &args, EvalOptions options = {})
+inline std::string
+slugify(const SlugifyArgs &args)
 {
-    (void)options;
-
     if (std::isalnum(static_cast<unsigned char>(args.separator))) {
-        return common::Result<std::string>::failure(
-            { common::StatusCode::invalid_argument,
-              "SlugifyArgs.separator must be a non-alphanumeric delimiter." });
+        throw std::invalid_argument(
+            "SlugifyArgs.separator must be a non-alphanumeric delimiter.");
     }
 
     std::string output;
@@ -31,8 +26,9 @@ slugify(const SlugifyArgs &args, EvalOptions options = {})
     bool previous_was_separator = true;
     for (unsigned char ch : args.input) {
         if (std::isalnum(ch)) {
-            output.push_back(args.lowercase ? static_cast<char>(std::tolower(ch))
-                                            : static_cast<char>(ch));
+            output.push_back(args.lowercase
+                                 ? static_cast<char>(std::tolower(ch))
+                                 : static_cast<char>(ch));
             previous_was_separator = false;
         } else if (!previous_was_separator && !output.empty()) {
             output.push_back(args.separator);
@@ -44,7 +40,7 @@ slugify(const SlugifyArgs &args, EvalOptions options = {})
         output.pop_back();
     }
 
-    return common::Result<std::string>::success(std::move(output));
+    return output;
 }
 
 } // namespace PDJE_UTIL::function

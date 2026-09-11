@@ -8,8 +8,7 @@
 #include <limits>
 #include <vector>
 
-namespace PDJE_PARALLEL
-{
+namespace PDJE_PARALLEL {
 
 namespace detail {
 
@@ -62,7 +61,8 @@ ComputeRgbBandBoundaries(const std::size_t melSize) noexcept
         }
 
         std::size_t donor = idx;
-        for (std::size_t candidate = 0; candidate < counts.size(); ++candidate) {
+        for (std::size_t candidate = 0; candidate < counts.size();
+             ++candidate) {
             if (counts[candidate] > counts[donor]) {
                 donor = candidate;
             }
@@ -75,12 +75,12 @@ ComputeRgbBandBoundaries(const std::size_t melSize) noexcept
     }
 
     return {
-        .low_begin = 0u,
-        .low_end = counts[0],
-        .mid_begin = counts[0],
-        .mid_end = counts[0] + counts[1],
+        .low_begin  = 0u,
+        .low_end    = counts[0],
+        .mid_begin  = counts[0],
+        .mid_end    = counts[0] + counts[1],
         .high_begin = counts[0] + counts[1],
-        .high_end = melSize,
+        .high_end   = melSize,
     };
 }
 
@@ -89,7 +89,7 @@ SanitizeFrameRange(const std::vector<float> &vec,
                    const std::size_t         begin,
                    const std::size_t         end) noexcept
 {
-    float minValue = std::numeric_limits<float>::infinity();
+    float minValue       = std::numeric_limits<float>::infinity();
     bool  hasFiniteValue = false;
 
     const std::size_t clampedEnd = std::min(end, vec.size());
@@ -128,8 +128,8 @@ BandRms(const std::vector<float> &vec,
 
     double sumSquares = 0.0;
     for (std::size_t idx = begin; idx < clampedEnd; ++idx) {
-        const double value = static_cast<double>(
-            SanitizeShiftedValue(vec[idx], shift));
+        const double value =
+            static_cast<double>(SanitizeShiftedValue(vec[idx], shift));
         sumSquares += value * value;
     }
 
@@ -169,9 +169,9 @@ Percentile(std::vector<float> values, const float fraction)
     }
 
     const float clampedFraction = std::clamp(fraction, 0.0f, 1.0f);
-    const auto percentileIndex = static_cast<std::size_t>(
-        std::ceil(static_cast<double>(values.size()) *
-                  static_cast<double>(clampedFraction))) -
+    const auto  percentileIndex = static_cast<std::size_t>(std::ceil(
+                                     static_cast<double>(values.size()) *
+                                     static_cast<double>(clampedFraction))) -
                                  1u;
     std::nth_element(values.begin(),
                      values.begin() +
@@ -193,10 +193,11 @@ Normalize_minmax(std::vector<float> &vec, const uint32_t chunkSZ)
 
     for (std::size_t chunkBegin = 0; chunkBegin < vec.size();
          chunkBegin += chunkSize) {
-        const std::size_t chunkEnd = std::min(vec.size(), chunkBegin + chunkSize);
+        const std::size_t chunkEnd =
+            std::min(vec.size(), chunkBegin + chunkSize);
 
-        float minValue = std::numeric_limits<float>::infinity();
-        float maxValue = -std::numeric_limits<float>::infinity();
+        float minValue       = std::numeric_limits<float>::infinity();
+        float maxValue       = -std::numeric_limits<float>::infinity();
         bool  hasFiniteValue = false;
 
         for (std::size_t idx = chunkBegin; idx < chunkEnd; ++idx) {
@@ -205,8 +206,8 @@ Normalize_minmax(std::vector<float> &vec, const uint32_t chunkSZ)
                 continue;
             }
 
-            minValue = std::min(minValue, value);
-            maxValue = std::max(maxValue, value);
+            minValue       = std::min(minValue, value);
+            maxValue       = std::max(maxValue, value);
             hasFiniteValue = true;
         }
 
@@ -226,8 +227,7 @@ Normalize_minmax(std::vector<float> &vec, const uint32_t chunkSZ)
                 continue;
             }
 
-            vec[idx] =
-                detail::ClampUnitFloat((value - minValue) * invRange);
+            vec[idx] = detail::ClampUnitFloat((value - minValue) * invRange);
         }
     }
 }
@@ -266,7 +266,7 @@ TO_RGB(const std::vector<float> &vec, const uint32_t melSZ)
 
     for (std::size_t frameIdx = 0; frameIdx < frameCount; ++frameIdx) {
         const std::size_t frameBase = frameIdx * melSize;
-        const float shift =
+        const float       shift =
             detail::SanitizeFrameRange(vec, frameBase, frameBase + melSize);
         const float brightness =
             detail::FrameMean(vec, frameBase, frameBase + melSize, shift);
@@ -281,38 +281,32 @@ TO_RGB(const std::vector<float> &vec, const uint32_t melSZ)
         return rgb;
     }
 
-    const float brightnessP15 =
-        detail::Percentile(positiveBrightness, 0.15f);
+    const float brightnessP15 = detail::Percentile(positiveBrightness, 0.15f);
     const float brightnessP85 =
         detail::Percentile(std::move(positiveBrightness), 0.85f);
-    const bool  hasBrightnessRange =
-        brightnessP85 > (brightnessP15 + kEpsilon);
+    const bool  hasBrightnessRange = brightnessP85 > (brightnessP15 + kEpsilon);
     const float brightnessRange =
         std::max(brightnessP85 - brightnessP15, kEpsilon);
-    const float silenceThreshold =
-        std::max(kEpsilon, brightnessP15 * 0.25f);
+    const float silenceThreshold = std::max(kEpsilon, brightnessP15 * 0.25f);
 
     for (std::size_t frameIdx = 0; frameIdx < frameCount; ++frameIdx) {
         const std::size_t frameBase = frameIdx * melSize;
         const std::size_t rgbBase   = frameIdx * 3u;
-        const float shift =
+        const float       shift =
             detail::SanitizeFrameRange(vec, frameBase, frameBase + melSize);
 
-        const float lowRaw = detail::BandRms(
-            vec,
-            frameBase + boundaries.low_begin,
-            frameBase + boundaries.low_end,
-            shift);
-        const float midRaw = detail::BandRms(
-            vec,
-            frameBase + boundaries.mid_begin,
-            frameBase + boundaries.mid_end,
-            shift);
-        const float highRaw = detail::BandRms(
-            vec,
-            frameBase + boundaries.high_begin,
-            frameBase + boundaries.high_end,
-            shift);
+        const float lowRaw  = detail::BandRms(vec,
+                                             frameBase + boundaries.low_begin,
+                                             frameBase + boundaries.low_end,
+                                             shift);
+        const float midRaw  = detail::BandRms(vec,
+                                             frameBase + boundaries.mid_begin,
+                                             frameBase + boundaries.mid_end,
+                                             shift);
+        const float highRaw = detail::BandRms(vec,
+                                              frameBase + boundaries.high_begin,
+                                              frameBase + boundaries.high_end,
+                                              shift);
 
         const float red   = std::log1p(std::max(lowRaw, 0.0f)) * kRedGain;
         const float green = std::log1p(std::max(midRaw, 0.0f)) * kGreenGain;
@@ -327,37 +321,31 @@ TO_RGB(const std::vector<float> &vec, const uint32_t melSZ)
             green / sum,
             blue / sum,
         };
-        chroma[0] =
-            kPastelMin +
-            ((1.0f - kPastelMin) *
-             std::pow(detail::ClampUnitFloat(chroma[0]), kRedChromaGamma));
-        chroma[1] =
-            kPastelMin +
-            ((1.0f - kPastelMin) *
-             std::pow(detail::ClampUnitFloat(chroma[1]), kGreenChromaGamma));
-        chroma[2] =
-            kPastelMin +
-            ((1.0f - kPastelMin) *
-             std::pow(detail::ClampUnitFloat(chroma[2]), kBlueChromaGamma));
+        chroma[0] = kPastelMin + ((1.0f - kPastelMin) *
+                                  std::pow(detail::ClampUnitFloat(chroma[0]),
+                                           kRedChromaGamma));
+        chroma[1] = kPastelMin + ((1.0f - kPastelMin) *
+                                  std::pow(detail::ClampUnitFloat(chroma[1]),
+                                           kGreenChromaGamma));
+        chroma[2] = kPastelMin + ((1.0f - kPastelMin) *
+                                  std::pow(detail::ClampUnitFloat(chroma[2]),
+                                           kBlueChromaGamma));
 
         if (rawBrightness[frameIdx] <= silenceThreshold) {
             continue;
         }
 
         const float brightnessNorm =
-            hasBrightnessRange
-                ? detail::ClampUnitFloat(
-                      (rawBrightness[frameIdx] - brightnessP15) / brightnessRange)
-                : 1.0f;
+            hasBrightnessRange ? detail::ClampUnitFloat(
+                                     (rawBrightness[frameIdx] - brightnessP15) /
+                                     brightnessRange)
+                               : 1.0f;
         const float brightness =
             0.58f + (0.42f * std::pow(brightnessNorm, 0.80f));
 
-        rgb[rgbBase + 0u] =
-            detail::ClampUnitFloat(chroma[0] * brightness);
-        rgb[rgbBase + 1u] =
-            detail::ClampUnitFloat(chroma[1] * brightness);
-        rgb[rgbBase + 2u] =
-            detail::ClampUnitFloat(chroma[2] * brightness);
+        rgb[rgbBase + 0u] = detail::ClampUnitFloat(chroma[0] * brightness);
+        rgb[rgbBase + 1u] = detail::ClampUnitFloat(chroma[1] * brightness);
+        rgb[rgbBase + 2u] = detail::ClampUnitFloat(chroma[2] * brightness);
     }
 
     return rgb;

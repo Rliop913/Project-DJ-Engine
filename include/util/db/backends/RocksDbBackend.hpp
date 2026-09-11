@@ -1,10 +1,8 @@
 #pragma once
 
 #include "global/PDJE_EXPORT_SETTER.hpp"
-#include "util/common/Result.hpp"
 #include "util/db/DbTypes.hpp"
 
-#include <cstddef>
 #include <filesystem>
 #include <memory>
 #include <span>
@@ -24,51 +22,38 @@ class PDJE_API RocksDbBackend {
 
     RocksDbBackend();
     ~RocksDbBackend();
-
-    RocksDbBackend(RocksDbBackend &&other) noexcept;
+    RocksDbBackend(RocksDbBackend &&) noexcept;
     RocksDbBackend &
-    operator=(RocksDbBackend &&other) noexcept;
-
+    operator=(RocksDbBackend &&) noexcept;
     RocksDbBackend(const RocksDbBackend &) = delete;
     RocksDbBackend &
     operator=(const RocksDbBackend &) = delete;
 
-    static common::Result<void>
-    create(const config_type &cfg);
-
-    static common::Result<void>
-    destroy(const config_type &cfg);
-
-    common::Result<void>
-    open(const config_type &cfg);
-
-    common::Result<void>
+    static void
+    create(const config_type &config);
+    static void
+    destroy(const config_type &config);
+    void
+    open(const config_type &config);
+    void
     close();
-
-    common::Result<bool>
+    bool
     contains(std::string_view key) const;
-
-    common::Result<Text>
+    Text
     get_text(std::string_view key) const;
-
-    common::Result<Bytes>
+    Bytes
     get_bytes(std::string_view key) const;
-
-    common::Result<void>
+    void
     put_text(std::string_view key, std::string_view value);
-
-    common::Result<void>
+    void
     put_bytes(std::string_view key, std::span<const std::byte> value);
-
-    common::Result<void>
+    void
     erase(std::string_view key);
-
-    common::Result<std::vector<Key>>
+    std::vector<Key>
     list_keys(std::string_view prefix = {}) const;
 
   private:
     class Impl;
-
     std::unique_ptr<Impl> impl_;
 };
 

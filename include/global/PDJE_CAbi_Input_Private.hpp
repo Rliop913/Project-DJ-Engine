@@ -9,15 +9,16 @@
 #include <vector>
 
 #include "CPDJE_Input.h"
+#include "PDJE_CAbi_Private.hpp"
 #include "PDJE_Input_Device_Data.hpp"
 #include "PDJE_Input_Log.hpp"
 #include "PDJE_MIDI.hpp"
 
 struct PDJE_InputHandleV1 {
-    void        *input = nullptr;
-    std::string  backend_name_cache;
-    void        *input_arena = nullptr;
-    void        *midi_datas  = nullptr;
+    void       *input = nullptr;
+    std::string backend_name_cache;
+    void       *input_arena = nullptr;
+    void       *midi_datas  = nullptr;
 };
 
 struct PDJE_InputDeviceListHandleV1 {
@@ -33,10 +34,7 @@ namespace PDJE_CABI {
 inline PDJE_InputStringViewV1
 MakeInputStringView(const char *value, std::size_t value_size) noexcept
 {
-    if (value == nullptr || value_size == 0) {
-        return {};
-    }
-    return PDJE_InputStringViewV1 { value, value_size };
+    return MakeCountedStringView<PDJE_InputStringViewV1>(value, value_size);
 }
 
 inline PDJE_InputDeviceTypeV1
@@ -55,15 +53,11 @@ ToInputDeviceType(const PDJE_Dev_Type type) noexcept
 inline void
 ResetInputEventViewForWrite(PDJE_InputEventViewV1 *out_event) noexcept
 {
-    if (out_event == nullptr) {
-        return;
-    }
-    *out_event = {};
-    out_event->struct_size = sizeof(*out_event);
+    ResetVersionedOutput(out_event);
 }
 
 inline void
-FillInputEventViewFromLog(const PDJE_Input_Log &item,
+FillInputEventViewFromLog(const PDJE_Input_Log  &item,
                           PDJE_InputEventViewV1 *out_event) noexcept
 {
     if (out_event == nullptr) {
@@ -82,8 +76,7 @@ FillInputEventViewFromLog(const PDJE_Input_Log &item,
     case PDJE_Dev_Type::KEYBOARD:
         out_event->keyboard.key_code =
             static_cast<std::uint32_t>(item.event.keyboard.k);
-        out_event->keyboard.pressed =
-            item.event.keyboard.pressed ? 1 : 0;
+        out_event->keyboard.pressed = item.event.keyboard.pressed ? 1 : 0;
         break;
     case PDJE_Dev_Type::MOUSE:
         out_event->mouse.button_type = item.event.mouse.button_type;
@@ -99,13 +92,14 @@ FillInputEventViewFromLog(const PDJE_Input_Log &item,
 }
 
 inline const PDJE_InputHandleV1 *
-BorrowInputDataLine(PDJE_InputHandleV1 *input) noexcept
+BorrowInputDataLine(const PDJE_InputHandleV1 *input) noexcept
 {
     return input;
 }
 
 inline const DeviceData *
-TryGetInputDevice(const PDJE_InputDeviceListHandleV1 *list, std::size_t index) noexcept
+TryGetInputDevice(const PDJE_InputDeviceListHandleV1 *list,
+                  std::size_t                         index) noexcept
 {
     if (list == nullptr || index >= list->items.size()) {
         return nullptr;

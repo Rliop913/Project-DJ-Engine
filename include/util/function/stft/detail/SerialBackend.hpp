@@ -15,21 +15,21 @@ class SERIAL_STFT final : public IStftBackend {
     uint32_t prev_bin_fullsize               = 0;
     uint32_t prev_mel_fullsize               = 0;
 
-    std::vector<float> real;
-    std::vector<float> imag;
-    std::vector<float> subreal;
-    std::vector<float> subimag;
-    std::vector<float> bin_real;
-    std::vector<float> bin_imag;
-    std::vector<float> mel;
-    std::vector<float> rgb;
-    std::vector<float> mel_filter_bank;
+    std::vector<float>               real;
+    std::vector<float>               imag;
+    std::vector<float>               subreal;
+    std::vector<float>               subimag;
+    std::vector<float>               bin_real;
+    std::vector<float>               bin_imag;
+    std::vector<float>               mel;
+    std::vector<float>               rgb;
+    std::vector<float>               mel_filter_bank;
     std::optional<MelFilterBankSpec> prev_mel_filter_bank_spec;
 
     void
-    EnsureMemory(const StftArgs &gargs,
+    EnsureMemory(const StftArgs     &gargs,
                  const POST_PROCESS &post_process,
-                 bool needSubBuffer);
+                 bool                needSubBuffer);
 
     void
     EnsureMelFilterBank(const StftArgs &gargs);
@@ -42,11 +42,7 @@ class SERIAL_STFT final : public IStftBackend {
 
   public:
     StftResult
-    Execute(std::vector<float> &PCMdata,
-            WINDOW_LIST         target_window,
-            POST_PROCESS        post_process,
-            unsigned int        windowSizeEXP,
-            const StftArgs     &gargs) override;
+    Execute(const Execution &execution) override;
 
     ~SERIAL_STFT() override;
 };

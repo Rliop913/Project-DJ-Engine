@@ -6,17 +6,22 @@ set(PDJE_UTIL_SOURCES
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/ai/beat_this/BeatThisInference.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/ai/beat_this/BeatThisPostprocessor.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/db/backends/RocksDbBackend.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/util/db/backends/SqliteBackend.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/util/db/backends/AnnoyBackend.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/util/db/backends/detail/AnnoyManifest.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/stft/STFT_Parallel.cpp
-  ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/stft/BackendLess.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/stft/detail/SerialBackend.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/stft/detail/OpenclBackend.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/stft/detail/OpenCL_Loader.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/stft/detail/PDJE_Parallel_Runtime_Loader.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/image/WaveformWebp.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/image/WebpWriter.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/image/detail/WaveformWebpEncoder.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/image/detail/WaveformWebpPlanBuilder.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/image/detail/WaveformWebpRasterizer.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/image/detail/WaveformWebpProcessor.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/include/util/function/fuzzy/FuzzySearch.cpp
+
 )
 
 set(PDJE_UTIL_PRIVATE_INCLUDE

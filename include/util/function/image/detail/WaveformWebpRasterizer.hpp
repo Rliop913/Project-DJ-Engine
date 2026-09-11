@@ -1,9 +1,7 @@
 #pragma once
 
-#include "util/common/Result.hpp"
 #include "util/function/image/detail/WaveformWebpInternal.hpp"
 #include "util/function/image/detail/WaveformWebpSupport.hpp"
-#include "util/function/FunctionContext.hpp"
 
 #include <algorithm>
 #include <array>
@@ -16,18 +14,18 @@ namespace PDJE_UTIL::function::image::detail {
 class WaveformRasterizer {
   public:
     WaveformRasterizer(const EncodeWaveformWebpArgs &args,
-                       const WaveformBufferSizes    &buffer_sizes,
-                       function::EvalOptions         options);
+                       const WaveformBufferSizes    &buffer_sizes);
 
-    common::Result<void>
-    ComputeExtrema(const WaveformJob      &job,
-                   WaveformWorkerContext  &context) const;
+    void
+    ComputeExtrema(const WaveformJob     &job,
+                   WaveformWorkerContext &context) const;
 
-    template <class ResolveColorFn> void
+    template <class ResolveColorFn>
+    void
     Rasterize(WaveformWorkerContext &context,
               ResolveColorFn       &&resolve_color) const
     {
-        std::fill(context.rgba.begin(), context.rgba.end(), std::uint8_t { 0 });
+        std::fill(context.rgba.begin(), context.rgba.end(), std::uint8_t{ 0 });
 
         for (std::size_t x = 0; x < args_.x_pixels_per_image; ++x) {
             std::size_t top_row = support::map_sample_to_row_floor(
@@ -50,15 +48,14 @@ class WaveformRasterizer {
         }
     }
 
-    common::Result<void>
-    Encode(const WaveformJob          &job,
+    void
+    Encode(const WaveformJob           &job,
            const WaveformWorkerContext &context,
-           EncodedWebpBytes           &output) const;
+           EncodedWebpBytes            &output) const;
 
   private:
     const EncodeWaveformWebpArgs &args_;
     WaveformBufferSizes           buffer_sizes_;
-    function::EvalOptions         options_;
 };
 
 } // namespace PDJE_UTIL::function::image::detail
