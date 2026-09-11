@@ -3,10 +3,10 @@
 #include <string>
 #include <utility>
 #include <vector>
-
+#include "global/PDJE_EXPORT_SETTER.hpp"
 namespace PDJE_UTIL::function::fuzzy {
 
-class FuzzySearch {
+class PDJE_API FuzzySearch {
   public:
     void
     store(const std::string &store_string);

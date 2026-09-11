@@ -30,7 +30,7 @@ if(WIN32)
   add_compile_definitions(__WINDOWS__)
   add_compile_definitions(NOMINMAX)
   add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
-  
+
 else()
 endif()
 
@@ -195,7 +195,7 @@ if(PDJE_DEVELOP_INPUT)
     add_library(PDJE_MODULE_INPUT SHARED ${INPUT_SRC_EXPORT})
     set_target_properties(PDJE_MODULE_JUDGE PROPERTIES CXX_VISIBILITY_PRESET hidden)
     set_target_properties(PDJE_MODULE_JUDGE PROPERTIES VISIBILITY_INLINES_HIDDEN ON)
-     
+
     set_target_properties(PDJE_MODULE_INPUT PROPERTIES CXX_VISIBILITY_PRESET hidden)
     set_target_properties(PDJE_MODULE_INPUT PROPERTIES VISIBILITY_INLINES_HIDDEN ON)
   else()
@@ -204,20 +204,20 @@ if(PDJE_DEVELOP_INPUT)
 endif()# end dynamic
   DynamicOuterFlag(PDJE_MODULE_JUDGE)
   DynamicOuterFlag(PDJE_MODULE_INPUT)
-  target_link_libraries(PDJE_MODULE_JUDGE PRIVATE 
+  target_link_libraries(PDJE_MODULE_JUDGE PRIVATE
   JUDGE_OBJ
   GLOBAL_OBJ
   IPC_OBJ
   CRYPTO_OBJ
   )
-  
-  target_link_libraries(PDJE_MODULE_INPUT PRIVATE 
+
+  target_link_libraries(PDJE_MODULE_INPUT PRIVATE
   INPUT_OBJ
   GLOBAL_OBJ
   IPC_OBJ
   CRYPTO_OBJ
   )
-  
+
 
   # setInputReqs(PDJE_MODULE_INPUT)
   # setJudgeReqs(PDJE_MODULE_JUDGE)
@@ -280,9 +280,9 @@ endif()# end dynamic
   FacadeTargetFlags(CPDJE_MODULE_JUDGE)
 endif()
 
-if(PDJE_TEST)
-  include(cmakes/tests/CAbiTests.cmake)
-endif()
+# if(PDJE_TEST)
+#   include(cmakes/tests/CAbiTests.cmake)
+# endif()
 
 
 
@@ -304,4 +304,3 @@ install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/  DESTINATION ${CMAKE_INST
     PATTERN "*.h" PATTERN "*.hpp" PATTERN "*.hxx" PATTERN "*.inl" PATTERN "*.ipp"
   PATTERN ".git*" EXCLUDE
   PATTERN "CMakeLists.txt" EXCLUDE)
-

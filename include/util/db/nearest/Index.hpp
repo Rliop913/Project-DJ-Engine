@@ -1,8 +1,10 @@
 #pragma once
 
+#include "global/PDJE_LOG_SETTER.hpp"
 #include "util/db/detail/Lifecycle.hpp"
 #include "util/db/nearest/BackendConcept.hpp"
 
+#include <exception>
 #include <type_traits>
 #include <utility>
 
@@ -55,7 +57,15 @@ template <NearestNeighborBackendConcept Backend> class NearestNeighborIndex {
     NearestNeighborIndex(const NearestNeighborIndex &) = delete;
     NearestNeighborIndex &
     operator=(const NearestNeighborIndex &) = delete;
-    ~NearestNeighborIndex()                 = default;
+    ~NearestNeighborIndex() {
+        try{
+            flush();
+            close();
+        }catch(const std::exception& e){
+            critlog("error on close NearsetNeighborIndex. WHAT= ");
+            critlog(e.what());
+        }
+    }
 
     void
     flush()
