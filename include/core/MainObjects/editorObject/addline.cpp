@@ -110,6 +110,7 @@ editorObject::AddLine(const UNSANITIZED   &musicName,
     for (auto &i : edit_core->musicHandle) {
         if (GetTitle(*i.handle->GetJson()) == safeMus) {
             SetFirstBeat(*i.handle->GetJson(), firstBeat);
+            return true;
         }
     }
     warnlog(
