@@ -21,14 +21,12 @@ Judge_Loop::Judge_Loop(Judge_Init &inits) : pre(&inits), match(&pre, &inits)
 }
 
 void
-Judge_Loop::loop()
+Judge_Loop::loop_once()
 {
-    WBCH("judge loop started")
-    while (loop_switch) {
         WBCH("judge loop head")
 
         if (!pre.Work()) {
-            continue;
+            return;
         }
         if (init_datas->inputline->input_arena) {
             for (const PDJE_Input_Log &input_ev : pre.parsed_res.logs) {
@@ -50,16 +48,15 @@ Judge_Loop::loop()
             }
         }
         WBCH("judge loop tail")
-    }
+
 }
 void
 Judge_Loop::StartEventLoop()
 {
-    Event_Controls.use_event_switch = true;
-    Event_Controls.use_event_thread.emplace([this]() {
+    Event_Controls.use_event_thread.emplace([this](std::stop_token token) {
         auto use_clock = std::chrono::steady_clock::now();
         WBCH("use event loop init")
-        while (Event_Controls.use_event_switch.value()) {
+        while (!token.stop_requested()) {
             try {
                 WBCH("use event line head")
                 use_clock += init_datas->lambdas.use_event_sleep_time;
@@ -77,16 +74,15 @@ Judge_Loop::StartEventLoop()
             }
         }
     });
-    Event_Controls.miss_event_switch = true;
-    Event_Controls.miss_event_thread.emplace([this]() {
+    Event_Controls.miss_event_thread.emplace([this](std::stop_token token) {
         auto miss_clock = std::chrono::steady_clock::now();
         WBCH("miss event init")
-        while (Event_Controls.miss_event_switch.value()) {
+        while (!token.stop_requested()) {
             try {
                 WBCH("miss event line head")
                 miss_clock += init_datas->lambdas.miss_event_sleep_time;
-                std::this_thread::sleep_for(
-                    init_datas->lambdas.miss_event_sleep_time);
+                std::this_thread::sleep_until(
+                    miss_clock);
                 auto queue = pre.Event_Datas.miss_queue.Get();
                 for (const auto &missed : (*queue)) {
                     init_datas->lambdas.missed_event(missed);
@@ -103,24 +99,14 @@ Judge_Loop::StartEventLoop()
 void
 Judge_Loop::EndEventLoop()
 {
-    if (Event_Controls.use_event_switch.has_value()) {
-        Event_Controls.use_event_switch = false;
+    if (Event_Controls.use_event_thread){
+        Event_Controls.use_event_thread->request_stop();
     }
-    if (Event_Controls.miss_event_switch.has_value()) {
-        Event_Controls.miss_event_switch = false;
-    }
-    if (Event_Controls.use_event_thread.has_value() &&
-        Event_Controls.use_event_thread->joinable()) {
-        Event_Controls.use_event_thread->join();
-    }
-    if (Event_Controls.miss_event_thread.has_value() &&
-        Event_Controls.miss_event_thread->joinable()) {
-        Event_Controls.miss_event_thread->join();
+    if (Event_Controls.miss_event_thread){
+        Event_Controls.miss_event_thread->request_stop();
     }
     Event_Controls.use_event_thread.reset();
     Event_Controls.miss_event_thread.reset();
-    Event_Controls.use_event_switch.reset();
-    Event_Controls.miss_event_switch.reset();
 }
 
 }; // namespace PDJE_JUDGE

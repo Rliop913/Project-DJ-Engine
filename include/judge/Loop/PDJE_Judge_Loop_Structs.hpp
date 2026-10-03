@@ -14,11 +14,8 @@
 namespace PDJE_JUDGE {
 /** @brief Worker thread switches and handles for miss/use callbacks. */
 struct EV_Thread {
-    std::optional<bool> use_event_switch;
-    std::optional<bool> miss_event_switch;
-
-    std::optional<std::thread> use_event_thread;
-    std::optional<std::thread> miss_event_thread;
+    std::optional<std::jthread> use_event_thread;
+    std::optional<std::jthread> miss_event_thread;
 };
 
 /** @brief Data passed to use-event callbacks. */

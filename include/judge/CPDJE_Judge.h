@@ -71,6 +71,9 @@ typedef void(PDJE_CALL *PDJE_JudgeMissedCallbackV1)(
 //   string views are valid only during that callback invocation.
 // - Do not destroy or end the same judge reentrantly from its callback.
 // - Judge configuration functions are not safe for concurrent mutation.
+// - End also clears rails, notes, rules, and cached data lines when no start
+//   completed. Attachments and callback settings are retained; reconfigure the
+//   cleared prerequisites before starting again.
 
 PDJE_API PDJE_JudgeResultV1 PDJE_CALL
 pdje_judge_create_v1(PDJE_JudgeHandleV1 **out_judge);

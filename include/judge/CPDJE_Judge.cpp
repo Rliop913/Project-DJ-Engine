@@ -3,6 +3,7 @@
 #include "PDJE_CAbi_Core_Private.hpp"
 #include "PDJE_CAbi_Input_Private.hpp"
 #include "PDJE_CAbi_Private.hpp"
+#include "PDJE_CAbi_Judge_Lifecycle.hpp"
 #include "PDJE_Judge.hpp"
 
 #include <chrono>
@@ -111,16 +112,15 @@ RefreshAttachedLines(PDJE_JudgeHandleV1 *judge) noexcept
 bool
 TryEndJudge(PDJE_JudgeHandleV1 *judge) noexcept
 {
-    if (judge == nullptr || !judge->running) {
+    if (judge == nullptr) {
         return true;
     }
 
-    const bool ended = PDJE_CABI::GuardVoid("pdje_judge_end_v1 failed",
-                                            [&]() { judge->judge.End(); });
-    if (ended) {
-        judge->running = false;
-    }
-    return ended;
+    // Cleanup must also cover a start that failed before running was published.
+    return PDJE_CABI::EndJudgeRuntime(judge->running, [&]() noexcept {
+        return PDJE_CABI::GuardVoid("pdje_judge_end_v1 failed",
+                                    [&]() { judge->judge.End(); });
+    });
 }
 
 void
@@ -468,7 +468,10 @@ pdje_judge_start_v1(PDJE_JudgeHandleV1      *judge,
             ConfigureCallbacks(judge);
             RefreshAttachedLines(judge);
 
-            const auto start_status = judge->judge.Start();
+            const auto start_status = PDJE_CABI::StartJudgeRuntime(
+                judge->running,
+                [&]() { return judge->judge.Start(); },
+                [&]() noexcept { return TryEndJudge(judge); });
             if (start_status == PDJE_JUDGE::JUDGE_STATUS::ALREADY_RUNNING) {
                 return PDJE_JUDGE_RESULT_INVALID_STATE_V1;
             }

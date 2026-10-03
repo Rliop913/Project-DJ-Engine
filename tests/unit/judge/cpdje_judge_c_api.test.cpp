@@ -3,6 +3,7 @@
 #include "CPDJE_Input.h"
 #include "CPDJE_Judge.h"
 #include "CPDJE_interface.h"
+#include "PDJE_CAbi_Judge_Lifecycle.hpp"
 
 #include "../cabi/CAbiHandle.hpp"
 
@@ -10,6 +11,7 @@
 #include <chrono>
 #include <filesystem>
 #include <string>
+#include <system_error>
 
 namespace {
 
@@ -106,6 +108,110 @@ TEST_CASE("CPDJE judge C ABI validates null arguments and safe no-op teardown")
 
     pdje_judge_end_v1(nullptr);
     pdje_judge_destroy_v1(nullptr);
+}
+
+TEST_CASE("CPDJE judge C ABI ends a never-started handle repeatedly")
+{
+    JudgeHandle judge;
+    REQUIRE(pdje_judge_create_v1(judge.put()) == PDJE_JUDGE_RESULT_OK_V1);
+    REQUIRE(pdje_judge_set_event_rule_v1(judge, 10, 10) ==
+            PDJE_JUDGE_RESULT_OK_V1);
+
+    PDJE_JudgeStartStatusV1 status = PDJE_JUDGE_START_STATUS_OK_V1;
+    REQUIRE(pdje_judge_start_v1(judge, &status) == PDJE_JUDGE_RESULT_OK_V1);
+    REQUIRE(status == PDJE_JUDGE_START_STATUS_CORE_LINE_MISSING_V1);
+    pdje_judge_end_v1(judge);
+    pdje_judge_end_v1(judge);
+    CHECK(pdje_judge_set_event_rule_v1(judge, 20, 20) ==
+          PDJE_JUDGE_RESULT_OK_V1);
+}
+
+TEST_CASE("CPDJE judge lifecycle cleans partial starts before propagating errors")
+{
+    // Simulate failure at each of the three worker-creation boundaries without
+    // exhausting OS threads or depending on an audio/input device.
+    for (int created_workers = 0; created_workers < 3; ++created_workers) {
+        bool running        = false;
+        bool cleanup_guard  = false;
+        int  live_workers   = 0;
+        int  cleanup_calls  = 0;
+        auto start = [&]() -> PDJE_JudgeStartStatusV1 {
+            live_workers = created_workers;
+            throw std::system_error(
+                std::make_error_code(std::errc::resource_unavailable_try_again));
+        };
+        auto end = [&]() noexcept {
+            ++cleanup_calls;
+            cleanup_guard = running;
+            live_workers = 0;
+            return true;
+        };
+
+        CHECK_THROWS_AS(PDJE_CABI::StartJudgeRuntime(running, start, end),
+                        std::system_error);
+        CHECK(cleanup_calls == 1);
+        CHECK(cleanup_guard);
+        CHECK(live_workers == 0);
+        CHECK_FALSE(running);
+        CHECK(PDJE_CABI::StartJudgeRuntime(
+                  running, []() { return PDJE_JUDGE_START_STATUS_OK_V1; }, end) ==
+              PDJE_JUDGE_START_STATUS_OK_V1);
+        CHECK(cleanup_calls == 1);
+    }
+}
+
+TEST_CASE("CPDJE judge lifecycle also cleans non-standard start exceptions")
+{
+    bool running = false;
+    int cleanup_calls = 0;
+    auto start = []() -> PDJE_JudgeStartStatusV1 { throw 7; };
+    auto end = [&]() noexcept {
+        ++cleanup_calls;
+        return true;
+    };
+    CHECK_THROWS_AS(PDJE_CABI::StartJudgeRuntime(running, start, end), int);
+    CHECK(cleanup_calls == 1);
+    CHECK_FALSE(running);
+}
+
+TEST_CASE("CPDJE judge lifecycle preserves ordinary prerequisite failures")
+{
+    bool running = false;
+    int cleanup_calls = 0;
+    const auto status = PDJE_CABI::StartJudgeRuntime(
+        running,
+        []() { return PDJE_JUDGE_START_STATUS_CORE_LINE_MISSING_V1; },
+        [&]() noexcept {
+            ++cleanup_calls;
+            return true;
+        });
+    CHECK(status == PDJE_JUDGE_START_STATUS_CORE_LINE_MISSING_V1);
+    CHECK(cleanup_calls == 0);
+    CHECK_FALSE(running);
+}
+
+TEST_CASE("CPDJE judge lifecycle keeps failed cleanup blocked and allows retry")
+{
+    bool running = false;
+    auto start = []() -> PDJE_JudgeStartStatusV1 {
+        throw std::system_error(
+            std::make_error_code(std::errc::resource_unavailable_try_again));
+    };
+    CHECK_THROWS_AS(PDJE_CABI::StartJudgeRuntime(
+                        running, start, []() noexcept { return false; }),
+                    std::system_error);
+    CHECK(running);
+    CHECK(PDJE_CABI::EndJudgeRuntime(
+        running, []() noexcept { return true; }));
+    CHECK_FALSE(running);
+
+    int cleanup_calls = 0;
+    CHECK(PDJE_CABI::EndJudgeRuntime(running, [&]() noexcept {
+        ++cleanup_calls;
+        return true;
+    }));
+    CHECK(cleanup_calls == 1); // Even a false running flag must not skip cleanup.
+    CHECK_FALSE(running);
 }
 
 TEST_CASE(
