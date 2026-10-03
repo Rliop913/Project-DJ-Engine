@@ -29,7 +29,7 @@ class PDJE_API JUDGE {
 
   private:
     // thread relates
-    std::optional<std::thread> loop;
+    std::optional<std::jthread> loop;
 
   public:
     Judge_Init inits;
@@ -42,6 +42,8 @@ class PDJE_API JUDGE {
 
     /** @brief Create a judge instance. */
     JUDGE();
-    ~JUDGE() = default;
+    ~JUDGE() noexcept{
+        End();
+    }
 };
 }; // namespace PDJE_JUDGE

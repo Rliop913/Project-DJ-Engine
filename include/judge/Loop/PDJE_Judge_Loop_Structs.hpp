@@ -14,11 +14,8 @@
 namespace PDJE_JUDGE {
 /** @brief Worker thread switches and handles for miss/use callbacks. */
 struct EV_Thread {
-    std::optional<bool> use_event_switch;
-    std::optional<bool> miss_event_switch;
-
-    std::optional<std::thread> use_event_thread;
-    std::optional<std::thread> miss_event_thread;
+    std::optional<std::jthread> use_event_thread;
+    std::optional<std::jthread> miss_event_thread;
 };
 
 /** @brief Data passed to use-event callbacks. */
@@ -31,8 +28,8 @@ struct useDatas {
 
 /** @brief Buffered queues for miss/use events. */
 struct Queues {
-    Atomic_Double_Buffer<std::unordered_map<uint64_t, NOTE_VEC>> miss_queue;
-    Atomic_Double_Buffer<useDatas>                               use_queue;
+    Spinlock_Double_Buffer<std::unordered_map<uint64_t, NOTE_VEC>> miss_queue;
+    Spinlock_Double_Buffer<useDatas>                               use_queue;
     Queues() : miss_queue(100), use_queue(100)
     {
     }

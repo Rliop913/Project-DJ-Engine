@@ -24,7 +24,7 @@ struct JudgePreprocessHarness {
     float    prerendered = 0.0F;
 
     std::atomic<audioSyncData> sync;
-    Atomic_Double_Buffer<PDJE_MIDI::MIDI_EV> midi_buffer { 16 };
+    Spinlock_Double_Buffer<PDJE_MIDI::MIDI_EV> midi_buffer { 16 };
     PDJE_JUDGE::Judge_Init init;
 
     JudgePreprocessHarness()

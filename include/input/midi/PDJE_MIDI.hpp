@@ -29,7 +29,7 @@ class MIDI {
         __CC_stat;
 
   public:
-    Atomic_Double_Buffer<MIDI_EV>      evlog;
+    Spinlock_Double_Buffer<MIDI_EV>      evlog;
     std::vector<libremidi::input_port> configed_devices;
     void
     Run(const bool CC_LSB_ON = true);

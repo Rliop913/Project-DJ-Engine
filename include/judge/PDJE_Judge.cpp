@@ -3,6 +3,7 @@
 #include "PDJE_Note_OBJ.hpp"
 #include <atomic>
 #include <exception>
+#include <stop_token>
 #include <thread>
 #include <unordered_map>
 namespace PDJE_JUDGE {
@@ -14,6 +15,7 @@ JUDGE::JUDGE()
 JUDGE_STATUS
 JUDGE::Start()
 {
+    try{
     startlog();
     if (loop_obj.has_value() || loop.has_value()) {
         warnlog("failed to start pdje judge module. judge is already running.");
@@ -48,30 +50,39 @@ JUDGE::Start()
     inits.note_objects->Sort();
 
     loop_obj.emplace(inits);
-    loop_obj->loop_switch = true;
     loop_obj->StartEventLoop();
-    loop.emplace([this]() {
+    loop.emplace([this](std::stop_token token) {
         try {
-            loop_obj->loop();
+            while(!token.stop_requested()){
+                loop_obj->loop_once();
+            }
         } catch (const std::exception &e) {
             critlog("loop has exceptions. What: ");
             critlog(e.what());
+
         }
     });
+    }
+    catch (const std::exception &e){
+        critlog("loop has exceptions. What: ");
+        critlog(e.what());
+        End();
+        throw;
+
+    }
     return JUDGE_STATUS::OK;
 }
 
 void
 JUDGE::End()
 {
-    if (loop_obj.has_value()) {
-        loop_obj->loop_switch = false;
-        loop_obj->EndEventLoop();
-    }
-    if (loop.has_value() && loop->joinable()) {
-        loop->join();
+    if(loop.has_value()){
+        loop->request_stop();
     }
     loop.reset();
+    if (loop_obj.has_value()) {
+        loop_obj->EndEventLoop();
+    }
     loop_obj.reset();
     inits.coreline.reset();
     inits.inputline.reset();

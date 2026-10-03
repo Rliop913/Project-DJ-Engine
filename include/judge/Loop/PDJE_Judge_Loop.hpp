@@ -37,9 +37,8 @@ class Judge_Loop {
     StartEventLoop();
     /** @brief Main loop that polls inputs and judges notes. */
     void
-    loop();
+    loop_once();
 
-    std::atomic<bool> loop_switch;
     /** @brief Construct loop with initialized data sources. */
     Judge_Loop(Judge_Init &inits);
     ~Judge_Loop() = default;
