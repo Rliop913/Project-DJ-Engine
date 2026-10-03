@@ -59,7 +59,7 @@ JUDGE::Start()
         } catch (const std::exception &e) {
             critlog("loop has exceptions. What: ");
             critlog(e.what());
-            throw;
+
         }
     });
     }
