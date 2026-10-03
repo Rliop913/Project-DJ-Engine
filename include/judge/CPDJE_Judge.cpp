@@ -100,7 +100,7 @@ RefreshAttachedLines(PDJE_JudgeHandleV1 *judge) noexcept
         raw_line.input_arena = static_cast<PDJE_IPC::PDJE_Input_Transfer *>(
             input_line->input_arena);
         raw_line.midi_datas =
-            static_cast<Atomic_Double_Buffer<PDJE_MIDI::MIDI_EV> *>(
+            static_cast<Spinlock_Double_Buffer<PDJE_MIDI::MIDI_EV> *>(
                 input_line->midi_datas);
 
         // The C adapter supports either input stream. Do not route this through

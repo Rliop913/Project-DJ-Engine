@@ -28,8 +28,8 @@ struct useDatas {
 
 /** @brief Buffered queues for miss/use events. */
 struct Queues {
-    Atomic_Double_Buffer<std::unordered_map<uint64_t, NOTE_VEC>> miss_queue;
-    Atomic_Double_Buffer<useDatas>                               use_queue;
+    Spinlock_Double_Buffer<std::unordered_map<uint64_t, NOTE_VEC>> miss_queue;
+    Spinlock_Double_Buffer<useDatas>                               use_queue;
     Queues() : miss_queue(100), use_queue(100)
     {
     }

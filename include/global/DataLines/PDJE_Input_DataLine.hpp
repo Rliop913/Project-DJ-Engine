@@ -11,5 +11,5 @@ using PDJE_ID   = std::string;
 
 struct PDJE_API PDJE_INPUT_DATA_LINE {
     PDJE_IPC::PDJE_Input_Transfer            *input_arena = nullptr;
-    Atomic_Double_Buffer<PDJE_MIDI::MIDI_EV> *midi_datas  = nullptr;
+    Spinlock_Double_Buffer<PDJE_MIDI::MIDI_EV> *midi_datas  = nullptr;
 };

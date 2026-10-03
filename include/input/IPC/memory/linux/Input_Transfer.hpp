@@ -9,7 +9,7 @@ class PDJE_Input_Transfer {
   private:
   public:
     std::vector<PDJE_Input_Log>          datas;
-    Atomic_Double_Buffer<PDJE_Input_Log> adbf;
+    Spinlock_Double_Buffer<PDJE_Input_Log> adbf;
     PDJE_Input_Transfer(const uint32_t max_length);
 
     void

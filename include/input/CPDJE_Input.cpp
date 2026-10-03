@@ -500,7 +500,7 @@ pdje_input_poll_snapshot_v1(PDJE_InputHandleV1          *input,
             }
             if (input->midi_datas != nullptr) {
                 auto *midi_buffer =
-                    static_cast<Atomic_Double_Buffer<PDJE_MIDI::MIDI_EV> *>(
+                    static_cast<Spinlock_Double_Buffer<PDJE_MIDI::MIDI_EV> *>(
                         input->midi_datas);
                 const auto *midi_events = midi_buffer->Get();
                 if (midi_events != nullptr) {
