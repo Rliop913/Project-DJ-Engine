@@ -37,7 +37,7 @@ if(NOT PDJE_RTTI_FORCE_OFF)
 endif()
 
 function(SET_PROPERTIES targetname)
-    
+
   if(APPLE)
   set_target_properties(${targetname} PROPERTIES
       MACOSX_RPATH ON
@@ -65,7 +65,7 @@ endfunction(SET_PROPERTIES)
 # set(CMAKE_INCLUDE_SYSTEM_FLAG_MSVC "")
 # add_compile_options(
 #     /arch:AVX2
-#     /permissive- 
+#     /permissive-
 # )
 # add_compile_options(/W3 /GR /WX-)
 # elseif(APPLE)
@@ -137,4 +137,14 @@ set_property(SOURCE PDJE_swig.i PROPERTY CPLUSPLUS ON)
 
 if(NOT WIN32)
   string(APPEND CMAKE_CXX_FLAGS_RELWITHDEBINFO_INIT " -O3")
+endif()
+
+if(WIN32)
+    set(
+        LIBREMIDI_NO_WINMIDI
+        ON
+        CACHE BOOL
+        "Disable libremidi Windows MIDI Services backend"
+        FORCE
+    )
 endif()
