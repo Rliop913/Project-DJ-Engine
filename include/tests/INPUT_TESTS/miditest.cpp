@@ -20,7 +20,7 @@ main()
         return -1;
     }
     while (true) {
-        for (const auto &i : *root.evlog.Get()) {
+        for (const auto &i : *root.GetEventBuffer().Get()) {
             std::cout << "type: " << int(i.type) << std::endl;
             std::cout << "ch: " << int(i.ch) << std::endl;
             std::cout << "pos: " << int(i.pos) << std::endl;

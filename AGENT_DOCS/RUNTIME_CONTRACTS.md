@@ -9,7 +9,7 @@ any contract.
 | View | Producer | Native judge acceptance | C ABI judge attachment | Invalidation |
 | --- | --- | --- | --- | --- |
 | `PDJE_CORE_DATA_LINE` | `PDJE::PullOutDataLine()` | all four pointers are required | `syncD` is required; cursor and pre-render pointers are optional | player replacement, `ResetPlayer()`, or producer destruction |
-| `PDJE_INPUT_DATA_LINE` | `PDJE_Input::PullOutDataLine()` | `input_arena` is required | either input or MIDI pointer can establish attachment | `Kill()` or producer destruction |
+| `PDJE_INPUT_DATA_LINE` | `PDJE_Input::PullOutDataLine()` | either `input_arena` or `midi_datas` is required | either input or MIDI pointer can establish attachment | `Kill()`, startup failure, or producer destruction |
 
 The declarations live in `include/global/DataLines/`. Data lines do not own
 their pointees. A null-filled line is a valid absence signal, and every consumer
@@ -38,15 +38,20 @@ Source anchors: `include/input/PDJE_Input.cpp` and
 | Operation | Required state | Success / caller-visible edge |
 | --- | --- | --- |
 | `Init()` | `DEAD` | enters `DEVICE_CONFIG_STATE` |
-| `GetDevs()` / `GetMIDIDevs()` | initialized and not torn down | dereferences initialized optional state |
-| `Config()` | `DEVICE_CONFIG_STATE` | usable input reaches `INPUT_LOOP_READY`; backend failure or no usable device returns `false` without becoming ready |
-| MIDI-only `Config()` | `DEVICE_CONFIG_STATE` | current path normally returns `true` after cleanup, with final state `DEAD` and no live MIDI data line |
-| `Run()` | `INPUT_LOOP_READY` | enters `INPUT_LOOP_RUNNING` |
+| `GetDevs()` / `GetMIDIDevs()` | initialized and not torn down for discovery | return empty when dead; `GetDevs()` lazily initializes the keyboard/mouse backend |
+| `Config()` | `DEVICE_CONFIG_STATE` | usable input reaches `INPUT_LOOP_READY`; empty selections return `false` and allow retry; backend setup failure tears down to `DEAD` |
+| MIDI-only `Config()` | `DEVICE_CONFIG_STATE` | reaches `INPUT_LOOP_READY` with a MIDI buffer and null `input_arena`; no keyboard/mouse backend is required |
+| `Run()` | `INPUT_LOOP_READY` | enters `INPUT_LOOP_RUNNING`; startup failure tears down to `DEAD` and invalidates data lines |
 | `Kill()` | any state | clears owned backend/MIDI state, invalidates data lines, and ends in `DEAD`; already-dead teardown is a successful no-op |
 
-`PullOutDataLine()` exposes only currently active owners. The public flow can
-produce input only, input plus MIDI, or neither; it does not retain a MIDI-only
-configuration.
+`PullOutDataLine()` exposes configured owners: input only, MIDI only, both, or
+neither. Stop the judge with `End()` before killing or replacing its input
+producer; the attached pointers are borrowed.
+
+`MIDI_shared` owns the MIDI event buffer. `MIDI` and receive callbacks retain it
+through `shared_ptr`; callbacks do not reference the `MIDI` object. This protects
+callback storage lifetime, not driver shutdown or borrowed consumer lifetime.
+Direct native buffer access is through `MIDI::GetEventBuffer()`.
 
 ## Judge Lifecycle
 
@@ -55,10 +60,10 @@ Source anchors: `include/judge/PDJE_Judge.hpp`,
 
 | Contract | Caller obligation |
 | --- | --- |
-| Native setters enforce the stricter data-line requirements above; C ABI attachment intentionally accepts its broader combinations. | Do not assume native and C attachment validation are interchangeable. |
+| Native input attachment accepts either buffer; an all-null line is ignored without clearing a previous attachment. Native core attachment remains stricter than C ABI core attachment. | Validate the members used by the consumer; do not use an empty input line as a detach operation. |
 | Note collection requires a registered rail and returns no notes for an empty or missing rail. | Register the referenced rail before collecting its notes. |
 | `Start()` requires accepted core/input lines, notes, an event rule, and rails, and rejects an already running judge. | Complete initialization and keep both producers alive before starting. |
-| The default destructor does not replace `End()` after a successful start. | Call `End()` so the owned worker is stopped and joined before destruction. |
+| `End()` stops and joins owned workers; the native destructor also calls it. | Explicitly end the judge before invalidating any borrowed producer data line. |
 | `End()` clears data lines, notes, rules, and rails but retains `inits.lambdas`. | Reconfigure retained callbacks explicitly when reusing a judge. |
 | Note frames use a fixed 48 kHz-to-microseconds floor conversion. | Treat timing conversion changes as behavior compatibility changes. |
 

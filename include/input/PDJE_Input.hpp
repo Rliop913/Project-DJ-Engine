@@ -8,6 +8,7 @@
 #include "PDJE_MIDI.hpp"
 #include <barrier>
 #include <future>
+#include <memory>
 #include <optional>
 #include <random>
 #include <string>
@@ -23,12 +24,16 @@
 class PDJE_API PDJE_Input {
   private:
     std::optional<PDJE_DEFAULT_DEVICES::DefaultDevs> default_devs;
-    // std::optional<PDJE_IPC::PDJE_Input_Transfer>     input_buffer; // redef
-    // on dev pipe
+    // Null selects libremidi; tests inject a transport per input instance.
+    std::shared_ptr<PDJE_MIDI::detail::Backend> midi_backend;
+
+    void
+    EnsureDefaultDevices();
+
     bool                           FLAG_INPUT_ON = false;
     std::optional<PDJE_MIDI::MIDI> midi_engine;
-    bool                           FLAG_MIDI_ON = false;
-    PDJE_INPUT_STATE               state        = PDJE_INPUT_STATE::DEAD;
+    bool                           FLAG_MIDI_ON   = false;
+    PDJE_INPUT_STATE               state          = PDJE_INPUT_STATE::DEAD;
     void                          *platform_ctx0_ = nullptr;
     void                          *platform_ctx1_ = nullptr;
     bool                           use_internal_window_ = false;
@@ -49,6 +54,9 @@ class PDJE_API PDJE_Input {
     /**
     @brief initialize pdje input.
 
+    Device discovery and keyboard/mouse backend startup are deferred until
+    GetDevs() or a Config() containing valid keyboard/mouse devices.
+
     Platform contexts (optional):
     - Linux: `platform_ctx0 = wl_display*`, `platform_ctx1 = wl_surface*`
     - Windows: currently ignored (reserved)
@@ -59,12 +67,15 @@ class PDJE_API PDJE_Input {
     - Windows: currently ignored (reserved)
     */
     bool
-    Init(void *platform_ctx0      = nullptr,
-         void *platform_ctx1      = nullptr,
+    Init(void *platform_ctx0       = nullptr,
+         void *platform_ctx1       = nullptr,
          bool  use_internal_window = false);
 
     /**
     @brief configure device data.
+    Empty keyboard/mouse devices with nonempty MIDI devices are supported.
+    Success enters INPUT_LOOP_READY. Empty selections can be retried;
+    backend setup failures tear down to DEAD (call Init() before retrying).
     */
     bool
     Config(std::vector<DeviceData>                  &devs,
@@ -72,6 +83,8 @@ class PDJE_API PDJE_Input {
 
     /**
     @brief run input Loop
+    Startup failure tears down all opened devices and returns to DEAD;
+    an invalid-state call leaves the current state unchanged.
     */
     bool
     Run();
@@ -96,6 +109,8 @@ class PDJE_API PDJE_Input {
 
     /**
     @brief pull out input data line. The input Loop will pass datas in here.
+    MIDI-only configurations have null input_arena and nonnull midi_datas.
+    Borrowed pointers expire on Kill(), startup failure, or destruction.
     */
     PDJE_INPUT_DATA_LINE
     PullOutDataLine();

@@ -27,7 +27,7 @@ Judge_Init::SetCustomEvents(const Custom_Events &events)
 void
 Judge_Init::SetInputLine(const PDJE_INPUT_DATA_LINE &_inputline)
 {
-    if (_inputline.input_arena != nullptr) {
+    if (_inputline.input_arena != nullptr || _inputline.midi_datas != nullptr) {
         inputline = _inputline;
     }
 }

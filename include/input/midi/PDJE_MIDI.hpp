@@ -3,7 +3,9 @@
 #include "PDJE_Buffer.hpp"
 #include "PDJE_Highres_Clock.hpp"
 #include "PDJE_LOG_SETTER.hpp"
+#include "PDJE_MIDI_Backend.hpp"
 #include <libremidi/libremidi.hpp>
+#include <memory>
 
 #define PDJE_BIT_PARSE_7(N) (N & 0x7F)
 #define B_GUARD(B, N)                                                          \
@@ -20,16 +22,30 @@ struct PDJE_API MIDI_EV {
     uint8_t  port_name_len = 0;
 };
 
+// Owned by MIDI and every registered receive callback; no back-reference to
+// MIDI.
+struct MIDI_shared {
+    Spinlock_Double_Buffer<MIDI_EV> evlog;
+
+    explicit MIDI_shared(const int buffer_size) : evlog(buffer_size)
+    {
+    }
+};
+
 class MIDI {
   private:
-    libremidi::observer                                               obs;
-    PDJE_HIGHRES_CLOCK::CLOCK                                         clock;
-    std::vector<std::pair<libremidi::midi_in, libremidi::input_port>> midiin;
-    std::unordered_map<std::string, std::array<std::array<uint16_t, 32>, 16>>
-        __CC_stat;
+    std::shared_ptr<detail::Backend>                 backend;
+    std::shared_ptr<MIDI_shared>                     shared_data;
+    std::vector<std::unique_ptr<detail::Connection>> midiin;
 
   public:
-    Spinlock_Double_Buffer<MIDI_EV>      evlog;
+    // Borrowed buffer: callers must still stop consumers before destroying
+    // MIDI.
+    Spinlock_Double_Buffer<MIDI_EV> &
+    GetEventBuffer() noexcept
+    {
+        return shared_data->evlog;
+    }
     std::vector<libremidi::input_port> configed_devices;
     void
     Run(const bool CC_LSB_ON = true);
@@ -43,9 +59,13 @@ class MIDI {
     std::vector<libremidi::input_port>
     GetDevices()
     {
-        return obs.get_input_ports();
+        return backend->GetDevices();
     }
     MIDI(const int buffer_size = 64);
-    ~MIDI() = default;
+    MIDI(int buffer_size, std::shared_ptr<detail::Backend> transport);
+    MIDI(const MIDI &) = delete;
+    MIDI &
+    operator=(const MIDI &) = delete;
+    ~MIDI();
 };
 }; // namespace PDJE_MIDI

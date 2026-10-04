@@ -1,4 +1,4 @@
-#include "PDJE_Judge_Loop.hpp"
+#include "PDJE_Match.hpp"
 #include "PDJE_Rule.hpp"
 #include <cstdint>
 #include <optional>
@@ -94,11 +94,14 @@ Match::UseEvent<PDJE_Dev_Type::MOUSE>(const PDJE_Input_Log &ilog)
         }
     }
     if (init->lambdas.custom_mouse_parse &&
-        (ilog.event.mouse.x != 0 || ilog.event.mouse.y != 0)) {
-        key.DeviceKey =
-            DEVICE_MOUSE_EVENT::PDJE_AXIS_MOVE; // Mouse Axis Movement logic
-                                                // will be replaced with
-                                                // AxisModel.
+        (ilog.event.mouse.axis_type == ABS ||
+         ilog.event.mouse.axis_type == VIRTUAL_DESKTOP_ABS ||
+         (ilog.event.mouse.axis_type == REL &&
+          (ilog.event.mouse.x != 0 || ilog.event.mouse.y != 0)))) {
+        // Preserve raw coordinates for compatibility. The callback may feed
+        // them to MOUSE_AXIS_MODEL using its device-specific coordinate range.
+        // Absolute (0, 0) is a position, not an empty movement event.
+        key.DeviceKey = DEVICE_MOUSE_EVENT::PDJE_AXIS_MOVE;
 
         auto res = init->raildb.GetID(key);
         if (res) {

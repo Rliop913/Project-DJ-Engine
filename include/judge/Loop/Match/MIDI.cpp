@@ -1,17 +1,20 @@
-#include "PDJE_Judge_Loop.hpp"
+#include "AxisModel/MidiAxis.hpp"
+#include "PDJE_Match.hpp"
+#include <limits>
 
 namespace PDJE_JUDGE {
 
 void
 Match::UseEvent(const PDJE_MIDI::MIDI_EV &ilog)
 {
+    const auto axis = ParseMidiAxis(ilog, init->lambdas.midi_cc_lsb_on);
 
     RAIL_KEY::MIDI key;
-    key.ch = ilog.ch;
+    key.ch        = ilog.ch;
     key.port_name = NormalizeRailIdentity(ilog.port_name, ilog.port_name_len);
-    key.pos  = ilog.pos;
-    key.type = ilog.type;
-    auto res = init->raildb.GetID(key);
+    key.pos       = axis ? axis->pos : ilog.pos;
+    key.type      = ilog.type;
+    auto res      = init->raildb.GetID(key);
     if (!res) {
         return;
     }
@@ -29,15 +32,15 @@ Match::UseEvent(const PDJE_MIDI::MIDI_EV &ilog)
         Work(ilog.highres_time, found_list, res.value(), false);
     } break;
 
-    case static_cast<uint8_t>(libremidi::message_type::CONTROL_CHANGE): {
-        // skip until axismodel implemented.
-    } break;
-
-    case static_cast<uint8_t>(libremidi::message_type::PITCH_BEND): {
-        // skip until axismodel implemented.
-    } break;
-
     default:
+        // ParseMidiAxis is the single authority for supported axis messages.
+        if (axis && init->lambdas.midi_axis &&
+            ilog.highres_time <=
+                static_cast<uint64_t>(std::numeric_limits<LOCAL_TIME>::max())) {
+            init->lambdas.midi_axis(static_cast<LOCAL_TIME>(ilog.highres_time),
+                                    res.value(),
+                                    axis->value);
+        }
         break;
     }
 }

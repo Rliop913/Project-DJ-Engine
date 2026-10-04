@@ -49,7 +49,6 @@ struct ConfigDecision {
     bool             success           = false;
     bool             flag_input_on     = false;
     PDJE_INPUT_STATE next_state        = PDJE_INPUT_STATE::DEVICE_CONFIG_STATE;
-    bool             should_call_kill  = false;
     bool             backend_fail_path = false;
 };
 
@@ -58,50 +57,21 @@ DecideConfigOutcome(const bool has_valid_input,
                     const bool has_midi,
                     const bool backend_config_ok) noexcept
 {
-    if (has_valid_input) {
-        if (backend_config_ok) {
-            ConfigDecision r;
-            r.success           = true;
-            r.flag_input_on     = true;
-            r.next_state        = PDJE_INPUT_STATE::INPUT_LOOP_READY;
-            r.should_call_kill  = false;
-            r.backend_fail_path = false;
-            return r;
-        }
-        ConfigDecision r;
-        r.success           = false;
-        r.flag_input_on     = false;
-        r.next_state        = PDJE_INPUT_STATE::DEVICE_CONFIG_STATE;
-        r.should_call_kill  = false;
-        r.backend_fail_path = true;
-        return r;
+    ConfigDecision result;
+    if (has_valid_input && !backend_config_ok) {
+        result.backend_fail_path = true;
+        result.next_state        = PDJE_INPUT_STATE::DEAD;
+        return result;
     }
-
-    if (has_midi) {
-        ConfigDecision r;
-        r.success           = true;
-        r.flag_input_on     = false;
-        r.next_state        = PDJE_INPUT_STATE::INPUT_LOOP_READY;
-        r.should_call_kill  = true;
-        r.backend_fail_path = false;
-        return r;
+    result.success       = has_valid_input || has_midi;
+    result.flag_input_on = has_valid_input && backend_config_ok;
+    if (result.success) {
+        result.next_state = PDJE_INPUT_STATE::INPUT_LOOP_READY;
     }
-
-    ConfigDecision r;
-    r.success           = false;
-    r.flag_input_on     = false;
-    r.next_state        = PDJE_INPUT_STATE::DEVICE_CONFIG_STATE;
-    r.should_call_kill  = false;
-    r.backend_fail_path = false;
-    return r;
+    return result;
 }
 
-enum class KillAction {
-    NoOp,
-    BackendKill,
-    TerminateLoop,
-    BrokenState
-};
+enum class KillAction { NoOp, BackendKill, TerminateLoop, BrokenState };
 
 inline KillAction
 ClassifyKillAction(const PDJE_INPUT_STATE state) noexcept

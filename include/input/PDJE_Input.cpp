@@ -1,13 +1,31 @@
 #include "PDJE_Input.hpp"
 #include "PDJE_Input_StateLogic.hpp"
-#include "NameGen.hpp"
 #include "PDJE_LOG_SETTER.hpp"
 PDJE_Input::PDJE_Input()
 {
 }
 
+void
+PDJE_Input::EnsureDefaultDevices()
+{
+    if (default_devs) {
+        return;
+    }
+    try {
+        default_devs.emplace();
+        default_devs->SetPlatformContexts(
+            platform_ctx0_, platform_ctx1_, use_internal_window_);
+        default_devs->Ready();
+    } catch (...) {
+        default_devs.reset();
+        throw;
+    }
+}
+
 bool
-PDJE_Input::Init(void *platform_ctx0, void *platform_ctx1, bool use_internal_window)
+PDJE_Input::Init(void *platform_ctx0,
+                 void *platform_ctx1,
+                 bool  use_internal_window)
 {
     try {
         startlog();
@@ -17,35 +35,16 @@ PDJE_Input::Init(void *platform_ctx0, void *platform_ctx1, bool use_internal_win
                 "maybe input module is running or configuring.");
             return false;
         }
-        platform_ctx0_ = platform_ctx0;
-        platform_ctx1_ = platform_ctx1;
+        platform_ctx0_       = platform_ctx0;
+        platform_ctx1_       = platform_ctx1;
         use_internal_window_ = use_internal_window;
-        default_devs.emplace();
-        default_devs->SetPlatformContexts(platform_ctx0_,
-                                          platform_ctx1_,
-                                          use_internal_window_);
-        default_devs->Ready();
-
-        // #ifdef WIN32
-
-        // PDJE_IPC::Input_Transfer_Metadata cfg;
-        // PDJE_IPC::RANDOM_GEN              rg;
-        // cfg.max_length              = 2048;
-        // cfg.lenname                 = rg.Gen("PDJE_INPUT_LEN_");
-        // cfg.bodyname                = rg.Gen("PDJE_INPUT_BODY_");
-        // cfg.hmacname                = rg.Gen("PDJE_INPUT_HMAC_");
-        // cfg.data_request_event_name = rg.Gen("PDJE_INPUT_REQ_EVENT_");
-        // cfg.data_stored_event_name  = rg.Gen("PDJE_INPUT_STORED_EVENT_");
-        // input_buffer.emplace(cfg);
-        // default_devs->SendInputTransfer(input_buffer.value());
-        // default_devs->InitEvents();
-        // #endif
-        midi_engine.emplace();
+        midi_engine.emplace(64, midi_backend);
         state = PDJE_INPUT_STATE::DEVICE_CONFIG_STATE;
         return true;
     } catch (const std::exception &e) {
         critlog("failed to execute code. WHY: ");
         critlog(e.what());
+        Kill();
         return false;
     }
 }
@@ -62,24 +61,24 @@ PDJE_Input::Config(std::vector<DeviceData>                  &devs,
             return false;
         }
 
-        const bool has_midi = !midi_dev.empty();
+        const bool              has_midi = !midi_dev.empty();
         std::vector<DeviceData> sanitized_devs =
             PDJE_INPUT_STATE_LOGIC::SanitizeConfigDevices(devs);
         const bool has_valid_input = !sanitized_devs.empty();
         bool       backend_ok      = false;
 
         if (has_valid_input) {
+            EnsureDefaultDevices();
             backend_ok = default_devs->Config(sanitized_devs);
         }
 
         const auto decision = PDJE_INPUT_STATE_LOGIC::DecideConfigOutcome(
-            has_valid_input,
-            has_midi,
-            backend_ok);
+            has_valid_input, has_midi, backend_ok);
 
         if (!decision.success) {
             if (decision.backend_fail_path) {
                 critlog("failed to configure devices.");
+                Kill();
             }
             return false;
         }
@@ -89,14 +88,12 @@ PDJE_Input::Config(std::vector<DeviceData>                  &devs,
         }
         FLAG_MIDI_ON  = has_midi;
         FLAG_INPUT_ON = decision.flag_input_on;
-        state = decision.next_state;
-        if (decision.should_call_kill) { // fallback: only midi devices.
-            return Kill();
-        }
+        state         = decision.next_state;
         return true;
     } catch (const std::exception &e) {
         critlog("failed to config. WHY: ");
         critlog(e.what());
+        Kill();
         return false;
     }
 }
@@ -110,69 +107,74 @@ PDJE_Input::Run()
         return false;
     }
 
-    default_devs->RunLoop();
-    if (!FLAG_INPUT_ON) { // terminate if input flag is off.
-        default_devs->TerminateLoop();
+    try {
+        if (FLAG_INPUT_ON) {
+            default_devs->RunLoop();
+        }
+        if (FLAG_MIDI_ON) {
+            midi_engine->Run();
+        }
+        state = PDJE_INPUT_STATE::INPUT_LOOP_RUNNING;
+        return true;
+    } catch (const std::exception &e) {
+        critlog("failed to run input devices. WHY: ");
+        critlog(e.what());
+        Kill();
+        return false;
     }
-
-    if (FLAG_MIDI_ON) { // run midi engine if midi flag is on.
-        midi_engine->Run();
-    }
-
-    state = PDJE_INPUT_STATE::INPUT_LOOP_RUNNING;
-    return true;
 }
 
 bool
 PDJE_Input::Kill()
 {
     bool ok = true;
-    switch (PDJE_INPUT_STATE_LOGIC::ClassifyKillAction(state)) {
-    case PDJE_INPUT_STATE_LOGIC::KillAction::NoOp:
-        return true;
-
-    case PDJE_INPUT_STATE_LOGIC::KillAction::BackendKill: {
-        if (default_devs) {
-            // compatibility no-op for windows parity
-            ok = default_devs->Kill();
+    try {
+        const auto action = PDJE_INPUT_STATE_LOGIC::ClassifyKillAction(state);
+        if (action == PDJE_INPUT_STATE_LOGIC::KillAction::BrokenState) {
+            critlog("the pdje input module state is broken...why?");
+            ok = false;
         }
-        break;
-    }
-    case PDJE_INPUT_STATE_LOGIC::KillAction::TerminateLoop: {
         if (default_devs) {
-            default_devs->TerminateLoop();
+            if (FLAG_INPUT_ON &&
+                action == PDJE_INPUT_STATE_LOGIC::KillAction::TerminateLoop) {
+                default_devs->TerminateLoop();
+            } else {
+                ok = default_devs->Kill() && ok;
+            }
         }
-        break;
-    }
-    case PDJE_INPUT_STATE_LOGIC::KillAction::BrokenState:
-        critlog("the pdje input module state is broken...why?");
+    } catch (const std::exception &e) {
+        critlog("failed to stop input devices. WHY: ");
+        critlog(e.what());
         ok = false;
-        break;
     }
-    // reset datas.
+    // Also release partial initialization, even if state is still DEAD.
     midi_engine.reset();
 
     default_devs.reset();
-    FLAG_INPUT_ON = false;
-    FLAG_MIDI_ON  = false;
-    platform_ctx0_ = nullptr;
-    platform_ctx1_ = nullptr;
+    FLAG_INPUT_ON        = false;
+    FLAG_MIDI_ON         = false;
+    platform_ctx0_       = nullptr;
+    platform_ctx1_       = nullptr;
     use_internal_window_ = false;
-    state         = PDJE_INPUT_STATE::DEAD;
+    state                = PDJE_INPUT_STATE::DEAD;
     return ok;
 }
 
 std::vector<DeviceData>
 PDJE_Input::GetDevs()
 {
-
+    if (state == PDJE_INPUT_STATE::DEAD) {
+        return {};
+    }
+    EnsureDefaultDevices();
     return default_devs->GetDevices();
 }
 
 std::vector<libremidi::input_port>
 PDJE_Input::GetMIDIDevs()
 {
-    return midi_engine->GetDevices();
+    return midi_engine ? midi_engine->GetDevices()
+                       : std::vector<libremidi::input_port>{};
 }
 
 PDJE_INPUT_STATE
@@ -198,7 +200,7 @@ PDJE_Input::PullOutDataLine()
         line.input_arena = default_devs->GetInputBufferPTR();
     }
     if (FLAG_MIDI_ON) {
-        line.midi_datas = &midi_engine->evlog;
+        line.midi_datas = &midi_engine->GetEventBuffer();
     }
     return line; // you should check nullptr before use.
 }

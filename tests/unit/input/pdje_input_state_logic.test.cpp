@@ -35,54 +35,62 @@ TEST_CASE("input/state: init/config/run preconditions are state-specific")
         PDJE_INPUT_STATE_LOGIC::CanRun(PDJE_INPUT_STATE::INPUT_LOOP_RUNNING));
 }
 
-TEST_CASE("input/state: config decision matrix covers input, midi fallback, failures")
+TEST_CASE(
+    "input/state: config decision matrix covers input, MIDI-only, failures")
 {
     SUBCASE("valid input and backend config success")
     {
-        const auto r = PDJE_INPUT_STATE_LOGIC::DecideConfigOutcome(
-            true, false, true);
+        const auto r =
+            PDJE_INPUT_STATE_LOGIC::DecideConfigOutcome(true, false, true);
         CHECK(r.success);
         CHECK(r.flag_input_on);
         CHECK(r.next_state == PDJE_INPUT_STATE::INPUT_LOOP_READY);
-        CHECK_FALSE(r.should_call_kill);
+        CHECK_FALSE(r.backend_fail_path);
+    }
+
+    SUBCASE("valid input plus MIDI keeps the input backend")
+    {
+        const auto r =
+            PDJE_INPUT_STATE_LOGIC::DecideConfigOutcome(true, true, true);
+        CHECK(r.success);
+        CHECK(r.flag_input_on);
+        CHECK(r.next_state == PDJE_INPUT_STATE::INPUT_LOOP_READY);
         CHECK_FALSE(r.backend_fail_path);
     }
 
     SUBCASE("valid input but backend config failure")
     {
-        const auto r = PDJE_INPUT_STATE_LOGIC::DecideConfigOutcome(
-            true, true, false);
+        const auto r =
+            PDJE_INPUT_STATE_LOGIC::DecideConfigOutcome(true, true, false);
         CHECK_FALSE(r.success);
         CHECK_FALSE(r.flag_input_on);
-        CHECK(r.next_state == PDJE_INPUT_STATE::DEVICE_CONFIG_STATE);
-        CHECK_FALSE(r.should_call_kill);
+        CHECK(r.next_state == PDJE_INPUT_STATE::DEAD);
         CHECK(r.backend_fail_path);
     }
 
-    SUBCASE("no valid input but midi exists uses midi-only fallback path")
+    SUBCASE("no valid input but MIDI exists is ready without input")
     {
-        const auto r = PDJE_INPUT_STATE_LOGIC::DecideConfigOutcome(
-            false, true, false);
+        const auto r =
+            PDJE_INPUT_STATE_LOGIC::DecideConfigOutcome(false, true, false);
         CHECK(r.success);
         CHECK_FALSE(r.flag_input_on);
         CHECK(r.next_state == PDJE_INPUT_STATE::INPUT_LOOP_READY);
-        CHECK(r.should_call_kill);
         CHECK_FALSE(r.backend_fail_path);
     }
 
     SUBCASE("no valid input and no midi is failure")
     {
-        const auto r = PDJE_INPUT_STATE_LOGIC::DecideConfigOutcome(
-            false, false, false);
+        const auto r =
+            PDJE_INPUT_STATE_LOGIC::DecideConfigOutcome(false, false, false);
         CHECK_FALSE(r.success);
         CHECK_FALSE(r.flag_input_on);
         CHECK(r.next_state == PDJE_INPUT_STATE::DEVICE_CONFIG_STATE);
-        CHECK_FALSE(r.should_call_kill);
         CHECK_FALSE(r.backend_fail_path);
     }
 }
 
-TEST_CASE("input/state: kill decision classification matches PDJE_Input kill branches")
+TEST_CASE("input/state: kill decision classification matches PDJE_Input kill "
+          "branches")
 {
     using PDJE_INPUT_STATE_LOGIC::ClassifyKillAction;
     using PDJE_INPUT_STATE_LOGIC::KillAction;

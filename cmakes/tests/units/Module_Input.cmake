@@ -6,6 +6,7 @@ ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/input/input_sanity.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/input/cpdje_input_snapshot_event_view.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/input/pdje_input_config_lifecycle.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/input/pdje_input_state_logic.test.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/input/midi_shared_lifetime.test.cpp
 ${INPUT_SRC_EXPORT}
 )
 
@@ -50,3 +51,20 @@ SET_PROPERTIES(pdje_unit_input)
 # AddDynamicDef(pdje_unit_input)
 
 pdje_discover_unit_tests(pdje_unit_input input)
+
+# Focused hardware-free lifecycle coverage, using the same input/MIDI sources.
+# Do not link INPUT_OBJ/GLOBAL_OBJ: the full target's unrelated filename codec
+# and Windows subprocess hash generation are not needed by MIDI-only tests.
+add_executable(pdje_unit_input_midi
+    ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/main_doctest.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/input/pdje_input_config_lifecycle.test.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/input/pdje_input_state_logic.test.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/input/midi_shared_lifetime.test.cpp
+    ${PDJE_INPUT_MAINPROC_SRC})
+target_include_directories(pdje_unit_input_midi PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/input/midi_only_support)
+target_link_libraries(pdje_unit_input_midi PRIVATE
+    doctest::doctest INPUT_MAIN_INCLUDE GLOBAL_INCLUDE nlohmann_json::nlohmann_json)
+setInputReqs(pdje_unit_input_midi)
+target_compile_definitions(pdje_unit_input_midi PRIVATE PDJE_UNIT_TESTING)
+pdje_discover_unit_tests(pdje_unit_input_midi input_midi)

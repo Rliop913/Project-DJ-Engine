@@ -78,7 +78,10 @@ class PDJE_API Judge_Init {
     /** @brief Attach the core data line from PDJE core engine. */
     void
     SetCoreLine(const PDJE_CORE_DATA_LINE &coreline);
-    /** @brief Attach the input data line from input engine. */
+    /** @brief Borrow an input/MIDI data line with at least one nonnull buffer.
+     * An all-null line is ignored, preserving any existing attachment.
+     * Keep the producer alive and its buffers valid until the judge has ended.
+     */
     void
     SetInputLine(const PDJE_INPUT_DATA_LINE &inputline);
 };
