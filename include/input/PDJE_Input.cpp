@@ -53,6 +53,14 @@ bool
 PDJE_Input::Config(std::vector<DeviceData>                  &devs,
                    const std::vector<libremidi::input_port> &midi_dev)
 {
+    return Config(devs, midi_dev, true);
+}
+
+bool
+PDJE_Input::Config(std::vector<DeviceData>                  &devs,
+                   const std::vector<libremidi::input_port> &midi_dev,
+                   bool                                      midi_cc_lsb_on)
+{
     try {
         if (!PDJE_INPUT_STATE_LOGIC::CanConfig(state)) {
             critlog(
@@ -86,9 +94,10 @@ PDJE_Input::Config(std::vector<DeviceData>                  &devs,
         if (has_midi) {
             midi_engine->configed_devices = midi_dev;
         }
-        FLAG_MIDI_ON  = has_midi;
-        FLAG_INPUT_ON = decision.flag_input_on;
-        state         = decision.next_state;
+        FLAG_MIDI_ON    = has_midi;
+        FLAG_INPUT_ON   = decision.flag_input_on;
+        midi_cc_lsb_on_ = midi_cc_lsb_on;
+        state           = decision.next_state;
         return true;
     } catch (const std::exception &e) {
         critlog("failed to config. WHY: ");
@@ -112,7 +121,7 @@ PDJE_Input::Run()
             default_devs->RunLoop();
         }
         if (FLAG_MIDI_ON) {
-            midi_engine->Run();
+            midi_engine->Run(midi_cc_lsb_on_);
         }
         state = PDJE_INPUT_STATE::INPUT_LOOP_RUNNING;
         return true;

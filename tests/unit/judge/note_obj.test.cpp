@@ -102,3 +102,82 @@ TEST_CASE("judge: obj cut removes expired notes")
     CHECK(cuts[1][0].microsecond == 1000);
     CHECK(cuts[1][1].microsecond == 2000);
 }
+
+TEST_CASE("judge: NOTE ResetForRestart preserves authored fields")
+{
+    for (const bool is_down : { false, true }) {
+        NOTE note{ .type        = "hold",
+                   .detail      = 42,
+                   .first       = "lane1",
+                   .second      = "effect",
+                   .third       = "extra",
+                   .microsecond = 1234567,
+                   .used        = true,
+                   .isDown      = is_down };
+        static_assert(noexcept(note.ResetForRestart()));
+
+        for (int repeat = 0; repeat < 2; ++repeat) {
+            note.ResetForRestart();
+            CHECK_FALSE(note.used);
+            CHECK(note.type == "hold");
+            CHECK(note.detail == 42);
+            CHECK(note.first == "lane1");
+            CHECK(note.second == "effect");
+            CHECK(note.third == "extra");
+            CHECK(note.microsecond == 1234567);
+            CHECK(note.isDown == is_down);
+        }
+    }
+}
+
+TEST_CASE("judge: NOTE_ITR ResetForRestart handles an empty buffer")
+{
+    NOTE_ITR notes;
+    static_assert(noexcept(notes.ResetForRestart()));
+    notes.ResetForRestart();
+    CHECK(notes.vec.empty());
+    CHECK(notes.itr == notes.vec.begin());
+    CHECK(notes.itr == notes.vec.end());
+    notes.ResetForRestart();
+    CHECK(notes.itr == notes.vec.end());
+}
+
+TEST_CASE("judge: NOTE_ITR ResetForRestart resets every note without "
+          "reallocating or sorting")
+{
+    NOTE_ITR notes;
+    notes.vec.resize(3);
+    notes.vec[0].microsecond = 3000;
+    notes.vec[1].microsecond = 1000;
+    notes.vec[2].microsecond = 2000;
+    notes.vec[0].used        = true;
+    notes.vec[2].used        = true;
+    notes.vec[2].isDown      = false;
+    notes.itr                = notes.vec.end();
+
+    SUBCASE("partially advanced cursor")
+    {
+        notes.itr = notes.vec.begin() + 1;
+    }
+    SUBCASE("exhausted cursor")
+    {
+    }
+
+    const auto *storage  = notes.vec.data();
+    const auto  capacity = notes.vec.capacity();
+    for (int repeat = 0; repeat < 2; ++repeat) {
+        notes.ResetForRestart();
+        REQUIRE(notes.vec.size() == 3);
+        CHECK(notes.vec.data() == storage);
+        CHECK(notes.vec.capacity() == capacity);
+        CHECK(notes.itr == notes.vec.begin());
+        for (const auto &note : notes.vec) {
+            CHECK_FALSE(note.used);
+        }
+        CHECK(notes.vec[0].microsecond == 3000);
+        CHECK(notes.vec[1].microsecond == 1000);
+        CHECK(notes.vec[2].microsecond == 2000);
+        CHECK(notes.vec[0].isDown);
+        CHECK_FALSE(notes.vec[2].isDown);
+    }
+}

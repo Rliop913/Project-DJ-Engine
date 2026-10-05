@@ -54,6 +54,10 @@ class PDJE_API audioPlayer {
     bool
     Deactivate();
 
+    /// Reports whether the audio device is currently started.
+    bool
+    IsActive() const noexcept;
+
     /// change the prerendered music's cursor(the playing position).
     void
     ChangeCursorPos(unsigned long long pos);

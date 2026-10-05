@@ -131,6 +131,12 @@ audioPlayer::Deactivate()
     return Res;
 }
 
+bool
+audioPlayer::IsActive() const noexcept
+{
+    return ma_device_is_started(&player) != MA_FALSE;
+}
+
 audioPlayer::~audioPlayer()
 {
     ma_device_uninit(&player);

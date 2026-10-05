@@ -26,19 +26,26 @@ enum JUDGE_STATUS {
 class PDJE_API JUDGE {
   private:
     std::optional<Judge_Loop> loop_obj;
-
   private:
     // thread relates
     std::optional<std::jthread> loop;
 
   public:
     Judge_Init inits;
+    // Gameplay orchestration belongs to PDJE_GAMEPLAY::FACADE, not Judge.
     /** @brief Validate init data and start the judge event loop thread. */
     JUDGE_STATUS
     Start();
     /** @brief Stop the event loop and release cached init data. */
     void
     End();
+
+    /** @brief Whether a runtime is installed. Serialize with Start()/End(). */
+    bool
+    IsRunning() const noexcept
+    {
+        return loop.has_value() || loop_obj.has_value();
+    }
 
     /** @brief Create a judge instance. */
     JUDGE();

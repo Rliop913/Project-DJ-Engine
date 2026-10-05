@@ -32,10 +32,11 @@ class PDJE_API PDJE_Input {
 
     bool                           FLAG_INPUT_ON = false;
     std::optional<PDJE_MIDI::MIDI> midi_engine;
-    bool                           FLAG_MIDI_ON   = false;
-    PDJE_INPUT_STATE               state          = PDJE_INPUT_STATE::DEAD;
-    void                          *platform_ctx0_ = nullptr;
-    void                          *platform_ctx1_ = nullptr;
+    bool                           FLAG_MIDI_ON    = false;
+    bool                           midi_cc_lsb_on_ = true;
+    PDJE_INPUT_STATE               state           = PDJE_INPUT_STATE::DEAD;
+    void                          *platform_ctx0_  = nullptr;
+    void                          *platform_ctx1_  = nullptr;
     bool                           use_internal_window_ = false;
 #ifdef PDJE_UNIT_TESTING
     friend struct PDJE_Input_TestAccess;
@@ -80,6 +81,15 @@ class PDJE_API PDJE_Input {
     bool
     Config(std::vector<DeviceData>                  &devs,
            const std::vector<libremidi::input_port> &midi_dev);
+
+    /** @brief Configure devices and CC pairing for the next Run().
+     * The two-argument overload retains paired (14-bit) CC behavior.
+     * Keep this option equal to Judge Custom_Events::midi_cc_lsb_on.
+     */
+    bool
+    Config(std::vector<DeviceData>                  &devs,
+           const std::vector<libremidi::input_port> &midi_dev,
+           bool                                      midi_cc_lsb_on);
 
     /**
     @brief run input Loop

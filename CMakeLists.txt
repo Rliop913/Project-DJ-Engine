@@ -278,6 +278,9 @@ endif()# end dynamic
   setBotanReqLib(CPDJE_MODULE_JUDGE)
   setLibreMIDIReqLib(CPDJE_MODULE_JUDGE)
   FacadeTargetFlags(CPDJE_MODULE_JUDGE)
+
+  # High-level gameplay facade, kept outside the Judge module.
+  include(cmakes/src/GAMEPLAY/GamePlayPkg.cmake)
 endif()
 
 if(PDJE_TEST)

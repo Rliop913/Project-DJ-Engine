@@ -116,6 +116,49 @@ TEST_CASE("input/midi-only: real lifecycle delivers dummy device messages")
     CHECK(f.backend->closed_connections == 1);
 }
 
+TEST_CASE("input/midi-only: Config selects CC pairing without starting capture")
+{
+    bool paired = true;
+    SUBCASE("paired CC")
+    {
+        paired = true;
+    }
+    SUBCASE("independent seven-bit CC")
+    {
+        paired = false;
+    }
+
+    MidiFixture f;
+    REQUIRE(f.input.Init());
+    const auto ports = f.input.GetMIDIDevs();
+    REQUIRE(f.input.Config(f.devices, ports, paired));
+    CHECK(f.input.GetState() == PDJE_INPUT_STATE::INPUT_LOOP_READY);
+    CHECK(f.backend->open_calls == 0);
+    // Invalid reconfiguration must not overwrite the selected decoder mode.
+    CHECK_FALSE(f.input.Config(f.devices, ports, !paired));
+    REQUIRE(f.input.Run());
+    CHECK_FALSE(f.input.Config(f.devices, ports, !paired));
+    f.backend->Emit("dummy-midi", { 0xB0, 1, 2 });
+    f.backend->Emit("dummy-midi", { 0xB0, 33, 3 });
+    {
+        const auto &events = *f.input.PullOutDataLine().midi_datas->Get();
+        REQUIRE(events.size() == 2);
+        CHECK(events[0].value == 256);
+        CHECK(events[1].pos == 33);
+        CHECK(events[1].value == (paired ? 259 : 384));
+    }
+
+    REQUIRE(f.input.Kill());
+    REQUIRE(f.input.Init());
+    // Legacy Config must restore the original paired default on a new session.
+    REQUIRE(f.input.Config(f.devices, ports));
+    REQUIRE(f.input.Run());
+    f.backend->Emit("dummy-midi", { 0xB0, 33, 3 });
+    const auto &events = *f.input.PullOutDataLine().midi_datas->Get();
+    REQUIRE(events.size() == 1);
+    CHECK(events[0].value == 3);
+}
+
 TEST_CASE("input/midi-only: illegal operations preserve the current lifecycle")
 {
     MidiFixture f;

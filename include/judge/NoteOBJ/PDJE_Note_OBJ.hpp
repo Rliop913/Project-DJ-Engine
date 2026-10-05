@@ -25,6 +25,15 @@ struct NOTE {
     LOCAL_TIME  microsecond = 0;
     bool        used        = false;
     bool        isDown      = true;
+
+    /** @brief Clear judgment progress without changing authored note data.
+     * Call only when no judgment or callback is accessing this note.
+     */
+    void
+    ResetForRestart() noexcept
+    {
+        used = false;
+    }
 };
 
 using NOTE_VEC   = std::vector<NOTE>;
@@ -34,6 +43,18 @@ using P_NOTE_VEC = std::vector<NOTE *>;
 struct NOTE_ITR {
     NOTE_VEC           vec;
     NOTE_VEC::iterator itr;
+
+    /** @brief Reset all notes and rewind the cursor, preserving storage/order.
+     * Call only when no judgment or callback is accessing this buffer.
+     */
+    void
+    ResetForRestart() noexcept
+    {
+        for (auto &note : vec) {
+            note.ResetForRestart();
+        }
+        itr = vec.begin();
+    }
 };
 
 using RAILID_TO_NOTE   = std::unordered_map<uint64_t, NOTE_ITR>;
