@@ -12,7 +12,7 @@ class PreProcess {
     Judge_Init *init;
 
     bool
-                                           GetDatas();
+                                           GetDatas(uint64_t raw_cutoff);
     std::unordered_map<uint64_t, NOTE_VEC> missed_buffers;
 
   public:
@@ -30,6 +30,17 @@ class PreProcess {
     Cut(const uint64_t cut_range);
     bool
     Work();
+
+    /** @brief Collect/parse on the polling thread only; may block on IPC.
+     * Never hold the judgment production mutex here.
+     */
+    bool
+    CollectInputs(uint64_t raw_cutoff = 0);
+    /** @brief Normalize, cut misses and prepare matching for a collected batch.
+     * The runtime holds its production mutex for this and subsequent matching.
+     */
+    bool
+    ProcessCollected(bool has_inputs);
 
     ~PreProcess() = default;
 };

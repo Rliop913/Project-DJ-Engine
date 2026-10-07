@@ -77,7 +77,8 @@ FetchContent_Declare(
 FetchContent_Declare(
   cppCodec
   GIT_REPOSITORY https://github.com/tplgy/cppcodec.git
-  GIT_TAG v0.2
+  # Upstream padder refactor avoids the v0.2 _MSC_VER branch on clang-cl.
+  GIT_TAG 8019b8b580f8573c33c50372baec7039dfe5a8ce
 )
 
 FetchContent_Declare(

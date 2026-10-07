@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Input_State.hpp"
-#include "PDJE_EXPORT_SETTER.hpp"
+#include "PDJE_GamePlay_Export.hpp"
 #include "PDJE_Input_Device_Data.hpp"
 #include "PDJE_Judge_Init_Structs.hpp"
 #include "PDJE_Rule.hpp"
@@ -58,12 +58,14 @@ struct JudgeReady {
     PDJE_JUDGE::Custom_Events events{};
 };
 
+/** @brief Facade state, observed on the serialized control thread only. */
+enum class STATE { STOPPED, READY, PLAYING, PAUSED, FAULTED };
 /**
  * @brief High-level Core/Input/Judge orchestration scaffold.
  *
  * Intended flow: externally initialize modules -> Ready -> Play -> controls.
  * Ready configures a stopped session; Play/End start and tear it down.
- * Pause/Resume/Restart are still no-ops.
+ * Pause/Resume preserve setup and note progress; Restart returns to READY.
  *
  * Modules are shared-owned and supplied at construction; null is rejected.
  * Construction checks non-null ownership; Play checks preparation and
@@ -75,13 +77,19 @@ struct JudgeReady {
  * destroying an active facade; the default destructor does not orchestrate
  * shutdown of externally held modules.
  */
-class PDJE_API FACADE {
+class PDJE_GAMEPLAY_API FACADE {
   private:
     // Reverse destruction order releases Judge before Input and Core.
 
     std::shared_ptr<PDJE>              core;
     std::shared_ptr<PDJE_Input>        input;
     std::shared_ptr<PDJE_JUDGE::JUDGE> judge;
+    STATE                              state = STATE::STOPPED;
+
+    bool
+    HasCurrentDataLines() const;
+    void
+    ActivateSuspendedSession();
 
   public:
     /** @throws std::invalid_argument if any module is null. */
@@ -105,6 +113,14 @@ class PDJE_API FACADE {
     std::shared_ptr<PDJE_JUDGE::JUDGE>
     GetJudge() const noexcept;
 
+    /** @brief Result of the last lifecycle operation; not a synchronization
+     * API. */
+    STATE
+    GetState() const noexcept
+    {
+        return state;
+    }
+
     /** @brief Prepare chart, rails, callbacks and input without starting
      * playback. Requires a stopped initialized player/Judge, and Input just
      * initialized in DEVICE_CONFIG_STATE. The player's data line must satisfy
@@ -117,11 +133,12 @@ class PDJE_API FACADE {
      * is rejected; End and reinitialize Input before preparing another session.
      * @throws std::logic_error for invalid lifecycle/Core attachment.
      * @throws std::invalid_argument for invalid settings.
-     * @throws std::runtime_error on chart loading or Input configuration
-     * failure. Validation/chart staging failures leave existing module setup
+     * Chart loading/configuration failures are logged with critlog, then
+     * return. Validation/chart staging failures leave existing module setup
      * unchanged. Once Input configuration begins, failure attempts End()
-     * instead of rollback; reinitialize Input before retry. Incomplete cleanup
-     * is reported as nested.
+     * instead of rollback; reinitialize Input before retry. Cleanup failures
+     * are also logged. A normal void return is not a success indication;
+     * inspect module state/logs.
      */
     void
     Ready(const CoreReady  &core_ready,
@@ -133,22 +150,31 @@ class PDJE_API FACADE {
      * seek. Returns after device startup, not after the first fresh audio sync
      * sample.
      * @throws std::logic_error for invalid preparation (no teardown).
-     * @throws std::runtime_error for startup failure. After startup begins,
-     * failures attempt End(); reinitialize Input and configure Judge before
-     * retry. Incomplete cleanup is reported with a nested exception; retry End
-     * first.
+     * Startup failures are logged with critlog and attempt End(), then return.
+     * Reinitialize Input and configure Judge before retry. Cleanup failures are
+     * logged; retry End before reuse if cleanup is incomplete.
+     * A normal void return is not a success indication; inspect module
+     * state/logs.
      */
     void
     Play();
 
-    /** @brief Placeholder for pausing the whole player and judgment production.
+    /** @brief Quiesce judgment/axis production, then stop the whole player.
+     * Input capture/polling and use/miss workers remain alive. Already
+     * committed jobs may finish after return. Errors are logged; inspect
+     * GetState().
      */
     void
     Pause();
-    /** @brief Placeholder for synchronized playback and judgment resumption. */
+    /** @brief Resume PAUSED with fresh Core sync, discarding paused inputs. */
     void
     Resume();
-    /** @brief Placeholder for returning to ready; requires an explicit Play().
+    /** @brief Quiesce old callbacks/jobs, rewind notes and supported Core
+     * audio. Preserves setup and returns to facade READY without playing. Call
+     * Play(), not Resume(), to start again. If a runtime exists, Input and
+     * Judge polling remain running but judgment is suspended; READY is a
+     * facade-level state. Unsupported Core rewind configurations are rejected
+     * before mutation. Errors are logged; FAULTED requires End() before reuse.
      */
     void
     Restart();
@@ -157,7 +183,8 @@ class PDJE_API FACADE {
      * Uses Judge::End semantics: pending use/miss jobs need not all be
      * delivered. If Judge join fails, producers are left alive. Otherwise Input
      * cleanup is attempted even when Core shutdown fails. Shutdown failures are
-     * propagated. Not a pause or restart; subsequent playback requires
+     * logged with critlog rather than propagated; a normal return does not
+     * prove complete cleanup. Not a pause or restart; playback requires
      * preparation again.
      */
     void

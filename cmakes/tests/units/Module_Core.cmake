@@ -3,6 +3,8 @@ add_executable(
 pdje_unit_core
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/main_doctest.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/core/pdje_interface_pcm.test.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/core/pdje_interface_notes.test.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/core/audio_restart.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/core/editor_object_diff_api.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/core/name_sanitizer.test.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/tests/unit/core/atomic_double_buffer.test.cpp

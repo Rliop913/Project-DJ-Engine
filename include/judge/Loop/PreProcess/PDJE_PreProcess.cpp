@@ -3,15 +3,18 @@
 namespace PDJE_JUDGE {
 
 bool
-PreProcess::GetDatas()
+PreProcess::GetDatas(const uint64_t raw_cutoff)
 {
     if (init->inputline->input_arena) {
         init->inputline->input_arena->Receive();
-        Parse(parsed_res, init->raildb, init->inputline->input_arena->datas);
+        Parse(parsed_res,
+              init->raildb,
+              init->inputline->input_arena->datas,
+              raw_cutoff);
     }
     if (init->inputline->midi_datas) {
         auto got = init->inputline->midi_datas->Get();
-        Parse(parsed_res, init->raildb, *got);
+        Parse(parsed_res, init->raildb, *got, raw_cutoff);
     }
     if ((parsed_res.logs.empty() || init->inputline->input_arena == nullptr) &&
         (parsed_res.midi_logs.empty() ||

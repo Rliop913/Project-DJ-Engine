@@ -1,6 +1,7 @@
 #include "PDJE_GamePlay.hpp"
 #include "PDJE_Input.hpp"
 #include "PDJE_Judge.hpp"
+#include "PDJE_LOG_SETTER.hpp"
 #include "PDJE_interface.hpp"
 #include <atomic>
 #include <exception>
@@ -39,11 +40,67 @@ FACADE::GetJudge() const noexcept
     return judge;
 }
 
+bool
+FACADE::HasCurrentDataLines() const
+{
+    if (!core->player || !judge->inits.coreline || !judge->inits.inputline) {
+        return false;
+    }
+    const auto core_line  = core->player->PullOutDataLine();
+    const auto input_line = input->PullOutDataLine();
+    return core_line.syncD && judge->inits.coreline->syncD == core_line.syncD &&
+           (input_line.input_arena || input_line.midi_datas) &&
+           judge->inits.inputline->input_arena == input_line.input_arena &&
+           judge->inits.inputline->midi_datas == input_line.midi_datas;
+}
+
+void
+FACADE::ActivateSuspendedSession()
+{
+    const auto player = core->player;
+    if (!player || player->IsActive() || !judge->IsRunning() ||
+        !judge->IsSuspended() ||
+        input->GetState() != PDJE_INPUT_STATE::INPUT_LOOP_RUNNING ||
+        !HasCurrentDataLines()) {
+        warnlog("FACADE cannot activate an invalid suspended session");
+        return;
+    }
+    try {
+        auto *sync_line  = player->PullOutDataLine().syncD;
+        auto  sync       = sync_line->load(std::memory_order_acquire);
+        sync.microsecond = 0;
+        sync_line->store(sync, std::memory_order_release);
+        // The single Judge consumer sets a raw-time cutoff and discards batches
+        // crossing this boundary. Until a fresh audio callback, it only drains.
+        if (!judge->ResumeJudgments()) {
+            critlog("FACADE failed to resume Judge; session remains suspended");
+            return;
+        }
+        if (!player->Activate()) {
+            critlog("FACADE failed to resume Core; ending the session");
+            End();
+            return;
+        }
+        state = STATE::PLAYING;
+    } catch (const std::exception &e) {
+        critlog("FACADE failed to activate suspended session: {}", e.what());
+        End();
+    } catch (...) {
+        critlog(
+            "FACADE failed to activate suspended session: unknown exception");
+        End();
+    }
+}
+
 void
 FACADE::Ready(const CoreReady  &core_ready,
               const InputReady &input_ready,
               const JudgeReady &judge_ready)
 {
+    if (state == STATE::FAULTED) {
+        warnlog("FACADE::Ready requires End after a failed control operation");
+        return;
+    }
     const auto player = core->player;
     if (!player || player->IsActive() || judge->IsRunning() ||
         input->GetState() != PDJE_INPUT_STATE::DEVICE_CONFIG_STATE) {
@@ -51,6 +108,7 @@ FACADE::Ready(const CoreReady  &core_ready,
             "FACADE::Ready requires an initialized, stopped player/Judge and "
             "Input in DEVICE_CONFIG_STATE");
     }
+    state = STATE::STOPPED;
     if (input_ready.devices.empty() && input_ready.midi_devices.empty()) {
         throw std::invalid_argument("FACADE::Ready requires selected devices");
     }
@@ -94,7 +152,8 @@ FACADE::Ready(const CoreReady  &core_ready,
                          rail.pos,
                          rail.offset_microsecond);
     }
-    if (prepared.raildb.Empty()) {
+    if (judge_ready.keyboard_mouse_rails.empty() &&
+        judge_ready.midi_rails.empty()) {
         throw std::invalid_argument("FACADE::Ready requires registered rails");
     }
     prepared.SetEventRule(judge_ready.event_rule);
@@ -105,11 +164,18 @@ FACADE::Ready(const CoreReady  &core_ready,
         core_ready.track; // The native loader takes a mutable reference.
     OBJ_SETTER_CALLBACK collect = std::bind_front(
         &PDJE_JUDGE::Judge_Init::NoteObjectCollector, &prepared);
-    if (!core->GetNoteObjects(track, collect)) {
-        throw std::runtime_error("FACADE::Ready failed to load chart notes");
+    try {
+        if (!core->GetNoteObjects(track, collect)) {
+            critlog("FACADE::Ready failed to load chart notes");
+            return;
+        }
+    } catch (const std::exception &e) {
+        critlog("FACADE::Ready failed to load chart notes: {}", e.what());
+        return;
+    } catch (...) {
+        critlog("FACADE::Ready failed to load chart notes: unknown exception");
+        return;
     }
-    // Initialize iterators before transferring the staged note object.
-    prepared.note_objects->Sort();
     auto devices = input_ready.devices;
 
     // Config may invalidate Input on failure. Detach old Judge views first.
@@ -120,34 +186,45 @@ FACADE::Ready(const CoreReady  &core_ready,
         if (!input->Config(devices,
                            input_ready.midi_devices,
                            judge_ready.events.midi_cc_lsb_on)) {
-            throw std::runtime_error("FACADE::Ready failed to configure Input");
+            critlog("FACADE::Ready failed to configure Input");
+            End();
+            return;
         }
         prepared.SetInputLine(input->PullOutDataLine());
         if (!prepared.inputline) {
-            throw std::runtime_error(
-                "FACADE::Ready has no configured input buffer");
+            critlog("FACADE::Ready has no configured input buffer");
+            End();
+            return;
         }
         judge->inits = std::move(prepared);
-        // OBJ currently copies on move; rebuild NOTE_ITR cursors so none refer
-        // back to the temporary's vectors. Play will sort again at
-        // Judge::Start.
-        judge->inits.note_objects->Sort();
+        // Judge::Start owns sorting and iterator initialization. Ready never
+        // traverses notes; a pre-play Restart resets cursors inside Judge.
+        state = STATE::READY;
+    } catch (const std::exception &e) {
+        critlog("FACADE::Ready failed while configuring the session: {}",
+                e.what());
+        End();
     } catch (...) {
-        const auto ready_error = std::current_exception();
-        try {
-            End();
-        } catch (...) {
-            std::throw_with_nested(std::runtime_error(
-                "FACADE::Ready failed and cleanup was incomplete; retry End() "
-                "before reinitializing"));
-        }
-        std::rethrow_exception(ready_error);
+        critlog("FACADE::Ready failed while configuring the session: unknown "
+                "exception");
+        End();
     }
 }
 
 void
 FACADE::Play()
 {
+    if (state == STATE::FAULTED || state == STATE::PAUSED) {
+        warnlog(
+            "FACADE::Play requires End after failure, or Resume when paused");
+        return;
+    }
+    if (state == STATE::READY && judge->IsRunning() && judge->IsSuspended()) {
+        // Restart keeps acquisition/polling alive while requiring explicit
+        // Play.
+        ActivateSuspendedSession();
+        return;
+    }
     // Lifecycle operations and external module changes must be serialized by
     // the caller. Reject invalid preparation before touching any running state.
     const auto player = core->player;
@@ -160,19 +237,14 @@ FACADE::Play()
             "FACADE::Play requires stopped Core/Judge and configured Input");
     }
 
-    const auto  core_line  = player->PullOutDataLine();
-    const auto  input_line = input->PullOutDataLine();
-    const auto &init       = judge->inits;
-    if (!core_line.syncD || !init.coreline ||
-        init.coreline->syncD != core_line.syncD || !init.inputline ||
-        (!input_line.input_arena && !input_line.midi_datas) ||
-        init.inputline->input_arena != input_line.input_arena ||
-        init.inputline->midi_datas != input_line.midi_datas) {
+    const auto  core_line = player->PullOutDataLine();
+    const auto &init      = judge->inits;
+    if (!HasCurrentDataLines()) {
         throw std::logic_error(
             "FACADE::Play requires Judge data lines attached to these modules");
     }
-    if (!init.note_objects || !init.ev_rule || judge->inits.raildb.Empty() ||
-        !init.lambdas.used_event || !init.lambdas.missed_event) {
+    if (!init.note_objects || !init.ev_rule || !init.lambdas.used_event ||
+        !init.lambdas.missed_event) {
         throw std::logic_error(
             "FACADE::Play requires notes, rails, rules and use/miss callbacks");
     }
@@ -186,74 +258,178 @@ FACADE::Play()
 
     try {
         if (!input->Run()) {
-            throw std::runtime_error("FACADE::Play failed to start Input");
+            critlog("FACADE::Play failed to start Input");
+            End();
+            return;
         }
         const auto status = judge->Start();
         if (status != PDJE_JUDGE::JUDGE_STATUS::OK) {
-            throw std::runtime_error(
-                "FACADE::Play failed to start Judge; status=" +
-                std::to_string(static_cast<int>(status)));
+            critlog("FACADE::Play failed to start Judge; status={}",
+                    static_cast<int>(status));
+            End();
+            return;
         }
         if (!player->Activate()) {
-            throw std::runtime_error("FACADE::Play failed to start Core");
-        }
-    } catch (...) {
-        const auto start_error = std::current_exception();
-        try {
+            critlog("FACADE::Play failed to start Core");
             End();
-        } catch (...) {
-            std::throw_with_nested(std::runtime_error(
-                "FACADE::Play failed and cleanup was incomplete; retry End() "
-                "before reinitializing"));
+            return;
         }
-        std::rethrow_exception(start_error);
+        state = STATE::PLAYING;
+    } catch (const std::exception &e) {
+        critlog("FACADE::Play failed during startup: {}", e.what());
+        End();
+    } catch (...) {
+        critlog("FACADE::Play failed during startup: unknown exception");
+        End();
     }
 }
 
 void
 FACADE::Pause()
 {
+    if (state == STATE::PAUSED) {
+        return;
+    }
+    if (state != STATE::PLAYING || !core->player || !judge->IsRunning() ||
+        input->GetState() != PDJE_INPUT_STATE::INPUT_LOOP_RUNNING ||
+        !HasCurrentDataLines()) {
+        warnlog("FACADE::Pause requires the current playing session");
+        return;
+    }
+    try {
+        // Wait for any in-flight judgment/axis callback, but not for blocked
+        // IPC polling or already committed use/miss callbacks.
+        if (!judge->SuspendJudgments()) {
+            critlog("FACADE::Pause failed to suspend Judge");
+            state = STATE::FAULTED;
+            return;
+        }
+        if (!core->player->Deactivate()) {
+            critlog(
+                "FACADE::Pause failed to stop Core; Judge remains suspended");
+            state = STATE::FAULTED;
+            return;
+        }
+        state = STATE::PAUSED;
+    } catch (const std::exception &e) {
+        critlog("FACADE::Pause failed: {}", e.what());
+        state = STATE::FAULTED;
+    } catch (...) {
+        critlog("FACADE::Pause failed: unknown exception");
+        state = STATE::FAULTED;
+    }
 }
 
 void
 FACADE::Resume()
 {
+    if (state != STATE::PAUSED) {
+        warnlog("FACADE::Resume requires PAUSED; use Play after Restart");
+        return;
+    }
+    ActivateSuspendedSession();
 }
 
 void
 FACADE::Restart()
 {
+    const auto player = core->player;
+    if ((state != STATE::READY && state != STATE::PLAYING &&
+         state != STATE::PAUSED) ||
+        !player || !HasCurrentDataLines() || !judge->inits.note_objects) {
+        warnlog(
+            "FACADE::Restart requires a prepared, playing or paused session");
+        return;
+    }
+    // Reject unsupported audio histories before altering playback or notes.
+    if (!player->CanResetForRestart()) {
+        warnlog("FACADE::Restart is unsupported by this Core configuration");
+        return;
+    }
+    const bool has_runtime = judge->IsRunning();
+    if (input->GetState() != (has_runtime
+                                  ? PDJE_INPUT_STATE::INPUT_LOOP_RUNNING
+                                  : PDJE_INPUT_STATE::INPUT_LOOP_READY)) {
+        warnlog("FACADE::Restart has inconsistent Input/Judge state");
+        return;
+    }
+    try {
+        if (has_runtime && !judge->SuspendJudgments()) {
+            critlog("FACADE::Restart failed to suspend Judge");
+            state = STATE::FAULTED;
+            return;
+        }
+        if (!player->Deactivate()) {
+            critlog("FACADE::Restart failed to stop Core");
+            state = STATE::FAULTED;
+            return;
+        }
+        // This joins old callback workers, discards old queued jobs and rewinds
+        // notes. The input poller remains the sole consumer, suspended.
+        if (!judge->ResetForRestart() || !player->ResetForRestart()) {
+            critlog("FACADE::Restart could not reset the session; call End");
+            state = STATE::FAULTED;
+            return;
+        }
+        state = STATE::READY;
+    } catch (const std::exception &e) {
+        critlog("FACADE::Restart failed: {}", e.what());
+        state = STATE::FAULTED;
+    } catch (...) {
+        critlog("FACADE::Restart failed: unknown exception");
+        state = STATE::FAULTED;
+    }
 }
 
 void
 FACADE::End()
 {
+    state        = STATE::FAULTED;
+    bool stopped = true;
     // Joining Judge first prevents input-buffer invalidation and judging
     // against a stopped audio clock. If joining fails, keep the producers
     // alive.
-    judge->End();
+    try {
+        judge->End();
+    } catch (const std::exception &e) {
+        critlog("FACADE::End failed to join Judge; producers retained: {}",
+                e.what());
+        return;
+    } catch (...) {
+        critlog("FACADE::End failed to join Judge; producers retained: unknown "
+                "exception");
+        return;
+    }
 
-    std::exception_ptr error;
     try {
         if (core->player && !core->player->Deactivate()) {
-            throw std::runtime_error("FACADE::End failed to stop Core");
+            critlog("FACADE::End failed to stop Core; retry End before reuse");
+            stopped = false;
         }
+    } catch (const std::exception &e) {
+        critlog("FACADE::End failed to stop Core: {}", e.what());
+        stopped = false;
     } catch (...) {
-        error = std::current_exception();
+        critlog("FACADE::End failed to stop Core: unknown exception");
+        stopped = false;
     }
 
     // Still release Input when stopping audio fails. Judge is already joined.
     try {
         if (!input->Kill()) {
-            throw std::runtime_error("FACADE::End failed to release Input");
+            critlog(
+                "FACADE::End failed to release Input; retry End before reuse");
+            stopped = false;
         }
+    } catch (const std::exception &e) {
+        critlog("FACADE::End failed to release Input: {}", e.what());
+        stopped = false;
     } catch (...) {
-        if (!error) {
-            error = std::current_exception();
-        }
+        critlog("FACADE::End failed to release Input: unknown exception");
+        stopped = false;
     }
-    if (error) {
-        std::rethrow_exception(error);
+    if (stopped) {
+        state = STATE::STOPPED;
     }
 }
 

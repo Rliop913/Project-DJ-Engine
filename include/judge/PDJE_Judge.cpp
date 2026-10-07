@@ -8,6 +8,46 @@
 #include <unordered_map>
 namespace PDJE_JUDGE {
 
+bool
+JUDGE::SuspendJudgments()
+{
+    if (!loop_obj) {
+        warnlog("cannot suspend judgments: no runtime");
+        return false;
+    }
+    return loop_obj->SuspendJudgments();
+}
+
+bool
+JUDGE::ResumeJudgments()
+{
+    if (!loop_obj) {
+        warnlog("cannot resume judgments: no runtime");
+        return false;
+    }
+    return loop_obj->ResumeJudgments();
+}
+
+bool
+JUDGE::ResetForRestart()
+{
+    if (!inits.note_objects) {
+        warnlog("cannot reset judge for restart: notes are not configured");
+        return false;
+    }
+    if (loop_obj) {
+        return loop_obj->ResetForRestart();
+    }
+    inits.note_objects->ResetForRestart();
+    return true;
+}
+
+bool
+JUDGE::IsSuspended() const
+{
+    return loop_obj && loop_obj->IsSuspended();
+}
+
 JUDGE::JUDGE()
 {
 }

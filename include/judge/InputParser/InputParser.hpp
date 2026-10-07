@@ -20,7 +20,12 @@ struct PARSE_OUT {
 };
 
 static void
-Parse(PARSE_OUT &out, const RAIL_DB &raildb, const INPUT_RAW &raw)
+// Nonzero cutoffs reject events at/before the raw producer timestamp, before
+// applying calibration. Zero preserves the original unfiltered behavior.
+Parse(PARSE_OUT       &out,
+      const RAIL_DB   &raildb,
+      const INPUT_RAW &raw,
+      const uint64_t   raw_cutoff = 0)
 {
     out.logs.clear();
     out.logs.reserve(raw.size());
@@ -32,6 +37,9 @@ Parse(PARSE_OUT &out, const RAIL_DB &raildb, const INPUT_RAW &raw)
     std::string offsetkey;
 
     for (const auto &rawp : raw) {
+        if (raw_cutoff != 0 && rawp.microSecond <= raw_cutoff) {
+            continue;
+        }
 
         offsetkey = NormalizeRailIdentity(rawp.name, rawp.name_len);
 
@@ -45,6 +53,9 @@ Parse(PARSE_OUT &out, const RAIL_DB &raildb, const INPUT_RAW &raw)
         out.logs.push_back(rawp);
         out.logs.back().microSecond += off;
     }
+    if (out.logs.empty()) {
+        return;
+    }
     std::sort(out.logs.begin(),
               out.logs.end(),
               [](const PDJE_Input_Log &a, const PDJE_Input_Log &b) {
@@ -56,7 +67,10 @@ Parse(PARSE_OUT &out, const RAIL_DB &raildb, const INPUT_RAW &raw)
 }
 
 static void
-Parse(PARSE_OUT &out, const RAIL_DB &raildb, const MIDI_RAW &midi_raw)
+Parse(PARSE_OUT      &out,
+      const RAIL_DB  &raildb,
+      const MIDI_RAW &midi_raw,
+      const uint64_t  raw_cutoff = 0)
 {
     out.midi_logs.clear();
     out.midi_logs.reserve(midi_raw.size());
@@ -66,9 +80,12 @@ Parse(PARSE_OUT &out, const RAIL_DB &raildb, const MIDI_RAW &midi_raw)
     int64_t     off;
     std::string offsetkey;
     for (const auto &rawp : midi_raw) {
+        if (raw_cutoff != 0 && rawp.highres_time <= raw_cutoff) {
+            continue;
+        }
 
         offsetkey = NormalizeRailIdentity(rawp.port_name, rawp.port_name_len);
-        auto it = raildb.offset.find(offsetkey);
+        auto it   = raildb.offset.find(offsetkey);
         if (it != raildb.offset.end()) {
             off = it->second;
         } else {
@@ -76,6 +93,9 @@ Parse(PARSE_OUT &out, const RAIL_DB &raildb, const MIDI_RAW &midi_raw)
         }
         out.midi_logs.push_back(rawp);
         out.midi_logs.back().highres_time += off;
+    }
+    if (out.midi_logs.empty()) {
+        return;
     }
     std::sort(out.midi_logs.begin(),
               out.midi_logs.end(),

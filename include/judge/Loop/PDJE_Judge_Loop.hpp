@@ -10,6 +10,7 @@
 #include "PDJE_PreProcess.hpp"
 #include "PDJE_Rule.hpp"
 #include <cstdint>
+#include <mutex>
 #include <optional>
 #include <vector>
 namespace PDJE_JUDGE {
@@ -28,7 +29,22 @@ class Judge_Loop {
 
     Match match;
 
+    // Held only for production/state transitions, never during IPC collection.
+    mutable std::mutex production_mutex;
+    bool               suspended  = false;
+    uint64_t           generation = 0;
+    uint64_t           raw_cutoff = 0;
+
   public:
+    // Control-thread only, serialized with Start/End; never from callbacks.
+    bool
+    SuspendJudgments();
+    bool
+    ResumeJudgments();
+    bool
+    ResetForRestart();
+    bool
+    IsSuspended() const;
     /** @brief Stop use/miss worker threads. */
     void
     EndEventLoop();
@@ -41,7 +57,10 @@ class Judge_Loop {
 
     /** @brief Construct loop with initialized data sources. */
     Judge_Loop(Judge_Init &inits);
-    ~Judge_Loop() = default;
+    ~Judge_Loop()
+    {
+        EndEventLoop();
+    }
 };
 
 }; // namespace PDJE_JUDGE

@@ -137,6 +137,38 @@ audioPlayer::IsActive() const noexcept
     return ma_device_is_started(&player) != MA_FALSE;
 }
 
+bool
+audioPlayer::CanResetForRestart() const noexcept
+{
+    // Both hybrid and manual constructors install MusCtrPanel. Stopping the
+    // device does not stop its prediction workers or rewind their DSP state.
+    return engineDatas && !engineDatas->MusCtrPanel.has_value() &&
+           engineDatas->pcmDataPoint != nullptr;
+}
+
+bool
+audioPlayer::ResetForRestart()
+{
+    if (!CanResetForRestart()) {
+        critlog("cannot reset audioPlayer for restart: only full pre-render "
+                "is supported");
+        return false;
+    }
+    // Reject starting/stopping as well as started; the caller must serialize
+    // lifecycle operations and quiesce all borrowed data-line readers.
+    if (ma_device_get_state(&player) != ma_device_state_stopped) {
+        critlog("cannot reset audioPlayer for restart: device is not stopped");
+        return false;
+    }
+
+    // FullPreRender_callback reads immutable rendered PCM directly: it uses no
+    // deck, FX, or scratch-buffer history. Preserve the renderer and all owners.
+    // Reset to the constructor cursor, not an unsigned negative frame offset;
+    // CountUp-before-Get remains the same on initial playback and on restart.
+    engineDatas->ResetPrerenderProgress();
+    return true;
+}
+
 audioPlayer::~audioPlayer()
 {
     ma_device_uninit(&player);

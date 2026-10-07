@@ -82,6 +82,20 @@ class OBJ {
     void
     Sort(); // use only for init
 
+    /** @brief Reset all used flags/cursors, preserving storage and setup.
+     * Requires quiescent judgment production and all callbacks joined.
+     */
+    void
+    ResetForRestart() noexcept
+    {
+        for (auto &rail : Buffer_Main) {
+            rail.second.ResetForRestart();
+        }
+        for (auto &rail : Buffer_Sub) {
+            rail.second.ResetForRestart();
+        }
+    }
+
     template <int I>
     /** @brief Push note data into main or sub buffer. */
     void
@@ -155,7 +169,15 @@ class OBJ {
             }
         }
     }
-    OBJ()  = default;
-    ~OBJ() = default;
+    OBJ()            = default;
+    OBJ(const OBJ &) = default;
+    OBJ &
+    operator=(const OBJ &) = default;
+    // Move the owning maps, preserving note storage and its borrowing cursors.
+    // Explicit moves prevent the declared destructor from forcing a deep copy.
+    OBJ(OBJ &&) = default;
+    OBJ &
+    operator=(OBJ &&) = default;
+    ~OBJ()            = default;
 };
 }; // namespace PDJE_JUDGE

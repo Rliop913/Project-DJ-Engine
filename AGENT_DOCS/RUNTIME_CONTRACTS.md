@@ -67,6 +67,32 @@ Source anchors: `include/judge/PDJE_Judge.hpp`,
 | `End()` clears data lines, notes, rules, and rails but retains `inits.lambdas`. | Reconfigure retained callbacks explicitly when reusing a judge. |
 | Note frames use a fixed 48 kHz-to-microseconds floor conversion. | Treat timing conversion changes as behavior compatibility changes. |
 
+## Gameplay Controls
+
+Source anchors: `include/GamePlay/PDJE_GamePlay.hpp`,
+`include/judge/Loop/PDJE_Judge_Loop.hpp`, and
+`include/core/MainObjects/audioPlayer/audioPlayer.hpp`.
+
+- Orchestration belongs to `PDJE_GAMEPLAY::FACADE`; serialize controls and
+  `GetState()` on a non-callback thread. Shared ownership does not synchronize
+  external mutation or replacement. Native consumers must rebuild for new layouts.
+- `Pause()` stops new note/miss/use/axis production before stopping the whole
+  player. Input polling continues; committed use/miss callbacks may still finish.
+  Do not interpret `PAUSED` as a callback-drain barrier.
+- `Resume()` preserves note progress and requires fresh audio synchronization.
+  Inputs older than its raw-clock cutoff are discarded before calibration offsets;
+  batches crossing a production-generation boundary are discarded as a whole.
+- `Restart()` joins old use/miss callbacks and discards old jobs before resetting
+  note progress and Core time. It preserves setup and returns to facade `READY`,
+  requiring explicit `Play()`. Existing Input/Judge polling stays running while
+  judgments remain suspended. User-owned callback/axis/score state is not reset.
+- Core rewind currently supports **full pre-render only**. Hybrid/manual restart
+  is rejected before state mutation because deck prediction/DSP histories have
+  no coordinated reset. Whole-player pause/resume do not require such a reset.
+- Runtime failures are logged. Inspect `GetState()`; `FAULTED` requires `End()`
+  before reuse. Restart waits for callbacks to return, so callbacks must be bounded.
+  `End()` remains destructive teardown, not a configuration-preserving stop.
+
 ## C ABI Compatibility
 
 The contract headers are `include/core/interface/CPDJE_interface.h`,

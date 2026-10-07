@@ -3,6 +3,8 @@
 #include "PDJE_LOG_SETTER.hpp"
 #include "musicDB.hpp"
 
+#include <memory>
+
 #include <optional>
 #include <stdexcept>
 
@@ -190,23 +192,18 @@ PDJE::GetNoteObjects(trackdata &td, OBJ_SETTER_CALLBACK &ObjectSetCallback)
         return false;
     }
 
-    auto noteTrans = new NoteTranslator();
-    auto mixTrans  = new MixTranslator();
-
-    mixTrans->Read(mixreader);
-
-    if (mixTrans->bpms.has_value()) {
-        noteTrans->Read(
-            notereader, mixTrans->bpms.value().bpmVec, ObjectSetCallback);
-    } else {
-        critlog("failed to emplace optional object from PDJE GetNoteObjects");
-        delete noteTrans;
-        delete mixTrans;
+    auto mixTrans = std::make_unique<MixTranslator>();
+    if (!mixTrans->Read(mixreader)) {
         return false;
     }
-    delete noteTrans;
-    delete mixTrans;
-    return true;
+    if (!mixTrans->bpms.has_value()) {
+        critlog("failed to emplace optional object from PDJE GetNoteObjects");
+        return false;
+    }
+
+    auto noteTrans = std::make_unique<NoteTranslator>();
+    return noteTrans->Read(
+        notereader, mixTrans->bpms.value().bpmVec, ObjectSetCallback);
 }
 
 bool

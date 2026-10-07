@@ -58,6 +58,21 @@ class PDJE_API audioPlayer {
     bool
     IsActive() const noexcept;
 
+    /// Non-mutating mode capability check, independent of device activity.
+    /// Only full pre-render is supported; hybrid/manual worker and DSP history
+    /// cannot currently be rewound safely, even when no deck is playing.
+    /// Serialize against player/control-panel changes.
+    bool
+    CanResetForRestart() const noexcept;
+
+    /// Restore the whole player's initial cursor and sync state, without play.
+    /// Requires a stopped device, quiesced Judge/data-line readers, and exclusive
+    /// player/control-panel access. Keeps loaded PCM and data-line addresses.
+    /// Unsupported modes or a non-stopped device return false without mutation.
+    /// Retains the existing callback convention (CountUp before PCM Get).
+    bool
+    ResetForRestart();
+
     /// change the prerendered music's cursor(the playing position).
     void
     ChangeCursorPos(unsigned long long pos);

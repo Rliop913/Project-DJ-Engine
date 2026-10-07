@@ -40,6 +40,32 @@ class PDJE_API JUDGE {
     void
     End();
 
+    /** @brief Gate new judgments and wait for direct callbacks/note mutation.
+     * Polling and committed use/miss callback delivery continue. All lifecycle
+     * methods (including queries) must be serialized with Start/End on the
+     * control thread; never invoke them from any Judge callback.
+     * Suspend/Resume return false without a runtime, and are idempotent.
+     */
+    bool
+    SuspendJudgments();
+    /** @brief Start missing event workers, then ungate with a raw input cutoff.
+     * Does not start playback or change Core sync. The facade must invalidate
+     * stopped Core sync before resuming. Failure leaves production suspended.
+     */
+    bool
+    ResumeJudgments();
+    /** @brief Join event workers, discard queued jobs and reset note progress.
+     * A runtime remains installed, polling and suspended, with event workers
+     * stopped until ResumeJudgments(). Without a runtime only notes are reset.
+     * Requires configured notes; preserves rails/rules/callbacks/borrowed
+     * lines.
+     */
+    bool
+    ResetForRestart();
+    /** @brief Whether an installed runtime has gated judgment production. */
+    bool
+    IsSuspended() const;
+
     /** @brief Whether a runtime is installed. Serialize with Start()/End(). */
     bool
     IsRunning() const noexcept

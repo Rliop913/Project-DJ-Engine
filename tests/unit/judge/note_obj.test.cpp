@@ -1,6 +1,10 @@
 #include <doctest/doctest.h>
 
 #include "NoteOBJ/PDJE_Note_OBJ.hpp"
+#include "PDJE_Judge_Init.hpp"
+#include <array>
+#include <optional>
+#include <utility>
 
 using namespace PDJE_JUDGE;
 
@@ -180,4 +184,105 @@ TEST_CASE("judge: NOTE_ITR ResetForRestart resets every note without "
         CHECK(notes.vec[0].isDown);
         CHECK_FALSE(notes.vec[2].isDown);
     }
+}
+
+namespace {
+using MoveStorage = std::array<P_NOTE_VEC, 2>;
+
+MoveStorage
+PrepareMoveSource(OBJ &notes)
+{
+    NOTE first;
+    first.microsecond = 1000;
+    NOTE second;
+    second.microsecond = 2000;
+    for (const auto &note : { first, second }) {
+        notes.Fill<BUFFER_MAIN>(note, 1);
+        notes.Fill<BUFFER_SUB>(note, 1);
+    }
+    notes.Sort();
+    MoveStorage storage;
+    notes.Get<BUFFER_MAIN>(2000, 1, storage[0]);
+    notes.Get<BUFFER_SUB>(2000, 1, storage[1]);
+    // Advance one cursor and exhaust the other before transferring ownership.
+    storage[0][0]->used = true;
+    storage[1][0]->used = true;
+    storage[1][1]->used = true;
+    P_NOTE_VEC found;
+    notes.Get<BUFFER_MAIN>(2000, 1, found);
+    notes.Get<BUFFER_SUB>(2000, 1, found);
+    // Make a cursor reset observable independently of the used flags.
+    storage[0][0]->used = false;
+    storage[1][0]->used = false;
+    return storage;
+}
+
+void
+CheckMovedStorage(OBJ &notes, const MoveStorage &storage)
+{
+    P_NOTE_VEC found;
+    notes.Get<BUFFER_MAIN>(2000, 1, found);
+    REQUIRE(found.size() == 1);
+    CHECK(found[0] == storage[0][1]);
+    notes.Get<BUFFER_SUB>(2000, 1, found);
+    CHECK(found.empty());
+
+    notes.ResetForRestart();
+    notes.Get<BUFFER_MAIN>(2000, 1, found);
+    CHECK(found == storage[0]);
+    notes.Get<BUFFER_SUB>(2000, 1, found);
+    CHECK(found == storage[1]);
+    for (const auto *note : found) {
+        CHECK_FALSE(note->used);
+    }
+}
+} // namespace
+
+TEST_CASE(
+    "judge: OBJ move preserves storage and cursors after source destruction")
+{
+    std::optional<OBJ> source(std::in_place);
+    const auto         storage = PrepareMoveSource(*source);
+    std::optional<OBJ> destination;
+
+    SUBCASE("move construction")
+    {
+        destination.emplace(std::move(*source));
+    }
+    SUBCASE("move assignment replaces existing storage")
+    {
+        destination.emplace();
+        PrepareMoveSource(*destination);
+        *destination = std::move(*source);
+    }
+    source.reset();
+    REQUIRE(destination.has_value());
+    CheckMovedStorage(*destination, storage);
+}
+
+TEST_CASE("judge: prepared init move transfers note and rail storage")
+{
+    std::optional<Judge_Init> prepared(std::in_place);
+    prepared->note_objects.emplace();
+    const auto storage = PrepareMoveSource(*prepared->note_objects);
+    prepared->raildb.offset["move-port"] = 123;
+    const auto *offset_address = &prepared->raildb.offset.at("move-port");
+    Judge_Init  destination;
+
+    SUBCASE("empty destination as in Gameplay Ready")
+    {
+    }
+    SUBCASE("destination already owns notes")
+    {
+        destination.note_objects.emplace();
+        PrepareMoveSource(*destination.note_objects);
+        destination.raildb.offset["old-port"] = 456;
+    }
+    destination = std::move(*prepared);
+    prepared.reset();
+    REQUIRE(destination.note_objects.has_value());
+    CheckMovedStorage(*destination.note_objects, storage);
+    REQUIRE(destination.raildb.offset.size() == 1);
+    CHECK(&destination.raildb.offset.at("move-port") == offset_address);
+    CHECK(destination.raildb.offset.at("move-port") == 123);
 }

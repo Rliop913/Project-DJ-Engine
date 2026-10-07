@@ -113,7 +113,7 @@ SetLocalTiming(PreProcess &pre)
 }
 
 void
-CutExpiredByLimit(PreProcess &pre,
+CutExpiredByLimit(PreProcess    &pre,
                   const uint64_t current_limit,
                   const uint64_t miss_range)
 {
@@ -143,17 +143,29 @@ SetUseWindow(PreProcess &pre, const EVENT_RULE &rule)
 bool
 PreProcess::Work()
 {
+    return ProcessCollected(CollectInputs());
+}
+
+bool
+PreProcess::CollectInputs(const uint64_t raw_cutoff)
+{
+    ClearParsed(parsed_res);
+    return GetDatas(raw_cutoff);
+}
+
+bool
+PreProcess::ProcessCollected(const bool has_inputs)
+{
     synced_data = init->coreline->syncD->load(std::memory_order_acquire);
 
     if (!AudioSyncReady(synced_data)) {
-        GetDatas();
         ResetTimingWindow(*this);
         return false;
     }
 
     SetLocalTiming(*this);
 
-    if (!GetDatas()) { // no input datas
+    if (!has_inputs) { // no input datas
         CutExpiredByPlaybackPosition(*this, *init->ev_rule);
         return false;
     }

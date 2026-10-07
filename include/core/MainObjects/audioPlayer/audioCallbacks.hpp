@@ -26,6 +26,16 @@ struct audioEngineDataStruct {
     PDJE_HIGHRES_CLOCK::CLOCK               highres_clock;
     ma_ptr                                  backend_ptr;
     std::function<uint32_t(const ma_ptr &)> get_unused_frames;
+
+    /** @brief Reset only pre-render cursor/clock; caller must quiesce device
+     * and readers. Does not reset manual decks or DSP histories. */
+    void
+    ResetPrerenderProgress() noexcept
+    {
+        nowCursor = 0;
+        cacheSync = audioSyncData{};
+        syncData.store(cacheSync, std::memory_order_release);
+    }
     /**
      * @brief Get Current playback point
      *
