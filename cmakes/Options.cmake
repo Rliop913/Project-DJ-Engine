@@ -10,13 +10,13 @@ option(PDJE_DYNAMIC "Make Shared Library" OFF)
 option(PDJE_RTTI_FORCE_OFF "turn off frtti option with force" OFF)
 
 if(NOT APPLE)
-# if(WIN32)
+  # if(WIN32)
   option(PDJE_DEVELOP_INPUT "Enable linux develop build" ON)
 else()
   option(PDJE_DEVELOP_INPUT "Enable linux develop build" OFF)
 endif()
 
-
+option(PDJE_ENABLE_SWIFT "Enable Swift Build" OFF)
 
 
 if(APPLE AND PDJE_DEVELOP_INPUT)

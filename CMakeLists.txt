@@ -3,7 +3,7 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 if(NOT CMAKE_TOOLCHAIN_FILE)
-set(CMAKE_TOOLCHAIN_FILE "${CMAKE_SOURCE_DIR}/conan_cmakes/conan_toolchain.cmake")
+  set(CMAKE_TOOLCHAIN_FILE "${CMAKE_SOURCE_DIR}/conan_cmakes/conan_toolchain.cmake")
 endif()
 cmake_minimum_required(VERSION 3.12)
 cmake_policy(SET CMP0091 NEW)
@@ -38,7 +38,7 @@ set(PDJE_INCLUDE_ROOT  ${CMAKE_SOURCE_DIR} CACHE STRING "Set pdje root")
 
 #for release + symbol
 if(PDJE_BENCHMARK)
-add_compile_definitions(PDJE_BENCHMARK_ON)
+  add_compile_definitions(PDJE_BENCHMARK_ON)
   if(WIN32)
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /Zi")
     set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} /DEBUG")
@@ -56,14 +56,14 @@ endif()
 
 
 function(DynamicInnerFlag target)
-if(WIN32 AND PDJE_DYNAMIC)
+  if(WIN32 AND PDJE_DYNAMIC)
     target_compile_definitions(${target} PRIVATE PDJE_WINDOWS_DLL)
     target_compile_definitions(${target} PRIVATE PDJE_BUILDING)
   endif()
 endfunction(DynamicInnerFlag target)
 
 function(DynamicOuterFlag target)
-if(WIN32 AND PDJE_DYNAMIC)
+  if(WIN32 AND PDJE_DYNAMIC)
     target_compile_definitions(${target} PUBLIC PDJE_WINDOWS_DLL)
   endif()
 endfunction(DynamicOuterFlag target)
@@ -201,7 +201,7 @@ if(PDJE_DEVELOP_INPUT)
   else()
     add_library(PDJE_MODULE_JUDGE ${JUDGE_SRC_EXPORT})
     add_library(PDJE_MODULE_INPUT ${INPUT_SRC_EXPORT})
-endif()# end dynamic
+  endif() # end dynamic
   DynamicOuterFlag(PDJE_MODULE_JUDGE)
   DynamicOuterFlag(PDJE_MODULE_INPUT)
   target_link_libraries(PDJE_MODULE_JUDGE PRIVATE
@@ -289,9 +289,22 @@ endif()
 
 
 
+if(PDJE_ENABLE_SWIFT)
+
+  enable_language(Swift)
+
+  add_executable(swig_test
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/SWIFT_TESTS/testmain.swift
+  )
+
+
+endif()
+
 
 
 # Swig Option
+
+
 
 if(PDJE_SWIG_BUILD)
   include(cmakes/ADD_SWIGS.cmake)

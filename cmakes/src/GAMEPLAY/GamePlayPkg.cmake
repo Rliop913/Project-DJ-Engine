@@ -22,6 +22,9 @@ target_link_libraries(PDJE_MODULE_GAMEPLAY PRIVATE
     MINIAUDIO_INCLUDE SOUNDTOUCH_INCLUDE nlohmann_json::nlohmann_json
     PDJE_LOG_RUNTIME
 )
+if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    target_link_libraries(PDJE_MODULE_GAMEPLAY PRIVATE PkgConfig::LIBEVDEV)
+endif()
 setSpdlogReqLib(PDJE_MODULE_GAMEPLAY)
 setCapnpReqLib(PDJE_MODULE_GAMEPLAY)
 setLibgit2ReqLib(PDJE_MODULE_GAMEPLAY)
