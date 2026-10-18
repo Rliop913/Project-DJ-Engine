@@ -6,6 +6,7 @@ Use this index to select the smallest source-backed document set for a task.
 | --- | --- | --- |
 | any repository work | [INVARIANTS.md](INVARIANTS.md) | global truth, scope, wiring, and ownership constraints |
 | understand modules or public entrypoints | [ARCHITECTURE.md](ARCHITECTURE.md) | design intent, module relationships, and runtime data flow |
+| macOS audio delay estimation design | [MACOS_AUDIO_DELAY_ESTIMATE.md](MACOS_AUDIO_DELAY_ESTIMATE.md) | proposed callback-time estimator and assumptions |
 | locate code, CMake wiring, and verification | [CHANGE_MAP.md](CHANGE_MAP.md) | change-area routing |
 | change lifecycle, state, data lines, or ABI behavior | [RUNTIME_CONTRACTS.md](RUNTIME_CONTRACTS.md) | caller-visible runtime contracts |
 | select a preset or obtain verification approval | [VERIFY.md](VERIFY.md) | build truth, approval boundary, and preset selection |
