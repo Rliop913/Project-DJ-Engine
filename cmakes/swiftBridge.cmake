@@ -13,8 +13,21 @@ function(pdje_add_swift_bridge target module_name header_name)
         message(FATAL_ERROR "pdje_add_swift_bridge requires Swift sources")
     endif()
 
-    # Locate the matching toolchain's Swift C++ interoperability headers.
-    get_filename_component(swift_compiler "${CMAKE_Swift_COMPILER}" REALPATH)
+    # Locate Swift C++ interoperability headers from the platform toolchain.
+    if(APPLE)
+        execute_process(
+            COMMAND xcrun --find swiftc
+            OUTPUT_VARIABLE swift_compiler
+            OUTPUT_STRIP_TRAILING_WHITESPACE
+            RESULT_VARIABLE swift_find_result
+        )
+        if(NOT swift_find_result EQUAL 0 OR NOT swift_compiler)
+            message(FATAL_ERROR "Apple toolchain's swiftc not found via xcrun")
+        endif()
+        get_filename_component(swift_compiler "${swift_compiler}" REALPATH)
+    else()
+        get_filename_component(swift_compiler "${CMAKE_Swift_COMPILER}" REALPATH)
+    endif()
     get_filename_component(swift_bin_dir "${swift_compiler}" DIRECTORY)
     find_path(PDJE_SWIFT_INCLUDE_DIR
         NAMES swiftToCxx/_SwiftCxxInteroperability.h
@@ -31,6 +44,8 @@ function(pdje_add_swift_bridge target module_name header_name)
     target_compile_options(${target} PRIVATE
         "$<$<COMPILE_LANGUAGE:Swift>:-parse-as-library>"
         "$<$<COMPILE_LANGUAGE:Swift>:-cxx-interoperability-mode=default>"
+        "$<$<COMPILE_LANGUAGE:Swift>:-module-name>"
+        "$<$<COMPILE_LANGUAGE:Swift>:${module_name}>"
     )
 
     add_custom_command(
