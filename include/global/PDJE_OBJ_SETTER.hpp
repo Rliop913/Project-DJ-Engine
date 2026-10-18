@@ -42,8 +42,8 @@ using OBJ_SETTER_CALLBACK = std::function<void(
     /// thirdArg
     const std::string,
     /// Y axis position
-    const unsigned long long,
+    const uint64_t,
     /// Y axis position 2, 0 as default
-    const unsigned long long,
+    const uint64_t,
     /// rail id
     const uint64_t)>;

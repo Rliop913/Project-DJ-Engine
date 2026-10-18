@@ -38,7 +38,7 @@ PDJE_JSONHandler<NOTE_W>::deleteLine(const NoteArgs &args)
 {
     std::vector<int> targetIDX;
     try {
-        for (unsigned long long i = 0; i < ROOT[PDJENOTE].size(); ++i) {
+        for (uint64_t i = 0; i < ROOT[PDJENOTE].size(); ++i) {
             auto Target = ROOT[PDJENOTE].at(i);
             if (Target[PDJE_JSON_NOTE_TYPE] != args.Note_Type &&
                 args.Note_Type != "")

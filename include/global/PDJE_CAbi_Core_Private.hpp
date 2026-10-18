@@ -2,10 +2,12 @@
 
 #ifdef __cplusplus
 
+#include <cstdint>
+
 struct PDJE_EngineHandleV1 {
     void               *engine       = nullptr;
-    unsigned long long *now_cursor    = nullptr;
-    unsigned long long *max_cursor    = nullptr;
+    uint64_t           *now_cursor    = nullptr;
+    uint64_t           *max_cursor    = nullptr;
     float              *pre_rendered = nullptr;
     void               *sync_data    = nullptr;
 };

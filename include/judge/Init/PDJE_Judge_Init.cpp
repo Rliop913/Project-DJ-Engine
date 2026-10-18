@@ -95,8 +95,8 @@ Judge_Init::NoteObjectCollector(const std::string        noteType,
                                 const std::string        firstArg,
                                 const std::string        secondArg,
                                 const std::string        thirdArg,
-                                const unsigned long long Y_Axis,
-                                const unsigned long long Y_Axis_2,
+                                const uint64_t Y_Axis,
+                                const uint64_t Y_Axis_2,
                                 const uint64_t           railID)
 {
 

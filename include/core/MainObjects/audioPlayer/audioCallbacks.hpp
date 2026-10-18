@@ -18,8 +18,8 @@ struct audioEngineDataStruct {
     std::optional<FXControlPanel>    FXManualPanel;
     std::optional<MusicControlPanel> MusCtrPanel;
     std::vector<float>              *pcmDataPoint;
-    unsigned long long               nowCursor = 0;
-    unsigned long long               maxCursor = 0;
+    uint64_t                        nowCursor = 0;
+    uint64_t                        maxCursor = 0;
     std::atomic<audioSyncData>       syncData =
         audioSyncData{ .consumed_frames = 0, .microsecond = 0 };
     audioSyncData                           cacheSync;

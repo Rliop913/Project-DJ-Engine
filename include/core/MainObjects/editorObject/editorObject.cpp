@@ -23,7 +23,7 @@ editorObject::makeTrackData(const UNSANITIZED &trackTitle,
     auto      mixRendered = edit_core->mixHandle->GetJson()->render();
     auto      mixData     = mixRendered->Wp->getDatas();
 
-    for (unsigned long long i = 0; i < mixData.size(); ++i) {
+    for (uint64_t i = 0; i < mixData.size(); ++i) {
         if (mixData[i].getType() == TypeEnum::LOAD) {
             auto first  = SANITIZED(mixData[i].getFirst().cStr());
             auto second = SANITIZED(mixData[i].getSecond().cStr());

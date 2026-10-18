@@ -28,7 +28,7 @@ BpmStruct::sortFragment()
 }
 
 bool
-BpmStruct::calcFrame(unsigned long long StartPos)
+BpmStruct::calcFrame(uint64_t StartPos)
 {
     if (fragments.size() > 0) {
         for (auto i : fragments) {
@@ -105,7 +105,7 @@ FrameSearchLambda(const BpmFragment &first, const BpmFragment &second)
 }
 
 const BpmFragment &
-BpmStruct::getAffected(const unsigned long long searchFrame) const
+BpmStruct::getAffected(const uint64_t searchFrame) const
 {
     BpmFragment temp;
     temp.frame_to_here = searchFrame;
@@ -126,8 +126,8 @@ BpmStruct::getAffected(const unsigned long long searchFrame) const
 }
 
 const std::vector<const BpmFragment *>
-BpmStruct::getAffectedList(const unsigned long long searchStartFrame,
-                           const unsigned long long searchEndFrame) const
+BpmStruct::getAffectedList(const uint64_t searchStartFrame,
+                           const uint64_t searchEndFrame) const
 {
     BpmFragment Stemp;
     BpmFragment Etemp;

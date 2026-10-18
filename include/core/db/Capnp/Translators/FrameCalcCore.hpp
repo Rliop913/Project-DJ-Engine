@@ -40,7 +40,7 @@ CountFrame(uint64_t Sbeat,
         critlog("End apprx: ");
         critlog(Eapprx);
     }
-    return static_cast<unsigned long>(
+    return static_cast<uint64_t>(
         std::round((Eapprx - Sapprx) * (DMINUTE / bpm) * DSAMPLERATE));
 }
 }; // namespace FrameCalc
@@ -59,12 +59,12 @@ struct BpmStruct {
     void
     sortFragment();
     bool
-    calcFrame(unsigned long long StartPos = 0);
+    calcFrame(uint64_t StartPos = 0);
     const BpmFragment &
     getAffected(const BpmFragment &searchFrag) const;
     const BpmFragment &
-    getAffected(const unsigned long long searchFrame) const;
+    getAffected(const uint64_t searchFrame) const;
     const std::vector<const BpmFragment *>
-    getAffectedList(const unsigned long long searchStartFrame,
-                    const unsigned long long searchEndFrame) const;
+    getAffectedList(const uint64_t searchStartFrame,
+                    const uint64_t searchEndFrame) const;
 };

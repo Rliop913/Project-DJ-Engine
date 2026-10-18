@@ -1,4 +1,5 @@
 #include "jsonWrapper.hpp"
+#include <cstdint>
 
 template <>
 template <>
@@ -14,7 +15,7 @@ PDJE_JSONHandler<MIX_W>::deleteLine(const MixArgs &args,
 {
     std::vector<int> targetIDX;
     try {
-        for (unsigned long long i = 0; i < ROOT[PDJEARR].size(); ++i) {
+        for (uint64_t i = 0; i < ROOT[PDJEARR].size(); ++i) {
             auto Target = ROOT[PDJEARR].at(i);
             if (Target[PDJE_JSON_TYPE] != args.type && !skipType)
                 continue;

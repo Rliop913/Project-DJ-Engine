@@ -3,7 +3,7 @@
 #include <string>
 bool
 MusicTranslator::Read(const CapReader<MusicBinaryCapnpData> &binary,
-                      unsigned long long                     startFrame)
+                      uint64_t                                startFrame)
 {
     auto DVec = binary.Rp->getDatas();
     for (unsigned long i = 0; i < DVec.size(); ++i) {

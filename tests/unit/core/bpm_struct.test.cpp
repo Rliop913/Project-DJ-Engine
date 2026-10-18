@@ -1,5 +1,6 @@
 #include "FrameCalcCore.hpp"
 #include <doctest/doctest.h>
+#include <cstdint>
 
 namespace {
 
@@ -64,7 +65,7 @@ TEST_CASE("core: bpm struct getAffected returns expected fragment by position an
     CHECK(by_pos.beat == 4);
     CHECK(by_pos.bpm == doctest::Approx(60.0));
 
-    const auto &by_frame = s.getAffected(static_cast<unsigned long long>(100000));
+    const auto &by_frame = s.getAffected(static_cast<uint64_t>(100000));
     CHECK(by_frame.beat == 4);
     CHECK(by_frame.frame_to_here == 96000);
 }

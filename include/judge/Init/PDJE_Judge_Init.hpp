@@ -8,6 +8,7 @@
 #include "InputParser.hpp"
 #include "PDJE_Note_OBJ.hpp"
 #include "PDJE_RAIL.hpp"
+#include <cstdint>
 #include <optional>
 #include <unordered_map>
 namespace PDJE_JUDGE {
@@ -71,8 +72,8 @@ class PDJE_API Judge_Init {
                         const std::string        firstArg,
                         const std::string        secondArg,
                         const std::string        thirdArg,
-                        const unsigned long long Y_Axis,
-                        const unsigned long long Y_Axis_2,
+                        const uint64_t Y_Axis,
+                        const uint64_t Y_Axis_2,
                         const uint64_t           railID);
 
     /** @brief Attach the core data line from PDJE core engine. */

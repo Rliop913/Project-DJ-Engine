@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdint>
 #include <optional>
 #include <string>
 #include <vector>
@@ -14,7 +15,7 @@
 namespace fs = std::filesystem;
 // using MAYBE_FRAME = std::optional<std::vector<float>>;
 
-using FRAME_POS = unsigned long long;
+using FRAME_POS = uint64_t;
 /**
  * @brief miniaudio decoder wrapper class
  *

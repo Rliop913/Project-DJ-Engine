@@ -10,8 +10,8 @@
  * all datas are pointer. use carefully.
  */
 struct PDJE_API PDJE_CORE_DATA_LINE {
-    unsigned long long         *nowCursor       = nullptr;
-    unsigned long long         *maxCursor       = nullptr;
+    uint64_t                  *nowCursor       = nullptr;
+    uint64_t                  *maxCursor       = nullptr;
     float                      *preRenderedData = nullptr;
     std::atomic<audioSyncData> *syncD           = nullptr;
 };

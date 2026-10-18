@@ -7,6 +7,7 @@
 #include "audioCallbacks.hpp"
 #include "audioRender.hpp"
 #include "audio_OS_impls.hpp"
+#include <cstdint>
 #include <miniaudio.h>
 /**
  * @brief The music handler class
@@ -75,14 +76,14 @@ class PDJE_API audioPlayer {
 
     /// change the prerendered music's cursor(the playing position).
     void
-    ChangeCursorPos(unsigned long long pos);
+    ChangeCursorPos(uint64_t pos);
 
     /// @brief gets consumed frames.
     /// with this, you can get how many frames are consumed and music's playback
     /// time. to get playback time, divide the returned value with 48000. The
     /// result is Seconds.
     /// @return consumed frames
-    unsigned long long
+    uint64_t
     GetConsumedFrames();
     /**
      * @brief fx controller getter

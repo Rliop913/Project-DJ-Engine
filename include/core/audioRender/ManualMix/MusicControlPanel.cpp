@@ -32,7 +32,7 @@ MusicControlPanel::LoadMusic(litedb &ROOTDB, const musdata &Mus)
 
 bool
 MusicControlPanel::CueMusic(const UNSANITIZED       &title,
-                            const unsigned long long newPos)
+                            const uint64_t newPos)
 {
     auto safeTitle = PDJE_Name_Sanitizer::sanitizeFileName(title);
     if (!safeTitle) {

@@ -46,7 +46,7 @@ GetPCMFramesSIMD(SIMD_FLOAT         &tempFrames,
                  float              *array,
                  const unsigned long FrameSize)
 {
-    const unsigned long long RAWFrameSize = FrameSize * CHANNEL;
+    const uint64_t RAWFrameSize = FrameSize * CHANNEL;
 
     tempFrames.resize(RAWFrameSize);
     L.resize(FrameSize);

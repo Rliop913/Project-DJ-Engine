@@ -47,7 +47,7 @@ NoteTranslator::Read(const CapReader<NoteBinaryCapnpData> &binary,
                 searchfragment.separate = 1;
             }
             auto               affects = noteBpms.getAffected(searchfragment);
-            unsigned long long position =
+            uint64_t position =
                 affects.frame_to_here +
                 FrameCalc::CountFrame(affects.beat,
                                       affects.subBeat,
@@ -57,7 +57,7 @@ NoteTranslator::Read(const CapReader<NoteBinaryCapnpData> &binary,
                                       searchfragment.separate,
                                       affects.bpm);
 
-            unsigned long long pos2;
+            uint64_t pos2;
 
             if (br[i].getEbeat() == 0 && br[i].getEsubBeat() == 0) {
                 pos2 = 0;

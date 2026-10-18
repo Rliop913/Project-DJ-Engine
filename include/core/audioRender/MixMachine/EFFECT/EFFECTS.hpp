@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdint>
 #include <thread>
 
 #include "DeckData.hpp"
@@ -31,15 +32,15 @@ template <typename Fclass> class FaustDType : public Fclass {
     std::vector<float> L;
     std::vector<float> R;
     SIMD_FLOAT        *originVec;
-    unsigned long long startPos;
+    uint64_t startPos;
 
   public:
     int         count;
     FAUSTFLOAT *PTR[CHANNEL];
 
     FaustDType(SIMD_FLOAT        *vec,
-               unsigned long long start,
-               unsigned long long end)
+               uint64_t start,
+               uint64_t end)
         : startPos(start), originVec(vec)
     {
         count = end - start;

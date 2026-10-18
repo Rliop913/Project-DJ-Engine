@@ -55,7 +55,9 @@ Decoder::init(litedb &db, const SANITIZED_ORNOT &KeyOrPath, const int chSZ)
 bool
 Decoder::changePos(FRAME_POS Pos)
 {
-    bool chposRes = ma_decoder_seek_to_pcm_frame(&dec, Pos) == MA_SUCCESS;
+    bool chposRes =
+        ma_decoder_seek_to_pcm_frame(&dec, static_cast<ma_uint64>(Pos)) ==
+        MA_SUCCESS;
     if (!chposRes) {
         critlog(
             "failed to change music play position. from Decoder changePos. ");
@@ -66,10 +68,13 @@ Decoder::changePos(FRAME_POS Pos)
 bool
 Decoder::getPos(FRAME_POS &pos)
 {
+    ma_uint64 native_pos = 0;
     bool getPosRes =
-        ma_decoder_get_cursor_in_pcm_frames(&dec, &pos) == MA_SUCCESS;
+        ma_decoder_get_cursor_in_pcm_frames(&dec, &native_pos) == MA_SUCCESS;
     if (!getPosRes) {
         critlog("failed to get music play position. from Decoder getPos");
+    }else {
+        pos = static_cast<uint64_t>(native_pos);
     }
     return getPosRes;
 }
@@ -83,7 +88,8 @@ Decoder::getRange(FRAME_POS           numFrames,
     if (buffer.size() < BufferSize) {
         buffer.resize(BufferSize);
     }
-    if (ma_decoder_read_pcm_frames(&dec, buffer.data(), numFrames, NULL) !=
+    if (ma_decoder_read_pcm_frames(
+            &dec, buffer.data(), static_cast<ma_uint64>(numFrames), NULL) !=
         MA_SUCCESS) {
         critlog(
             "failed to read pcm frames from musicData. from Decoder getRange");
@@ -98,7 +104,8 @@ Decoder::getRange(FRAME_POS numFrames, SIMD_FLOAT &buffer, const int chSZ)
     if (buffer.size() < BufferSize) {
         buffer.resize(BufferSize);
     }
-    if (ma_decoder_read_pcm_frames(&dec, buffer.data(), numFrames, NULL) !=
+    if (ma_decoder_read_pcm_frames(
+            &dec, buffer.data(), static_cast<ma_uint64>(numFrames), NULL) !=
         MA_SUCCESS) {
         critlog(
             "failed to read pcm frames from musicData. from Decoder getRange");

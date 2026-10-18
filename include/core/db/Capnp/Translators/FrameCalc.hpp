@@ -5,6 +5,7 @@
 
 // #include <hwy/highway.h>
 #include <hwy/aligned_allocator.h>
+#include <cstdint>
 #include <vector>
 
 // namespace hn = hwy::HWY_NAMESPACE;
@@ -16,8 +17,8 @@ using SIMD_FLOAT = std::vector<float, hwy::AlignedAllocator<float>>;
  *
  */
 struct MixStruct {
-    unsigned long long frame_in;
-    unsigned long long frame_out;
+    uint64_t frame_in;
+    uint64_t frame_out;
     /// @brief capnp Reader Pointer
     MBData::Reader RP;
 };

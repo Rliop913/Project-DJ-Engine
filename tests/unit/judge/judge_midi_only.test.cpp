@@ -5,6 +5,7 @@
 #include <atomic>
 #include <chrono>
 #include <cstddef>
+#include <cstdint>
 #include <cstring>
 #include <future>
 #include <limits>
@@ -16,8 +17,8 @@ using namespace PDJE_JUDGE;
 namespace {
 
 struct CoreFixture {
-    unsigned long long         now_cursor  = 0;
-    unsigned long long         max_cursor  = 48000;
+    uint64_t                   now_cursor  = 0;
+    uint64_t                   max_cursor  = 48000;
     float                      prerendered = 0;
     std::atomic<audioSyncData> sync{ audioSyncData{ .microsecond = 1000000 } };
 

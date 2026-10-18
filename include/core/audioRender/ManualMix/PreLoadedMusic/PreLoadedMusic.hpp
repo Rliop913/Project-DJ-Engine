@@ -1,11 +1,12 @@
 #pragma once
 #include "Decoder.hpp"
 #include "FrameCalc.hpp"
+#include <cstdint>
 
 struct PDJE_API PreLoadedMusic {
 
     SIMD_FLOAT           music;
-    ma_uint64            fullSize;
+    uint64_t             fullSize;
     uint64_t             cursor;
     SIMD_FLOAT::iterator p;
     PreLoadedMusic()  = default;

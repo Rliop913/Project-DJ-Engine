@@ -176,12 +176,12 @@ audioPlayer::~audioPlayer()
 }
 
 void
-audioPlayer::ChangeCursorPos(unsigned long long pos)
+audioPlayer::ChangeCursorPos(uint64_t pos)
 {
     engineDatas->nowCursor = pos;
 }
 
-unsigned long long
+uint64_t
 audioPlayer::GetConsumedFrames()
 {
     return engineDatas->syncData.load(std::memory_order_acquire)

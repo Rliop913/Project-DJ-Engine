@@ -1,6 +1,7 @@
 #include "jsonWrapper.hpp"
 
 #include "editorObject.hpp"
+#include <cstdint>
 
 template <>
 template <>
@@ -16,7 +17,7 @@ PDJE_JSONHandler<MUSIC_W>::deleteLine(const MusicArgs &args)
 {
     std::vector<int> targetIDX;
     try {
-        for (unsigned long long i = 0; i < ROOT[PDJEMUSICBPM].size(); ++i) {
+        for (uint64_t i = 0; i < ROOT[PDJEMUSICBPM].size(); ++i) {
             auto Target = ROOT[PDJEMUSICBPM].at(i);
             if (Target[PDJE_JSON_BEAT] != args.beat && args.beat != -1)
                 continue;

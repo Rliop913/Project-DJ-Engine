@@ -9,10 +9,12 @@ PreLoadedMusic::init(litedb &db, const SANITIZED_ORNOT &KeyOrPath)
         return false;
     }
 
-    if (ma_decoder_get_available_frames(&dec.dec, &fullSize) != MA_SUCCESS) {
+    ma_uint64 native_full_size = 0;
+    if (ma_decoder_get_available_frames(&dec.dec, &native_full_size) != MA_SUCCESS) {
         critlog("failed to get maximum frames.");
         return false;
     }
+    fullSize = static_cast<uint64_t>(native_full_size);
     if (!dec.getRange(fullSize, music)) {
         critlog("failed to get range");
         return false;

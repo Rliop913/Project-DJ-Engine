@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdint>
 #include <optional>
 #include <vector>
 
@@ -30,7 +31,7 @@ class MusicTranslator {
      */
     bool
     Read(const CapReader<MusicBinaryCapnpData> &binary,
-         unsigned long long                     startFrame);
+         uint64_t                                startFrame);
 
     MusicTranslator()  = default;
     ~MusicTranslator() = default;

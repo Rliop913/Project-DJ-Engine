@@ -4,6 +4,7 @@
 #include "PreLoadedMusic.hpp"
 
 #include <chrono>
+#include <cstdint>
 #include <map>
 
 #include "ManualMix.hpp"
@@ -135,7 +136,7 @@ class PDJE_API MusicControlPanel {
      * @return false
      */
     bool
-    CueMusic(const UNSANITIZED &title, const unsigned long long newPos);
+    CueMusic(const UNSANITIZED &title, const uint64_t newPos);
 
     /**
      * @brief turn on, off the music

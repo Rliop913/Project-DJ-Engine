@@ -8,10 +8,17 @@
 #include <chrono>
 #include <cstddef>
 #include <cstdint>
+#include <type_traits>
 #include <unordered_map>
 #include <vector>
 
 namespace {
+
+static_assert(std::is_same_v<decltype(PDJE_CORE_DATA_LINE::nowCursor), uint64_t *>);
+static_assert(std::is_same_v<decltype(PDJE_CORE_DATA_LINE::maxCursor), uint64_t *>);
+static_assert(std::is_same_v<decltype(audioSyncData::consumed_frames), uint64_t>);
+static_assert(std::is_same_v<decltype(audioSyncData::pre_calculated_unused_frames),
+                             uint64_t>);
 
 constexpr uint64_t kFrameRate           = 48000;
 constexpr uint64_t kTestRail            = 5;
