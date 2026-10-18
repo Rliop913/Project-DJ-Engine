@@ -1,5 +1,6 @@
 #pragma once
 #include "PDJE_LOG_SETTER.hpp"
+#include "audio_OS_macos.hpp"
 #include <cstddef>
 #include <cstdint>
 #include <exception>
@@ -42,7 +43,8 @@ extract_backend(const ma_device &dev)
     return dev.wasapi.pAudioClientPlayback;
 
 #elif defined(__APPLE__)
-    return nullptr; // fix it
+    return reinterpret_cast<ma_ptr>(
+        static_cast<std::uintptr_t>(dev.coreaudio.deviceObjectIDPlayback));
 #else
 
     switch (dev.pContext->backend) {

@@ -12,7 +12,7 @@ not restate the writing standard.
 | `INVARIANTS.md` | global truth, scope, explicit wiring, and ownership constraints | repository-wide constraints or source-list conventions change |
 | `ARCHITECTURE.md` | design intent, module relations, data flow, and public entrypoints | module boundaries or public C++/C entrypoints change |
 | `CHANGE_MAP.md` | change-area routing to code, CMake, and verification | owning paths, source lists, or verification routes change |
-| `MACOS_AUDIO_DELAY_ESTIMATE.md` | proposed macOS callback-time delay estimator and assumptions | estimator design or implementation status changes |
+| `MACOS_AUDIO_DELAY_ESTIMATE.md` | macOS delay estimator requirements, model, and acceptance criteria | estimator requirements or specification status changes |
 | `RUNTIME_CONTRACTS.md` | caller-visible ownership, lifecycle, state, invalidation, and ABI compatibility | data lines, state transitions, teardown, callbacks, or public behavior change |
 | `VERIFY.md` | approval boundary, build truth, and preset selection | options, presets, compilers, build directories, bootstrap, or CI assumptions change |
 | `TEST_MAP.md` | stable targets, CTest labels, manual targets, and platform gates | test wiring, labels, targets, or gates change |
