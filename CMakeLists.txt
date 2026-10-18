@@ -288,16 +288,16 @@ if(PDJE_TEST)
 endif()
 
 
-
 if(PDJE_ENABLE_SWIFT)
-
   enable_language(Swift)
+  include(cmakes/swiftBridge.cmake)
 
-  add_executable(swig_test
+  add_executable(swift_test
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/SWIFT_TESTS/swift_bridge_test.cpp
+  )
+  pdje_add_swift_bridge(swift_test Test testmainbridge.h
     ${CMAKE_CURRENT_SOURCE_DIR}/include/tests/SWIFT_TESTS/testmain.swift
   )
-
-
 endif()
 
 
